@@ -14,6 +14,7 @@ ru:
   user_registrations:
     new:
       title: Регистрация
+      submit_title: Зарегистрироваться
 
   user_sessions:
     new:
@@ -24,11 +25,6 @@ ru:
       submit: Войти
     create:
       login_failed_message: Неверный пароль, или пользователь не существует.
-
-  helpers:
-    submit:
-      user:
-        create: Зарегистрироваться
 
   activerecord:
     attributes:
