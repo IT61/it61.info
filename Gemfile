@@ -30,7 +30,7 @@ group :development do
   gem 'quiet_assets'
   gem 'capistrano', git: 'git@github.com:capistrano/capistrano.git'
   gem 'capistrano-rails', '~> 1.0.0'
-  gem 'capistrano-rbenv', '~> 2.0'
+  gem "capistrano-rvm"
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
 end
