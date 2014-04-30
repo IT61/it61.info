@@ -1,0 +1,38 @@
+ru:
+  app_name: it61
+
+  cancel: Отмена
+
+  shared:
+    navbar:
+      login: Вход
+      register: Регистрация
+      logout: Выйти
+      vk: Вконтакте
+      facebook: Facebook
+
+  user_registrations:
+    new:
+      title: Регистрация
+
+  user_sessions:
+    new:
+      title: Войти на сайт
+      email: e-mail
+      password: Пароль
+      remember_me: Запомнить меня
+      submit: Войти
+    create:
+      login_failed_message: Неверный пароль, или пользователь не существует.
+
+  helpers:
+    submit:
+      user:
+        create: Зарегистрироваться
+
+  activerecord:
+    attributes:
+      user:
+        email: e-mail
+        password: Пароль
+        password_confirmation: Подтверждение пароля
