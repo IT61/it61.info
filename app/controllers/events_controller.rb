@@ -2,6 +2,13 @@ class EventsController < ApplicationController
   respond_to :html
   load_and_authorize_resource param_method: :event_params
 
+  has_scope :ordered_desc, type: :boolean, allow_blank: true, default: true
+
+  def index
+    @events = apply_scopes(@events)
+    respond_with @events
+  end
+
   def show
     respond_with @event
   end

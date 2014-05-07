@@ -3,4 +3,6 @@ class Event < ActiveRecord::Base
 
   validates :title, presence: true
   validates :organizer, presence: true
+
+  scope :ordered_desc, -> { order(created_at: :desc) }
 end

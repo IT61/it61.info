@@ -4,8 +4,9 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    if user.admin?
-      can :manage, Event
-    end
+    alias_action :read, to: :view
+
+    can :view, Event, published: true
+    can :manage, Event if user.admin?
   end
 end
