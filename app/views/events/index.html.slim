@@ -1,2 +1,6 @@
 .page-header
-  h1 Events#index
+  h1 = Event.model_name.human(count: 2)
+
+- if can? :manage, Event
+  .actions
+    = link_to t('.add_event_button_title'), new_event_path, class: 'btn btn-primary'

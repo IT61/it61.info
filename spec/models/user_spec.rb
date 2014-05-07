@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { FactoryGirl.create(:user) }
+  subject { user }
+
+  it 'has default(member) role after creation' do
+    expect(subject.role).to eq 'member'
+  end
 end

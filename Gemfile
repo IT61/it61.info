@@ -9,6 +9,7 @@ gem 'has_scope'
 gem 'active_link_to'
 gem 'gon'
 gem 'pg'
+gem 'cancancan', '~> 1.7'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -36,6 +37,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'forgery'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', require: false
   gem 'rspec-rails'

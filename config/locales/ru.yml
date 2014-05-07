@@ -3,6 +3,11 @@ ru:
 
   cancel: Отмена
 
+  helpers:
+    submit:
+      event:
+        create: Добавить событие
+
   shared:
     navbar:
       login: Вход
@@ -26,9 +31,24 @@ ru:
     create:
       login_failed_message: Неверный пароль, или пользователь не существует.
 
+  events:
+    index:
+      add_event_button_title: Добавить событие
+    new:
+      title: Новое событие
+    edit:
+      title: Изменение события
+
   activerecord:
+    models:
+      event:
+        one: Событие
+        few: События
     attributes:
       user:
         email: e-mail
         password: Пароль
         password_confirmation: Подтверждение пароля
+      event:
+        title: Название
+        published: Событие опубликовано

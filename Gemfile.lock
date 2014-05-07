@@ -48,6 +48,7 @@ GEM
       sass (~> 3.2)
     bootstrap_form (2.1.1)
     builder (3.2.2)
+    cancancan (1.7.1)
     capistrano-bundler (1.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
@@ -82,6 +83,7 @@ GEM
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
+    forgery (0.6.0)
     formatador (0.2.4)
     gon (5.0.4)
       actionpack (>= 2.3.0)
@@ -259,6 +261,7 @@ DEPENDENCIES
   awesome_print
   bootstrap-sass
   bootstrap_form
+  cancancan (~> 1.7)
   capistrano!
   capistrano-bundler
   capistrano-rails (~> 1.0.0)
@@ -266,6 +269,7 @@ DEPENDENCIES
   capistrano3-unicorn
   coffee-rails (~> 4.0.0)
   factory_girl_rails
+  forgery
   gon
   guard-rspec
   has_scope

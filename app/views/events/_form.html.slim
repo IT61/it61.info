@@ -1,0 +1,6 @@
+= bootstrap_form_for @event do |f|
+  = f.text_field :title
+  = f.check_box :published
+  = link_to t(:cancel), root_path, class: 'btn btn-default'
+  | &nbsp;
+  = f.submit class: 'btn btn-primary'
