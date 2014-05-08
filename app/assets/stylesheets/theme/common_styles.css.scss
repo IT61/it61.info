@@ -2,3 +2,11 @@ body {
   //Отступ для того, чтобы навбар не наезжал на контент-область.
   padding-top: 50px;
 }
+
+.flash-messages {
+  margin-top: 30px;
+}
+
+.alert.alert-error {
+  @extend .alert-danger;
+}

@@ -7,6 +7,9 @@ ru:
   'true': да
   'false': нет
 
+  event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
+  event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
+
   helpers:
     submit:
       event:
@@ -42,6 +45,9 @@ ru:
       title: Новое событие
     edit:
       title: Изменение события
+    participants_block:
+      participate_submit_title: Участвовать
+      cacnel_participation_submit_title: Отказаться от участия
 
   activerecord:
     models:
@@ -58,3 +64,8 @@ ru:
         published: Событие опубликовано
         description: Описание
         started_at: Дата начала
+
+
+  unauthorized:
+    create:
+      event_participation: Для участия в событии необходимо зарегистрироваться

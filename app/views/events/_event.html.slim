@@ -15,3 +15,6 @@
       = render partial: 'admin_info', object: event, as: :event
 
     p = simple_format event.description
+
+    hr
+    = render partial: 'participants_block', object: event, as: :event
