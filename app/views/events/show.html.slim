@@ -1,0 +1,18 @@
+.events-show
+  .page-header
+    h1
+      = @event.title
+      | &nbsp;
+      small
+        = l @event.started_at, format: :short
+
+  - if can? :edit, @event
+    = render partial: 'admin_info', object: @event, as: :event
+
+  .description
+    p = simple_format @event.description
+
+  - if can? :edit, @event
+    hr
+    .actions
+      = link_to t(:edit), edit_event_path(@event), class: 'btn btn-primary'

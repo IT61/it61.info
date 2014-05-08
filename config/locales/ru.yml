@@ -2,6 +2,10 @@ ru:
   app_name: it61
 
   cancel: Отмена
+  edit: Редактировать
+
+  'true': да
+  'false': нет
 
   helpers:
     submit:
@@ -52,3 +56,5 @@ ru:
       event:
         title: Название
         published: Событие опубликовано
+        description: Описание
+        started_at: Дата начала

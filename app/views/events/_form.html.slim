@@ -1,5 +1,7 @@
 = bootstrap_form_for @event do |f|
   = f.text_field :title
+  = f.text_area :description, rows: 10
+  = f.datetime_select :started_at
   = f.check_box :published
   = link_to t(:cancel), root_path, class: 'btn btn-default'
   | &nbsp;
