@@ -7,6 +7,7 @@ class Ability
     alias_action :read, to: :view
 
     can :view, Event, published: true
+    can :manage, User, id: user.id
 
     if user.admin?
       can :manage, Event

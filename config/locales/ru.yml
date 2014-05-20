@@ -10,8 +10,17 @@ ru:
   event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
   event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
 
+  flash:
+    user_profiles:
+      update:
+        success: Ваш профиль успешно обновлен
+    user_accounts:
+      update:
+        success: Настройки аккаунта успешно сохранены
+
   helpers:
     submit:
+      update: Сохранить изменения
       event:
         create: Добавить событие
 
@@ -20,6 +29,8 @@ ru:
       login: Вход
       register: Регистрация
       logout: Выйти
+      profile: Профиль
+      account: Аккаунт
       vk: Вконтакте
       facebook: Facebook
 
@@ -37,6 +48,16 @@ ru:
       submit: Войти
     create:
       login_failed_message: Неверный пароль, или пользователь не существует.
+
+  user_profiles:
+    edit:
+      title: Мой профиль
+
+  user_accounts:
+    edit:
+      title: Настройки аккаунта
+      new_password: Новый пароль
+      new_password_confirmation: Подтверждение нового пароля
 
   events:
     index:
@@ -59,6 +80,9 @@ ru:
         email: e-mail
         password: Пароль
         password_confirmation: Подтверждение пароля
+        first_name: Имя
+        last_name: Фамилия
+        bio: Обо мне
       event:
         title: Название
         published: Событие опубликовано

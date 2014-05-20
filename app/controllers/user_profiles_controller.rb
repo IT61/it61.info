@@ -1,0 +1,27 @@
+class UserProfilesController < ApplicationController
+  respond_to :html
+  responders :flash
+
+  before_filter :prepare_user
+
+  def edit
+    respond_with @user
+  end
+
+  def update
+    @user.update_attributes user_profile_params
+
+    respond_with @user, location: edit_current_profile_path
+  end
+
+  private
+
+  def prepare_user
+    @user = current_user
+    authorize! :manage, @user
+  end
+
+  def user_profile_params
+    params.require(:user).permit(:first_name, :last_name, :bio)
+  end
+end

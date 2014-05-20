@@ -13,6 +13,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top.navbar-default role='navigation'
       ul.nav.navbar-nav.navbar-right
         - if current_user
           li: p.navbar-text = current_user.login
+          li = link_to t('.profile'), edit_current_profile_path
+          li = link_to t('.account'), edit_current_account_path
           li = link_to t('.logout'), user_session_path, method: :delete
         - else
           li = link_to t('.register'), new_user_registration_path
