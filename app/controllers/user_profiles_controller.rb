@@ -2,11 +2,11 @@ class UserProfilesController < ApplicationController
   respond_to :html
   responders :flash
 
-  before_filter :prepare_user
+  before_filter :prepare_user, except: [:index, :show]
 
   def index
     @users = User.all
-    respond_with @user
+    respond_with @users
   end
 
   def show
