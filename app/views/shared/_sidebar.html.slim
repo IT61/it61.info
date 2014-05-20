@@ -1,0 +1,5 @@
+.panel.panel-default
+  .panel-body
+    ul.nav.nav-pills.nav-stacked
+      = active_link_to t('.events'), events_path, wrap_tag: :li
+      = active_link_to t('.members'), user_profiles_path, wrap_tag: :li

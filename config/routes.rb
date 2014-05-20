@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   post '/participate_in_event' => 'event_participations#create'
   delete '/cancel_participation' => 'event_participations#destroy'
 
-  root to: 'events#index'
+  root to: redirect('/events')
 end

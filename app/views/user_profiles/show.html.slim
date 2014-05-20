@@ -1,0 +1,26 @@
+.user-profile-page
+  .page-header
+    h1 = @user.full_name
+
+  .clearfix
+    .avatar.thumbnail.pull-left
+      = image_tag 'http://placehold.it/150x150'
+    dl.pull-left
+      dt = User.human_attribute_name(:email)
+      dd = @user.email
+
+  p.bio
+    = simple_format @user.bio
+
+  - if @user.owner_of_events.any?
+    .owner-of-events
+      h2 = t('.organizer_block_title')
+      ul
+        - @user.owner_of_events.each do |event|
+          li = link_to event.title, event_path(event)
+
+  - if @user.member_in_events.any?
+    h2 = t('.member_block_title')
+    ul
+      - @user.member_in_events.each do |event|
+        li = link_to event.title, event_path(event)

@@ -33,6 +33,9 @@ ru:
       account: Аккаунт
       vk: Вконтакте
       facebook: Facebook
+    sidebar:
+      events: События
+      members: Личности
 
   user_registrations:
     new:
@@ -50,8 +53,13 @@ ru:
       login_failed_message: Неверный пароль, или пользователь не существует.
 
   user_profiles:
+    index:
+      title: Личности
     edit:
       title: Мой профиль
+    show:
+      organizer_block_title: Организатор мероприятий
+      member_block_title: Участник мероприятий
 
   user_accounts:
     edit:

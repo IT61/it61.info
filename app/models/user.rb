@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
+  has_many :owner_of_events, class_name: 'Event', foreign_key: 'organizer_id'
+  has_many :event_participations
+  has_many :member_in_events, class_name: 'Event', through: :event_participations, source: :event
+
   validates :password, length: { minimum: 3 }, if: 'password.present?'
   validates :password, confirmation: true, if: 'password_required?'
   validates :password_confirmation, presence: true, if: 'password_required?', on: :create
@@ -16,7 +20,11 @@ class User < ActiveRecord::Base
   after_create :assign_default_role
 
   def login
-    name || email
+    name || email.split('@').first
+  end
+
+  def full_name
+    [first_name, last_name].compact.join(' ').presence || login
   end
 
   private
