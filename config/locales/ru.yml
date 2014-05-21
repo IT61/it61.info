@@ -14,9 +14,6 @@ ru:
     user_profiles:
       update:
         success: Ваш профиль успешно обновлен
-    user_accounts:
-      update:
-        success: Настройки аккаунта успешно сохранены
 
   helpers:
     submit:
@@ -57,15 +54,11 @@ ru:
       title: Личности
     edit:
       title: Мой профиль
+      new_password: Новый пароль
+      new_password_confirmation: Подтверждение нового пароля
     show:
       organizer_block_title: Организатор мероприятий
       member_block_title: Участник мероприятий
-
-  user_accounts:
-    edit:
-      title: Настройки аккаунта
-      new_password: Новый пароль
-      new_password_confirmation: Подтверждение нового пароля
 
   events:
     index:

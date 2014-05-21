@@ -1,9 +1,0 @@
-.page-header
-  h1 = t('.title')
-
-= bootstrap_form_for @user, url: current_account_path do |f|
-  = f.password_field :password, label: t('.new_password')
-  = f.password_field :password_confirmation, label: t('.new_password_confirmation')
-  = f.submit class: 'btn btn-primary'
-  ' &nbsp;
-  = link_to t(:cancel), url_for, class: 'btn btn-default'

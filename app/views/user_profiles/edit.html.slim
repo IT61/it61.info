@@ -5,6 +5,10 @@
   = f.text_field :first_name
   = f.text_field :last_name
   = f.text_area :bio, rows: 7
+  hr
+  = f.password_field :password, label: t('.new_password')
+  = f.password_field :password_confirmation, label: t('.new_password_confirmation')
+
   = f.submit class: 'btn btn-primary'
   ' &nbsp;
   = link_to t(:cancel), url_for, class: 'btn btn-default'

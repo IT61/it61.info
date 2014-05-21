@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   # Редактирование профиля и аккаунта
   scope :current_user, as: 'current' do
     resource :profile, controller: 'user_profiles', only: [:edit, :update]
-    resource :account, controller: 'user_accounts', only: [:edit, :update]
   end
 
   # Список пользователей и публичные профили
