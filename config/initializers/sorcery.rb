@@ -73,7 +73,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid] .
   # Default: `[]`
   #
-  config.external_providers = [:facebook, :vk]
+  config.external_providers = [:facebook, :vk, :github]
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -123,10 +123,15 @@ Rails.application.config.sorcery.configure do |config|
   }
   config.facebook.access_permissions = ["email", "publish_stream"]
   #
-  # config.github.key = ""
-  # config.github.secret = ""
-  # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
-  # config.github.user_info_mapping = {:email => "name"}
+  config.github.key = Rails.application.secrets.github_key
+  config.github.secret = Rails.application.secrets.github_secret
+  config.github.callback_url = Rails.application.secrets.github_callback_url
+  config.github.user_info_mapping = {
+    remote_avatar_image_url: 'avatar_url',
+    name: 'login',
+    email: 'email'
+  }
+
   #
   # config.google.key = ""
   # config.google.secret = ""
