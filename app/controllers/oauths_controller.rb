@@ -26,7 +26,8 @@ class OauthsController < ApplicationController
         # пользователя.
         @user = create_from(provider)
 
-        # FIXME: сделать более пристойное получение аватаров
+        # FIXME: сделать более пристойное получение аватаров.
+        # FIXME2: Для vk информация доступна через @user_hash
         @user.remote_avatar_image_url = external_avatar(provider)
         @user.save!
 

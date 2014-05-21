@@ -14,7 +14,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top.navbar-default role='navigation'
         - if current_user
           li: p.navbar-text
             =' image_tag current_user.avatar_image.square_25.url
-            = current_user.login
+            = current_user.full_name
           li = link_to t('.profile'), edit_current_profile_path
           li = link_to t('.logout'), user_session_path, method: :delete
         - else
