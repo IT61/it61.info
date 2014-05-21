@@ -73,7 +73,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid] .
   # Default: `[]`
   #
-  config.external_providers = [:facebook, :vk, :github]
+  config.external_providers = [:facebook, :vk, :github, :google]
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -133,10 +133,10 @@ Rails.application.config.sorcery.configure do |config|
   }
 
   #
-  # config.google.key = ""
-  # config.google.secret = ""
-  # config.google.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=google"
-  # config.google.user_info_mapping = {:email => "email", :username => "name"}
+  config.google.key = Rails.application.secrets.google_key
+  config.google.secret = Rails.application.secrets.google_secret
+  config.google.callback_url = Rails.application.secrets.google_callback_url
+  config.google.user_info_mapping = {:email => "email", :username => "name"}
   #
   config.vk.key = Rails.application.secrets.vk_key
   config.vk.secret = Rails.application.secrets.vk_secret
