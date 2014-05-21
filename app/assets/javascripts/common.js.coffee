@@ -1,0 +1,2 @@
+$ ->
+  $('li.participant a').tooltip()

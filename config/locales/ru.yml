@@ -84,11 +84,13 @@ ru:
         first_name: Имя
         last_name: Фамилия
         bio: Обо мне
+        avatar_image: Аватар
       event:
         title: Название
         published: Событие опубликовано
         description: Описание
         started_at: Дата начала
+        title_image: Титульная картинка
 
 
   unauthorized:

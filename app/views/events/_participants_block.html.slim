@@ -1,9 +1,11 @@
 .participants
   - if event.participants.any?
     h4 Участники
-    ul
+    ul.list-unstyled.clearfix
       - event.participants.each do |p|
-        li = p.login
+        li.participant.pull-left
+          = link_to user_profile_path(p), data: { toggle: 'tooltip', placement: 'bottom', title: p.full_name } do
+            = image_tag p.avatar_image.square_50.url
 
   - if event.user_participated? current_user
     = form_tag cancel_participation_path(id: event.participation_for(current_user)), method: :delete do

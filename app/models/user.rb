@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar_image, UserAvatarUploader
+
   authenticates_with_sorcery!
 
   enum role: { member: 0, admin: 1 }

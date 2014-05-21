@@ -4,6 +4,14 @@
 = bootstrap_form_for @user, url: current_profile_path do |f|
   = f.text_field :first_name
   = f.text_field :last_name
+
+  = f.file_field :avatar_image
+  = f.hidden_field :avatar_image_cache
+  - if @user.avatar_image.present?
+    .title-image
+      = image_tag @user.avatar_image.square_150.url, class: 'thumbnail'
+
+
   = f.text_area :bio, rows: 7
   hr
   = f.password_field :password, label: t('.new_password')
