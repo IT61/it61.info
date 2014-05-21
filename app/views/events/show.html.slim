@@ -6,11 +6,14 @@
       small
         = l @event.started_at, format: :short
 
+  .clearfix
+    .pull-left
+      = image_tag @event.title_image.square_200.url, class: 'thumbnail'
+    p
+      = simple_format @event.description
+
   - if can? :edit, @event
     = render partial: 'admin_info', object: @event, as: :event
-
-  .description
-    p = simple_format @event.description
 
   - if can? :edit, @event
     hr

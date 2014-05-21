@@ -10,6 +10,8 @@ gem 'active_link_to'
 gem 'gon'
 gem 'pg'
 gem 'cancancan', '~> 1.7'
+gem 'mini_magick'
+gem 'carrierwave'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'

@@ -59,6 +59,11 @@ GEM
       sshkit (~> 1.2)
     capistrano3-unicorn (0.1.1)
       capistrano (>= 3.1.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     celluloid-io (0.15.0)
@@ -122,6 +127,8 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_magick (3.7.0)
+      subexec (~> 0.2.1)
     minitest (5.3.3)
     multi_json (1.9.3)
     multi_xml (0.5.5)
@@ -231,6 +238,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
       term-ansicolor
+    subexec (0.2.3)
     temple (0.6.7)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
@@ -267,6 +275,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.0.0)
   capistrano-rvm
   capistrano3-unicorn
+  carrierwave
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   forgery
@@ -275,6 +284,7 @@ DEPENDENCIES
   has_scope
   jbuilder (~> 2.0)
   jquery-rails
+  mini_magick
   pg
   quiet_assets
   rails (= 4.1.0)

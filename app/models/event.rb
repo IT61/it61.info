@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  mount_uploader :title_image, EventTitleImageUploader
+
   belongs_to :organizer, class_name: 'User'
 
   has_many :event_participations
