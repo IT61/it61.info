@@ -10,6 +10,7 @@ ru:
   facebook: Фейсбук
   vk: Вконтакте
   github: GitHub
+  google: Google
 
   event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
   event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
