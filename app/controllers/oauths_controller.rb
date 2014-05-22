@@ -13,7 +13,7 @@ class OauthsController < ApplicationController
     logger.info @user_hash
 
     if provider.to_sym == :github
-      if @user_hash[:user_info]['link'] = @user_hash[:user_info]['html_url']
+      @user_hash[:user_info]['link'] = @user_hash[:user_info]['html_url']
     end
 
     if logged_in?
