@@ -1,8 +1,6 @@
 hr
-= link_to t(:facebook), auth_at_provider_path(provider: :facebook), class: 'btn btn-default'
-| &nbsp;
-= link_to t(:vk), auth_at_provider_path(provider: :vk), class: 'btn btn-default'
-| &nbsp;
-= link_to t(:github), auth_at_provider_path(provider: :github), class: 'btn btn-default'
-| &nbsp;
-= link_to t(:google), auth_at_provider_path(provider: :google), class: 'btn btn-default'
+ul.list-inline
+  - [:facebook, :vk, :github, :google].each do |provider|
+    li
+      = link_to t(provider), auth_at_provider_path(provider: :facebook), class: 'btn btn-default'
+

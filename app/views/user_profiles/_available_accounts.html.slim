@@ -1,0 +1,6 @@
+h2 = t('.title')
+ul.list-inline
+  - [:facebook, :vk, :github, :google].each do |provider|
+    - if @user.authentications.where(provider: provider).empty?
+      li
+        = link_to t(provider), auth_at_provider_path(provider: :facebook), class: 'btn btn-default'

@@ -10,8 +10,6 @@
   - if @user.avatar_image.present?
     .title-image
       = image_tag @user.avatar_image.square_150.url, class: 'thumbnail'
-
-
   = f.text_area :bio, rows: 7
   hr
   = f.password_field :password, label: t('.new_password')
@@ -20,3 +18,9 @@
   = f.submit class: 'btn btn-primary'
   ' &nbsp;
   = link_to t(:cancel), url_for, class: 'btn btn-default'
+
+
+hr
+= render 'linked_accounts'
+= render 'available_accounts'
+

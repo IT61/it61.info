@@ -19,6 +19,8 @@
         - @user.owner_of_events.each do |event|
           li = link_to event.title, event_path(event)
 
+  = render 'linked_accounts'
+
   - if @user.member_in_events.any?
     h2 = t('.member_block_title')
     ul

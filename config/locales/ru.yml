@@ -64,7 +64,10 @@ ru:
     show:
       organizer_block_title: Организатор мероприятий
       member_block_title: Участник мероприятий
-
+    linked_accounts:
+      title: Аккаунты соцсетей
+    available_accounts:
+      title: Привязать дополнительные аккаунты
   events:
     index:
       add_event_button_title: Добавить событие
