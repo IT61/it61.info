@@ -2,5 +2,5 @@ hr
 ul.list-inline
   - [:facebook, :vk, :github, :google].each do |provider|
     li
-      = link_to t(provider), auth_at_provider_path(provider: :provider), class: 'btn btn-default'
+      = link_to t(provider), auth_at_provider_path(provider: provider), class: 'btn btn-default'
 
