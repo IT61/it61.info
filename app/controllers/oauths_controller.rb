@@ -58,7 +58,8 @@ class OauthsController < ApplicationController
   end
 
 
-  # Переопределяем функцию из sorcery для того, чтобы добавлять link в authentications
+  # Переопределяем функции из sorcery для того, чтобы добавлять link в authentications
+  # FIXME: Надо придумать более изящное решение, это все временно и уродство.
   def add_provider_to_user(provider_name)
     sorcery_fetch_user_hash provider_name
     config = user_class.sorcery_config
@@ -81,6 +82,35 @@ class OauthsController < ApplicationController
     return user
   end
 
+  def create_from(provider_name)
+    sorcery_fetch_user_hash provider_name
+    config = user_class.sorcery_config
+
+    attrs = user_attrs(@provider.user_info_mapping, @user_hash)
+
+    user_class.transaction do
+      @user = user_class.new()
+      attrs.each do |k,v|
+        @user.send(:"#{k}=", v)
+      end
+
+      if block_given?
+        return false unless yield @user
+      end
+
+      @user.save(:validate => false)
+
+      hsh = {
+        config.authentications_user_id_attribute_name => @user.id,
+        config.provider_attribute_name => provider_name,
+        config.provider_uid_attribute_name => @user_hash[:uid],
+        link: @user_hash[:user_info]['link']
+      }
+
+      user_class.sorcery_config.authentications_class.create!(hsh)
+    end
+    @user
+  end
 
 
   private
