@@ -136,7 +136,11 @@ Rails.application.config.sorcery.configure do |config|
   config.google.key = Rails.application.secrets.google_key
   config.google.secret = Rails.application.secrets.google_secret
   config.google.callback_url = Rails.application.secrets.google_callback_url
-  config.google.user_info_mapping = {:email => "email", :username => "name"}
+  config.google.user_info_mapping = {
+    email: "email",
+    name: "name"
+    remote_avatar_image_url: 'picture',
+  }
   #
   config.vk.key = Rails.application.secrets.vk_key
   config.vk.secret = Rails.application.secrets.vk_secret
