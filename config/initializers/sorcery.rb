@@ -138,7 +138,7 @@ Rails.application.config.sorcery.configure do |config|
   config.google.callback_url = Rails.application.secrets.google_callback_url
   config.google.user_info_mapping = {
     email: "email",
-    name: "name"
+    name: "name",
     remote_avatar_image_url: 'picture',
   }
   #
