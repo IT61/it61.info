@@ -19,6 +19,9 @@ ru:
   event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
   event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
 
+  sorcery_external:
+    success: "Аккаунт %{provider} успешно привязан к вашему профилю."
+
   flash:
     user_profiles:
       update:
