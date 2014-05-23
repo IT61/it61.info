@@ -16,6 +16,10 @@ class OauthsController < ApplicationController
       @user_hash[:user_info]['link'] = @user_hash[:user_info]['html_url']
     end
 
+    if provider.to_sym == :vk
+      @user_hash[:user_info]['link'] = "http://vk.com/#{@user_hash[:user_info]['domain']}"
+    end
+
     if logged_in?
       # Если пользовтаель уже залогинен, привязываем к его акканту соцсеть.
       @user = current_user
@@ -42,12 +46,12 @@ class OauthsController < ApplicationController
           # пользователя.
           @user = create_from(provider)
 
-          if provider.to_sym == :facebook
-            # FIXME: сделать более пристойное получение аватаров.
-            # FIXME2: Для vk информация доступна через @user_hash
-            @user.remote_avatar_image_url = external_avatar(provider)
-            @user.save!
-          end
+          # if provider.to_sym == :facebook
+          #   # FIXME: сделать более пристойное получение аватаров.
+          #   # FIXME2: Для vk информация доступна через @user_hash
+          #   @user.remote_avatar_image_url = external_avatar(provider)
+          #   @user.save!
+          # end
 
           reset_session
           auto_login(@user)
