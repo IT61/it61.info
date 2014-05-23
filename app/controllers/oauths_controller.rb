@@ -20,6 +20,11 @@ class OauthsController < ApplicationController
       @user_hash[:user_info]['link'] = "http://vk.com/#{@user_hash[:user_info]['domain']}"
     end
 
+    if provier.to_sym == :facebook
+      @user_hash[:user_info]['avatar'] = "https://graph.facebook.com/#{@user_hash[:uid]}/picture?type=large"
+    end
+
+
     if logged_in?
       # Если пользовтаель уже залогинен, привязываем к его акканту соцсеть.
       @user = current_user
@@ -49,9 +54,11 @@ class OauthsController < ApplicationController
           # if provider.to_sym == :facebook
           #   # FIXME: сделать более пристойное получение аватаров.
           #   # FIXME2: Для vk информация доступна через @user_hash
-          #   @user.remote_avatar_image_url = external_avatar(provider)
-          #   @user.save!
+            # @user.remote_avatar_image_url = external_avatar(provider)
+            # @user.save!
           # end
+          @user.remote_avatar_image_url = @user_hash[:user_info][@provider.user_info_mapping[:remote_avatar_image_url]]
+          @user.save(validate: false)
 
           reset_session
           auto_login(@user)
@@ -120,9 +127,6 @@ class OauthsController < ApplicationController
   private
 
   def external_avatar(provier)
-    if provier.to_sym == :facebook
-      "https://graph.facebook.com/#{@user_hash[:uid]}/picture?type=large"
-    end
   end
 
   def auth_params
