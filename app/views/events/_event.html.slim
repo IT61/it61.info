@@ -13,10 +13,11 @@
   .panel-body
     - if can? :edit, event
       = render partial: 'admin_info', object: event, as: :event
-    .clearfix
-      .pull-left
-        = image_tag event.title_image.square_200.url, class: 'thumbnail'
-      p = simple_format event.description
+    .row
+      .col-xs-4.col-sm-4.col-md-3
+        = link_to event_path(event) do
+          .image-container = image_tag event.title_image.square_200.url
+        = render partial: 'participants_block', object: event, as: :event
+      .col-xs-8.col-sm-8.col-md-9
+        p = simple_format event.description
 
-    hr
-    = render partial: 'participants_block', object: event, as: :event

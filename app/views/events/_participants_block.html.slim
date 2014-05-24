@@ -1,4 +1,11 @@
 .participants
+  - if event.user_participated? current_user
+    = form_tag cancel_participation_path(id: event.participation_for(current_user)), method: :delete do
+      = submit_tag t('.cacnel_participation_submit_title'), class: 'btn btn-success btn-block'
+  - else
+    = form_tag participate_in_event_path do
+      = hidden_field_tag 'event_participation[event_id]', event.id
+      = submit_tag t('.participate_submit_title'), class: 'btn btn-success btn-block'
   - if event.participants.any?
     h4 Участники
     ul.list-unstyled.clearfix
@@ -6,11 +13,3 @@
         li.participant.pull-left
           = link_to user_profile_path(p), data: { toggle: 'tooltip', placement: 'bottom', title: p.full_name } do
             = image_tag p.avatar_image.square_50.url
-
-  - if event.user_participated? current_user
-    = form_tag cancel_participation_path(id: event.participation_for(current_user)), method: :delete do
-      = submit_tag t('.cacnel_participation_submit_title'), class: 'btn btn-success btn-sm'
-  - else
-    = form_tag participate_in_event_path do
-      = hidden_field_tag 'event_participation[event_id]', event.id
-      = submit_tag t('.participate_submit_title'), class: 'btn btn-success btn-sm'

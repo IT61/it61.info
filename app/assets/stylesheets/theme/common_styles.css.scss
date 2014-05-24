@@ -1,3 +1,10 @@
 .alert.alert-error {
   @extend .alert-danger;
 }
+
+.image-container {
+  margin: 0 0 $line-height-computed;
+  img {
+    width: 100%;
+  }
+}
