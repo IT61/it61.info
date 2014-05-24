@@ -34,9 +34,6 @@ ru:
     sidebar:
       login: Вход
       register: Регистрация
-      logout: Выйти
-      profile: Профиль
-      account: Аккаунт
       vk: Вконтакте
       facebook: Facebook
       events: Мероприятия
@@ -84,6 +81,8 @@ ru:
       title: Новое мероприятие
     edit:
       title: Редактирование мероприятия
+    event:
+      more: Подробнее...
     participate_block:
       participate_submit_title: Участвовать
       cancel_participation_submit_title: Отказаться от участия

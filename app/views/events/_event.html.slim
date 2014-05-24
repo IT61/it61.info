@@ -2,22 +2,23 @@
   .panel-heading
     .pull-right
       - if can? :edit, event
+        = render partial: 'admin_info', object: event, as: :event
         = link_to edit_event_path(event), class: 'btn btn-xs btn-default' do
-          span.glyphicon.glyphicon-pencil
+          i.fa.fa-pencil
     h3.panel-title
       = link_to event.title, event_path(event)
       | &nbsp;
       small = l event.started_at, format: :date_time_full
   .panel-body
-    - if can? :edit, event
-      = render partial: 'admin_info', object: event, as: :event
     .row
       .col-xs-12.col-sm-4.col-md-4
         = link_to event_path(event) do
           .image-container = image_tag event.title_image.square_200.url
         = render partial: 'participate_block', object: event, as: :event
       .col-xs-12.col-sm-8.col-md-8
-        p = simple_format event.description
+        p = simple_format truncate(event.description, length: 600) { link_to t('.more'), event_path(event), class: 'pull-right' }
   - if event.participants.any?
     .panel-footer
-      = render partial: 'participants_block', object: event, as: :event
+      .participants
+        h4 Участники
+        = render partial: 'participants_block', object: event, as: :event

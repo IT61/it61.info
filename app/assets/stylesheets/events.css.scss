@@ -1,0 +1,41 @@
+.events-index, .events-show {
+  .participants {
+    @include clearfix();
+    .participant {
+      float: left;
+      margin-right: 1em;
+      a {
+        display: block;
+      }
+    }
+  }
+  .event-title-image {
+
+  }
+}
+
+.events-index {
+  .events {
+    .event {
+      &.panel {
+        .panel-heading {
+          .admin-info {
+            margin-right: 1em;
+            display: inline;
+          }
+        }
+        .panel-footer {
+          .participants {
+            h4 {
+              float: left;
+              margin-right: 1em;
+              margin-top: 0;
+              margin-bottom: 0;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

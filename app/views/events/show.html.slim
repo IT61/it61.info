@@ -1,24 +1,26 @@
 .events-show
   .page-header
     h1
+      - if can? :edit, @event
+        .pull-right = render partial: 'admin_info', object: @event, as: :event
       = @event.title
       | &nbsp;
       small
-        = l @event.started_at, format: :short
+        = l @event.started_at, format: :date_time_full
 
-  .clearfix
-    .pull-left
-      = image_tag @event.title_image.square_200.url, class: 'thumbnail'
-    p
-      = simple_format @event.description
+  .row
+    .col-xs-12.col-sm-4.col-md-4.col-lg-4
+      .image-container = image_tag @event.title_image.square_200.url
+    .col-xs-12.col-sm-4.col-md-4.col-lg-4
+      - if can? :edit, @event
+        .actions.line = link_to t(:edit), edit_event_path(@event), class: 'btn btn-primary'
+      .participants
+        .panel.panel-default
+          .panel-heading
+            h4 Участники
+          .panel-body
+            = render partial: 'participants_block', object: @event, as: :event
+          .panel-footer
+            = render partial: 'participate_block', object: @event, as: :event
 
-  - if can? :edit, @event
-    = render partial: 'admin_info', object: @event, as: :event
-
-  - if can? :edit, @event
-    hr
-    .actions
-      = link_to t(:edit), edit_event_path(@event), class: 'btn btn-primary'
-
-  hr
-  = render partial: 'participants_block', object: @event, as: :event
+  .event-description = simple_format @event.description

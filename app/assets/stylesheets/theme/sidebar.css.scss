@@ -77,7 +77,8 @@
   }
   .user {
     @include clearfix();
-    a {
+    text-align: left;
+    > a {
       display: block;
       .avatar {
         width: 25%;
@@ -87,7 +88,12 @@
       .user-name {
         width: 70%;
         float: left;
-        text-align: left;
+      }
+    }
+    .actions {
+      text-align: right;
+      i.fa {
+        margin-left: 1em;
       }
     }
   }

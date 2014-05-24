@@ -1,8 +1,6 @@
-.participants
-  - if event.participants.any?
-    h4 Участники
-    ul.list-unstyled.clearfix
-      - event.participants.each do |p|
-        li.participant.pull-left
-          = link_to user_profile_path(p), data: { toggle: 'tooltip', placement: 'bottom', title: p.full_name } do
-            = image_tag p.avatar_image.square_50.url
+- if event.participants.any?
+  ul.list-unstyled
+    - event.participants.each do |p|
+      li.participant
+        = link_to user_profile_path(p), data: { toggle: 'tooltip', placement: 'bottom', title: p.full_name } do
+          .avatar = image_tag p.avatar_image.square_50.url

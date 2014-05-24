@@ -1,4 +1,4 @@
 .col-xs-4.col-sm-2.col-md-2.col-lg-2
   .user-profile-preview = link_to user_profile_path(user.id) do
     .avatar = image_tag user.avatar_image.square_150.url
-    h2 = user.full_name
+    = user.full_name

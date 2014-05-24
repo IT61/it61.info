@@ -1,4 +1,2 @@
 .admin-info
-  dl
-    dt = Event.human_attribute_name :published
-    dd = t(event.published.to_s)
+  i.fa data-toggle="tooltip" data-placement="bottom" data-title="#{Event.human_attribute_name :published}: #{t(event.published.to_s)}" class="#{admin_event_icon_class(event)}"
