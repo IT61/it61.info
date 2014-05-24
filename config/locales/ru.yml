@@ -1,6 +1,10 @@
 ru:
   app_name: Ростовское IT–сообщество
 
+  time:
+    formats:
+      date_time_full: "%d %B %Y, %H:%M"
+
   cancel: Отмена
   edit: Редактировать
 
@@ -78,9 +82,9 @@ ru:
       title: Новое мероприятие
     edit:
       title: Редактирование мероприятия
-    participants_block:
+    participate_block:
       participate_submit_title: Участвовать
-      cacnel_participation_submit_title: Отказаться от участия
+      cancel_participation_submit_title: Отказаться от участия
 
   activerecord:
     models:
