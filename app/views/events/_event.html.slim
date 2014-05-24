@@ -1,15 +1,16 @@
 .event.panel.panel-default
-  .panel-heading.clearfix
-    .pull-left
-      h2.panel-title
-        = link_to event.title, event_path(event)
-        | &nbsp;
-        small
-          = l event.started_at, format: :short
-    .pull-right
-      - if can? :edit, event
-        = link_to edit_event_path(event), class: 'btn btn-xs btn-default' do
-          span.glyphicon.glyphicon-pencil
+  .panel-heading
+    .clearfix
+      .pull-left
+        h2.panel-title
+          = link_to event.title, event_path(event)
+          | &nbsp;
+          small
+            = l event.started_at, format: :short
+      .pull-right
+        - if can? :edit, event
+          = link_to edit_event_path(event), class: 'btn btn-xs btn-default' do
+            span.glyphicon.glyphicon-pencil
   .panel-body
     - if can? :edit, event
       = render partial: 'admin_info', object: event, as: :event
