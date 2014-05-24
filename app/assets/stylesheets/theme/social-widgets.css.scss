@@ -1,0 +1,21 @@
+#social-widgets-sidebar {
+  width: $social-sidebar-widgets-width + 2*$line-height-computed;
+  margin: 0 0 $line-height-computed $line-height-computed;
+  padding: $line-height-computed;
+  background: white;
+  float: right;
+  > div {
+    margin: 0 0 $line-height-computed;
+  }
+}
+
+@media (min-width: $screen-md) {
+  .events-index {
+    margin-right: $social-sidebar-widgets-width + 3*$line-height-computed;
+  }
+}
+@media (min-width: $screen-lg) {
+  .events-index {
+    margin-right: $social-sidebar-widgets-width + 3*$line-height-computed;
+  }
+}
