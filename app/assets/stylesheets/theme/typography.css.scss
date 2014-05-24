@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600&subset=latin,cyrillic-ext);
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, dfn, em, img, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td {
   font-family: 'Open Sans', sans-serif;
@@ -6,4 +7,23 @@ body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cit
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 600;
+}
+
+.btn-facebook, .btn-vk, .btn-github, .btn-google {
+  margin-right: 1em;
+  &.btn-block {
+    margin-bottom: $line-height-computed;
+  }
+}
+.btn-facebook {
+  @include button-variant(white, $facebook-brand-color, darken($facebook-brand-color, 8%));
+}
+.btn-vk {
+  @include button-variant(white, $vk-brand-color, darken($vk-brand-color, 8%));
+}
+.btn-github {
+  @include button-variant($text-color, $github-brand-color, $gray-light);
+}
+.btn-google {
+  @include button-variant(white, $google-brand-color, darken($google-brand-color, 12%));
 }

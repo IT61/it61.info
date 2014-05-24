@@ -1,27 +1,28 @@
-.container
-  .page-header
-    h1 = t('.title')
+.page-header
+  h1 = t('.title')
 
-  .row
-    .col-lg-4.col-md-5.col-sm-6
-      - if flash[:alert]
-        .alert.alert-danger.alert-dismissable
-          button.close type='button' data-dismiss='alert' aria-hidden='true' &times;
-          = flash[:alert]
+= render 'shared/oauth_login_block'
 
-      = form_tag user_session_path, html: { role: 'form' } do
-        .form-group
-          = label_tag 'email', t('.email')
-          = text_field_tag 'email', params[:email], class: 'form-control'
-        .form-group
-          = label_tag 'password', t('.password')
-          = password_field_tag 'password', nil, class: 'form-control'
-        .checkbox
-          label
-            =' check_box_tag 'remember_me', 1, params[:remember_me]
-            = t('.remember_me')
-        = submit_tag t('.submit'), class: 'btn btn-primary'
-        | &nbsp;
-        = link_to t(:cancel), root_path, class: 'btn btn-default'
+hr
 
-      = render 'shared/oauth_login_block'
+h2 = t('.email_pass_login')
+- if flash[:alert]
+  .alert.alert-danger.alert-dismissable
+    button.close type='button' data-dismiss='alert' aria-hidden='true' &times;
+    = flash[:alert]
+
+.row: .col-xs-12.col-sm-12.col-md-4.col-lg-4
+  .panel = form_tag user_session_path, html: { role: 'form' } do
+    .form-group
+      = label_tag 'email', t('.email')
+      = text_field_tag 'email', params[:email], class: 'form-control'
+    .form-group
+      = label_tag 'password', t('.password')
+      = password_field_tag 'password', nil, class: 'form-control'
+    .checkbox
+      label
+        =' check_box_tag 'remember_me', 1, params[:remember_me]
+        = t('.remember_me')
+    = submit_tag t('.submit'), class: 'btn btn-primary'
+    | &nbsp;
+    = link_to t(:cancel), root_path, class: 'btn btn-default'

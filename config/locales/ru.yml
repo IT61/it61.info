@@ -27,7 +27,7 @@ ru:
         create: Добавить мероприятие
 
   shared:
-    navbar:
+    sidebar:
       login: Вход
       register: Регистрация
       logout: Выйти
@@ -35,22 +35,25 @@ ru:
       account: Аккаунт
       vk: Вконтакте
       facebook: Facebook
-    sidebar:
       events: Мероприятия
       members: Личности
+    oauth_login_block:
+      social_providers: Вход через соц. сети
 
   user_registrations:
     new:
       title: Регистрация
       submit_title: Зарегистрироваться
+      email_pass_registration: Регистрация по почтовому адресу
 
   user_sessions:
     new:
       title: Войти на сайт
-      email: e-mail
+      email: E-mail
       password: Пароль
       remember_me: Запомнить меня
       submit: Войти
+      email_pass_login: Вход по почте-паролю
     create:
       login_failed_message: Неверный пароль, или пользователь не существует.
 
@@ -86,7 +89,7 @@ ru:
         few: Мероприятия
     attributes:
       user:
-        email: e-mail
+        email: E-mail
         password: Пароль
         password_confirmation: Подтверждение пароля
         first_name: Имя
