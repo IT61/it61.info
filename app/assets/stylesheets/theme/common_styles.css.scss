@@ -8,3 +8,15 @@
     width: 100%;
   }
 }
+
+.line {
+  margin: $line-height-computed 0;
+}
+
+.avatar {
+  text-align: center;
+  img {
+    width: 100%;
+    @include border-radius(1000px);
+  }
+}

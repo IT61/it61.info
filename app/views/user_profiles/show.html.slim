@@ -1,16 +1,20 @@
 .user-profile-page
   .page-header
+    - if current_user
+      .pull-right = link_to t('.logout'), user_session_path, method: :delete, class: 'btn btn-default'
+      .pull-right = link_to t('.edit'), edit_current_profile_path , class: 'btn btn-default'
     h1 = @user.full_name
 
-  .clearfix
-    .avatar.thumbnail.pull-left
-      = image_tag @user.avatar_image.square_150.url
-    dl.pull-left
-      dt = User.human_attribute_name(:email)
-      dd = @user.email
-
-  p.bio
-    = simple_format @user.bio
+  .row
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+      .avatar = image_tag @user.avatar_image.square_150.url
+    .col-xs-9.col-sm-9.col-md-9.col-lg-9
+      dl
+        dt = User.human_attribute_name(:email)
+        dd = @user.email
+      - if @user.bio?
+        .well
+          .bio = simple_format @user.bio
 
   - if @user.owner_of_events.any?
     .owner-of-events

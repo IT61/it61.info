@@ -1,6 +1,7 @@
 #sidebar {
   background: $sidebar-bg-color;
   height: 100%;
+  overflow: auto;
   padding-right: $line-height-computed;
   padding-left: $line-height-computed;
   &, a {
@@ -8,15 +9,85 @@
   }
   #logo-and-name {
     margin: $line-height-computed 0;
+    font-weight: 300;
     > a {
       display: block;
     }
+    @media (min-width: $screen-xs) {
+      #sitename {
+        margin-top: 16px;
+      }
+    }
+    @media (min-width: $screen-sm) {
+      #sitename {
+        margin-top: 16px;
+      }
+    }
+    @media (min-width: $screen-md) {
+      text-align: center;
+      #sitename {
+        font-size: 70%;
+      }
+      #logotype {
+        margin-bottom: $line-height-computed;
+      }
+    }
+    @media (min-width: $screen-lg) {
+      text-align: center;
+      #sitename {
+        font-size: 70%;
+      }
+      #logotype {
+        margin-bottom: $line-height-computed;
+      }
+    }
     #logotype {
-      margin-bottom: $line-height-computed;
       img {
         width: 100%;
         max-width: 300px;
         height: 100%;
+      }
+    }
+  }
+  ul.nav {
+    > li {
+      > a {
+        /* "Растяжка" ссылок в навигационных меню на ту же величину, что и padding у #sidebar'а */
+        @media (min-width: $screen-md) {
+          margin-left: -$line-height-computed;
+          margin-right: -$line-height-computed;
+        }
+        @media (min-width: $screen-lg) {
+          margin-left: -$line-height-computed;
+          margin-right: -$line-height-computed;
+        }
+        @include transition-property(background);
+        @include transition-duration($default-transition-duration);
+        &:hover, &:focus {
+          background-color: lighten($sidebar-bg-color, 5%);
+        }
+      }
+    }
+  }
+  hr {
+    margin: $line-height-computed 0;
+    border: 0;
+    height: 1px;
+    @include background-image((linear-gradient(left, $sidebar-bg-color, lighten($sidebar-bg-color, 20%) 50%, $sidebar-bg-color)));
+  }
+  .user {
+    @include clearfix();
+    a {
+      display: block;
+      .avatar {
+        width: 25%;
+        margin-right: 5%;
+        float: left;
+      }
+      .user-name {
+        width: 70%;
+        float: left;
+        text-align: left;
       }
     }
   }
@@ -25,6 +96,20 @@
 #sidebar-container.affix {
   top: 0;
   bottom: 0;
+}
+
+@media (min-width: $screen-xs) {
+  #sidebar {
+    /* Компенация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
+  }
+  .affix {
+    position: static;
+    .nav > li {
+      float: left;
+    }
+  }
 }
 
 @media (min-width: $screen-sm) {

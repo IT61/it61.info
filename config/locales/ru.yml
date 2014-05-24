@@ -40,7 +40,7 @@ ru:
       vk: Вконтакте
       facebook: Facebook
       events: Мероприятия
-      members: Личности
+      members: Люди
     oauth_login_block:
       social_providers: Вход через соц. сети
 
@@ -59,11 +59,11 @@ ru:
       submit: Войти
       email_pass_login: Вход по почте-паролю
     create:
-      login_failed_message: Неверный пароль, или пользователь не существует.
+      login_failed_message: Неверный пароль или пользователь не существует.
 
   user_profiles:
     index:
-      title: Личности
+      title: Люди
     edit:
       title: Мой профиль
       new_password: Новый пароль
@@ -71,6 +71,8 @@ ru:
     show:
       organizer_block_title: Организатор мероприятий
       member_block_title: Участник мероприятий
+      edit: Редактировать
+      logout: Выйти
     linked_accounts:
       title: Аккаунты соцсетей
     available_accounts:
@@ -109,4 +111,4 @@ ru:
 
   unauthorized:
     create:
-      event_participation: Для участия в мероприятии необходимо зарегистрироваться
+      event_participation: Для участия в мероприятии необходимо зарегистрироваться.

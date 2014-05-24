@@ -14,8 +14,11 @@
  *= require_self
  */
 
-@import 'theme/bootstrap_and_overrides';
+@import "compass";
+/*@import "compass/utilities/general/clearfix";*/
+
 @import 'theme/variables';
+@import 'theme/bootstrap_and_overrides';
 @import 'theme/common_styles';
 @import 'theme/typography';
 @import 'theme/social-widgets';
