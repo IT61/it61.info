@@ -1,6 +1,4 @@
 .row
-  .col-xs-12.col-sm-12.col-md-3.pull-right
-    = render 'shared/social_widgets'
   .col-xs-12.col-sm-12.col-md-9
     .events-index
       .page-header
@@ -11,3 +9,5 @@
           = link_to t('.add_event_button_title'), new_event_path, class: 'btn btn-primary'
 
       .events = render @events
+  .col-xs-12.col-sm-12.col-md-3
+    = render 'shared/social_widgets'
