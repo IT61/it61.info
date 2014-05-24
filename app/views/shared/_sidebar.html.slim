@@ -1,5 +1,27 @@
-.panel.panel-default
-  .panel-body
-    ul.nav.nav-pills.nav-stacked
+.row
+  .col-xs-8.col-sm-4.col-md-12
+    #logo-and-name = link_to root_path do
+      .row
+        .col-xs-6.col-sm-6.col-md-12
+          #logotype = image_tag 'logo-it61.png'
+        .col-xs-6.col-sm-6.col-md-12
+          = t(:app_name)
+
+  .col-xs-4.col-sm-4.col-md-12
+    - if current_user
+      ul.nav
+        li = link_to edit_current_profile_path do
+          =' image_tag current_user.avatar_image.square_25.url
+          = current_user.full_name
+        li = link_to t('.logout'), user_session_path, method: :delete
+    - else
+      ul.nav
+        li = link_to t('.register'), new_user_registration_path
+        li = link_to t('.login'), new_user_session_path
+
+  .col-xs-12.col-sm-4.col-md-12
+    ul.nav
       = active_link_to t('.events'), events_path, wrap_tag: :li
       = active_link_to t('.members'), user_profiles_path, wrap_tag: :li
+      = active_link_to 'Пожертвования', '#', wrap_tag: :li
+      = active_link_to 'О сайте', '#', wrap_tag: :li

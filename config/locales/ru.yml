@@ -1,5 +1,5 @@
 ru:
-  app_name: it61
+  app_name: Ростовское IT–сообщество
 
   cancel: Отмена
   edit: Редактировать
@@ -24,7 +24,7 @@ ru:
     submit:
       update: Сохранить изменения
       event:
-        create: Добавить событие
+        create: Добавить мероприятие
 
   shared:
     navbar:
@@ -36,7 +36,7 @@ ru:
       vk: Вконтакте
       facebook: Facebook
     sidebar:
-      events: События
+      events: Мероприятия
       members: Личности
 
   user_registrations:
@@ -70,11 +70,11 @@ ru:
       title: Привязать дополнительные аккаунты
   events:
     index:
-      add_event_button_title: Добавить событие
+      add_event_button_title: Добавить мероприятие
     new:
-      title: Новое событие
+      title: Новое мероприятие
     edit:
-      title: Изменение события
+      title: Редактирование мероприятия
     participants_block:
       participate_submit_title: Участвовать
       cacnel_participation_submit_title: Отказаться от участия
@@ -82,8 +82,8 @@ ru:
   activerecord:
     models:
       event:
-        one: Событие
-        few: События
+        one: Мероприятие
+        few: Мероприятия
     attributes:
       user:
         email: e-mail
@@ -95,12 +95,11 @@ ru:
         avatar_image: Аватар
       event:
         title: Название
-        published: Событие опубликовано
+        published: Мероприятие опубликовано
         description: Описание
         started_at: Дата начала
-        title_image: Титульная картинка
-
+        title_image: Титульное изображение
 
   unauthorized:
     create:
-      event_participation: Для участия в событии необходимо зарегистрироваться
+      event_participation: Для участия в мероприятии необходимо зарегистрироваться

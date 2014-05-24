@@ -1,0 +1,70 @@
+#sidebar {
+  background: $sidebar-bg-color;
+  height: 100%;
+  padding-right: $line-height-computed;
+  padding-left: $line-height-computed;
+  &, a {
+    color: $sidebar-default-links-color;
+  }
+  #logo-and-name {
+    margin: $line-height-computed 0;
+    > a {
+      display: block;
+    }
+    #logotype {
+      margin-bottom: $line-height-computed;
+      img {
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+      }
+    }
+  }
+}
+
+#sidebar-container.affix {
+  top: 0;
+  bottom: 0;
+}
+
+@media (min-width: $screen-sm) {
+  #sidebar {
+    /* Компенация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
+  }
+  .affix {
+    position: static;
+    .nav > li {
+      float: left;
+    }
+  }
+}
+
+@media (min-width: $screen-md) {
+  #sidebar {
+    text-align: center;
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: 0;
+  }
+  .affix {
+    position: fixed;
+    .nav > li {
+      float: none;
+    }
+  }
+}
+
+@media (min-width: $screen-lg) {
+  #sidebar {
+    text-align: center;
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: 0;
+  }
+  .affix {
+    position: fixed;
+    .nav > li {
+      float: none;
+    }
+  }
+}

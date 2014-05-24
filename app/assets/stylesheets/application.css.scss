@@ -15,7 +15,10 @@
  */
 
 @import 'theme/bootstrap_and_overrides';
+@import 'theme/variables';
 @import 'theme/common_styles';
+
+@import 'theme/sidebar';
 
 @import 'events';
 @import 'user_profiles';
