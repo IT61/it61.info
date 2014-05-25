@@ -1,0 +1,18 @@
+.user-profile-preview {
+  @media (min-width: $screen-sm) {
+    text-align: center;
+  }
+  @media (min-width: $screen-md) {
+    text-align: center;
+  }
+  @media (min-width: $screen-lg) {
+    text-align: center;
+  }
+  a {
+    color: $text-color;
+    display: block;
+  }
+  .avatar {
+    margin-bottom: 1em;
+  }
+}

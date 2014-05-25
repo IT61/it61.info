@@ -13,8 +13,9 @@ h3, h4, h5, h6, .h3, .h4, .h5, .h6 {
   font-weight: 600;
 }
 
+/* Стили кнопок логина через соц. сети. */
 .btn-facebook, .btn-vk, .btn-github, .btn-google {
-  margin-right: 1em;
+  margin: 0.3em 1em 0.3em 0;
   &.btn-block {
     margin-bottom: $line-height-computed;
   }

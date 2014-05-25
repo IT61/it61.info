@@ -1,29 +1,68 @@
+#sidebar-container.affix {
+  top: 0;
+  bottom: 0;
+  @media (min-width: $screen-xs) {
+    position: static;
+  }
+  @media (min-width: $screen-sm) {
+    position: static;
+    .nav > li {
+      float: left;
+    }
+  }
+  @media (min-width: $screen-md) {
+    position: fixed;
+    .nav > li {
+      float: none;
+    }
+  }
+  @media (min-width: $screen-lg) {
+    position: fixed;
+    .nav > li {
+      float: none;
+    }
+  }
+}
+
 #sidebar {
   background: $sidebar-bg-color;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-right: $line-height-computed;
   padding-left: $line-height-computed;
+
+  @media (min-width: $screen-xs) {
+    /* Компенация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
+  }
+  @media (min-width: $screen-sm) {
+    /* Компенация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
+  }
+  @media (min-width: $screen-md) {
+    text-align: center;
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: 0;
+  }
+  @media (min-width: $screen-lg) {
+    text-align: center;
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: 0;
+  }
+
   &, a {
     color: $sidebar-default-links-color;
   }
   #logo-and-name {
-    margin: $line-height-computed 0;
     font-weight: 300;
     > a {
       display: block;
     }
-    @media (min-width: $screen-xs) {
-      #sitename {
-        margin-top: 16px;
-      }
-    }
-    @media (min-width: $screen-sm) {
-      #sitename {
-        margin-top: 16px;
-      }
-    }
     @media (min-width: $screen-md) {
+      margin: $line-height-computed 0;
       text-align: center;
       #sitename {
         font-size: 70%;
@@ -33,6 +72,7 @@
       }
     }
     @media (min-width: $screen-lg) {
+      margin: $line-height-computed 0;
       text-align: center;
       #sitename {
         font-size: 70%;
@@ -49,15 +89,30 @@
       }
     }
   }
+  hr {
+    margin: $line-height-computed 0;
+    border: 0;
+    height: 1px;
+    @include background-image((linear-gradient(left, $sidebar-bg-color, lighten($sidebar-bg-color, 20%) 50%, $sidebar-bg-color)));
+  }
+  /* Сейчас ul.nav — это блок с аватаром и именем вошедшего пользователя и главное меню. */
   ul.nav {
     > li {
       > a {
         /* "Растяжка" ссылок в навигационных меню на ту же величину, что и padding у #sidebar'а */
+        @media (min-width: $screen-xs) {
+          padding: 10px 10px;
+        }
+        @media (min-width: $screen-sm) {
+          padding: 10px 10px;
+        }
         @media (min-width: $screen-md) {
+          padding: $nav-link-padding;
           margin-left: -$line-height-computed;
           margin-right: -$line-height-computed;
         }
         @media (min-width: $screen-lg) {
+          padding: $nav-link-padding;
           margin-left: -$line-height-computed;
           margin-right: -$line-height-computed;
         }
@@ -91,16 +146,54 @@
         }
       }
     }
+    /* Стили активных пунктов меню. */
+    li.active a, li a.active {
+      &, &:hover, &:focus {
+        background-color: lighten($sidebar-bg-color, 15%);
+      }
+    }
   }
-  hr {
-    margin: $line-height-computed 0;
-    border: 0;
-    height: 1px;
-    @include background-image((linear-gradient(left, $sidebar-bg-color, lighten($sidebar-bg-color, 20%) 50%, $sidebar-bg-color)));
+  /* Общие стили навигационного меню со ссылками регистрации-входа и блока с
+     аватаром вошедшего пользователя. */
+  ul#registration-login-nav,
+  .user {
+    @media (min-width: $screen-xs) {
+      font-size: 80%;
+      margin-top: 21%;
+    }
+    @media (min-width: $screen-sm) {
+      font-size: 80%;
+      margin-top: 21%;
+    }
+    @media (min-width: $screen-md) {
+      font-size: inherit;
+      margin-top: inherit;
+    }
+    @media (min-width: $screen-lg) {
+      font-size: inherit;
+      margin-top: inherit;
+    }
   }
+  /* Стили навигационного меню со ссылками регистрации-входа. */
+  ul#registration-login-nav {
+    @media (min-width: $screen-xs) {
+      float: right;
+    }
+    @media (min-width: $screen-sm) {
+      float: right;
+    }
+    @media (min-width: $screen-md) {
+      float: none;
+    }
+    @media (min-width: $screen-lg) {
+      float: none;
+    }
+  }
+  /* Стили блока с аватаром и именем пользователя. */
   .user {
     @include clearfix();
     text-align: left;
+    word-break: break-word;
     > a {
       display: block;
       .avatar {
@@ -120,65 +213,21 @@
       }
     }
   }
-}
-
-#sidebar-container.affix {
-  top: 0;
-  bottom: 0;
-}
-
-@media (min-width: $screen-xs) {
-  #sidebar {
-    /* Компенация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
-    margin-left: -$grid-gutter-width / 2;
-    margin-right: -$grid-gutter-width / 2;
+  /* Стили главного меню. */
+  ul#mainmenu {
+    margin-top: 8%;
   }
-  .affix {
-    position: static;
-    .nav > li {
-      float: left;
-    }
+  /* Стили кнопки разворачивания главного меню, которая отображается на самых
+     маленьких мобильных устройствах. */
+  a.toggle {
+    color: darken($sidebar-default-links-color, 20%);
+    display: block;
+    font-size: 1.7 * $font-size-base;
+    margin-top: 40%;
+    text-align: right;
   }
-}
-
-@media (min-width: $screen-sm) {
-  #sidebar {
-    /* Компенация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
-    margin-left: -$grid-gutter-width / 2;
-    margin-right: -$grid-gutter-width / 2;
-  }
-  .affix {
-    position: static;
-    .nav > li {
-      float: left;
-    }
-  }
-}
-
-@media (min-width: $screen-md) {
-  #sidebar {
-    text-align: center;
-    margin-left: -$grid-gutter-width / 2;
-    margin-right: 0;
-  }
-  .affix {
-    position: fixed;
-    .nav > li {
-      float: none;
-    }
-  }
-}
-
-@media (min-width: $screen-lg) {
-  #sidebar {
-    text-align: center;
-    margin-left: -$grid-gutter-width / 2;
-    margin-right: 0;
-  }
-  .affix {
-    position: fixed;
-    .nav > li {
-      float: none;
-    }
+  /* Стили главного меню для самых маленьких мобильных устройствах. */
+  #mobile-menu {
+    word-break: break-word;
   }
 }

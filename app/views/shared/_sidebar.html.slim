@@ -1,28 +1,28 @@
 .row
-  .col-xs-4.col-sm-4.col-md-12.col-lg-12
+  .col-xs-3.col-sm-2.col-md-12.col-lg-12
     #logo-and-name = link_to root_path do
       .row
-        .col-xs-12.col-sm-6.col-md-12.col-lg-12
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12
           #logotype = image_tag 'logo-it61.png'
-        .col-xs-12.col-sm-6.col-md-12.col-lg-12.visible-sm.visible-md.visible-lg
+        .col-xs-12.col-sm-6.col-md-12.col-lg-12.visible-md.visible-lg
           #sitename = t(:app_name)
 
   .col-md-12.col-lg-12.visible-md.visible-lg: hr
 
-  .col-xs-8.col-sm-6.col-md-12.col-lg-12
+  .visible-sm.visible-md.visible-lg.col-xs-3.col-xs-push-7.col-sm-3.col-sm-push-7.col-md-12.col-md-push-0.col-lg-12.col-lg-push-0
     - if current_user
       .user
         = link_to user_profile_path(current_user.id) do
           .avatar = image_tag current_user.avatar_image.square_50.url
           .user-name = current_user.full_name
     - else
-      ul.nav
-        li = link_to t('.register'), new_user_registration_path
-        li = link_to t('.login'), new_user_session_path
+      ul#registration-login-nav.nav
+        = active_link_to t('.register'), new_user_registration_path, wrap_tag: :li
+        = active_link_to t('.login'), new_user_session_path, wrap_tag: :li
 
   .col-md-12.col-lg-12.visible-md.visible-lg: hr
 
-  .col-xs-12.col-sm-8.col-md-12.col-lg-12
+  .visible-sm.visible-md.visible-lg.col-xs-8.col-sm-7.col-sm-pull-3.col-md-12.col-md-pull-0.col-lg-12.col-lg-pull-0
     ul#mainmenu.nav
       - if can? :create, Event
         li.with-plus-btn
@@ -33,3 +33,22 @@
       = active_link_to t('.members'), user_profiles_path, wrap_tag: :li
       = active_link_to 'Пожертвования', '#', wrap_tag: :li
       = active_link_to 'О сайте', '#', wrap_tag: :li
+
+  .visible-xs.col-xs-2.col-xs-offset-6
+    = link_to '#mobile-menu', class: 'toggle', data: {toggle: 'collapse'} do
+      i.fa.fa-align-justify
+
+  .visible-xs.col-xs-12
+    #mobile-menu.collapse
+      ul.nav.nav-pills.nav-stacked
+        = active_link_to t('.events'), events_path, wrap_tag: :li
+        - if can? :create, Event
+          li = link_to t('.add_event_button_title'), new_event_path, class: 'plus-btn', title: t('.add_event_button_title')
+        = active_link_to t('.members'), user_profiles_path, wrap_tag: :li
+        = active_link_to 'Пожертвования', '#', wrap_tag: :li
+        = active_link_to 'О сайте', '#', wrap_tag: :li
+        - if current_user
+          = active_link_to current_user.full_name, user_profile_path(current_user.id), wrap_tag: :li
+        - else
+          = active_link_to t('.register'), new_user_registration_path, wrap_tag: :li
+          = active_link_to t('.login'), new_user_session_path, wrap_tag: :li

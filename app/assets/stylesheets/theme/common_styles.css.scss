@@ -1,5 +1,17 @@
 #page-content {
-  padding: $line-height-computed 0 2*$line-height-computed;
+  word-break: break-word;
+  @media (min-width: $screen-xs) {
+    padding: 0 0 2*$line-height-computed;
+  }
+  @media (min-width: $screen-sm) {
+    padding: $line-height-computed 0 2*$line-height-computed;
+  }
+  @media (min-width: $screen-md) {
+    padding: $line-height-computed 0 2*$line-height-computed;
+  }
+  @media (min-width: $screen-lg) {
+    padding: $line-height-computed 0 2*$line-height-computed;
+  }
 }
 
 .alert.alert-error {
@@ -26,16 +38,5 @@
   img {
     width: 100%;
     @include border-radius(1000px);
-  }
-}
-
-.user-profile-preview {
-  text-align: center;
-  a {
-    color: $text-color;
-    display: block;
-  }
-  .avatar {
-    margin-bottom: 1em;
   }
 }
