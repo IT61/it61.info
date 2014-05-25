@@ -1,5 +1,13 @@
+#page-content {
+  padding: $line-height-computed 0 2*$line-height-computed;
+}
+
 .alert.alert-error {
   @extend .alert-danger;
+}
+
+.alert.alert-alert {
+  @extend .alert-warning;
 }
 
 .image-container {
