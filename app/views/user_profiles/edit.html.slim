@@ -1,24 +1,37 @@
 .page-header
   h1 = t('.title')
 
+h2 = t('.edit_title')
+
 = bootstrap_form_for @user, url: current_profile_path do |f|
-  = f.text_field :first_name
-  = f.text_field :last_name
+  .row
+    .col-xs-3.col-sm-3.col-md-2.col-lg-2
+      - if @user.avatar_image.present?
+        .title-image
+          .avatar = image_tag @user.avatar_image.square_150.url
+      = f.file_field :avatar_image
+      = f.hidden_field :avatar_image_cache
 
-  = f.file_field :avatar_image
-  = f.hidden_field :avatar_image_cache
-  - if @user.avatar_image.present?
-    .title-image
-      = image_tag @user.avatar_image.square_150.url, class: 'thumbnail'
-  = f.text_area :bio, rows: 7
-  hr
-  = f.password_field :password, label: t('.new_password')
-  = f.password_field :password_confirmation, label: t('.new_password_confirmation')
+    .col-xs-9.col-sm-9.col-md-9.col-lg-9
+      .row
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+          = f.text_field :first_name
+          = f.text_field :last_name
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+          .panel.panel-default
+            .panel-heading
+              = link_to t('.change_password'), '#collapsing-inputs', data: { toggle: "collapse", parent: "#accordion" }
+            #collapsing-inputs.collapse
+              .panel-body
+                = f.password_field :password, label: t('.new_password')
+                = f.password_field :password_confirmation, label: t('.new_password_confirmation')
 
-  = f.submit class: 'btn btn-primary'
-  ' &nbsp;
-  = link_to t(:cancel), url_for, class: 'btn btn-default'
+      = f.text_area :bio, rows: 7
+      hr
 
+      = f.submit class: 'btn btn-primary'
+      ' &nbsp;
+      = link_to t(:cancel), url_for, class: 'btn btn-default'
 
 hr
 = render 'linked_accounts'

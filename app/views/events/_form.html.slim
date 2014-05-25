@@ -7,7 +7,7 @@
   = f.hidden_field :title_image_cache
   - if @event.title_image.present?
     .title-image
-      = image_tag @event.title_image.square_200.url, class: 'thumbnail'
+      = image_tag @event.title_image.square_500.url, class: 'thumbnail'
   = link_to t(:cancel), root_path, class: 'btn btn-default'
   | &nbsp;
   = f.submit class: 'btn btn-primary'

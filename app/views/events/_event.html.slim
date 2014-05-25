@@ -13,12 +13,14 @@
     .row
       .col-xs-12.col-sm-4.col-md-4
         = link_to event_path(event) do
-          .image-container = image_tag event.title_image.square_200.url
+          .image-container = image_tag event.title_image.square_500.url
         = render partial: 'participate_block', object: event, as: :event
       .col-xs-12.col-sm-8.col-md-8
         p = simple_format truncate(event.description, length: 600) { link_to t('.more'), event_path(event), class: 'pull-right' }
   - if event.participants.any?
     .panel-footer
       .participants
-        h4 Участники
+        h4
+          ' Участники
+          small = event.participants.count
         = render partial: 'participants_block', object: event, as: :event

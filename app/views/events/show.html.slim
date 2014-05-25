@@ -10,14 +10,16 @@
 
   .row
     .col-xs-12.col-sm-4.col-md-4.col-lg-4
-      .image-container = image_tag @event.title_image.square_200.url
+      .image-container = image_tag @event.title_image.square_500.url
     .col-xs-12.col-sm-4.col-md-4.col-lg-4
       - if can? :edit, @event
         .actions.line = link_to t(:edit), edit_event_path(@event), class: 'btn btn-primary'
       .participants
         .panel.panel-default
           .panel-heading
-            h4 Участники
+            h4
+              ' Участники
+              small = @event.participants.count
           .panel-body
             = render partial: 'participants_block', object: @event, as: :event
           .panel-footer

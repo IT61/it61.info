@@ -15,11 +15,6 @@
         = link_to user_profile_path(current_user.id) do
           .avatar = image_tag current_user.avatar_image.square_50.url
           .user-name = current_user.full_name
-        .actions
-          small = link_to edit_current_profile_path do
-            i.fa.fa-pencil
-          small = link_to user_session_path, method: :delete do
-            i.fa.fa-power-off
     - else
       ul.nav
         li = link_to t('.register'), new_user_registration_path

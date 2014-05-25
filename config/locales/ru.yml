@@ -63,6 +63,8 @@ ru:
       title: Люди
     edit:
       title: Мой профиль
+      edit_title: Редактирование
+      change_password: Сменить пароль?
       new_password: Новый пароль
       new_password_confirmation: Подтверждение нового пароля
     show:

@@ -1,12 +1,21 @@
 .user-profile-page
   .page-header
-    h1 = @user.full_name
+    h1
+      = @user.full_name
+      - if current_user == @user
+        .actions.pull-right
+          small' = link_to edit_current_profile_path, class: 'btn btn-default' do
+            i.fa.fa-pencil'
+            = t('.edit')
+          small = link_to user_session_path, method: :delete, class: 'btn btn-default' do
+            i.fa.fa-power-off'
+            = t('.logout')
   .row
     .col-xs-3.col-sm-3.col-md-2.col-lg-2
       .avatar = image_tag @user.avatar_image.square_150.url
     .col-xs-9.col-sm-9.col-md-9.col-lg-9
-      dl
-        = render 'linked_accounts'
+      - if @user.authentications.any?
+        dl = render 'linked_accounts'
       - if @user.bio?
         .well
           .bio = simple_format @user.bio
