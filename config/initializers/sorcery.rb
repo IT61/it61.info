@@ -116,6 +116,7 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.secret = Rails.application.secrets.facebook_secret
   config.facebook.callback_url = Rails.application.secrets.facebook_callback_url
   config.facebook.user_info_mapping = {
+    remote_avatar_image_url: 'avatar',
     email: "email",
     name: 'name',
     first_name: 'first_name',
