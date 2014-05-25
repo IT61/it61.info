@@ -23,4 +23,11 @@
 
 .user-profile-preview {
   text-align: center;
+  a {
+    color: $text-color;
+    display: block;
+  }
+  .avatar {
+    margin-bottom: 1em;
+  }
 }
