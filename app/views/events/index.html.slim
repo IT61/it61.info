@@ -1,11 +1,9 @@
-.clearfix
-  .visible-md.visible-lg = render 'shared/social_widgets'
-  .events-index
-    .page-header
-      h1 = Event.model_name.human(count: 2)
+.events-index
+  .page-header
+    h1 = Event.model_name.human(count: 2)
 
-    - if can? :create, Event
-      .actions.line
-        = link_to t('.add_event_button_title'), new_event_path, class: 'btn btn-primary'
+  - if can? :create, Event
+    .actions.line
+      = link_to t('.add_event_button_title'), new_event_path, class: 'btn btn-primary'
 
-    .events = render @events
+  .events = render @events
