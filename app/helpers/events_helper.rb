@@ -1,9 +1,9 @@
 module EventsHelper
   def admin_event_icon_class(event)
     if event.published?
-      'fa-check'
+      'fa-eye'
     else
-      'fa-times'
+      'fa-eye-slash'
     end
   end
 end

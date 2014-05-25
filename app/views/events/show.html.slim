@@ -1,8 +1,11 @@
 .events-show
   .page-header
+    .pull-right
+      - if can? :edit, @event
+        = link_to t(:edit), edit_event_path(@event), class: 'btn btn-default'
     h1
       - if can? :edit, @event
-        .pull-right = render partial: 'admin_info', object: @event, as: :event
+        = render partial: 'admin_info', object: @event, as: :event
       = @event.title
       | &nbsp;
       small
@@ -12,8 +15,6 @@
     .col-xs-12.col-sm-4.col-md-4.col-lg-4
       .image-container = image_tag @event.title_image.square_500.url
     .col-xs-12.col-sm-4.col-md-4.col-lg-4
-      - if can? :edit, @event
-        .actions.line = link_to t(:edit), edit_event_path(@event), class: 'btn btn-primary'
       .participants
         .panel.panel-default
           .panel-heading
