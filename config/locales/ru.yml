@@ -89,6 +89,8 @@ ru:
     participate_block:
       participate_submit_title: Участвовать
       cancel_participation_submit_title: Отказаться от участия
+    form:
+      hint: Рекомендуются квадратные изображения размером 500*500 px.
 
   activerecord:
     models:
