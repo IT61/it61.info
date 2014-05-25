@@ -67,6 +67,29 @@
           background-color: lighten($sidebar-bg-color, 5%);
         }
       }
+      /* Стили для vk-like кнопки "+" в сайдбаре */
+      &.with-plus-btn {
+        position: relative;
+        a.plus-btn {
+          color: darken($sidebar-default-links-color, 20%);
+          position: absolute;
+          right: 0;
+          top: 0;
+          visibility: hidden;
+          padding-left: 8px;
+          padding-right: 8px;
+          &:hover, &:focus {
+            visibility: visible;
+            background-color: lighten($sidebar-bg-color, 2%);
+          }
+        }
+        &:hover, &:focus {
+          a.plus-btn {
+            visibility: visible;
+            background-color: lighten($sidebar-bg-color, 2%);
+          }
+        }
+      }
     }
   }
   hr {

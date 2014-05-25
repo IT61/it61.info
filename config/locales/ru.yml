@@ -38,6 +38,7 @@ ru:
       facebook: Facebook
       events: Мероприятия
       members: Люди
+      add_event_button_title: Добавить мероприятие
     oauth_login_block:
       social_providers: Вход через соц. сети
 
