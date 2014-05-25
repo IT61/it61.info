@@ -20,7 +20,7 @@ class OauthsController < ApplicationController
       @user_hash[:user_info]['link'] = "http://vk.com/#{@user_hash[:user_info]['domain']}"
     end
 
-    if provier.to_sym == :facebook
+    if provider.to_sym == :facebook
       @user_hash[:user_info]['avatar'] = "https://graph.facebook.com/#{@user_hash[:uid]}/picture?type=large"
     end
 

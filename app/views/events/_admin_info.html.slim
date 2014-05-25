@@ -1,2 +1,5 @@
 .admin-info
-  i.fa data-toggle="tooltip" data-placement="bottom" data-title="#{Event.human_attribute_name :published}: #{t(event.published.to_s)}" class="#{admin_event_icon_class(event)}"
+  i.fa [class="#{admin_event_icon_class(event)}"
+        data-title="#{Event.human_attribute_name :published}: #{t(event.published.to_s)}"
+        data-toggle="tooltip" data-placement="bottom"]
+
