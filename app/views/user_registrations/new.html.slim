@@ -7,7 +7,7 @@ hr
 
 h2 = t('.email_pass_registration')
 
-.row: .col-xs-12.col-sm-12.col-md-4.col-lg-4
+.row: .col-sm-6.col-md-4
   .panel = bootstrap_form_for @user, url: user_registration_path do |f|
     = f.text_field :email, autocomplete: 'off'
     = f.password_field :password, autocomplete: 'off'

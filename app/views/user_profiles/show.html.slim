@@ -11,9 +11,9 @@
             i.fa.fa-power-off'
             = t('.logout')
   .row
-    .col-xs-12.col-sm-3.col-md-2.col-lg-2
+    .col-sm-3.col-md-2
       .avatar.image-container = image_tag @user.avatar_image.square_150.url
-    .col-xs-12.col-sm-9.col-md-9.col-lg-9
+    .col-sm-9
       - if @user.authentications.any?
         dl = render 'linked_accounts'
       - if @user.bio?

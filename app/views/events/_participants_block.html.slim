@@ -5,4 +5,4 @@
         = link_to user_profile_path(p), data: { toggle: 'tooltip', placement: 'bottom', title: p.full_name } do
           .avatar = image_tag p.avatar_image.square_50.url
 - else
-  p.lead Пока никто не нажал кнопочку. Станьте первым!
+  p.lead = t('.no_participants')

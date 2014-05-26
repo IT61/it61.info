@@ -18,9 +18,9 @@ html lang='ru'
     = csrf_meta_tags
   body
     .container-fluid: .row
-      #sidebar-container.affix.col-xs-12.col-sm-12.col-md-3.col-lg-2 data-offset-top="0" data-offset-bottom="0"
+      #sidebar-container.affix.col-md-3 data-offset-top="0" data-offset-bottom="0"
         #sidebar = render 'shared/sidebar'
-      .col-xs-12.col-sm-12.col-md-9.col-md-offset-3.col-lg-10.col-lg-offset-2
+      .col-md-9.col-md-offset-3
         #page-content
           .flash-messages
             - flash.each do |type, message|

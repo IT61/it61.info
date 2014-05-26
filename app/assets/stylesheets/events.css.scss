@@ -10,7 +10,6 @@
     }
   }
   .event-title-image {
-
   }
 }
 
@@ -45,6 +44,14 @@
     .admin-info {
       margin-right: 1em;
       display: inline;
+    }
+  }
+  .participants {
+    ul.list-unstyled {
+      margin: -.5em;
+    }
+    .participant {
+      margin: .5em;
     }
   }
 }

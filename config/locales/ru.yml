@@ -41,6 +41,8 @@ ru:
       vk: Вконтакте
       facebook: Facebook
       events: Мероприятия
+      donations: Пожертвования
+      about: О сайте
       members: Люди
       add_event_button_title: Добавить мероприятие
     oauth_login_block:
@@ -89,10 +91,13 @@ ru:
     edit:
       title: Редактирование мероприятия
     event:
+      participants: Участники
       more: Подробнее...
     participate_block:
       participate_submit_title: Участвовать
       cancel_participation_submit_title: Отказаться от участия
+    participants_block:
+      no_participants: Пока никто не нажал кнопочку. Станьте первым!
     form:
       hint: Рекомендуются квадратные изображения размером 500*500 px.
 

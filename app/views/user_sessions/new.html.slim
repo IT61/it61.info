@@ -6,7 +6,7 @@
 hr
 
 h2 = t('.email_pass_login')
-.row: .col-xs-12.col-sm-12.col-md-4.col-lg-4
+.row: .col-sm-6.col-md-4
   .panel = form_tag user_session_path, html: { role: 'form' } do
     .form-group
       = label_tag 'email', t('.email')

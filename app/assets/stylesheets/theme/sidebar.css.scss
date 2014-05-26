@@ -5,18 +5,11 @@
     position: static;
   }
   @media (min-width: $screen-sm) {
-    position: static;
     .nav > li {
       float: left;
     }
   }
   @media (min-width: $screen-md) {
-    position: fixed;
-    .nav > li {
-      float: none;
-    }
-  }
-  @media (min-width: $screen-lg) {
     position: fixed;
     .nav > li {
       float: none;
@@ -33,21 +26,11 @@
   padding-left: $line-height-computed;
 
   @media (min-width: $screen-xs) {
-    /* Компенация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
-    margin-left: -$grid-gutter-width / 2;
-    margin-right: -$grid-gutter-width / 2;
-  }
-  @media (min-width: $screen-sm) {
-    /* Компенация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
+    /* Компенсация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
     margin-left: -$grid-gutter-width / 2;
     margin-right: -$grid-gutter-width / 2;
   }
   @media (min-width: $screen-md) {
-    text-align: center;
-    margin-left: -$grid-gutter-width / 2;
-    margin-right: 0;
-  }
-  @media (min-width: $screen-lg) {
     text-align: center;
     margin-left: -$grid-gutter-width / 2;
     margin-right: 0;
@@ -71,20 +54,10 @@
         margin-bottom: $line-height-computed;
       }
     }
-    @media (min-width: $screen-lg) {
-      margin: $line-height-computed 0;
-      text-align: center;
-      #sitename {
-        font-size: 70%;
-      }
-      #logotype {
-        margin-bottom: $line-height-computed;
-      }
-    }
     #logotype {
       img {
         width: 100%;
-        max-width: 300px;
+        max-width: 150px;
         height: 100%;
       }
     }
@@ -103,15 +76,7 @@
         @media (min-width: $screen-xs) {
           padding: 10px 10px;
         }
-        @media (min-width: $screen-sm) {
-          padding: 10px 10px;
-        }
         @media (min-width: $screen-md) {
-          padding: $nav-link-padding;
-          margin-left: -$line-height-computed;
-          margin-right: -$line-height-computed;
-        }
-        @media (min-width: $screen-lg) {
           padding: $nav-link-padding;
           margin-left: -$line-height-computed;
           margin-right: -$line-height-computed;
@@ -161,15 +126,7 @@
       font-size: 80%;
       margin-top: 21%;
     }
-    @media (min-width: $screen-sm) {
-      font-size: 80%;
-      margin-top: 21%;
-    }
     @media (min-width: $screen-md) {
-      font-size: inherit;
-      margin-top: inherit;
-    }
-    @media (min-width: $screen-lg) {
       font-size: inherit;
       margin-top: inherit;
     }
@@ -179,13 +136,7 @@
     @media (min-width: $screen-xs) {
       float: right;
     }
-    @media (min-width: $screen-sm) {
-      float: right;
-    }
     @media (min-width: $screen-md) {
-      float: none;
-    }
-    @media (min-width: $screen-lg) {
       float: none;
     }
   }
