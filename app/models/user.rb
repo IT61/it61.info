@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
   has_many :event_participations
   has_many :member_in_events, class_name: 'Event', through: :event_participations, source: :event
 
+  validates :password, presence: true, if: 'password_required?'
   validates :password, length: { minimum: 3 }, if: 'password.present?'
   validates :password, confirmation: true, if: 'password_required?'
-  validates :password_confirmation, presence: true, if: 'password_required?', on: :create
 
   validates :email, presence: true, if: 'email_required?'
   validates :email, uniqueness: true, if: 'email_required?'
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   private
 
   def password_required?
-    authentications.empty?
+    (new_record? && authentications.empty?) || password.present?
   end
 
   def email_required?

@@ -3,7 +3,7 @@
 
 h2 = t('.edit_title')
 
-= bootstrap_form_for @user, url: current_profile_path do |f|
+= bootstrap_form_for @user, url: current_profile_path, html: { autocomplete: 'off', autocorrect: 'off'} do |f|
   .row
     .col-xs-3.col-sm-3.col-md-2.col-lg-2
       - if @user.avatar_image.present?
@@ -20,11 +20,10 @@ h2 = t('.edit_title')
         .col-xs-6.col-sm-6.col-md-6.col-lg-6
           .panel.panel-default
             .panel-heading
-              = link_to t('.change_password'), '#collapsing-inputs', data: { toggle: "collapse" }
-            #collapsing-inputs.collapse
-              .panel-body
-                = f.password_field :password, label: t('.new_password')
-                = f.password_field :password_confirmation, label: t('.new_password_confirmation')
+              = t('.change_password')
+            .panel-body
+              = f.password_field :password, label: t('.new_password')
+              = f.password_field :password_confirmation, label: t('.new_password_confirmation')
 
       = f.text_area :bio, rows: 7
       hr
