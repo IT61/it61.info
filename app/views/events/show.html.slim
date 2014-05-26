@@ -19,7 +19,7 @@
         .panel.panel-default
           .panel-heading
             h4
-              ' Участники
+              = Event.human_attribute_name(:participants)
               small = @event.participants.count
           .panel-body
             = render partial: 'participants_block', object: @event, as: :event

@@ -22,6 +22,6 @@
     .panel-footer
       .participants
         h4
-          =' t('.participants')
+          =' Event.human_attribute_name(:participants)
           small = event.participants.count
         = render partial: 'participants_block', object: event, as: :event

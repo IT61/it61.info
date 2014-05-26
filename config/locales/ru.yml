@@ -91,7 +91,6 @@ ru:
     edit:
       title: Редактирование мероприятия
     event:
-      participants: Участники
       more: Подробнее...
     participate_block:
       participate_submit_title: Участвовать
@@ -121,6 +120,7 @@ ru:
         description: Описание
         started_at: Дата начала
         title_image: Титульное изображение
+        participants: Участники
 
   unauthorized:
     create:
