@@ -1,6 +1,8 @@
 class OauthsController < ApplicationController
   skip_before_filter :require_login
 
+  include SorceryExternalFixes
+
   def oauth
     login_at(params[:provider])
   end
