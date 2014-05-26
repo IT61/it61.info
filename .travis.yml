@@ -1,0 +1,8 @@
+language: ruby
+rvm:
+  - 2.1.2
+install: "bundle install --path vendor/bundle"
+cache:
+  directories:
+    - vendor/bundle
+script: "bundle exec rspec"
