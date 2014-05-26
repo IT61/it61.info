@@ -41,6 +41,10 @@ set :keep_releases, 10
 set :rvm_type, :user
 set :rvm_ruby_version, RUBY_VERSION
 
+set :rollbar_token, 'rollbar_access_token'
+set :rollbar_env, -> { fetch :stage }
+set :rollbar_role, -> { :app }
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do

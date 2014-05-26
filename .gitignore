@@ -31,3 +31,5 @@ nginx_rewrite.txt
 /public/assets
 /public/sitemap*
 /public/uploads
+
+/config/deploy.rb
