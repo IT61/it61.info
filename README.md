@@ -6,4 +6,4 @@
 ## Requirements
 
 * Ruby 2
-* PostgreSQL 9.x with HStore extension
+* PostgreSQL 9.x

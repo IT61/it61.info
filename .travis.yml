@@ -1,8 +1,13 @@
 language: ruby
 rvm:
   - 2.1.2
-install: "bundle install --path vendor/bundle"
-cache:
-  directories:
-    - vendor/bundle
-script: "bundle exec rspec"
+addons:
+  postgresql: '9.3'
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - cp config/secrets.yml.template config/secrets.yml
+install:
+  - bundle install --path vendor/bundle
+script:
+  - bundle exec rake db:create db:migrate
+  - bundle exec rspec
