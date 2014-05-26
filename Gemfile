@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails', '~> 4.1.1'
 gem 'rails-i18n'
 gem 'unicode'
 gem 'sorcery'
@@ -33,7 +33,7 @@ group :development do
   gem 'spring'
   gem 'awesome_print'
   gem 'quiet_assets'
-  gem 'capistrano', git: 'git@github.com:capistrano/capistrano.git'
+  gem 'capistrano'
   gem 'capistrano-rails', '~> 1.0.0'
   gem "capistrano-rvm"
   gem 'capistrano-bundler'
