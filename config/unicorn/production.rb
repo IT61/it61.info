@@ -2,7 +2,7 @@
 APP_ROOT = File.expand_path '../..', File.dirname(__FILE__)
 SHARED_ROOT = File.expand_path '../shared', APP_ROOT
 
-worker_processes 2
+worker_processes 4
 working_directory APP_ROOT
 preload_app true
 timeout 30
