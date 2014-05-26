@@ -6,11 +6,6 @@
 hr
 
 h2 = t('.email_pass_login')
-- if flash[:alert]
-  .alert.alert-danger.alert-dismissable
-    button.close type='button' data-dismiss='alert' aria-hidden='true' &times;
-    = flash[:alert]
-
 .row: .col-xs-12.col-sm-12.col-md-4.col-lg-4
   .panel = form_tag user_session_path, html: { role: 'form' } do
     .form-group

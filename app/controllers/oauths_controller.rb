@@ -8,20 +8,20 @@ class OauthsController < ApplicationController
   def callback
     provider = params[:provider]
     sorcery_fetch_user_hash(provider)
-    fix_user_hash!
+    fix_user_hash!(provider)
 
     if logged_in?
-      add_authentication_to_current_user!
+      add_authentication_to_current_user! provider
       redirect_to edit_current_profile_path
     else
-      create_new_user_or_add_authentication_to_existing_by_email!
+      create_new_user_or_add_authentication_to_existing_by_email! provider
       redirect_to root_path
     end
   end
 
   private
 
-  def fix_user_hash!
+  def fix_user_hash!(provider)
     if provider.to_sym == :github
       @user_hash[:user_info]['link'] = @user_hash[:user_info]['html_url']
     end
@@ -35,14 +35,14 @@ class OauthsController < ApplicationController
     end
   end
 
-  def add_authentication_to_current_user!
+  def add_authentication_to_current_user!(provider)
     @user = current_user
     add_provider_to_user(provider)
 
     flash[:success] = t('sorcery_external.success', provider: provider)
   end
 
-  def create_new_user_or_add_authentication_to_existing_by_email!
+  def create_new_user_or_add_authentication_to_existing_by_email!(provider)
     @user = login_from(provider)
 
     unless @user
