@@ -45,6 +45,8 @@ ru:
       about: О сайте
       members: Люди
       add_event_button_title: Добавить мероприятие
+    small_screens_footer:
+      social_links: Мы в соц. сетях
     oauth_login_block:
       social_providers: Вход через соц. сети
 

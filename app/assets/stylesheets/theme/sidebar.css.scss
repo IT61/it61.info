@@ -68,7 +68,9 @@
     height: 1px;
     @include background-image((linear-gradient(left, $sidebar-bg-color, lighten($sidebar-bg-color, 20%) 50%, $sidebar-bg-color)));
   }
-  /* Сейчас ul.nav — это блок с аватаром и именем вошедшего пользователя и главное меню. */
+  /* Сейчас ul.nav — это блок с аватаром и именем вошедшего пользователя и главное меню,
+     а также ссылки на соц. сети (они стилизуются отдельно).
+     Ссылки на соц. сети отобразятся в #sidebar только на больших мониторах (md, lg). */
   ul.nav {
     > li {
       > a {
@@ -115,6 +117,22 @@
     li.active a, li a.active {
       &, &:hover, &:focus {
         background-color: lighten($sidebar-bg-color, 15%);
+      }
+    }
+    /* Стили ссылок на соц. сети (отобразятся в #sidebar только на мониторах md, lg). */
+    &#social-links {
+      > li {
+        display: inline;
+        margin: 0 30px;
+        > a {
+          display: inline;
+          padding: 10px;
+          @include border-radius(1000px);
+          background-color: lighten($sidebar-bg-color, 15%);
+          &:hover, &:focus {
+            background-color: lighten($sidebar-bg-color, 20%);
+          }
+        }
       }
     }
   }
