@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'it61'
-set :repo_url, 'git@github.com:httplab/it61-rails.git'
+set :repo_url, 'git@github.com:it61/it61-rails.git'
 
 server 'it61-rails.hostname', roles: %w{web app db}, user: 'apps'
 
