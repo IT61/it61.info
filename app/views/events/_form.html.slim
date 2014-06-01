@@ -7,7 +7,18 @@
   = f.file_field :title_image
   p.help-block = t('.hint')
   = f.hidden_field :title_image_cache
-  = f.text_area :description, rows: 10
+
+  ul.nav.nav-tabs.event-description
+    li.edit.active = link_to 'Описание', '#edit', 'data-toggle' => 'tab'
+    li.preview = link_to 'Предпросмотр', '#preview'
+  .tab-content
+    #edit.tab-pane.active
+      = f.text_area :description,
+        'ace-editor' => '', 'ace-mode' => 'markdown', 'ace-theme' => 'clouds', style: 'height: 300px;'
+
+    #preview.tab-pane
+      .md_preview
+
   = f.check_box :published
   = link_to t(:cancel), root_path, class: 'btn btn-default'
   | &nbsp;
