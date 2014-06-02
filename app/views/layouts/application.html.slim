@@ -8,6 +8,8 @@ html lang='ru'
 
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
+    - if render_editor?
+      = javascript_include_tag 'editor'
 
     / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     / [if lt IE 9]

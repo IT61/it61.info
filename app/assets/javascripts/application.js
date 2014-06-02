@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 
-//= require marked
-
-//= require_tree .
+//= require events
+//= require common

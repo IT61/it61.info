@@ -17,7 +17,7 @@ AcedRails.configure do |config|
   #   objectivec, ocaml, perl, pgsql, php, powershell, python, r, rdoc, rhtml,
   #   ruby, scad, scala, scheme, scss, sh, sql, stylus, svg, tcl, tex, text,
   #   textile, tm_snippet, typescript, vbscript, xml, xquery, yaml
-  config.modes = [:javascript]
+  config.modes = [:markdown]
 
   # select workers:
   # available workers (use in pair with themes):

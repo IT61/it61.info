@@ -13,8 +13,9 @@
     li.preview = link_to 'Предпросмотр', '#preview'
   .tab-content
     #edit.tab-pane.active
-      = f.text_area :description,
-        'ace-editor' => '', 'ace-mode' => 'markdown', 'ace-theme' => 'clouds', style: 'height: 300px;'
+      = f.text_area :description, label: false,
+        'ace-editor' => '', 'ace-mode' => 'markdown', 'ace-theme' => 'github',
+         style: 'height: 400px;'
 
     #preview.tab-pane
       .md_preview
