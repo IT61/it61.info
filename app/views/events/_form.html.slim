@@ -1,10 +1,14 @@
 = bootstrap_form_for @event do |f|
   = f.text_field :title
-  = f.datetime_select :started_at
-  - if @event.title_image.present?
-    .title-image
-      = image_tag @event.title_image.square_500.url
-  = f.file_field :title_image
+  .row
+    .col-sm-6: .well
+      - if @event.title_image.present?
+        .title-image.image-container
+          = image_tag @event.title_image.square_500.url
+      = f.file_field :title_image
+    .col-sm-6
+      = f.datetime_select :started_at
+      = f.text_field :place
   p.help-block = t('.hint')
   = f.hidden_field :title_image_cache
 
@@ -20,7 +24,6 @@
     #preview.tab-pane
       .md_preview
 
-  = f.text_field :place
   = f.check_box :published
   = link_to t(:cancel), root_path, class: 'btn btn-default'
   | &nbsp;

@@ -19,15 +19,19 @@
         .panel.panel-default
           .panel-heading
             h4
-              = Event.human_attribute_name(:participants)
+              =' Event.human_attribute_name(:participants)
               small = @event.participants.count
           .panel-body
             = render partial: 'participants_block', object: @event, as: :event
           .panel-footer
             = render partial: 'participate_block', object: @event, as: :event
 
+  .event-date: p
+    i.fa.fa-calendar'
+    = l @event.started_at, format: :date_time_full
+  - if @event.place
+    .event-place: p.lead
+      i.fa.fa-map-marker'
+      = @event.place
+
   .event-description = markdown @event.description
-  .event-place
-    = Event.human_attribute_name(:place)
-    ' :
-    = @event.place
