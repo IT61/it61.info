@@ -123,6 +123,7 @@ ru:
         started_at: Дата начала
         title_image: Титульное изображение
         participants: Участники
+        place: Место проведения
 
   unauthorized:
     create:

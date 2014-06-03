@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
 
   validates :title, presence: true
   validates :organizer, presence: true
+  validates :place, presence: true
 
   scope :ordered_desc, -> { order(started_at: :desc) }
 

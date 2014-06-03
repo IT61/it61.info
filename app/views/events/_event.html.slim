@@ -18,6 +18,11 @@
         = render partial: 'participate_block', object: event, as: :event
       .col-sm-8
         p = simple_format truncate(event.description, length: 800) { link_to t('.more'), event_path(event), class: 'pull-right' }
+        p
+          = Event.human_attribute_name(:place)
+          ' :
+          = event.place
+
   - if event.participants.any?
     .panel-footer
       .participants

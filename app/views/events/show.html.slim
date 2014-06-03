@@ -27,3 +27,7 @@
             = render partial: 'participate_block', object: @event, as: :event
 
   .event-description = markdown @event.description
+  .event-place
+    = Event.human_attribute_name(:place)
+    ' :
+    = @event.place
