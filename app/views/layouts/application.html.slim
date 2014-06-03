@@ -18,15 +18,14 @@ html lang='ru'
 
     = csrf_meta_tags
   body
-    .container-fluid: .row
-      #sidebar-container.affix.col-md-3 data-offset-top="0" data-offset-bottom="0"
-        #sidebar = render 'shared/sidebar'
-      .col-md-9.col-md-offset-3
-        #page-content
-          .flash-messages
-            - flash.each do |type, message|
-              div class="alert alert-#{type} alert-dismissable"
-                button type='button' class='close' data-dismiss='alert' aria-hidden='true' &times;
-                == message
-          = yield
-          = render 'shared/small_screens_footer'
+    #sidebar-container.affix data-offset-top="0" data-offset-bottom="0"
+      #sidebar.clearfix = render 'shared/sidebar'
+    #page-content
+      .container-fluid
+        .flash-messages
+          - flash.each do |type, message|
+            div class="alert alert-#{type} alert-dismissable"
+              button type='button' class='close' data-dismiss='alert' aria-hidden='true' &times;
+              == message
+        = yield
+        = render 'shared/small_screens_footer'

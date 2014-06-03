@@ -1,97 +1,47 @@
 #sidebar-container.affix {
   top: 0;
   bottom: 0;
-  @media (min-width: $screen-xs) {
-    position: static;
-  }
-  @media (min-width: $screen-sm) {
-    .nav > li {
-      float: left;
-    }
-  }
-  @media (min-width: $screen-md) {
-    position: fixed;
-    .nav > li {
-      float: none;
-    }
-  }
 }
+
+/* Стили сайдбара-шапки, общие для всех размеров мониторов. */
 
 #sidebar {
   background: $sidebar-bg-color;
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: $line-height-computed;
-  padding-left: $line-height-computed;
-
-  @media (min-width: $screen-xs) {
-    /* Компенсация padding-left и padding-right родительского .container-fluid, это нужно для покраски фона. */
-    margin-left: -$grid-gutter-width / 2;
-    margin-right: -$grid-gutter-width / 2;
-  }
-  @media (min-width: $screen-md) {
-    text-align: center;
-    margin-left: -$grid-gutter-width / 2;
-    margin-right: 0;
-  }
 
   &, a {
     color: $sidebar-default-links-color;
   }
+
   #logo-and-name {
     font-weight: 300;
     > a {
       display: block;
     }
-    @media (min-width: $screen-md) {
-      margin: $line-height-computed 0;
-      text-align: center;
-      #sitename {
-        font-size: 70%;
-      }
-      #logotype {
-        margin-bottom: $line-height-computed;
-      }
-    }
-    #logotype {
-      img {
-        width: 100%;
-        max-width: 150px;
-        height: 100%;
-      }
-    }
   }
+
   hr {
     margin: $line-height-computed 0;
     border: 0;
     height: 1px;
     @include background-image((linear-gradient(left, $sidebar-bg-color, lighten($sidebar-bg-color, 20%) 50%, $sidebar-bg-color)));
   }
-  /* Сейчас ul.nav — это блок с аватаром и именем вошедшего пользователя и главное меню,
-     а также ссылки на соц. сети (они стилизуются отдельно).
+  /* ul.nav — это 1) блок с аватаром и именем вошедшего пользователя, 2) главное меню,
+     а также 3) ссылки на соц. сети (они стилизуются отдельно).
      Ссылки на соц. сети отобразятся в #sidebar только на больших мониторах (md, lg). */
   ul.nav {
     > li {
       > a {
-        /* "Растяжка" ссылок в навигационных меню на ту же величину, что и padding у #sidebar'а */
-        @media (min-width: $screen-xs) {
-          padding: 10px 10px;
-        }
-        @media (min-width: $screen-md) {
-          padding: $nav-link-padding;
-          margin-left: -$line-height-computed;
-          margin-right: -$line-height-computed;
-        }
         @include transition-property(background);
         @include transition-duration($default-transition-duration);
         &:hover, &:focus {
           background-color: lighten($sidebar-bg-color, 5%);
         }
       }
-      /* Стили для vk-like кнопки "+" в сайдбаре */
+      /* Стили для кнопки "+" в сайдбаре */
       &.with-plus-btn {
         position: relative;
+        padding-right: 40px; /* 40px — это результирующая ширина кнопки "+". */
         a.plus-btn {
           color: darken($sidebar-default-links-color, 20%);
           position: absolute;
@@ -119,46 +69,23 @@
         background-color: lighten($sidebar-bg-color, 15%);
       }
     }
-    /* Стили ссылок на соц. сети (отобразятся в #sidebar только на мониторах md, lg). */
-    &#social-links {
-      > li {
+  }
+  /* Стили ссылок на соц. сети (отобразятся в #sidebar только на мониторах md, lg). */
+  #social-links ul.nav {
+    > li {
+      display: inline;
+      margin: 0 10px;
+      > a {
         display: inline;
-        margin: 0 30px;
-        > a {
-          display: inline;
-          padding: 10px;
-          @include border-radius(1000px);
-          background-color: lighten($sidebar-bg-color, 15%);
-          &:hover, &:focus {
-            background-color: lighten($sidebar-bg-color, 20%);
-          }
+        padding: 10px;
+        @include border-radius(1000px);
+        background-color: lighten($sidebar-bg-color, 15%);
+        &:hover, &:focus {
+          background-color: lighten($sidebar-bg-color, 20%);
         }
       }
     }
-  }
-  /* Общие стили навигационного меню со ссылками регистрации-входа и блока с
-     аватаром вошедшего пользователя. */
-  ul#registration-login-nav,
-  .user {
-    @media (min-width: $screen-xs) {
-      font-size: 80%;
-      margin-top: 21%;
-    }
-    @media (min-width: $screen-md) {
-      font-size: inherit;
-      margin-top: inherit;
-    }
-  }
-  /* Стили навигационного меню со ссылками регистрации-входа. */
-  ul#registration-login-nav {
-    @media (min-width: $screen-xs) {
-      float: right;
-    }
-    @media (min-width: $screen-md) {
-      float: none;
-    }
-  }
-  /* Стили блока с аватаром и именем пользователя. */
+  }  /* Стили блока с аватаром и именем пользователя. */
   .user {
     @include clearfix();
     text-align: left;
@@ -173,6 +100,9 @@
       .user-name {
         width: 70%;
         float: left;
+        line-height: 1.2em;
+        max-height: 2.4em;
+        overflow: hidden;
       }
     }
     .actions {
@@ -184,19 +114,174 @@
   }
   /* Стили главного меню. */
   ul#mainmenu {
-    margin-top: 8%;
   }
   /* Стили кнопки разворачивания главного меню, которая отображается на самых
      маленьких мобильных устройствах. */
-  a.toggle {
+  a#mobile-menu-toggler.toggle {
     color: darken($sidebar-default-links-color, 20%);
     display: block;
     font-size: 1.7 * $font-size-base;
-    margin-top: 40%;
     text-align: right;
   }
   /* Стили главного меню для самых маленьких мобильных устройствах. */
   #mobile-menu {
     word-break: break-word;
+  }
+}
+
+/* Поведение сайдбара-шапки на различных мониторах. */
+
+@media (min-width: $screen-xs) {
+  #sidebar-container.affix {
+    position: static;
+    #sidebar {
+      padding-right: $line-height-computed;
+      padding-left: $line-height-computed;
+      #logo-and-name {
+        float: left;
+        width: $sidebar-logo-width-xs;
+        #logotype img {
+          width: 100%;
+        }
+        #sitename {
+          display: none;
+        }
+      }
+      #sidebar-menu {
+        a#mobile-menu-toggler {
+          float: right;
+          margin-top: $sidebar-logo-width-sm / 4;
+        }
+        hr {
+          display: none;
+        }
+        ul.nav > li > a {
+          padding: 10px;
+        }
+        ul#registration-login-nav, .user {
+          display: none;
+        }
+        #social-links {
+          display: none;
+        }
+        #mainmenu {
+          display: none;
+        }
+        #mobile-menu {
+          clear: both;
+          margin: $line-height-computed 0;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-sm) {
+  #sidebar-container.affix {
+    height: $sidebar-height-sm;
+    .nav > li {
+      float: left;
+    }
+    #sidebar {
+      @include clearfix();
+      #logo-and-name {
+        width: $sidebar-logo-width-sm;
+      }
+      #sidebar-menu {
+        margin-left: $sidebar-logo-width-sm + $line-height-computed;
+        a#mobile-menu-toggler {
+          display: none;
+        }
+        #mobile-menu {
+          display: none;
+        }
+        #mainmenu {
+          display: block;
+          float: left;
+        }
+        ul.nav > li > a {
+          padding: $nav-link-padding;
+        }
+        ul#registration-login-nav, .user, #mainmenu {
+          margin-top: $sidebar-logo-width-sm / 3;
+        }
+        ul#registration-login-nav, .user {
+          display: block;
+          float: right;
+        }
+        .user {
+          width: 140px;
+          > a .user-name {
+            margin-top: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-md) {
+  #sidebar-container.affix {
+    width: $sidebar-width;
+    height: 100%;
+    position: fixed;
+    .nav > li {
+      float: none;
+    }
+    #sidebar {
+      padding-right: 0;
+      padding-left: 0;
+      text-align: center;
+      overflow-y: auto;
+      overflow-x: hidden;
+      hr {
+        display: none;
+      }
+      #logo-and-name {
+        float: none;
+        width: auto;
+        margin: $line-height-computed 0;
+        text-align: center;
+        #sitename {
+          font-size: 70%;
+        }
+        #logotype {
+          margin-bottom: $line-height-computed;
+          img {
+            width: $sidebar-logo-width-md;
+            height: $sidebar-logo-width-md;
+            display: block;
+            margin: 0 auto;
+          }
+        }
+        #sitename {
+          display: block;
+        }
+      }
+      #sidebar-menu {
+        margin-left: 0;
+        ul#registration-login-nav, .user,  #mainmenu {
+          float: none;
+          width: auto;
+        }
+        .user >a .user-name {
+          margin-top: 16px;
+        }
+        hr {
+          display: block;
+        }
+        ul#mainmenu li.with-plus-btn {
+          padding-right: 0;
+        }
+        #social-links {
+          display: block;
+          height: 40px;
+          line-height: 40px;
+        }
+        #social-links ul > li > a {
+          padding: 10px;
+        }
+      }
+    }
   }
 }

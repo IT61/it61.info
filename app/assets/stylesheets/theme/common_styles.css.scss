@@ -5,7 +5,6 @@
     /* Специальный "футер" под контент-областью, который отображается только
        на маленьких экранах (xs, sm). */
     #social-links {
-      padding: 0 0 2*$line-height-computed;
       a {
         color: $text-color;
         i.fa, span.gray {
@@ -19,6 +18,9 @@
   }
   @media (min-width: $screen-sm) {
     padding: $line-height-computed 0 2*$line-height-computed;
+  }
+  @media (min-width: $screen-md) {
+    margin-left: $sidebar-width;
   }
 }
 
