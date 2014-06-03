@@ -23,6 +23,8 @@ module It61Rails
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
 
+    config.assets.precompile += %w( editor.js )
+
     config.responders.flash_keys = [:success, :error]
   end
 end

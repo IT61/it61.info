@@ -26,4 +26,4 @@
           .panel-footer
             = render partial: 'participate_block', object: @event, as: :event
 
-  .event-description = simple_format @event.description
+  .event-description = markdown @event.description

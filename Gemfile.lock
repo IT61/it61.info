@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/ffloyd/aced_rails.git
+  revision: a0df4bbaf1d53959b49a21431bb203e601d864eb
+  specs:
+    aced_rails (0.2.1)
+      rails (>= 3.2, < 5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -122,6 +129,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    marked-rails (0.2.10.1)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_magick (3.7.0)
@@ -176,6 +184,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.1)
       json (~> 1.4)
+    redcarpet (3.1.2)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rollbar (0.12.18)
@@ -263,6 +272,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aced_rails!
   active_link_to
   awesome_print
   bootstrap-sass
@@ -283,12 +293,14 @@ DEPENDENCIES
   has_scope
   jbuilder (~> 2.0)
   jquery-rails
+  marked-rails
   mini_magick
   pg
   quiet_assets
   rails (~> 4.1.1)
   rails-i18n
   rb-fsevent
+  redcarpet
   responders
   rollbar
   rspec-rails
