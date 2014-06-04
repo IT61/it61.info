@@ -27,11 +27,11 @@
             = render partial: 'participate_block', object: @event, as: :event
 
   .event-date: p
-    i.fa.fa-calendar'
+    i.fa.fa-fw.fa-calendar'
     = l @event.started_at, format: :date_time_full
-  - if @event.place
+  - if @event.place.present?
     .event-place: p.lead
-      i.fa.fa-map-marker'
+      i.fa.fa-fw.fa-map-marker'
       = @event.place
 
   .event-description = markdown @event.description
