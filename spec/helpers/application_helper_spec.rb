@@ -9,9 +9,9 @@ describe ApplicationHelper do
       expect(helper.markdown(markdown)).to eq(html)
     end
 
-    it 'should filter html tags from markdown' do
-      markdown = 'Text with filtered <b>HTML</b> tags <script>alert("!");</script>\n'
-      html = "<p>Text with filtered HTML tags alert(&quot;!&quot;);\\n</p>\n"
+    it 'should escape html tags from markdown' do
+      markdown = 'Text with escaped <b>HTML</b> tags <script>alert("!");</script>'
+      html = "<p>Text with escaped &lt;b&gt;HTML&lt;/b&gt; tags &lt;script&gt;alert(&quot;!&quot;);&lt;/script&gt;</p>\n"
 
       expect(helper.markdown(markdown)).to eq(html)
     end

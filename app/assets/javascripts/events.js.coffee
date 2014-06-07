@@ -5,9 +5,9 @@ initMarked = ->
     gfm: true
     tables: true
     breaks: true
-    pedantic: false
-    sanitize: false
-    smartLists: true
+    pedantic: true
+    sanitize: true
+    smartLists: false
     smartypants: false
 
 initAce = (textarea) ->
