@@ -3,10 +3,7 @@
     text-align: center;
   }
   @media (min-width: $screen-md) {
-    text-align: center;
-  }
-  @media (min-width: $screen-lg) {
-    text-align: center;
+    margin-bottom: $line-height-computed;
   }
   a {
     color: $text-color;

@@ -229,11 +229,8 @@
       float: none;
     }
     #sidebar {
-      padding-right: 0;
-      padding-left: 0;
       text-align: center;
-      overflow-y: auto;
-      overflow-x: hidden;
+      overflow: hidden;
       hr {
         display: none;
       }
@@ -243,10 +240,9 @@
         margin: $line-height-computed 0;
         text-align: center;
         #sitename {
-          font-size: 70%;
         }
         #logotype {
-          margin-bottom: $line-height-computed;
+          margin-bottom: $line-height-computed / 2;
           img {
             width: $sidebar-logo-width-md;
             height: $sidebar-logo-width-md;
@@ -256,6 +252,9 @@
         }
         #sitename {
           display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 9em;
         }
       }
       #sidebar-menu {
@@ -264,14 +263,26 @@
           float: none;
           width: auto;
         }
-        .user >a .user-name {
-          margin-top: 16px;
+        .user >a {
+          .avatar {
+            img {
+              width: 45px;
+              height: 45px;
+            }
+          }
+          .user-name {
+            margin-top: 16px;
+          }
         }
         hr {
           display: block;
         }
-        ul#mainmenu li.with-plus-btn {
-          padding-right: 0;
+        ul#mainmenu {
+          margin-left: -$line-height-computed;
+          margin-right: -$line-height-computed;
+          li.with-plus-btn {
+            padding-right: 0;
+          }
         }
         #social-links {
           display: block;

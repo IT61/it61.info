@@ -17,11 +17,15 @@
           .image-container = image_tag event.title_image.square_500.url
         = render partial: 'participate_block', object: event, as: :event
       .col-sm-8
+        .event-date: p
+          i.fa.fa-fw.fa-calendar'
+          = l event.started_at, format: :date_time_full
         - if event.place.present?
-          .event-place: p.lead
+          .event-place: p
             i.fa.fa-fw.fa-map-marker'
             = event.place
-        p = simple_format truncate(event.description, length: 800) { link_to t('.more'), event_path(event), class: 'pull-right' }
+        hr
+        = markdown event.description
 
   - if event.participants.any?
     .panel-footer

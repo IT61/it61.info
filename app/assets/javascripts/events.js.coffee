@@ -23,10 +23,10 @@ initAce = (textarea) ->
   editor.renderer.setShowGutter false
 
   editor.getSession().setValue textarea.val()
-  #copy back to textarea on form submit...
+  # copy back to textarea on form submit
   textarea.closest('form').submit ->
     textarea.val editor.getSession().getValue()
-
+  # share editor instance
   it61.editor = editor
 
 bindPreview = ->
