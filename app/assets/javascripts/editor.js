@@ -1,3 +1,5 @@
 //= require ace/ace
-//= require aced-rails
+//= require ace/theme-github
+//= require ace/mode-markdown
+
 //= require marked
