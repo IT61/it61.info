@@ -1,10 +1,4 @@
-it61 = {}
-
-init = ->
-  initMarked()
-  initAce $('#event_description')
-  bindPreview()
-  bindEdit()
+it61 = window.it61 || {}
 
 initMarked = ->
   marked.setOptions
@@ -26,7 +20,7 @@ initAce = (textarea) ->
   editor.setOption 'minLines', 20
   editor.getSession().setUseWrapMode true
   editor.setAutoScrollEditorIntoView()
-  # editor.renderer.setShowGutter false
+  editor.renderer.setShowGutter false
 
   editor.getSession().setValue textarea.val()
   #copy back to textarea on form submit...
@@ -46,15 +40,16 @@ bindEdit = ->
 
 previewTabHandler = (e) ->
   e.preventDefault()
-  e.stopPropagation()
 
   session = it61.editor
   md = marked session.getValue()
   $('#preview .md_preview').html md
-
   $('.nav-tabs li.preview a').tab 'show'
-  false
 
-$ ->
-  # FIXME: Подключить styx и выполнять инициализацию только там, где предполагается наличие редактора
-  init()
+@Styx.Initializers.Events =
+  edit: ->
+    $ ->
+      initMarked()
+      initAce $('#event_description')
+      bindPreview()
+      bindEdit()

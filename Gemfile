@@ -22,6 +22,7 @@ gem 'bootstrap_form'
 gem 'compass-rails'
 gem 'marked-rails'
 gem 'redcarpet'
+gem 'styx'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
