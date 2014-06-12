@@ -3,6 +3,13 @@
     .pull-right
       - if can? :edit, @event
         = link_to t(:edit), edit_event_path(@event), class: 'btn btn-default'
+        | &nbsp;
+      - if can? :publish, @event
+        - if !@event.published?
+          = link_to t('.publish'), publish_event_path(@event), class: 'btn btn-warning', method: :patch
+        - else
+          = link_to t('.cancel_publication'), cancel_publication_event_path(@event),
+            class: 'btn btn-warning', method: :patch
     h1
       - if can? :edit, @event
         = render partial: 'admin_info', object: @event, as: :event

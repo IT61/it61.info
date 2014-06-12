@@ -21,8 +21,7 @@
 
     #preview.tab-pane
       .md_preview
-
-  = f.check_box :published
-  = link_to t(:cancel), root_path, class: 'btn btn-default'
-  | &nbsp;
-  = f.submit class: 'btn btn-primary'
+    hr
+    = link_to t(:cancel), root_path, class: 'btn btn-default'
+    | &nbsp;
+    = f.submit class: 'btn btn-primary'

@@ -94,6 +94,13 @@ ru:
       title: Новое мероприятие
     edit:
       title: Редактирование мероприятия
+    show:
+      publish: Опубликовать
+      cancel_publication: Отменить публикацию
+    publish:
+      success_message: Событие успешно опубликовано
+    cancel_publication:
+      success_message: Событие не будет отображаться в ленте
     event:
       more: Подробнее...
     participate_block:

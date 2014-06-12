@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   respond_to :html
-  load_and_authorize_resource param_method: :event_params
+  load_resource param_method: :event_params
+  before_filter :set_organizer, only: :create
+  authorize_resource
 
   has_scope :ordered_desc, type: :boolean, allow_blank: true, default: true
 
@@ -19,9 +21,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event.organizer = current_user || nil
     @event.save
-
     respond_with @event
   end
 
@@ -34,9 +34,32 @@ class EventsController < ApplicationController
     respond_with @event
   end
 
+  def publish
+    @event.publish!
+    flash[:success] = t('.success_message')
+    redirect_to action: :show
+  end
+
+  def cancel_publication
+    @event.cancel_publication!
+    flash[:success] = t('.success_message')
+    redirect_to action: :show
+  end
+
   private
 
+  def set_organizer
+    @event.organizer = current_user || nil
+  end
+
   def event_params
-    params.require(:event).permit(:title, :description, :started_at, :published, :title_image, :place)
+    permitted_attrs = [
+      :title,
+      :description,
+      :started_at,
+      :title_image,
+      :place
+    ]
+    params.require(:event).permit(*permitted_attrs)
   end
 end

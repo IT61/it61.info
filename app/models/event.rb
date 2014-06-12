@@ -23,4 +23,14 @@ class Event < ActiveRecord::Base
   def past?
     started_at < DateTime.now
   end
+
+  def publish!
+    self.toggle :published
+    save!
+  end
+
+  def cancel_publication!
+    self.toggle :published
+    save!
+  end
 end

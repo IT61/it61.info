@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :user_profiles, only: [:index, :show]
 
   # События
-  resources :events, except: [:destroy]
+  resources :events, except: [:destroy] do
+    patch :publish, on: :member
+    patch :cancel_publication, on: :member
+  end
+
   post '/participate_in_event' => 'event_participations#create'
   delete '/cancel_participation' => 'event_participations#destroy'
 
