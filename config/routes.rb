@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   delete '/cancel_participation' => 'event_participations#destroy'
 
   root to: redirect('/events')
+
+  get ':id' => 'high_voltage/pages#show', as: :page
 end

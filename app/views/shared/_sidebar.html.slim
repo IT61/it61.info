@@ -26,8 +26,8 @@
     - else
       = active_link_to t('.events'), events_path, wrap_tag: :li
     = active_link_to t('.members'), user_profiles_path, wrap_tag: :li
-    = active_link_to t('.donations'), '#', wrap_tag: :li
-    = active_link_to t('.about'), '#', wrap_tag: :li
+    = active_link_to t('.donations'), page_path(:donations), wrap_tag: :li
+    = active_link_to t('.about'), page_path(:about), wrap_tag: :li
 
   hr
 
