@@ -19,4 +19,8 @@ class Event < ActiveRecord::Base
   def participation_for(user)
     event_participations.find_by(user_id: user.id)
   end
+
+  def past?
+    started_at < DateTime.now
+  end
 end

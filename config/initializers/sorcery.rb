@@ -147,11 +147,12 @@ Rails.application.config.sorcery.configure do |config|
   config.vk.secret = Rails.application.secrets.vk_secret
   config.vk.callback_url = Rails.application.secrets.vk_callback_url
   config.vk.user_info_mapping = {
-    remote_avatar_image_url: 'photo',
+    remote_avatar_image_url: 'photo_200_orig',
     name: 'domain',
     first_name: 'first_name',
     last_name: 'last_name'
   }
+
   #
   # To use liveid in development mode you have to replace mydomain.com with
   # a valid domain even in development. To use a valid domain in development

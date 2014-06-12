@@ -99,6 +99,8 @@ ru:
     participate_block:
       participate_submit_title: Участвовать
       cancel_participation_submit_title: Отказаться от участия
+      participate_past_submit_title: Я участвовал
+      cancel_past_participation_submit_title: Меня не было на мероприятии
     participants_block:
       no_participants: Пока никто не нажал кнопочку. Станьте первым!
     form:

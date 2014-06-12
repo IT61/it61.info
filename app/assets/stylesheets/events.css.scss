@@ -1,8 +1,6 @@
 .events-index, .events-show {
   .participants {
     @include clearfix();
-    height: 50px;
-    overflow: hidden;
     .participant {
       float: left;
       margin-right: 1em;
@@ -33,6 +31,9 @@
         }
         .panel-footer {
           .participants {
+            height: 50px;
+            overflow: hidden;
+
             h4 {
               float: left;
               margin-right: 1em;
