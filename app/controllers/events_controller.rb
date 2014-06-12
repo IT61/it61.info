@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   respond_to :html
+  responders :flash
+
   load_resource param_method: :event_params
   before_filter :set_organizer, only: :create
   authorize_resource

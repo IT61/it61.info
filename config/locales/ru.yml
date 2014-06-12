@@ -26,6 +26,9 @@ ru:
     user_profiles:
       update:
         success: Ваш профиль успешно обновлен
+    events:
+      create:
+        success: Мероприятие появится в ленте после проверки модератором
 
   helpers:
     submit:
