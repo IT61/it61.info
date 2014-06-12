@@ -71,7 +71,7 @@
   }
 }
 
-form.edit_event {
+form.edit_event, form.new_event {
   .tab-content {
     .tab-pane {
       padding:  $line-height-computed ( $line-height-computed / 4) 0;

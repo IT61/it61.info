@@ -10,7 +10,6 @@ module ApplicationHelper
   end
 
   def render_editor?
-    controller.controller_name == 'events' &&
-    (controller.action_name == 'new' || controller.action_name == 'edit')
+    controller.controller_name == 'events' && !['index', 'show'].include?(controller.action_name)
   end
 end

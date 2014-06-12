@@ -39,6 +39,12 @@ bindEdit = ->
     it61.editor.focus()
 
 
+setupEditor = ->
+  initMarked()
+  initAce $('#event_description')
+  bindPreview()
+  bindEdit()
+
 previewTabHandler = (e) ->
   e.preventDefault()
 
@@ -48,9 +54,15 @@ previewTabHandler = (e) ->
   $('.nav-tabs li.preview a').tab 'show'
 
 @Styx.Initializers.Events =
+  new: ->
+    $ ->
+      setupEditor()
+  create: ->
+    $ ->
+      setupEditor()
   edit: ->
     $ ->
-      initMarked()
-      initAce $('#event_description')
-      bindPreview()
-      bindEdit()
+      setupEditor()
+  update: ->
+    $ ->
+      setupEditor()
