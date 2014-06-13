@@ -20,14 +20,25 @@
         .well
           .bio = simple_format @user.bio
 
-  - if @user.owner_of_events.any?
+  / Список опубликованных мероприятий, в которых пользователь является организатором
+  - if @user.owner_of_events.published.any?
     .owner-of-events
       h2 = t('.organizer_block_title')
       ul
-        - @user.owner_of_events.each do |event|
+        - @user.owner_of_events.published.each do |event|
           li = link_to event.title, event_path(event)
 
-  - if @user.member_in_events.any?
+  / Список неопубликованных мероприятий, в которых пользователь является организатором
+  / Они видны только владельцу профиля.
+  - if current_user == @user && @user.owner_of_events.unpublished.any?
+    .owner-of-events
+      h4 = t('.organizer_unpublished_block_title')
+      ul
+        - @user.owner_of_events.unpublished.each do |event|
+          li = link_to event.title, event_path(event)
+
+  / Список опубликованных мероприятий, в которых пользователь является участником
+  - if @user.member_in_events.published.any?
     h2 = t('.member_block_title')
     ul
       - @user.member_in_events.each do |event|

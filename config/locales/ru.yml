@@ -83,6 +83,7 @@ ru:
       new_password_confirmation: Подтверждение нового пароля
     show:
       organizer_block_title: Организатор мероприятий
+      organizer_unpublished_block_title: Не опубликованы
       member_block_title: Участник мероприятий
       edit: Редактировать
       logout: Выйти

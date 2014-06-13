@@ -11,6 +11,8 @@ class Event < ActiveRecord::Base
   validates :place, presence: true
 
   scope :ordered_desc, -> { order(started_at: :desc) }
+  scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where(published: false) }
 
   def user_participated?(user)
     user && event_participations.find_by(user_id: user.id)
