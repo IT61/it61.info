@@ -22,6 +22,7 @@ initAce = (textarea) ->
   editor.getSession().setUseWrapMode true
   editor.setAutoScrollEditorIntoView()
   editor.renderer.setShowGutter false
+  editor.renderer.setShowPrintMargin false
 
   editor.getSession().setValue textarea.val()
   # copy back to textarea on form submit
