@@ -4,6 +4,7 @@ ru:
   time:
     formats:
       date_time_full: "%d %B %Y, %H:%M"
+      date_digits: "%d.%m.%y"
 
   cancel: Отмена
   edit: Редактировать
@@ -18,8 +19,6 @@ ru:
 
   event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
   event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
-
-  my_profile: Мой профиль
 
   sorcery_external:
     success: "Аккаунт %{provider} успешно привязан к вашему профилю."

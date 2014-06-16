@@ -1,5 +1,6 @@
-- title [Event.model_name.human(count: 2), @event.title]
-- set_meta_tags og: { image: @event.title_image.square_500.url }
+- title @event.title_with_date
+- set_meta_tags description: plain_text(@event.description),
+                og: { image: @event.title_image.square_500.url }
 
 .events-show
   .page-header

@@ -5,8 +5,9 @@ html lang='ru'
     meta http-equiv='X-UA-Compatible' content='IE=edge'
     meta name='viewport' content='width=device-width, initial-scale=1'
 
-    - set_meta_tags og: { site_name: :site, url: request.url }
-    = display_meta_tags site: t(:app_name), separator: '–', reverse: true
+    = display_meta_tags site: t(:app_name), separator: '–', reverse: true,
+                        og: { site_name: t(:app_name), url: request.url,
+                              title: :title, description: :description }
 
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
