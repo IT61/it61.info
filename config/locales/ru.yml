@@ -19,6 +19,8 @@ ru:
   event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
   event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
 
+  my_profile: Мой профиль
+
   sorcery_external:
     success: "Аккаунт %{provider} успешно привязан к вашему профилю."
 
@@ -40,7 +42,6 @@ ru:
     sidebar:
       login: Вход
       register: Регистрация
-      my_profile: Мой профиль
       vk: Вконтакте
       facebook: Facebook
       events: Мероприятия

@@ -25,6 +25,7 @@ gem 'marked-rails'
 gem 'redcarpet'
 gem 'styx'
 gem 'draper'
+gem 'meta-tags'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'

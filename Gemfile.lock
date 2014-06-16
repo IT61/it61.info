@@ -129,6 +129,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     marked-rails (0.2.10.1)
+    meta-tags (2.0.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_magick (3.7.0)
@@ -296,6 +298,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   marked-rails
+  meta-tags
   mini_magick
   pg
   quiet_assets
