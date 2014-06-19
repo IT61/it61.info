@@ -38,6 +38,6 @@ class Event < ActiveRecord::Base
 
   def title_with_date
     formatted_date = I18n.l(started_at, format: :date_digits)
-    "#{title} (#{formatted_date}}"
+    "#{title} (#{formatted_date})"
   end
 end
