@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.1'
+gem 'rails', '~> 4.1.4'
 gem 'rails-i18n'
 gem 'unicode'
 gem 'sorcery'
