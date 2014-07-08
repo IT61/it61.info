@@ -143,3 +143,7 @@ ru:
   unauthorized:
     create:
       event_participation: Для участия в мероприятии необходимо зарегистрироваться.
+
+  errors:
+    messages:
+      extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
