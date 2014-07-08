@@ -14,7 +14,7 @@
     .row
       .col-sm-4
         = link_to event_path(event) do
-          .image-container = image_tag event.title_image.square_500.url
+          .image-container = image_tag event.title_image.square_500.url, alt: event.title
         = render partial: 'participate_block', object: event, as: :event
       .col-sm-8
         .event-date: p

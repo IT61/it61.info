@@ -4,7 +4,7 @@
     .col-sm-6: .well
       - if @event.title_image.present?
         .title-image.image-container
-          = image_tag @event.title_image.square_500.url
+          = image_tag @event.title_image.square_500.url, alt: @event.title
       = f.file_field :title_image
     .col-sm-6
       = f.datetime_select :started_at

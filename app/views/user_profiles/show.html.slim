@@ -15,7 +15,7 @@
             = t('.logout')
   .row
     .col-sm-3.col-md-2
-      .avatar.image-container = image_tag @user.avatar_image.square_150.url
+      .avatar.image-container = image_tag @user.avatar_image.square_150.url, alt: @user.full_name
     .col-sm-9.col-md-10
       - if @user.authentications.any?
         dl = render 'linked_accounts'

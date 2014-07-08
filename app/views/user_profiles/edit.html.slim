@@ -10,7 +10,7 @@ h2 = t('.edit_title')
     .col-sm-3
       - if @user.avatar_image.present?
         .title-image
-          .avatar = image_tag @user.avatar_image.square_150.url
+          .avatar = image_tag @user.avatar_image.square_150.url, alt: @user.full_name
       = f.file_field :avatar_image
       = f.hidden_field :avatar_image_cache
 
