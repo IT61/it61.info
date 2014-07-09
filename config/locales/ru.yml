@@ -46,12 +46,12 @@ ru:
       events: Мероприятия
       donations: Пожертвования
       about: О сайте
-      members: Люди
+      members: Личности
       add_event_button_title: Добавить мероприятие
       hashtag: "Наш хештег #it61"
     small_screens_footer:
       hashtag: "Наш хештег #it61"
-      social_links: Мы в соц. сетях
+      social_links: Мы в соц. сетях:
     oauth_login_block:
       social_providers: Вход через соц. сети
 
@@ -74,7 +74,7 @@ ru:
 
   user_profiles:
     index:
-      title: Люди
+      title: Личности
     edit:
       title: Мой профиль
       edit_title: Редактирование
