@@ -51,7 +51,7 @@ ru:
       hashtag: "Наш хештег #it61"
     small_screens_footer:
       hashtag: "Наш хештег #it61"
-      social_links: Мы в соц. сетях:
+      social_links: "Мы в соц. сетях:"
     oauth_login_block:
       social_providers: Вход через соц. сети
 
