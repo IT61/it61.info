@@ -1,0 +1,8 @@
+.social-widgets {
+  .tw-container, .vk-container, .fb-container {
+    float: left;
+    width: 280px;
+    height: 405px;
+    margin: 0 ($grid-gutter-width / 2);
+  }
+}
