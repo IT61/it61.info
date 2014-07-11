@@ -33,6 +33,13 @@ h2 = t('.edit_title')
       = f.submit class: 'btn btn-primary'
       ' &nbsp;
       = link_to t(:cancel), url_for, class: 'btn btn-default'
+      - if current_user.admin? && current_user != @user
+        | &nbsp;
+        = link_to user_profile_path(@user), method: :delete, class: 'btn btn-danger',
+              data: { confirm: t(:delete_confirm, title: @user.full_name ) } do
+          i.fa.fa-trash-o
+          | &nbsp;
+            Удалить
 
 hr
 = render 'linked_accounts'

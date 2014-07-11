@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   end
 
   # Список пользователей и публичные профили
-  resources :user_profiles, only: [:index, :show]
+  resources :user_profiles, only: [:index, :show, :edit, :destroy]
 
   # События
-  resources :events, except: [:destroy] do
+  resources :events do
     patch :publish, on: :member
     patch :cancel_publication, on: :member
   end

@@ -36,6 +36,12 @@ class EventsController < ApplicationController
     respond_with @event
   end
 
+  def destroy
+    @event.destroy
+    flash[:success] = t('.success_message', title: @event.title)
+    respond_with @event, location: events_path
+  end
+
   def publish
     @event.publish!
     flash[:success] = t('.success_message')

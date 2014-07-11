@@ -24,10 +24,16 @@ class UserProfilesController < ApplicationController
     respond_with @user, location: edit_current_profile_path
   end
 
+  def destroy
+    @user.destroy
+    flash[:success] = t('.success_message', title: @user.full_name)
+    respond_with @user, location: events_path
+  end
+
   private
 
   def prepare_user
-    @user = current_user
+    @user = User.find(params[:id])
     authorize! :manage, @user
   end
 

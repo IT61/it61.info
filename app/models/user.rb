@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   mount_uploader :avatar_image, UserAvatarUploader
+  acts_as_paranoid
 
   authenticates_with_sorcery!
 
@@ -9,7 +10,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :authentications
 
   has_many :owner_of_events, class_name: 'Event', foreign_key: 'organizer_id'
-  has_many :event_participations
+  has_many :event_participations, dependent: :destroy
   has_many :member_in_events, class_name: 'Event', through: :event_participations, source: :event
 
   validates :password, presence: true, if: 'password_required?'
@@ -27,6 +28,10 @@ class User < ActiveRecord::Base
 
   def full_name
     [first_name, last_name].compact.join(' ').presence || login
+  end
+
+  def event_participations
+    EventParticipation.unscoped { super }
   end
 
   private

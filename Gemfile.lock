@@ -149,6 +149,8 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    paranoia (2.0.2)
+      activerecord (~> 4.0)
     pg (0.17.1)
     polyglot (0.3.5)
     pry (0.9.12.6)
@@ -300,6 +302,7 @@ DEPENDENCIES
   marked-rails
   meta-tags
   mini_magick
+  paranoia (~> 2.0)
   pg
   quiet_assets
   rails (~> 4.1.4)
