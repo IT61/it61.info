@@ -1,16 +1,15 @@
 .social-widgets
-  .clearfix
-    .tw-container
-      a.twitter-timeline data-dnt="true" href="https://twitter.com/it_rostov" data-widget-id="487356774022787073"
-        ' Твиты пользователя @it_rostov
-    .vk-container
-      #vk_groups
-    .fb-container
-      #fb-root
-      .fb-like-box[data-href="https://www.facebook.com/it61.info"
-                   data-width="280" data-height="405"
-                   data-colorscheme="light" data-show-faces="true"
-                   data-header="false" data-stream="false" data-show-border="false"]
+  .tw-container
+    a.twitter-timeline data-dnt="true" href="https://twitter.com/it_rostov" data-widget-id="487356774022787073"
+      ' Твиты пользователя @it_rostov
+  .vk-container
+    #vk_groups
+  .fb-container
+    #fb-root
+    .fb-like-box[data-href="https://www.facebook.com/it61.info"
+                 data-width="270" data-height="405"
+                 data-colorscheme="light" data-show-faces="true"
+                 data-header="false" data-stream="false" data-show-border="false"]
 
 = javascript_include_tag '//vk.com/js/api/openapi.js?115'
 javascript:
@@ -29,7 +28,7 @@ javascript:
   // VK
   VK.Widgets.Group("vk_groups", {
       mode: 0,
-      width: "280",
+      width: "270",
       height: "405",
       color1: 'FFFFFF',
       color2: '2B587A',

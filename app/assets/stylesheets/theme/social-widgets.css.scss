@@ -1,7 +1,9 @@
 .social-widgets {
+  @include clearfix();
+  margin: ($line-height-computed) (-$grid-gutter-width / 2);
   .tw-container, .vk-container, .fb-container {
     float: left;
-    width: 280px;
+    width: 270px;
     height: 405px;
     margin: 0 ($grid-gutter-width / 2);
   }
