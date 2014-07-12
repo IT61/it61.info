@@ -1,5 +1,4 @@
 .page-header
   h1 = title t('.title')
 
-- @users.each_slice(6) do |row_slice|
-  .row = render partial: 'user_profile', collection: row_slice, as: :user
+.avatars = render partial: 'user_profile', collection: @users, as: :user

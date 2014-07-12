@@ -1,15 +1,27 @@
-.user-profile-preview {
-  @media (min-width: $screen-sm) {
-    text-align: center;
-  }
-  @media (min-width: $screen-md) {
-    margin-bottom: $line-height-computed;
-  }
-  a {
-    color: $text-color;
-    display: block;
-  }
-  .avatar {
-    margin-bottom: 1em;
+.avatars {
+  @extend .clearfix;
+  margin: $line-height-computed (-$line-height-computed);
+  .user-profile-preview {
+    @media (min-width: $screen-sm) {
+      text-align: center;
+      margin: $line-height-computed;
+      width: 6.4 * $line-height-computed;
+      height: 8.8 * $line-height-computed;
+      float: left;
+    }
+    @media (min-width: $screen-md) {
+    }
+    a {
+      color: $text-color;
+      display: block;
+    }
+    .avatar {
+      margin-bottom: 1em;
+    }
+    .user-name {
+      line-height: 1.2em;
+      height: 2 * 1.2em;
+      overflow: hidden;
+    }
   }
 }

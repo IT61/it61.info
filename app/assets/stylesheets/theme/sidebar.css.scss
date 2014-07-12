@@ -20,12 +20,6 @@
     }
   }
 
-  hr {
-    margin: $line-height-computed 0;
-    border: 0;
-    height: 1px;
-    @include background-image((linear-gradient(left, $sidebar-bg-color, lighten($sidebar-bg-color, 20%) 50%, $sidebar-bg-color)));
-  }
   /* ul.nav — это 1) блок с аватаром и именем вошедшего пользователя, 2) главное меню,
      а также 3) ссылки на соц. сети (они стилизуются отдельно).
      Ссылки на соц. сети отобразятся в #sidebar только на больших мониторах (md, lg). */
@@ -35,7 +29,7 @@
         @include transition-property(background);
         @include transition-duration($default-transition-duration);
         &:hover, &:focus {
-          background-color: lighten($sidebar-bg-color, 5%);
+          background-color: lighten($sidebar-bg-color, 3%);
         }
       }
       /* Стили для кнопки "+" в сайдбаре */
@@ -66,7 +60,7 @@
     /* Стили активных пунктов меню. */
     li.active a, li a.active {
       &, &:hover, &:focus {
-        background-color: lighten($sidebar-bg-color, 15%);
+        background-color: lighten($sidebar-bg-color, 7%);
       }
     }
   }
@@ -74,7 +68,7 @@
   #social-links ul.nav {
     > li {
       display: inline;
-      margin: 0 10px;
+      margin: 0 0 0 $line-height-computed;
       > a {
         display: inline;
         padding: 10px;
@@ -145,6 +139,7 @@
         }
         #sitename {
           display: none;
+          color: white;
         }
       }
       #sidebar-menu {
@@ -152,15 +147,21 @@
           float: right;
           margin-top: $sidebar-logo-width-sm / 4;
         }
-        hr {
-          display: none;
-        }
         ul.nav > li > a {
           padding: 10px;
         }
-        ul#registration-login-nav, .user {
+        ul#registration-login-nav, 
+        .user {
           display: none;
+          a {
+            color: darken($sidebar-default-links-color, 10%);
+          }
         }
+        ul#registration-login-nav {
+          li.divider {
+            display: none;
+          }
+        } 
         #social-links {
           display: none;
         }
@@ -200,17 +201,31 @@
           float: left;
         }
         ul.nav > li > a {
-          padding: $nav-link-padding;
+          padding: ($line-height-computed/2) $line-height-computed;
         }
-        ul#registration-login-nav, .user, #mainmenu {
-          margin-top: $sidebar-logo-width-sm / 3;
+        ul#registration-login-nav, .user, #mainmenu, #social-links {
+          margin-top: $line-height-computed;
         }
-        ul#registration-login-nav, .user {
+        ul#registration-login-nav, 
+        .user {
           display: block;
           float: right;
         }
+        ul#registration-login-nav {
+          li {
+            &.divider {
+              line-height: 2 * $line-height-computed;
+              display: inline;
+              margin: 0 ($line-height-computed / 4);
+              i.fa.fa-circle {
+                font-size: .5 * $font-size-base;
+                color: darken($sidebar-default-links-color, 15%);
+              }
+            }
+          }
+        }
         .user {
-          width: 140px;
+          width: 100px;
           > a .user-name {
             margin-top: 8px;
           }
@@ -231,9 +246,6 @@
     #sidebar {
       text-align: center;
       overflow: hidden;
-      hr {
-        display: none;
-      }
       #logo-and-name {
         float: none;
         width: auto;
@@ -258,34 +270,72 @@
       }
       #sidebar-menu {
         margin-left: 0;
-        ul#registration-login-nav, .user,  #mainmenu {
+        ul#registration-login-nav, .user, #mainmenu {
           float: none;
           width: auto;
         }
-        .user >a {
-          .avatar {
-            img {
-              width: 45px;
-              height: 45px;
+        ul#registration-login-nav, .user, #mainmenu, #social-links {
+          margin: $line-height-computed 0;
+        }
+        .user {
+          margin: 2*$line-height-computed 0;
+          > a {
+            display: block;
+            padding-right: 45px + ($line-height-computed/2);
+            position: relative;
+            vertical-align: middle;
+            .avatar {
+              position: absolute;
+              top: 50%;
+              right: 0;
+              margin-top: -(45px/2);
+              margin-right: 0;
+              width: auto;
+              img {
+                width: 45px;
+                height: 45px;
+              }
+            }
+            .user-name {
+              margin-top: 0;
+              margin-right: 0;
+              width: auto;
+              text-align: right;
+              float: none;
             }
           }
-          .user-name {
-            margin-top: 16px;
-          }
-        }
-        hr {
-          display: block;
         }
         ul#mainmenu {
           margin-left: -$line-height-computed;
           margin-right: -$line-height-computed;
-          li.with-plus-btn {
-            padding-right: 0;
+          > li {
+            text-align: right;
+            font-size: 1.4em;
+            font-weight: 300;
+            > a {}
+            &.with-plus-btn {
+              padding-right: 0;
+              font-size: 1.3 * $font-size-base;
+              > a.plus-btn {
+                padding: (.75 * $line-height-computed) (.25 * $line-height-computed);
+              }
+            }
+          }
+        }
+        ul#registration-login-nav {
+          text-align: right;
+          li {
+            display: inline;
+            float: none;
+            vertical-align: middle;
+            a {
+              display: inline;
+            }
           }
         }
         #social-links {
           display: block;
-          height: 40px;
+          text-align: right;
           line-height: 40px;
         }
         #social-links ul > li > a {

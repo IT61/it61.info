@@ -6,8 +6,6 @@
   = link_to '#mobile-menu', id: 'mobile-menu-toggler', class: 'toggle', data: {toggle: 'collapse'} do
     i.fa.fa-align-justify
 
-  hr
-
   - if current_user
     .user
       = link_to user_profile_path(current_user.id) do
@@ -16,6 +14,7 @@
   - else
     ul#registration-login-nav.nav
       = active_link_to t('.register'), new_user_registration_path, wrap_tag: :li
+      li.divider: i.fa.fa-circle
       = active_link_to t('.login'), new_user_session_path, wrap_tag: :li
 
   ul#mainmenu.nav
@@ -29,10 +28,9 @@
     = active_link_to t('.donations'), page_path(:donations), wrap_tag: :li
     = active_link_to t('.about'), page_path(:about), wrap_tag: :li
 
-  hr
-
   #social-links
     h4 = t('.hashtag')
+    p = t('.social_links')
     ul.nav.nav-pills
       li = link_to 'https://twitter.com/it_rostov', target: '_blank' do
         i.fa.fa-fw.fa-twitter
@@ -48,7 +46,7 @@
         li = link_to t('.add_event_button_title'), new_event_path, class: 'plus-btn', title: t('.add_event_button_title')
       = active_link_to t('.members'), user_profiles_path, wrap_tag: :li
       = active_link_to t('.donations'), '#', wrap_tag: :li
-      = active_link_to t('.about'), '#', wrap_tag: :li
+      = active_link_to t('.about'), page_path(:about), wrap_tag: :li
       - if current_user
         = active_link_to current_user.full_name, user_profile_path(current_user.id), wrap_tag: :li
       - else

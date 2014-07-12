@@ -20,7 +20,7 @@
     padding: $line-height-computed 0 2*$line-height-computed;
   }
   @media (min-width: $screen-md) {
-    margin-left: $sidebar-width;
+    margin-left: ($sidebar-width + 3*$line-height-computed);
   }
 }
 

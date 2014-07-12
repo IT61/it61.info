@@ -48,10 +48,11 @@ ru:
       about: О сайте
       members: Личности
       add_event_button_title: Добавить мероприятие
-      hashtag: "Наш хештег #it61"
+      hashtag: "Хештег: #it61"
+      social_links: "Мы есть в соцсетях:"
     small_screens_footer:
-      hashtag: "Наш хештег #it61"
-      social_links: "Мы в соц. сетях:"
+      hashtag: "Хештег: #it61"
+      social_links: "Мы есть в соцсетях:"
     oauth_login_block:
       social_providers: Вход через соц. сети
 
