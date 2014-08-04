@@ -1,0 +1,25 @@
+.company.panel.panel-default
+  .panel-heading
+    .pull-right
+      - if can? :edit, company
+        = link_to edit_company_path(company), class: 'btn btn-xs btn-default' do
+          i.fa.fa-pencil
+    h3.panel-title
+      - if can? :edit, company
+        = render partial: 'admin_info', object: company, as: :company
+      = link_to company.title, company_path(company)
+  .panel-body
+    .row
+      .col-sm-4
+        = link_to company_path(company) do
+          .image-container = image_tag company.logo_image.square_200.url, alt: company.title
+        = render partial: 'membership_block', object: company, as: :company
+      .col-sm-8
+        = markdown company.description
+
+    .panel-footer
+      .members
+        h4
+          =' Company.human_attribute_name(:company_members)
+          small = company.company_members.count
+        = render partial: 'members_block', object: company, as: :company

@@ -33,3 +33,5 @@ nginx_rewrite.txt
 /public/uploads
 
 /config/deploy.rb
+/bower_components
+/node_modules

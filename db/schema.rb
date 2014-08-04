@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602183636) do
+ActiveRecord::Schema.define(version: 20140804150543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,30 @@ ActiveRecord::Schema.define(version: 20140602183636) do
     t.datetime "updated_at"
     t.string   "link"
   end
+
+  create_table "companies", force: true do |t|
+    t.text     "title",                       null: false
+    t.text     "description"
+    t.integer  "founder_id",                  null: false
+    t.string   "logo_image"
+    t.text     "contacts"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "published",   default: false
+  end
+
+  add_index "companies", ["founder_id"], name: "index_companies_on_founder_id", using: :btree
+
+  create_table "company_members", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "company_members", ["company_id"], name: "index_company_members_on_company_id", using: :btree
+  add_index "company_members", ["user_id"], name: "index_company_members_on_user_id", using: :btree
 
   create_table "event_participations", force: true do |t|
     t.integer  "user_id"

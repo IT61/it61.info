@@ -1,7 +1,7 @@
-.events-index, .events-show {
-  .participants {
+.companies-index, .companies-show {
+  .members {
     @include clearfix();
-    .participant {
+    .member {
       float: left;
       margin-right: 1em;
       a {
@@ -17,9 +17,9 @@
   }
 }
 
-.events-index {
-  .events {
-    .event {
+.companies-index {
+  .companies {
+    .company {
       &.panel {
         .panel-heading {
           .admin-info {
@@ -28,7 +28,7 @@
           }
         }
         .panel-footer {
-          .participants {
+          .members {
             height: 50px;
             overflow: hidden;
 
@@ -46,18 +46,18 @@
   }
 }
 
-.events-show {
+.companies-show {
   .page-header {
     .admin-info {
-      margin-right: 1em;
+      margin-right: 1em !important;
       display: inline;
     }
   }
-  .participants {
+  .members {
     ul.list-unstyled {
       margin: -.5em;
     }
-    .participant {
+    .member {
       margin: .5em;
       .avatar {
         img {
@@ -68,20 +68,3 @@
     }
   }
 }
-
-form.edit_event, form.new_event {
-  .tab-content {
-    .tab-pane {
-      padding:  $line-height-computed ( $line-height-computed / 4) 0;
-      border-left: 1px solid $nav-tabs-active-link-hover-border-color;
-      border-right: 1px solid $nav-tabs-active-link-hover-border-color;
-      border-bottom: 1px solid $nav-tabs-active-link-hover-border-color;
-
-      // bootstrap-form не умеет не рендерить label для text-area, поэтому скрываем ее css
-      label.control-label {
-        display: none;
-      }
-    }
-  }
-}
-

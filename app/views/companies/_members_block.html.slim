@@ -1,0 +1,8 @@
+- if company.company_members.any?
+  ul.list-unstyled
+    - company.company_members.sample(25).each do |m|
+      li.member
+        = link_to user_profile_path(m.user), data: { toggle: 'tooltip', placement: 'bottom', title: m.user.full_name } do
+          .avatar = image_tag m.user.avatar_image.square_50.url, alt: m.user.full_name
+- else
+  p.lead = t('.no_members')

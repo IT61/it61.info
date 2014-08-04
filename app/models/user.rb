@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   has_many :event_participations
   has_many :member_in_events, class_name: 'Event', through: :event_participations, source: :event
 
+  # Участие в организациях
+  has_many :company_members, dependent: :destroy
+
+
   validates :password, presence: true, if: 'password_required?'
   validates :password, length: { minimum: 3 }, if: 'password.present?'
   validates :password, confirmation: true, if: 'password_required?'

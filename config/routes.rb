@@ -20,8 +20,16 @@ Rails.application.routes.draw do
     patch :cancel_publication, on: :member
   end
 
+  resources :companies, except: [:destroy] do
+    patch :publish, on: :member
+    patch :cancel_publication, on: :member
+  end
+
   post '/participate_in_event' => 'event_participations#create'
   delete '/cancel_participation' => 'event_participations#destroy'
+
+  post '/membership_in_company' => 'company_members#create'
+  delete '/cancel_membership' => 'company_members#destroy'
 
   root to: redirect('/events')
 
