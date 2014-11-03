@@ -21,7 +21,7 @@ class UserProfilesController < ApplicationController
   def update
     @user.update_attributes user_profile_params
 
-    respond_with @user, location: edit_current_profile_path
+    respond_with @user, location: user_profile_path(@user)
   end
 
   def destroy

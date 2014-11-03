@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'unicorn'
 gem 'rollbar'
+gem 'whenever'
 
 group :development do
   gem 'spring'

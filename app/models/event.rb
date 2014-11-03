@@ -23,10 +23,6 @@ class Event < ActiveRecord::Base
     event_participations.find_by(user_id: user.id)
   end
 
-  def event_participations
-    EventParticipation.unscoped { super }
-  end
-
   def past?
     started_at < DateTime.now
   end
