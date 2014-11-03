@@ -26,9 +26,9 @@
     | &nbsp;
     = f.submit class: 'btn btn-primary'
     - if can?(:manage, @event) && @event.persisted?
-      | &nbsp;
-      = link_to event_path(@event), method: :delete, class: 'btn btn-danger',
-            data: { confirm: t(:delete_confirm, title: @event.title ) } do
-        i.fa.fa-trash-o
-        | &nbsp;
-          Удалить
+      .pull-right
+        = link_to event_path(@event), method: :delete, class: 'btn btn-danger',
+              data: { confirm: t(:delete_confirm, title: @event.title ) } do
+          i.fa.fa-trash-o
+          | &nbsp;
+          = t :delete

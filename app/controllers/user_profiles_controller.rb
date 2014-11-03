@@ -27,7 +27,7 @@ class UserProfilesController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = t('.success_message', title: @user.full_name)
-    respond_with @user, location: events_path
+    respond_with @user, location: user_profiles_path
   end
 
   private

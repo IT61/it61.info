@@ -7,7 +7,7 @@
       = @user.full_name
       - if can? :namage, current_user
         .actions.pull-right
-          small' = link_to edit_user_path(@user), class: 'btn btn-default' do
+          small' = link_to edit_user_profile_path(@user), class: 'btn btn-default' do
             i.fa.fa-pencil'
             = t('.edit')
           - if current_user == @user

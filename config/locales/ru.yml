@@ -8,6 +8,7 @@ ru:
 
   cancel: Отмена
   edit: Редактировать
+  delete: Удалить
   delete_confirm: "Удалить %{title}?"
 
   'true': да

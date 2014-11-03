@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   get 'oauth/:provider' => 'oauths#oauth', as: :auth_at_provider
 
   # Редактирование профиля и аккаунта
-  scope :current_user, as: 'current' do
-    resource :profile, controller: 'user_profiles', only: [:edit, :update]
-  end
+  # scope :current_user, as: 'current' do
+  #   resource :profile, controller: 'user_profiles', only: [:edit, :update]
+  # end
 
   # Список пользователей и публичные профили
-  resources :user_profiles, only: [:index, :show, :edit, :destroy]
+  resources :user_profiles, path: 'users', only: [:index, :show, :edit, :destroy]
 
   # События
   resources :events do
