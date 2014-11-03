@@ -6,16 +6,11 @@ Rails.application.routes.draw do
   get 'oauth/callback' => 'oauths#callback'
   get 'oauth/:provider' => 'oauths#oauth', as: :auth_at_provider
 
-  # Редактирование профиля и аккаунта
-  scope :current_user, as: 'current' do
-    resource :profile, controller: 'user_profiles', only: [:edit, :update]
-  end
-
-  # Список пользователей и публичные профили
-  resources :user_profiles, only: [:index, :show]
+  # Список пользователей, публичные профили и редактирование профилей
+  resources :user_profiles, path: 'users', only: [:index, :show, :edit, :update, :destroy]
 
   # События
-  resources :events, except: [:destroy] do
+  resources :events do
     patch :publish, on: :member
     patch :cancel_publication, on: :member
   end

@@ -11,6 +11,7 @@ class Ability
 
     if user.admin?
       can :manage, Event
+      can :manage, User
       can :publish, Event
       can :manage, EventParticipation
 

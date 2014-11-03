@@ -54,8 +54,10 @@ ActiveRecord::Schema.define(version: 20140804150543) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "event_participations", ["deleted_at"], name: "index_event_participations_on_deleted_at", using: :btree
   add_index "event_participations", ["event_id"], name: "index_event_participations_on_event_id", using: :btree
   add_index "event_participations", ["user_id"], name: "index_event_participations_on_user_id", using: :btree
 
@@ -69,8 +71,10 @@ ActiveRecord::Schema.define(version: 20140804150543) do
     t.datetime "started_at"
     t.string   "title_image"
     t.string   "place"
+    t.datetime "deleted_at"
   end
 
+  add_index "events", ["deleted_at"], name: "index_events_on_deleted_at", using: :btree
   add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -94,8 +98,10 @@ ActiveRecord::Schema.define(version: 20140804150543) do
     t.string   "last_name"
     t.text     "bio"
     t.string   "avatar_image"
+    t.datetime "deleted_at"
   end
 
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at", using: :btree
   add_index "users", ["name"], name: "index_users_on_name", using: :btree

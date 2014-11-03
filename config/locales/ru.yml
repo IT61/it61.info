@@ -8,6 +8,8 @@ ru:
 
   cancel: Отмена
   edit: Редактировать
+  delete: Удалить
+  delete_confirm: "Удалить %{title}?"
 
   'true': да
   'false': нет
@@ -89,6 +91,8 @@ ru:
       change_password: Сменить пароль?
       new_password: Новый пароль
       new_password_confirmation: Подтверждение нового пароля
+    destroy:
+      success_message: Пользователь «%{title}» удален
     show:
       organizer_block_title: Организатор мероприятий
       organizer_unpublished_block_title: Не опубликованы
@@ -109,6 +113,8 @@ ru:
     show:
       publish: Опубликовать
       cancel_publication: Отменить публикацию
+    destroy:
+      success_message: Мероприятие «%{title}» удалено
     publish:
       success_message: Событие успешно опубликовано
     cancel_publication:

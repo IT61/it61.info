@@ -5,7 +5,7 @@
 
 h2 = t('.edit_title')
 
-= bootstrap_form_for @user, url: current_profile_path, html: { autocomplete: 'off', autocorrect: 'off'} do |f|
+= bootstrap_form_for @user, url: user_profile_path(@user), html: { autocomplete: 'off', autocorrect: 'off'} do |f|
   .row
     .col-sm-3
       - if @user.avatar_image.present?
@@ -31,8 +31,15 @@ h2 = t('.edit_title')
       hr
 
       = f.submit class: 'btn btn-primary'
-      ' &nbsp;
+      | &nbsp;
       = link_to t(:cancel), url_for, class: 'btn btn-default'
+      - if current_user.admin? && current_user != @user
+        .pull-right
+          = link_to user_profile_path(@user), method: :delete, class: 'btn btn-danger',
+                data: { confirm: t(:delete_confirm, title: @user.full_name ) } do
+            i.fa.fa-trash-o
+            | &nbsp;
+            = t :delete
 
 hr
 = render 'linked_accounts'
