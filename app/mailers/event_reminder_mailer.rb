@@ -2,7 +2,6 @@ class EventReminderMailer < ActionMailer::Base
   default from: ENV['MAILER_FROM'],
           return_path: ENV['MAILER_RETURN_PATH']
 
-
   def send_reminder(user, event)
     @user = user
     @event = event

@@ -16,4 +16,5 @@
 //= require styx
 
 //= require events
+//= require user_profiles
 //= require common

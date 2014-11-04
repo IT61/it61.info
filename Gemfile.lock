@@ -87,6 +87,7 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0.3)
+    e_pochta (0.5.2)
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.4.0)
@@ -309,6 +310,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails
   draper
+  e_pochta (~> 0.5.2)
   factory_girl_rails
   figaro
   forgery

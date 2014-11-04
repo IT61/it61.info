@@ -19,6 +19,7 @@ h2 = t('.edit_title')
         .col-sm-6
           = f.text_field :first_name
           = f.text_field :last_name
+          = f.text_field :phone, help: t('.phone_hint')
         .col-sm-6
           .panel.panel-default
             .panel-heading
@@ -28,6 +29,18 @@ h2 = t('.edit_title')
               = f.password_field :password_confirmation, label: t('.new_password_confirmation')
 
       = f.text_area :bio, rows: 7
+
+      .clearfix
+        .pull-left = f.check_box :send_email_reminders
+        .pull-left
+          i.fa.fa-question-circle.bs-tooltip-icon data-toggle="tooltip"
+            data-placement="right" title=t('.send_email_reminders_hint')
+      .clearfix
+        .pull-left = f.check_box :send_sms_reminders
+        .pull-left
+          i.fa.fa-question-circle.bs-tooltip-icon data-toggle="tooltip"
+            data-placement="right" title=t('.send_sms_reminders_hint')
+
       hr
 
       = f.submit class: 'btn btn-primary'
@@ -44,3 +57,4 @@ h2 = t('.edit_title')
 hr
 = render 'linked_accounts'
 = render 'available_accounts'
+

@@ -38,6 +38,7 @@ gem 'rollbar'
 gem 'whenever'
 gem 'phony_rails'
 gem 'figaro'
+gem 'e_pochta', '~> 0.5.2'
 
 group :development do
   gem 'spring'
