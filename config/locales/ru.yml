@@ -65,7 +65,7 @@ ru:
     oauth_login_block:
       social_providers: Вход через соц. сети
     disqus:
-      noscript_message: Похоже, в вашем броузер отключен JavaScript. Для просмотра и написание комментариев JavaScript должен быть включен.
+      noscript_message: Похоже, в вашем броузере отключен JavaScript. Для просмотра и написание комментариев JavaScript должен быть включен.
 
   user_registrations:
     new:
