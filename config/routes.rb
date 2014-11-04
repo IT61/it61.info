@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :events, except: [:destroy] do
     patch :publish, on: :member
     patch :cancel_publication, on: :member
+    resources :google_calendar_integrations, controller: 'events/google_calendar_integrations', only: :create
   end
 
   resources :companies, except: [:destroy] do

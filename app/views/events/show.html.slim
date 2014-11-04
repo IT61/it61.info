@@ -1,19 +1,26 @@
 - title @event.title_with_date
 - set_meta_tags description: plain_text(@event.description),
                 og: { image: @event.title_image.square_500.url }
-
 .events-show
-  .page-header
-    .pull-right
-      - if can? :edit, @event
-        = link_to t(:edit), edit_event_path(@event), class: 'btn btn-default'
+  .admin-actions
+    - if can? :edit, @event
+      = link_to t(:edit), edit_event_path(@event), class: 'btn btn-default'
+      | &nbsp;
+    - if can? :publish, @event
+      - if !@event.published?
+        = link_to t('.publish'), publish_event_path(@event), class: 'btn btn-warning', method: :patch
+      - else
+        = link_to t('.cancel_publication'), cancel_publication_event_path(@event), class: 'btn btn-warning', method: :patch
+    - if @event.published_to_google_calendar?
+      | &nbsp;
+      = t('.published_to_google_calendar')
+    - else
+      - if can? :publish_to_google_calendar, @event
         | &nbsp;
-      - if can? :publish, @event
-        - if !@event.published?
-          = link_to t('.publish'), publish_event_path(@event), class: 'btn btn-warning', method: :patch
-        - else
-          = link_to t('.cancel_publication'), cancel_publication_event_path(@event),
-            class: 'btn btn-warning', method: :patch
+        = link_to t('.publish_to_google_calendar'),
+                  event_google_calendar_integrations_path(@event), class: 'btn btn-default', method: :post
+
+  .page-header
     h1
       - if can? :edit, @event
         = render partial: 'admin_info', object: @event, as: :event

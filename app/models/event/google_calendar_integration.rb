@@ -4,7 +4,14 @@ require 'google/api_client/auth/file_storage'
 class Event::GoogleCalendarIntegration
   include Rails.application.routes.url_helpers
 
-  def create(event)
+  def self.create(event)
+    instance = new
+    instance.save(event)
+    instance
+  end
+
+
+  def save(event)
     event = Event.find(event) unless event.is_a? Event
 
     event_json = {
@@ -24,7 +31,12 @@ class Event::GoogleCalendarIntegration
                             parameters: { 'calendarId' => Rails.application.secrets.calendar_id },
                             body: JSON.dump(event_json),
                             headers: { 'Content-Type' => 'application/json' })
-    update_credentials_file!
+
+    if result.status == 200
+      event.published_to_google_calendar = true
+      event.save!
+      update_credentials_file!
+    end
     result
   end
 
@@ -37,7 +49,7 @@ class Event::GoogleCalendarIntegration
         application_version: '1.0.0',
         auto_refresh_token: true
       )
-      @client.authorization = credentials_file.authorization.dup
+      @client.authorization = credentials_file.authorization
       @client.authorization.update_token!
     end
     @client
@@ -55,8 +67,7 @@ class Event::GoogleCalendarIntegration
   end
 
   def update_credentials_file!
-    credentials_file.authorization.access_token = client.authorization.access_token
-    credentials_file.write_credentials(credentials_file.authorization)
+    credentials_file.write_credentials
   end
 
   def calendar_api

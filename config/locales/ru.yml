@@ -109,6 +109,8 @@ ru:
     show:
       publish: Опубликовать
       cancel_publication: Отменить публикацию
+      publish_to_google_calendar: Опубликовать в календаре
+      published_to_google_calendar: Опубликовано в календаре
     publish:
       success_message: Событие успешно опубликовано
     cancel_publication:
