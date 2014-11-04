@@ -22,9 +22,6 @@ ru:
   event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
   event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
 
-  company_member_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
-  company_membership_canceled: "Вы больше не работаете в &laquo;%{title}&raquo;."
-
   sorcery_external:
     success: "Аккаунт %{provider} успешно привязан к вашему профилю."
 
@@ -41,8 +38,6 @@ ru:
       update: Сохранить изменения
       event:
         create: Добавить мероприятие
-      company:
-        create: Добавить оргазинацию
 
   shared:
     sidebar:
@@ -51,17 +46,14 @@ ru:
       vk: Вконтакте
       facebook: Facebook
       events: Мероприятия
-      companies: Компании
       donations: Пожертвования
       about: О сайте
       members: Личности
       add_event_button_title: Добавить мероприятие
-      add_company_button_title: Добавить оргазинацию
-      hashtag: "Хештег: #it61"
-      social_links: "Мы есть в соцсетях:"
+      hashtag: "Наш хештег #it61"
     small_screens_footer:
-      hashtag: "Хештег: #it61"
-      social_links: "Мы есть в соцсетях:"
+      hashtag: "Наш хештег #it61"
+      social_links: "Мы в соц. сетях:"
     oauth_login_block:
       social_providers: Вход через соц. сети
 
@@ -91,6 +83,7 @@ ru:
       change_password: Сменить пароль?
       new_password: Новый пароль
       new_password_confirmation: Подтверждение нового пароля
+      phone_hint: Не отображается на сайте, используется для напоминаний о мероприятиях
     destroy:
       success_message: Пользователь «%{title}» удален
     show:
@@ -130,36 +123,12 @@ ru:
       no_participants: Пока никто не нажал кнопочку. Станьте первым!
     form:
       hint: Рекомендуются квадратные изображения размером 500*500 px.
-  companies:
-    index:
-      add_company_button_title: Добавить компанию
-    new:
-      title: Новая компания
-    edit:
-      title: Редактирование компании
-    form:
-      hint: Рекомендуются квадратные изображения размером 200*200 px.
-    show:
-      publish: Опубликовать
-      cancel_publication: Отменить публикацию
-    membership_block:
-      membership_submit_title: Я работаю в компании
-      cancel_membership_submit_title: Я больше не работаю в компании
-    members_block:
-      no_members: Пока никто не состоит в компании.
-    publish:
-      success_message: Компания успешно опубликована
-    cancel_publication:
-      success_message: Компания не будет отображаться в ленте
 
   activerecord:
     models:
       event:
         one: Мероприятие
         few: Мероприятия
-      company:
-        one: Компания
-        few: Компании
     attributes:
       user:
         email: E-mail
@@ -169,6 +138,7 @@ ru:
         last_name: Фамилия
         bio: Обо мне
         avatar_image: Аватар
+        phone: Телефон
       event:
         title: Название
         published: Мероприятие опубликовано
@@ -177,11 +147,12 @@ ru:
         title_image: Титульное изображение
         participants: Участники
         place: Место проведения
-      company:
-        title: Название
-        description: Описание
-        contacts: Контактная информация
-        company_members: Сотрудники
+    errors:
+      models:
+        user:
+          attributes:
+            phone:
+              improbable_phone: 'Пожалуйста, введите номер в международном формате, например: +7 928 1234567'
 
   unauthorized:
     create:
@@ -190,3 +161,13 @@ ru:
   errors:
     messages:
       extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
+
+  event_reminder_mailer:
+    send_reminder:
+      subject: "До мероприятия %{event} осталось %{days_left}"
+
+  misc:
+    day:
+      one: 1 день
+      few: '%{count} дня'
+      many: '%{count} дней'

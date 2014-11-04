@@ -14,6 +14,9 @@ class Event < ActiveRecord::Base
   scope :ordered_desc, -> { order(started_at: :desc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
+  scope :upcomming, -> (date = Date.today) {
+    published.where(started_at > Time.zone.now).where('DATE(started_at) = ?', date)
+  }
 
   after_restore :restore_event_participations
 

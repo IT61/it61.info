@@ -36,6 +36,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'rollbar'
 gem 'whenever'
+gem 'phony_rails'
+gem 'figaro'
 
 group :development do
   gem 'spring'
@@ -43,9 +45,10 @@ group :development do
   gem 'quiet_assets'
   gem 'capistrano'
   gem 'capistrano-rails', '~> 1.0.0'
-  gem "capistrano-rvm"
+  gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
+  gem 'letter_opener'
 end
 
 group :development, :test do
