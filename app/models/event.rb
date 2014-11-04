@@ -15,6 +15,8 @@ class Event < ActiveRecord::Base
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
 
+  after_restore :restore_event_participations
+
   def user_participated?(user)
     user && event_participations.find_by(user_id: user.id)
   end
@@ -41,4 +43,17 @@ class Event < ActiveRecord::Base
     formatted_date = I18n.l(started_at, format: :date_digits)
     "#{title} (#{formatted_date})"
   end
+
+  private
+
+  def restore_event_participations
+    # Идентификаторы заявок на участие в мероприятии, которые оставили не удаленные пользователи
+    ids = EventParticipation.only_deleted.joins(:user)
+                            .where('users.deleted_at is null')
+                            .where(event_id: id)
+                            .pluck(:id)
+    EventParticipation.restore ids
+  end
+
+
 end

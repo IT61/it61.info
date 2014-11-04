@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, if: 'email_required?'
 
   after_create :assign_default_role
+  after_restore :restore_event_participations
 
   def login
     name || email.split('@').first
@@ -53,5 +54,14 @@ class User < ActiveRecord::Base
       self.role = :member
       save!
     end
+  end
+
+  def restore_event_participations
+    # Идентификаторы заявок пользователя на участие в мероприятиях, которые не удалены
+    ids = EventParticipation.only_deleted.joins(:event)
+                            .where('events.deleted_at is null')
+                            .where(user_id: id)
+                            .pluck(:id)
+    EventParticipation.restore ids
   end
 end
