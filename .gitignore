@@ -35,3 +35,4 @@ nginx_rewrite.txt
 /config/deploy.rb
 /bower_components
 /node_modules
+calendar_oauth2.json

@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'unicorn'
 gem 'rollbar'
+gem 'google-api-client'
 
 group :development do
   gem 'spring'
