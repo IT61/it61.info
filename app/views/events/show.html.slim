@@ -47,3 +47,6 @@
 
   hr
   .event-description = markdown @event.description
+
+  hr
+  = render partial: 'shared/disqus', title: @event.title
