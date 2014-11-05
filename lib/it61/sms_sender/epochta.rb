@@ -22,17 +22,15 @@ module SmsSender
     end
 
     def send!(text, sender_name, phone_number, sending_time = nil)
-      @phone_number = phone_number
-      @sending_time = sending_time
-      @sender_name = sender_name
-      @type = ENV['EPOCHTA_TYPE'].to_s
+      # В базе хранятся номера нормализованные в соответсвии со стандартом E.164, который не подразумевает
+      # символ '+' перед кодом страны. Но Epochta требует, чтобы номер начинались с '+'.
+      phone_number.prepend '+' unless phone_number.start_with? '+'
       options = { text: text,
-                  phone: @phone_number,
+                  phone: phone_number,
                   sms_lifetime: '0',
-                  type: @type }
-
-      options[:sender] = @sender_name if @sender_name.present?
-      options[:datetime] = @sending_time if @sending_time
+                  type: ENV['EPOCHTA_TYPE'].to_s }
+      options[:sender] = sender_name if sender_name.present?
+      options[:datetime] = sending_time if sending_time
       result = @epochta.send_sms(options)
       raise SmsSender::ServerError.new unless result
       result

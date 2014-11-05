@@ -14,13 +14,14 @@ namespace :it61 do
 
     desc 'Отправить sms-напопинания о предстоящем мероприятии пользователям, которые планируют его посетить'
     task sms: :environment do
+      sms_sender = SmsSender::Epochta.new
       Event.upcomming.each do |event|
         recipients = event.participants.remind_by_sms
         recipients.each {|user|
           text = I18n.translate('sms_sender.event_reminder.body',
                                 username: user.full_name,
                                 event: event.title)
-          SmsSender::Epochta.new.send!(text, ENV['EPOCHTA_SENDER'], user.normalized_phone)
+          sms_sender.send!(text, ENV['EPOCHTA_SENDER'], user.normalized_phone)
         }
       end
     end
