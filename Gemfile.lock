@@ -299,9 +299,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.5)
     whenever (0.9.4)
       chronic (>= 0.6.3)
-    uuidtools (2.1.5)
 
 PLATFORMS
   ruby

@@ -71,9 +71,9 @@ ActiveRecord::Schema.define(version: 20141105105800) do
     t.datetime "started_at"
     t.string   "title_image"
     t.string   "place"
-    t.datetime "deleted_at"
     t.boolean  "published_to_google_calendar", default: false
     t.string   "google_calendar_id"
+    t.datetime "deleted_at"
   end
 
   add_index "events", ["deleted_at"], name: "index_events_on_deleted_at", using: :btree
