@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105105800) do
+ActiveRecord::Schema.define(version: 20141104121427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,10 @@ ActiveRecord::Schema.define(version: 20141105105800) do
     t.text     "bio"
     t.string   "avatar_image"
     t.datetime "deleted_at"
+    t.string   "phone"
+    t.string   "normalized_phone"
+    t.boolean  "send_email_reminders",            default: true
+    t.boolean  "send_sms_reminders",              default: false
   end
 
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
@@ -109,5 +113,7 @@ ActiveRecord::Schema.define(version: 20141105105800) do
   add_index "users", ["name"], name: "index_users_on_name", using: :btree
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
+  add_index "users", ["send_email_reminders"], name: "index_users_on_send_email_reminders", using: :btree
+  add_index "users", ["send_sms_reminders"], name: "index_users_on_send_sms_reminders", using: :btree
 
 end

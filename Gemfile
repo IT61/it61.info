@@ -38,6 +38,9 @@ gem 'rollbar'
 gem 'whenever'
 gem 'google-api-client', git: 'git@github.com:deeeki/google-api-ruby-client.git', branch: 'fix_file_storage'
 gem 'sinatra', require: false
+gem 'phony_rails'
+gem 'figaro'
+gem 'e_pochta', '~> 0.5.2'
 
 group :development do
   gem 'spring'
@@ -45,9 +48,10 @@ group :development do
   gem 'quiet_assets'
   gem 'capistrano'
   gem 'capistrano-rails', '~> 1.0.0'
-  gem "capistrano-rvm"
+  gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
+  gem 'letter_opener'
 end
 
 group :development, :test do

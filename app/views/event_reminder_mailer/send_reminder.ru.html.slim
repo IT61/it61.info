@@ -1,0 +1,8 @@
+p Добрый день, #{@user.full_name}.
+
+p До мероприятия «#{@event.title}», которое вы планируете посетить осталось всего #{I18n.translate('misc.day', count: 2)}!
+p Напоминаем, что мероприятие пройдет #{l @event.started_at, format: :date_time_full}. Место проведения: #{@event.place}.
+
+| ---
+br
+| Комманда IT61.
