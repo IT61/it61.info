@@ -33,13 +33,13 @@ h2 = t('.edit_title')
       .clearfix
         .pull-left = f.check_box :send_email_reminders
         .pull-left
-          i.fa.fa-question-circle.bs-tooltip-icon data-toggle="tooltip"
-            data-placement="right" title=t('.send_email_reminders_hint')
+          i.fa.fa-question-circle.bs-tooltip-icon [data-toggle="tooltip"
+            data-placement="right" title=t('.send_email_reminders_hint')]
       .clearfix
         .pull-left = f.check_box :send_sms_reminders
         .pull-left
-          i.fa.fa-question-circle.bs-tooltip-icon data-toggle="tooltip"
-            data-placement="right" title=t('.send_sms_reminders_hint')
+          i.fa.fa-question-circle.bs-tooltip-icon [data-toggle="tooltip"
+            data-placement="right" title=t('.send_sms_reminders_hint')]
 
       hr
 
