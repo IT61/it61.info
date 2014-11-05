@@ -1,3 +1,20 @@
+GIT
+  remote: git@github.com:deeeki/google-api-ruby-client.git
+  revision: d481a503ee331f02971f01a2ab4f62d6d632cfb0
+  branch: fix_file_storage
+  specs:
+    google-api-client (0.7.1)
+      addressable (>= 2.3.2)
+      autoparse (>= 0.3.3)
+      extlib (>= 0.9.15)
+      faraday (>= 0.9.0)
+      jwt (>= 0.1.5)
+      launchy (>= 2.1.1)
+      multi_json (>= 1.0.0)
+      retriable (>= 1.4)
+      signet (>= 0.5.0)
+      uuidtools (>= 2.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -105,17 +122,6 @@ GEM
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
-    google-api-client (0.7.1)
-      addressable (>= 2.3.2)
-      autoparse (>= 0.3.3)
-      extlib (>= 0.9.15)
-      faraday (>= 0.9.0)
-      jwt (>= 0.1.5)
-      launchy (>= 2.1.1)
-      multi_json (>= 1.0.0)
-      retriable (>= 1.4)
-      signet (>= 0.5.0)
-      uuidtools (>= 2.1.0)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -324,7 +330,7 @@ DEPENDENCIES
   factory_girl_rails
   forgery
   gon
-  google-api-client
+  google-api-client!
   guard-rspec
   has_scope
   high_voltage (~> 2.1.0)
