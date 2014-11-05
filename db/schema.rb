@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804150543) do
+ActiveRecord::Schema.define(version: 20141105105800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,16 +62,18 @@ ActiveRecord::Schema.define(version: 20140804150543) do
   add_index "event_participations", ["user_id"], name: "index_event_participations_on_user_id", using: :btree
 
   create_table "events", force: true do |t|
-    t.string   "title",                        null: false
+    t.string   "title",                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organizer_id"
-    t.boolean  "published",    default: false
+    t.boolean  "published",                    default: false
     t.text     "description"
     t.datetime "started_at"
     t.string   "title_image"
     t.string   "place"
     t.datetime "deleted_at"
+    t.boolean  "published_to_google_calendar", default: false
+    t.string   "google_calendar_id"
   end
 
   add_index "events", ["deleted_at"], name: "index_events_on_deleted_at", using: :btree

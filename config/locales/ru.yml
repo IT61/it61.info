@@ -115,6 +115,8 @@ ru:
     show:
       publish: Опубликовать
       cancel_publication: Отменить публикацию
+      publish_to_google_calendar: Опубликовать в календаре
+      cancel_google_calendar_publication: Отменить публикацию в календаре
     destroy:
       success_message: Мероприятие «%{title}» удалено
     publish:
