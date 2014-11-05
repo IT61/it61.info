@@ -4,16 +4,23 @@ require 'google/api_client/auth/file_storage'
 class Event::GoogleCalendarIntegration
   include Rails.application.routes.url_helpers
 
+  attr_reader :event
+
+  def initialize(event)
+    if event.is_a? Event
+      @event = event
+    else
+      @event = Event.find(event)
+    end
+  end
+
   def self.create(event)
-    instance = new
-    instance.save(event)
+    instance = new(event)
+    instance.save
     instance
   end
 
-
-  def save(event)
-    event = Event.find(event) unless event.is_a? Event
-
+  def save
     event_json = {
       'summary' => event.title,
       'location' => event.place,
@@ -34,10 +41,27 @@ class Event::GoogleCalendarIntegration
 
     if result.status == 200
       event.published_to_google_calendar = true
+      event.google_calendar_id = JSON.parse(result.body)['id']
       event.save!
       update_credentials_file!
     end
     result
+  end
+
+  def delete
+    result = client.execute(api_method: calendar_api.events.delete,
+                            parameters: { 'calendarId' => Rails.application.secrets.calendar_id,
+                                          'eventId' => event.google_calendar_id })
+    if result.status == 204
+      event.published_to_google_calendar = false
+      event.google_calendar_id = nil
+      event.save!
+      update_credentials_file!
+    else
+      # TODO: Надо что-то более вменяемое сообщать.
+      # Пока в отладочных целях.
+      fail "Event::GoogleCalendarIntegration#delete failed with status #{result.status}"
+    end
   end
 
   private

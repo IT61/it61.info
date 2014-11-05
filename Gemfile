@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'rollbar'
 gem 'google-api-client'
+gem 'sinatra', require: false
 
 group :development do
   gem 'spring'

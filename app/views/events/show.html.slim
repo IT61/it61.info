@@ -11,12 +11,13 @@
         = link_to t('.publish'), publish_event_path(@event), class: 'btn btn-warning', method: :patch
       - else
         = link_to t('.cancel_publication'), cancel_publication_event_path(@event), class: 'btn btn-warning', method: :patch
-    - if @event.published_to_google_calendar?
+
+    - if can? :publish_to_google_calendar, @event
       | &nbsp;
-      = t('.published_to_google_calendar')
-    - else
-      - if can? :publish_to_google_calendar, @event
-        | &nbsp;
+      - if @event.published_to_google_calendar?
+        = link_to t('.cancel_google_calendar_publication'),
+                  event_google_calendar_integrations_path(@event), class: 'btn btn-default', method: :delete
+      - else
         = link_to t('.publish_to_google_calendar'),
                   event_google_calendar_integrations_path(@event), class: 'btn btn-default', method: :post
 
