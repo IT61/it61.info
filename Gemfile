@@ -36,7 +36,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'rollbar'
 gem 'whenever'
-gem 'google-api-client', git: 'git@github.com:deeeki/google-api-ruby-client.git', branch: 'fix_file_storage'
+gem 'google-api-client', github: 'deeeki/google-api-ruby-client', branch: 'fix_file_storage'
 gem 'sinatra', require: false
 gem 'phony_rails'
 gem 'figaro'
