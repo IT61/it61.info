@@ -19,6 +19,7 @@ h2 = t('.edit_title')
         .col-sm-6
           = f.text_field :first_name
           = f.text_field :last_name
+          = f.text_field :email, help: t('.email_hint')
           = f.text_field :phone, help: t('.phone_hint')
         .col-sm-6
           .panel.panel-default
