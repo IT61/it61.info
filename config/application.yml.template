@@ -6,6 +6,7 @@ MAILER_AUTHENTICATION: 'login'
 
 MAILER_FROM: 'no-reply@it61.ru'
 MAILER_RETURN_PATH: 'info@it61.ru'
+APP_HOST: 'http://it61.info'
 
 EPOCHTA_PRIVATE_KEY:
 EPOCHTA_PUBLIC_KEY:
