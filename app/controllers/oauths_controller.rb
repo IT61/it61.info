@@ -14,7 +14,7 @@ class OauthsController < ApplicationController
 
     if logged_in?
       add_authentication_to_current_user! provider
-      redirect_to edit_current_profile_path
+      redirect_to edit_user_profile_path(current_user)
     else
       create_new_user_or_add_authentication_to_existing_by_email! provider
       redirect_to root_path

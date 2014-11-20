@@ -19,12 +19,4 @@ module ApplicationHelper
   def render_editor?
     controller.controller_name == 'events' && !['index', 'show'].include?(controller.action_name)
   end
-
-  def edit_user_path(user)
-    if current_user == user
-      edit_current_profile_path
-    else
-      edit_user_profile_path(user)
-    end
-  end
 end
