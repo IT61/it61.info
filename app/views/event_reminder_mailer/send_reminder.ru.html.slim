@@ -1,7 +1,7 @@
 p Добрый день, #{@user.full_name}.
 
 p
-  | До мероприятия «#{link_to @event.title, event_path(@event)}»,
+  | До мероприятия «#{link_to @event.title, event_url(@event)}»,
     которое вы планируете посетить осталось всего #{I18n.translate('misc.day', count: 2)}!
 p Напоминаем, что мероприятие пройдет #{l @event.started_at, format: :date_time_full}. Место проведения: #{@event.place}.
 
@@ -9,4 +9,4 @@ p Напоминаем, что мероприятие пройдет #{l @event.
 br
 | С уважением, команда IT61.
 br
-= link_to 'www.it61.info', root_path
+= link_to 'www.it61.info', root_url
