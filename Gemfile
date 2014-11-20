@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'unicorn'
 gem 'rollbar'
+gem 'newrelic_rpm'
 gem 'whenever'
 gem 'google-api-client', github: 'deeeki/google-api-ruby-client', branch: 'fix_file_storage'
 gem 'sinatra', require: false

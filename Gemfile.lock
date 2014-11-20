@@ -175,6 +175,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    newrelic_rpm (3.9.7.266)
     oauth (0.4.7)
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
@@ -355,6 +356,7 @@ DEPENDENCIES
   marked-rails
   meta-tags
   mini_magick
+  newrelic_rpm
   paranoia (~> 2.0)
   pg
   phony_rails
