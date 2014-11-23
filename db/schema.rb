@@ -80,39 +80,33 @@ ActiveRecord::Schema.define(version: 20141105105800) do
   add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "crypted_password"
-    t.string   "salt"
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
-    t.string   "reset_password_token"
-    t.datetime "reset_password_token_expires_at"
-    t.datetime "reset_password_email_sent_at"
-    t.datetime "last_login_at"
-    t.datetime "last_logout_at"
-    t.datetime "last_activity_at"
-    t.string   "last_login_from_ip_address"
-    t.string   "name"
-    t.integer  "role"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.text     "bio"
-    t.string   "avatar_image"
     t.datetime "deleted_at"
     t.string   "phone"
     t.string   "normalized_phone"
-    t.boolean  "send_email_reminders",            default: true
-    t.boolean  "send_sms_reminders",              default: false
+    t.boolean  "send_email_reminders",   default: true
+    t.boolean  "send_sms_reminders",     default: false
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at", using: :btree
-  add_index "users", ["name"], name: "index_users_on_name", using: :btree
-  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["send_email_reminders"], name: "index_users_on_send_email_reminders", using: :btree
   add_index "users", ["send_sms_reminders"], name: "index_users_on_send_sms_reminders", using: :btree
 
