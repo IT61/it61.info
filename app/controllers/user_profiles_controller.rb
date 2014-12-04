@@ -39,7 +39,7 @@ class UserProfilesController < ApplicationController
 
   def user_profile_params
     params.require(:user).permit(:first_name, :last_name, :bio,
-                                 :password, :password_confirmation,
+                                 :password, :password_confirmation, :email,
                                  :avatar_image, :avatar_image_cache, :phone,
                                  :send_email_reminders, :send_sms_reminders)
   end
