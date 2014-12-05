@@ -26,9 +26,6 @@
       - if can? :edit, @event
         = render partial: 'admin_info', object: @event, as: :event
       = @event.title
-      | &nbsp;
-      small
-        = l @event.started_at, format: :date_time_full
 
   .row
     .col-xs-12.col-sm-4
