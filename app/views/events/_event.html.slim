@@ -9,7 +9,6 @@
         = render partial: 'admin_info', object: event, as: :event
       = link_to event.title, event_path(event)
       | &nbsp;
-      small = l event.started_at, format: :date_time_full
   .panel-body
     .row
       .col-sm-4
