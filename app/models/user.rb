@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
 
   after_create :assign_default_role
   after_restore :restore_event_participations
+  # В случае, если OAuth провайдер не предоставляет email в базу может быть записана пустая строка,
+  # что приведет в нарушению уникальности index_users_on_email
+  before_save :nullify_empty_email
 
   phony_normalize :phone, as: :normalized_phone, default_country_code: 'RU'
   validates_plausible_phone :phone, country_code: 'RU'
@@ -69,5 +72,9 @@ class User < ActiveRecord::Base
                             .where(user_id: id)
                             .pluck(:id)
     EventParticipation.restore ids
+  end
+
+  def nullify_empty_email
+    self.email = nil unless email.present?
   end
 end
