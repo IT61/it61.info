@@ -37,7 +37,7 @@ gem 'unicorn'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'whenever'
-gem 'google-api-client', github: 'deeeki/google-api-ruby-client', branch: 'fix_file_storage'
+gem 'google-api-client', github: 'google/google-api-ruby-client', branch: 'master'
 gem 'sinatra', require: false
 gem 'phony_rails'
 gem 'figaro'
