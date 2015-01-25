@@ -10,17 +10,24 @@ class Event < ActiveRecord::Base
   validates :title, presence: true
   validates :organizer, presence: true
   validates :place, presence: true
+  validates :published_at, presence: true, if: :published?
 
   scope :ordered_desc, -> { order(started_at: :desc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
-  scope :upcomming, -> { where('started_at > ?', Time.zone.now.to_date ) }
-  scope :today, -> { started_in(Time.zone.now) }
+  scope :upcomming, -> { where('started_at > ?', DateTime.current ) }
+  scope :today, -> { started_in(DateTime.current) }
   scope :started_in, -> (datetime) {
     where('started_at > :start and started_at < :end',
           start: datetime.beginning_of_day,
           end: datetime.end_of_day)
   }
+  scope :published_at, -> (datetime) {
+    where('published_at > :start and published_at < :end',
+          start: datetime.beginning_of_day,
+          end: datetime.end_of_day)
+  }
+  scope :not_notified_about, ->{ where(subscribers_notification_send: false) }
 
   after_restore :restore_event_participations
 
@@ -33,16 +40,18 @@ class Event < ActiveRecord::Base
   end
 
   def past?
-    started_at < DateTime.now
+    started_at < DateTime.current
   end
 
   def publish!
     self.toggle :published
+    self.published_at = DateTime.current
     save!
   end
 
   def cancel_publication!
     self.toggle :published
+    self.published_at = nil
     save!
   end
 
@@ -61,6 +70,5 @@ class Event < ActiveRecord::Base
                             .pluck(:id)
     EventParticipation.restore ids
   end
-
 
 end

@@ -26,5 +26,12 @@ module It61Rails
     config.assets.precompile += %w( editor.js )
 
     config.responders.flash_keys = [:success, :error]
+
+    config.action_mailer.default_url_options =  { host: ENV['APP_HOST'] }
+    config.action_mailer.default_options = {
+      from: ENV['MAILER_FROM'],
+      reply_to: ENV['MAILER_RETURN_PATH']
+    }
+
   end
 end
