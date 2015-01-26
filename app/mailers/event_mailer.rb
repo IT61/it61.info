@@ -1,10 +1,10 @@
 class EventMailer < ActionMailer::Base
 
-  def upcoming_event_notification(user, event)
+  def upcoming_event_reminder(user, event)
     @user = user
     @event = event
 
-    subj = I18n.t('event_mailer.upcoming_event_notification.subject',
+    subj = I18n.t('event_mailer.upcoming_event_reminder.subject',
                   event: event.title,
                   days_left: I18n.translate('misc.day', count: 2))
     mail(to: user.email, subject: subj)

@@ -29,7 +29,7 @@ namespace :it61 do
         events = Event.published.upcomming.started_in(2.days.from_now)
         events.each do |event|
           recipients = event.participants.notify_by_email
-          recipients.each {|user| EventMailer.upcoming_event_notification(user, event).deliver! }
+          recipients.each {|user| EventMailer.upcoming_event_reminder(user, event).deliver! }
         end
       end
 
@@ -39,7 +39,7 @@ namespace :it61 do
         Event.published.upcomming.today.each do |event|
           recipients = event.participants.notify_by_sms
           recipients.each {|user|
-            text = I18n.translate('sms_sender.upcoming_event_notification.body',
+            text = I18n.translate('sms_sender.upcoming_event_reminder.body',
                                   username: user.full_name,
                                   event: event.title)
             sms_sender.send!(text, ENV['EPOCHTA_SENDER'], user.normalized_phone)

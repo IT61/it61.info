@@ -1,4 +1,4 @@
-class AddSubscribedToUser < ActiveRecord::Migration
+class AddSubscribedToUsers < ActiveRecord::Migration
   def up
     add_column :users, :subscribed, :boolean, default: true
     add_index :users, :subscribed

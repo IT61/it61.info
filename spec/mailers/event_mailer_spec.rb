@@ -5,9 +5,9 @@ describe EventMailer do
   let(:replyto_email) { 'reply@it61.info' }
   let(:user) { FactoryGirl.build_stubbed(:user) }
 
-  describe 'upcoming_event_notification' do
+  describe 'upcoming_event_reminder' do
     let(:event) { FactoryGirl.build_stubbed(:event, :published, started_at: 2.days.since) }
-    let(:mail) { EventMailer.upcoming_event_notification(user, event) }
+    let(:mail) { EventMailer.upcoming_event_reminder(user, event) }
 
     let(:expected_body) { [event.title] }
     let(:expected_subject) do

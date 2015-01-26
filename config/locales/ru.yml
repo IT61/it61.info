@@ -214,14 +214,14 @@ ru:
       extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
 
   event_mailer:
-    upcoming_event_notification:
+    upcoming_event_reminder:
       subject: "До мероприятия «%{event}» осталось %{days_left}"
     new_events_digest:
       subject:
         single: Новое мероприятие
         many: Новые мероприятия
   sms_sender:
-    upcoming_event_notification:
+    upcoming_event_reminder:
       body: "Здравствуйте, %{username}. Напоминаем, что сегодня пройдет мероприятие «%{event}», которое вы планировали посетить. Подробности о времени и месте проведения: http://it61.ru"
 
   misc:
