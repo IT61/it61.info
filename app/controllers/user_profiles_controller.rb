@@ -41,6 +41,6 @@ class UserProfilesController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :bio,
                                  :password, :password_confirmation, :email,
                                  :avatar_image, :avatar_image_cache, :phone,
-                                 :send_email_reminders, :send_sms_reminders)
+                                 :email_reminders, :sms_reminders, :subscribed)
   end
 end

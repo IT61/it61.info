@@ -8,3 +8,6 @@ init = ->
   edit: ->
     $ ->
       init()
+  update: ->
+    $ ->
+      init()
