@@ -12,10 +12,10 @@ describe EventsController do
       login_user
 
       event_attrs = FactoryGirl.attributes_for(:event)
-      post :create, event: event_attrs
+      request = post :create, event: event_attrs
 
-      created_event = Event.first
-      should redirect_to event_path(created_event)
+      created_event = Event.last
+      expect(request).to redirect_to event_path(created_event)
     end
 
     specify "event'll be unpublished if member create it" do
@@ -34,10 +34,10 @@ describe EventsController do
       login_user
 
       event_attrs = FactoryGirl.attributes_for(:event)
-      post :create, event: event_attrs
+      request = post :create, event: event_attrs
 
-      created_event = Event.first
-      should redirect_to event_path(created_event)
+      created_event = Event.last
+      expect(request).to redirect_to event_path(created_event)
     end
 
     it 'assigns organizer to event' do
@@ -47,7 +47,7 @@ describe EventsController do
       event_attrs = FactoryGirl.attributes_for(:event)
       post :create, event: event_attrs
 
-      created_event = Event.first
+      created_event = Event.last
       expect(created_event.organizer).to eq @user
     end
   end
