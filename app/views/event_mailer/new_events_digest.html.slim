@@ -1,0 +1,15 @@
+p Приветствуем, #{@user.full_name}!
+
+p
+  | Новые мероприятия на «IT61», опубликованные за последние сутки:
+  ul
+    - @events.each do |event|
+      li = link_to event.title, event_url(event)
+
+small Вы можете отключить рассылку новых мероприятий в "#{link_to('настройках профиля', edit_user_profile_url(@user))}".
+
+| ---
+br
+| С уважением, команда IT61.
+br
+= link_to 'www.it61.info', root_url

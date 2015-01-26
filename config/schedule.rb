@@ -9,5 +9,5 @@ every 1.months do
 end
 
 every :day, at: '9am' do
-  rake 'it61:event_reminders:email it61:event_reminders:sms'
+  rake 'it61:events:reminders:email it61:events:reminders:sms it61:events:new_events_digest'
 end

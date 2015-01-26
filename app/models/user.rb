@@ -24,17 +24,20 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, if: 'email_required?'
 
   after_create :assign_default_role
-  after_restore :restore_event_participations
+
   # В случае, если OAuth провайдер не предоставляет email в базу может быть записана пустая строка,
   # что приведет в нарушению уникальности index_users_on_email
   before_save :nullify_empty_email
 
+  after_restore :restore_event_participations
+
   phony_normalize :phone, as: :normalized_phone, default_country_code: 'RU'
   validates_plausible_phone :phone, country_code: 'RU'
-  validates :phone, presence: true, if: :send_sms_reminders?
+  validates :phone, presence: true, if: :sms_reminders?
 
-  scope :remind_by_email, -> { where(send_email_reminders: true).where.not(email: nil) }
-  scope :remind_by_sms, -> { where(send_sms_reminders: true).where.not(phone: nil) }
+  scope :notify_by_email, -> { where(email_reminders: true).where.not(email: nil) }
+  scope :notify_by_sms, -> { where(sms_reminders: true).where.not(phone: nil) }
+  scope :subscribed, -> { where(subscribed: true) }
 
   def login
     name || email.split('@').first
@@ -46,6 +49,11 @@ class User < ActiveRecord::Base
 
   def event_participations
     EventParticipation.unscoped { super }
+  end
+
+  def subscribe!
+    self.subscribed = true
+    save!
   end
 
   private

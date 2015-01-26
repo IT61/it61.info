@@ -7,5 +7,10 @@ FactoryGirl.define do
     factory :admin do
       role :admin
     end
+
+    factory :oauth_user do
+      name { Forgery::Name.full_name }
+      authentications { build_list :authentication, 1 }
+    end
   end
 end

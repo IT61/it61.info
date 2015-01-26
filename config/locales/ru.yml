@@ -95,8 +95,9 @@ ru:
       new_password_confirmation: Подтверждение нового пароля
       email_hint: Не отображается на сайте
       phone_hint: Не отображается на сайте, используется для напоминаний о мероприятиях
-      send_email_reminders_hint: За 2 дня до начала мероприятия, которое вы запланировали посетить, мы отправим вам письмо с информацией о месте и дате проведения.
-      send_sms_reminders_hint: Утром, в день мероприятия, мы отправим вам SMS-сообщение с напоминанием. Если вас интересует эта возможность, то необходимо указать номер мобильного телефона.
+      email_reminders_hint: За 2 дня до начала мероприятия, которое вы запланировали посетить, мы отправим вам письмо с информацией о месте и дате проведения.
+      sms_reminders_hint: Утром, в день мероприятия, мы отправим вам SMS-сообщение с напоминанием. Если вас интересует эта возможность, то необходимо указать номер мобильного телефона.
+      subscribed_hint: Каждое утро мы отправляем Email со списком новых мероприятий.
     destroy:
       success_message: Пользователь «%{title}» удален
     show:
@@ -178,11 +179,14 @@ ru:
         bio: Обо мне
         avatar_image: Аватар
         phone: Телефон
-        send_sms_reminders: SMS-напоминания
-        send_email_reminders: Email-напоминания
+        subscribed: Получать новости сайта
+        sms_reminders: SMS-напоминания
+        email_reminders: Email-напоминания
+        participant_notifications_only: Уведомлять только о тех событиях, на которые я иду
       event:
         title: Название
         published: Мероприятие опубликовано
+        published_at: Дата публикации
         description: Описание
         started_at: Дата начала
         title_image: Титульное изображение
@@ -209,11 +213,15 @@ ru:
     messages:
       extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
 
-  event_reminder_mailer:
-    send_reminder:
+  event_mailer:
+    upcoming_event_reminder:
       subject: "До мероприятия «%{event}» осталось %{days_left}"
+    new_events_digest:
+      subject:
+        single: Новое мероприятие
+        many: Новые мероприятия
   sms_sender:
-    event_reminder:
+    upcoming_event_reminder:
       body: "Здравствуйте, %{username}. Напоминаем, что сегодня пройдет мероприятие «%{event}», которое вы планировали посетить. Подробности о времени и месте проведения: http://it61.ru"
 
   misc:
