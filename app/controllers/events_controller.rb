@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   respond_to :html
+  respond_to :rss, only: :index
   responders :flash
 
   load_resource param_method: :event_params
