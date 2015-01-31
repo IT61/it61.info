@@ -19,6 +19,8 @@ ru:
   github: GitHub
   google: Google
 
+  feed_description: "Мероприятия Ростовского IT-сообщества"
+
   event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
   event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
 
