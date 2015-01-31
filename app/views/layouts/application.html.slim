@@ -9,6 +9,7 @@ html lang='ru'
                         og: { site_name: t(:app_name), url: request.url,
                               title: :title, description: :description }
 
+    = auto_discovery_link_tag(:rss, events_path(format: :rss))
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     - if render_editor?
