@@ -24,8 +24,10 @@ class Event::GoogleCalendarIntegration
     event_json = {
       'summary' => event.title,
       'location' => event.place,
-      # TODO: Убрать хардкод хоста.
-      'url' => event_url(event, host: 'http://it61.info'),
+      'source' => {
+        'title' => event.title,
+        'url' => event_url(event, host: ENV['APP_HOST'])
+      },
       'start' => {
         'dateTime' => event.started_at.to_datetime.rfc3339
       },
@@ -58,8 +60,6 @@ class Event::GoogleCalendarIntegration
       event.save!
       update_credentials_file!
     else
-      # TODO: Надо что-то более вменяемое сообщать.
-      # Пока в отладочных целях.
       fail "Event::GoogleCalendarIntegration#delete failed with status #{result.status}"
     end
   end
