@@ -1,8 +1,7 @@
 dt = t('.title')
 dd
   ul.list-inline
-    / - [:facebook, :vk, :github, :google].each do |provider|
-    - [:vk, :github, :google].each do |provider|
-      - if @user.authentications.where(provider: provider).any?
-        li = link_to t(provider), @user.authentications.find_by(provider: provider).link,
-                  target: '_blank', class: "btn btn-default btn-#{provider}"
+    - @user.authentications.each do |auth|
+      li
+        = link_to t(auth.provider), auth.link,
+          target: '_blank', class: "btn btn-default btn-#{auth.provider}"
