@@ -71,9 +71,11 @@ ActiveRecord::Schema.define(version: 20150127015358) do
     t.datetime "started_at"
     t.string   "title_image"
     t.string   "place"
-    t.boolean  "published_to_google_calendar", default: false
+    t.boolean  "published_to_google_calendar",  default: false
     t.string   "google_calendar_id"
     t.datetime "deleted_at"
+    t.boolean  "subscribers_notification_send", default: false
+    t.datetime "published_at"
   end
 
   add_index "events", ["deleted_at"], name: "index_events_on_deleted_at", using: :btree
@@ -105,16 +107,19 @@ ActiveRecord::Schema.define(version: 20150127015358) do
     t.datetime "deleted_at"
     t.string   "phone"
     t.string   "normalized_phone"
-    t.boolean  "send_email_reminders",            default: true
-    t.boolean  "send_sms_reminders",              default: false
+    t.boolean  "email_reminders",                 default: true
+    t.boolean  "sms_reminders",                   default: false
+    t.boolean  "subscribed"
   end
 
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email_reminders"], name: "index_users_on_email_reminders", using: :btree
   add_index "users", ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at", using: :btree
   add_index "users", ["name"], name: "index_users_on_name", using: :btree
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
-  add_index "users", ["send_email_reminders"], name: "index_users_on_send_email_reminders", using: :btree
-  add_index "users", ["send_sms_reminders"], name: "index_users_on_send_sms_reminders", using: :btree
+  add_index "users", ["sms_reminders"], name: "index_users_on_sms_reminders", using: :btree
+  add_index "users", ["subscribed"], name: "index_users_on_subscribed", using: :btree
+
 end
