@@ -80,7 +80,11 @@ module SorceryExternalFixes
   def apply_user_info_if_not_exists!(user)
     attrs = user_attrs(@provider.user_info_mapping, @user_hash)
     attrs.each do |k, v|
-      user.send(:"#{k}=", v) unless user.send(k).present?
+      if k.to_sym == :remote_avatar_image_url
+        user.remote_avatar_image_url = v unless user.avatar_image.present?
+      else
+        user.send(:"#{k}=", v) unless user.send(k).present?
+      end
     end
     user.save(validate: false)
 

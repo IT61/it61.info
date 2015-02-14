@@ -1,29 +1,39 @@
+GIT
+  remote: git@github.com:NoamB/sorcery.git
+  revision: 43777996ae762d763035964c68a241c3475b3e2d
+  branch: master
+  specs:
+    sorcery (0.9.0)
+      bcrypt (~> 3.1)
+      oauth (~> 0.4, >= 0.4.4)
+      oauth2 (>= 0.8.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.1.8)
-      actionpack (= 4.1.8)
-      actionview (= 4.1.8)
+    actionmailer (4.1.9)
+      actionpack (= 4.1.9)
+      actionview (= 4.1.9)
       mail (~> 2.5, >= 2.5.4)
-    actionpack (4.1.8)
-      actionview (= 4.1.8)
-      activesupport (= 4.1.8)
+    actionpack (4.1.9)
+      actionview (= 4.1.9)
+      activesupport (= 4.1.9)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    actionview (4.1.8)
-      activesupport (= 4.1.8)
+    actionview (4.1.9)
+      activesupport (= 4.1.9)
       builder (~> 3.1)
       erubis (~> 2.7.0)
     active_link_to (1.0.2)
       actionpack
-    activemodel (4.1.8)
-      activesupport (= 4.1.8)
+    activemodel (4.1.9)
+      activesupport (= 4.1.9)
       builder (~> 3.1)
-    activerecord (4.1.8)
-      activemodel (= 4.1.8)
-      activesupport (= 4.1.8)
+    activerecord (4.1.9)
+      activemodel (= 4.1.9)
+      activesupport (= 4.1.9)
       arel (~> 5.0.0)
-    activesupport (4.1.8)
+    activesupport (4.1.9)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -36,9 +46,7 @@ GEM
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
     awesome_print (1.2.0)
-    bcrypt (3.1.7)
-    bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
+    bcrypt (3.1.10)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bootstrap_form (2.1.1)
@@ -100,7 +108,7 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
-    faraday (0.9.0)
+    faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     figaro (1.0.0)
@@ -133,15 +141,15 @@ GEM
     has_scope (0.5.1)
     high_voltage (2.1.0)
     hike (1.2.3)
-    i18n (0.6.11)
+    i18n (0.7.0)
     jbuilder (2.0.7)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.8.1)
-    jwt (1.0.0)
+    json (1.8.2)
+    jwt (1.2.1)
     kgio (2.9.2)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -161,7 +169,7 @@ GEM
     mime-types (2.4.3)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    minitest (5.4.3)
+    minitest (5.5.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -170,7 +178,7 @@ GEM
     net-ssh (2.9.1)
     newrelic_rpm (3.9.7.266)
     oauth (0.4.7)
-    oauth2 (0.9.4)
+    oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
       multi_json (~> 1.3)
@@ -188,33 +196,38 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-doc (0.6.0)
+      pry (~> 0.9)
+      yard (~> 0.8)
+    pry-rails (0.3.3)
+      pry (>= 0.9.10)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
-    rails (4.1.8)
-      actionmailer (= 4.1.8)
-      actionpack (= 4.1.8)
-      actionview (= 4.1.8)
-      activemodel (= 4.1.8)
-      activerecord (= 4.1.8)
-      activesupport (= 4.1.8)
+    rails (4.1.9)
+      actionmailer (= 4.1.9)
+      actionpack (= 4.1.9)
+      actionview (= 4.1.9)
+      activemodel (= 4.1.9)
+      activerecord (= 4.1.9)
+      activesupport (= 4.1.9)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.8)
+      railties (= 4.1.9)
       sprockets-rails (~> 2.0)
     rails-i18n (4.0.2)
       i18n (~> 0.6)
       rails (>= 4.0)
-    railties (4.1.8)
-      actionpack (= 4.1.8)
-      activesupport (= 4.1.8)
+    railties (4.1.9)
+      actionpack (= 4.1.9)
+      activesupport (= 4.1.9)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
-    rake (10.3.2)
+    rake (10.4.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.4)
       ffi (>= 0.5.0)
@@ -273,10 +286,6 @@ GEM
       railties (>= 3.0, < 4.2)
       slim (~> 2.0)
     slop (3.5.0)
-    sorcery (0.8.5)
-      bcrypt-ruby (>= 3.0)
-      oauth (~> 0.4.4)
-      oauth2 (>= 0.8.0, < 1.0.0)
     spring (1.1.3)
     spring-commands-rspec (1.0.2)
       spring (>= 0.9.1)
@@ -315,6 +324,7 @@ GEM
       raindrops (~> 0.7)
     whenever (0.9.4)
       chronic (>= 0.6.3)
+    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -353,8 +363,10 @@ DEPENDENCIES
   paranoia (~> 2.0)
   pg
   phony_rails
+  pry-doc
+  pry-rails
   quiet_assets
-  rails (~> 4.1.6)
+  rails (~> 4.1.9)
   rails-i18n
   rb-fsevent
   redcarpet
@@ -366,7 +378,7 @@ DEPENDENCIES
   shoulda-matchers
   sinatra
   slim-rails
-  sorcery
+  sorcery!
   spring
   spring-commands-rspec
   styx

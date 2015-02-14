@@ -146,11 +146,13 @@ Rails.application.config.sorcery.configure do |config|
   config.vk.key = Rails.application.secrets.vk_key
   config.vk.secret = Rails.application.secrets.vk_secret
   config.vk.callback_url = Rails.application.secrets.vk_callback_url
+  config.vk.scope = 'email'
   config.vk.user_info_mapping = {
     remote_avatar_image_url: 'photo_200_orig',
     name: 'domain',
     first_name: 'first_name',
-    last_name: 'last_name'
+    last_name: 'last_name',
+    email: 'email'
   }
 
   #

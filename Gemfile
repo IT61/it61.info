@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.6'
+gem 'rails', '~> 4.1.9'
 gem 'rails-i18n'
 gem 'unicode'
-gem 'sorcery'
+gem 'sorcery', git: 'git@github.com:NoamB/sorcery.git', branch: 'master'
 gem 'responders'
 gem 'has_scope'
 gem 'active_link_to'
@@ -43,9 +43,12 @@ gem 'phony_rails'
 gem 'figaro'
 gem 'e_pochta', '~> 0.5.2'
 
+gem 'pry-rails'
+gem 'pry-doc', require: false
+gem 'awesome_print'
+
 group :development do
   gem 'spring'
-  gem 'awesome_print'
   gem 'quiet_assets'
   gem 'capistrano'
   gem 'capistrano-rails', '~> 1.0.0'
