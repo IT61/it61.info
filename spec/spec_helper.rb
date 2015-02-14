@@ -14,7 +14,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  include Sorcery::TestHelpers::Rails
+  config.include Sorcery::TestHelpers::Rails::Controller
+  config.include FactoryGirl::Syntax::Methods
+  config.include AbstractController::Translation
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
