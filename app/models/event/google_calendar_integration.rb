@@ -37,7 +37,7 @@ class Event::GoogleCalendarIntegration
     }
 
     result = client.execute(api_method: calendar_api.events.insert,
-                            parameters: { 'calendarId' => Rails.application.secrets.calendar_id },
+                            parameters: { 'calendarId' => ENV['CALENDAR_ID'] },
                             body: JSON.dump(event_json),
                             headers: { 'Content-Type' => 'application/json' })
 
@@ -52,7 +52,7 @@ class Event::GoogleCalendarIntegration
 
   def delete
     result = client.execute(api_method: calendar_api.events.delete,
-                            parameters: { 'calendarId' => Rails.application.secrets.calendar_id,
+                            parameters: { 'calendarId' => ENV['CALENDAR_ID'],
                                           'eventId' => event.google_calendar_id })
     if result.status == 204
       event.published_to_google_calendar = false

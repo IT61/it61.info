@@ -112,21 +112,21 @@ Rails.application.config.sorcery.configure do |config|
   # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
   # config.twitter.user_info_mapping = {:email => "screen_name"}
   #
-  config.facebook.key = Rails.application.secrets.facebook_key
-  config.facebook.secret = Rails.application.secrets.facebook_secret
-  config.facebook.callback_url = Rails.application.secrets.facebook_callback_url
+  config.facebook.key = ENV['FACEBOOK_KEY']
+  config.facebook.secret = ENV['FACEBOOK_SECRET']
+  config.facebook.callback_url = ENV['FACEBOOK_CALLBACK_URL']
   config.facebook.user_info_mapping = {
     remote_avatar_image_url: 'avatar',
-    email: "email",
+    email: 'email',
     name: 'name',
     first_name: 'first_name',
     last_name: 'last_name'
   }
   config.facebook.access_permissions = ["email", "publish_stream"]
   #
-  config.github.key = Rails.application.secrets.github_key
-  config.github.secret = Rails.application.secrets.github_secret
-  config.github.callback_url = Rails.application.secrets.github_callback_url
+  config.github.key = ENV['GITHUB_KEY']
+  config.github.secret = ENV['GITHUB_SECRET']
+  config.github.callback_url = ENV['GITHUB_CALLBACK_URL']
   config.github.user_info_mapping = {
     remote_avatar_image_url: 'avatar_url',
     name: 'login',
@@ -134,18 +134,18 @@ Rails.application.config.sorcery.configure do |config|
   }
 
   #
-  config.google.key = Rails.application.secrets.google_key
-  config.google.secret = Rails.application.secrets.google_secret
-  config.google.callback_url = Rails.application.secrets.google_callback_url
+  config.google.key = ENV['GOOGLE_KEY']
+  config.google.secret = ENV['GOOGLE_SECRET']
+  config.google.callback_url = ENV['GOOGLE_CALLBACK_URL']
   config.google.user_info_mapping = {
-    email: "email",
-    name: "name",
+    email: 'email',
+    name: 'name',
     remote_avatar_image_url: 'picture',
   }
   #
-  config.vk.key = Rails.application.secrets.vk_key
-  config.vk.secret = Rails.application.secrets.vk_secret
-  config.vk.callback_url = Rails.application.secrets.vk_callback_url
+  config.vk.key = ENV['VK_KEY']
+  config.vk.secret = ENV['VK_SECRET']
+  config.vk.callback_url = ENV['VK_CALLBACK_URL']
   config.vk.scope = 'email'
   config.vk.user_info_mapping = {
     remote_avatar_image_url: 'photo_200_orig',
