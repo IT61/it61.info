@@ -1,5 +1,12 @@
 .events-index
-  .page-header
-    h1 = title Event.model_name.human(count: 2)
+  .page-header.clearfix
+    .actions.pull-right
+      => link_to events_path(format: :rss), target: '_blank', data: { toggle: :tooltip, placement: :left },
+                 title: t('.rss_link_title')
+        i.fa.fa-rss
+      = link_to ENV['CALENDAR_URL'], target: '_blank', data: { toggle: :tooltip, placement: :left },
+                title: t('.google_calendar_link_title')
+        i.fa.fa-calendar
+    h1.pull-left = title Event.model_name.human(count: 2)
 
   .events = render @events

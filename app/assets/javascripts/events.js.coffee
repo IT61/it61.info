@@ -55,6 +55,9 @@ previewTabHandler = (e) ->
   $('.nav-tabs li.preview a').tab 'show'
 
 @Styx.Initializers.Events =
+  index: ->
+    $ ->
+      $('.page-header > .actions > a').tooltip()
   new: ->
     $ ->
       setupEditor()

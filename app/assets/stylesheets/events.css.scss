@@ -18,6 +18,16 @@
 }
 
 .events-index {
+  .page-header > .actions {
+    margin-top: 24px;
+    line-height: 40px;
+    > a {
+      color: $text-color;
+      display: inline-block;
+      font-size: $font-size-base * 2;
+    }
+  }
+
   .events {
     .event {
       &.panel {

@@ -115,6 +115,8 @@ ru:
   events:
     index:
       add_event_button_title: Добавить мероприятие
+      rss_link_title: Лента мероприятий в формате RSS
+      google_calendar_link_title: Google-календарь мероприятий
     new:
       title: Новое мероприятие
     edit:
