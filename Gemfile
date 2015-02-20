@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
+
 gem 'rails', '~> 4.1.9'
 gem 'rails-i18n'
 gem 'unicode'
@@ -7,12 +9,12 @@ gem 'sorcery', git: 'git@github.com:NoamB/sorcery.git', branch: 'master'
 gem 'responders'
 gem 'has_scope'
 gem 'active_link_to'
-gem 'gon'
 gem 'pg'
 gem 'cancancan', '~> 1.7'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'high_voltage', '~> 2.1.0'
+gem 'icalendar'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -29,8 +31,6 @@ gem 'meta-tags'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-
-gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'unicorn'
 gem 'rollbar'
@@ -63,6 +63,4 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
-  gem 'guard-rspec'
-  gem 'rb-fsevent'
 end

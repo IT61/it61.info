@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   respond_to :html
+  respond_to :ics, only: :show
   respond_to :rss, only: :index
   responders :flash
 
@@ -16,7 +17,14 @@ class EventsController < ApplicationController
 
   def show
     @event = @event.decorate
-    respond_with @event
+    respond_with @event do |format|
+      format.ics {
+        calendar = Icalendar::Calendar.new
+        calendar.add_event(@event.to_ics)
+        # calendar.publish
+        render text: calendar.to_ical
+      }
+    end
   end
 
   def new
