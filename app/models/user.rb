@@ -28,8 +28,6 @@ class User < ActiveRecord::Base
   # что приведет в нарушению уникальности index_users_on_email
   before_save :nullify_empty_email
 
-  after_restore :restore_event_participations
-
   phony_normalize :phone, as: :normalized_phone, default_country_code: 'RU'
   validates_plausible_phone :phone, country_code: 'RU'
   validates :phone, presence: true, if: :sms_reminders?

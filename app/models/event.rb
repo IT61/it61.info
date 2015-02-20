@@ -28,8 +28,6 @@ class Event < ActiveRecord::Base
   }
   scope :not_notified_about, ->{ where(subscribers_notification_send: false) }
 
-  after_restore :restore_event_participations
-
   def user_participated?(user)
     user && event_participations.find_by(user_id: user.id)
   end
