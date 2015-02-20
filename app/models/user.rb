@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   mount_uploader :avatar_image, UserAvatarUploader
-  acts_as_paranoid
 
   authenticates_with_sorcery!
 

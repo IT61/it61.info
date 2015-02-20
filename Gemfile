@@ -13,7 +13,6 @@ gem 'cancancan', '~> 1.7'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'high_voltage', '~> 2.1.0'
-gem 'paranoia', '~> 2.0'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'

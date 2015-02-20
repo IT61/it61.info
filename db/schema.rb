@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216113018) do
+ActiveRecord::Schema.define(version: 20150220162905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,10 +54,8 @@ ActiveRecord::Schema.define(version: 20150216113018) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
   end
 
-  add_index "event_participations", ["deleted_at"], name: "index_event_participations_on_deleted_at", using: :btree
   add_index "event_participations", ["event_id"], name: "index_event_participations_on_event_id", using: :btree
   add_index "event_participations", ["user_id"], name: "index_event_participations_on_user_id", using: :btree
 
@@ -73,12 +71,10 @@ ActiveRecord::Schema.define(version: 20150216113018) do
     t.string   "place"
     t.boolean  "published_to_google_calendar",  default: false
     t.string   "google_calendar_id"
-    t.datetime "deleted_at"
     t.boolean  "subscribers_notification_send", default: false
     t.datetime "published_at"
   end
 
-  add_index "events", ["deleted_at"], name: "index_events_on_deleted_at", using: :btree
   add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
   add_index "events", ["published_at"], name: "index_events_on_published_at", using: :btree
   add_index "events", ["subscribers_notification_send"], name: "index_events_on_subscribers_notification_send", using: :btree
@@ -104,7 +100,6 @@ ActiveRecord::Schema.define(version: 20150216113018) do
     t.string   "last_name"
     t.text     "bio"
     t.string   "avatar_image"
-    t.datetime "deleted_at"
     t.string   "phone"
     t.string   "normalized_phone"
     t.boolean  "email_reminders",                 default: true
@@ -112,7 +107,6 @@ ActiveRecord::Schema.define(version: 20150216113018) do
     t.boolean  "subscribed"
   end
 
-  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["email_reminders"], name: "index_users_on_email_reminders", using: :btree
   add_index "users", ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at", using: :btree
