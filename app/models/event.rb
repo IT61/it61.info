@@ -57,6 +57,7 @@ class Event < ActiveRecord::Base
   private
 
   def permalink_title
-    [started_at.to_date.to_s, title].join(' ')
+    formatted_started_at = started_at.to_date.to_s if started_at.present?
+    [formatted_started_at, title].join(' ')
   end
 end
