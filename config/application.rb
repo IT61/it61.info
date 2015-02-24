@@ -23,15 +23,15 @@ module It61Rails
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
 
-    config.assets.precompile += %w( editor.js )
-
+    config.assets.precompile += %w(editor.js)
     config.responders.flash_keys = [:success, :error]
+
+    config.eager_load_paths += ["#{config.root}/lib/it61"]
 
     config.action_mailer.default_url_options =  { host: ENV['APP_HOST'] }
     config.action_mailer.default_options = {
       from: ENV['MAILER_FROM'],
       reply_to: ENV['MAILER_RETURN_PATH']
     }
-
   end
 end

@@ -16,14 +16,18 @@ class EventsController < ApplicationController
   end
 
   def show
+    # Редирект на базовый актуальный url в том случае, если передан устаревший.
+    if params[:id] != @event.to_param
+      redirect_to event_path(@event), status: :moved_permanently
+      return
+    end
+
     @event = @event.decorate
     respond_with @event do |format|
-      format.ics {
-        calendar = Icalendar::Calendar.new
-        calendar.add_event(@event.to_ics)
-        # calendar.publish
-        render text: calendar.to_ical
-      }
+      format.ics do
+        ics_generator = Event::IcsGenerator.new(@event)
+        send_data ics_generator.ics_content, filename: ics_generator.file_name, type: ics_generator.conten_type
+      end
     end
   end
 
