@@ -23,10 +23,10 @@ class Event < ActiveRecord::Base
           start: datetime.beginning_of_day,
           end: datetime.end_of_day)
   }
-  scope :published_at, -> (datetime) {
-    where('published_at > :start and published_at < :end',
-          start: datetime.beginning_of_day,
-          end: datetime.end_of_day)
+  scope :published_in, -> (from_day, to_day = nil) {
+    where('published_at > :from and published_at < :to',
+          from: from_day.beginning_of_day,
+          to: to_day.end_of_day)
   }
   scope :not_notified_about, ->{ where(subscribers_notification_send: false) }
 

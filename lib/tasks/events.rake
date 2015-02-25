@@ -5,15 +5,15 @@ namespace :it61 do
   namespace :events do
     desc 'Отправить email-уведомления о мероприятиях опуликованных в течении вчерашнего дня'
     task new_events_digest: :environment do
-      events = Event.published.upcomming.published_at(1.day.ago).not_notified_about
+      events = Event.published.upcomming.published_in(1.day.ago).not_notified_about
       Rails.logger.info "No new events" and exit(0) if events.blank?
 
       Rails.logger.info "New events found: #{events.count}"
       begin
-        recipients = User.subscribed
+        recipients = User.with_email.subscribed
         recipients.each do |user|
           Rails.logger.info "Sending notification abount new events to user (id = [#{user.id}], email = [#{user.email}])"
-          EventMailer.send_new_events_digest(user, events).deliver!
+          EventMailer.new_events_digest(user, events).deliver!
         end
         Rails.logger.info "Notification for event [#{event.id}] is sended. Users notified: #{recipients.count}]"
       rescue => e
