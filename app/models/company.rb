@@ -5,7 +5,6 @@ class Company < ActiveRecord::Base
   # Сотрудники компании
   has_many :company_members, dependent: :destroy
 
-
   validates :title, presence: true, uniqueness: true
   validates :founder_id, null: false
 

@@ -1,7 +1,5 @@
-@Styx.Initializers.Events =
+@Styx.Initializers.Companies =
   index: ->
-    $ ->
-      $('.page-header > .actions > a').tooltip()
   new: ->
     $ ->
       It61.Lib.MarkdownEditor.setupEditors()

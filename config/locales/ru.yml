@@ -44,7 +44,7 @@ ru:
       event:
         create: Добавить мероприятие
       company:
-        create: Добавить оргазинацию
+        create: Добавить организацию
 
   shared:
     sidebar:
@@ -58,7 +58,7 @@ ru:
       about: О сайте
       members: Личности
       add_event_button_title: Добавить мероприятие
-      add_company_button_title: Добавить оргазинацию
+      add_company_button_title: Добавить организацию
       hashtag: "Хештег: #it61"
       social_links: "Мы есть в соцсетях:"
     small_screens_footer:
@@ -145,11 +145,11 @@ ru:
       hint: Рекомендуются квадратные изображения размером 500*500 px.
   companies:
     index:
-      add_company_button_title: Добавить компанию
+      add_company_button_title: Добавить организацию
     new:
-      title: Новая компания
+      title: Новая организация
     edit:
-      title: Редактирование компании
+      title: Редактирование организации
     form:
       hint: Рекомендуются квадратные изображения размером 200*200 px.
     show:
@@ -171,8 +171,8 @@ ru:
         one: Мероприятие
         few: Мероприятия
       company:
-        one: Компания
-        few: Компании
+        one: Организация
+        few: Организации
     attributes:
       user:
         email: E-mail
@@ -201,6 +201,7 @@ ru:
         description: Описание
         contacts: Контактная информация
         company_members: Сотрудники
+        logo_image: Логотип
     errors:
       models:
         user:

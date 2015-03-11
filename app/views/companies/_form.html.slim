@@ -6,8 +6,9 @@
   p.help-block = t('.hint')
   = f.hidden_field :logo_image_cache
 
-  = f.text_area :description, rows: 5
-  = f.text_area :contacts, rows: 5
+  = markdown_text_area f, :description
+  = markdown_text_area f, :contacts, data: { min_lines: 8 }
+
   hr
   = link_to t(:cancel), root_path, class: 'btn btn-default'
   | &nbsp;

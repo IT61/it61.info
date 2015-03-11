@@ -1,4 +1,9 @@
 #page-content {
+  .page-header {
+    // Для того, чтобы убрать ломовой верхний отступ.
+    margin-top: 0px;
+  }
+
   word-break: break-word;
   @media (min-width: $screen-xs) {
     padding: 0 0 2*$line-height-computed;
@@ -20,7 +25,7 @@
     padding: $line-height-computed 0 2*$line-height-computed;
   }
   @media (min-width: $screen-md) {
-    margin-left: ($sidebar-width + 3*$line-height-computed);
+    margin-left: ($sidebar-width);
   }
 }
 
