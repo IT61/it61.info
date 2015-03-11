@@ -6,6 +6,13 @@ ru:
       date_time_full: "%d %B %Y, %H:%M"
       date_digits: "%d.%m.%y"
 
+  misc:
+    day:
+      one: 1 день
+      few: '%{count} дня'
+      many: '%{count} дней'
+
+
   cancel: Отмена
   edit: Редактировать
   delete: Удалить
@@ -20,150 +27,6 @@ ru:
   google: Google
 
   feed_description: "Мероприятия Ростовского IT-сообщества"
-
-  event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
-  event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
-
-  company_member_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
-  company_membership_canceled: "Вы больше не работаете в &laquo;%{title}&raquo;."
-
-  sorcery_external:
-    success: "Аккаунт %{provider} успешно привязан к вашему профилю."
-
-  flash:
-    user_profiles:
-      update:
-        success: Ваш профиль успешно обновлен
-    events:
-      create:
-        success: Мероприятие появится в ленте после проверки модератором
-
-  helpers:
-    submit:
-      update: Сохранить изменения
-      event:
-        create: Добавить мероприятие
-      company:
-        create: Добавить организацию
-
-  shared:
-    sidebar:
-      login: Вход
-      register: Регистрация
-      vk: Вконтакте
-      facebook: Facebook
-      events: Мероприятия
-      companies: Компании
-      donations: Пожертвования
-      about: О сайте
-      members: Личности
-      add_event_button_title: Добавить мероприятие
-      add_company_button_title: Добавить организацию
-      hashtag: "Хештег: #it61"
-      social_links: "Мы есть в соцсетях:"
-    small_screens_footer:
-      hashtag: "Хештег: #it61"
-      social_links: "Мы есть в соцсетях:"
-    oauth_login_block:
-      social_providers: Вход через соц. сети
-    disqus:
-      noscript_message: Похоже, в вашем броузере отключен JavaScript. Для просмотра и написание комментариев JavaScript должен быть включен.
-
-  user_registrations:
-    new:
-      title: Регистрация
-      submit_title: Зарегистрироваться
-      email_pass_registration: Регистрация по почтовому адресу
-
-  user_sessions:
-    new:
-      title: Войти на сайт
-      email: E-mail
-      password: Пароль
-      remember_me: Запомнить меня
-      submit: Войти
-      email_pass_login: Вход по почте-паролю
-    create:
-      login_failed_message: Неверный пароль или пользователь не существует.
-
-  user_profiles:
-    index:
-      title: Личности
-    edit:
-      title: Мой профиль
-      edit_title: Редактирование
-      change_password: Сменить пароль?
-      new_password: Новый пароль
-      new_password_confirmation: Подтверждение нового пароля
-      email_hint: Не отображается на сайте
-      phone_hint: Не отображается на сайте, используется для напоминаний о мероприятиях
-      email_reminders_hint: За 2 дня до начала мероприятия, которое вы запланировали посетить, мы отправим вам письмо с информацией о месте и дате проведения.
-      sms_reminders_hint: Утром, в день мероприятия, мы отправим вам SMS-сообщение с напоминанием. Если вас интересует эта возможность, то необходимо указать номер мобильного телефона.
-      subscribed_hint: Каждое утро мы отправляем Email со списком новых мероприятий.
-    destroy:
-      success_message: Пользователь «%{title}» удален
-    show:
-      organizer_block_title: Организатор мероприятий
-      organizer_unpublished_block_title: Не опубликованы
-      member_block_title: Участник мероприятий
-      edit: Редактировать
-      logout: Выйти
-    linked_accounts:
-      title: Аккаунты соцсетей
-    available_accounts:
-      title: Привязать дополнительные аккаунты
-  events:
-    index:
-      add_event_button_title: Добавить мероприятие
-      rss_link_title: Лента мероприятий в формате RSS
-      google_calendar_link_title: Google-календарь мероприятий
-    new:
-      title: Новое мероприятие
-    edit:
-      title: Редактирование мероприятия
-    show:
-      publish: Опубликовать
-      cancel_publication: Отменить публикацию
-      publish_to_google_calendar: Опубликовать в календаре
-      cancel_google_calendar_publication: Отменить публикацию в календаре
-    destroy:
-      success_message: Мероприятие «%{title}» удалено
-    publish:
-      success_message: Событие успешно опубликовано
-    cancel_publication:
-      success_message: Событие не будет отображаться в ленте
-    event:
-      more: Подробнее...
-    participate_block:
-      participate_submit_title: Участвовать
-      cancel_participation_submit_title: Отказаться от участия
-      participate_past_submit_title: Я участвовал
-      cancel_past_participation_submit_title: Меня не было на мероприятии
-    participants_block:
-      no_participants: Пока никто не нажал кнопочку. Станьте первым!
-    form:
-      hint: Рекомендуются квадратные изображения размером 500*500 px.
-  companies:
-    index:
-      add_company_button_title: Добавить организацию
-    new:
-      title: Новая организация
-    edit:
-      title: Редактирование организации
-    form:
-      hint: Рекомендуются квадратные изображения размером 200*200 px.
-    show:
-      publish: Опубликовать
-      cancel_publication: Отменить публикацию
-    membership_block:
-      membership_submit_title: Я работаю в компании
-      cancel_membership_submit_title: Я больше не работаю в компании
-    members_block:
-      no_members: Пока никто не состоит в компании.
-    publish:
-      success_message: Компания успешно опубликована
-    cancel_publication:
-      success_message: Компания не будет отображаться в ленте
 
   activerecord:
     models:
@@ -210,10 +73,6 @@ ru:
               improbable_phone: 'Пожалуйста, введите номер в международном формате, например: +7 928 1234567'
               blank: Необходимо указать номер мобильного телефона, если вы хотите получать SMS-напоминания о мероприятиях
 
-  unauthorized:
-    create:
-      event_participation: Для участия в мероприятии необходимо зарегистрироваться.
-
   errors:
     messages:
       extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
@@ -229,8 +88,3 @@ ru:
     upcoming_event_reminder:
       body: "Здравствуйте, %{username}. Напоминаем, что сегодня пройдет мероприятие «%{event}», которое вы планировали посетить. Подробности о времени и месте проведения: http://it61.ru"
 
-  misc:
-    day:
-      one: 1 день
-      few: '%{count} дня'
-      many: '%{count} дней'

@@ -1,5 +1,6 @@
 = bootstrap_form_for @company do |f|
   = f.text_field :title
+  = f.text_field :website
   - if @company.logo_image.present?
     = image_tag @company.logo_image.square_200.url, alt: @company.title
   = f.file_field :logo_image
