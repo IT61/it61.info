@@ -61,6 +61,7 @@ ru:
         place: Место проведения
       company:
         title: Название
+        permalink: Понятная ссылка
         website: Вебсайт
         description: Описание
         contacts: Контактная информация

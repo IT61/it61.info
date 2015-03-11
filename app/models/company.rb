@@ -1,5 +1,8 @@
 class Company < ActiveRecord::Base
+  include PermalinkFor
+
   mount_uploader :logo_image, CompanyLogoImageUploader
+  permalink_for :title, as: :slug
 
   belongs_to :founder, class_name: 'User', foreign_key: :founder_id
   has_many :company_members, dependent: :destroy

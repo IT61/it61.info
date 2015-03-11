@@ -24,6 +24,7 @@ class Lib.MarkdownEditor
     @setupEditor()
 
   initAce: (textarea) ->
+    self = this
     $('<div>', { id: @aceEditorDivId }).insertBefore textarea
 
     @editor = ace.edit @aceEditorDivId
@@ -39,8 +40,9 @@ class Lib.MarkdownEditor
 
     @editor.getSession().setValue textarea.val()
     # copy back to textarea on form submit
-    textarea.closest('form').submit ->
-      textarea.val @editor.getSession().getValue()
+    textarea.closest('form').submit (ev)->
+      textarea.val self.editor.getSession().getValue()
+
 
   bindPreview: ->
     self = this
@@ -68,6 +70,5 @@ class Lib.MarkdownEditor
       camelCasedOptions = {}
       $.each $(@).data(), (key, val)->
         camelCasedOptions[$.camelCase(key)] = val
-      console.log camelCasedOptions
       new Lib.MarkdownEditor(@, camelCasedOptions)
 

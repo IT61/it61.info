@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311154741) do
+ActiveRecord::Schema.define(version: 20150311155359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,11 @@ ActiveRecord::Schema.define(version: 20150311154741) do
     t.datetime "updated_at"
     t.boolean  "published",   default: false
     t.string   "website"
+    t.string   "permalink",                   null: false
   end
 
   add_index "companies", ["founder_id"], name: "index_companies_on_founder_id", using: :btree
+  add_index "companies", ["permalink"], name: "index_companies_on_permalink", unique: true, using: :btree
 
   create_table "company_members", force: true do |t|
     t.integer  "company_id"
