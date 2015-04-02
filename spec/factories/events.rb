@@ -5,7 +5,7 @@ FactoryGirl.define do
     association :organizer, factory: :user
   end
 
-  trait :upcomming do
+  trait :upcoming do
     ignore do
       days_left { Forgery::Basic.number.days.since }
     end

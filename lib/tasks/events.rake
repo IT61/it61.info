@@ -5,7 +5,7 @@ namespace :it61 do
   namespace :events do
     desc 'Отправить email-уведомления о мероприятиях опуликованных в течении вчерашнего дня'
     task new_events_digest: :environment do
-      events = Event.published.upcomming.published_in(1.day.ago).not_notified_about
+      events = Event.published.upcoming.published_in(1.day.ago).not_notified_about
       Rails.logger.info "No new events" and exit(0) if events.blank?
 
       Rails.logger.info "New events found: #{events.count}"
@@ -26,7 +26,7 @@ namespace :it61 do
     namespace :reminders do
       desc 'Отправить email-напопинания о предстоящем мероприятии пользователям, которые планируют его посетить'
       task email: :environment do
-        events = Event.published.upcomming.started_in(2.days.from_now)
+        events = Event.published.upcoming.started_in(2.days.from_now)
         events.each do |event|
           recipients = event.participants.notify_by_email
           recipients.each {|user| EventMailer.upcoming_event_reminder(user, event).deliver! }
@@ -36,7 +36,7 @@ namespace :it61 do
       desc 'Отправить sms-напопинания о предстоящем мероприятии пользователям, которые планируют его посетить'
       task sms: :environment do
         sms_sender = SmsSender::Epochta.new
-        Event.published.upcomming.today.each do |event|
+        Event.published.upcoming.today.each do |event|
           recipients = event.participants.notify_by_sms
           recipients.each {|user|
             text = I18n.translate('sms_sender.upcoming_event_reminder.body',
