@@ -29,6 +29,26 @@
   }
 
   .events {
+    .upcoming-separator {
+      .type-label {
+        .arrow {
+          margin: 0;
+          padding-right: 10px;
+          float: left;
+        }
+        width: 300px;
+        margin: 0 auto;
+      }
+      margin-top: -20px;
+      padding: 20px 0;
+      hr {
+        border: 0.1em solid $gray-light;
+        margin: 20px 0;
+      }
+      h3 {
+        margin: 0;
+      }
+    }
     .event {
       &.panel {
         .panel-heading {

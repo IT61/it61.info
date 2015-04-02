@@ -19,6 +19,7 @@ nginx_rewrite.txt
 *.sublime-workspace
 .idea
 *.iml
+*.dump
 
 /config/database.yml
 /config/application.yml

@@ -9,4 +9,23 @@
         i.fa.fa-calendar
     h1.pull-left = title Event.model_name.human(count: 2)
 
-  .events = render @events
+  .events
+    - @events.each do |event|
+
+      = render event
+
+      - if event.id == @render_separator_after_id
+        .upcoming-separator
+          .type-label
+            .arrow:h3
+              i.fa.fa-arrow-up
+            h3
+              = t('.upcoming_events')
+          hr
+          .type-label
+            .arrow:h3
+              i.fa.fa-arrow-down
+            h3
+              = t('.past_events')
+
+
