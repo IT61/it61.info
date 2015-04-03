@@ -1,5 +1,17 @@
 it61 = window.it61 || {}
 
+setupPagination = ->
+  $(document).on 'ajax:success', '.js-lnk-next-page', (e, data)->
+    newContent = $(data).find('.events').children().hide()
+    $(@).remove()
+    newContent = newContent.appendTo($('.events')).slideDown(300)
+
+    $('html, body').animate {
+      scrollTop: newContent.offset().top
+    }, 1500
+
+    false
+
 initMarked = ->
   marked.setOptions
     gfm: true
@@ -57,6 +69,7 @@ previewTabHandler = (e) ->
 @Styx.Initializers.Events =
   index: ->
     $ ->
+      setupPagination()
       $('.page-header > .actions > a').tooltip()
   new: ->
     $ ->

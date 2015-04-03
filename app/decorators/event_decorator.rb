@@ -1,6 +1,10 @@
 class EventDecorator < Draper::Decorator
   delegate_all
 
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
+
   def title_with_date
     formatted_date = I18n.l(started_at, format: :date_digits)
     "#{title} (#{formatted_date})"

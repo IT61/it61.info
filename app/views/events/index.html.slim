@@ -28,4 +28,7 @@
             h3
               = t('.past_events')
 
+    .text-center
+      = link_to_next_page @events, t('.show_more'), class: 'btn btn-primary js-lnk-next-page', remote: true, 'data-type' => 'html'
+
 

@@ -8,6 +8,8 @@ class EventsController < ApplicationController
   before_filter :set_organizer, only: :create
   authorize_resource
 
+  has_scope :page, default: 1, if: ->(w){ w.request.format.html?}
+  has_scope :per, default: 10, if: ->(w){ w.request.format.html?}
   has_scope :ordered_desc, type: :boolean, allow_blank: true, default: true
 
   def index
@@ -20,7 +22,9 @@ class EventsController < ApplicationController
     end
 
     @events = @events.decorate
-    respond_with @events
+    respond_with @events do |f|
+      f.html { render layout: !request.xhr? }
+    end
   end
 
   def show
