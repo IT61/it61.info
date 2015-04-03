@@ -8,7 +8,7 @@ setupPagination = ->
 
     $('html, body').animate {
       scrollTop: newContent.offset().top
-    }, 1500
+    }, 800
 
     false
 
