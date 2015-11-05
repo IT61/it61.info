@@ -30,12 +30,6 @@ html lang='ru'
       #sidebar.clearfix = render 'shared/sidebar'
     #page-content
       .container-fluid
-        - unless logged_in?
-          .broken-avatars-message
-            .alert.alert-warning
-              ' К сожалению, в связи с проблемами хостинг-площадки были безвозвратно утеряны аватары.
-              ' Пользователи, регистрировавшиеся через соц. сети, смогут восстановить аватар, перелогинившись на сайте.
-              ' Остальных пользователей просим загрузить аватар вручную.
         .flash-messages
           - flash.each do |type, message|
             div class="alert alert-#{type} alert-dismissable"
