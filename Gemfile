@@ -5,7 +5,7 @@ ruby '2.2.3'
 gem 'rails', '~> 4.1.9'
 gem 'rails-i18n'
 gem 'unicode'
-gem 'sorcery', git: 'git@github.com:NoamB/sorcery.git', branch: 'master'
+gem 'sorcery'
 gem 'responders'
 gem 'has_scope'
 gem 'active_link_to'
@@ -42,6 +42,7 @@ gem 'sinatra', require: false
 gem 'phony_rails'
 gem 'figaro'
 gem 'e_pochta', '~> 0.5.2'
+gem 'slack-notifier'
 
 gem 'pry-rails'
 gem 'pry-doc', require: false
