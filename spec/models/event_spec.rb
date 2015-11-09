@@ -17,11 +17,11 @@ describe Event do
       expect(subject.published).to be true
     end
 
-    it 'have filled published_at after publishing' do
+    it 'has filled published_at after publishing' do
       expect(subject.published_at).not_to be_nil
     end
 
-    it 'have clear published_at after cancel publishing' do
+    it 'has clear published_at after cancel publishing' do
       subject.cancel_publication!
       expect(subject.published_at).to be_nil
     end

@@ -80,8 +80,14 @@ GEM
       sprockets (<= 2.11.0)
     countries (0.9.3)
       currencies (~> 0.4.2)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     currencies (0.4.2)
     diff-lcs (1.2.5)
+    dotenv (2.0.2)
+    dotenv-rails (2.0.2)
+      dotenv (= 2.0.2)
+      railties (~> 4.0)
     draper (1.3.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -98,8 +104,6 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
-    figaro (1.0.0)
-      thor (~> 0.14)
     forgery (0.6.0)
     fssm (0.2.10)
     google-api-client (0.8.2)
@@ -113,6 +117,7 @@ GEM
       retriable (~> 1.4)
       signet (~> 0.6)
     has_scope (0.5.1)
+    hashdiff (0.2.3)
     high_voltage (2.1.0)
     hike (1.2.3)
     i18n (0.7.0)
@@ -218,6 +223,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    safe_yaml (1.0.4)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -285,6 +291,11 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    vcr (3.0.0)
+    webmock (1.22.3)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     whenever (0.9.4)
       chronic (>= 0.6.3)
     yard (0.8.7.6)
@@ -306,10 +317,10 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   compass-rails
+  dotenv-rails
   draper
   e_pochta (~> 0.5.2)
   factory_girl_rails
-  figaro
   forgery
   google-api-client
   has_scope
@@ -346,6 +357,8 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicode
   unicorn
+  vcr
+  webmock (~> 1.21)
   whenever
 
 BUNDLED WITH

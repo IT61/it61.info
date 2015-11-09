@@ -43,3 +43,8 @@ calendar_oauth2.json
 calendar.rb
 calendar.rb-oauth2.json
 client_secrets.json
+
+.DS_Store
+.approvals
+/.env
+/.env.*
