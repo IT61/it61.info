@@ -22,15 +22,14 @@ class User < ActiveRecord::Base
   validates :email, presence: true, if: 'email_required?'
   validates :email, uniqueness: true, if: 'email_required?'
 
-  after_create :assign_default_role
-
-  # В случае, если OAuth провайдер не предоставляет email в базу может быть записана пустая строка,
-  # что приведет в нарушению уникальности index_users_on_email
-  before_save :nullify_empty_email
-
   phony_normalize :phone, as: :normalized_phone, default_country_code: 'RU'
   validates_plausible_phone :phone, country_code: 'RU'
   validates :phone, presence: true, if: :sms_reminders?
+
+  after_create :assign_default_role
+  # В случае, если OAuth провайдер не предоставляет email в базу может быть записана пустая строка,
+  # что приведет в нарушению уникальности index_users_on_email
+  before_save :nullify_empty_email
 
   scope :notify_by_email, -> { where(email_reminders: true).where.not(email: nil) }
   scope :notify_by_sms, -> { where(sms_reminders: true).where.not(phone: nil) }

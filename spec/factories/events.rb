@@ -14,7 +14,7 @@ FactoryGirl.define do
   end
 
   trait :published do
-    published_at Forgery::Basic.number.days.ago
-    published true
+    published_at { Forgery::Date.date(future: true) }
+    published { true }
   end
 end

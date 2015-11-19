@@ -27,7 +27,13 @@ module It61Rails
 
     config.eager_load_paths += ["#{config.root}/lib/it61"]
 
-    config.action_controller.asset_host = ENV['APP_URI']
+    app_url = ENV['APP_PROTOCOL'] + '://' + ENV['APP_HOST']
+    if ENV['APP_PORT']
+      app_url += ':' + ENV['APP_PORT']
+    end
+    ENV['APP_URL'] = app_url
+
+    config.action_controller.asset_host = ENV['APP_URL']
     config.assets.precompile += %w(editor.js)
     config.responders.flash_keys = [:success, :error]
 
