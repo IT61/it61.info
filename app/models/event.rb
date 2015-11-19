@@ -44,15 +44,22 @@ class Event < ActiveRecord::Base
   end
 
   def publish!
+    need_slack_notification = !was_published_yet?
     self.toggle :published
     self.published_at = DateTime.current
     save!
+    Event::SlackIntegration.notify(self) if need_slack_notification
+    self
   end
 
   def cancel_publication!
     self.toggle :published
     self.published_at = nil
     save!
+  end
+
+  def was_published_yet?
+    !!(published || published_at)
   end
 
   private

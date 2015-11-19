@@ -26,7 +26,7 @@ class Event::GoogleCalendarIntegration
       'location' => event.place,
       'source' => {
         'title' => event.title,
-        'url' => event_url(event, host: ENV['APP_HOST'])
+        'url' => event_url(event)
       },
       'start' => {
         'dateTime' => event.started_at.to_datetime.rfc3339

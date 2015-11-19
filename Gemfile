@@ -40,7 +40,7 @@ gem 'whenever'
 gem 'google-api-client'
 gem 'sinatra', require: false
 gem 'phony_rails'
-gem 'figaro'
+gem 'dotenv-rails'
 gem 'e_pochta', '~> 0.5.2'
 gem 'slack-notifier'
 
@@ -65,4 +65,9 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock', '~> 1.21'
 end

@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
+
 module It61Rails
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -23,12 +25,21 @@ module It61Rails
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
 
+    config.eager_load_paths += ["#{config.root}/lib/it61"]
+
+    config.action_controller.asset_host = ENV['APP_URI']
     config.assets.precompile += %w(editor.js)
     config.responders.flash_keys = [:success, :error]
 
-    config.eager_load_paths += ["#{config.root}/lib/it61"]
+    default_url_options = {
+      host: ENV['APP_HOST'],
+      port: ENV['APP_PORT'],
+      protocol: ENV['APP_PROTOCOL']
+    }
+    routes.default_url_options = default_url_options
+    config.action_controller.default_url_options = default_url_options
+    config.action_mailer.default_url_options = default_url_options
 
-    config.action_mailer.default_url_options =  { host: ENV['APP_HOST'] }
     config.action_mailer.default_options = {
       from: ENV['MAILER_FROM'],
       reply_to: ENV['MAILER_RETURN_PATH']

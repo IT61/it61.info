@@ -15,8 +15,8 @@ class Event::IcsGenerator
     calendar_event.location = event.place
     calendar_event.created = event.created_at
     calendar_event.last_modified = event.updated_at
-    calendar_event.uid = event_url(event, host: ENV['APP_HOST'])
-    calendar_event.url = event_url(event, host: ENV['APP_HOST'])
+    calendar_event.uid = event_url(event)
+    calendar_event.url = event_url(event)
 
     alarm_dates = [
       # Оповещаем о событии за сутки в 12:00.
