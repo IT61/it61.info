@@ -17,6 +17,8 @@ class Event::SlackIntegration
     notifier.ping I18n.t('slack_integration.new_event'), attachments: [attachment]
   end
 
+  private
+
   def notifier
     @notifier ||= Slack::Notifier.new(ENV['SLACK_WEBHOOK_URL'])
   end
