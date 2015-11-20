@@ -13,7 +13,7 @@ xml.rss :version => "2.0" do
     for event in @events
       xml.item do
         xml.title event.title
-        xml.description event.description
+        xml.description plain_text(event.description)
         xml.pubDate event.published_at.to_s(:rfc822) if event.published_at?
         xml.link event_url(event)
         xml.guid event_url(event)
