@@ -8,9 +8,11 @@
     .mdl-card__supporting-text
       .mdl-typography--font-bold.mdl-typography--subhead
         .event-card__date
+          i.material-icons event 
           = l event.started_at, format: :date_time_full
         - if event.place.present?
           .event-card__location
+            i.material-icons place
             = event.place
 
       .mdl-typography--font-light.mdl-typography--subhead
