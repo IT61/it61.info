@@ -6,7 +6,7 @@
 }
 
 .event-container {
-  margin: 50px 100px 50px 100px;
+  margin: 50px 10% 50px 10%;
 }
 
 .event-container .material-icons {
@@ -16,9 +16,13 @@
 }
 
 .event--description {
-  margin-top: 50px;
+  margin: 50px 10px 10px 10px;
 }
 
+.event__image {
+  width: 400px;
+  height: 400px;
+}
 
 .event-card__link {
   &:hover, &:link, &:visited, &:active {

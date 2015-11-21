@@ -28,9 +28,9 @@
     = @event.title
 
   .mdl-grid.mdl-shadow--3dp
-    .mdl-cell.mdl-cell--6-col.mdl-cell--8-col-tablet.mdl-cell--6-col-phone
-      = image_tag @event.title_image.square_500.url, alt: @event.title
-    .mdl-cell.mdl-cell--6-col.mdl-cell--4-col-tablet.mdl-cell--6-col-phone
+    .mdl-cell.mdl-cell--6-col.mdl-cell--6-col-tablet.mdl-cell--6-col-phone
+      = image_tag @event.title_image.square_500.url, alt: @event.title, class: 'event__image'
+    .mdl-cell.mdl-cell--6-col.mdl-cell--6-col-tablet.mdl-cell--6-col-phone
       h3
         = link_to event_path(@event, format: :ics)
           i.material-icons event
@@ -49,9 +49,9 @@
         | Спонсоры:
 
 
-  .event--description
-    .mdl-typography--font-normal.mdl-typography--subhead
-      = markdown @event.description
+    .event--description
+      .mdl-typography--font-normal.mdl-typography--subhead
+        = markdown @event.description
 
   .participants
     .panel.panel-default
