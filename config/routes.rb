@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   post '/membership_in_company' => 'company_members#create'
   delete '/cancel_membership' => 'company_members#destroy'
 
-  root to: redirect('/events')
+  root to: 'main_page#show'
 
   get ':id' => 'high_voltage/pages#show', as: :page
 end
