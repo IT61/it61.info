@@ -50,14 +50,31 @@ html lang='ru'
           a.header__login.mdl-button.mdl-js-button Войти
           span.header__name.hidden Александр Гембарджевский
 
-      .mdl-layout__drawer
-        .mdl-layout-title
-          span.it61-logo-image = image_tag 'logo-it61.png', width: 50, height: 50
-        
+      .drawer.mdl-layout__drawer
+        .drawer__title.mdl-layout-title
+          .drawer__logo = image_tag 'logo-it61.png', width: 100, height: 100
+
         .mdl-navigation
-          a.mdl-navigation__link Phones
-          a.mdl-navigation__link Tables
-            
+          a.mdl-navigation__link
+            i.material-icons account_circle
+            | Мой профиль
+          a.mdl-navigation__link
+            i.material-icons settings
+            | Мои настройки
+          a.mdl-navigation__link
+            i.material-icons event
+            | Мои события
+          a.mdl-navigation__link
+            i.material-icons business
+            | Мои компании
+          a.mdl-navigation__link
+            i.material-icons work
+            | Мои вакансии
+          .separator
+          a.mdl-navigation__link
+            i.material-icons power_settings_new
+            | Выйти
+
       .mdl-layout__content
          = render partial: 'main_page/hero'
          = render partial: 'main_page/manifesto'

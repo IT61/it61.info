@@ -28,6 +28,32 @@
   color: white;
 }
 
+.drawer .mdl-navigation__link {
+  cursor: pointer;
+}
+
+.drawer .mdl-navigation__link .material-icons {
+  margin-right: 12px;
+  vertical-align: bottom;
+}
+
+.drawer > .drawer__title {
+  text-align: center;
+  margin-left: 0;
+  padding-top: 30px;
+  padding-left: 0 !important;
+}
+
+.drawer__logo {
+  text-align: center;
+}
+
+.separator {
+  height: 1px;
+  background-color: #dcdcdc;
+  margin: 8px 0;
+}
+
 .section {
   max-width: 1044px;
   margin-left: auto;
