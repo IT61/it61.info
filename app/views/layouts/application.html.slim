@@ -76,8 +76,9 @@ html lang='ru'
             | Выйти
 
       .mdl-layout__content
-         = render partial: 'main_page/hero'
-         = render partial: 'main_page/manifesto'
+         / = render partial: 'main_page/hero'
+         / = render partial: 'main_page/manifesto'
+         = yield
          
   
   
