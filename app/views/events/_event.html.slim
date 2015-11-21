@@ -1,8 +1,7 @@
 = link_to event_path(event), class: 'event-card__link'
   .mdl-cell.mdl-cell--3-col.mdl-cell--4-col-tablet.mdl-cell--4-col-phone.mdl-card.mdl-shadow--3dp.event-card
     .mdl-card__media
-      = image_tag event.title_image.square_500.url, alt: event.title
-      / img src = "/temp-event-img.jpg" height=300
+      = image_tag event.title_image.square_500.url, alt: event.title, class: 'event-card__image'
     .mdl-card__title
       h4.mdl-card__title-text
         = event.title
