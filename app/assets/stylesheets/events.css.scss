@@ -3,8 +3,22 @@
 }
 .events {
   margin: 50px 50px 50px 50px;
-
 }
+
+.event-container {
+  margin: 50px 100px 50px 100px;
+}
+
+.event-container .material-icons {
+  margin-right: 5px;
+  vertical-align: bottom;
+  font-size: 44px;
+}
+
+.event--description {
+  margin-top: 50px;
+}
+
 
 .event-card__link {
   &:hover, &:link, &:visited, &:active {
@@ -23,6 +37,11 @@
 
 .event-card__location {
   padding-bottom: 30px;
+}
+
+.mdl-card__supporting-text .material-icons {
+  margin-right: 12px;
+  vertical-align: bottom;
 }
 
 .events__title {
