@@ -3,16 +3,21 @@
  *= require_self
  */
 
-@import "compass";
+@import 'material.min';
 
-@import 'theme/variables';
-@import 'theme/bootstrap_and_overrides';
-@import 'theme/common_styles';
-@import 'theme/typography';
-@import 'theme/social_widgets';
-@import 'theme/sidebar';
-@import 'theme/flash_messages';
+@import 'layout.css';
+@import 'main_page.css';
 
-@import 'events';
-@import 'companies';
-@import 'user_profiles';
+// @import "compass";
+//
+// @import 'theme/variables';
+// @import 'theme/bootstrap_and_overrides';
+// @import 'theme/common_styles';
+// @import 'theme/typography';
+// @import 'theme/social_widgets';
+// @import 'theme/sidebar';
+// @import 'theme/flash_messages';
+
+// @import 'events';
+// @import 'companies';
+// @import 'user_profiles';

@@ -17,4 +17,3 @@ indent_size = 2
 
 [**.{html,erb}]
 indent_size = 4
-
