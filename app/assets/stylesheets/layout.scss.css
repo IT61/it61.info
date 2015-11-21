@@ -1,5 +1,31 @@
-.it61-header {
+.header {
   background-color: white;
+}
+
+.header .mdl-navigation__link {
+  height: 60px;
+  line-height: 68px;
+  border-bottom: 4px solid transparent;
+}
+
+.header .mdl-navigation__link:hover {
+  border-bottom-color: white;
+}
+
+.header .header__login {
+  margin-left: 12px;
+  color: white;
+}
+
+.header__name {
+  display: block;
+  overflow: hidden;
+  max-width: 120px;
+  padding: 0 24px;
+  line-height: 64px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: white;
 }
 
 .section {
