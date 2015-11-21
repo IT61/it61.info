@@ -1,19 +1,13 @@
-# EditorConfig is awesome: http://EditorConfig.org
-
 root = true
 
 [*]
-# Unix-style newlines with a newline ending every file
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 charset = utf-8
-# Default indentation
 indent_style = space
 indent_size = 2
 
-[**.{rb,coffee,yml,json,sass,scss,slim,jade}]
-indent_size = 2
-
-[**.{html,erb}]
+[**.{js,html,liquid}]
+indent_style = space
 indent_size = 4
