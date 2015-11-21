@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
   has_many :participants, class_name: 'User', through: :event_participations, source: :user
 
   validates :title, presence: true
+  validates :description, presence: true
+  validates :started_at, presence: true
   validates :organizer, presence: true
   validates :place, presence: true
   validates :published_at, presence: true, if: :published?

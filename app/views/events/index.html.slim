@@ -7,28 +7,39 @@
       = link_to ENV['CALENDAR_URL'], target: '_blank', data: { toggle: :tooltip, placement: :left },
                 title: t('.google_calendar_link_title')
         i.fa.fa-calendar
-    h1.pull-left = title Event.model_name.human(count: 2)
 
   .events
-    - @events.each do |event|
+    .mdl-typography--display-1.mdl-typography--display-1-color-contrast.events__title
+      | Можно пойти
 
-      = render event
+    .mdl-grid
+      - if @upcoming_events.empty?
+        | Следите за обновлениями
+      - @upcoming_events.each do |event|
+        = render event
 
-      - if event.id == @render_separator_after_id
-        .upcoming-separator
-          .type-label
-            .arrow:h3
-              i.fa.fa-arrow-up
-            h3
-              = t('.upcoming_events')
-          hr
-          .type-label
-            .arrow:h3
-              i.fa.fa-arrow-down
-            h3
-              = t('.past_events')
+    .mdl-typography--display-1.mdl-typography--display-1-color-contrast.events__title
+      | Уже прошло :(
 
-    .text-center
-      = link_to_next_page @events, t('.show_more'), class: 'btn btn-primary js-lnk-next-page', remote: true, 'data-type' => 'html'
+    .mdl-grid
+      - @past_events.each do |event|
+        = render event
+
+    /   - if event.id == @render_separator_after_id
+    /     .upcoming-separator
+    /       .type-label
+    /         .arrow:h3
+    /           i.fa.fa-arrow-up
+    /         h3
+    /           = t('.upcoming_events')
+    /       hr
+    /       .type-label
+    /         .arrow:h3
+    /           i.fa.fa-arrow-down
+    /         h3
+    /           = t('.past_events')
+
+    / .text-center
+    /   = link_to_next_page @events, t('.show_more'), class: 'btn btn-primary js-lnk-next-page', remote: true, 'data-type' => 'html'
 
 

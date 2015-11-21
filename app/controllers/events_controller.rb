@@ -14,6 +14,8 @@ class EventsController < ApplicationController
 
   def index
     @events = apply_scopes(@events)
+    @upcoming_events = @events.upcoming
+    @past_events = @events.past
     first_upcoming_event = @events.upcoming.last
     last_past_event = @events.past.first
 
@@ -22,7 +24,7 @@ class EventsController < ApplicationController
     end
 
     @events = @events.decorate
-    respond_with @events do |f|
+    respond_with @events, @upcoming_events, @past_events do |f|
       f.html { render layout: !request.xhr? }
     end
   end

@@ -1,124 +1,26 @@
-.events-index, .events-show {
-  .participants {
-    @include clearfix();
-    .participant {
-      float: left;
-      margin-right: 1em;
-      a {
-        display: block;
-      }
-      .avatar {
-        img {
-          width: 50px;
-          height: 50px;
-        }
-      }
-    }
+.event-card.mdl-card {
+  width: 300px;
+}
+.events {
+  margin: 50px 50px 50px 50px;
+
+}
+
+.event-card__link {
+  &:hover, &:link, &:visited, &:active {
+    text-decoration: none;
   }
 }
 
-.events-index {
-  .page-header > .actions {
-    margin-top: 24px;
-    line-height: 40px;
-    > a {
-      color: $text-color;
-      display: inline-block;
-      font-size: $font-size-base * 2;
-    }
-  }
-
-  .events {
-    .upcoming-separator {
-      .type-label {
-        .arrow {
-          margin: 0;
-          padding-right: 10px;
-          float: left;
-        }
-        width: 300px;
-        margin: 0 auto;
-      }
-      margin-top: -20px;
-      padding: 20px 0;
-      hr {
-        border: 0.1em solid $gray-light;
-        margin: 20px 0;
-      }
-      h3 {
-        margin: 0;
-      }
-    }
-    .event {
-      &.panel {
-        .panel-heading {
-          .admin-info {
-            margin-right: 1em;
-            display: inline;
-          }
-        }
-        .panel-footer {
-          .participants {
-            height: 50px;
-            overflow: hidden;
-
-            h4 {
-              float: left;
-              margin-right: 1em;
-              margin-top: 0;
-              margin-bottom: 0;
-              line-height: 50px;
-            }
-          }
-        }
-      }
-    }
-  }
+.event-card__date {
+  padding-bottom: 10px;
 }
 
-.events-show {
-  .page-header {
-    .admin-info {
-      margin-right: 1em;
-      display: inline;
-    }
-  }
-  .participants {
-    ul.list-unstyled {
-      margin: -.5em;
-    }
-    .participant {
-      margin: .5em;
-      .avatar {
-        img {
-          width: 50px;
-          height: 50px;
-        }
-      }
-    }
-  }
+.event-card__location {
+  padding-bottom: 30px;
 }
 
-form.edit_event, form.new_event {
-  .tab-content {
-    .tab-pane {
-      padding:  $line-height-computed ( $line-height-computed / 4) 0;
-      border-left: 1px solid $nav-tabs-active-link-hover-border-color;
-      border-right: 1px solid $nav-tabs-active-link-hover-border-color;
-      border-bottom: 1px solid $nav-tabs-active-link-hover-border-color;
-
-      // bootstrap-form не умеет не рендерить label для text-area, поэтому скрываем ее css
-      label.control-label {
-        display: none;
-      }
-    }
-  }
-}
-
-.event-date {
-  font-size: $font-size-h2;
-}
-
-.event-place {
-  font-size: $font-size-h4;
+.events__title {
+  color: rgba(0,0,0,.87);
+  margin-bottom: 10px;
 }
