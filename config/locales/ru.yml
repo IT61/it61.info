@@ -49,6 +49,16 @@ ru:
       company:
         create: Добавить оргазинацию
 
+  header:
+    index: Сообщество
+    events: Мероприятия
+    persons: Личности
+    companies: Компании
+    vacancies: Вакансии
+    donations: Пожертвования
+    about: О проекте
+    chat: Slack
+
   shared:
     sidebar:
       login: Вход

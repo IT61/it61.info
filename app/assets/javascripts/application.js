@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require styx
 
+//= require material
+
 //= require events
 //= require user_profiles
 //= require common
