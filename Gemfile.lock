@@ -35,6 +35,9 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    autoprefixer-rails (6.1.0.1)
+      execjs
+      json
     awesome_print (1.2.0)
     bcrypt (3.1.10)
     bootstrap-sass (3.1.1.1)
@@ -305,6 +308,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
+  autoprefixer-rails
   awesome_print
   bootstrap-sass
   bootstrap_form
