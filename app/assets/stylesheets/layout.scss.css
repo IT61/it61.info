@@ -1,7 +1,14 @@
-body {
-  color: red;
-}
-
 .it61-header {
   background-color: white;
+}
+
+.section {
+  max-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 56px;
+}
+
+.mdl-layout.is-small-screen .section {
+  padding: 40px 28px;
 }
