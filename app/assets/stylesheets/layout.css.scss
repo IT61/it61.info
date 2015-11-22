@@ -1,4 +1,5 @@
 .header {
+  color: black;
   background-color: white;
 }
 
@@ -9,12 +10,12 @@
 }
 
 .header .mdl-navigation__link:hover {
-  border-bottom-color: white;
+  border-bottom-color: black;
 }
 
 .header .header__login {
   margin-left: 12px;
-  color: white;
+  // color: white;
 }
 
 .header__name {
@@ -25,11 +26,20 @@
   line-height: 64px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: white;
+  // color: white;
 }
 
 .drawer .mdl-navigation__link {
   cursor: pointer;
+  color: black;
+}
+
+.mdl-layout__header-row .mdl-navigation__link {
+  color: black;
+}
+
+.mdl-layout__header .mdl-layout__drawer-button {
+  color: black;
 }
 
 .drawer .mdl-navigation__link .material-icons {
