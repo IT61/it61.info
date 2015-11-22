@@ -45,8 +45,8 @@
         = image_tag @event.organizer.avatar_image.square_50.url, alt: @event.organizer.full_name
         | &nbsp; &nbsp;
         = @event.organizer.full_name
-      h5
-        | Спонсоры:
+      / h5
+      /   | Спонсоры:
 
 
     .event--description
@@ -64,5 +64,3 @@
       .panel-footer
         = render partial: 'participate_block', object: @event, as: :event
 
-  hr
-  = render partial: 'shared/disqus', title: @event.title
