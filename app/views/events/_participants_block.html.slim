@@ -1,8 +1,9 @@
 - if event.participants.any?
-  ul.list-unstyled
+  ul.participants__list-unstyled
     - event.participants.sample(15).each do |p|
       li.participant
-        = link_to user_profile_path(p), data: { toggle: 'tooltip', placement: 'bottom', title: p.full_name } do
+        = link_to user_profile_path(p) do
           .avatar = image_tag p.avatar_image.square_50.url, alt: p.full_name
+          = p.full_name
 - else
   p.lead = t('.no_participants')
