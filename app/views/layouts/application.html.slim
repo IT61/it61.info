@@ -23,9 +23,9 @@ html lang='ru'
     / [if lt IE 9]
       script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'
       script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'
-    
+
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:regular,italic,thin,light,&amp;lang=en'
-    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'  
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
 
     = csrf_meta_tags
   body
@@ -47,7 +47,7 @@ html lang='ru'
             .mdl-textfield__expandable-holder
               input.mdl-textfield__input type='text' name='sample' id='fixed-header-drawer-exp'
 
-          a.header__login.mdl-button.mdl-js-button Войти
+          = active_link_to 'Войти', new_user_session_path, class: 'header__login mdl-button mdl-js-button'
           span.header__name.hidden Александр Гембарджевский
 
       .drawer.mdl-layout__drawer
@@ -79,9 +79,9 @@ html lang='ru'
          / = render partial: 'main_page/hero'
          / = render partial: 'main_page/manifesto'
          = yield
-         
-  
-  
+
+
+
     / #sidebar-container.affix data-offset-top="0" data-offset-bottom="0"
     /   #sidebar.clearfix = render 'shared/sidebar'
     / #page-content
