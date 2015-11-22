@@ -3,6 +3,9 @@
 [![Build Status](https://travis-ci.org/IT61/it61-rails.svg?branch=master)](https://travis-ci.org/IT61/it61-rails)
 [![Code Climate](https://codeclimate.com/github/IT61/it61-rails.png)](https://codeclimate.com/github/IT61/it61-rails)
 
+## Backlog
+- [Полное описание ближайших майлстоунов и задач] (https://docs.google.com/document/d/1yyd4tYYlTWfpnx9rVQVFqnchoyhKrTVGLho9C2h1cGU/)
+
 ## Getting started
 
 Для начала работы с проектом нужно создать конфигурационые файлы на основе шаблонов:
