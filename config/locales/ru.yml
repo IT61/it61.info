@@ -184,11 +184,13 @@ ru:
   activerecord:
     models:
       event:
-        one: Мероприятие
-        few: Мероприятия
+        one: мероприятие
+        few: мероприятия
+        many: мероприятий
       company:
-        one: Компания
-        few: Компании
+        one: компания
+        few: компании
+        many: компаний
     attributes:
       user:
         email: E-mail
@@ -224,6 +226,11 @@ ru:
             phone:
               improbable_phone: 'Пожалуйста, введите номер в международном формате, например: +7 928 1234567'
               blank: Необходимо указать номер мобильного телефона, если вы хотите получать SMS-напоминания о мероприятиях
+
+  human:
+    one: человек
+    few: человека
+    many: человек
 
   unauthorized:
     create:
