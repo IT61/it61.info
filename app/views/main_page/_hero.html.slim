@@ -6,11 +6,15 @@
     .mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-phone
       .hero-proud__block
         .hero-proud__number = @users_count
-        .hero-proud__caption человек в сообществе
+        .hero-proud__caption
+          => t(:human, count: @users_count)
+          | человек в сообществе
     .mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-phone
       .hero-proud__block
         .hero-proud__number = @events_count
-        .hero-proud__caption событий организовано
+        .hero-proud__caption
+          => Event.model_name.human(count: @events_count)
+          | организовано
     .mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-phone
       .hero-proud__block
         .hero-proud__number 650
