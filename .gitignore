@@ -47,4 +47,4 @@ client_secrets.json
 .DS_Store
 .approvals
 /.env
-
+/.vagrant
