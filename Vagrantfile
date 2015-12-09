@@ -3,7 +3,11 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 3000, host: 3000
 
   # sync the app folder
-  config.vm.synced_folder "./", "/app/", type: "nfs"
+  if (/cygwin|mswin|mingw|bccwin/ =~ RUBY_PLATFORM) != nil
+    config.vm.synced_folder "./", "/app/", type: "nfs"
+  else
+    config.vm.synced_folder "./", "/app/", type: "rsync"
+  end
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--memory", "2048"]

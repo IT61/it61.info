@@ -8,8 +8,7 @@ echo updating package information
 apt-add-repository -y ppa:brightbox/ruby-ng >/dev/null 2>&1
 apt-get -y -qq update
 
-install 'development tools' build-essential curl \
-  python-software-properties software-properties-common
+install 'development tools' build-essential curl python-software-properties software-properties-common
 
 install Git git
 install PostgreSQL postgresql postgresql-contrib libpq-dev
