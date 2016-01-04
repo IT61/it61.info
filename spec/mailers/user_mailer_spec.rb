@@ -6,7 +6,7 @@ describe UserMailer do
   let(:user)    { FactoryGirl.build_stubbed(:user) }
   let(:company) { FactoryGirl.build_stubbed(:company) }
 
-  describe 'notice_about_request' do
+  context 'notice_about_request' do
     let(:mail) { described_class.notice_about_request(user, company) }
 
     let(:expected_body) { [company.title] }
@@ -15,7 +15,7 @@ describe UserMailer do
     it_behaves_like 'a well tested mailer'
   end
 
-  describe 'notice_about_accept' do
+  context 'notice_about_accept' do
     let(:mail) { described_class.notice_about_accept(user, company) }
     let(:expected_body) { [company.title] }
     let(:expected_subject) { "Запрос подтвержден, пользователь добавлен в «#{company.title}»" }
@@ -23,7 +23,7 @@ describe UserMailer do
     it_behaves_like 'a well tested mailer'
   end
 
-  describe 'notice_about_delete' do
+  context 'notice_about_delete' do
     let(:mail) { described_class.notice_about_delete(user, company) }
     let(:expected_body) { [company.title] }
     let(:expected_subject) { "Пользователь удален из «#{company.title}»" }
