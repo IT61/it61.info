@@ -18,6 +18,8 @@
 
     bundle install --path vendor/bundle
     bundle exec rake db:setup
+    
+*В окружении должна быть установлена утилита командной строки ImageMagick или GraphicsMagick.*
 
 Запустить rails-сервер:
 
