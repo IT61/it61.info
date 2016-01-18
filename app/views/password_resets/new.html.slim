@@ -1,0 +1,11 @@
+.page-header
+  h1 = title t('.title')
+
+.row: .col-sm-6.col-md-4
+  .panel = form_tag password_resets_path, html: {role: 'form'} do
+    .form-group
+      = label_tag 'email', t('user_sessions.new.email')
+      = email_field_tag 'email', params[:email], class: 'form-control'
+    = submit_tag t('.submit'), class: 'btn btn-primary'
+    | &nbsp;
+    = link_to t(:cancel), root_path, class: 'btn btn-default'

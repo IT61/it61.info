@@ -84,10 +84,22 @@ ru:
       email: E-mail
       password: Пароль
       remember_me: Запомнить меня
+      forgot_password: Забыли пароль?
       submit: Войти
       email_pass_login: Вход по почте-паролю
     create:
       login_failed_message: Неверный пароль или пользователь не существует.
+
+  password_resets:
+    new:
+      title: Восстановление пароля
+      submit: Сбросить пароль
+    edit:
+      title: Изменение пароля
+    create:
+      success_message: Инструкция по восстановлению пароля отправлена на ваш почтовый ящик
+    update:
+      success_message: Пароль успешно обновлен
 
   user_profiles:
     index:
@@ -223,6 +235,9 @@ ru:
     messages:
       extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
 
+  user_mailer:
+    reset_password_email:
+      subject: "Восстановление пароля"
   event_mailer:
     upcoming_event_reminder:
       subject: "До мероприятия «%{event}» осталось %{days_left}"

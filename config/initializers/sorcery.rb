@@ -4,8 +4,7 @@
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
 
 # TODO: Временно исключен модуль :reset_password, т.к. для него нужно сделать мейлер.
-# Rails.application.config.sorcery.submodules = [:remember_me, :reset_password, :external, :activity_logging]
-Rails.application.config.sorcery.submodules = [:remember_me, :external, :activity_logging]
+Rails.application.config.sorcery.submodules = [:remember_me, :reset_password, :external, :activity_logging]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -333,7 +332,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+    user.reset_password_mailer = UserMailer
 
 
     # reset password email method on your mailer class.

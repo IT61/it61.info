@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # Список пользователей, публичные профили и редактирование профилей
   resources :user_profiles, path: 'users', only: [:index, :show, :edit, :update, :destroy]
 
+  # Восстановление пароля
+  resources :password_resets
+
   # События
   resources :events do
     patch :publish, on: :member
