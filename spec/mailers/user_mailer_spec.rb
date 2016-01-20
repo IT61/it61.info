@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UserMailer do
   let(:default_email) { 'noreply@it61.info' }
   let(:replyto_email) { 'reply@it61.info' }
-  let(:user) { FactoryGirl.build_stubbed :reset_password_user }
+  let(:user) { FactoryGirl.build_stubbed :user, :with_reset_password_token }
 
   describe 'reset_password_email' do
     let(:mail) { UserMailer.reset_password_email(user) }

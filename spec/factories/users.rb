@@ -13,7 +13,7 @@ FactoryGirl.define do
       authentications { build_list :authentication, 1 }
     end
 
-    factory :reset_password_user do
+    trait :with_reset_password_token do
       reset_password_token { Sorcery::Model::TemporaryToken.generate_random_token }
     end
   end
