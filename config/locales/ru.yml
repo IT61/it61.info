@@ -235,7 +235,7 @@ ru:
     messages:
       extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
 
-  user_mailer:
+  user_password_reset_mailer:
     reset_password_email:
       subject: "Восстановление пароля"
   event_mailer:
