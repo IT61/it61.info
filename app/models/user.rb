@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   # Участие в организациях
   has_many :company_members, dependent: :destroy
+  has_many :company_membership_requests, class_name: 'Company::MembershipRequest', dependent: :destroy
 
   validates :password, presence: true, if: 'password_required?'
   validates :password, length: { minimum: 3 }, if: 'password.present?'

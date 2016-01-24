@@ -1,4 +1,4 @@
-class CompanyMembersController < ApplicationController
+class Companies::MembersController < ApplicationController
   respond_to :html
   load_and_authorize_resource param_method: :company_member_params
 

@@ -3,20 +3,24 @@
                 og: { image: @company.logo_image.square_200.url }
 
 .companies-show
-  .page-header
+  .admin-actions
     .pull-right
       - if can? :edit, @company
+        = link_to t('.memnership_requests'), company_membership_requests_path(@company), class: 'btn btn-default'
+        | &nbsp;
         = link_to t(:edit), edit_company_path(@company), class: 'btn btn-default'
         | &nbsp;
       - if can? :publish, @company
-        - if !@company.published?
-          = link_to t('.publish'), publish_company_path(@company), class: 'btn btn-warning', method: :patch
+        - if @company.published?
+          = link_to t('.cancel_publication'), cancel_publication_company_path(@company), class: 'btn btn-warning', method: :patch
         - else
-          = link_to t('.cancel_publication'), cancel_publication_company_path(@company),
-            class: 'btn btn-warning', method: :patch
+          = link_to t('.publish'), publish_company_path(@company), class: 'btn btn-warning', method: :patch
+
+  .page-header
     h1
       - if can? :edit, @company
         = render partial: 'admin_info', object: @company, as: :company
+
       = @company.title
 
   .row
@@ -27,8 +31,8 @@
         .panel.panel-default
           .panel-heading
             h4
-              =' Company.human_attribute_name(:company_members)
-              small = @company.company_members.count
+              =' Company.human_attribute_name(:members)
+              small = @company.members.count
           .panel-body
             .members
               = render partial: 'members_block', object: @company, as: :company

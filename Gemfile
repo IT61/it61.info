@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.3'
 
-gem 'rails', '~> 4.1.9'
+gem 'rails', '~> 4.2.5'
 gem 'rails-i18n'
 gem 'unicode'
 gem 'sorcery'
@@ -10,27 +10,29 @@ gem 'responders'
 gem 'has_scope'
 gem 'active_link_to'
 gem 'pg'
-gem 'cancancan', '~> 1.7'
+gem 'cancancan', '= 1.8.3'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'high_voltage', '~> 2.1.0'
 gem 'icalendar'
 gem 'kaminari'
 
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'compass-rails'
 gem 'marked-rails'
-gem 'redcarpet'
 gem 'styx'
+gem 'jquery-rails'
+
+
+gem 'redcarpet'
 gem 'draper'
 gem 'meta-tags'
-
-gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
 gem 'unicorn'
@@ -43,13 +45,13 @@ gem 'phony_rails'
 gem 'dotenv-rails'
 gem 'e_pochta', '~> 0.5.2'
 gem 'slack-notifier'
+gem 'bitmask_attributes'
 
 gem 'pry-rails'
 gem 'pry-doc', require: false
 gem 'awesome_print'
 
 group :development do
-  gem 'spring'
   gem 'quiet_assets'
   gem 'capistrano'
   gem 'capistrano-rails', '~> 1.0.0'
@@ -58,6 +60,8 @@ group :development do
   gem 'capistrano3-unicorn'
   gem 'capistrano-db-tasks', require: false
   gem 'letter_opener'
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
 
 group :development, :test do
@@ -65,7 +69,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', require: false
   gem 'rspec-rails'
-  gem 'spring-commands-rspec'
+  gem 'web-console', '~> 2.0'
+  gem 'database_cleaner'
 end
 
 group :test do

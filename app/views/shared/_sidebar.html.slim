@@ -25,12 +25,12 @@
     - else
       = active_link_to t('.events'), events_path, wrap_tag: :li
 
-    / - if can? :create, Company
-    /   li.with-plus-btn
-    /     = active_link_to t('.companies'), companies_path
-    /     = link_to '+', new_company_path, class: 'plus-btn', title: t('.add_company_button_title')
-    / - else
-    /   = active_link_to t('.companies'), companies_path, wrap_tag: :li
+    - if can? :create, Company
+      li.with-plus-btn
+        = active_link_to t('.companies'), companies_path
+        = link_to '+', new_company_path, class: 'plus-btn', title: t('.add_company_button_title')
+    - else
+      = active_link_to t('.companies'), companies_path, wrap_tag: :li
 
 
     = active_link_to t('.members'), user_profiles_path, wrap_tag: :li

@@ -12,13 +12,13 @@ describe User do
     subject.sms_reminders = true
     subject.phone = '+71234567890'
     subject.save
-    expect(subject).to have(0).errors_on(:phone)
+    expect(subject.errors[:phone].size).to eq(0)
   end
 
   it 'fail validation with sms_reminders and no phone' do
     subject.sms_reminders = true
     subject.phone = ''
     subject.save
-    expect(subject).to have(1).errors_on(:phone)
+    expect(subject.errors[:phone].size).to eq(1)
   end
 end

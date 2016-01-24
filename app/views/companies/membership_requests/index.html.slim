@@ -1,0 +1,10 @@
+h1 = Company::MembershipRequest.model_name.human(count: 5)
+
+table.table.table-bordered.table-hover
+  tbody
+    thead
+      th = Company::MembershipRequest.human_attribute_name(:user)
+      th = Company::MembershipRequest.human_attribute_name(:approved)
+      th = Company::MembershipRequest.human_attribute_name(:created_at)
+    tbody
+      = render partial: 'companies/membership_requests/membership_request', collection: @membership_requests

@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   has_scope :page, default: 1, if: ->(w){ w.request.format.html? }
   has_scope :per, default: 10, if: ->(w){ w.request.format.html? }
-  has_scope :ordered_desc, type: :boolean, allow_blank: true, default: true
+  has_scope :ordered_desc, type: :boolean, allow_blank: true
 
   def index
     @events = apply_scopes(@events)

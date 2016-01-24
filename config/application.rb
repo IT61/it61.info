@@ -25,7 +25,7 @@ module It61Rails
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
 
-    config.eager_load_paths += ["#{config.root}/lib/it61"]
+    config.eager_load_paths += ["#{config.root}/lib/it61", "#{config.root}/app/controllers/companies"]
 
     app_url = ENV['APP_PROTOCOL'] + '://' + ENV['APP_HOST']
     if ENV['APP_PORT']
@@ -50,5 +50,7 @@ module It61Rails
       from: ENV['MAILER_FROM'],
       reply_to: ENV['MAILER_RETURN_PATH']
     }
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

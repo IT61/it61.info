@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220162905) do
+ActiveRecord::Schema.define(version: 20160124022503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+  enable_extension "uuid-ossp"
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -44,10 +46,24 @@ ActiveRecord::Schema.define(version: 20150220162905) do
     t.string   "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "roles",      default: 0
   end
 
   add_index "company_members", ["company_id"], name: "index_company_members_on_company_id", using: :btree
   add_index "company_members", ["user_id"], name: "index_company_members_on_user_id", using: :btree
+
+  create_table "company_membership_requests", force: true do |t|
+    t.integer  "company_id",                 null: false
+    t.integer  "user_id",                    null: false
+    t.boolean  "approved",   default: false
+    t.boolean  "hidden",     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "company_membership_requests", ["approved", "hidden"], name: "index_company_membership_requests_on_approved_and_hidden", using: :btree
+  add_index "company_membership_requests", ["company_id"], name: "index_company_membership_requests_on_company_id", using: :btree
+  add_index "company_membership_requests", ["user_id"], name: "index_company_membership_requests_on_user_id", using: :btree
 
   create_table "event_participations", force: true do |t|
     t.integer  "user_id"

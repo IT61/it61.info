@@ -20,6 +20,6 @@
     .panel-footer
       .members
         h4
-          =' Company.human_attribute_name(:company_members)
-          small = company.company_members.count
+          => Company.human_attribute_name(:members)
+          small = company.members.count
         = render partial: 'members_block', object: company, as: :company
