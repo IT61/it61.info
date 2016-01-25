@@ -6,6 +6,15 @@
 ## Backlog
 - [Полное описание ближайших майлстоунов и задач] (https://docs.google.com/document/d/1yyd4tYYlTWfpnx9rVQVFqnchoyhKrTVGLho9C2h1cGU/)
 
+## Contribution guidelines
+
+Все задачи следует выполнять в формате Pull Request'ов.  
+Каждая ветка должна называться `<id задачи>_<название ветки>`.  
+Малозначительные либо все коммиты в ветке перед вливанием в master должны быть объединены через squash.  
+Сообщение коммита должно содержать внятное пояснение, начинаться с `#<id задачи>`   
+и содержать не более 72 символов на каждой строке. Между первой и последующими строками – пустая строка.  
+Каждый PR должен быть "зеленым" после выполнения тестов в TravisCI.
+
 ## Getting started
 
 Для начала работы с проектом нужно создать конфигурационые файлы на основе шаблонов:
@@ -34,7 +43,9 @@
 - [Testing](https://github.com/thoughtbot/guides/tree/master/style#testing)
 - [CoffeeScript](https://github.com/thoughtbot/guides/tree/master/style#coffeescript)
 - [Markdown](http://www.cirosantilli.com/markdown-styleguide)
+- [«How to Write a Git Commit Message»](http://chris.beams.io/posts/git-commit/)
 
 ## Requirements
 - Ruby 2
 - PostgreSQL 9.x
+- ImageMagick/GraphicsMagick
