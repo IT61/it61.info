@@ -150,7 +150,7 @@
         ul.nav > li > a {
           padding: 10px;
         }
-        ul#registration-login-nav, 
+        ul#registration-login-nav,
         .user {
           display: none;
           a {
@@ -161,7 +161,7 @@
           li.divider {
             display: none;
           }
-        } 
+        }
         #social-links {
           display: none;
         }
@@ -206,7 +206,7 @@
         ul#registration-login-nav, .user, #mainmenu, #social-links {
           margin-top: $line-height-computed;
         }
-        ul#registration-login-nav, 
+        ul#registration-login-nav,
         .user {
           display: block;
           float: right;
@@ -317,7 +317,7 @@
               padding-right: 0;
               font-size: 1.3 * $font-size-base;
               > a.plus-btn {
-                padding: (.75 * $line-height-computed) (.25 * $line-height-computed);
+                padding: (.5 * $line-height-computed) (.25 * $line-height-computed);
               }
             }
           }

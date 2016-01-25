@@ -1,5 +1,8 @@
 class Company < ActiveRecord::Base
+  include PermalinkFor
+
   mount_uploader :logo_image, CompanyLogoImageUploader
+  permalink_for :title, as: :slug
 
   belongs_to :founder, required: true, class_name: 'User', foreign_key: :founder_id
   # Сотрудники компании
@@ -30,12 +33,12 @@ class Company < ActiveRecord::Base
   end
 
   def publish!
-    self.toggle :published
+    self.published = true
     save!
   end
 
   def cancel_publication!
-    self.toggle :published
+    self.published = false
     save!
   end
 

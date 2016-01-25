@@ -17,7 +17,7 @@ class Companies::MembershipRequestsController < ApplicationController
   def create
     authorize! :create, @membership_request
 
-    @membership_request.user = current_user || nil
+    @membership_request.user = current_user
     @membership_request.save!
 
     flash[:success] = t(:company_membership_request_created, title: @membership_request.company.title)

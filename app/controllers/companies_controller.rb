@@ -63,6 +63,7 @@ class CompaniesController < ApplicationController
   def company_params
     permitted_attrs = [
       :title,
+      :website,
       :description,
       :logo_image,
       :contacts

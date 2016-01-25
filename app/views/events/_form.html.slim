@@ -11,24 +11,16 @@
       = f.text_field :place
   p.help-block = t('.hint')
   = f.hidden_field :title_image_cache
+  = markdown_text_area f, :description
 
-  ul.nav.nav-tabs.event-description
-    li.edit.active = link_to 'Описание', '#edit', 'data-toggle' => 'tab'
-    li.preview = link_to 'Предпросмотр', '#preview'
-  .tab-content
-    #edit.tab-pane.active
-      = f.text_area :description, class: 'hidden'
-
-    #preview.tab-pane
-      .md_preview
-    hr
-    = link_to t(:cancel), root_path, class: 'btn btn-default'
-    | &nbsp;
-    = f.submit class: 'btn btn-primary'
-    - if can?(:manage, @event) && @event.persisted?
-      .pull-right
-        = link_to event_path(@event), method: :delete, class: 'btn btn-danger',
-              data: { confirm: t(:delete_confirm, title: @event.title ) } do
-          i.fa.fa-trash-o
-          | &nbsp;
-          = t :delete
+  hr
+  = link_to t(:cancel), root_path, class: 'btn btn-default'
+  | &nbsp;
+  = f.submit class: 'btn btn-primary'
+  - if can?(:manage, @event) && @event.persisted?
+    .pull-right
+      = link_to event_path(@event), method: :delete, class: 'btn btn-danger',
+            data: { confirm: t(:delete_confirm, title: @event.title ) } do
+        i.fa.fa-trash-o
+        | &nbsp;
+        = t :delete

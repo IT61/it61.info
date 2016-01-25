@@ -12,9 +12,36 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_self
 //= require bootstrap
 //= require styx
 
+//= require_tree ./lib
 //= require events
+//= require companies
 //= require user_profiles
 //= require common
+
+window.initNamespaces = function(str) {
+    var namespace, namespaceToUse, namespaces, _i, _len;
+    if (!str) {
+        str = 'It61';
+    }
+    if (str === 'It61') {
+        namespaces = ['It61'];
+    }
+    else {
+        namespaces = ('It61.' + str).split('.');
+    }
+    namespaceToUse = window;
+    for (_i = 0, _len = namespaces.length; _i < _len; _i++) {
+        namespace = namespaces[_i];
+        if (!namespaceToUse[namespace]) {
+            namespaceToUse[namespace] = {};
+        }
+        namespaceToUse = namespaceToUse[namespace];
+    }
+    return namespaceToUse;
+};
+
+initNamespaces();
