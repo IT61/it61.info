@@ -2,92 +2,86 @@ require 'spec_helper'
 
 describe PasswordResetsController do
   describe 'POST create' do
-    before { ActionMailer::Base.deliveries.clear }
-    let(:user_attrs) { attributes_for(:user) }
-
-    context 'not existing email address' do
-      it "'doesn't send an email'" do
-        post :create, email: 'notexisting@mail.com'
-        expect(ActionMailer::Base.deliveries.count).to eq(0)
-      end
+    before do
+      ActionMailer::Base.deliveries.clear
+      @user = create :user
+      post :create, email: email
     end
 
-    context 'user with a valid email' do
-      let(:user) { create :user }
+    context 'with a valid email' do
+      let(:email) { @user.email }
 
       it 'sends an email with instructions' do
-        post :create, email: user.email
         expect(ActionMailer::Base.deliveries.count).to eq(1)
       end
+
+      it { should set_the_flash[:success] }
+      it { should redirect_to(root_url) }
     end
 
-    it 'redirects to the root url' do
-      post :create, email: user_attrs[:email]
-      expect(response).to redirect_to(root_url)
-    end
+    context 'with not existing email' do
+      let(:email) { 'notexisting@mail.com' }
 
-    it 'sets a flash message' do
-      post :create, email: user_attrs[:email]
-      expect(flash.empty?).not_to be
+      it "'doesn't send an email'" do
+        expect(ActionMailer::Base.deliveries.count).to eq(0)
+      end
+
+      it { should set_the_flash.now[:danger] }
+      it { should render_template('new') }
     end
   end
 
   describe 'GET edit' do
-    context 'valid token' do
-      let(:user) { create :user, :with_reset_password_token }
-
-      it 'renders the #edit view' do
-        get :edit, id: user.reset_password_token
-        expect(response).to render_template(:edit)
-      end
+    before do
+      @user = create :user, :with_reset_password_token
+      get :edit, id: token
     end
 
-    context 'invalid token' do
-      it 'redirects to the root url' do
-        invalid_token = 'invalid token'
-        get :edit, id: invalid_token
-        expect(response).to redirect_to(root_url)
-      end
+    context 'with a valid token' do
+      let(:token) { @user.reset_password_token }
+
+      it { should render_template(:edit) }
+    end
+
+    context 'with an invalid token' do
+      let(:token) { 'invalid_token' }
+
+      it { should redirect_to(root_url) }
     end
   end
 
   describe 'PUT update' do
-    let(:user) { create :user, :with_reset_password_token }
-    let(:user_attrs) { attributes_for(:user, password: 'new_password', password_confirmation: 'new_password') }
+    let(:user_new_password_attrs) { { password: 'new_password', password_confirmation: 'new_password' } }
+    let(:reset_password_token) { @user.reset_password_token }
 
-    context 'valid attributes' do
+    before do
+      @user = create :user, :with_reset_password_token
+      put :update, id: reset_password_token, user: user_new_password_attrs
+    end
+
+    context 'with valid attributes' do
       it 'locates user by token' do
-        put :update, id: user.reset_password_token, user: user_attrs
-        expect(assigns(:user)).to eq(user)
+        expect(assigns(:user)).to eq(@user)
       end
 
       it "changes user's password" do
-        put :update, id: user.reset_password_token, user: user_attrs
-        user.reload
-        expect(User.authenticate(user.email, user_attrs[:password])).to be_true
+        @user.reload
+        expect(User.authenticate(@user.email, user_new_password_attrs[:password])).to be_true
       end
 
-      it 'redirects to the root url after update' do
-        put :update, id: user.reset_password_token, user: user_attrs
-        expect(response).to redirect_to(root_url)
-      end
+      it { should redirect_to(root_url) }
     end
 
-    context 'invalid attributes' do
-      let(:user_attrs) { attributes_for(:user, password: 'password1', password_confirmation: 'password2') }
+    context 'with invalid attributes' do
+      let(:user_new_password_attrs) { { password: 'password1', password_confirmation: 'password2' } }
 
-      it "re-renders the edit template when passwords don't match" do
-        put :update, id: user.reset_password_token, user: user_attrs
-        expect(response).to render_template(:edit)
-      end
+      it { should render_template(:edit) }
     end
 
-    context 'invalid token' do
-      it 'redirects to the root url' do
-        invalid_token = 'invalid token'
-        put :update, id: invalid_token, user: user_attrs
-        expect(response).to redirect_to(root_url)
-      end
+    context 'with an invalid token' do
+      let(:reset_password_token) { 'invalid_token' }
+
+      it { should redirect_to(root_url) }
     end
   end
 end

@@ -98,6 +98,7 @@ ru:
       title: Изменение пароля
     create:
       success_message: Инструкция по восстановлению пароля отправлена на ваш почтовый ящик
+      user_not_found_message: Пользователь с таким Email не найден
     update:
       success_message: Пароль успешно обновлен
 
