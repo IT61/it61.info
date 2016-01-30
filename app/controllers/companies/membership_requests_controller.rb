@@ -1,6 +1,7 @@
 class Companies::MembershipRequestsController < ApplicationController
   respond_to :html
   load_and_authorize_resource class: Company::MembershipRequest
+  before_filter :set_company, only: :create
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, flash: { error: exception.message }
@@ -28,6 +29,14 @@ class Companies::MembershipRequestsController < ApplicationController
 
   def membership_request_params
     params.permit(:company_id)
+  end
+
+  def fetch_company
+    @company ||= Company.find(params[:company_id])
+  end
+
+  def set_company
+    @membership_request.company = fetch_company
   end
 end
 
