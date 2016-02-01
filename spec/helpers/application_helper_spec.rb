@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, type: :helper do
   describe '#markdown' do
     it 'should output rendered markdown' do
       markdown = 'This **is** (bold)\n'
