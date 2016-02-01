@@ -30,5 +30,4 @@ describe UserRegistrationsController, type: :controller do
       expect(created_user).to be_subscribed
     end
   end
-  
 end
