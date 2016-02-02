@@ -2,8 +2,6 @@ class Companies::MembershipRequestsController < ApplicationController
   respond_to :html
   load_and_authorize_resource :company
   load_and_authorize_resource class: Company::MembershipRequest, :through => :company
-  before_filter :set_company, only: :create
-  before_filter :set_user, only: :create
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, flash: { error: exception.message }
@@ -18,7 +16,7 @@ class Companies::MembershipRequestsController < ApplicationController
   end
 
   def create
-    @membership_request.save!
+    @membership_request.update!(company: @company, user: current_user)
 
     flash[:success] = t(:company_membership_request_created, title: @membership_request.company.title)
     redirect_to(request.env['HTTP_REFERER'] ? :back : company_path(@membership_request.company))
@@ -42,14 +40,6 @@ class Companies::MembershipRequestsController < ApplicationController
         :approved
     ]
     params.require(:membership_request).permit(*permitted_attrs)
-  end
-
-  def set_company
-    @membership_request.company = @company
-  end
-
-  def set_user
-    @membership_request.user = current_user
   end
 end
 
