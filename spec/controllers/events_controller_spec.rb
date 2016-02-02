@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe EventsController do
+describe EventsController, type: :controller do
   context 'POST create' do
-    specify 'unlogged user cannot create event' do
+    it 'unlogged user cannot create event' do
       event_attrs = FactoryGirl.attributes_for(:event)
       expect { post :create, event: event_attrs }.to raise_error(CanCan::AccessDenied)
     end
 
-    specify 'member can create event' do
+    it 'member can create event' do
       @user = FactoryGirl.create :user
       login_user
 
@@ -18,7 +18,7 @@ describe EventsController do
       expect(request).to redirect_to event_path(created_event)
     end
 
-    specify "event'll be unpublished if member create it" do
+    it "event'll be unpublished if member create it" do
       @user = FactoryGirl.create :admin
       login_user
 
@@ -29,7 +29,7 @@ describe EventsController do
       expect(created_event).to_not be_published
     end
 
-    specify 'admin can create event' do
+    it 'admin can create event' do
       @user = FactoryGirl.create :admin
       login_user
 
