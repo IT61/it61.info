@@ -1,4 +1,5 @@
-class UserMailer < ActionMailer::Base
+class UserMailer < BaseMailer
+  
   def notice_about_request(user, company)
     @user = user
     @company = company
