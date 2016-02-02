@@ -1,4 +1,12 @@
 tr
-  td = link_to membership_request.user.full_name, user_profile_path(membership_request.user)
-  td = t(membership_request.approved?.to_s)
+  td
+    ul.list-inline
+      li = link_to membership_request.user.full_name, user_profile_path(membership_request.user)
+      - if !membership_request.hidden?
+      li = link_to t(:hide), hide_company_membership_request_path(membership_request.company, membership_request),
+             class: 'btn btn-warning', method: :patch,
+             data: { confirm: t(:hide_membership_request_confirm, name: membership_request.user.full_name ) }
+  td = bootstrap_form_for([membership_request.company, membership_request], layout: :inline) do |f|
+       = f.select :approved, [[t('true'), true], [t('false'), false]], hide_label: true
+       = f.submit class: 'btn btn-primary'
   td = l(membership_request.created_at, format: :date_time_digits)

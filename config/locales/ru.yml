@@ -18,6 +18,8 @@ ru:
   edit: Редактировать
   delete: Удалить
   delete_confirm: "Удалить %{title}?"
+  hide: Скрыть
+  hide_membership_request_confirm: "Скрыть заявку пользователя %{name}?"
 
   'true': да
   'false': нет

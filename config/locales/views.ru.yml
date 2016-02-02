@@ -143,7 +143,6 @@ ru:
     show:
       publish: Опубликовать
       cancel_publication: Отменить публикацию
-      membership_requests: Заявки на членство в организации
     membership_block:
       membership_request_submit_title: Я работаю в компании
       cancel_membership_submit_title: Я больше не работаю в компании
