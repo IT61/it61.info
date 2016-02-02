@@ -3,7 +3,6 @@ class UserMailer < ActionMailer::Base
     @user = user
     @company = company
 
-
     subj = I18n.t('user_mailer.notice_about_request.subject', company: @company.title)
     mail(to: user.email, subject: subj)
   end

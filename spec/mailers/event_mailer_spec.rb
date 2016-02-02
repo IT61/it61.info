@@ -7,7 +7,7 @@ describe EventMailer do
 
   describe 'upcoming_event_reminder' do
     let(:event) { FactoryGirl.build_stubbed(:event, :published, started_at: 2.days.ago) }
-    let(:mail) { EventMailer.upcoming_event_reminder(user, event) }
+    let(:mail) { described_class.upcoming_event_reminder(user, event) }
 
     let(:expected_body) { [event.title] }
     let(:expected_subject) do
@@ -20,7 +20,7 @@ describe EventMailer do
 
   describe 'new_events_digest' do
     let(:events) { [FactoryGirl.build_stubbed(:event, :published)] }
-    let(:mail) { EventMailer.new_events_digest(user, events) }
+    let(:mail) { described_class.new_events_digest(user, events) }
     let(:expected_body) { events.map(&:title) }
     let(:expected_subject) { events.many? ? 'Новые мероприятия' : 'Новое мероприятие' }
 
