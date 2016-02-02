@@ -230,6 +230,13 @@ ru:
       subject:
         single: Новое мероприятие
         many: Новые мероприятия
+  user_mailer: 
+    notice_about_request: 
+      subject: "Запрос на добавление в «%{company}» отправлен"
+    notice_about_accept: 
+      subject: "Запрос подтвержден, пользователь добавлен в «%{company}»"
+    notice_about_delete: 
+      subject: "Пользователь удален из «%{company}»"
   sms_sender:
     upcoming_event_reminder:
       body: "Здравствуйте, %{username}. Напоминаем, что сегодня пройдет мероприятие «%{event}», которое вы планировали посетить. Подробности о времени и месте проведения: http://it61.info"
