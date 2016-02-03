@@ -149,6 +149,10 @@ ru:
       request_exist: "Вы оставили заявку на членство в этой компании %{at}."
     members_block:
       no_members: Пока никто не состоит в компании.
+    membership_requests:
+      membership_request:
+        hide: Скрыть
+        hide_confirm: "Скрыть заявку пользователя %{name}?"
     publish:
       success_message: Компания успешно опубликована
     cancel_publication:
