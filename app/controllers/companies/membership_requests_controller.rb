@@ -9,6 +9,7 @@ class Companies::MembershipRequestsController < ApplicationController
 
   has_scope :recent, type: :boolean, allow_blank: true
   has_scope :hidden, type: :boolean, allow_blank: true, default: false
+  has_scope :approved, type: :boolean, allow_blank: true, default: false
 
   def index
     @membership_requests = apply_scopes(@membership_requests)
@@ -16,14 +17,16 @@ class Companies::MembershipRequestsController < ApplicationController
   end
 
   def create
-    @membership_request.update!(company: @company, user: current_user)
+    @membership_request.update!(user: current_user)
 
     flash[:success] = t(:company_membership_request_created, title: @membership_request.company.title)
     redirect_to(request.env['HTTP_REFERER'] ? :back : company_path(@membership_request.company))
   end
 
-  def update
-    @membership_request.update_attributes membership_request_params
+  def approve
+    @membership_request.approve!
+
+    flash[:success] = t('.success_message', name: @membership_request.user.full_name)
     redirect_to :back
   end
 
@@ -35,11 +38,7 @@ class Companies::MembershipRequestsController < ApplicationController
   private
 
   def membership_request_params
-    permitted_attrs = [
-        :company_id,
-        :approved
-    ]
-    params.require(:membership_request).permit(*permitted_attrs)
+    params.require(:membership_request).permit(:company_id)
   end
 end
 

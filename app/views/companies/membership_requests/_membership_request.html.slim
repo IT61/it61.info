@@ -6,7 +6,6 @@ tr
         li = link_to t('.hide'), hide_company_membership_request_path(membership_request.company, membership_request),
                class: 'btn btn-warning', method: :patch,
                data: { confirm: t('.hide_confirm', name: membership_request.user.full_name ) }
-  td = bootstrap_form_for([membership_request.company, membership_request], layout: :inline) do |f|
-       = f.select :approved, [[t('true'), true], [t('false'), false]], hide_label: true
-       = f.submit class: 'btn btn-primary'
+  td = link_to t('.approve'), approve_company_membership_request_path(membership_request.company, membership_request),
+         class: 'btn btn-success', method: :patch
   td = l(membership_request.created_at, format: :date_time_digits)
