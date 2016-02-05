@@ -11,6 +11,7 @@ class UserRegistrationsController < ApplicationController
 
     if @user.persisted?
       auto_login(@user)
+      notice_admins_about_user_creating(@user)
       redirect_back_or_to(root_path)
     else
       render action: :new
@@ -25,5 +26,12 @@ class UserRegistrationsController < ApplicationController
 
   def subscribe_user
     @user.subscribe!
+  end
+
+  def notice_admins_about_user_creating(new_user)
+    #Move all notices to resque/delayed_job/sidekiq
+    User.admins.each do |admin|
+      AdminMailer.adding_user(admin, new_user).deliver!
+    end
   end
 end
