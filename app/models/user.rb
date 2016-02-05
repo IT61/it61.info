@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   scope :notify_by_sms, -> { where(sms_reminders: true).where.not(phone: nil) }
   scope :subscribed, -> { where(subscribed: true) }
   scope :with_email, -> { where.not(email: nil) }
+  scope :admins, -> { where(role: 1) }
 
   def login
     name || email.split('@').first

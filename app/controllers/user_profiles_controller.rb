@@ -27,6 +27,8 @@ class UserProfilesController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = t('.success_message', title: @user.full_name)
+    notice_admins_about_user_deleting(@user)
+
     respond_with @user, location: user_profiles_path
   end
 
@@ -43,4 +45,12 @@ class UserProfilesController < ApplicationController
                                  :avatar_image, :avatar_image_cache, :phone,
                                  :email_reminders, :sms_reminders, :subscribed)
   end
+
+  def notice_admins_about_user_deleting(user)
+    #Move to resque/delayed_job/sidekiq
+    User.admins.each do |admin|
+      AdminMailer.deleting_user(admin, user).deliver!
+    end
+  end
+
 end
