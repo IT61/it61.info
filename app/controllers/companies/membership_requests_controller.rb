@@ -10,6 +10,8 @@ class Companies::MembershipRequestsController < ApplicationController
   has_scope :recent, type: :boolean, allow_blank: true
   has_scope :hidden, type: :boolean, allow_blank: true, default: false
   has_scope :approved, type: :boolean, allow_blank: true, default: false
+  has_scope :page, default: 1, if: ->(controller) { controller.request.format.html? }
+  has_scope :per, default: 10, if: ->(controller) { controller.request.format.html? }
 
   def index
     @membership_requests = apply_scopes(@membership_requests)

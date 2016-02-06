@@ -53,6 +53,9 @@ GEM
       debug_inspector (>= 0.0.1)
     bitmask_attributes (1.0.0)
       activerecord (>= 3.1)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -176,6 +179,9 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-i18n (0.3.2)
+      kaminari
+      rails
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -377,6 +383,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bitmask_attributes
+  bootstrap-kaminari-views
   bootstrap-sass
   bootstrap_form
   cancancan (= 1.8.3)
@@ -402,6 +409,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  kaminari-i18n
   letter_opener
   marked-rails
   meta-tags

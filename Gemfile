@@ -16,6 +16,8 @@ gem 'carrierwave'
 gem 'high_voltage', '~> 2.1.0'
 gem 'icalendar'
 gem 'kaminari'
+gem 'kaminari-i18n'
+gem 'bootstrap-kaminari-views'
 
 
 gem 'sass-rails'
