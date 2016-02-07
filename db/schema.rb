@@ -15,8 +15,6 @@ ActiveRecord::Schema.define(version: 20160124022503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
-  enable_extension "uuid-ossp"
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",                null: false

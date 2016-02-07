@@ -23,7 +23,7 @@ class Ability
       can :manage, Company::Member
       can :manage, Company::MembershipRequest
     end
-
+    
     if user.member?
       can :create, Company
       can :update, Company, founder_id: user.id
