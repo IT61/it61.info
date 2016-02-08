@@ -32,9 +32,9 @@ class Companies::MembershipRequestsController < ApplicationController
     end
 
     def notice_user_and_admins_about_new_request_to_membership
-      #Move all notices to resque/delayed_job/sidekiq
-      User.admins.each do |admin|
-        AdminMailer.request_to_membership(admin, @membership_request.company).deliver!
+      #TODO Move all notices to resque/delayed_job/sidekiq
+      @membership_request.company.members.with_roles(:admin).each do |company_admin|
+        AdminMailer.request_to_membership(company_admin, @membership_request.company).deliver!
       end
       UserMailer.notice_about_request(current_user, @membership_request.company) #TODO change two parameters to one membership_request
     end

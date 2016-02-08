@@ -34,7 +34,7 @@ describe Companies::MembershipRequestsController, type: :controller do
       end
 
       it 'notices admins about request_to_membership' do 
-        FactoryGirl.create(:admin)
+        FactoryGirl.create(:company_admin, company: company)
         expect(AdminMailer).to receive(:request_to_membership)
         post :create, valid_params
       end
