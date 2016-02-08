@@ -22,19 +22,19 @@ class Companies::MembershipRequestsController < ApplicationController
     @membership_request.update!(user: current_user)
 
     flash[:success] = t(:company_membership_request_created, title: @membership_request.company.title)
-    redirect_to(request.env['HTTP_REFERER'] ? :back : company_path(@membership_request.company))
+    redirect_to(request.env['HTTP_REFERER'] ? :back : @membership_request.company)
   end
 
   def approve
     @membership_request.approve!
 
     flash[:success] = t('.success_message', name: @membership_request.user.full_name)
-    redirect_to :back
+    redirect_to action: :index
   end
 
   def hide
     @membership_request.hide!
-    redirect_to :back
+    redirect_to action: :index
   end
 
   private
@@ -43,4 +43,3 @@ class Companies::MembershipRequestsController < ApplicationController
     params.require(:membership_request).permit(:company_id)
   end
 end
-
