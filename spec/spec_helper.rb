@@ -31,7 +31,8 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
-  config.include Sorcery::TestHelpers::Rails::Controller
+  config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
+  config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
   config.include FactoryGirl::Syntax::Methods
   config.include AbstractController::Translation
 

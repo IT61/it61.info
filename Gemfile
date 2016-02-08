@@ -71,6 +71,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', require: false
   gem 'rspec-rails'
+  gem 'capybara'
   gem 'web-console', '~> 2.0'
   gem 'database_cleaner'
 end
