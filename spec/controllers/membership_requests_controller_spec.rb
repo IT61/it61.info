@@ -77,12 +77,6 @@ describe Companies::MembershipRequestsController do
       should redirect_to(company_membership_requests_url)
     end
   end
-
-  # def create_user_and_company
-  #   @user = create :user
-  #   @company = create(:company, founder: @user)
-  #   login_user
-  # end
 end
 
 
