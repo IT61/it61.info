@@ -13,7 +13,7 @@ describe Companies::MembershipRequestsController do
       get :index, company_id: company
     end
 
-    it { should render_template('index') }
+    it { is_expected.to render_template('index') }
   end
 
   describe 'POST create' do
@@ -34,13 +34,13 @@ describe Companies::MembershipRequestsController do
     it 'sets flash' do
       post_request
 
-      should set_flash[:success]
+      is_expected.to set_flash[:success]
     end
 
     it 'redirects to company' do
       post_request
 
-      should redirect_to(company)
+      is_expected.to redirect_to(company)
     end
   end
 
@@ -57,7 +57,7 @@ describe Companies::MembershipRequestsController do
     it 'redirects to index' do
       patch_approve
 
-      should redirect_to(company_membership_requests_url)
+      is_expected.to redirect_to(company_membership_requests_url)
     end
   end
 
@@ -74,8 +74,19 @@ describe Companies::MembershipRequestsController do
     it 'redirects to index' do
       patch_hide
 
-      should redirect_to(company_membership_requests_url)
+      is_expected.to redirect_to(company_membership_requests_url)
     end
+  end
+
+  describe 'handling rescue from CanCan::AccessDenied exceptions' do
+    let(:company) { create(:company) }
+
+    before do
+      get :index, company_id: company
+    end
+
+    it { is_expected.to redirect_to(root_url) }
+    it { is_expected.to set_flash[:error] }
   end
 end
 
