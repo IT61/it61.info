@@ -9,7 +9,7 @@ describe Company::MembershipRequest do
     end
 
     it 'creates company member' do
-      membership_request = build_stubbed(:membership_request)
+      membership_request = create(:membership_request)
 
       expect { membership_request.approve! }.to change(Company::Member, :count).by(1)
     end

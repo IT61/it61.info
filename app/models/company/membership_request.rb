@@ -9,8 +9,7 @@ class Company::MembershipRequest < ActiveRecord::Base
 
   def approve!
     return if approved
-    self.toggle :approved
-    save!
+    self.toggle! :approved
     @company_member = Company::Member.create!(company: self.company, user: self.user)
   end
 
