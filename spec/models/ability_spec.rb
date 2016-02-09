@@ -11,8 +11,8 @@ describe 'User' do
       let(:company) { build_stubbed(:company) }
       let(:membership_request) { build_stubbed(:membership_request) }
 
-      it { should be_able_to(:manage, company) }
-      it { should be_able_to(:manage, membership_request) }
+      it { is_expected.to be_able_to(:manage, company) }
+      it { is_expected.to be_able_to(:manage, membership_request) }
     end
 
     context 'when is a company founder' do
@@ -20,17 +20,17 @@ describe 'User' do
       let(:company) { build_stubbed(:company, founder: user) }
       let(:membership_request) { build_stubbed(:membership_request, company: company) }
 
-      it { should be_able_to(:view, company) }
+      it { is_expected.to be_able_to(:view, company) }
 
-      it { should be_able_to(:approve, membership_request) }
-      it { should be_able_to(:hide, membership_request) }
+      it { is_expected.to be_able_to(:approve, membership_request) }
+      it { is_expected.to be_able_to(:hide, membership_request) }
     end
 
     context 'when is a member' do
       let(:user) { create(:user) }
       let(:membership_request) { build_stubbed(:membership_request) }
 
-      it { should be_able_to(:create, membership_request) }
+      it { is_expected.to be_able_to(:create, membership_request) }
     end
   end
 end
