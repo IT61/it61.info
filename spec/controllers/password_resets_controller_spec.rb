@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PasswordResetsController do
+describe PasswordResetsController, type: :controller do
   describe 'POST create' do
     before do
       ActionMailer::Base.deliveries.clear
@@ -15,19 +15,22 @@ describe PasswordResetsController do
         expect(ActionMailer::Base.deliveries.count).to eq(1)
       end
 
-      it { should set_the_flash[:success] }
-      it { should redirect_to(root_url) }
+      it { expect(controller).to set_the_flash[:success] }
+      it { expect(request).to redirect_to root_url }
     end
 
     context 'with not existing email' do
       let(:email) { 'notexisting@mail.com' }
 
-      it "'doesn't send an email'" do
+      it 'does not sends an email' do
         expect(ActionMailer::Base.deliveries.count).to eq(0)
       end
 
-      it { should set_the_flash.now[:danger] }
-      it { should render_template('new') }
+      it do
+        expect(controller).to set_the_flash[:danger]
+          .to(/Пользователь с таким Email не найден/).now
+      end
+      it { expect(response).to render_template(:new) }
     end
   end
 
@@ -40,13 +43,13 @@ describe PasswordResetsController do
     context 'with a valid token' do
       let(:token) { @user.reset_password_token }
 
-      it { should render_template(:edit) }
+      it { expect(response).to render_template(:edit) }
     end
 
     context 'with an invalid token' do
       let(:token) { 'invalid_token' }
 
-      it { should redirect_to(root_url) }
+      it { expect(request).to redirect_to root_url }
     end
   end
 
@@ -66,22 +69,22 @@ describe PasswordResetsController do
 
       it "changes user's password" do
         @user.reload
-        expect(User.authenticate(@user.email, user_new_password_attrs[:password])).to be_true
+        expect(User.authenticate(@user.email, user_new_password_attrs[:password])).to eq @user
       end
 
-      it { should redirect_to(root_url) }
+      it { expect(request).to redirect_to root_url }
     end
 
     context 'with invalid attributes' do
       let(:user_new_password_attrs) { { password: 'password1', password_confirmation: 'password2' } }
 
-      it { should render_template(:edit) }
+      it { expect(response).to render_template(:edit) }
     end
 
     context 'with an invalid token' do
       let(:reset_password_token) { 'invalid_token' }
 
-      it { should redirect_to(root_url) }
+      it { expect(request).to redirect_to root_url }
     end
   end
 end
