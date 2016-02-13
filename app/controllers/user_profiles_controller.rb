@@ -27,30 +27,22 @@ class UserProfilesController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = t('.success_message', title: @user.full_name)
-    notice_admins_about_user_deleting(@user)
 
     respond_with @user, location: user_profiles_path
   end
 
   private
 
-  def prepare_user
-    @user = User.find(params[:id])
-    authorize! :manage, @user
-  end
-
-  def user_profile_params
-    params.require(:user).permit(:first_name, :last_name, :bio,
-                                 :password, :password_confirmation, :email,
-                                 :avatar_image, :avatar_image_cache, :phone,
-                                 :email_reminders, :sms_reminders, :subscribed)
-  end
-
-  def notice_admins_about_user_deleting(user)
-    #Move to resque/delayed_job/sidekiq
-    User.admins.each do |admin|
-      AdminMailer.deleting_user(admin, user).deliver!
+    def prepare_user
+      @user = User.find(params[:id])
+      authorize! :manage, @user
     end
-  end
+
+    def user_profile_params
+      params.require(:user).permit(:first_name, :last_name, :bio,
+                                   :password, :password_confirmation, :email,
+                                   :avatar_image, :avatar_image_cache, :phone,
+                                   :email_reminders, :sms_reminders, :subscribed)
+    end
 
 end
