@@ -22,4 +22,8 @@ module ApplicationHelper
     ['events', 'companies'].include?(controller.controller_name) &&
     !['index', 'show'].include?(controller.action_name)
   end
+
+  def xeditable? object = nil
+    can?(:edit, object)
+  end
 end

@@ -28,6 +28,15 @@ Rails.application.routes.draw do
 
   end
 
+  # Admin routes
+  namespace :admin do
+    resources :companies, only: [] do
+      scope module: :companies do
+        resources :members, only: [:index, :update], shallow: true
+      end
+    end
+  end
+
   post '/participate_in_event' => 'event_participations#create'
   delete '/cancel_participation' => 'event_participations#destroy'
 

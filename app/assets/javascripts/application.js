@@ -15,6 +15,8 @@
 //= require_self
 //= require bootstrap
 //= require styx
+//= require editable/bootstrap-editable
+//= require editable/rails
 
 //= require_tree ./lib
 //= require events

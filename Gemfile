@@ -18,6 +18,7 @@ gem 'icalendar'
 gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'bootstrap-kaminari-views'
+gem 'x-editable-rails'
 
 
 gem 'sass-rails'

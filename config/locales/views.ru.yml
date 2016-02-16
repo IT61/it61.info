@@ -156,6 +156,9 @@ ru:
         approve: Подтвердить
         hide: Скрыть
         hide_confirm: "Скрыть заявку пользователя %{name}?"
+    members:
+      destroy:
+        success_message: "Сотрудник %{name} удален."
     publish:
       success_message: Компания успешно опубликована
     cancel_publication:
@@ -170,7 +173,15 @@ ru:
   sms_sender:
     upcoming_event_reminder:
       body: "Здравствуйте, %{username}. Напоминаем, что сегодня пройдет мероприятие «%{event}», которое вы планировали посетить. Подробности о времени и месте проведения: http://it61.info"
-
+  admin:
+    companies:
+      members:
+        index:
+          actions: Действия
+        member:
+          delete_confirm: "Удалить сотрудника %{name}?"
+          admin: Администатор
+          employer: Работодатель
 
 
   unauthorized:

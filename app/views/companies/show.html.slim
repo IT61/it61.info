@@ -8,6 +8,8 @@
       - if can? :edit, @company
         = link_to Company::MembershipRequest.model_name.human(count: 5), company_membership_requests_path(@company), class: 'btn btn-default'
         | &nbsp;
+        = link_to Company::Member.model_name.human(count: 5), admin_company_members_path(@company), class: 'btn btn-default'
+        | &nbsp;
         = link_to t(:edit), edit_company_path(@company), class: 'btn btn-default'
         | &nbsp;
       - if can? :publish, @company
