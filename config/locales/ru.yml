@@ -94,3 +94,10 @@ ru:
   errors:
     messages:
       extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
+
+  company:
+    member:
+      roles:
+        admin: Администратор
+        employee: Сотрудник
+        none: Отсутствуют

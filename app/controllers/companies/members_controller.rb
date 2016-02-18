@@ -1,15 +1,19 @@
 class Companies::MembersController < ApplicationController
   respond_to :html
+  responders :flash
   load_and_authorize_resource class: Company::Member
-
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to :back, flash: { error: exception.message }
-  end
 
   def destroy
     @member.destroy!
-    # TODO set the flash text depending on a deletion context
-    flash[:success] = t(:company_membership_canceled, title: @member.company.title)
-    redirect_to :back
+
+    respond_with @member do |format|
+      format.html { redirect_to :back }
+    end
+  end
+
+  private
+
+  def interpolation_options
+    { company_title: @member.company.title }
   end
 end

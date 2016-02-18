@@ -6,6 +6,13 @@ describe 'User' do
     subject(:ability) { Ability.new(user) }
     let(:user) { create(:user) }
 
+    context 'when is a guest' do
+      let(:user) { nil }
+      let(:company_member) { build_stubbed(:company_member) }
+
+      it { is_expected.to be_able_to(:view, company_member) }
+    end
+
     context 'when is a signed in user' do
       let(:membership_request) { build_stubbed(:membership_request) }
       let(:company_member) { build_stubbed(:company_member) }

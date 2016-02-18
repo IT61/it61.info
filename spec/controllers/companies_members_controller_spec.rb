@@ -1,13 +1,11 @@
 require 'spec_helper'
 
 describe Companies::MembersController, type: :controller do
+  include_context 'http referer'
   let(:user) { create :user }
-  let(:company) { create(:company) }
-  let(:http_referer) { root_url }
 
   before do
     login_user user
-    request.env['HTTP_REFERER'] = http_referer
   end
 
   describe 'DELETE destroy' do
@@ -22,6 +20,12 @@ describe Companies::MembersController, type: :controller do
       delete_destroy
 
       is_expected.to redirect_to(http_referer)
+    end
+
+    it 'sets flash' do
+      delete_destroy
+
+      is_expected.to set_flash[:success]
     end
   end
 end

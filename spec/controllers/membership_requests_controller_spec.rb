@@ -17,6 +17,7 @@ describe Companies::MembershipRequestsController do
   end
 
   describe 'POST create' do
+    include_context 'http referer'
     let(:company) { create(:company, :published) }
     let(:post_request) { post :create, company_id: company, membership_request: { company_id: company.id } }
 
@@ -37,10 +38,10 @@ describe Companies::MembershipRequestsController do
       is_expected.to set_flash[:success]
     end
 
-    it 'redirects to company' do
+    it 'redirects back to referer' do
       post_request
 
-      is_expected.to redirect_to(company)
+      is_expected.to redirect_to(http_referer)
     end
   end
 
@@ -58,6 +59,12 @@ describe Companies::MembershipRequestsController do
       patch_approve
 
       is_expected.to redirect_to(company_membership_requests_url)
+    end
+
+    it 'sets success flash' do
+      patch_approve
+
+      is_expected.to set_flash[:success]
     end
   end
 

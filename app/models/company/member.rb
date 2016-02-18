@@ -1,5 +1,5 @@
 class Company::Member < ActiveRecord::Base
-  bitmask :roles, as: [:employer, :admin]
+  bitmask :roles, as: [:employee, :admin]
 
   belongs_to :user, required: true
   belongs_to :company, required: true

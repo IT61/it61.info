@@ -2,10 +2,6 @@ class EventParticipationsController < ApplicationController
   respond_to :html
   load_and_authorize_resource param_method: :event_participation_params
 
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to :back, flash: { error: exception.message }
-  end
-
   def create
     @event_participation.user = current_user || nil
     @event_participation.save!

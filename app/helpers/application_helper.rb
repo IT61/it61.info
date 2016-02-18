@@ -23,7 +23,7 @@ module ApplicationHelper
     !['index', 'show'].include?(controller.action_name)
   end
 
-  def xeditable? object = nil
+  def xeditable?(object = nil)
     can?(:edit, object)
   end
 end

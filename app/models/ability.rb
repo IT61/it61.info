@@ -8,7 +8,7 @@ class Ability
 
     can :view, Event, published: true
     can :view, Company, published: true
-    can :view, Company::Member, approved: true
+    can :view, Company::Member
 
     can :manage, User, id: user.id
 
