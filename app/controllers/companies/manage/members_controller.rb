@@ -1,4 +1,4 @@
-class Admin::Companies::MembersController < ApplicationController
+class Companies::Manage::MembersController < ApplicationController
   respond_to :html, :json
   load_and_authorize_resource :company
   load_and_authorize_resource class: Company::Member, through: :company, shallow: true

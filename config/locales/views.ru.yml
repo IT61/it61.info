@@ -159,6 +159,14 @@ ru:
     members:
       destroy:
         success_message: "Сотрудник %{name} удален."
+    manage:
+      members:
+        index:
+          actions: Действия
+        member:
+          delete_confirm: "Удалить сотрудника %{name}?"
+          admin: Администатор
+          employer: Работодатель
     publish:
       success_message: Компания успешно опубликована
     cancel_publication:
@@ -173,15 +181,7 @@ ru:
   sms_sender:
     upcoming_event_reminder:
       body: "Здравствуйте, %{username}. Напоминаем, что сегодня пройдет мероприятие «%{event}», которое вы планировали посетить. Подробности о времени и месте проведения: http://it61.info"
-  admin:
-    companies:
-      members:
-        index:
-          actions: Действия
-        member:
-          delete_confirm: "Удалить сотрудника %{name}?"
-          admin: Администатор
-          employer: Работодатель
+
 
 
   unauthorized:

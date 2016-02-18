@@ -8,6 +8,6 @@ table.table.table-bordered.table-hover
       th = Company::Member.human_attribute_name(:roles)
       th = t('.actions')
     tbody
-      = render partial: 'admin/companies/members/member', collection: @members
+      = render partial: 'companies/manage/members/member', collection: @members
 
 = paginate @members, theme: 'twitter-bootstrap-3'

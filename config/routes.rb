@@ -24,14 +24,7 @@ Rails.application.routes.draw do
         patch :approve, on: :member
         patch :hide, on: :member
       end
-    end
-
-  end
-
-  # Admin routes
-  namespace :admin do
-    resources :companies, only: [] do
-      scope module: :companies do
+      namespace :manage do
         resources :members, only: [:index, :update], shallow: true
       end
     end
