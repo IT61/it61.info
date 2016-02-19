@@ -20,7 +20,10 @@ Rails.application.routes.draw do
     patch :publish, on: :member
     patch :cancel_publication, on: :member
     scope module: :companies do
-      resources :membership_requests, only: [:index, :create, :update]
+      resources :membership_requests, only: [:index, :create] do
+        patch :approve, on: :member
+        patch :hide, on: :member
+      end
     end
 
   end

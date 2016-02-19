@@ -47,4 +47,8 @@ class Company < ActiveRecord::Base
     member = membership_for(user)
     member && member.admin?
   end
+  # see https://coderwall.com/p/heed_q/rails-routing-and-namespaced-models
+  def self.use_relative_model_naming?
+    true
+  end
 end

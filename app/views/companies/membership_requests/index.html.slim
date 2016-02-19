@@ -8,3 +8,5 @@ table.table.table-bordered.table-hover
       th = Company::MembershipRequest.human_attribute_name(:created_at)
     tbody
       = render partial: 'companies/membership_requests/membership_request', collection: @membership_requests
+
+= paginate @membership_requests, theme: 'twitter-bootstrap-3'
