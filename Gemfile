@@ -16,6 +16,8 @@ gem 'carrierwave'
 gem 'high_voltage', '~> 2.1.0'
 gem 'icalendar'
 gem 'kaminari'
+gem 'kaminari-i18n'
+gem 'bootstrap-kaminari-views'
 
 
 gem 'sass-rails'
@@ -69,6 +71,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', require: false
   gem 'rspec-rails'
+  gem 'capybara'
   gem 'web-console', '~> 2.0'
   gem 'database_cleaner'
 end

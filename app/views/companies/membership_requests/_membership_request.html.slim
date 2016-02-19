@@ -1,4 +1,11 @@
 tr
-  td = link_to membership_request.user.full_name, user_profile_path(membership_request.user)
-  td = t(membership_request.approved?.to_s)
+  td
+    ul.list-inline
+      li = link_to membership_request.user.full_name, user_profile_path(membership_request.user)
+      - if !membership_request.hidden?
+        li = link_to t('.hide'), hide_company_membership_request_path(membership_request.company, membership_request),
+               class: 'btn btn-warning', method: :patch,
+               data: { confirm: t('.hide_confirm', name: membership_request.user.full_name ) }
+  td = link_to t('.approve'), approve_company_membership_request_path(membership_request.company, membership_request),
+         class: 'btn btn-success', method: :patch
   td = l(membership_request.created_at, format: :date_time_digits)

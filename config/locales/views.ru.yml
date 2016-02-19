@@ -149,6 +149,13 @@ ru:
       request_exist: "Вы оставили заявку на членство в этой компании %{at}."
     members_block:
       no_members: Пока никто не состоит в компании.
+    membership_requests:
+      approve:
+        success_message: "Заявка пользователя %{name} подтверждена."
+      membership_request:
+        approve: Подтвердить
+        hide: Скрыть
+        hide_confirm: "Скрыть заявку пользователя %{name}?"
     publish:
       success_message: Компания успешно опубликована
     cancel_publication:

@@ -33,8 +33,9 @@ class Ability
       can :view, Company, founder_id: user.id
       cannot :publish, Company
 
+      can :view, Company::MembershipRequest, company: { founder_id: user.id }
       can :create, Company::MembershipRequest
-      can :update, Company::MembershipRequest do |request|
+      can [:approve, :hide], Company::MembershipRequest do |request|
         request.company.admin?(user)
       end
       can :manage, Company::Member do |member|
