@@ -18,6 +18,8 @@ gem 'icalendar'
 gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'bootstrap-kaminari-views'
+gem 'execjs'
+gem 'therubyracer', platforms: :ruby
 
 
 gem 'sass-rails'

@@ -49,3 +49,8 @@ client_secrets.json
 TODO
 /.env
 
+Vagrantfile
+Cheffile
+Cheffile.lock
+.vagrant
+cookbooks*
