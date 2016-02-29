@@ -28,6 +28,10 @@ ru:
       members:
         destroy:
           success: "Вы больше не работаете в &laquo;%{company_title}&raquo;."
+      manage:
+        members:
+          destroy:
+            success: "Сотрудник %{user_name} удален."
 
   helpers:
     submit:
@@ -157,9 +161,6 @@ ru:
         approve: Подтвердить
         hide: Скрыть
         hide_confirm: "Скрыть заявку пользователя %{name}?"
-    members:
-      destroy:
-        success_message: "Сотрудник %{name} удален."
     manage:
       members:
         index:

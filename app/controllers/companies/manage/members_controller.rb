@@ -1,5 +1,6 @@
 class Companies::Manage::MembersController < ApplicationController
   respond_to :html, :json
+  responders :flash
   load_and_authorize_resource :company
   load_and_authorize_resource class: Company::Member, through: :company, shallow: true
 
@@ -16,9 +17,18 @@ class Companies::Manage::MembersController < ApplicationController
     respond_with @member
   end
 
+  def destroy
+    @member.destroy!
+    respond_with @member, location: company_manage_members_path(@member.company)
+  end
+
   private
 
   def member_params
     params.require(:member).permit(:roles => [])
+  end
+
+  def interpolation_options
+    { user_name: @member.user.full_name }
   end
 end

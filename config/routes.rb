@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         patch :hide, on: :member
       end
       namespace :manage do
-        resources :members, only: [:index, :update], shallow: true
+        resources :members, only: [:index, :update, :destroy], shallow: true
       end
     end
   end
