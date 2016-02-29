@@ -44,18 +44,20 @@ describe 'User' do
       let(:company_admin) { create(:company_member, :admin, user: user) }
       let(:other_member) { build_stubbed(:company_member, company: company_admin.company) }
 
-      it { is_expected.to be_able_to(:update, other_member) }
+      it { is_expected.not_to be_able_to(:update, other_member) }
       it { is_expected.to be_able_to(:destroy, other_member) }
     end
 
     context 'when is a company founder' do
       let(:company) { build_stubbed(:company, founder: user) }
       let(:membership_request) { build_stubbed(:membership_request, company: company) }
+      let(:other_member) { build_stubbed(:company_member, company: company) }
 
       it { is_expected.to be_able_to(:view, company) }
 
       it { is_expected.to be_able_to(:approve, membership_request) }
       it { is_expected.to be_able_to(:hide, membership_request) }
+      it { is_expected.to be_able_to(:update, other_member) }
     end
   end
 end

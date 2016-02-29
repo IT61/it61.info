@@ -39,7 +39,8 @@ class Ability
         request.company.admin?(user)
       end
       can :view, Company::Member
-      can [:update, :destroy], Company::Member do |member|
+      can :update, Company::Member, company: { founder_id: user.id }
+      can :destroy, Company::Member do |member|
         member.company.admin?(user)
       end
       can :destroy, Company::Member, user_id: user.id

@@ -8,7 +8,8 @@ describe Companies::Manage::MembersController, type: :controller do
   end
 
   describe 'PATCH update' do
-    let(:company_member) { create(:company_member, :admin, user: user) }
+    let(:company) { create(:company, founder: user) }
+    let(:company_member) { create(:company_member, company: company) }
     let(:new_roles) { [:admin, :employee] }
 
     it 'changes company member attributes' do
