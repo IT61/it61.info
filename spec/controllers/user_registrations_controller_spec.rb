@@ -30,21 +30,6 @@ describe UserRegistrationsController, type: :controller do
       expect(created_user).to be_subscribed
     end
 
-    context 'email notifications' do
-      before(:each) do
-        allow(AdminMailer).to receive(:adding_user) do
-          mock = double
-          allow(mock).to receive(:deliver!)
-          mock
-        end
-      end
-
-      it 'notice admins about adding new user' do
-        FactoryGirl.create(:admin)
-        expect(AdminMailer).to receive(:adding_user)
-        post :create, user: user_attrs
-      end
-    end
   end
   
 end

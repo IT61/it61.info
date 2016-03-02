@@ -29,14 +29,26 @@ describe Companies::MembersController, type: :controller do
       before(:each) do
         allow(AdminMailer).to receive(:deleting_user) do
           mock = double
-          allow(mock).to receive(:deliver!)
+          expect(mock).to receive(:deliver_now!)
+          mock
+        end
+        
+        allow(UserMailer).to receive(:notice_about_delete) do
+          mock = double
+          expect(mock).to receive(:deliver_now!)
           mock
         end
       end
 
-      it 'notice admins about deleting user from company' do #не находится mebmer_request
+      it 'notices admins about deleting user from company' do #не находится mebmer_request
         FactoryGirl.create(:company_admin, company: company)
         expect(AdminMailer).to receive(:deleting_user)
+        delete :destroy, company_id: user_member.company_id, id: user_member.id
+      end
+
+      it 'notices user about deleting from company' do #не находится mebmer_request
+        FactoryGirl.create(:company_admin, company: company)
+        expect(UserMailer).to receive(:notice_about_delete)
         delete :destroy, company_id: user_member.company_id, id: user_member.id
       end
     end

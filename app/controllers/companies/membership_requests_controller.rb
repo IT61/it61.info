@@ -20,6 +20,7 @@ class Companies::MembershipRequestsController < ApplicationController
 
   def create
     @membership_request.update!(user: current_user)
+    notice_user_and_admins_about_new_request_to_membership
 
     flash[:success] = t(:company_membership_request_created, title: @membership_request.company.title)
     redirect_to(request.env['HTTP_REFERER'] ? :back : @membership_request.company)
@@ -46,9 +47,9 @@ class Companies::MembershipRequestsController < ApplicationController
     def notice_user_and_admins_about_new_request_to_membership
       #TODO Move all notices to resque/delayed_job/sidekiq
       @membership_request.company.members.with_roles(:admin).each do |company_admin|
-        AdminMailer.request_to_membership(company_admin, @membership_request.company).deliver!
+        AdminMailer.request_to_membership(company_admin, @membership_request.company).deliver_now!
       end
-      UserMailer.notice_about_request(current_user, @membership_request.company) #TODO change two parameters to one membership_request
+      UserMailer.notice_about_request(current_user, @membership_request.company).deliver_now!
     end
 
 end

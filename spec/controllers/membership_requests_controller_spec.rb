@@ -42,6 +42,31 @@ describe Companies::MembershipRequestsController do
 
       is_expected.to redirect_to(company)
     end
+
+    context 'email notifications' do
+      it 'notices admins about request_to_membership' do 
+        allow(AdminMailer).to receive(:request_to_membership) do
+          mock = double
+          expect(mock).to receive(:deliver_now!)
+          mock
+        end
+
+        FactoryGirl.create(:company_admin, company: company)
+        expect(AdminMailer).to receive(:request_to_membership)
+        post_request
+      end
+
+      it 'notices user about notice_about_request' do
+        allow(UserMailer).to receive(:notice_about_request) do
+          mock = double
+          expect(mock).to receive(:deliver_now!)
+          mock
+        end
+
+        expect(UserMailer).to receive(:notice_about_request)
+        post_request
+      end
+    end
   end
 
   describe 'PATCH approve' do
