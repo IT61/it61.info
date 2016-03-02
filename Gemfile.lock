@@ -61,6 +61,7 @@ GEM
       sass (>= 3.3.4)
     bootstrap_form (2.3.0)
     builder (3.2.2)
+    byebug (8.2.2)
     cancancan (1.8.3)
     capistrano (3.4.0)
       i18n
@@ -400,6 +401,7 @@ DEPENDENCIES
   bootstrap-kaminari-views
   bootstrap-sass
   bootstrap_form
+  byebug
   cancancan (= 1.8.3)
   capistrano
   capistrano-bundler

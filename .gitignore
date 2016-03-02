@@ -46,6 +46,7 @@ client_secrets.json
 
 .DS_Store
 .approvals
+.byebug_history
 TODO
 /.env
 
