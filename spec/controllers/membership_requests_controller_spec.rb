@@ -84,6 +84,32 @@ describe Companies::MembershipRequestsController do
 
       is_expected.to redirect_to(company_membership_requests_url)
     end
+
+    context 'email notifications' do
+      it 'notices admins about new_company_user' do 
+        allow(AdminMailer).to receive(:new_company_user) do
+          mock = double
+          expect(mock).to receive(:deliver_now!)
+          mock
+        end
+
+        FactoryGirl.create(:company_admin, company: company)
+        expect(AdminMailer).to receive(:new_company_user)
+        patch_approve
+      end
+
+      it 'notices user about notice_about_accept' do
+        allow(UserMailer).to receive(:notice_about_accept) do
+          mock = double
+          expect(mock).to receive(:deliver_now!)
+          mock
+        end
+
+        expect(UserMailer).to receive(:notice_about_accept)
+        patch_approve
+      end
+    end
+
   end
 
   describe 'PATCH hide' do

@@ -9,19 +9,19 @@ class AdminMailer < BaseMailer
     mail(to: user.email, subject: subj)
   end
 
-  def adding_user(user, new_user)
+  def new_company_user(user, new_user)
     @user     = user
     @new_user = new_user
 
-    subj = I18n.t('admin_mailer.adding_user.subject', user: @new_user.full_name)
+    subj = I18n.t('admin_mailer.new_company_user.subject', user: @new_user.full_name)
     mail(to: user.email, subject: subj)
   end
 
-  def deleting_user(user, deleted_user)
+  def delete_user_from_company(user, deleted_user)
     @user         = user
     @deleted_user = deleted_user
 
-    subj = I18n.t('admin_mailer.deleting_user.subject', user: @deleted_user.full_name)
+    subj = I18n.t('admin_mailer.delete_user_from_company.subject', user: @deleted_user.full_name)
     mail(to: user.email, subject: subj)    
   end
 

@@ -16,8 +16,8 @@ describe AdminMailer do
     it_behaves_like 'a well tested mailer'
   end
 
-  context 'adding_user' do
-    let(:mail) { described_class.adding_user(user, another_user) }
+  context 'new_company_user' do
+    let(:mail) { described_class.new_company_user(user, another_user) }
 
     let(:expected_body) { [user.full_name, another_user.full_name] }
     let(:expected_subject) { "Добавлен новый пользователь «#{another_user.full_name}»" }
@@ -25,8 +25,8 @@ describe AdminMailer do
     it_behaves_like 'a well tested mailer'
   end
 
-  context 'deleting_user' do
-    let(:mail) { described_class.deleting_user(user, another_user) }
+  context 'delete_user_from_company' do
+    let(:mail) { described_class.delete_user_from_company(user, another_user) }
 
     let(:expected_body) { [user.full_name] }
     let(:expected_subject) { "Удален пользователь «#{another_user.full_name}»" }

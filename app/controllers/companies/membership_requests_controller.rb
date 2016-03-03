@@ -28,6 +28,7 @@ class Companies::MembershipRequestsController < ApplicationController
 
   def approve
     @membership_request.approve!
+    notice_user_and_admins_about_adding_user_into_company
 
     flash[:success] = t('.success_message', name: @membership_request.user.full_name)
     redirect_to action: :index
@@ -50,6 +51,14 @@ class Companies::MembershipRequestsController < ApplicationController
         AdminMailer.request_to_membership(company_admin, @membership_request.company).deliver_now!
       end
       UserMailer.notice_about_request(current_user, @membership_request.company).deliver_now!
+    end
+
+    def notice_user_and_admins_about_adding_user_into_company
+      #TODO Move all notices to resque/delayed_job/sidekiq
+      @membership_request.company.members.with_roles(:admin).each do |company_admin|
+        AdminMailer.new_company_user(company_admin, @membership_request.company).deliver_now!
+      end
+      UserMailer.notice_about_accept(current_user, @membership_request.company).deliver_now!
     end
 
 end
