@@ -18,8 +18,8 @@ class Companies::MembersController < ApplicationController
     def notice_user_and_admins_about_deliting_user_from_company(company, user)
       #TODO Move all notices to resque/delayed_job/sidekiq
       company.members.with_roles(:admin).each do |company_admin|
-        AdminMailer.delete_user_from_company(company_admin.user, company, user).deliver_now!
+        AdminMailer.delete_user_from_company(company_admin.user, company, user).deliver_later
       end
-      UserMailer.notice_about_delete(user, company).deliver_now!
+      UserMailer.notice_about_delete(user, company).deliver_later
     end
 end
