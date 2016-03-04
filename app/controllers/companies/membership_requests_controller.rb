@@ -46,7 +46,6 @@ class Companies::MembershipRequestsController < ApplicationController
     end
 
     def notice_user_and_admins_about_new_request_to_membership
-      #TODO Move all notices to resque/delayed_job/sidekiq
       @membership_request.company.members.with_roles(:admin).each do |company_admin|
         AdminMailer.request_to_membership(company_admin.user, @membership_request.company, @membership_request.user).deliver_later
       end
@@ -54,7 +53,6 @@ class Companies::MembershipRequestsController < ApplicationController
     end
 
     def notice_user_and_admins_about_adding_user_into_company
-      #TODO Move all notices to resque/delayed_job/sidekiq
       @membership_request.company.members.with_roles(:admin).each do |company_admin|
         AdminMailer.new_company_user(company_admin.user, @membership_request.company, @membership_request.user).deliver_later
       end
