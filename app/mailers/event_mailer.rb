@@ -1,4 +1,4 @@
-class EventMailer < ActionMailer::Base
+class EventMailer < BaseMailer
 
   def upcoming_event_reminder(user, event)
     @user = user

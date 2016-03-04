@@ -20,6 +20,7 @@ class Companies::MembershipRequestsController < ApplicationController
 
   def create
     @membership_request.update!(user: current_user)
+    notice_user_and_admins_about_new_request_to_membership
 
     flash[:success] = t(:company_membership_request_created, title: @membership_request.company.title)
     redirect_to(request.env['HTTP_REFERER'] ? :back : @membership_request.company)
@@ -27,6 +28,7 @@ class Companies::MembershipRequestsController < ApplicationController
 
   def approve
     @membership_request.approve!
+    notice_user_and_admins_about_adding_user_into_company
 
     flash[:success] = t('.success_message', name: @membership_request.user.full_name)
     redirect_to action: :index
@@ -39,7 +41,22 @@ class Companies::MembershipRequestsController < ApplicationController
 
   private
 
-  def membership_request_params
-    params.require(:membership_request).permit(:company_id)
-  end
+    def membership_request_params
+      params.require(:membership_request).permit(:company_id)
+    end
+
+    def notice_user_and_admins_about_new_request_to_membership
+      @membership_request.company.members.with_roles(:admin).each do |company_admin|
+        AdminMailer.request_to_membership(company_admin.user, @membership_request.company, @membership_request.user).deliver_later
+      end
+      UserMailer.notice_about_request(@membership_request.user, @membership_request.company).deliver_later
+    end
+
+    def notice_user_and_admins_about_adding_user_into_company
+      @membership_request.company.members.with_roles(:admin).each do |company_admin|
+        AdminMailer.new_company_user(company_admin.user, @membership_request.company, @membership_request.user).deliver_later
+      end
+      UserMailer.notice_about_accept(@membership_request.user, @membership_request.company).deliver_later
+    end
+
 end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :membership_request, class: Company::MembershipRequest do
-    company
-    user
+    association :user
+    association :company
   end
 end

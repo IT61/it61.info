@@ -42,6 +42,34 @@ describe Companies::MembershipRequestsController do
 
       is_expected.to redirect_to(company)
     end
+
+    context 'email notifications' do
+      let(:delivery) { fake_delivery }
+
+      it 'notices admins about request_to_membership' do 
+        company_admin = FactoryGirl.create(:company_admin, company: company)
+        allow(AdminMailer).to receive(:request_to_membership) do |admin, source_company, new_user|
+          expect(admin).to eq(company_admin.user)
+          expect(source_company).to eq(company)
+          expect(new_user).to eq(user)
+          delivery
+        end
+
+        expect(AdminMailer).to receive(:request_to_membership)
+        post_request
+      end
+
+      it 'notices user about notice_about_request' do
+        allow(UserMailer).to receive(:notice_about_request) do |new_user, source_company|
+          expect(new_user).to eq(user)
+          expect(source_company).to eq(company)
+          delivery
+        end
+
+        expect(UserMailer).to receive(:notice_about_request)
+        post_request
+      end
+    end
   end
 
   describe 'PATCH approve' do
@@ -59,6 +87,35 @@ describe Companies::MembershipRequestsController do
 
       is_expected.to redirect_to(company_membership_requests_url)
     end
+
+    context 'email notifications' do
+      let(:delivery) { fake_delivery }
+
+      it 'notices admins about new_company_user' do 
+        company_admin = FactoryGirl.create(:company_admin, company: company)
+        allow(AdminMailer).to receive(:new_company_user) do |admin, source_company, new_user|
+          expect(admin).to eq(company_admin.user)
+          expect(source_company).to eq(membership_request.company)
+          expect(new_user).to eq(membership_request.user)
+          delivery
+        end
+
+        expect(AdminMailer).to receive(:new_company_user)
+        patch_approve
+      end
+
+      it 'notices user about notice_about_accept' do
+        allow(UserMailer).to receive(:notice_about_accept) do |new_user, source_company|
+          expect(new_user).to eq(membership_request.user)
+          expect(source_company).to eq(membership_request.company)
+          delivery
+        end
+
+        expect(UserMailer).to receive(:notice_about_accept)
+        patch_approve
+      end
+    end
+
   end
 
   describe 'PATCH hide' do

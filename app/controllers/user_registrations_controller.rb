@@ -26,4 +26,5 @@ class UserRegistrationsController < ApplicationController
   def subscribe_user
     @user.subscribe!
   end
+
 end

@@ -13,11 +13,13 @@ gem 'pg'
 gem 'cancancan', '= 1.8.3'
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'high_voltage', '~> 2.1.0'
+gem 'high_voltage', '~> 2.4.0' #на 2.1.0 sidekiq не запускается
 gem 'icalendar'
 gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'bootstrap-kaminari-views'
+gem 'execjs'
+gem 'therubyracer', platforms: :ruby
 
 
 gem 'sass-rails'
@@ -41,7 +43,8 @@ gem 'unicorn'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'whenever'
-gem 'google-api-client'
+# gem 'google-api-client' #конфликт с sidekiq
+gem 'google-api-client', '0.8.2', require: 'google/api_client'
 gem 'sinatra', require: false
 gem 'phony_rails'
 gem 'dotenv-rails'
@@ -52,6 +55,8 @@ gem 'bitmask_attributes'
 gem 'pry-rails'
 gem 'pry-doc', require: false
 gem 'awesome_print'
+
+gem 'sidekiq'
 
 group :development do
   gem 'quiet_assets'
@@ -74,6 +79,7 @@ group :development, :test do
   gem 'capybara'
   gem 'web-console', '~> 2.0'
   gem 'database_cleaner'
+  gem 'byebug'
 end
 
 group :test do

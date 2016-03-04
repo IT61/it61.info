@@ -10,5 +10,4 @@ FactoryGirl.define do
       published true
     end
   end
-
 end
