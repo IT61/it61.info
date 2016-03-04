@@ -44,23 +44,26 @@ describe Companies::MembershipRequestsController do
     end
 
     context 'email notifications' do
+      let(:delivery) { fake_delivery }
+
       it 'notices admins about request_to_membership' do 
-        allow(AdminMailer).to receive(:request_to_membership) do
-          mock = double
-          expect(mock).to receive(:deliver_now!)
-          mock
+        company_admin = FactoryGirl.create(:company_admin, company: company)
+        allow(AdminMailer).to receive(:request_to_membership) do |admin, source_company, new_user|
+          expect(admin).to eq(company_admin.user)
+          expect(source_company).to eq(company)
+          expect(new_user).to eq(user)
+          delivery
         end
 
-        FactoryGirl.create(:company_admin, company: company)
         expect(AdminMailer).to receive(:request_to_membership)
         post_request
       end
 
       it 'notices user about notice_about_request' do
-        allow(UserMailer).to receive(:notice_about_request) do
-          mock = double
-          expect(mock).to receive(:deliver_now!)
-          mock
+        allow(UserMailer).to receive(:notice_about_request) do |new_user, source_company|
+          expect(new_user).to eq(user)
+          expect(source_company).to eq(company)
+          delivery
         end
 
         expect(UserMailer).to receive(:notice_about_request)
@@ -86,23 +89,26 @@ describe Companies::MembershipRequestsController do
     end
 
     context 'email notifications' do
+      let(:delivery) { fake_delivery }
+
       it 'notices admins about new_company_user' do 
-        allow(AdminMailer).to receive(:new_company_user) do
-          mock = double
-          expect(mock).to receive(:deliver_now!)
-          mock
+        company_admin = FactoryGirl.create(:company_admin, company: company)
+        allow(AdminMailer).to receive(:new_company_user) do |admin, source_company, new_user|
+          expect(admin).to eq(company_admin.user)
+          expect(source_company).to eq(membership_request.company)
+          expect(new_user).to eq(membership_request.user)
+          delivery
         end
 
-        FactoryGirl.create(:company_admin, company: company)
         expect(AdminMailer).to receive(:new_company_user)
         patch_approve
       end
 
       it 'notices user about notice_about_accept' do
-        allow(UserMailer).to receive(:notice_about_accept) do
-          mock = double
-          expect(mock).to receive(:deliver_now!)
-          mock
+        allow(UserMailer).to receive(:notice_about_accept) do |new_user, source_company|
+          expect(new_user).to eq(membership_request.user)
+          expect(source_company).to eq(membership_request.company)
+          delivery
         end
 
         expect(UserMailer).to receive(:notice_about_accept)

@@ -15,8 +15,6 @@ describe Companies::MembersController, type: :controller do
   end
   
   context "#DELETE destroy." do
-    before(:each) do
-    end
 
     it 'delete record' do  #не находится mebmer_request
       user_member
@@ -26,29 +24,28 @@ describe Companies::MembersController, type: :controller do
     end
 
     context 'email notifications' do
-      before(:each) do
-        allow(AdminMailer).to receive(:deleting_user) do
-          mock = double
-          expect(mock).to receive(:deliver_now!)
-          mock
-        end
-        
-        allow(UserMailer).to receive(:notice_about_delete) do
-          mock = double
-          expect(mock).to receive(:deliver_now!)
-          mock
-        end
-      end
+      let(:delivery)  { fake_delivery }
 
       it 'notices admins about deleting user from company' do #не находится mebmer_request
-        FactoryGirl.create(:company_admin, company: company)
-        expect(AdminMailer).to receive(:deleting_user)
+        admin_member = FactoryGirl.create(:company_admin, company: company)
+        expect(AdminMailer).to receive(:delete_user_from_company) do |user, company, deleting_user|
+          expect(user).to eq(admin_member.user)
+          expect(company).to eq(user_member.company)
+          expect(deleting_user).to eq(user_member.user)
+          delivery
+        end
+
         delete :destroy, company_id: user_member.company_id, id: user_member.id
       end
 
       it 'notices user about deleting from company' do #не находится mebmer_request
         FactoryGirl.create(:company_admin, company: company)
-        expect(UserMailer).to receive(:notice_about_delete)
+        expect(UserMailer).to receive(:notice_about_delete) do |user, company|
+          expect(company).to eq(user_member.company)
+          expect(user).to eq(user_member.user)
+          delivery
+        end
+
         delete :destroy, company_id: user_member.company_id, id: user_member.id
       end
     end

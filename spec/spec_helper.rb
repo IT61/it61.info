@@ -35,6 +35,7 @@ RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
   config.include FactoryGirl::Syntax::Methods
   config.include AbstractController::Translation
+  config.include MailerDeliveryCommons, type: :controller
 
   config.expect_with :rspec do |c|
     c.syntax = :expect

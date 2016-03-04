@@ -96,11 +96,11 @@ ru:
         
   user_mailer: 
     notice_about_request: 
-      subject: "Запрос на добавление в «%{company}» отправлен"
+      subject: "Отправлен запрос на добавление в «%{company}»"
     notice_about_accept: 
-      subject: "Запрос подтвержден, пользователь добавлен в «%{company}»"
+      subject: "Подтвержден Ваш запрос на добавление в «%{company}»"
     notice_about_delete: 
-      subject: "Пользователь удален из «%{company}»"
+      subject: "Вас удалили из «%{company}»"
 
   admin_mailer:
     request_to_membership:

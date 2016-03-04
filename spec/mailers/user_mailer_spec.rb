@@ -10,7 +10,7 @@ describe UserMailer do
     let(:mail) { described_class.notice_about_request(user, company) }
 
     let(:expected_body) { [company.title] }
-    let(:expected_subject) { "Запрос на добавление в «#{company.title}» отправлен" }
+    let(:expected_subject) { "Отправлен запрос на добавление в «#{company.title}»" }
 
     it_behaves_like 'a well tested mailer'
   end
@@ -18,7 +18,7 @@ describe UserMailer do
   context 'notice_about_accept' do
     let(:mail) { described_class.notice_about_accept(user, company) }
     let(:expected_body) { [company.title] }
-    let(:expected_subject) { "Запрос подтвержден, пользователь добавлен в «#{company.title}»" }
+    let(:expected_subject) { "Подтвержден Ваш запрос на добавление в «#{company.title}»" }
 
     it_behaves_like 'a well tested mailer'
   end
@@ -26,7 +26,7 @@ describe UserMailer do
   context 'notice_about_delete' do
     let(:mail) { described_class.notice_about_delete(user, company) }
     let(:expected_body) { [company.title] }
-    let(:expected_subject) { "Пользователь удален из «#{company.title}»" }
+    let(:expected_subject) { "Вас удалили из «#{company.title}»" }
 
     it_behaves_like 'a well tested mailer'
   end
