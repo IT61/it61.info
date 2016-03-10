@@ -1,3 +1,5 @@
+require 'icalendar/tzinfo'
+
 class Event::IcsGenerator
   include Rails.application.routes.url_helpers
 
@@ -8,8 +10,14 @@ class Event::IcsGenerator
   end
 
   def ics_content
+    calendar = Icalendar::Calendar.new
+    tzid = Rails.application.config.time_zone
+    tz = TZInfo::Timezone.get tzid
+    timezone = tz.ical_timezone event.started_at
+    calendar.add_timezone timezone
+
     calendar_event = Icalendar::Event.new
-    calendar_event.dtstart = event.started_at.strftime('%Y%m%dT%H%M%S')
+    calendar_event.dtstart = Icalendar::Values::DateTime.new event.started_at, 'tzid' => tzid
     calendar_event.summary = event.title
     calendar_event.description = event.description
     calendar_event.location = event.place
@@ -34,7 +42,6 @@ class Event::IcsGenerator
       calendar_event.alarms << alarm
     end
 
-    calendar = Icalendar::Calendar.new
     calendar.add_event(calendar_event)
     calendar.to_ical
   end
