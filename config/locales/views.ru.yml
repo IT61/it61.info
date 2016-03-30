@@ -6,12 +6,6 @@ ru:
   event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
   event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
 
-  company_member_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
-  company_membership_canceled: "Вы больше не работаете в &laquo;%{title}&raquo;."
-
-  company_membership_request_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
-  company_membership_canceled: "Вы больше не работаете в &laquo;%{title}&raquo;."
-
   slack_integration:
     new_event: 'Анонсировано новое мероприятие'
 
@@ -25,6 +19,19 @@ ru:
     events:
       create:
         success: Мероприятие появится в ленте после проверки модератором
+    companies:
+      membership_requests:
+        create:
+          success: "Заявка на участие в &laquo;%{company_title}&raquo; принята."
+        approve:
+          success: "Заявка пользователя %{user_name} подтверждена."
+      members:
+        destroy:
+          success: "Вы больше не работаете в &laquo;%{company_title}&raquo;."
+      manage:
+        members:
+          destroy:
+            success: "Сотрудник %{user_name} удален."
 
   helpers:
     submit:
@@ -150,12 +157,16 @@ ru:
     members_block:
       no_members: Пока никто не состоит в компании.
     membership_requests:
-      approve:
-        success_message: "Заявка пользователя %{name} подтверждена."
       membership_request:
         approve: Подтвердить
         hide: Скрыть
         hide_confirm: "Скрыть заявку пользователя %{name}?"
+    manage:
+      members:
+        index:
+          actions: Действия
+        member:
+          delete_confirm: "Удалить сотрудника %{name}?"
     publish:
       success_message: Компания успешно опубликована
     cancel_publication:

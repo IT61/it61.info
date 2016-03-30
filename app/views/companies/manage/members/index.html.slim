@@ -1,0 +1,13 @@
+h1 = title Company::Member.model_name.human(count: 5)
+
+table.table.table-bordered.table-hover
+  tbody
+    thead
+      th = User.model_name.human
+      th = User.human_attribute_name(:email)
+      th = Company::Member.human_attribute_name(:roles)
+      th = t('.actions')
+    tbody
+      = render partial: 'companies/manage/members/member', collection: @members
+
+= paginate @members, theme: 'twitter-bootstrap-3'

@@ -24,8 +24,10 @@ Rails.application.routes.draw do
         patch :approve, on: :member
         patch :hide, on: :member
       end
+      namespace :manage do
+        resources :members, only: [:index, :update, :destroy], shallow: true
+      end
     end
-
   end
 
   post '/participate_in_event' => 'event_participations#create'

@@ -8,7 +8,7 @@ class Ability
 
     can :view, Event, published: true
     can :view, Company, published: true
-    can :view, Company::Member, approved: true
+    can :view, Company::Member
 
     can :manage, User, id: user.id
 
@@ -33,12 +33,14 @@ class Ability
       can :view, Company, founder_id: user.id
       cannot :publish, Company
 
-      can :view, Company::MembershipRequest, company: { founder_id: user.id }
+      can :view, Company::MembershipRequest
       can :create, Company::MembershipRequest
       can [:approve, :hide], Company::MembershipRequest do |request|
         request.company.admin?(user)
       end
-      can :manage, Company::Member do |member|
+      can :view, Company::Member
+      can :update, Company::Member, company: { founder_id: user.id }
+      can :destroy, Company::Member do |member|
         member.company.admin?(user)
       end
       can :destroy, Company::Member, user_id: user.id

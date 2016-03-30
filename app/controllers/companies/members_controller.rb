@@ -1,29 +1,19 @@
 class Companies::MembersController < ApplicationController
   respond_to :html
-  load_and_authorize_resource param_method: :company_member_params
-
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to :back, flash: { error: exception.message }
-  end
-
-  def create
-    @company_member.user = current_user || nil
-    @company_member.save!
-
-    flash[:success] = t(:company_member_created, title: @company_member.company.title)
-    redirect_to :back
-  end
+  responders :flash
+  load_and_authorize_resource class: Company::Member
 
   def destroy
-    @company_member.destroy!
+    @member.destroy!
 
-    flash[:success] = t(:company_membership_canceled, title: @company_member.company.title)
-    redirect_to :back
+    respond_with @member do |format|
+      format.html { redirect_to :back }
+    end
   end
 
   private
 
-  def company_member_params
-    params.require(:company_member).permit(:company_id)
+  def interpolation_options
+    { company_title: @member.company.title }
   end
 end

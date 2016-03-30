@@ -1,0 +1,9 @@
+tr
+  td = link_to member.user.full_name, user_profile_path(member.user)
+  td = member.user.email
+  td = editable member, :roles, url: manage_member_path(member),
+         source: {admin: t('company.member.roles.admin'), employee: t('company.member.roles.employee')},
+         emptytext: t('company.member.roles.none')
+  td = link_to t(:delete), manage_member_path(id: member),
+         class: 'btn btn-warning', method: :delete,
+         data: {confirm: t('.delete_confirm', name: member.user.full_name)}

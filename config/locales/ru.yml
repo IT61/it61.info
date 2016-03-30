@@ -29,6 +29,9 @@ ru:
 
   activerecord:
     models:
+      user:
+        one: Пользователь
+        few: Пользователи
       event:
         one: Мероприятие
         few: Мероприятия
@@ -39,6 +42,10 @@ ru:
         one: Заявка на членство в организации
         few: Заявок на членство в организации
         many: Заявки на членство в организации
+      company/member:
+        one: Сотрудник
+        few: Сотрудников
+        many: Сотрудники
     attributes:
       user:
         email: E-mail
@@ -74,6 +81,8 @@ ru:
         user: Пользователь
         approved: Подтверждена
         created_at: Дата
+      company/member:
+        roles: Роли
     errors:
       models:
         user:
@@ -85,3 +94,10 @@ ru:
   errors:
     messages:
       extension_white_list_error: "Формат %{extension} не поддерживается, поддерживаемые форматы: %{allowed_types}"
+
+  company:
+    member:
+      roles:
+        admin: Администратор
+        employee: Сотрудник
+        none: Отсутствуют
