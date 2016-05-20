@@ -21,13 +21,11 @@ nginx_rewrite.txt
 *.iml
 *.dump
 
-/config/database.yml
 /config/application.yml
 /config/settings.yml
 /config/newrelic.yml
 /config/thinking_sphinx.yml
 /config/development.sphinx.conf
-/config/secrets.yml
 
 /public/system
 /public/assets
