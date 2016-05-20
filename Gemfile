@@ -44,6 +44,7 @@ gem 'dotenv-rails'
 gem 'e_pochta', '~> 0.5.2'
 gem 'slack-notifier'
 
+gem 'puma'
 gem 'pry-rails'
 gem 'pry-doc', require: false
 gem 'awesome_print'

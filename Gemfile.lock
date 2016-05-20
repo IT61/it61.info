@@ -179,6 +179,7 @@ GEM
       yard (~> 0.8)
     pry-rails (0.3.3)
       pry (>= 0.9.10)
+    puma (3.4.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.5)
@@ -342,6 +343,7 @@ DEPENDENCIES
   phony_rails
   pry-doc
   pry-rails
+  puma
   quiet_assets
   rails (~> 4.1.9)
   rails-i18n
@@ -365,5 +367,8 @@ DEPENDENCIES
   webmock (~> 1.21)
   whenever
 
+RUBY VERSION
+   ruby 2.2.3p173
+
 BUNDLED WITH
-   1.11.2
+   1.12.3
