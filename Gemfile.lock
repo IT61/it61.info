@@ -200,6 +200,11 @@ GEM
     rails-i18n (4.0.2)
       i18n (~> 0.6)
       rails (>= 4.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (4.1.9)
       actionpack (= 4.1.9)
       activesupport (= 4.1.9)
@@ -347,6 +352,7 @@ DEPENDENCIES
   quiet_assets
   rails (~> 4.1.9)
   rails-i18n
+  rails_12factor
   redcarpet
   responders
   rollbar

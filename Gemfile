@@ -61,6 +61,10 @@ group :development do
   gem 'letter_opener'
 end
 
+group 'production' do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'forgery'
   gem 'factory_girl_rails'
