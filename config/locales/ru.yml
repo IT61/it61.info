@@ -68,7 +68,8 @@ ru:
       hashtag: "Хештег: #it61"
       social_links: "Мы есть в соцсетях:"
     oauth_login_block:
-      social_providers: Вход через соц. сети
+      sign: Войдите
+      any_method: любым способом
     disqus:
       noscript_message: Похоже, в вашем броузере отключен JavaScript. Для просмотра и написание комментариев JavaScript должен быть включен.
 

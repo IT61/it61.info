@@ -18,3 +18,4 @@
 //= require events
 //= require user_profiles
 //= require common
+//= require sliders
