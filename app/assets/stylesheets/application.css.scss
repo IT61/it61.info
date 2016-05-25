@@ -1,18 +1,5 @@
-/*
- *= require rails_bootstrap_forms
- *= require_self
- */
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
+@import url(//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css);
+@import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 
-@import "compass";
-
-@import 'theme/variables';
-@import 'theme/bootstrap_and_overrides';
-@import 'theme/common_styles';
-@import 'theme/typography';
-@import 'theme/social_widgets';
-@import 'theme/sidebar';
-@import 'theme/flash_messages';
-
-@import 'events';
-@import 'companies';
-@import 'user_profiles';
+@import "general/index";

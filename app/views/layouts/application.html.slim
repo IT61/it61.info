@@ -1,39 +1,13 @@
 doctype html
-html lang='ru'
+html
   head
-    meta charset='utf-8'
-    meta http-equiv='X-UA-Compatible' content='IE=edge'
-    meta name='viewport' content='width=device-width, initial-scale=1'
-
     = display_meta_tags site: t(:app_name), separator: '–', reverse: true,
                         og: { site_name: t(:app_name), url: request.url,
                               title: :title, description: :description }
-
-    = auto_discovery_link_tag(:rss, events_path(format: :rss))
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
-    - if render_editor?
-      = javascript_include_tag 'editor'
-    = styx_initialize
-    = render partial: 'shared/web_analytics'
-
-    = favicon_link_tag 'favicon.ico'
-
-    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-    / [if lt IE 9]
-      script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'
-      script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'
-
-    = csrf_meta_tags
-  body
-    #sidebar-container.affix data-offset-top="0" data-offset-bottom="0"
-      #sidebar.clearfix = render 'shared/sidebar'
-    #page-content
-      .container-fluid
-        .flash-messages
-          - flash.each do |type, message|
-            div class="alert alert-#{type} alert-dismissable"
-              button type='button' class='close' data-dismiss='alert' aria-hidden='true' &times;
-              == message
-        = yield
-        = render 'shared/small_screens_footer'
+  body style="background:gray;"
+    .content
+      = render 'shared/sidebar'
+      = render 'shared/navbar'
+    = yield

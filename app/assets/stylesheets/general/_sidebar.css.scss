@@ -1,0 +1,90 @@
+//$nav-fonts: #fff;
+//$nav-back: #2D79B7;
+$nav-fonts : #000;
+$nav-back : #fff;
+$sidebar-width: 300px;
+
+#mask {
+  //затемнение
+  background-color: rgba(0, 0, 0, .3);
+  height: 100%;
+  //background: rgb(15, 255, 235);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.sidebar-button {
+  float: right;
+}
+
+//navigation
+
+.sidebar {
+  font-size: 14px;
+  background: #fff;
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 100;
+  left:-300px;
+  &__logo {
+    //width: 100%;
+    min-width: $sidebar-width;
+    min-height: 200px;
+    background:#363738;
+    padding-top: 45px;
+    //padding-left: 50px;
+    color: #fff;
+    &_img {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100px;
+      height: 100px;
+      background:url(/assets/logo-03.svg);
+    }
+  }
+  &__profile {
+    width: $sidebar-width;
+    height: 56px;
+    padding: 18px 30px 16px;
+    background: #F4F4F7;
+    border-bottom: 1px solid #E9E9ED;
+    color: #7F7F81;
+    font-weight: 500;
+    &:hover{
+      background-color: #BFE0FB;
+      cursor: pointer;
+    }
+  }
+  &__menu {
+    width: $sidebar-width;
+    height: 56px;
+    padding: 18px 37px 16px;
+    background: #fff;
+    font-size: 14px;
+    font-weight:500;
+    &:hover {
+      background-color: #BFE0FB;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .menu_pos {
+    margin-top: 23px;
+    margin-left:50px;
+    margin-bottom: 23px;
+    font-size: 40px;
+    //margin-right: 125px;
+    float: left;
+  }
+
+  .custom-btn {
+    margin-top: 26px;
+    margin-bottom:22px;
+  }
+}

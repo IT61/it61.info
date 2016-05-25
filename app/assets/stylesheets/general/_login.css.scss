@@ -1,0 +1,46 @@
+.login-container {
+	position: fixed;
+	top: 0; 
+	left: 0; 
+	background: url('/assets/login-bg.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -1;
+}
+
+.oauth-login {
+	vertical-align: middle;
+	text-align: center;
+	background: #fff;
+	padding: 10px;
+	margin: 120px auto;
+	width: 350px;
+	height: 200px;
+
+	h2 {
+		font-weight: normal;
+		margin-bottom: 5px;
+	}
+
+	.social-buttons {
+		margin: 45px 0 auto;
+	}
+
+	.btn-facebook, .btn-vk, .btn-github, .btn-google-plus {
+		padding: 15px 8px;
+		margin-bottom: 10px;
+		margin-right: 23px;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	i {
+		font-size: 22px;	
+	}
+}

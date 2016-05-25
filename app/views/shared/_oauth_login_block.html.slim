@@ -1,5 +1,8 @@
-h2 = t('.social_providers')
-- [:facebook, :vk, :github, :google].each do |provider|
-  = link_to auth_at_provider_path(provider: provider), class: "btn btn-default btn-lg btn-#{provider}" do
-    i.fa.fa-fw class="fa-#{provider}"
-    = t(provider)
+.login-container
+.oauth-login	
+	h2 = t('.sign')
+	p = t('.any_method')
+	.social-buttons
+		- [:github, :vk, :facebook, :'google-plus'].each do |provider|
+			= link_to auth_at_provider_path(provider: provider), class: "custom-btn custom-btn-default btn-#{provider}" do
+				i.fa.fa-fw class="fa-#{provider}"
