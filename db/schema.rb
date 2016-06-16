@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150220162905) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authentications", force: true do |t|
+  create_table "authentications", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.string   "provider",   null: false
     t.string   "uid",        null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150220162905) do
     t.string   "link"
   end
 
-  create_table "companies", force: true do |t|
+  create_table "companies", force: :cascade do |t|
     t.text     "title",                       null: false
     t.text     "description"
     t.integer  "founder_id",                  null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150220162905) do
 
   add_index "companies", ["founder_id"], name: "index_companies_on_founder_id", using: :btree
 
-  create_table "company_members", force: true do |t|
+  create_table "company_members", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "user_id"
     t.string   "position"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150220162905) do
   add_index "company_members", ["company_id"], name: "index_company_members_on_company_id", using: :btree
   add_index "company_members", ["user_id"], name: "index_company_members_on_user_id", using: :btree
 
-  create_table "event_participations", force: true do |t|
+  create_table "event_participations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150220162905) do
   add_index "event_participations", ["event_id"], name: "index_event_participations_on_event_id", using: :btree
   add_index "event_participations", ["user_id"], name: "index_event_participations_on_user_id", using: :btree
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "title",                                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20150220162905) do
   add_index "events", ["published_at"], name: "index_events_on_published_at", using: :btree
   add_index "events", ["subscribers_notification_send"], name: "index_events_on_subscribers_notification_send", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"

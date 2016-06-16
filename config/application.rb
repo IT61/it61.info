@@ -50,5 +50,7 @@ module It61Rails
       from: ENV['MAILER_FROM'],
       reply_to: ENV['MAILER_RETURN_PATH']
     }
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

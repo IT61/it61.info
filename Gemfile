@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.1'
 
-gem 'rails', '~> 4.1.9'
+gem 'rails', '~> 4.2.0'
 gem 'rails-i18n'
 gem 'unicode'
 gem 'sorcery'
@@ -44,13 +44,10 @@ gem 'e_pochta', '~> 0.5.2'
 gem 'slack-notifier'
 
 gem 'puma'
-gem 'pry-rails'
-gem 'pry-doc', require: false
-gem 'awesome_print'
 
 group :development do
-  gem "bundler-audit", ">= 0.5.0", require: false
-  gem "brakeman", require: false
+  gem 'bundler-audit', '>= 0.5.0', require: false
+  gem 'brakeman', require: false
   gem 'spring'
   gem 'quiet_assets'
   gem 'capistrano'
@@ -67,11 +64,19 @@ group 'production' do
 end
 
 group :development, :test do
+  gem 'awesome_print'
+  gem 'bullet'
   gem 'forgery'
   gem 'factory_girl_rails'
+  gem 'pry-rails'
+  gem 'pry-doc', require: false
   gem 'shoulda-matchers', require: false
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
+end
+
+group :development, :staging do
+  gem "rack-mini-profiler", require: false
 end
 
 group :test do
