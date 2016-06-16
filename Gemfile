@@ -33,7 +33,6 @@ gem 'meta-tags'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-gem 'unicorn'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'whenever'
@@ -50,6 +49,8 @@ gem 'pry-doc', require: false
 gem 'awesome_print'
 
 group :development do
+  gem "bundler-audit", ">= 0.5.0", require: false
+  gem "brakeman", require: false
   gem 'spring'
   gem 'quiet_assets'
   gem 'capistrano'
