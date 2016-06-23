@@ -1,0 +1,10 @@
+= javascript_include_tag :application
+
+= yield :javascript
+
+= render "analytics"
+
+- if Rails.env.test?
+  javascript:
+    $.fx.off = true;
+    $.ajaxSetup({ async: false });

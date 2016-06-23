@@ -1,0 +1,15 @@
+doctype html
+html lang="en"
+head
+  meta charset="utf-8"
+  meta name="ROBOTS" content="NOODP"
+  meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  title IT61
+  = stylesheet_link_tag :application, media: "all"
+  = csrf_meta_tags
+
+body class=body_class
+  = render "flashes"
+  = yield
+  = render "javascript"
+  = render "css_overrides"
