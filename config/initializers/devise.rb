@@ -238,14 +238,7 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
-  # ==> OmniAuth
-  # Add a new OmniAuth provider. Check the wiki for more information on setting
-  # up on your models and hooks.
-  puts "GITHUB KEY: #{Rails.application.secrets.github_key}"
-  puts "GOOGLE KEY: #{Rails.application.secrets.google_key}"
-  puts "FACEBOOK KEY: #{Rails.application.secrets.facebook_key}"
-  puts "VK KEY: #{Rails.application.secrets.vkontakte_key}"
-
+  # OmniAuth
   config.omniauth :github,
     Rails.application.secrets.github_key,
     Rails.application.secrets.github_secret,
