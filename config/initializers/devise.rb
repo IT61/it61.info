@@ -244,29 +244,27 @@ Devise.setup do |config|
   puts "GITHUB KEY: #{Rails.application.secrets.github_key}"
   puts "GOOGLE KEY: #{Rails.application.secrets.google_key}"
   puts "FACEBOOK KEY: #{Rails.application.secrets.facebook_key}"
+  puts "VK KEY: #{Rails.application.secrets.vkontakte_key}"
+
   config.omniauth :github,
     Rails.application.secrets.github_key,
     Rails.application.secrets.github_secret,
     scope: 'user:email'
-    # callback_url: '',
 
   config.omniauth :facebook,
     Rails.application.secrets.facebook_key,
     Rails.application.secrets.facebook_secret,
     scope: 'email'
 
-  # config.omniauth :google,
-    # Rails.application.secrets.google_key,
-    # Rails.application.secrets.google_secret,
-    # scope: 'email',
-    # prompt: "consent"
+  config.omniauth :vkontakte,
+    Rails.application.secrets.vkontakte_key,
+    Rails.application.secrets.vkontakte_secret,
+    scope: 'email'
 
   config.omniauth :google_oauth2,
     Rails.application.secrets.google_key,
     Rails.application.secrets.google_secret,
     {scope: 'email', access_type: "offline", approval_prompt: ""}
-    # provider_ignores_state: true
-
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

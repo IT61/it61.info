@@ -14,6 +14,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     oauth_for 'Google'
   end
 
+  def vkontakte
+    oauth_for 'VKontakte'
+  end
+
   def oauth_for(kind)
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
