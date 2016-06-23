@@ -5,13 +5,15 @@
 1. Clone repo
 2. Install postgresql and create super user in it
 3. Install gems
-    $ bundle update
+    `bundle update`
 4. Configure your database.yml file with your username and password
 5. Setup database and run migrations
-    % rake db:setup
-    % rake db:migrate
+    ```
+    rake db:setup
+    rake db:migrate
+    ```
 6. Run server
-    % rails s
+    `rails s`
 
 ## Guidelines
 
