@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  resource :user_session, only: [ :new ]
-  resource :user_registration, only: [ :new ]
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  root 'application#welcome'
 end

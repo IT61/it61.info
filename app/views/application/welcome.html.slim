@@ -1,0 +1,10 @@
+- if user_signed_in?
+  h1 Welcome, #{current_user.email}
+  br
+  = link_to 'Logout', destroy_user_session_path, method: :delete
+- else
+  = link_to "Sign in with Github", user_github_omniauth_authorize_path
+  br
+  = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
+  br
+  = link_to "Sign in with Google", user_google_oauth2_omniauth_callback_path
