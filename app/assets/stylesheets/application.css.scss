@@ -3,13 +3,17 @@
  *= require_self
  */
 
+@import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
 @import "compass";
 
 @import 'theme/variables';
 @import 'theme/bootstrap_and_overrides';
+@import "theme/bootstrap_material/bootstrap_material_design";
 @import 'theme/common_styles';
 @import 'theme/typography';
 @import 'theme/social_widgets';
+@import 'theme/navbar';
 @import 'theme/sidebar';
 @import 'theme/flash_messages';
 

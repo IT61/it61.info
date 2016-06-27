@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto', "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #page-content {
   word-break: break-word;
   @media (min-width: $screen-xs) {
@@ -15,12 +19,6 @@
         }
       }
     }
-  }
-  @media (min-width: $screen-sm) {
-    padding: $line-height-computed 0 2*$line-height-computed;
-  }
-  @media (min-width: $screen-md) {
-    margin-left: ($sidebar-width + 3*$line-height-computed);
   }
 }
 

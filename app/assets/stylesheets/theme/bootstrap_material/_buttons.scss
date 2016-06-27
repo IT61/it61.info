@@ -1,0 +1,15 @@
+.btn {
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 0;
+  border-radius: 2px;
+
+  &-sm {
+    padding: 6px 23px;
+    font-weight: 500;
+  }
+
+  &-primary, &-primary:hover {
+    background-color: #327AB5;
+  }
+}

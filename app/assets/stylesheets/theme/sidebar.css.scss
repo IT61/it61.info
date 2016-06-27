@@ -1,347 +1,80 @@
-#sidebar-container.affix {
-  top: 0;
-  bottom: 0;
-}
+$sidebar-width: 300px;
 
-/* Стили сайдбара-шапки, общие для всех размеров мониторов. */
-
-#sidebar {
-  background: $sidebar-bg-color;
+#mask {
+  //затемнение
+  background-color: rgba(0, 0, 0, .3);
   height: 100%;
-
-  &, a {
-    color: $sidebar-default-links-color;
-  }
-
-  #logo-and-name {
-    font-weight: 300;
-    > a {
-      display: block;
-    }
-  }
-
-  /* ul.nav — это 1) блок с аватаром и именем вошедшего пользователя, 2) главное меню,
-     а также 3) ссылки на соц. сети (они стилизуются отдельно).
-     Ссылки на соц. сети отобразятся в #sidebar только на больших мониторах (md, lg). */
-  ul.nav {
-    > li {
-      > a {
-        @include transition-property(background);
-        @include transition-duration($default-transition-duration);
-        &:hover, &:focus {
-          background-color: lighten($sidebar-bg-color, 3%);
-        }
-      }
-      /* Стили для кнопки "+" в сайдбаре */
-      &.with-plus-btn {
-        position: relative;
-        padding-right: 40px; /* 40px — это результирующая ширина кнопки "+". */
-        a.plus-btn {
-          color: darken($sidebar-default-links-color, 20%);
-          position: absolute;
-          right: 0;
-          top: 0;
-          visibility: hidden;
-          padding-left: 8px;
-          padding-right: 8px;
-          &:hover, &:focus {
-            visibility: visible;
-            background-color: lighten($sidebar-bg-color, 2%);
-          }
-        }
-        &:hover, &:focus {
-          a.plus-btn {
-            visibility: visible;
-            background-color: lighten($sidebar-bg-color, 2%);
-          }
-        }
-      }
-    }
-    /* Стили активных пунктов меню. */
-    li.active a, li a.active {
-      &, &:hover, &:focus {
-        background-color: lighten($sidebar-bg-color, 7%);
-      }
-    }
-  }
-  /* Стили ссылок на соц. сети (отобразятся в #sidebar только на мониторах md, lg). */
-  #social-links ul.nav {
-    > li {
-      display: inline;
-      margin: 0 0 0 $line-height-computed;
-      > a {
-        display: inline;
-        padding: 10px;
-        @include border-radius(1000px);
-        background-color: lighten($sidebar-bg-color, 15%);
-        &:hover, &:focus {
-          background-color: lighten($sidebar-bg-color, 20%);
-        }
-      }
-    }
-  }  /* Стили блока с аватаром и именем пользователя. */
-  .user {
-    @include clearfix();
-    text-align: left;
-    word-break: break-word;
-    > a {
-      display: block;
-      .avatar {
-        width: 25%;
-        margin-right: 5%;
-        float: left;
-      }
-      .user-name {
-        width: 70%;
-        float: left;
-        line-height: 1.2em;
-        max-height: 2.4em;
-        overflow: hidden;
-      }
-    }
-    .actions {
-      text-align: right;
-      i.fa {
-        margin-left: 1em;
-      }
-    }
-  }
-  /* Стили главного меню. */
-  ul#mainmenu {
-  }
-  /* Стили кнопки разворачивания главного меню, которая отображается на самых
-     маленьких мобильных устройствах. */
-  a#mobile-menu-toggler.toggle {
-    color: darken($sidebar-default-links-color, 20%);
-    display: block;
-    font-size: 1.7 * $font-size-base;
-    text-align: right;
-  }
-  /* Стили главного меню для самых маленьких мобильных устройствах. */
-  #mobile-menu {
-    word-break: break-word;
-  }
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: none;
 }
 
-/* Поведение сайдбара-шапки на различных мониторах. */
-
-@media (min-width: $screen-xs) {
-  #sidebar-container.affix {
-    position: static;
-    #sidebar {
-      padding-right: $line-height-computed;
-      padding-left: $line-height-computed;
-      #logo-and-name {
-        float: left;
-        width: $sidebar-logo-width-xs;
-        #logotype img {
-          width: 100%;
-        }
-        #sitename {
-          display: none;
-          color: white;
-        }
-      }
-      #sidebar-menu {
-        a#mobile-menu-toggler {
-          float: right;
-          margin-top: $sidebar-logo-width-sm / 4;
-        }
-        ul.nav > li > a {
-          padding: 10px;
-        }
-        ul#registration-login-nav, 
-        .user {
-          display: none;
-          a {
-            color: darken($sidebar-default-links-color, 10%);
-          }
-        }
-        ul#registration-login-nav {
-          li.divider {
-            display: none;
-          }
-        } 
-        #social-links {
-          display: none;
-        }
-        #mainmenu {
-          display: none;
-        }
-        #mobile-menu {
-          clear: both;
-          margin: $line-height-computed 0;
-        }
-      }
-    }
-  }
+.sidebar-button {
+  float: right;
 }
 
-@media (min-width: $screen-sm) {
-  #sidebar-container.affix {
-    height: $sidebar-height-sm;
-    .nav > li {
-      float: left;
-    }
-    #sidebar {
-      @include clearfix();
-      #logo-and-name {
-        width: $sidebar-logo-width-sm;
-      }
-      #sidebar-menu {
-        margin-left: $sidebar-logo-width-sm + $line-height-computed;
-        a#mobile-menu-toggler {
-          display: none;
-        }
-        #mobile-menu {
-          display: none;
-        }
-        #mainmenu {
-          display: block;
-          float: left;
-        }
-        ul.nav > li > a {
-          padding: ($line-height-computed/2) $line-height-computed;
-        }
-        ul#registration-login-nav, .user, #mainmenu, #social-links {
-          margin-top: $line-height-computed;
-        }
-        ul#registration-login-nav, 
-        .user {
-          display: block;
-          float: right;
-        }
-        ul#registration-login-nav {
-          li {
-            &.divider {
-              line-height: 2 * $line-height-computed;
-              display: inline;
-              margin: 0 ($line-height-computed / 4);
-              i.fa.fa-circle {
-                font-size: .5 * $font-size-base;
-                color: darken($sidebar-default-links-color, 15%);
-              }
-            }
-          }
-        }
-        .user {
-          width: 100px;
-          > a .user-name {
-            margin-top: 8px;
-          }
-        }
-      }
+.sidebar {
+  font-size: 14px;
+  background: #fff;
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 100;
+  left:-300px;
+  &__logo {
+    min-width: $sidebar-width;
+    min-height: 200px;
+    background:#363738;
+    padding-top: 45px;
+    color: #fff;
+    &_img {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100px;
+      height: 100px;
+      background:url(/assets/logo-03.svg);
     }
   }
-}
-
-@media (min-width: $screen-md) {
-  #sidebar-container.affix {
+  &__profile {
     width: $sidebar-width;
-    height: 100%;
-    position: fixed;
-    .nav > li {
-      float: none;
+    height: 56px;
+    padding: 18px 30px 16px;
+    background: #F4F4F7;
+    border-bottom: 1px solid #E9E9ED;
+    color: #7F7F81;
+    font-weight: 500;
+    &:hover{
+      background-color: #BFE0FB;
+      cursor: pointer;
     }
-    #sidebar {
-      text-align: center;
-      overflow: hidden;
-      #logo-and-name {
-        float: none;
-        width: auto;
-        margin: $line-height-computed 0;
-        text-align: center;
-        #sitename {
-        }
-        #logotype {
-          margin-bottom: $line-height-computed / 2;
-          img {
-            width: $sidebar-logo-width-md;
-            height: $sidebar-logo-width-md;
-            display: block;
-            margin: 0 auto;
-          }
-        }
-        #sitename {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-      #sidebar-menu {
-        margin-left: 0;
-        ul#registration-login-nav, .user, #mainmenu {
-          float: none;
-          width: auto;
-        }
-        ul#registration-login-nav, .user, #mainmenu, #social-links {
-          margin: $line-height-computed 0;
-        }
-        .user {
-          margin: 2*$line-height-computed 0;
-          > a {
-            display: block;
-            padding-right: 45px + ($line-height-computed/2);
-            position: relative;
-            vertical-align: middle;
-            .avatar {
-              position: absolute;
-              top: 50%;
-              right: 0;
-              margin-top: -(45px/2);
-              margin-right: 0;
-              width: auto;
-              img {
-                width: 45px;
-                height: 45px;
-              }
-            }
-            .user-name {
-              margin-top: 0;
-              margin-right: 0;
-              width: auto;
-              text-align: right;
-              float: none;
-            }
-          }
-        }
-        ul#mainmenu {
-          margin-left: -$line-height-computed;
-          margin-right: -$line-height-computed;
-          > li {
-            text-align: right;
-            font-size: 1.4em;
-            font-weight: 300;
-            > a {}
-            &.with-plus-btn {
-              padding-right: 0;
-              font-size: 1.3 * $font-size-base;
-              > a.plus-btn {
-                padding: (.75 * $line-height-computed) (.25 * $line-height-computed);
-              }
-            }
-          }
-        }
-        ul#registration-login-nav {
-          text-align: right;
-          li {
-            display: inline;
-            float: none;
-            vertical-align: middle;
-            a {
-              display: inline;
-            }
-          }
-        }
-        #social-links {
-          display: block;
-          text-align: right;
-          line-height: 40px;
-        }
-        #social-links ul > li > a {
-          padding: 10px;
-        }
+  }
+  &__menu {
+    padding-left: 0;
+    li {
+      list-style: none;
+      width: $sidebar-width;
+      height: 56px;
+      padding: 18px 37px 16px;
+      background: #fff;
+      font-size: 14px;
+      font-weight:500;
+      text-transform: uppercase;
+      &:hover {
+        background-color: #BFE0FB;
+        cursor: pointer;
       }
     }
+  }
+}
+
+@media (max-width: 1000px) {
+  .menu_pos {
+    margin-top: 23px;
+    margin-left:50px;
+    margin-bottom: 23px;
+    font-size: 40px;
+    float: left;
   }
 }

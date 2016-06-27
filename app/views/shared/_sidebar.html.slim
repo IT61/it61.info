@@ -1,66 +1,14 @@
-#logo-and-name = link_to root_path do
-  #logotype = image_tag 'logo-it61.png'
-  #sitename = t(:app_name)
-
-#sidebar-menu
-  = link_to '#mobile-menu', id: 'mobile-menu-toggler', class: 'toggle', data: {toggle: 'collapse'} do
-    i.fa.fa-align-justify
-
-  - if current_user
-    .user
-      = link_to user_profile_path(current_user.id) do
-        .avatar = image_tag current_user.avatar_image.square_50.url, alt: current_user.full_name
-        .user-name = current_user.full_name
-  - else
-    ul#registration-login-nav.nav
-      = active_link_to t('.register'), new_user_registration_path, wrap_tag: :li
-      li.divider: i.fa.fa-circle
-      = active_link_to t('.login'), new_user_session_path, wrap_tag: :li
-
-  ul#mainmenu.nav
-    - if can? :create, Event
-      li.with-plus-btn
-        = active_link_to t('.events'), events_path
-        = link_to '+', new_event_path, class: 'plus-btn', title: t('.add_event_button_title')
-    - else
-      = active_link_to t('.events'), events_path, wrap_tag: :li
-
-    / - if can? :create, Company
-    /   li.with-plus-btn
-    /     = active_link_to t('.companies'), companies_path
-    /     = link_to '+', new_company_path, class: 'plus-btn', title: t('.add_company_button_title')
-    / - else
-    /   = active_link_to t('.companies'), companies_path, wrap_tag: :li
-
-
-    = active_link_to t('.members'), user_profiles_path, wrap_tag: :li
-    = active_link_to t('.donations'), page_path(:donations), wrap_tag: :li
-    = active_link_to t('.about'), page_path(:about), wrap_tag: :li
-
-  #social-links
-    h4 = t('.hashtag')
-    p = t('.social_links')
-    ul.nav.nav-pills
-      li = link_to 'https://twitter.com/it_rostov', target: '_blank' do
-        i.fa.fa-fw.fa-twitter
-      li = link_to 'https://vk.com/it_61', target: '_blank' do
-        i.fa.fa-fw.fa-vk
-      li = link_to 'https://www.facebook.com/it61.info', target: '_blank' do
-        i.fa.fa-fw.fa-facebook
-
-  #mobile-menu.collapse
-    ul.nav.nav-pills.nav-stacked
-      = active_link_to t('.events'), events_path, wrap_tag: :li
-      - if can? :create, Event
-        li = link_to t('.add_event_button_title'), new_event_path, class: 'plus-btn', title: t('.add_event_button_title')
-      = active_link_to t('.companies'), companies_path, wrap_tag: :li
-      - if can? :create, Company
-        li = link_to t('.add_company_button_title'), new_company_path, class: 'plus-btn', title: t('.add_company_button_title')
-      = active_link_to t('.members'), user_profiles_path, wrap_tag: :li
-      = active_link_to t('.donations'), '#', wrap_tag: :li
-      = active_link_to t('.about'), page_path(:about), wrap_tag: :li
-      - if current_user
-        = active_link_to current_user.full_name, user_profile_path(current_user.id), wrap_tag: :li
-      - else
-        = active_link_to t('.register'), new_user_registration_path, wrap_tag: :li
-        = active_link_to t('.login'), new_user_session_path, wrap_tag: :li
+#mask.close-sidebar
+  .sidebar
+    .sidebar__logo
+      .sidebar__logo_img
+    .sidebar__profile
+      i.fa.fa-slack
+      |&nbsp;Мой профиль
+    ul.sidebar__menu
+      li Сообщество
+      li Мероприятия
+      li Личности
+      li Фото
+      li Slack
+      li Спонсорам
