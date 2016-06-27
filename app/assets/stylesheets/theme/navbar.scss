@@ -1,0 +1,16 @@
+.topnavbar-right {
+  float: right;
+  margin-top: 8px;
+}
+
+.navbar {
+  .container-fluid {
+    margin: 9px 15px;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .navbar-brand {
+    padding-left: 0;
+  }
+}

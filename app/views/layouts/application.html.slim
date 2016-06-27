@@ -26,8 +26,9 @@ html lang='ru'
 
     = csrf_meta_tags
   body
-    #sidebar-container.affix data-offset-top="0" data-offset-bottom="0"
-      #sidebar.clearfix = render 'shared/sidebar'
+    = render 'shared/navbar'
+    = render 'shared/sidebar'
+
     #page-content
       .container-fluid
         .flash-messages
