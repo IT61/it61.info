@@ -11,10 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622122936) do
+ActiveRecord::Schema.define(version: 20160630125936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_participations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_participations", ["event_id"], name: "index_event_participations_on_event_id", using: :btree
+  add_index "event_participations", ["user_id"], name: "index_event_participations_on_user_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title",                                         null: false
+    t.text     "description"
+    t.string   "title_image"
+    t.string   "place"
+    t.integer  "organizer_id"
+    t.boolean  "published",                     default: false
+    t.datetime "published_at"
+    t.boolean  "subscribers_notification_send", default: false
+    t.datetime "started_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -31,9 +57,23 @@ ActiveRecord::Schema.define(version: 20160622122936) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
+    t.integer  "role"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "bio"
+    t.string   "phone"
+    t.string   "normalized_phone"
+    t.boolean  "email_reminders"
+    t.boolean  "sms_reminders"
+    t.boolean  "subscribed"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email_reminders"], name: "index_users_on_email_reminders", using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["sms_reminders"], name: "index_users_on_sms_reminders", using: :btree
+  add_index "users", ["subscribed"], name: "index_users_on_subscribed", using: :btree
 
 end
