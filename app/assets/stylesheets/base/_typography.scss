@@ -1,8 +1,12 @@
+@import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
+
 body {
   color: $base-font-color;
   font-family: $base-font-family;
   font-size: $base-font-size;
   line-height: $base-line-height;
+  font-family: 'Roboto', "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1,

@@ -14,13 +14,15 @@ $base-line-height: 1.5;
 $heading-line-height: 1.2;
 
 // Other Sizes
-$base-border-radius: 3px;
+$base-border-radius: 2px;
 $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Colors
-$blue: #1565c0;
+$blue: #2d79b7;
+$gray: #f6f6f9;
+
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
@@ -44,3 +46,6 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
+
+//Sidebar
+$sidebar-width: 300px;

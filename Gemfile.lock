@@ -269,11 +269,11 @@ GEM
       babel-source (>= 5.8.11)
       babel-transpiler
       sprockets (>= 3.0.0)
-    sprockets-rails (3.0.4)
+    sprockets-rails (3.1.0)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    suspenders (1.39.0)
+    suspenders (1.40.0)
       bitters (~> 1.3)
       bundler (~> 1.3)
       rails (~> 4.2.0)

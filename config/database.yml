@@ -1,7 +1,5 @@
 development: &default
   adapter: postgresql
-  username: test
-  password: test
   database: it61_development
   encoding: utf8
   min_messages: warning
