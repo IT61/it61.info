@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630125936) do
+ActiveRecord::Schema.define(version: 20160701073815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20160630125936) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title",                                         null: false
-    t.text     "description"
+    t.text     "description",                                   null: false
     t.string   "title_image"
-    t.string   "place"
-    t.integer  "organizer_id"
+    t.string   "place",                                         null: false
+    t.integer  "organizer_id",                                  null: false
     t.boolean  "published",                     default: false
     t.datetime "published_at"
     t.boolean  "subscribers_notification_send", default: false
@@ -58,15 +58,15 @@ ActiveRecord::Schema.define(version: 20160630125936) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.integer  "role"
+    t.integer  "role",                                null: false
     t.string   "first_name"
     t.string   "last_name"
     t.text     "bio"
     t.string   "phone"
     t.string   "normalized_phone"
-    t.boolean  "email_reminders"
-    t.boolean  "sms_reminders"
-    t.boolean  "subscribed"
+    t.boolean  "email_reminders",                     null: false
+    t.boolean  "sms_reminders",                       null: false
+    t.boolean  "subscribed",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
