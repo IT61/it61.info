@@ -9,9 +9,7 @@ class Event < ActiveRecord::Base
   has_many :event_participations, dependent: :destroy
   has_many :participants, class_name: 'User', through: :event_participations, source: :user
 
-  validates :title, presence: true
-  validates :organizer, presence: true
-  validates :place, presence: true
+  validates_presence_of :title, :organizer, :place
   validates :published_at, presence: true, if: :published?
 
   scope :ordered_desc, -> { order(started_at: :desc) }
