@@ -1,6 +1,6 @@
 #{$all-buttons} {
   appearance: none;
-  background-color: $action-color;
+  background-color: $gray;
   border: 0;
   border-radius: $base-border-radius;
   color: #fff;
@@ -17,8 +17,8 @@
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  text-transform: uppercase;
 
-  &:hover,
   &:focus {
     background-color: shade($action-color, 20%);
     color: #fff;

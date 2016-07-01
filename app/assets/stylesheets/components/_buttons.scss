@@ -1,0 +1,11 @@
+.button {
+  &-small {
+    padding: 9px 23px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &-blue {
+    background-color: $blue;
+  }
+}

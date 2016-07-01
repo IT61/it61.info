@@ -1,5 +1,5 @@
 doctype html
-html lang="en"
+html lang="ru"
 head
   meta charset="utf-8"
   meta name="ROBOTS" content="NOODP"
@@ -7,9 +7,10 @@ head
   title IT61
   = stylesheet_link_tag :application, media: "all"
   = csrf_meta_tags
-
-body class=body_class
+body
   = render "flashes"
+  = render "shared/navbar"
+  = render "shared/sidebar"
   = yield
   = render "javascript"
   = render "css_overrides"
