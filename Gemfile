@@ -27,6 +27,7 @@ gem "omniauth-github"
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem "omniauth-vkontakte"
+gem 'phony_rails'
 
 group :development do
   gem "quiet_assets"
