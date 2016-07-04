@@ -1,0 +1,15 @@
+.navbar {
+  background: #fff;
+
+  &-wrapper {
+    padding: 16px 30px;
+    @include clearfix;
+    position: relative;
+  }
+
+  .hamburger {
+    font-size: 18px;
+    vertical-align: bottom;
+    cursor: pointer;
+  }
+}
