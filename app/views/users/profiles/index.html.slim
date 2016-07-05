@@ -1,0 +1,46 @@
+div.content-background
+main.profile-container
+  section.card.user
+    div.picture
+      == image_tag 'user_default.png'
+    div.details
+      h1 Владимир Жириновский
+      span
+        span Разработчик интерфейсов (Front end) в&nbsp;
+        a href="#" стартап 8DEEDS
+      br
+      a href="#" 8deeds.com
+      br
+      .social-buttons
+        = link_to user_github_omniauth_authorize_path, class: "button button-gray" do
+          i.fa.fa-github
+        = link_to user_vkontakte_omniauth_authorize_path, class: "button button-gray" do
+          i.fa.fa-vk
+        = link_to user_facebook_omniauth_authorize_path, class: "button button-gray" do
+          i.fa.fa-facebook
+        = link_to user_google_oauth2_omniauth_authorize_path, class: "button button-gray" do
+          i.fa.fa-google
+        span.hashtag
+          i.fa.fa-hashtag
+          span @Zhirinovsky
+      div.bottom-buttons
+        button.button.button-blue Редактировать профиль
+        button.button.button-gray Настройки
+        
+  section.card.participant
+    h3 Участник
+    .events
+      .event
+        img.picture
+        span.text Net meetup
+      .event
+        img.picture
+        span.text Хакатон 47 hours в Южном парке
+      .event
+        img.picture
+        span.text Frontend Meetup
+  section.card.organizator
+    h3 Организатор
+    .no-events
+      i.fa.fa-smile-o
+      div.message Этот пользователь еще не создал ни одного мероприятия

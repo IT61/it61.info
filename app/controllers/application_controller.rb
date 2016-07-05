@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
 
   def welcome
   end
+
+  def profile
+    render 'users/profiles/index'
+  end
 end

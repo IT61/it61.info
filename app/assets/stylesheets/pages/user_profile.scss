@@ -1,0 +1,206 @@
+
+@media (max-width: 500px) {
+  main.profile-container {
+    width: 90%;
+    font-size: 13px;
+
+    .user {
+      @include span-columns(12);
+      text-align: center;
+      height: auto;
+
+      .picture {
+        width: 100%;
+        height: auto;
+        margin-top: -90px;
+        img {
+          display: block;
+          margin: 0 auto;
+          border-radius: 100%;
+          width: 150px;
+          height: 150px;
+        }
+      }
+
+      .details {
+        @include span-columns(10);
+        @include shift(1);
+
+        .social-buttons {
+          font-size: 2.7em;
+
+          a.button {
+            padding: 0.2em 0.5em;
+            &:first-child {
+              padding: 0.2em 0.5em;
+            }
+          }
+
+          .hashtag {
+            white-space: nowrap;
+            overflow: hidden;
+            color: #777;
+            span {
+              font-size: .5em;
+              vertical-align: middle;
+            }
+          }
+        }
+
+        .bottom-buttons {
+          bottom: 23px;
+          position: static;
+          margin-top: 25px;
+          .button {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .participant {
+      @include span-columns(12);
+      margin-bottom: 15px;
+    }
+
+    .organizator {
+      @include span-columns(12);
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 950px) {
+  main.profile-container {
+    width: 700px;
+    font-size: 14px;
+
+    .user {
+      height: 240px;
+
+      .details {
+
+        .social-buttons {
+          position: static;
+          margin-top: 8px;
+        }
+
+        .bottom-buttons {
+          bottom: 23px;
+        }
+      }
+    }
+  }
+}
+
+.profile-container {
+  @include outer-container;
+  width: 1100px;
+
+  .user {
+    @include span-columns(12);
+    @include clearfix;
+    background-color: #ffffff;
+    margin-top: 250px;
+    height: 360px;
+    margin-bottom: 15px;
+
+    .picture {
+      @include span-columns(4);
+      height: 100%;
+      padding: 3%;
+      img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .details {
+      height: 100%;
+      padding: 3%;
+      @include span-columns(8);
+      position: relative;
+
+      .bottom-buttons {
+        position: absolute;
+        bottom: 33px;
+      }
+
+      .social-buttons {
+        font-size: 2em;
+        margin-top: 25px;
+
+        a.button:first-child {
+          padding-left: 0
+        }
+
+        a.button {
+          padding: .2em .7em;
+        }
+
+        .fa-hashtag {
+          padding: 0 .7em;
+          padding-right: 0.3em;
+        }
+
+        .hashtag {
+          color: #777;
+          span {
+            font-size: .6em;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+
+  .participant ,
+  .organizator {
+    padding: 3%;
+    h3 {
+      font-size: 1.5em;
+      font-weight: 400;
+    }
+  }
+
+  .participant {
+    @include span-columns(6);
+
+    .picture {
+      margin-right: 1em;
+      width: 2.5em;
+      height: 2.5em;
+    }
+
+    .text {
+      font-size: 1.7em;
+      font-weight: 300;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      width: 80%;
+    }
+  }
+
+  .organizator {
+    @include span-columns(6);
+
+    .no-events {
+      @include outer-container;
+
+      .fa {
+        @include span-columns(1);
+        font-size: 1.7em;
+        vertical-align: middle;
+        padding-right: .5em;
+      }
+
+      span {
+        @include span-columns(9);
+      }
+
+      color: #777;
+    }
+  }
+}

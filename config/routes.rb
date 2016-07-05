@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
 
   root 'application#welcome'
+  get 'user_profile' => 'application#profile'
 end

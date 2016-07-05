@@ -14,3 +14,12 @@
     cursor: pointer;
   }
 }
+
+.content-background {
+  background-color: #327ab5;
+  height: 398px;
+  position: absolute;
+  top: 63px;
+  width: 100%;
+  z-index: -1;
+}
