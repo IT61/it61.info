@@ -1,0 +1,54 @@
+.login-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url('/assets/it61_bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.login-card {
+  @include outer-container;
+  text-align: center;
+  background: #fff;
+  padding: 40px;
+  margin: 137px auto;
+  max-width: 400px;
+
+  h2 {
+    font-size: 33px;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  i {
+    font-size: 22px;
+  }
+
+  .social-buttons {
+    margin: 54px 0 auto;
+    @include clearfix;
+    a {
+      @include span-columns(3);
+      @include media($mobile-xs) {
+        @include span-columns(6);
+        @include omega(2n);
+        margin-bottom: 2.5%;
+      }
+    }
+  }
+
+  @include media($mobile-xs) {
+    margin-top: 70px;
+    max-width: 300px;
+  }
+}

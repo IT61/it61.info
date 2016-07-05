@@ -5,6 +5,24 @@
     font-weight: 500;
   }
 
+  &-shadow {
+    box-shadow: 0 1px 4px rgba(20, 47, 69, 0.3);
+  }
+
+  &-square {
+    padding: 15px;
+  }
+
+  &-gray {
+    background-color: $gray;
+    color: $blue;
+
+    &:focus {
+      background-color: shade($gray, 5%);
+      color: $blue;
+    }
+  }
+
   &-blue {
     background-color: $blue;
   }

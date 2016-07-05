@@ -2,6 +2,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   skip_before_filter :verify_authenticity_token
 
+  def signin
+    render "signin";
+  end
+
   def github
     oauth_for 'Github'
   end

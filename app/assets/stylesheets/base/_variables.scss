@@ -3,7 +3,7 @@ $medium-screen: 600px;
 $large-screen: 900px;
 
 // Typography
-$base-font-family: $font-stack-system;
+$base-font-family: 'Roboto', "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $heading-font-family: $base-font-family;
 
 // Font Sizes
@@ -49,3 +49,6 @@ $base-timing: ease;
 
 //Sidebar
 $sidebar-width: 300px;
+
+//Media queries
+$mobile-xs: new-breakpoint(max-width 400px);
