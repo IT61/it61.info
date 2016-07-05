@@ -9,7 +9,8 @@ class Event < ActiveRecord::Base
   has_many :event_participations, dependent: :destroy
   has_many :participants, class_name: 'User', through: :event_participations, source: :user
 
-  belongs_to :place
+  has_many :locations
+  has_many :places, through: :locations
 
   validates_presence_of :title, :organizer
   validates :published_at, presence: true, if: :published?
