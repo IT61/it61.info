@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704095459) do
+ActiveRecord::Schema.define(version: 20160705080503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20160704095459) do
     t.string   "title",                                         null: false
     t.text     "description",                                   null: false
     t.string   "title_image"
-    t.string   "place",                                         null: false
     t.integer  "organizer_id",                                  null: false
     t.boolean  "published",                     default: false
     t.datetime "published_at"
@@ -42,18 +41,39 @@ ActiveRecord::Schema.define(version: 20160704095459) do
 
   add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
 
+  create_table "locations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "place_id"
+    t.string   "extra_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.string   "address",    null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "places", ["address"], name: "index_places_on_address", using: :btree
+  add_index "places", ["title"], name: "index_places_on_title", using: :btree
+
   create_table "social_accounts", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider",   null: false
     t.string   "uid",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "link"
   end
 
   add_index "social_accounts", ["user_id"], name: "index_social_accounts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",               default: "", null: false
+    t.string   "email",               default: ""
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",       default: 0,  null: false
     t.datetime "current_sign_in_at"
