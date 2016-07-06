@@ -86,7 +86,6 @@
     font-size: 14px;
 
     .user {
-      height: 293px;
 
       .picture {
         @include span-columns(5);
@@ -117,7 +116,6 @@
     @include clearfix;
     background-color: #ffffff;
     margin-top: 250px;
-    height: 360px;
     margin-bottom: 15px;
 
     .picture {
@@ -138,8 +136,11 @@
       position: relative;
 
       .bottom-buttons {
-        position: absolute;
-        bottom: 33px;
+        margin-top: 25px;
+
+        .button {
+          margin-right: 15px;
+        }
       }
 
       .name {
