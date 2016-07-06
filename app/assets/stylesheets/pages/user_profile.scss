@@ -4,9 +4,20 @@
     width: 90%;
     font-size: 13px;
 
+    .sub-header {
+      padding: 3% 2.35765%;
+      border-bottom: 1px solid #b9b9b9;;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
     .user {
       @include span-columns(12);
       text-align: center;
+      width: 100%;
+      padding: 3%;
       height: auto;
 
       .picture {
@@ -23,8 +34,7 @@
       }
 
       .details {
-        @include span-columns(10);
-        @include shift(1);
+        @include span-columns(12);
 
         .social-buttons {
           font-size: 2.7em;
@@ -55,7 +65,7 @@
           .button {
             width: 100%;
             margin: 5px 0;
-            padding: 1em 1.7em;
+            padding: 1em 1em;
             font-size: 1.2em;
           }
         }
@@ -79,9 +89,14 @@
     font-size: 14px;
 
     .user {
-      height: 240px;
+      height: 270px;
+
+      .picture {
+        @include span-columns(5);
+      }
 
       .details {
+        @include span-columns(7);
 
         .social-buttons {
           position: static;
@@ -120,9 +135,9 @@
     }
 
     .details {
+      @include span-columns(8);
       height: 100%;
       padding: 3%;
-      @include span-columns(8);
       position: relative;
 
       .bottom-buttons {
@@ -169,11 +184,14 @@
 
   .participant ,
   .organizator {
-    padding: 3%;
-    h3 {
+    .sub-header h3 {
       font-size: 1.5em;
       font-weight: 400;
     }
+  }
+
+  .participant > div, .organizator > div {
+    padding: 3%;
   }
 
   .participant {
