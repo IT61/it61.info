@@ -8,6 +8,7 @@
     .sub-header {
       padding: 15px 2.35765%;
       border-bottom: 1px solid #b9b9b9;;
+      font-weight: 400;
     }
 
     .user {
@@ -32,6 +33,10 @@
 
       .details {
         @include span-columns(12);
+
+        .name {
+          font-weight: 400;
+        }
 
         .social-buttons {
           font-size: 2.7em;
@@ -144,7 +149,8 @@
       }
 
       .name {
-        font-weight: 400;
+        font-weight: 700;
+        font-size: 2.5em;
       }
 
       .job {
@@ -168,6 +174,7 @@
 
         a.button {
           padding: .2em .7em;
+          background-color: transparent;
         }
 
         .fa-hashtag {
