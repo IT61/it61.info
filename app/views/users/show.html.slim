@@ -1,0 +1,5 @@
+.content-background
+main.profile-container
+  = render partial: 'shared/cards/user', locals: { user: @user }
+  = render partial: 'shared/cards/participant', locals: { user: @user }
+  = render partial: 'shared/cards/organizator', locals: { user: @user }

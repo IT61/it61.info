@@ -1,0 +1,27 @@
+section.card.user
+  .picture
+    = image_tag 'user_default.png'
+  .details
+    h1.name= user.full_name
+    .job
+      span= user.company
+      br
+      a href="#{user.link}"= user.link
+    br
+    .bio
+      span=user.bio
+    .social-buttons
+      = link_to user_github_omniauth_authorize_path, class: "button #{user.social_account_linked :github}" do
+        i.fa.fa-github
+      = link_to user_vkontakte_omniauth_authorize_path, class: "button #{user.social_account_linked :vkontakte}" do
+        i.fa.fa-vk
+      = link_to user_facebook_omniauth_authorize_path, class: "button #{user.social_account_linked :facebook}" do
+        i.fa.fa-facebook
+      = link_to user_google_oauth2_omniauth_authorize_path, class: "button  #{user.social_account_linked :google_oauth2}" do
+        i.fa.fa-google
+      span.hashtag
+        i.fa.fa-hashtag
+        span= user.hash_tag
+    .bottom-buttons
+      button.button.button-blue Редактировать профиль
+      button.button.button-gray Настройки

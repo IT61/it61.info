@@ -13,6 +13,10 @@
     padding: 15px;
   }
 
+  &-not-linked {
+    color: #777;
+  }
+
   &-gray {
     background-color: $gray;
     color: $blue;
