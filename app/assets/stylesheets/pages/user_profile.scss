@@ -1,16 +1,13 @@
 
-@media (max-width: 645px) {
+@media (max-width: 705px) {
   main.profile-container {
     width: 90%;
+    max-width: 470px;
     font-size: 13px;
 
     .sub-header {
       padding: 15px 2.35765%;
       border-bottom: 1px solid #b9b9b9;;
-
-      h3 {
-        margin: 0;
-      }
     }
 
     .user {
@@ -66,7 +63,7 @@
             width: 100%;
             margin: 5px 0;
             padding: 1em 1em;
-            font-size: 1.2em;
+            font-size: 1.1em;
           }
         }
       }
@@ -83,13 +80,13 @@
   }
 }
 
-@media (min-width: 645px) and (max-width: 1100px) {
+@media (min-width: 705px) and (max-width: 1100px) {
   main.profile-container {
     width: 750px;
     font-size: 14px;
 
     .user {
-      height: 270px;
+      height: 293px;
 
       .picture {
         @include span-columns(5);
@@ -187,6 +184,7 @@
     .sub-header h3 {
       font-size: 1.5em;
       font-weight: 400;
+      margin: 0;
     }
   }
 
