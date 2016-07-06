@@ -1,4 +1,5 @@
-require File.expand_path('../boot', __FILE__)
+# frozen_string_literal: true
+require File.expand_path("../boot", __FILE__)
 require "rails"
 require "active_model/railtie"
 require "active_job/railtie"

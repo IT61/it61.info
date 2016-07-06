@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module PermalinkFor::SlugImplementation
   extend ActiveSupport::Concern
 
@@ -7,7 +8,7 @@ module PermalinkFor::SlugImplementation
       {
         presence: true,
         uniqueness: true,
-        format: { with: /\A[a-z0-9_-]+\Z/ }
+        format: { with: /\A[a-z0-9_-]+\Z/ },
       }
     end
   end
@@ -41,7 +42,7 @@ module PermalinkFor::SlugImplementation
       end
     end
 
-    fail 'Failed to generate permalink' if generated_permalink.nil?
+    fail "Failed to generate permalink" if generated_permalink.nil?
     self.permalink = generated_permalink
   end
 
