@@ -28,6 +28,7 @@
 
         .social-buttons {
           font-size: 2.7em;
+          margin-bottom: 25px;
 
           a.button {
             padding: 0.2em 0.5em;
@@ -53,6 +54,9 @@
           margin-top: 25px;
           .button {
             width: 100%;
+            margin: 5px 0;
+            padding: 1em 1.7em;
+            font-size: 1.2em;
           }
         }
       }
@@ -124,6 +128,15 @@
       .bottom-buttons {
         position: absolute;
         bottom: 33px;
+      }
+
+      .name {
+        font-weight: 400;
+      }
+
+      .job {
+        color: #777;
+        font-size: 1.2em;
       }
 
       .social-buttons {

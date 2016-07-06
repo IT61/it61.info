@@ -4,12 +4,12 @@ main.profile-container
     div.picture
       == image_tag 'user_default.png'
     div.details
-      h1 Владимир Жириновский
-      span
+      h1.name Владимир Жириновский
+      span.job
         span Разработчик интерфейсов (Front end) в&nbsp;
         a href="#" стартап 8DEEDS
-      br
-      a href="#" 8deeds.com
+        br
+        a href="#" 8deeds.com
       br
       .social-buttons
         = link_to user_github_omniauth_authorize_path, class: "button button-gray" do
