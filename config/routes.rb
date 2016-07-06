@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
 
   root 'application#welcome'
+
+  resources :company
 end
