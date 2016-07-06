@@ -20,6 +20,7 @@ module It61
       generate.test_framework :rspec
       generate.view_specs false
     end
+    config.eager_load_paths += ["#{Rails.root}/lib"]
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :delayed_job

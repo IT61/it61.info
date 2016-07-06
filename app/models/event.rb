@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-
   include PermalinkFor
   permalink_for :permalink_title, as: :pretty
 
