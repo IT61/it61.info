@@ -6,8 +6,19 @@ $large-screen: 900px;
 $base-font-family: 'Roboto', "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $heading-font-family: $base-font-family;
 
+// Input float label
+$input-font-size: 18px !default;
+$input-active-font-size: $input-font-size * 0.8 !default;
+$input-active-top: -$input-font-size !default;
+
+$input-gap: $input-font-size * 1.5 !default;
+$input-spacer: $input-font-size / 8 !default;
+
+$input-transition-speed: 0.28s !default;
+$body-bg: #fff;
+
 // Font Sizes
-$base-font-size: 1em;
+$base-font-size: 14px;
 
 // Line height
 $base-line-height: 1.5;
@@ -21,7 +32,7 @@ $base-z-index: 0;
 
 // Colors
 $blue: #2d79b7;
-$gray: #f6f6f9;
+$gray: #ececec;
 
 $dark-gray: #333;
 $medium-gray: #999;
@@ -52,3 +63,5 @@ $sidebar-width: 300px;
 
 //Media queries
 $mobile-xs: new-breakpoint(max-width 400px);
+// Register page mobile version
+$register-mobile: new-breakpoint(max-width 750px);

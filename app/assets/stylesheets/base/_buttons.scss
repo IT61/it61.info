@@ -1,9 +1,9 @@
 .button {
   appearance: none;
-  background-color: $gray;
+  background-color: #fff;
   border: 0;
   border-radius: $base-border-radius;
-  color: #fff;
+  color: $blue;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
@@ -18,10 +18,10 @@
   vertical-align: middle;
   white-space: nowrap;
   text-transform: uppercase;
+  outline: none;
 
   &:focus {
-    background-color: shade($action-color, 20%);
-    color: #fff;
+    background-color: shade(#fff, 7%);
   }
 
   &:disabled {
@@ -29,7 +29,7 @@
     opacity: 0.5;
 
     &:hover {
-      background-color: $action-color;
+      background-color: $gray;
     }
   }
 }

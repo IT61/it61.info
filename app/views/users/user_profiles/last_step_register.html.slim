@@ -1,0 +1,41 @@
+.login-background
+.card.register-card
+  .title
+    h1 Завершение регистрации
+    p Есть несколько тонкостей, которые<br>не должны от вас ускользнуть:
+  .register-fields
+    .association-field
+      .input-float-label
+        input type="text"
+        label Имя*
+      .input-float-label
+        input type="text"
+        label Фамилия*
+    .association-curve
+      .curve-long
+    .association-text.text-long
+      | 1. Указывайте настоящее имя и фамилию на русском языке для удобства общения в чате
+    .association-field
+      .input-float-label
+        input type="email"
+        label E-mail*
+    .association-curve
+      .curve-short
+    .association-text.text-short
+      | 2. Важно! На указанный адрес будет отправлен инвайт для доступа в Slack
+    .association-field
+      .input-float-label
+        input type="phone"
+        label Телефон
+    .association-curve
+      .curve-short
+    .association-text.text-short
+      | 3. Будет использован для отправки напоминаний о мероприятиях на которые вы хотите пойти
+    .input-float-label.about-field
+      textarea rows="1"
+      label О себе
+  .register-footer
+    .required-fields * Поля обязательные к заполнению
+    .buttons
+      button.button.button-shadow.button-blue Все верно
+      button.button.button-shadow.button-gray Заполнить позже
