@@ -5,6 +5,13 @@
     max-width: 470px;
     font-size: 13px;
 
+    .my-profile {
+      color: white;
+      font-size: 2.3em;
+      font-weight: normal;
+      margin-bottom: 2.3em;
+    }
+
     .sub-header {
       padding: 15px 2.35765%;
       border-bottom: 1px solid #b9b9b9;;
@@ -116,11 +123,21 @@
   @include outer-container;
   width: 1100px;
 
+  .inner-container {
+    margin-top: 100px;
+  }
+
+  .my-profile {
+    color: white;
+    font-size: 2.3em;
+    font-weight: normal;
+    margin: 1.5em 0;
+  }
+
   .user {
     @include span-columns(12);
     @include clearfix;
     background-color: #ffffff;
-    margin-top: 250px;
     margin-bottom: 15px;
 
     .picture {
@@ -141,7 +158,9 @@
       position: relative;
 
       .bottom-buttons {
+        @include clearfix;
         margin-top: 25px;
+        float: right;
 
         .button {
           margin-right: 15px;
@@ -149,7 +168,7 @@
       }
 
       .name {
-        font-weight: 700;
+        font-weight: 400;
         font-size: 2.5em;
       }
 
@@ -228,6 +247,8 @@
 
   .no-events {
     @include outer-container;
+    color: #777;
+    margin-bottom: 2em;
 
     .fa {
       @include span-columns(1);
@@ -239,8 +260,6 @@
     span {
       @include span-columns(9);
     }
-
-    color: #777;
   }
 
   .organizator {

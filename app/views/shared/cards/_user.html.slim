@@ -22,6 +22,8 @@ section.card.user
       span.hashtag
         i.fa.fa-hashtag
         span= user.hash_tag
-    .bottom-buttons
-      button.button.button-blue Редактировать профиль
-      button.button.button-gray Настройки
+    - if your_profile?(user)
+      .bottom-buttons
+        button.button.button-blue Редактировать профиль
+        button.button.button-gray Настройки
+      

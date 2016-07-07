@@ -1,5 +1,6 @@
-def UserHelper < ApplicationHelper
-  def your_page?(id)
-    return id == current_user.id
+module UserHelper
+  def your_profile?(user)
+    user == current_user
+    true
   end
 end
