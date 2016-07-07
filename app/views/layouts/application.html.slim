@@ -1,16 +1,18 @@
 doctype html
 html lang="ru"
-head
-  meta charset="utf-8"
-  meta name="ROBOTS" content="NOODP"
-  meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  title IT61
-  = stylesheet_link_tag :application, media: "all"
-  = csrf_meta_tags
-body
-  = render "flashes"
-  = render "shared/navbar"
-  = render "shared/sidebar"
-  = yield
-  = render "javascript"
-  = render "css_overrides"
+  head
+    meta charset="utf-8"
+    meta name="ROBOTS" content="NOODP"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    title IT61
+    = stylesheet_link_tag :application, media: "all"
+    = csrf_meta_tags
+  body
+    .wrapper
+      = render "flashes"
+      = render "shared/navbar"
+      = render "shared/sidebar"
+      = yield
+    = render "shared/footer"
+    = render "javascript"
+    = render "css_overrides"
