@@ -8,10 +8,11 @@ html lang="ru"
     = csrf_meta_tags
   body
     .wrapper
-      = render "flashes"
-      = render "shared/navbar"
       = render "shared/sidebar"
-      = yield
-      = render "shared/footer"
+      .content
+        = render "flashes"
+        = render "shared/navbar"
+        = yield
+        = render "shared/footer"
     = render "javascript"
     = render "css_overrides"
