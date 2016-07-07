@@ -3,5 +3,6 @@ section.card.participant
   .events
     = render partial: 'events', locals: { events: user.member_in_events, no_events_message: 'Этот пользователь создал ни одного мероприятия' }
   - if your_profile?(user)
-    = link_to '/new_event', class: 'button' do
-      Ближайшие мероприятия
+    .card-footer
+      = link_to '/new_event', class: 'button' do
+        | Ближайшие мероприятия

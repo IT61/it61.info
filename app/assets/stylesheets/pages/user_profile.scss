@@ -14,7 +14,7 @@
 
     .sub-header {
       padding: 15px 2.35765%;
-      border-bottom: 1px solid #b9b9b9;;
+      border-bottom: 1px solid #ccc;
       font-weight: 400;
     }
 
@@ -46,7 +46,6 @@
         }
 
         .social-buttons {
-          font-size: 2.7em;
           margin-bottom: 25px;
 
           a.button {
@@ -54,22 +53,26 @@
             &:first-child {
               padding: 0.2em 0.5em;
             }
+            i {
+              font-size: 2.3em;
+            }
           }
 
           .hashtag {
             white-space: nowrap;
             overflow: hidden;
             color: #777;
-            span {
-              font-size: .5em;
-              vertical-align: middle;
-            }
+          }
+
+          .hashtag-label {
+            font-size: 1em;
           }
         }
 
         .bottom-buttons {
           bottom: 23px;
           position: static;
+          float: none;
           margin-top: 25px;
           .button {
             width: 100%;
@@ -184,7 +187,6 @@
       }
 
       .social-buttons {
-        font-size: 2em;
         margin-top: 25px;
 
         a.button:first-child {
@@ -192,21 +194,28 @@
         }
 
         a.button {
+          i {
+            font-size: 2em;
+          }
           padding: .2em .7em;
           background-color: transparent;
         }
 
-        .fa-hashtag {
-          padding: 0 .7em;
-          padding-right: 0.3em;
-        }
-
         .hashtag {
           color: #777;
+          line-height: 2em;
           span {
-            font-size: .6em;
+            font-size: 1em;
             vertical-align: middle;
           }
+
+          i {
+            font-size: 2em;
+          }
+        }
+
+        .hashtag-label {
+          color: #777;
         }
       }
     }
@@ -248,7 +257,7 @@
   .no-events {
     @include outer-container;
     color: #777;
-    margin-bottom: 2em;
+    margin: 1em 0;
 
     .fa {
       @include span-columns(1);
