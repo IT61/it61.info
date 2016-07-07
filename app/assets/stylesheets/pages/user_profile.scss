@@ -1,130 +1,25 @@
+$first-breakpoint-value: 705px;
+$second-breakpoint-value: 1100px;
 
-@media (max-width: 705px) {
-  main.profile-container {
-    width: 90%;
-    max-width: 470px;
-    font-size: 13px;
-
-    .my-profile {
-      color: white;
-      font-size: 2.3em;
-      font-weight: normal;
-      margin-bottom: 2.3em;
-    }
-
-    .sub-header {
-      padding: 15px 2.35765%;
-      border-bottom: 1px solid #ccc;
-      font-weight: 400;
-    }
-
-    .user {
-      @include span-columns(12);
-      text-align: center;
-      width: 100%;
-      padding: 15px;
-      height: auto;
-
-      .picture {
-        width: 100%;
-        height: auto;
-        margin-top: -90px;
-        img {
-          display: block;
-          margin: 0 auto;
-          border-radius: 100%;
-          width: 150px;
-          height: 150px;
-        }
-      }
-
-      .details {
-        @include span-columns(12);
-
-        .name {
-          font-weight: 400;
-        }
-
-        .social-buttons {
-          margin-bottom: 25px;
-
-          a.button {
-            padding: 0.2em 0.5em;
-            &:first-child {
-              padding: 0.2em 0.5em;
-            }
-            i {
-              font-size: 2.3em;
-            }
-          }
-
-          .hashtag {
-            white-space: nowrap;
-            overflow: hidden;
-            color: #777;
-          }
-
-          .hashtag-label {
-            font-size: 1em;
-          }
-        }
-
-        .bottom-buttons {
-          bottom: 23px;
-          position: static;
-          float: none;
-          margin-top: 25px;
-          .button {
-            width: 100%;
-            margin: 5px 0;
-            padding: 1em 1em;
-            font-size: 1.1em;
-          }
-        }
-      }
-    }
-
-    .participant {
-      @include span-columns(12);
-      margin-bottom: 15px;
-    }
-
-    .organizator {
-      @include span-columns(12);
-    }
-  }
-}
-
-@media (min-width: 705px) and (max-width: 1100px) {
-  main.profile-container {
-    width: 750px;
-    font-size: 14px;
-
-    .user {
-
-      .picture {
-        @include span-columns(5);
-      }
-
-      .details {
-        @include span-columns(7);
-
-        .social-buttons {
-          position: static;
-          margin-top: 8px;
-        }
-
-        .bottom-buttons {
-          bottom: 23px;
-        }
-      }
-    }
-  }
-}
+$mobile-viewport: new-breakpoint(max-width $first-breakpoint-value);
+$medium-viewport: new-breakpoint(min-width $first-breakpoint-value max-width $second-breakpoint-value);
+$large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
 
 .profile-container {
   @include outer-container;
   width: 1100px;
+  font-size: 16px;
+
+  @include media($mobile-viewport) {
+    width: 90%;
+    max-width: 470px;
+    font-size: 13px;
+  }
+
+  @include media($medium-viewport) {
+    width: 750px;
+    font-size: 14px;
+  }
 
   .inner-container {
     margin-top: 100px;
@@ -135,6 +30,21 @@
     font-size: 2.3em;
     font-weight: normal;
     margin: 1.5em 0;
+
+    @include media($mobile-viewport) {
+      color: white;
+      font-size: 2.3em;
+      font-weight: normal;
+      margin-bottom: 2.3em;
+    }
+  }
+
+  .sub-header {
+    @include media($mobile-viewport) {
+      padding: 15px 2.35765%;
+      border-bottom: 1px solid #ccc;
+      font-weight: 400;
+    }
   }
 
   .user {
@@ -143,29 +53,75 @@
     background-color: #ffffff;
     margin-bottom: 15px;
 
+    @include media($mobile-viewport) {
+      @include span-columns(12);
+      text-align: center;
+      width: 100%;
+      padding: 15px;
+      height: auto;
+    }
+
     .picture {
       @include span-columns(4);
+      @include media($mobile-viewport) {
+        width: 100%;
+        height: auto;
+        margin-top: -90px;
+      }
+      @include media($medium-viewport) {
+        @include span-columns(5);
+      }
+
       height: 100%;
       padding: 15px;
       img {
         position: relative;
         width: 100%;
         height: 100%;
+        @include media($mobile-viewport) {
+          display: block;
+          margin: 0 auto;
+          border-radius: 100%;
+          width: 150px;
+          height: 150px;
+        }
       }
     }
 
     .details {
       @include span-columns(8);
+      @include media($mobile-viewport) {
+        @include span-columns(12);
+      }
+      @include media($medium-viewport) {
+        @include span-columns(7);
+      }
+
       height: 100%;
       padding: 15px;
       position: relative;
 
       .bottom-buttons {
         @include clearfix;
+        @include media($mobile-viewport) {
+          bottom: 23px;
+          position: static;
+          float: none;
+          margin-top: 25px;
+        }
+        @include media($medium-viewport) {
+          bottom: 23px;
+        }
         margin-top: 25px;
         float: right;
 
         .button {
+          @include media($mobile-viewport) {
+            width: 100%;
+            margin: 5px 0;
+            padding: 1em 1em;
+            font-size: 1.1em;
+          }
           margin-right: 15px;
         }
       }
@@ -188,20 +144,39 @@
 
       .social-buttons {
         margin-top: 25px;
+        @include media($medium-viewport) {
+          position: static;
+          margin-top: 8px;
+        }
 
         a.button:first-child {
           padding-left: 0
         }
 
         a.button {
+          @include media($mobile-viewport) {
+            padding: .2em .5em;
+            &:first-child {
+              padding: .2em .5em;
+            }
+            i {
+              font-size: 2.3em;
+            }
+          }
+          padding: .2em .7em;
           i {
             font-size: 2em;
           }
-          padding: .2em .7em;
           background-color: transparent;
         }
 
         .hashtag {
+          @include media($mobile-viewport) {
+            white-space: nowrap;
+            overflow: hidden;
+            color: #777;
+          }
+
           color: #777;
           line-height: 2em;
           span {
@@ -216,6 +191,10 @@
 
         .hashtag-label {
           color: #777;
+
+          @include media($mobile-viewport) {
+            font-size: 1em;
+          }
         }
       }
     }
@@ -223,6 +202,7 @@
 
   .participant ,
   .organizator {
+
     .sub-header h3 {
       font-size: 1.5em;
       font-weight: 400;
@@ -236,6 +216,11 @@
 
   .participant {
     @include span-columns(6);
+    @include media($mobile-viewport) {
+      @include span-columns(12);
+      margin-bottom: 15px;
+    }
+
 
     .picture {
       margin-right: 1em;
@@ -273,5 +258,8 @@
 
   .organizator {
     @include span-columns(6);
+    @include media($mobile-viewport) {
+      @include span-columns(12);
+    }
   }
 }
