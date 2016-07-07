@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-  resources :company
+  resources :events
+  resources :companies
 end
