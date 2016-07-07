@@ -28,6 +28,10 @@ class UserDecorator < Draper::Decorator
     '@Zhirinovsky'
   end
 
+  def has_events?
+    not (object.member_in_events.empty? and object.owner_of_events.empty?)
+  end
+
   private
 
   def linked(provider)
