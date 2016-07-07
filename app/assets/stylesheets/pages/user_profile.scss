@@ -92,6 +92,7 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
       @include span-columns(8);
       @include media($mobile-viewport) {
         @include span-columns(12);
+        padding: 0;
       }
       @include media($medium-viewport) {
         @include span-columns(7);
@@ -149,25 +150,27 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
           margin-top: 8px;
         }
 
-        a.button:first-child {
-          padding-left: 0
-        }
-
-        a.button {
+        .button {
           @include media($mobile-viewport) {
             padding: .2em .5em;
-            &:first-child {
+          }
+
+          padding: .2em .7em;
+          background-color: transparent;
+
+          &:first-child {
+            padding-left: 0;
+            @include media($mobile-viewport) {
               padding: .2em .5em;
             }
-            i {
-              font-size: 2.3em;
-            }
           }
-          padding: .2em .7em;
+
           i {
             font-size: 2em;
+            @include media($mobile-viewport) {
+                font-size: 2.3em;
+            }
           }
-          background-color: transparent;
         }
 
         .hashtag {
@@ -202,7 +205,6 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
 
   .participant ,
   .organizator {
-
     .sub-header h3 {
       font-size: 1.5em;
       font-weight: 400;
