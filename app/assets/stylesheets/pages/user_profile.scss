@@ -209,7 +209,9 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
     text-align: center;
 
     i {
-      padding: 1em;
+      vertical-align: middle;
+      font-size: 1.5em;
+      padding: .5em;
     }
   }
 
