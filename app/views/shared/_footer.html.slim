@@ -1,0 +1,36 @@
+footer
+  div
+    .footer-left
+      ul
+        li
+          a Мероприятия
+        li
+          a Личности
+        li
+          a Фото
+        li
+          a Спонсорам
+        li
+          a Slack
+      .copyright
+        = image_tag "logo-small.png", class: "logo"
+        p
+          | Сделано&nbsp;
+          = link_to "сообществом", "http://it61.info"
+          |&nbsp;для сообщества
+    .social
+      .social-wrapper
+        p Мы в социальных сетях:
+        ul
+          li
+            = link_to "http://fb.com" do
+              i.fa.fa-facebook
+          li
+            = link_to "http://github.com" do
+              i.fa.fa-github
+          li
+            = link_to "http://vk.com" do
+              i.fa.fa-vk
+          li
+            = link_to "http://github.com" do
+              i.fa.fa-youtube

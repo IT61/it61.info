@@ -2,8 +2,27 @@ html {
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -$footer-height;
+  @include media($device-xs-max) {
+    margin-bottom: -$footer-height-mobile;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+  }
+ }
