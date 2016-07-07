@@ -1,0 +1,30 @@
+main.profile-container
+  h1 Новое мероприятие
+  
+  // todo: delete if you're making normal styles
+  sass:
+    h1
+      margin: 1.5em 0
+      font-weight: 400
+    section
+      margin: 1em
+    label
+      color: #777
+  // ============
+      
+  = form_for @event do |f|
+    section.image
+      = f.label :title_image, 'Титульное изображение'
+      = f.file_field :title_image
+    section.details
+      = f.label :title, 'Название'
+      = f.text_field :title
+      = f.label :started_at, 'Время проведения'
+      = datetime_select :event, :started_at, selected: Date.today
+      / = f.label :location
+      / = f.text_field :location # todo: what is location?
+    section.description
+      = f.label :description, 'Описание'
+      = f.text_area :description  
+      / todo: js lib for customizing textarea?
+    = f.submit 'Создать'

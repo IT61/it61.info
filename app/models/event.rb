@@ -1,14 +1,15 @@
 class Event < ActiveRecord::Base
-  include PermalinkFor
-  permalink_for :permalink_title, as: :pretty
+  # include PermalinkFor
+  # permalink_for :permalink_title, as: :pretty
 
-  # mount_uploader :title_image, EventTitleImageUploader
+  mount_uploader :title_image, EventImageUploader
 
   belongs_to :organizer, class_name: 'User'
   has_many :event_participations, dependent: :destroy
   has_many :participants, class_name: 'User', through: :event_participations, source: :user
 
   has_many :locations
+  accepts_nested_attributes_for :locations
   has_many :places, through: :locations
 
   validates_presence_of :title, :organizer

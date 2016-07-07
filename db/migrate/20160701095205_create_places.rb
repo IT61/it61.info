@@ -7,5 +7,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.float :longitude # Долгота
       t.timestamps null: false
     end
+
+    add_index :places, [:title, :address, :latitude, :longitude], unique: true
   end
 end

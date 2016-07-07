@@ -4,6 +4,7 @@ ruby "2.3.1"
 
 gem "autoprefixer-rails"
 gem "bourbon", "5.0.0.beta.5"
+gem "carrierwave"
 gem "delayed_job_active_record"
 gem "devise"
 gem "draper"

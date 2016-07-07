@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :company
+  resources :events, only: [:new, :create]
 end
