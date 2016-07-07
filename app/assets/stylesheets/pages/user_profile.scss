@@ -102,31 +102,6 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
       padding: 15px;
       position: relative;
 
-      .bottom-buttons {
-        @include clearfix;
-        @include media($mobile-viewport) {
-          bottom: 23px;
-          position: static;
-          float: none;
-          margin-top: 25px;
-        }
-        @include media($medium-viewport) {
-          bottom: 23px;
-        }
-        margin-top: 25px;
-        float: right;
-
-        .button {
-          @include media($mobile-viewport) {
-            width: 100%;
-            margin: 5px 0;
-            padding: 1em 1em;
-            font-size: 1.1em;
-          }
-          margin-right: 15px;
-        }
-      }
-
       .name {
         font-weight: 400;
         font-size: 2.5em;
@@ -142,66 +117,92 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
         color: #777;
         font-size: 1em;
       }
+    }
 
-      .social-buttons {
-        margin-top: 25px;
-        @include media($medium-viewport) {
-          position: static;
-          margin-top: 8px;
+    .social-buttons {
+      margin-top: 25px;
+      @include media($medium-viewport) {
+        position: static;
+        margin-top: 8px;
+      }
+
+      .button {
+        @include media($mobile-viewport) {
+          padding: .2em .5em;
         }
 
-        .button {
+        padding: .2em .7em;
+        background-color: transparent;
+
+        &:first-child {
+          padding-left: 0;
           @include media($mobile-viewport) {
             padding: .2em .5em;
           }
-
-          padding: .2em .7em;
-          background-color: transparent;
-
-          &:first-child {
-            padding-left: 0;
-            @include media($mobile-viewport) {
-              padding: .2em .5em;
-            }
-          }
-
-          i {
-            font-size: 2em;
-            @include media($mobile-viewport) {
-                font-size: 2.3em;
-            }
-          }
         }
 
-        .hashtag {
+        i {
+          font-size: 2em;
           @include media($mobile-viewport) {
-            white-space: nowrap;
-            overflow: hidden;
-            color: #777;
-          }
-
-          color: #777;
-          line-height: 2em;
-          span {
-            font-size: 1em;
-            vertical-align: middle;
-          }
-
-          i {
-            font-size: 2em;
-          }
-        }
-
-        .hashtag-label {
-          color: #777;
-
-          @include media($mobile-viewport) {
-            font-size: 1em;
+              font-size: 2.3em;
           }
         }
       }
+
+      .hashtag {
+        @include media($mobile-viewport) {
+          white-space: nowrap;
+          overflow: hidden;
+          color: #777;
+        }
+
+        color: #777;
+        line-height: 2em;
+        span {
+          font-size: 1em;
+          vertical-align: middle;
+        }
+
+        i {
+          font-size: 2em;
+        }
+      }
+
+      .hashtag-label {
+        color: #777;
+
+        @include media($mobile-viewport) {
+          font-size: 1em;
+        }
+      }
+    }
+
+    .bottom-buttons {
+      @include clearfix;
+      @include media($mobile-viewport) {
+        bottom: 23px;
+        position: static;
+        float: none;
+        margin-top: 25px;
+      }
+      @include media($medium-viewport) {
+        bottom: 23px;
+      }
+      margin-top: 25px;
+      float: right;
+
+      .button {
+        @include media($mobile-viewport) {
+          width: 100%;
+          margin: 5px 0;
+          padding: 1em 1em;
+          font-size: 1.1em;
+        }
+        margin-right: 15px;
+      }
     }
   }
+
 
   .participant ,
   .organizator {
