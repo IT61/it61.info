@@ -48,7 +48,6 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
   }
 
   .user {
-    @include span-columns(12);
     @include clearfix;
     background-color: #ffffff;
     margin-bottom: 15px;
@@ -203,6 +202,16 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
     }
   }
 
+  .mamont {
+    color: #777;
+    margin-top: 3em;
+    font-size: 1.2em;
+    text-align: center;
+
+    i {
+      padding: 1em;
+    }
+  }
 
   .participant ,
   .organizator {
