@@ -144,7 +144,7 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
         i {
           font-size: 2em;
           @include media($mobile-viewport) {
-              font-size: 2.3em;
+            font-size: 2.3em;
           }
         }
       }
