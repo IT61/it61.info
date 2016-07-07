@@ -1,0 +1,9 @@
+- if events.empty?
+  .no-events
+    i.fa.fa-smile-o
+    .message= no_events_message
+- else
+  - events.each do |e|
+    .event
+      img.picture
+      span.text= e.title

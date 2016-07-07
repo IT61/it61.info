@@ -9,6 +9,10 @@
     box-shadow: 0 2px 3.7px 0.3px rgba(20, 47, 69, 0.12);
   }
 
+  &-not-linked {
+    color: #777;
+  }
+
   &-gray {
     background-color: $gray;
     color: $blue;
