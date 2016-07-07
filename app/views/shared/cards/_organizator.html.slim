@@ -1,8 +1,0 @@
-section.card.organizator
-  .sub-header: h3 Организатор
-  .events
-    = render partial: 'events', locals: { events: user.owner_of_events, no_events_message: 'Этот пользователь не участвовал ни в одном мероприятии' }
-  - if your_profile?(user)
-    .card-footer
-      = link_to '/new_event', class: 'button' do
-        | Создать мероприятие

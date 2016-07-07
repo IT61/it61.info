@@ -22,7 +22,7 @@ section.card.user
       = link_to '/hashtag', class: 'button hashtag' do
         i.fa.fa-hashtag
       span.hashtag-label= user.hash_tag
-    - if your_profile?(user)
+    - if my_profile?(user)
       .bottom-buttons
         button.button.button-blue Редактировать профиль
         button.button.button-gray Настройки
