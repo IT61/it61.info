@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  # include PermalinkFor
-  # permalink_for :permalink_title, as: :pretty
+  include PermalinkFor
+  permalink_for :permalink_title, as: :pretty
 
   # mount_uploader :title_image, EventTitleImageUploader
 

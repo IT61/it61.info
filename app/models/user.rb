@@ -10,16 +10,19 @@ class User < ActiveRecord::Base
   has_many :event_participations, dependent: :destroy
   has_many :member_in_events, class_name: 'Event', through: :event_participations, source: :event
 
-  validates :email, presence: true, if: 'email_required?'
-  validates :email, uniqueness: true, if: 'email_required?'
+  validates :email, uniqueness: true
 
   phony_normalize :phone, as: :normalized_phone, default_country_code: 'RU'
   validates_plausible_phone :phone, country_code: 'RU'
+
   validates :phone, presence: true, if: :sms_reminders?
+  validates :email, presence: true, if: :email_required?
 
   # В случае, если OAuth провайдер не предоставляет email, в базу может быть записана пустая строка,
   # что приведет к нарушению уникальности index_users_on_email
   before_save :nullify_empty_email
+
+  before_create :assign_defaults
 
   scope :notify_by_email, -> { where(email_reminders: true).where.not(email: nil) }
   scope :notify_by_sms, -> { where(sms_reminders: true).where.not(phone: nil) }
@@ -34,11 +37,6 @@ class User < ActiveRecord::Base
       account.user = User.create do |u|
         u.email = auth.info.email unless auth.info.email.nil?
         u.name = auth.info.name
-        u.role = 0
-        ## TODO: узнать, почему PostgreSQL не присваивает значения по умолчанию для данных полей
-        u.email_reminders = false
-        u.sms_reminders = false
-        u.subscribed = false
       end
     end
     social.user
@@ -54,12 +52,8 @@ class User < ActiveRecord::Base
     social.user
   end
 
-  def login
-    name || email.split('@').first
-  end
-
   def full_name
-    [first_name, last_name].compact.join(' ').presence || login
+    [first_name, last_name].compact.join(' ').presence || name
   end
 
   def remember_me
@@ -76,6 +70,18 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def assign_defaults
+    self.role ||= 0
+    self.email_reminders ||= false
+    self.sms_reminders ||= false
+    self.subscribed ||= false
+    self
+  end
+
+  def email_required?
+    subscribed? or email_reminders?
+  end
 
   def restore_event_participations
     # Идентификаторы заявок пользователя на участие в мероприятиях, которые не удалены

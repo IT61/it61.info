@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     get "signin" => "users/omniauth_callbacks#signin"
     delete "/users/sign_out" => "devise/sessions#destroy"
   end
+  namespace :users do
+    get 'user_profiles/last_step_register'
+  end
 
   resources :users, only: [:show]
+  resources :company
 end

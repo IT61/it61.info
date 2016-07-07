@@ -1,6 +1,27 @@
 .navbar {
-  background: #fff;
   width: 100%;
+
+  &-white {
+    background: #fff;
+
+    .button {
+      background: $blue;
+      color: #fff;
+    }
+  }
+
+  &-blue {
+    background: $blue;
+
+    .hamburger {
+      color: #fff;
+    }
+
+    .button {
+      background: #fff;
+      color: $blue;
+    }
+  }
 
   &-wrapper {
     padding: 16px 30px;

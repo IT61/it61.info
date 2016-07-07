@@ -13,3 +13,4 @@
 /tmp/*
 .byebug_history
 /.idea/*
+/.vendor

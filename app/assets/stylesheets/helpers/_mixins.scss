@@ -1,0 +1,29 @@
+// Кривая объединения
+@mixin curve-association($height) {
+  $field-association-color: #85bceb;
+
+  box-sising: border-box;
+  width: 60px;
+  height: $height;
+  padding-left: 75px;
+
+  &:before {
+    display: block;
+    content: '';
+    height: 10px;
+    width: 10px;
+    margin-left: -100px;
+    border-top: 1px solid $field-association-color;
+    border-right: 1px solid $field-association-color;
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    width: 10px;
+    height: $height;
+    margin-left: -100px;
+    border-right: 1px solid $field-association-color;
+    border-bottom: 1px solid $field-association-color;
+  }
+}
