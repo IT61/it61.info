@@ -7,6 +7,11 @@ $(document).ready(function () {
     locationsToSubmit: []
   };
 
+  // careful! be more specific later
+  $('body').on('click', function() {
+    model.setViewed([]);
+  });
+
   model.add = function(location) {
     model.locationsToSubmit.push(location);
   };
@@ -45,13 +50,24 @@ $(document).ready(function () {
     objects.forEach(function(object) {
       $row = $('<div class="location-suggestion">').text(object.meta.text);
       $container.append($row);
+
+      $row.on('click', function() {
+        model.add(object)
+        model.setViewed([]);
+      });
+
     });
   }
 
   function bindGeocoder() {
-    $('#location').on('input', function(event) {
-      var search = event.target.value;
-      ymaps.geocode(search, {
+    var locationInput = $('#location');
+    function search(event) {
+      var inputText = event.target.value;
+      if (inputText.length === 0) {
+        return;
+      }
+
+      ymaps.geocode(inputText, {
         boundedBy: [[46.061107, 37.603739], [49.073023, 42.767521]],
         strictBounds: true,
         results: 5
@@ -59,7 +75,9 @@ $(document).ready(function () {
         var resultData = parser.parse(res);
         model.setViewed(resultData);
       });
-    });
+    }
+    locationInput.on('input', search);
+    locationInput.on('focus', search);
   }
   ymaps.ready(bindGeocoder);
 });
