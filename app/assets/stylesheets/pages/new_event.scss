@@ -6,6 +6,32 @@
   width: 1500px;
 }
 
+#location-container {
+  position: relative;
+}
+
+#location {
+  padding: 5px 10px;
+  margin-bottom: 0;
+}
+
+#dropdown-container {
+  position: absolute;
+  border: 1px solid #e0e0e0;;
+  background: white;
+  z-index: 5;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+
+  .location-suggestion {
+    padding: 7px 10px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+
 .new-event-card {
   @include outer-container;
   margin-top: 15px;

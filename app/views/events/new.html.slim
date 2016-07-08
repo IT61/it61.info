@@ -25,9 +25,9 @@ main.new-event-container
             = time_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>'
         .association-field
           .input-float-label
-            input#location type="text"
+            input#location type="text" autocomplete="off"
             label Место проведения*
-        #geo-results
+            div#dropdown-container
       section.description
         .association-field
           label Описание

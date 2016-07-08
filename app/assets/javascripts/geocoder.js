@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+  $resultsContainer = $('#dropdown-container');
+
   var model = {
     viewedLocations: [],
     locationsToSubmit: []
@@ -41,18 +43,19 @@ $(document).ready(function () {
   function updateContainer($container, objects) {
     $container.text('');
     objects.forEach(function(object) {
-      $row = $('<div>').text(object.meta.text);
+      $row = $('<div class="location-suggestion">').text(object.meta.text);
       $container.append($row);
     });
   }
 
   function bindGeocoder() {
-    $resultsContainer = $('#geo-results');
-
     $('#location').on('input', function(event) {
       var search = event.target.value;
-      ymaps.geocode(search)
-           .then(function(res) {
+      ymaps.geocode(search, {
+        boundedBy: [[46.061107, 37.603739], [49.073023, 42.767521]],
+        strictBounds: true,
+        results: 5
+      }).then(function(res) {
         var resultData = parser.parse(res);
         model.setViewed(resultData);
       });
