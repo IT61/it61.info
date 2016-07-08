@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ApplicationHelper
   def markdown(text)
     md ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(escape_html: true, hard_wrap: true),

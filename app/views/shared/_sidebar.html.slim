@@ -1,14 +1,13 @@
-#mask.close-sidebar
-  .sidebar
-    .sidebar__logo
-      .sidebar__logo_img
-    .sidebar__profile
-      i.fa.fa-slack
-      | &nbsp; Мой профиль
-    ul.sidebar__menu
-      li Сообщество
-      li Мероприятия
-      li Личности
-      li Фото
-      li Slack
-      li Спонсорам
+.sidebar
+  .sidebar__logo
+    .sidebar__logo_img
+  .sidebar__profile
+    i.fa.fa-slack
+    | &nbsp; Мой профиль
+  ul.sidebar__menu
+    li Сообщество
+    = active_link_to t('.events'), events_path, wrap_tag: :li
+    li Личности
+    li Фото
+    li Slack
+    li Спонсорам

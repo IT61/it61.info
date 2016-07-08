@@ -1,5 +1,4 @@
+# frozen_string_literal: true
 Capybara.javascript_driver = :webkit
 
-Capybara::Webkit.configure do |config|
-  config.block_unknown_urls
-end
+Capybara::Webkit.configure(&:block_unknown_urls)

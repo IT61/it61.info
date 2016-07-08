@@ -1,0 +1,7 @@
+ru:
+  errors:
+    connection_refused: "В соединении отказано"
+
+  shared:
+    sidebar:
+      events: "События"
