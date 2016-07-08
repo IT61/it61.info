@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
 
+  def index
+  end
+
   def new
     @event ||= Event.new
   end
@@ -14,7 +17,7 @@ class EventsController < ApplicationController
       e.organizer = current_user
       e.locations += find_locations
     end
-    # byebug
+
     if @event.persisted?
       redirect_to action: :index
     else
@@ -27,7 +30,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description, :title_image, :started_at,
-      locations_attributes: [:extra_info, :title, :address, :latitude, :longitude])
+      locations: [:extra_info, :title, :address, :latitude, :longitude])
   end
 
   def find_locations
@@ -36,14 +39,15 @@ class EventsController < ApplicationController
     locations_data.each do |location_data|
       res << new_location_with_place(location_data)
     end
+    res
   end
 
   def new_location_with_place(data)
-    place = Place.where(title: data.title, address: data.address,
-      latitude: data.latitude, longitude: data.longitude).first_or_create
+    place = Place.where(title: data[:title], address: data[:address],
+      latitude: data[:latitude], longitude: data[:longitude]).first_or_create
 
-    Location.where(extra_info: data.extra_info,
-      title: data.title, place: place).first_or_initialize
+    Location.where(extra_info: data[:extra_info],
+      place: data[:place]).first_or_initialize
   end
 
 end
