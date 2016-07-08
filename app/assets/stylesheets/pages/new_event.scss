@@ -28,6 +28,9 @@ section {
 
 .description {
   @include span-columns(12);
+  label {
+    padding: 5px 10px;
+  }
 }
 
 .recommend {

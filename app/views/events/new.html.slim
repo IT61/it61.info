@@ -25,14 +25,15 @@ main.new-event-container
             = time_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>'
         .association-field
           .input-float-label
-            input type="text"
+            input#location type="text"
             label Место проведения*
+        #geo-results
       section.description
         .association-field
           label Описание
-          textarea#editor 
+          = f.text_area :description, id: 'editor'
       .register-footer
         .required-fields * Поля обязательные к заполнению
         .buttons
-          button.button.button-shadow.button-gray Отмена
-          button.button.button-shadow.button-blue Создать мероприятие
+          button.button.button-shadow.button-gray#cancel-create-event-button Отмена
+          button.button.button-shadow.button-blue#create-event-button Создать мероприятие
