@@ -8,6 +8,7 @@ $(document).ready(function () {
         }
     });
 
+    // move that so that it loads only on newevent page?
     $(function(){
       var wrapper = $( ".file_upload" ),
           inp = wrapper.find( "input" ),
@@ -37,7 +38,7 @@ $(document).ready(function () {
               return;
 
           if( lbl.is( ":visible" ) ){
-              lbl.text( file_name );  
+              lbl.text( file_name );
               btn.text( "Выбрать файл" );
           }else
               btn.text( file_name );
@@ -48,4 +49,8 @@ $(document).ready(function () {
       $( ".file_upload input" ).triggerHandler( "change" );
   });
 
+  new SimpleMDE({
+    element: document.getElementById("editor"),
+    autofocus: true
+  });
 });

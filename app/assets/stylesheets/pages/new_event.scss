@@ -1,3 +1,7 @@
+.CodeMirror, .CodeMirror-scroll {
+  min-height: 150px;
+}
+
 .new-event-container {
   width: 1500px;
 }
@@ -5,6 +9,7 @@
 .new-event-card {
   @include outer-container;
   margin-top: 15px;
+  margin-bottom: 15px;
   padding: 35px;
 }
 
@@ -54,6 +59,13 @@ section {
     float: right;
     width: 33%;
   }
+
+  .time-separator {
+    display: block;
+    float: left;
+    font-size: 1.3em;
+    line-height: 2em;
+  }
 }
 
 .details select {
@@ -62,14 +74,13 @@ section {
   display: block;
   font-size: 18px;
   margin: 3px;
-  color: #b4adad;
+  color: black;
   line-height: 1.9;
   width: auto;
   box-shadow: none;
   border: none;
   transition: all 0.28s ease;
   border-bottom: solid 2px #ddd;
-  // background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 95%, #327ab5 5%) no-repeat;
   background: transparent;
 
   &:focus {

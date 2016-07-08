@@ -1,6 +1,8 @@
 development: &default
   adapter: postgresql
   database: it61_development
+  username: test
+  password: test
   encoding: utf8
   min_messages: warning
   pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
@@ -10,6 +12,8 @@ development: &default
 test:
   <<: *default
   database: it61_test
+  username: test
+  password: test
 
 production: &deploy
   encoding: utf8

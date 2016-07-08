@@ -1,7 +1,6 @@
 main.new-event-container
   .card.new-event-card
     h1 Новое мероприятие
-      
     = form_for @event do |f|
       section.image
         = f.label :title_image, 'Титульное изображение'
@@ -23,16 +22,15 @@ main.new-event-container
             = date_select :event, :started_at, selected: Date.today
           .right
             = f.label :started_at, 'Время проведения*'
-            = time_select :event, :started_at, selected: Date.today
+            = time_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>'
         .association-field
           .input-float-label
-            = f.text_field :locations
+            input type="text"
             label Место проведения*
       section.description
         .association-field
-          .input-float-label
-            = f.text_area :description
-            label Описание
+          label Описание
+          textarea#editor 
       .register-footer
         .required-fields * Поля обязательные к заполнению
         .buttons
