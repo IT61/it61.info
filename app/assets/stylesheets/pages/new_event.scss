@@ -1,0 +1,137 @@
+.new-event-container {
+  width: 1500px;
+}
+
+.new-event-card {
+  @include outer-container;
+  margin-top: 15px;
+  padding: 35px;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+section {
+  @include span-columns(5);
+  margin: 1em 0;
+}
+
+.details {
+  @include span-columns(6);
+}
+
+.description {
+  @include span-columns(12);
+}
+
+.recommend {
+  width: 100%;
+  @include clearfix;
+  div {
+    width: 50%;
+    float: right;
+    padding: 15px 30px;
+    font-size: .9em;
+  }
+}
+
+.association-field {
+  margin: 40px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.time-container {
+  @include clearfix;
+  .left {
+    float: left;
+    width: 67%;
+  }
+
+  .right {
+    float: right;
+    width: 33%;
+  }
+}
+
+.details select {
+  float: left;
+  padding: 5px 10px;
+  display: block;
+  font-size: 18px;
+  margin: 3px;
+  color: #b4adad;
+  line-height: 1.9;
+  width: auto;
+  box-shadow: none;
+  border: none;
+  transition: all 0.28s ease;
+  border-bottom: solid 2px #ddd;
+  // background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 95%, #327ab5 5%) no-repeat;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #2d79b7;
+  }
+}
+
+.space-taker {
+  @include span-columns(1);
+}
+
+label {
+  color: #b4adad;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+
+// file upload customization
+input[type="file"] {
+  color: #b4adad;
+}
+
+
+.file_upload{
+  margin: 30px;
+  position: relative;
+  overflow: hidden;
+  font-size: 1em;        /* example */
+  height: 2em;           /* example */
+  line-height: 2em       /* the same as height */
+}
+
+.file_upload > button{
+  float: right;
+  width: 11em;            /* example */
+  height: 100%;
+  margin-right: 13px;
+}
+.file_upload > div{
+  padding-left: 1em      /* example */
+}
+
+@media only screen and ( max-width: 500px ){  /* example */
+  .file_upload > div{
+    display: none
+  }
+  .file_upload > button{
+    width: 100%
+  }
+}
+
+.file_upload input[type=file]{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(20);
+    letter-spacing: 10em;     /* IE 9 fix */
+    -ms-transform: scale(20); /* IE 9 fix */
+    opacity: 0;
+    cursor: pointer
+}

@@ -1,30 +1,40 @@
-main.profile-container
-  h1 Новое мероприятие
-  
-  // todo: delete if you're making normal styles
-  sass:
-    h1
-      margin: 1.5em 0
-      font-weight: 400
-    section
-      margin: 1em
-    label
-      color: #777
-  // ============
+main.new-event-container
+  .card.new-event-card
+    h1 Новое мероприятие
       
-  = form_for @event do |f|
-    section.image
-      = f.label :title_image, 'Титульное изображение'
-      = f.file_field :title_image
-    section.details
-      = f.label :title, 'Название'
-      = f.text_field :title
-      = f.label :started_at, 'Время проведения'
-      = datetime_select :event, :started_at, selected: Date.today
-      / = f.label :location
-      / = f.text_field :location # todo: what is location?
-    section.description
-      = f.label :description, 'Описание'
-      = f.text_area :description  
-      / todo: js lib for customizing textarea?
-    = f.submit 'Создать'
+    = form_for @event do |f|
+      section.image
+        = f.label :title_image, 'Титульное изображение'
+        label.recommend 
+          div Рекомендуется изображение размером 500x500px в формате jpg и png
+        div.file_upload
+          button.button.button-shadow.button-blue type="button" Выбрать файл
+          label Файл не выбран
+          = f.file_field :title_image
+      section.space-taker 
+      section.details
+        .association-field
+          .input-float-label
+            = f.text_field :title
+            label Название*
+        .time-container
+          .left
+            = f.label :started_at, 'Дата проведения*'
+            = date_select :event, :started_at, selected: Date.today
+          .right
+            = f.label :started_at, 'Время проведения*'
+            = time_select :event, :started_at, selected: Date.today
+        .association-field
+          .input-float-label
+            = f.text_field :locations
+            label Место проведения*
+      section.description
+        .association-field
+          .input-float-label
+            = f.text_area :description
+            label Описание
+      .register-footer
+        .required-fields * Поля обязательные к заполнению
+        .buttons
+          button.button.button-shadow.button-gray Отмена
+          button.button.button-shadow.button-blue Создать мероприятие
