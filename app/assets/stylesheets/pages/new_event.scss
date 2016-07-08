@@ -32,6 +32,10 @@
   }
 }
 
+.hidden {
+  display: none;
+}
+
 .new-event-card {
   @include outer-container;
   margin-top: 15px;

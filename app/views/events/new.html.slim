@@ -2,6 +2,9 @@ main.new-event-container
   .card.new-event-card
     h1 Новое мероприятие
     = form_for @event do |f|
+      = f.fields_for :locations, Location.new do |loc_form|
+        = loc_form.text_field :latitude, class: 'hidden'
+        = loc_form.text_field :longitude, class: 'hidden'
       section.image
         = f.label :title_image, 'Титульное изображение'
         label.recommend 
@@ -10,7 +13,7 @@ main.new-event-container
           button.button.button-shadow.button-blue type="button" Выбрать файл
           label Файл не выбран
           = f.file_field :title_image
-      section.space-taker 
+      section.space-taker
       section.details
         .association-field
           .input-float-label

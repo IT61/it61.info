@@ -68,7 +68,7 @@ $(document).ready(function () {
       }
 
       ymaps.geocode(inputText, {
-        boundedBy: [[46.061107, 37.603739], [49.073023, 42.767521]],
+        boundedBy: [[46.061107, 37.603739], [49.073023, 42.767521]], // todo: add more bounds
         strictBounds: true,
         results: 5
       }).then(function(res) {
