@@ -1,7 +1,4 @@
 require 'slack-notifier'
-
-# Singletone class
-
 class SlackService
 
   include ApplicationHelper
@@ -15,8 +12,8 @@ class SlackService
     instance.send_event_notification(event)
   end
 
-  def self.register(user)
-    instance.register_new_user(user)
+  def self.invite(user)
+    instance.invite_new_user(user)
   end
 
   def send_event_notification(event)
@@ -25,31 +22,40 @@ class SlackService
     notifier.ping 'Анонсировано новое мероприятие', attachments: [attachment]
   end
 
-  def register_new_user(user)
-    url = URI(api_url('users.admin.invite', Time.now.to_i))
-    Net::HTTP.post_form(url, build_user_invite_params(user))
+  def invite_new_user(user)
+    url = URI.parse(raw_api_url('users.admin.invite'))
+    params = build_user_invite_params(user)
+    response = Net::HTTP.post_form(url, params)
+
+    case response
+      when Net::HTTPOK
+        json_response = JSON.parse(response.body)
+        was_sent = json_response['ok']
+        error = json_response['error']
+        { success: was_sent, error: error }
+      else
+        { success: false, error: response }
+    end
   end
 
   private
 
-  def notifier
-    @notifier ||= Slack::Notifier.new(ENV['SLACK_WEBHOOK_URL'])
+  def raw_api_url(action)
+    "https://#{ENV['SLACK_TEAM_DOMAIN']}/api/#{action}"
   end
 
-  def api_url(action, timestamp)
-    ENV['SLACK_TEAM_URL'] << "api/#{action}?t=#{timestamp}"
+  def notifier
+    @notifier ||= Slack::Notifier.new(ENV['SLACK_WEBHOOK_URL'])
   end
 
   # noinspection RubyStringKeysInHashInspection
   def build_user_invite_params(user)
     {
         "email" => user.email,
-        "channels" => ENV['SLACK_DEFAULT_CHANNELS'],
-        "first_name" => user.full_name,
-        # generate token at https://api.slack.com/
         "token" => ENV['SLACK_ADMIN_TOKEN'],
-        "set_active" => "true",
-        "_attempts" => "1"
+        "first_name" => user.first_name,
+        "last_name" => user.last_name,
+        "channels" => ENV['SLACK_DEFAULT_CHANNELS']
     }
   end
 
