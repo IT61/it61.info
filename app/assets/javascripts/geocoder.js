@@ -14,6 +14,10 @@ $(document).ready(function () {
 
   model.add = function(location) {
     model.locationsToSubmit.push(location);
+    // sync hidden fields
+    $('name=[event][address]').value(location.meta.text);
+    $('name=[event][latitude]').value(location.coordinates.latitude);
+    $('name=[event][longitude]').value(location.coordinates.longitude);
   };
 
   model.setViewed = function(locations) {
@@ -52,7 +56,7 @@ $(document).ready(function () {
       $container.append($row);
 
       $row.on('click', function() {
-        model.add(object)
+        model.add(object);
         model.setViewed([]);
       });
 

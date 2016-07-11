@@ -13,9 +13,9 @@ class EventsController < ApplicationController
       e.title = ep[:title]
       e.title_image = ep[:title_image]
       e.description = ep[:description]
-      e.started_at = ep[:started_at]
+      e.started_at = ep[:started_at_date] # add started_at_time
       e.organizer = current_user
-      e.locations += find_locations
+      e.locations += [new_location_with_place]
     end
 
     if @event.persisted?
@@ -29,25 +29,16 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :title_image, :started_at,
-      locations: [:extra_info, :title, :address, :latitude, :longitude])
+    params.require(:event).permit :title, :description, :title_image, :started_at,
+      :extra_info, :title, :address, :latitude, :longitude
   end
 
-  def find_locations
-    res = []
-    locations_data = event_params[:locations]
-    locations_data.each do |location_data|
-      res << new_location_with_place(location_data)
-    end
-    res
-  end
+  def new_location_with_place
+    place = Place.where(title: params[:title], address: params[:address],
+      latitude: params[:latitude], longitude: params[:longitude]).first_or_create
 
-  def new_location_with_place(data)
-    place = Place.where(title: data[:title], address: data[:address],
-      latitude: data[:latitude], longitude: data[:longitude]).first_or_create
-
-    Location.where(extra_info: data[:extra_info],
-      place: data[:place]).first_or_initialize
+    Location.where(extra_info: params[:extra_info],
+      place: place).first_or_initialize
   end
 
 end

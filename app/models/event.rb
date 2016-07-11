@@ -9,7 +9,6 @@ class Event < ActiveRecord::Base
   has_many :participants, class_name: 'User', through: :event_participations, source: :user
 
   has_many :locations
-  accepts_nested_attributes_for :locations
   has_many :places, through: :locations
 
   validates_presence_of :title, :organizer

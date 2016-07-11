@@ -2,9 +2,9 @@ main.new-event-container
   .card.new-event-card
     h1 Новое мероприятие
     = form_for @event do |f|
-      = f.fields_for :locations, Location.new do |loc_form|
-        = loc_form.text_field :latitude, class: 'hidden'
-        = loc_form.text_field :longitude, class: 'hidden'
+      = text_field_tag 'event[address]', nil, class: 'hidden'
+      = text_field_tag 'event[latitude]', nil, class: 'hidden'
+      = text_field_tag 'event[longitude]', nil , class: 'hidden'
       section.image
         = f.label :title_image, 'Титульное изображение'
         label.recommend 
@@ -21,19 +21,22 @@ main.new-event-container
             label Название*
         .time-container
           .left
-            = f.label :started_at, 'Дата проведения*'
-            = date_select :event, :started_at, selected: Date.today
+            = f.label :started_at_date, 'Дата проведения*'
+            = date_select :event, :started_at_date, selected: Date.today
           .right
-            = f.label :started_at, 'Время проведения*'
-            = time_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>'
+            = f.label :started_at_time, 'Время проведения*'
+            = time_select :event, :started_at_time, selected: Date.today, time_separator: '<span class="time-separator">:</span>'
         .association-field
           .input-float-label
             input#location type="text" autocomplete="off"
             label Место проведения*
             div#dropdown-container
+          .input-float-label
+            = f.label :extra_info, 'Дополнительная информация'
+            = text_area_tag 'event[extra_info]', nil
       section.description
         .association-field
-          label Описание
+          = f.label :description, 'Описание'
           = f.text_area :description, id: 'editor'
       .register-footer
         .required-fields * Поля обязательные к заполнению
