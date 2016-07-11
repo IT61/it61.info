@@ -1,0 +1,24 @@
+section.details
+  .event-association-field
+    .input-float-label
+      = f.text_field :title, required: true
+      label Название*
+  .time-container
+    = f.label :started_at, 'Дата и время проведения*'
+    = datetime_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>', datetime_separator: '<br class="datetime-separator"/>', required: true
+  .event-association-field
+    .input-float-label
+      = text_field_tag 'event[place_title]', nil
+      label required="true" Название места
+  .event-association-field
+    .input-float-label
+      input#location type="text" autocomplete="off"
+      label Место проведения*
+      div#dropdown-container
+      = text_field_tag 'event[address]', nil, class: 'unchangeable-input', :required => true, disabled: true
+      = text_field_tag 'event[latitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
+      = text_field_tag 'event[longitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
+  .event-association-field
+    .input-float-label
+      = text_area_tag 'event[extra_info]', nil
+      = f.label :extra_info, 'Дополнительная информация'

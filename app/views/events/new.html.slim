@@ -2,46 +2,6 @@ main.new-event-container
   .card.new-event-card
     h1.card-header Новое мероприятие
     = form_for @event do |f|
-      section.details
-        .event-association-field
-          .input-float-label
-            = f.text_field :title, required: true
-            label Название*
-        .time-container
-          = f.label :started_at, 'Дата и время проведения*'
-          = datetime_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>', datetime_separator: '<br class="datetime-separator"/>', required: true
-        .event-association-field
-          .input-float-label
-            = text_field_tag 'event[place_title]', nil
-            label required="true" Название места
-        .event-association-field
-          .input-float-label
-            input#location type="text" autocomplete="off"
-            label Место проведения*
-            div#dropdown-container
-            = text_field_tag 'event[address]', nil, class: 'unchangeable-input', :required => true, disabled: true
-            = text_field_tag 'event[latitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
-            = text_field_tag 'event[longitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
-        .event-association-field
-          .input-float-label
-            = text_area_tag 'event[extra_info]', nil
-            = f.label :extra_info, 'Дополнительная информация'
+      = render partial: 'details_section', locals: {f: f}
       section.space-taker
-      section.image
-        = f.label :title_image, 'Титульное изображение*'
-        label.recommend 
-          img#image src="" width=200 height=200
-          div Рекомендуется изображение размером 500x500 px в формате jpg и png
-        div.file_upload
-          button.btn.btn-shadow.btn-blue type="button" Выбрать файл
-          = f.file_field :title_image, required: true
-          label Файл не выбран
-      section.description
-        .event-association-field
-          = f.label :description, 'Описание'
-          = f.text_area :description, id: 'editor'
-      .register-footer
-        .required-fields * Поля обязательные к заполнению
-        .buttons
-          button.btn.btn-shadow.btn-gray#cancel-create-event-button Отмена
-          button.btn.btn-shadow.btn-blue#create-event-button Создать мероприятие
+      = render partial: 'image_section', locals: {f: f}
