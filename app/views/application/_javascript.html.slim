@@ -4,6 +4,9 @@
 
 = render "analytics"
 
+javascript:
+  $('.sidebar').sidebar({ trigger: '.open-sidebar' });
+
 - if Rails.env.test?
   javascript:
     $.fx.off = true;

@@ -1,4 +1,5 @@
-require File.expand_path('../boot', __FILE__)
+# frozen_string_literal: true
+require File.expand_path("../boot", __FILE__)
 require "rails"
 require "active_model/railtie"
 require "active_job/railtie"
@@ -23,6 +24,8 @@ module It61
     config.eager_load_paths += ["#{Rails.root}/lib"]
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.active_record.raise_in_transactional_callbacks = true
+    config.i18n.available_locales = [:ru]
+    config.i18n.default_locale = :ru
     config.active_job.queue_adapter = :delayed_job
   end
 end

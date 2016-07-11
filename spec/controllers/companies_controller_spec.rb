@@ -1,6 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
+require "rails_helper"
 
-RSpec.describe CompanyController, type: :controller do
+RSpec.describe CompaniesController, type: :controller do
   context "GET index" do
     it "reads like a sentence" do
       get :index

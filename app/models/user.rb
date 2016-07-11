@@ -1,19 +1,19 @@
+# frozen_string_literal: true
 class User < ActiveRecord::Base
-
   has_many :social_accounts
 
   # Devise modules
   devise :rememberable, :trackable, :omniauthable,
          omniauth_providers: [:github, :facebook, :google_oauth2, :vkontakte]
 
-  has_many :owner_of_events, class_name: 'Event', foreign_key: 'organizer_id'
+  has_many :owner_of_events, class_name: "Event", foreign_key: "organizer_id"
   has_many :event_participations, dependent: :destroy
-  has_many :member_in_events, class_name: 'Event', through: :event_participations, source: :event
+  has_many :member_in_events, class_name: "Event", through: :event_participations, source: :event
 
   validates :email, uniqueness: true
 
-  phony_normalize :phone, as: :normalized_phone, default_country_code: 'RU'
-  validates_plausible_phone :phone, country_code: 'RU'
+  phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
+  validates_plausible_phone :phone, country_code: "RU"
 
   validates :phone, presence: true, if: :sms_reminders?
   validates :email, presence: true, if: :email_required?
@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    [first_name, last_name].compact.join(' ').presence || name
+    [first_name, last_name].compact.join(" ").presence || name
   end
 
   def remember_me
@@ -80,15 +80,15 @@ class User < ActiveRecord::Base
   end
 
   def email_required?
-    subscribed? or email_reminders?
+    subscribed? || email_reminders?
   end
 
   def restore_event_participations
     # Идентификаторы заявок пользователя на участие в мероприятиях, которые не удалены
-    ids = EventParticipation.only_deleted.joins(:event)
-              .where('events.deleted_at is null')
-              .where(user_id: id)
-              .pluck(:id)
+    ids = EventParticipation.only_deleted.joins(:event).
+          where("events.deleted_at is null").
+          where(user_id: id).
+          pluck(:id)
     EventParticipation.restore ids
   end
 

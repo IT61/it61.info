@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -12,7 +13,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -24,7 +25,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -240,24 +241,24 @@ Devise.setup do |config|
 
   # OmniAuth
   config.omniauth :github,
-    Rails.application.secrets.github_key,
-    Rails.application.secrets.github_secret,
-    scope: 'user:email'
+                  Rails.application.secrets.github_key,
+                  Rails.application.secrets.github_secret,
+                  scope: "user:email"
 
   config.omniauth :facebook,
-    Rails.application.secrets.facebook_key,
-    Rails.application.secrets.facebook_secret,
-    scope: 'email'
+                  Rails.application.secrets.facebook_key,
+                  Rails.application.secrets.facebook_secret,
+                  scope: "email"
 
   config.omniauth :vkontakte,
-    Rails.application.secrets.vkontakte_key,
-    Rails.application.secrets.vkontakte_secret,
-    scope: 'email'
+                  Rails.application.secrets.vkontakte_key,
+                  Rails.application.secrets.vkontakte_secret,
+                  scope: "email"
 
   config.omniauth :google_oauth2,
-    Rails.application.secrets.google_key,
-    Rails.application.secrets.google_secret,
-    {scope: 'email', access_type: "offline", approval_prompt: ""}
+                  Rails.application.secrets.google_key,
+                  Rails.application.secrets.google_secret,
+                  scope: "email", access_type: "offline", approval_prompt: ""
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
