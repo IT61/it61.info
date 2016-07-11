@@ -33,7 +33,7 @@ main.new-event-container
           img#image src="" width=200 height=200
           div Рекомендуется изображение размером 500x500 px в формате jpg и png
         div.file_upload
-          button.button.button-shadow.button-blue type="button" Выбрать файл
+          button.btn.btn-shadow.btn-blue type="button" Выбрать файл
           = f.file_field :title_image, required: true
           label Файл не выбран
       section.description
@@ -43,5 +43,5 @@ main.new-event-container
       .register-footer
         .required-fields * Поля обязательные к заполнению
         .buttons
-          button.button.button-shadow.button-gray#cancel-create-event-button Отмена
-          button.button.button-shadow.button-blue#create-event-button Создать мероприятие
+          button.btn.btn-shadow.btn-gray#cancel-create-event-button Отмена
+          button.btn.btn-shadow.btn-blue#create-event-button Создать мероприятие
