@@ -38,23 +38,21 @@ function handleFileUpload() {
   });
 }
 
-// how submit button will be clicked? via js or via as usual submit form?
-//
-// function handleEventCreation() {
-//
-//   var createBtn = $('#create-event-button'),
-//       cancelBtn = $('#cancel-create-event-button');
-//
-//   cancelBtn.on('click', function() {
-//     // move to all events page
-//     window.location = '/events';
-//   });
-//
-//   createBtn.on('click', function() {
-//     var object = gatherFields();
-//     $.post('/events/new', object);
-//   });
-// }
+function fileReaderSupported() {
+  return window.File && window.FileReader && window.FileList && window.Blob
+}
+
+function showImageOnLoad() {
+  document.getElementById('event_title_image').onchange = function () {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById('image').src = e.target.result;
+    };
+    if (this.files.length !== 0) {
+      reader.readAsDataURL(this.files[0]);
+    }
+  };
+}
 
 $(document).ready(function () {
   var editor = new SimpleMDE({
@@ -63,5 +61,10 @@ $(document).ready(function () {
     forceSync: true
   });
 
+  $('form').bind('submit', function () {
+    $(this).find(':input').prop('disabled', false);
+  });
+
+  showImageOnLoad();
   handleFileUpload();
 });

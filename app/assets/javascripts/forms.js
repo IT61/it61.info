@@ -1,10 +1,16 @@
 // Input float label
 $(document).ready(function () {
-    $(".input-float-label input").blur(function () {
-        if (this.value !== "") {
-            $(this).addClass('top-label');
-        } else {
-            $(this).removeClass('top-label');
-        }
-    });
+  var $input = $(".input-float-label input");
+  
+  $input.blur(function () {
+      if (this.value !== "") {
+          $(this).addClass('top-label');
+      } else {
+          $(this).removeClass('top-label');
+      }
+  });
+
+  if ($input.val() !== '') {
+    $input.addClass('top-label');
+  }
 });

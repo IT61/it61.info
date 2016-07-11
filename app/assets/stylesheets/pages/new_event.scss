@@ -2,6 +2,23 @@
   min-height: 150px;
 }
 
+.input-float-label .unchangeable-input {
+  color: #777;
+  font-size: .9em;
+  background: none;
+  border: none;
+  cursor: default;
+  padding: 5px 10px;
+  background-color: white;
+  height: 20px;
+  margin: 15px 0;
+
+  &:hover {
+    border: none;
+    outline: none;
+  }
+}
+
 .new-event-container {
   width: 1500px;
 }
@@ -30,10 +47,6 @@
       background-color: #eee;
     }
   }
-}
-
-.hidden {
-  display: none;
 }
 
 .new-event-card {
@@ -67,15 +80,15 @@ section {
   width: 100%;
   @include clearfix;
   div {
-    width: 50%;
+    width: 49%;
     float: right;
     padding: 15px 30px;
     font-size: .9em;
   }
 }
 
-.association-field {
-  margin: 40px 0;
+.event-association-field {
+  margin: 30px 0;
   &:first-child {
     margin-top: 0;
   }
@@ -128,10 +141,9 @@ section {
 
 label {
   color: #b4adad;
-  font-size: 1.2em;
+  font-size: 18px;
   font-weight: 400;
 }
-
 
 // file upload customization
 input[type="file"] {
@@ -143,22 +155,22 @@ input[type="file"] {
   margin: 30px;
   position: relative;
   overflow: hidden;
-  font-size: 1em;        /* example */
-  height: 2em;           /* example */
-  line-height: 2em       /* the same as height */
+  font-size: 1em;
+  height: 2.5em;
+  line-height: 2.5em;
 }
 
 .file_upload > button{
   float: right;
-  width: 11em;            /* example */
+  width: 11em;
   height: 100%;
   margin-right: 13px;
 }
 .file_upload > div{
-  padding-left: 1em      /* example */
+  padding-left: 1em;
 }
 
-@media only screen and ( max-width: 500px ){  /* example */
+@media only screen and ( max-width: 500px ) {
   .file_upload > div{
     display: none
   }
@@ -173,9 +185,7 @@ input[type="file"] {
     top: 0;
     width: 100%;
     height: 100%;
-    transform: scale(20);
-    letter-spacing: 10em;     /* IE 9 fix */
-    -ms-transform: scale(20); /* IE 9 fix */
+    letter-spacing: 10em;
     opacity: 0;
     cursor: pointer
 }

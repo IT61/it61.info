@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  include DateHelper
+
+  before_action :authenticate_user!
 
   def index
   end
@@ -13,7 +16,7 @@ class EventsController < ApplicationController
       e.title = ep[:title]
       e.title_image = ep[:title_image]
       e.description = ep[:description]
-      e.started_at = ep[:started_at_date] # add started_at_time
+      e.started_at = ep[:started_at]
       e.organizer = current_user
       e.locations += [new_location_with_place]
     end
@@ -30,15 +33,14 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit :title, :description, :title_image, :started_at,
-      :extra_info, :title, :address, :latitude, :longitude
+      :extra_info, :title, :address, :latitude, :longitude, :place_title
   end
 
   def new_location_with_place
-    place = Place.where(title: params[:title], address: params[:address],
-      latitude: params[:latitude], longitude: params[:longitude]).first_or_create
+    place = Place.where(title: event_params[:place_title], address: event_params[:address],
+      latitude: event_params[:latitude], longitude: event_params[:longitude]).first_or_create
 
-    Location.where(extra_info: params[:extra_info],
-      place: place).first_or_initialize
+    Location.where(extra_info: event_params[:extra_info],
+      place: place).first_or_create
   end
-
 end

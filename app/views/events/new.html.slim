@@ -2,40 +2,42 @@ main.new-event-container
   .card.new-event-card
     h1 Новое мероприятие
     = form_for @event do |f|
-      = text_field_tag 'event[address]', nil, class: 'hidden'
-      = text_field_tag 'event[latitude]', nil, class: 'hidden'
-      = text_field_tag 'event[longitude]', nil , class: 'hidden'
       section.image
-        = f.label :title_image, 'Титульное изображение'
+        = f.label :title_image, 'Титульное изображение*'
         label.recommend 
-          div Рекомендуется изображение размером 500x500px в формате jpg и png
+          img#image src="" width=200 height=200
+          div Рекомендуется изображение размером 500x500 px в формате jpg и png
         div.file_upload
           button.button.button-shadow.button-blue type="button" Выбрать файл
+          = f.file_field :title_image, required: true
           label Файл не выбран
-          = f.file_field :title_image
       section.space-taker
       section.details
-        .association-field
+        .event-association-field
           .input-float-label
-            = f.text_field :title
+            = f.text_field :title, required: true
             label Название*
         .time-container
-          .left
-            = f.label :started_at_date, 'Дата проведения*'
-            = date_select :event, :started_at_date, selected: Date.today
-          .right
-            = f.label :started_at_time, 'Время проведения*'
-            = time_select :event, :started_at_time, selected: Date.today, time_separator: '<span class="time-separator">:</span>'
-        .association-field
+          = f.label :started_at, 'Дата и время проведения*'
+          = datetime_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>', datetime_separator: '', required: true
+        .event-association-field
+          .input-float-label
+            = text_field_tag 'event[place_title]', nil
+            label required="true" Название места
+        .event-association-field
           .input-float-label
             input#location type="text" autocomplete="off"
             label Место проведения*
             div#dropdown-container
+            = text_field_tag 'event[address]', nil, class: 'unchangeable-input', :required => true, disabled: true
+            = text_field_tag 'event[latitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
+            = text_field_tag 'event[longitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
+        .event-association-field
           .input-float-label
-            = f.label :extra_info, 'Дополнительная информация'
             = text_area_tag 'event[extra_info]', nil
+            = f.label :extra_info, 'Дополнительная информация'
       section.description
-        .association-field
+        .event-association-field
           = f.label :description, 'Описание'
           = f.text_area :description, id: 'editor'
       .register-footer

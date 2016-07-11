@@ -13,12 +13,20 @@ $(document).ready(function () {
   });
 
   model.add = function(location) {
+    model.reset();
     model.locationsToSubmit.push(location);
     // sync hidden fields
-    $('name=[event][address]').value(location.meta.text);
-    $('name=[event][latitude]').value(location.coordinates.latitude);
-    $('name=[event][longitude]').value(location.coordinates.longitude);
+    $('#event_address').val(location.meta.text);
+    $('#event_latitude').val(location.coordinates[0]);
+    $('#event_longitude').val(location.coordinates[1]);
   };
+
+  model.reset = function() {
+    model.locationsToSumit = [];
+    $('#event_address').val('');
+    $('#event_latitude').val('');
+    $('#event_longitude').val('');
+  }
 
   model.setViewed = function(locations) {
     viewedLocations = locations;
@@ -43,7 +51,9 @@ $(document).ready(function () {
       res = [];
       for (var i = 0; i < count; i++) {
         var object = objects.get(i);
-        res.push(parser.parseObject(object));
+        if (object !== null) {
+          res.push(parser.parseObject(object));
+        }
       };
       return res;
     }
@@ -74,7 +84,8 @@ $(document).ready(function () {
       ymaps.geocode(inputText, {
         boundedBy: [[46.061107, 37.603739], [49.073023, 42.767521]], // todo: add more bounds
         strictBounds: true,
-        results: 5
+        results: 5,
+        key: 'AHZRg1cBAAAAVJVoUwIAHgEeJgNyoRKXD7E-Ckx19BG3CxsAAAAAAAAAAAATskglMkTslg1wn1UJZXWqc-V2FQ=='
       }).then(function(res) {
         var resultData = parser.parse(res);
         model.setViewed(resultData);
