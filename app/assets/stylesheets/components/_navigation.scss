@@ -1,0 +1,80 @@
+.navigation {
+  background: $blue-light;
+  margin-bottom: 20px;
+  font-size: 16px;
+
+  @include media(max-width $medium-screen) {
+    .active {
+      display: none;
+    }
+  }
+
+  // Mobile view
+  &-menu-button {
+    display: block;
+    margin: 0;
+    padding: 15px 15px 15px 0;
+    color: #fff;
+
+    .dropdown-icon {
+      float: right;
+      font-size: 22px;
+    }
+
+    &:hover {
+      color: #fff;
+    }
+
+    @include media ($medium-screen) {
+      display: none;
+    }
+  }
+
+  // Nav menu
+  &-wrapper {
+    @include clearfix;
+    position: relative;
+  }
+
+  nav {
+    float: left;
+  }
+
+  ul {
+    clear: both;
+    display: none;
+    margin: 0 auto;
+    overflow: visible;
+    padding-bottom: 15px;
+    width: 100%;
+
+    @include media ($medium-screen) {
+      display: block;
+      margin-top: 15px;
+      padding-left: 0;
+    }
+
+    li {
+      display: block;
+      width: 100%;
+      margin-right: 0;
+      padding: 15px 0;
+
+      @include media ($medium-screen) {
+        display: inline;
+        text-decoration: none;
+        margin-right: 70px;
+        width: auto;
+      }
+    }
+
+    a {
+      display: inline-block;
+      color: #add2f0;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}

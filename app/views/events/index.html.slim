@@ -1,1 +1,33 @@
-h1 TODO: Index
+.header-title
+  .container
+    h1 Мероприятия
+.navigation
+  .container
+    .navigation-wrapper
+      a#js-mobile-menu.navigation-menu-button
+        span Меню
+        i class="fa fa-caret-down dropdown-icon"
+      nav role="navigation"
+        ul#js-navigation-menu
+          li.nav-link.active
+            a href="#" Ближайшие
+          li.nav-link
+            a href="#" Прошедшие
+          li.nav-link
+            a href="#" Создать новое
+.container
+  .input-search
+    span class="fa fa-search"
+    input type="search"
+  .event-container
+    .card.event-card
+      .event-logo
+        = image_tag "47hours.png"
+      .event-info
+        h2 Приходи и проверь свою бизнес-идею на прочность!
+        p 6 декабря 2015, 16:00
+        p.place ул. Суворова 91, 7 этаж, Южный IT-парк
+      .card-footer
+        button.btn Подробнее
+      button.btn.btn-blue.button-participate Я пойду!
+  button.btn.btn-blue.event-more Показать ещё

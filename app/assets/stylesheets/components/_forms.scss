@@ -65,3 +65,20 @@
     }
   }
 }
+
+.input-search {
+  position: relative;
+
+  span {
+    position: absolute;
+    padding: 10px 5px;
+    pointer-events: none;
+    font-size: 18px;
+    color: #acacae;
+  }
+
+  input {
+    padding-left: 35px;
+    box-sizing: border-box;
+  }
+}

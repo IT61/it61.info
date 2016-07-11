@@ -4,9 +4,8 @@
   &-white {
     background: #fff;
 
-    .button {
-      background: $blue;
-      color: #fff;
+    .btn {
+      @extend .btn-blue;
     }
   }
 
@@ -17,9 +16,8 @@
       color: #fff;
     }
 
-    .button {
-      background: #fff;
-      color: $blue;
+    .btn {
+      @extend .btn-white;
     }
   }
 
@@ -42,4 +40,18 @@
   position: absolute;
   width: 100%;
   z-index: -1;
+}
+
+.header-title {
+  background: $blue;
+  @include padding(80px null 25px null);
+  @include media(max-width $medium-screen) {
+    padding-top: 40px;
+  }
+
+  h1 {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 0;
+  }
 }

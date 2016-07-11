@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
-
   before :each do
     @title = 'New title'
     @started_at = Time.now
@@ -27,6 +26,13 @@ RSpec.describe EventsController, type: :controller do
       started_at: @started_at,
       locations: @locations
     }
+  end
+
+  describe "GET #index" do
+    it "returns http success" do
+      get :index
+      expect(response).to have_http_status(:success)
+    end
   end
 
   describe 'POST #create' do
