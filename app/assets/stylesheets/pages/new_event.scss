@@ -1,3 +1,7 @@
+// temporary: replace on merge with master
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
 .CodeMirror, .CodeMirror-scroll {
   min-height: 150px;
 }
@@ -21,6 +25,11 @@
 
 .new-event-container {
   width: 1500px;
+
+  @include media($mobile) {
+    @include span-columns(4);
+    color: #222;
+  }
 }
 
 #location-container {
@@ -51,39 +60,77 @@
 
 .new-event-card {
   @include outer-container;
+  @include media($mobile) {
+    margin: 0;
+    width: 100%;
+    padding: 30px;
+  }
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 35px;
 }
 
-h1 {
+.card-header {
   font-weight: 400;
+  @include media($mobile) {
+    font-weight: 700;
+  }
 }
 
 section {
   @include span-columns(5);
   margin: 1em 0;
+
+  @include media($mobile) {
+    @include span-columns(4);
+  }
+}
+
+.image {
+  float: left;
+  img {
+    @include media($mobile) {
+      display: none;
+    }
+  }
+
+  .recommend {
+    width: 100%;
+    @include clearfix;
+    div {
+      @include media($mobile) {
+        width: 100%;
+        color: #555;
+        padding: 15px 0;
+      }
+      width: 49%;
+      float: right;
+      padding: 15px 30px;
+      font-size: .9em;
+    }
+  }
+
+
+  .file_upload {
+    @include media($mobile) {
+      margin: 0
+    }
+  }
 }
 
 .details {
   @include span-columns(6);
+  float: right;
+
+  @include media($mobile) {
+    @include span-columns(4);
+  }
 }
 
 .description {
   @include span-columns(12);
   label {
     padding: 5px 10px;
-  }
-}
-
-.recommend {
-  width: 100%;
-  @include clearfix;
-  div {
-    width: 49%;
-    float: right;
-    padding: 15px 30px;
-    font-size: .9em;
   }
 }
 
@@ -114,6 +161,25 @@ section {
   }
 }
 
+.datetime-separator {
+  display: none;
+  @include media($mobile) {
+    display: block;
+  }
+}
+
+#event_started_at_1i, #event_started_at_2i, #event_started_at_3i, #event_started_at_4i, #event_started_at_5i {
+  @include media($mobile) {
+    margin: 0;
+    padding: .5em 0;
+  }
+}
+#event_started_at_1i, #event_started_at_2i, #event_started_at_3i {
+  @include media($mobile) {
+    @include span-columns(4);
+  }
+}
+
 .details select {
   float: left;
   padding: 5px 10px;
@@ -137,9 +203,16 @@ section {
 
 .space-taker {
   @include span-columns(1);
+  float: right;
+  @include media($mobile) {
+    display: none;
+  }
 }
 
 label {
+  @include media($mobile) {
+    color: #222;
+  }
   color: #b4adad;
   font-size: 18px;
   font-weight: 400;
@@ -151,7 +224,7 @@ input[type="file"] {
 }
 
 
-.file_upload{
+.file_upload {
   margin: 30px;
   position: relative;
   overflow: hidden;

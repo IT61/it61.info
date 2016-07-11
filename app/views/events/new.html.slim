@@ -1,17 +1,7 @@
 main.new-event-container
   .card.new-event-card
-    h1 Новое мероприятие
+    h1.card-header Новое мероприятие
     = form_for @event do |f|
-      section.image
-        = f.label :title_image, 'Титульное изображение*'
-        label.recommend 
-          img#image src="" width=200 height=200
-          div Рекомендуется изображение размером 500x500 px в формате jpg и png
-        div.file_upload
-          button.button.button-shadow.button-blue type="button" Выбрать файл
-          = f.file_field :title_image, required: true
-          label Файл не выбран
-      section.space-taker
       section.details
         .event-association-field
           .input-float-label
@@ -19,7 +9,7 @@ main.new-event-container
             label Название*
         .time-container
           = f.label :started_at, 'Дата и время проведения*'
-          = datetime_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>', datetime_separator: '', required: true
+          = datetime_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>', datetime_separator: '<br class="datetime-separator"/>', required: true
         .event-association-field
           .input-float-label
             = text_field_tag 'event[place_title]', nil
@@ -36,6 +26,16 @@ main.new-event-container
           .input-float-label
             = text_area_tag 'event[extra_info]', nil
             = f.label :extra_info, 'Дополнительная информация'
+      section.space-taker
+      section.image
+        = f.label :title_image, 'Титульное изображение*'
+        label.recommend 
+          img#image src="" width=200 height=200
+          div Рекомендуется изображение размером 500x500 px в формате jpg и png
+        div.file_upload
+          button.button.button-shadow.button-blue type="button" Выбрать файл
+          = f.file_field :title_image, required: true
+          label Файл не выбран
       section.description
         .event-association-field
           = f.label :description, 'Описание'
