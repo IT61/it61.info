@@ -28,13 +28,11 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
   .my-profile {
     color: white;
     font-size: 2.3em;
-    font-weight: normal;
     margin: 1.5em 0;
 
     @include media($mobile-viewport) {
       color: white;
       font-size: 2.3em;
-      font-weight: normal;
       margin-bottom: 2.3em;
     }
   }
@@ -125,7 +123,7 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
         margin-top: 8px;
       }
 
-      .button {
+      .btn {
         @include media($mobile-viewport) {
           padding: .2em .5em;
         }
@@ -190,7 +188,7 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
       margin-top: 25px;
       float: right;
 
-      .button {
+      .btn {
         @include media($mobile-viewport) {
           width: 100%;
           margin: 5px 0;
