@@ -43,6 +43,10 @@ function fileReaderSupported() {
 }
 
 function showImageOnLoad() {
+  if (!document.getElementById('event_title_image')) {
+    return;
+  }
+  
   document.getElementById('event_title_image').onchange = function () {
     var reader = new FileReader();
     reader.onload = function (e) {
