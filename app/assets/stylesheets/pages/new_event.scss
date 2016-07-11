@@ -1,6 +1,6 @@
-// temporary: replace on merge with master
-$tablet: new-breakpoint(max-width 768px 8);
-$mobile: new-breakpoint(max-width 480px 4);
+$tablet: new-breakpoint(min-width 551px max-width 1020px 8);
+$mobile: new-breakpoint(max-width 552px 8);
+$special-break: new-breakpoint(max-width 1200px 8);
 
 .CodeMirror, .CodeMirror-scroll {
   min-height: 150px;
@@ -24,11 +24,10 @@ $mobile: new-breakpoint(max-width 480px 4);
 }
 
 .new-event-container {
-  width: 1500px;
-
+  @extend .container;
   @include media($mobile) {
-    @include span-columns(4);
-    color: #222;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -82,12 +81,19 @@ section {
   margin: 1em 0;
 
   @include media($mobile) {
-    @include span-columns(4);
+    @include span-columns(8);
   }
 }
 
 .image {
   float: left;
+  @include media($special-break) {
+    @include span-columns(4);
+  }
+  @include media($mobile) {
+    @include span-columns(8);
+    text-align: center;
+  }
   img {
     @include media($mobile) {
       display: none;
@@ -97,11 +103,16 @@ section {
   .recommend {
     width: 100%;
     @include clearfix;
-    div {
+    div{
       @include media($mobile) {
         width: 100%;
         color: #555;
         padding: 15px 0;
+      }
+      @include media($tablet) {
+        float: inherit;
+        width: 200px;
+        padding: 0;
       }
       width: 49%;
       float: right;
@@ -122,8 +133,12 @@ section {
   @include span-columns(6);
   float: right;
 
+  @include media($special-break) {
+    width: 42.82117%;
+  }
+
   @include media($mobile) {
-    @include span-columns(4);
+    @include span-columns(8);
   }
 }
 
@@ -176,7 +191,7 @@ section {
 }
 #event_started_at_1i, #event_started_at_2i, #event_started_at_3i {
   @include media($mobile) {
-    @include span-columns(4);
+    @include span-columns(8);
   }
 }
 
@@ -204,7 +219,7 @@ section {
 .space-taker {
   @include span-columns(1);
   float: right;
-  @include media($mobile) {
+  @include media($special-break) {
     display: none;
   }
 }
@@ -229,16 +244,22 @@ input[type="file"] {
   position: relative;
   overflow: hidden;
   font-size: 1em;
-  height: 2.5em;
   line-height: 2.5em;
 }
 
 .file_upload > button{
   float: right;
-  width: 11em;
-  height: 100%;
   margin-right: 13px;
+
+  @include media($special-break) {
+    float: none;
+  }
+
+  @include media($mobile) {
+    width: 100%;
+  }
 }
+
 .file_upload > div{
   padding-left: 1em;
 }
@@ -261,4 +282,15 @@ input[type="file"] {
     letter-spacing: 10em;
     opacity: 0;
     cursor: pointer
+}
+
+.register-footer {
+  @include media($mobile) {
+    margin: 0;
+  }
+  .buttons {
+    @include media($mobile) {
+      width: 100%;
+    }
+  }
 }
