@@ -3,12 +3,14 @@ class Event < ActiveRecord::Base
   include PermalinkFor
   permalink_for :permalink_title, as: :pretty
 
+  enum registration_type: {opened: 0, closed: 1, paywalled: 2}
+
   # mount_uploader :title_image, EventTitleImageUploader
 
   belongs_to :organizer, class_name: "User"
-  has_many :event_participations, dependent: :destroy
+  has_many :event_participations, :participant_entry_forms, dependent: :destroy
   has_many :participants, class_name: "User", through: :event_participations, source: :user
-
+  
   has_many :locations
   has_many :places, through: :locations
 
