@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class User < ActiveRecord::Base
+  @fresh = false
+
   has_many :social_accounts
 
   # Devise modules
@@ -69,6 +71,10 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def fresh?
+    @fresh
+  end
+
   private
 
   def assign_defaults
@@ -76,7 +82,7 @@ class User < ActiveRecord::Base
     self.email_reminders ||= false
     self.sms_reminders ||= false
     self.subscribed ||= false
-    self
+    @fresh = true
   end
 
   def email_required?
