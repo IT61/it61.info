@@ -59,16 +59,18 @@ function showImageOnLoad() {
 }
 
 $(document).ready(function () {
-  var editor = new SimpleMDE({
-    element: document.getElementById("editor"),
-    autofocus: true,
-    forceSync: true
-  });
+    var editor = new SimpleMDE({
+        element: document.getElementById("editor"),
+        autofocus: true,
+        forceSync: true
+    });
 
-  $('form').bind('submit', function () {
-    $(this).find(':input').prop('disabled', false);
-  });
+    $('form').bind('submit', function () {
+        $(this).find(':input').prop('disabled', false);
+    });
 
-  showImageOnLoad();
-  handleFileUpload();
+    if (fileReaderSupported()) {
+        showImageOnLoad();
+    }
+    handleFileUpload();
 });

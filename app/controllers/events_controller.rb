@@ -27,6 +27,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def places
+    title = params[:title]
+    address = params[:address]
+    # byebug
+    render json: {'lol': true}
+  end
+
   private
 
   def event_params

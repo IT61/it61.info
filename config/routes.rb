@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :events, only: [:index, :new, :create]
   resources :companies
+
+  scope :events do
+    get '/places' => 'events#places'
+  end
 end

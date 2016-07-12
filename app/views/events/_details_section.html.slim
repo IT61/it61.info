@@ -8,13 +8,15 @@ section.details
     = datetime_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>', datetime_separator: '<br class="datetime-separator"/>', required: true
   .event-association-field
     .input-float-label
-      = text_field_tag 'event[place_title]', nil
+      = text_field_tag 'event[place_title]', nil, id: 'place_title'
       label required="true" Название места
   .event-association-field
     .input-float-label
       input#location type="text" autocomplete="off"
       label Место проведения*
       div#dropdown-container
+        div#ours-dropdown-container
+        div#yandexs-dropdown-container
       = text_field_tag 'event[address]', nil, class: 'unchangeable-input', :required => true, disabled: true
       = text_field_tag 'event[latitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
       = text_field_tag 'event[longitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
