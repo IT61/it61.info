@@ -16,4 +16,3 @@
 /.vendor
 /public/uploads/**
 .env
->>>>>>> master
