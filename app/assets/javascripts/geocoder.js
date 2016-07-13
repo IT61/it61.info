@@ -124,11 +124,8 @@ $(document).ready(function () {
                 },
                 dataType: 'json'
             }).done(function(data) {
-                console.log('success response: ' + data);
-                // debugger;
                 controller.setOursSuggestedLocations(data);
             }).always(function(data) {
-                console.log('always')
             });
         }
 

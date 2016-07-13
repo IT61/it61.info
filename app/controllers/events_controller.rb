@@ -1,4 +1,4 @@
-class EventsController < ApplicationController=
+class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -25,7 +25,7 @@ class EventsController < ApplicationController=
     end
 
     if @event.persisted?
-      redirect_to action: :index
+      redirect_to event_path(@event)
     else
       flash[:errors] = @event.errors.messages
       render 'new'
