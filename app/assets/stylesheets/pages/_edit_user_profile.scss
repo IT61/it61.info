@@ -1,0 +1,39 @@
+.half {
+  @include span-columns(6);
+}
+
+.full {
+  @include span-columns(12);
+}
+
+.edit-user-card {
+  @include outer-container();
+
+  .picture {
+    width: auto;
+  }
+
+  .image-container {
+    @include span-columns(4);
+    @include clearfix();
+
+    .edit-picture-buttons {
+      > a {
+        width: 100%;
+        margin: .5em 0;
+        text-align: center;
+      }
+    }
+  }
+
+  .inputs-container {
+    @include span-columns(8);
+    padding: 15px;
+
+    .outer {
+      @include outer-container;
+      padding: 0.3em 0.5em;
+      margin: 1.5em 0;
+    }
+  }
+}

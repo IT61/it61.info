@@ -1,0 +1,44 @@
+.content-background
+main.profile-container
+  .inner-container
+    = form_for @user do |f|
+      .card.edit-user-card
+        .image-container
+          .picture
+            = image_tag 'user_default.png'
+            .edit-picture-buttons
+              = link_to '/todo', class: "btn btn-blue" do
+                = "Загрузить новое фото"
+              = link_to '/todo', class: "btn btn-gray" do
+                = "Удалить фото"
+        .inputs-container
+          .outer
+            .input-float-label.half
+              = f.text_field :first_name
+              = f.label :first_name, 'Имя'
+            .input-float-label.half
+              = f.text_field :last_name
+              = f.label :last_name, 'Фамилия'
+          .outer
+            .input-float-label.half
+              = f.text_field :company_name
+              = f.label :company_name, 'Компания'
+            .input-float-label.half
+              = f.text_field :company_site
+              = f.label :company_site, 'Сайт'
+          .outer
+            .input-float-label.full
+              = f.text_field :company_position
+              = f.label :company_position, 'Должность'
+          .outer
+            .input-float-label.half
+              = f.text_field :email
+              = f.label :email, 'E-mail'
+            .input-float-label.half
+              = f.telephone_field :phone
+              = f.label :phone, 'Телефон'
+              span.sub-label Не отображается на сайте и не передается в Slack
+          .outer
+            .input-float-label.full
+              = f.text_field :hash_tag
+              = f.label :hash_tag, 'Slack'

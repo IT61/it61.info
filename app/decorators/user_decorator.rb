@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 class UserDecorator < Draper::Decorator
-  delegate :member_in_events, :owner_of_events, :full_name
+  delegate_all
+  # delegate :member_in_events, :owner_of_events, :full_name, :first_name, :last_name
+
+  def first_name
+    "Василий"
+  end
+
+  def last_name
+    "Батькович"
+  end
 
   def bio
     "Родился в Мосве. Очень очень очень очень очень очень долго жил, поэтому описание обо мне получилось ну очень длинное. Вот и все. Ничего о себе. Я бы не хотел так долго писать, но это нужно для теста. Участвовал во многих войнах, спас 1000 человек. Герой в-общем." # object.bio ||
@@ -14,12 +23,17 @@ class UserDecorator < Draper::Decorator
     end
   end
 
-  def link
+  def company_site
+    # todo: field
+    "https://8deeds.com"
+  end
+
+  def company_name
     # todo: field
     "8deeds.com"
   end
 
-  def company
+  def company_position
     # todo: field
     "Работаю в государственной думе"
   end
