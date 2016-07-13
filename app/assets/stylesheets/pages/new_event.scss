@@ -35,7 +35,7 @@ $special-break: new-breakpoint(max-width 1200px 8);
   position: relative;
 }
 
-#location {
+#location, #place_title {
   padding: 5px 10px;
   margin-bottom: 0;
 }
@@ -46,6 +46,8 @@ $special-break: new-breakpoint(max-width 1200px 8);
   background: white;
   z-index: 5;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+  width: 100%;
+  border-radius: 3px;
 
   .location-suggestion {
     padding: 7px 10px;
@@ -54,6 +56,14 @@ $special-break: new-breakpoint(max-width 1200px 8);
     &:hover {
       background-color: #eee;
     }
+  }
+
+  #ours-dropdown-container {
+    border-bottom: 1px solid #777;
+  }
+
+  #yandexs-dropdown-container {
+
   }
 }
 

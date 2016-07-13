@@ -1,8 +1,12 @@
 $(document).ready(function () {
 
     var $yandexContainer = $('#yandexs-dropdown-container'),
-        $oursContainer = $('#ours-dropdown-container');
-
+        $oursContainer = $('#ours-dropdown-container'),
+        $placeAddress = $('#location'),
+        $placeTitle = $('#place_title'),
+        $autoPlaceAddress = $('#event_address'),
+        $autoPlaceLatitude = $('#event_latitude'),
+        $autoEventLongitude = $('#event_longitude');
 
     var model = {
         suggestedLocations: {
@@ -25,22 +29,33 @@ $(document).ready(function () {
         setOursSuggestedLocations: function (locations) {
             model.suggestedLocations.ours = locations;
             updateContainer($oursContainer, locations);
+            // debugger;
         },
         approveSuggestion: function (location) {
             controller.reset();
             model.approvedLocations.push(location);
+            if (location.place_title) {
+                $placeTitle.val(location.place_title);
+            }
+            // fill input
+            $placeAddress.val(location.meta.text);
+            $placeTitle.trigger('show-input');
             // sync hidden fields
-            $('#event_address').val(location.meta.text);
-            $('#event_latitude').val(location.coordinates[0]);
-            $('#event_longitude').val(location.coordinates[1]);
+            $autoPlaceAddress.val(location.meta.text);
+            $autoPlaceLatitude.val(location.coordinates[0]);
+            $autoEventLongitude.val(location.coordinates[1]);
         },
         reset: function () {
             model.suggestedLocations = {};
             model.approvedLocations = [];
             // clear hidden fields
-            $('#event_address').val('');
-            $('#event_latitude').val('');
-            $('#event_longitude').val('');
+            $autoPlaceAddress.val('');
+            $autoPlaceLatitude.val('');
+            $autoEventLongitude.val('');
+        },
+        hideContainers: function() {
+            updateContainer($yandexContainer, []);
+            updateContainer($oursContainer, []);
         }
     };
 
@@ -86,15 +101,12 @@ $(document).ready(function () {
     }
 
     function bindGeocoder() {
-        var addressInput = $('#location'),
-            titleInput = $('#place_title');
-
         function addressValue() {
-            return addressInput.val();
+            return $placeAddress.val();
         }
 
         function titleValue() {
-            return titleInput.val();
+            return $placeTitle.val();
         }
 
         function searchOurs(event) {
@@ -110,11 +122,13 @@ $(document).ready(function () {
                     title: titleInput,
                     address: addressInput
                 },
-                dataType: 'application/json'
-            }).then(function(data) {
-                // debugger;
+                dataType: 'json'
+            }).done(function(data) {
                 console.log('success response: ' + data);
+                // debugger;
                 controller.setOursSuggestedLocations(data);
+            }).always(function(data) {
+                console.log('always')
             });
         }
 
@@ -124,7 +138,7 @@ $(document).ready(function () {
                 return;
             }
 
-            ymaps.geocode(addressText, {
+            return ymaps.geocode(addressText, {
                 boundedBy: [[46.061107, 37.603739], [49.073023, 42.767521]], // todo: add more bounds
                 strictBounds: true,
                 results: 5
@@ -134,19 +148,25 @@ $(document).ready(function () {
             });
         }
 
+        function defer(func) {
+            return function() {
+                setTimeout(func, 0);
+            }
+        }
+
         // we search in our database by title and address
         // we search in yandex only by address
-        addressInput.on('input', searchYandex);
-        addressInput.on('focus', searchYandex);
-        addressInput.on('input', searchOurs);
-        addressInput.on('focus', searchOurs);
-        titleInput.on('input', searchOurs);
-        titleInput.on('focus', searchOurs);
+        $placeAddress.on('input', defer(searchYandex));
+        $placeAddress.on('focus', defer(searchYandex));
+        $placeAddress.on('input', defer(searchOurs));
+        $placeAddress.on('focus', defer(searchOurs));
+
+        $placeTitle.on('input', searchOurs);
+        $placeTitle.on('focus', searchOurs);
     }
 
     $('body').on('click', function () {
-        controller.setYandexSuggestedLocations([]);
-        controller.setOursSuggestedLocations([]);
+        controller.hideContainers();
     });
 
     ymaps.ready(bindGeocoder);

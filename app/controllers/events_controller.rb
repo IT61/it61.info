@@ -28,13 +28,21 @@ class EventsController < ApplicationController
   end
 
   def places
-    title = params[:title]
-    address = params[:address]
-    # byebug
-    render json: {'lol': true}
+    @places = Place.where("title like :title and address like :address", title: "%#{params[:title]}%", address: "%#{params[:address]}%").limit(5)
+    render json: @places.map { |p| to_yand_obj p }
   end
 
   private
+
+  def to_yand_obj(place)
+    {
+        meta: {
+            text: place.address,
+        },
+        coordinates: [place.latitude, place.longitude],
+        place_title: place.title
+    }
+  end
 
   def event_params
     params.require(:event).permit :title, :description, :title_image, :started_at,

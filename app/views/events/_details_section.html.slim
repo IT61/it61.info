@@ -17,9 +17,9 @@ section.details
       div#dropdown-container
         div#ours-dropdown-container
         div#yandexs-dropdown-container
-      = text_field_tag 'event[address]', nil, class: 'unchangeable-input', :required => true, disabled: true
-      = text_field_tag 'event[latitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
-      = text_field_tag 'event[longitude]', nil, class: 'unchangeable-input', :required => true, disabled: true, type: 'hidden'
+      = text_field_tag 'event[address]', nil, class: 'unchangeable-input', required: true, disabled: true
+      = text_field_tag 'event[latitude]', nil, class: 'unchangeable-input', required: true, disabled: true, type: 'hidden'
+      = text_field_tag 'event[longitude]', nil, class: 'unchangeable-input', required: true, disabled: true, type: 'hidden'
   .event-association-field
     .input-float-label
       = text_area_tag 'event[extra_info]', nil
