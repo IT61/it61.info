@@ -2,6 +2,8 @@
 class User < ActiveRecord::Base
   @fresh = false
 
+  mount_uploader :avatar, ImageUploader
+
   has_many :social_accounts
 
   # Devise modules
