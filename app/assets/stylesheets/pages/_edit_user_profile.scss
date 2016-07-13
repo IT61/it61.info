@@ -126,11 +126,18 @@
   }
 
   .bottom-buttons {
+    @include media($mobile-viewport) {
+      width: 100%;
+    }
     float: right;
     padding: 15px;
 
     .btn {
       margin-left: 15px;
+      @include media($mobile-viewport) {
+        width: 45%;
+        text-align: center;
+      }
     }
   }
 }
