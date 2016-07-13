@@ -1,9 +1,31 @@
+
+.half, .full {
+  @include media($mobile-viewport) {
+    margin: .5em 0;
+  }
+}
+
 .half {
   @include span-columns(6);
+
+  @include media($mobile-viewport) {
+    @include span-columns(12);
+  }
 }
 
 .full {
   @include span-columns(12);
+}
+
+.outer {
+  @include outer-container;
+  @include media($mobile-viewport) {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  padding: 0.3em 0.5em;
+  margin: 1.5em 0;
 }
 
 .edit-user-card {
@@ -11,13 +33,24 @@
 
   .picture {
     width: auto;
+    @include media($mobile-viewport) {
+      width: 100%;
+    }
   }
 
   .image-container {
     @include span-columns(4);
-    @include clearfix();
+    @include omega();
+
+    @include media($mobile-viewport) {
+      @include span-columns(12);
+    }
 
     .edit-picture-buttons {
+      @include media($mobile-viewport) {
+        margin-top: 1em;
+      }
+
       > a {
         width: 100%;
         margin: .5em 0;
@@ -28,12 +61,76 @@
 
   .inputs-container {
     @include span-columns(8);
+    @include omega();
+    @include media($mobile-viewport) {
+      @include span-columns(12);
+    }
+    padding: 15px;
+  }
+
+  .bottom-container {
+    @include span-columns(12);
     padding: 15px;
 
-    .outer {
-      @include outer-container;
-      padding: 0.3em 0.5em;
-      margin: 1.5em 0;
+    h3 {
+      font-size: 1.5em;
+      @include media($mobile-viewport) {
+        font-size: 1.8em;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+    }
+
+    .input-float-label textarea {
+      resize: vertical;
+      overflow: hidden;
+    }
+
+    .social-container {
+      width: 100%;
+      margin: 1em 0;
+
+      .social-label {
+        @include media($mobile-viewport) {
+          width: 100%;
+          font-size: 1.2em;
+          display: inline-block;
+          font-weight: 500;
+        }
+        width: 8em;
+        font-size: 1em;
+        display: inline-block;
+      }
+
+      > .btn {
+        @include media($mobile-viewport) {
+          margin: .2em 0;
+          margin-right: 80%;
+        }
+        margin: 0 1em;
+        padding: .5em 1.2em;
+        width: 10em;
+        outline: none;
+        text-align: center;
+
+        span {
+          line-height: 1.5em;
+        }
+        .fa {
+          font-size: 1.5em;
+          vertical-align: middle;
+          margin-right: .3em;
+        }
+      }
+    }
+  }
+
+  .bottom-buttons {
+    float: right;
+    padding: 15px;
+
+    .btn {
+      margin-left: 15px;
     }
   }
 }

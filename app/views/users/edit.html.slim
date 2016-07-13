@@ -1,6 +1,7 @@
 .content-background
 main.profile-container
   .inner-container
+    h1.my-profile Редактирование профиля
     = form_for @user do |f|
       .card.edit-user-card
         .image-container
@@ -42,3 +43,32 @@ main.profile-container
             .input-float-label.full
               = f.text_field :hash_tag
               = f.label :hash_tag, 'Slack'
+        .bottom-container
+          .outer
+            .input-float-label.full
+              = f.text_area :bio
+              = f.label :bio, 'О себе'
+          h3 Социальные сети
+          .outer
+            .social-container.full
+              .social-label Подключенные
+              = link_to '/todo', class: "btn btn-blue" do
+                i.fa.fa-github
+                span = "GITHUB"
+                / todo: iterate over them
+            .social-container.full
+              .social-label Добавить
+              = link_to '/todo', class: "btn btn-blue" do
+                i.fa.fa-facebook
+                span = "FACEBOOK"
+              = link_to '/todo', class: "btn btn-red" do
+                i.fa.fa-google-plus
+                span = "GOOGLE+"
+              = link_to '/todo', class: "btn btn-blue" do
+                i.fa.fa-vk
+                span = "ВКОНТАКТЕ"
+        .bottom-buttons
+          = link_to '/todo', class: "btn btn-gray" do
+            span = "Отмена"
+          = link_to '/todo', class: "btn btn-blue" do
+            span = "Сохранить"
