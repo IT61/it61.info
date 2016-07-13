@@ -1,7 +1,12 @@
-class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+class EventsController < ApplicationController=
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
+  
+  end
+
+  def show
+
   end
 
   def new
@@ -25,6 +30,22 @@ class EventsController < ApplicationController
       flash[:errors] = @event.errors.messages
       render 'new'
     end
+  end
+
+  def edit
+
+  end
+
+  def destroy
+
+  end
+
+  def publish
+
+  end
+
+  def unpublish
+
   end
 
   def places

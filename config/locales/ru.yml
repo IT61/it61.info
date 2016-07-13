@@ -4,7 +4,17 @@ ru:
 
   shared:
     sidebar:
+      my_profile: "Мой профиль"
+      community: "Сообщество"
       events: "События"
+      personalities: "Личности"
+      photos: "Фотографии"
+      slack: "Slack"
+      sponsorship: "Спонсорам"
+
+    navbar:
+      sign_in: "Войти"
+      sign_out: "Выход"
   date:
     abbr_day_names:
     - Вс
