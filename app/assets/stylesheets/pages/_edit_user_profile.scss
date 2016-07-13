@@ -48,10 +48,14 @@
 
     .edit-picture-buttons {
       @include media($mobile-viewport) {
-        margin-top: 1em;
+        margin-top: 2em;
       }
 
       > a {
+        @include media($mobile-viewport) {
+          margin: .3em 0;
+          padding: 1em 1em;
+        }
         width: 100%;
         margin: .5em 0;
         text-align: center;
@@ -65,12 +69,12 @@
     @include media($mobile-viewport) {
       @include span-columns(12);
     }
-    padding: 15px;
+    padding: $card-padding;
   }
 
   .bottom-container {
     @include span-columns(12);
-    padding: 15px;
+    padding: $card-padding;
 
     h3 {
       font-size: 1.5em;
@@ -130,7 +134,7 @@
       width: 100%;
     }
     float: right;
-    padding: 15px;
+    padding: $card-padding;
 
     .btn {
       margin-left: 15px;

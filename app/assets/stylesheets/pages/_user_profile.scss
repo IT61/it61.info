@@ -5,6 +5,8 @@ $mobile-viewport: new-breakpoint(max-width $first-breakpoint-value);
 $medium-viewport: new-breakpoint(min-width $first-breakpoint-value max-width $second-breakpoint-value);
 $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
 
+$card-padding: 15px;
+
 .profile-container {
   @include outer-container;
   width: 1100px;
@@ -23,6 +25,10 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
 
   .inner-container {
     margin-top: 100px;
+
+    @include media($mobile-viewport) {
+      margin-top: 43px;
+    }
   }
 
   .my-profile {
@@ -40,7 +46,7 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
 
   .sub-header {
     @include media($mobile-viewport) {
-      padding: 15px 2.35765%;
+      padding: $card-padding 2.35765%;
       border-bottom: 1px solid #ccc;
       font-weight: 400;
     }
@@ -58,7 +64,7 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
     }
 
     height: 100%;
-    padding: 15px;
+    padding: $card-padding;
     img {
       position: relative;
       width: 100%;
@@ -76,14 +82,14 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
   .user {
     @include clearfix;
     background-color: #ffffff;
-    margin-bottom: 15px;
+    margin-bottom: $card-padding;
     width: 100%;
 
     @include media($mobile-viewport) {
       @include span-columns(12);
       text-align: center;
       width: 100%;
-      padding: 15px;
+      padding: $card-padding;
       height: auto;
     }
 
@@ -98,7 +104,7 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
       }
 
       height: 100%;
-      padding: 15px;
+      padding: $card-padding;
       position: relative;
 
       .name {
@@ -197,7 +203,7 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
           padding: 1em 1em;
           font-size: 1.1em;
         }
-        margin-right: 15px;
+        margin-right: $card-padding;
       }
     }
   }
@@ -224,15 +230,16 @@ $large-viewport: new-breakpoint(min-width $second-breakpoint-value + 1);
     }
   }
 
-  .participant > div, .organizator > div {
-    padding: 15px;
+  .participant > div,
+  .organizator > div {
+    padding: $card-padding;
   }
 
   .participant {
     @include span-columns(6);
     @include media($mobile-viewport) {
       @include span-columns(12);
-      margin-bottom: 15px;
+      margin-bottom: $card-padding;
     }
 
 

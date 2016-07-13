@@ -8,10 +8,10 @@ main.profile-container
           .picture
             = image_tag 'user_default.png'
             .edit-picture-buttons
-              = link_to '/todo', class: "btn btn-blue" do
-                = "Загрузить новое фото"
-              = link_to '/todo', class: "btn btn-gray" do
-                = "Удалить фото"
+              = link_to '/todo', class: 'btn btn-blue' do
+                = 'Загрузить новое фото'
+              = link_to '/todo', class: 'btn btn-gray' do
+                = 'Удалить фото'
         .inputs-container
           .outer
             .input-float-label.half
@@ -52,23 +52,23 @@ main.profile-container
           .outer
             .social-container.full
               .social-label Подключенные
-              = link_to '/todo', class: "btn btn-blue" do
+              = link_to '/todo', class: 'btn btn-blue' do
                 i.fa.fa-github
-                span = "GITHUB"
+                span = 'GITHUB'
                 / todo: iterate over them
             .social-container.full
               .social-label Добавить
-              = link_to '/todo', class: "btn btn-blue" do
+              = link_to '/todo', class: 'btn btn-blue' do
                 i.fa.fa-facebook
-                span = "FACEBOOK"
-              = link_to '/todo', class: "btn btn-red" do
+                span = 'FACEBOOK'
+              = link_to '/todo', class: 'btn btn-red' do
                 i.fa.fa-google-plus
-                span = "GOOGLE+"
-              = link_to '/todo', class: "btn btn-blue" do
+                span = 'GOOGLE+'
+              = link_to '/todo', class: 'btn btn-blue' do
                 i.fa.fa-vk
-                span = "ВКОНТАКТЕ"
+                span = 'ВКОНТАКТЕ'
         .bottom-buttons
-          = link_to '/todo', class: "btn btn-gray" do
-            span = "Отмена"
-          = link_to '/todo', class: "btn btn-blue" do
-            span = "Сохранить"
+          = link_to '/todo', class: 'btn btn-gray' do
+            span = 'Отмена'
+          = link_to '/todo', class: 'btn btn-blue' do
+            span = 'Сохранить'
