@@ -53,11 +53,65 @@ function showImageOnLoad() {
         var reader = new FileReader();
         reader.onload = function (e) {
             $image.src = e.target.result;
+
+            if (true) { // todo: refactor and only run this on /users/:id/edit page
+                fileAjaxUpload();
+            }
         };
         if (this.files.length !== 0) {
             reader.readAsDataURL(this.files[0]);
         }
     };
+}
+
+function bindDeleteAvatarButton() {
+    var $deleteBtn = $('#delete-avatar-button'),
+        $image = $('#image');
+
+    $deleteBtn.on('click', function () {
+        fileAjaxDelete();
+        $image.attr('src', $image.attr('default_img_src'));
+        return false;
+    });
+}
+
+function fileAjaxDelete() {
+    $.ajax({
+        url: '/users/1/delete_avatar',
+        type: 'GET',
+        success: function success() {
+        },
+        cache: false
+    });
+}
+
+function fileAjaxUpload() {
+    var formData = new FormData($('#image_form')[0]);
+    $.ajax({
+        url: '/users/1/update_avatar',  // todo: insert id?
+        type: 'POST',
+        xhr: function () {  // Custom XMLHttpRequest
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) { // Check if upload property exists
+                myXhr.upload.addEventListener('progress', function progressHandlingFunction() {
+                }, false); // For handling the progress of the upload
+            }
+            return myXhr;
+        },
+        //Ajax events
+        beforeSend: function beforeSendHandler() {
+        },
+        success: function completeHandler() {
+        },
+        error: function errorHandler() {
+        },
+        // Form data
+        data: formData,
+        //Options to tell jQuery not to process data or worry about content-type.
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 }
 
 $(document).ready(function () {
@@ -75,4 +129,6 @@ $(document).ready(function () {
         showImageOnLoad();
     }
     handleFileUpload();
+
+    bindDeleteAvatarButton();
 });

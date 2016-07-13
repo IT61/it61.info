@@ -2,18 +2,19 @@
 main.profile-container
   .inner-container
     h1.my-profile Редактирование профиля
-    = form_for @user do |f|
-      .card.edit-user-card
-        .image-container
+    .card.edit-user-card
+      .image-container
+        form#image_form
           .picture
-            = image_tag 'user_default.png', id: 'image'
+            / possible need to use asset_path for production minifier
+            = image_tag "#{@user.avatar.file.nil? ?  'user_default.png' : @user.avatar}", id: 'image', default_img_src: asset_path('user_default.png')
             .edit-picture-buttons
               div.file_upload
                 button.button.btn.btn-blue type="button" Загрузить фото
-                = f.file_field :avatar, required: true, id: 'image_input'
-                /label Файл не выбран
-              = link_to '/todo', class: 'btn btn-gray' do
+                input#image_input type="file" name="avatar"
+              button.btn.btn-gray#delete-avatar-button type="nosubmit"
                 = 'Удалить фото'
+      = form_for @user do |f|
         .inputs-container
           .outer
             .input-float-label.half
@@ -69,8 +70,10 @@ main.profile-container
               = link_to '/todo', class: 'btn btn-blue' do
                 i.fa.fa-vk
                 span = 'ВКОНТАКТЕ'
-        .bottom-buttons
-          = link_to '/todo', class: 'btn btn-gray' do
-            span = 'Отмена'
-          = link_to '/todo', class: 'btn btn-blue' do
-            span = 'Сохранить'
+      .bottom-buttons
+        / should be reset or back button
+        = link_to '/todo', class: 'btn btn-gray' do
+          span = 'Отмена'
+        / should be submit button
+        = link_to '/todo', class: 'btn btn-blue' do
+          span = 'Сохранить'
