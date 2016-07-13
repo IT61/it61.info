@@ -13,5 +13,5 @@
 /tmp/*
 .byebug_history
 /.idea/*
-/.vendor
+/vendor
 .env
