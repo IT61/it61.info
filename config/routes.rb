@@ -9,5 +9,15 @@ Rails.application.routes.draw do
   get "sign/up/complete" => "account#sign_up_complete"
   get "profile" => "account#profile"
 
-  resources :users, :events, :companies
+  resources :users, :companies
+
+  resources :events do
+    member do
+      post 'participate' # use it for opened-registration events
+      get 'registration' # use it for closed-registration events
+      put 'publish'
+      put 'unpublish'
+    end
+    resources :entry_forms
+  end
 end

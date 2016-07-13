@@ -27,6 +27,14 @@ class EventsController < ApplicationController
 
   end
 
+  def participate
+
+  end
+
+  def registration
+    @event = Event.find(params[:id]).decorate
+  end
+
   def publish
 
   end
