@@ -1,9 +1,10 @@
 .input-float-label {
   position: relative;
-  input {
-    height: ($input-font-size * 1.9);
+  textarea, input {
+    min-height: ($input-font-size * 1.9);
   }
 
+  // ----- Label style
   label {
     position: absolute;
     top: ($input-font-size / 4);
@@ -16,32 +17,46 @@
     transition: all $input-transition-speed ease;
   }
 
+  // ----- Common styles
   input,
   textarea {
     display: block;
     padding: $input-spacer $input-spacer ($input-spacer / 2);
     font-size: $input-font-size;
-    line-height: 1.9;
     width: 100%;
     box-shadow: none;
     border: none;
-    color: transparent;
-    transition: all $input-transition-speed ease;
     border-bottom: solid 2px #ececec;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 95%, #327ab5 5%) no-repeat;
-    background-size: 0;
+
+  }
+
+  input {
+    line-height: 1.9;
   }
 
   textarea {
+    line-height: 1.5;
     resize: none;
   }
 
-  input:focus,
-  textarea:focus,
-  .top-label {
-    color: #000;
+  // ----- Focused state, filled state
+  input,
+  textarea
+  {
+    &:focus {
+      color: #000;
+      box-shadow: none;
+      outline: none;
+      border-bottom: 2px solid $blue;
 
-    ~ label {
+      &::-webkit-input-placeholder {
+        color: $blue;
+        font-size: 16px;
+        transform: translateY(-20px);
+      }
+    }
+
+    &:focus ~ label, &.top-label ~ label {
       font-size: 16px;
       color: $blue;
       top: $input-active-top;
@@ -49,19 +64,17 @@
     }
   }
 
-  input,
-  textarea {
-    &:focus {
-      box-shadow: none;
-      outline: none;
-      background-size: 100%;
-      border-bottom: 0;
+  // ----- Disabled state
+  input:disabled,
+  textarea:disabled {
+    color: #555;
+    border-bottom: solid 2px #ececec;
 
-      &::-webkit-input-placeholder {
-        color: $blue;
-        font-size: 16px;
-        transform: translateY(-20px);
-      }
+    ~ label {
+      font-size: 16px;
+      color: #adadad;
+      top: $input-active-top;
+      left: 0;
     }
   }
 }
