@@ -5,7 +5,7 @@ section.image
     div Рекомендуется изображение размером 500x500 px в формате jpg и png
   div.file_upload
     button.btn.btn-shadow.btn-blue type="button" Выбрать файл
-    = f.file_field :title_image, required: true
+    = f.file_field :title_image, required: true, id: 'image_input'
     label Файл не выбран
 section.description
   .event-association-field

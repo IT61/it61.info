@@ -6,10 +6,12 @@ main.profile-container
       .card.edit-user-card
         .image-container
           .picture
-            = image_tag 'user_default.png'
+            = image_tag 'user_default.png', id: 'image'
             .edit-picture-buttons
-              = link_to '/todo', class: 'btn btn-blue' do
-                = 'Загрузить новое фото'
+              div.file_upload
+                button.button.btn.btn-blue type="button" Загрузить фото
+                = f.file_field :avatar, required: true, id: 'image_input'
+                /label Файл не выбран
               = link_to '/todo', class: 'btn btn-gray' do
                 = 'Удалить фото'
         .inputs-container

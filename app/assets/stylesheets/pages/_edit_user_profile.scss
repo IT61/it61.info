@@ -30,6 +30,7 @@
 
 .edit-user-card {
   @include outer-container();
+  margin-bottom: 15px;
 
   .picture {
     width: auto;
@@ -54,11 +55,21 @@
       > a {
         @include media($mobile-viewport) {
           margin: .3em 0;
-          padding: 1em 1em;
         }
+        padding: 1em 1em;
         width: 100%;
         margin: .5em 0;
         text-align: center;
+      }
+
+      .file_upload {
+          margin: 0;
+          width: 100%;
+          > button {
+            width: 100%;
+            padding: 1em 1em;
+            margin: 0;
+          }
       }
     }
   }
@@ -74,6 +85,9 @@
 
   .bottom-container {
     @include span-columns(12);
+    @include media($mobile-viewport) {
+      border-top: 1px solid #d2d2d2;
+    }
     padding: $card-padding;
 
     h3 {
