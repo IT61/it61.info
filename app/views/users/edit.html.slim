@@ -4,7 +4,7 @@ main.profile-container
     h1.my-profile Редактирование профиля
     .card.edit-user-card
       .image-container
-        form#image_form
+        form#image_form user_id="#{@user.id}"
           .picture
             = image_tag "#{@user.avatar.file.nil? ?  'user_default.png' : @user.avatar}", id: 'image', default_img_src: asset_path('user_default.png')
             .edit-picture-buttons

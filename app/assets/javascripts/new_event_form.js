@@ -1,17 +1,17 @@
 function handleFileUpload() {
-    var wrapper = $(".file_upload"),
-        inp = wrapper.find("input"),
-        btn = wrapper.find("button"),
-        lbl = wrapper.find("label");
+    var wrapper = $('.file_upload'),
+        inp = wrapper.find('input'),
+        btn = wrapper.find('button'),
+        lbl = wrapper.find('label');
 
     btn.focus(function () {
         inp.focus()
     });
     // Crutches for the :focus style:
     inp.focus(function () {
-        wrapper.addClass("focus");
+        wrapper.addClass('focus');
     }).blur(function () {
-        wrapper.removeClass("focus");
+        wrapper.removeClass('focus');
     });
 
     var file_api = ( window.File && window.FileReader && window.FileList && window.Blob ) ? true : false;
@@ -21,20 +21,20 @@ function handleFileUpload() {
         if (file_api && inp[0].files[0])
             file_name = inp[0].files[0].name;
         else
-            file_name = inp.val().replace("C:\\fakepath\\", '');
+            file_name = inp.val().replace('C:\\fakepath\\', '');
 
         if (!file_name.length)
             return;
 
-        if (lbl.is(":visible")) {
+        if (lbl.is(':visible')) {
             lbl.text(file_name);
-            btn.text("Выбрать файл");
+            btn.text('Выбрать файл');
         } else
             btn.text(file_name);
     }).change();
 
     $(window).resize(function () {
-        $(".file_upload input").triggerHandler("change");
+        $('.file_upload input').triggerHandler('change');
     });
 }
 
@@ -86,9 +86,11 @@ function fileAjaxDelete() {
 }
 
 function fileAjaxUpload() {
-    var formData = new FormData($('#image_form')[0]);
+    var $imageForm = $('#image_form'),
+        formData = new FormData($imageForm[0]),
+        id = $imageForm.attr('user_id');
     $.ajax({
-        url: '/users/1/update_avatar',  // todo: insert id?
+        url: '/users/' + id + '/update_avatar',
         type: 'POST',
         xhr: function () {  // Custom XMLHttpRequest
             var myXhr = $.ajaxSettings.xhr();
@@ -116,8 +118,8 @@ function fileAjaxUpload() {
 
 $(document).ready(function () {
     var editor = new SimpleMDE({
-        element: document.getElementById("editor"),
-        autofocus: true,
+        element: document.getElementById('editor'),
+        autofocus: false,
         forceSync: true
     });
 

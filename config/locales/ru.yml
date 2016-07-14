@@ -1,7 +1,10 @@
 ru:
   errors:
     connection_refused: "В соединении отказано"
-
+  devise:
+    omniauth_callbacks:
+      user:
+        success: "Вы успешно зашли с помощью аккаунта соц. сети"
   shared:
     sidebar:
       my_profile: "Мой профиль"

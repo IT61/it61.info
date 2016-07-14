@@ -49,30 +49,31 @@ class UserDecorator < Draper::Decorator
 
   def all_providers
     # hard code for now. get rid of this
-    {  facebook: {
-         name: 'FACEBOOK',
-         class: 'fa fa-facebook',
-         buttonclass: 'btn btn-blue',
-         link:  '/users/auth/facebook'
-       },
-       google_oauth2: {
-         name: 'GOOGLE+',
-         class: 'fa fa-google-plus',
-         buttonclass: 'btn btn-red',
-         link:  '/users/auth/google_oauth2'
-       },
-       vkontakte: {
-         name: 'ВКОНТАКТЕ',
-         class: 'fa fa-facebook',
-         buttonclass: 'btn btn-blue',
-         link:  '/users/auth/vkontakte'
-       },
-       github: {
-         name: 'GITHUB',
-         class: 'fa fa-github',
-         buttonclass: 'btn btn-blue',
-         link:  '/users/auth/github'
-       }
+    {
+        facebook: {
+            name: 'FACEBOOK',
+            class: 'fa fa-facebook',
+            buttonclass: 'btn btn-blue',
+            link: '/users/auth/facebook'
+        },
+        google_oauth2: {
+            name: 'GOOGLE+',
+            class: 'fa fa-google-plus',
+            buttonclass: 'btn btn-red',
+            link: '/users/auth/google_oauth2'
+        },
+        vkontakte: {
+            name: 'ВКОНТАКТЕ',
+            class: 'fa fa-facebook',
+            buttonclass: 'btn btn-blue',
+            link: '/users/auth/vkontakte'
+        },
+        github: {
+            name: 'GITHUB',
+            class: 'fa fa-github',
+            buttonclass: 'btn btn-blue',
+            link: '/users/auth/github'
+        }
     }
   end
 
