@@ -13,11 +13,11 @@ Rails.application.routes.draw do
 
   resources :events do
     member do
-      post 'participate' # use it for opened-registration events
-      get 'registration' # use it for closed-registration events
+      # Use it for registration to opened events:
+      post 'participate'
+      # Use it for registration to closed events:
+      match 'register', to: 'events#register', via: [:get, :post], as: 'register_to'
       put 'publish'
-      put 'unpublish'
     end
-    resources :entry_forms
   end
 end
