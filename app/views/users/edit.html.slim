@@ -8,9 +8,9 @@ main.profile-container
           .picture
             = image_tag "#{@user.avatar.file.nil? ?  'user_default.png' : @user.avatar}", id: 'image', default_img_src: asset_path('user_default.png')
             .edit-picture-buttons
-              div.file_upload
+              div.file_upload#avatar_file_upload
                 button.button.btn.btn-blue type="button" Загрузить фото
-                input#image_input type="file" name="avatar"
+                input#avatar_image_input type="file" name="avatar"
               button.btn.btn-gray#delete-avatar-button type="nosubmit"
                 = 'Удалить фото'
       = form_for @user do |f|

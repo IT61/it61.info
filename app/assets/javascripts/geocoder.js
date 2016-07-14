@@ -1,12 +1,12 @@
 $(document).ready(function () {
-
     var $yandexContainer = $('#yandexs-dropdown-container'),
         $oursContainer = $('#ours-dropdown-container'),
         $placeAddress = $('#location'),
         $placeTitle = $('#place_title'),
         $autoPlaceAddress = $('#event_address'),
         $autoPlaceLatitude = $('#event_latitude'),
-        $autoEventLongitude = $('#event_longitude');
+        $autoEventLongitude = $('#event_longitude'),
+        searchLatency = 0.2;
 
     var model = {
         suggestedLocations: {
@@ -147,7 +147,7 @@ $(document).ready(function () {
 
         function defer(func) {
             return function() {
-                setTimeout(func, 0);
+                setTimeout(func, searchLatency);
             }
         }
 
