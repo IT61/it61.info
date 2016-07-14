@@ -1,9 +1,11 @@
 // Input float label
 $(document).ready(function () {
 
-    $(".input-float-label input, textarea").blur(function () {
+    var $input = $(".input-float-label input, textarea");
+
+    $input.on('blur show-input', function () {
         $(this).toggleClass('top-label', this.value !== "");
-    }).trigger('blur');
+    });
 
     // Autoresize
     function h(element) {

@@ -1,11 +1,55 @@
 en:
   date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
     formats:
-      default:
-        "%m/%d/%Y"
-      with_weekday:
-        "%a %m/%d/%y"
-
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
   time:
     formats:
       default:

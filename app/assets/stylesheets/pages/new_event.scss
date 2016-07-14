@@ -1,0 +1,304 @@
+$new-event-tablet: new-breakpoint(min-width 551px max-width 1020px 8);
+$new-event-mobile: new-breakpoint(max-width 552px 8);
+$special-break: new-breakpoint(max-width 1200px 8);
+
+.CodeMirror, .CodeMirror-scroll {
+  min-height: 150px;
+}
+
+.input-float-label .unchangeable-input {
+  color: #777;
+  font-size: .9em;
+  background: none;
+  border: none;
+  cursor: default;
+  padding: 5px 10px;
+  background-color: white;
+  height: 20px;
+  margin: 15px 0;
+
+  &:hover {
+    border: none;
+    outline: none;
+  }
+}
+
+.new-event-container {
+  @extend .container;
+  @include media($new-event-mobile) {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+#location-container {
+  position: relative;
+}
+
+#location, #place_title {
+  padding: 5px 10px;
+  margin-bottom: 0;
+}
+
+#dropdown-container {
+  position: absolute;
+  background: white;
+  z-index: 5;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+  border-radius: 3px;
+
+  .location-suggestion {
+    padding: 7px 10px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+  #ours-dropdown-container {
+    border-bottom: 1px solid rgba(154, 154, 154, 0.24);
+  }
+
+  #yandexs-dropdown-container {
+
+  }
+}
+
+.new-event-card {
+  @include outer-container;
+  @include media($new-event-mobile) {
+    margin: 0;
+    width: 100%;
+    padding: 30px;
+  }
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 35px;
+}
+
+.card-header {
+  font-weight: 400;
+  @include media($new-event-mobile) {
+    font-weight: 700;
+  }
+}
+
+section {
+  @include span-columns(5);
+  margin: 1em 0;
+
+  @include media($new-event-mobile) {
+    @include span-columns(8);
+  }
+}
+
+.image {
+  float: left;
+  @include media($special-break) {
+    @include span-columns(4);
+  }
+  @include media($new-event-mobile) {
+    @include span-columns(8);
+    text-align: center;
+  }
+  img {
+    @include media($new-event-mobile) {
+      display: none;
+    }
+  }
+
+  .recommend {
+    width: 100%;
+    @include clearfix;
+    div{
+      @include media($new-event-mobile) {
+        width: 100%;
+        color: #555;
+        padding: 15px 0;
+      }
+      @include media($new-event-tablet) {
+        float: inherit;
+        width: 200px;
+        padding: 0;
+      }
+      width: 49%;
+      float: right;
+      padding: 15px 30px;
+      font-size: .9em;
+    }
+  }
+
+
+  .file_upload {
+    @include media($new-event-mobile) {
+      margin: 0
+    }
+  }
+}
+
+.details {
+  @include span-columns(6);
+  float: right;
+
+  @include media($special-break) {
+    width: 42.82117%;
+  }
+
+  @include media($new-event-mobile) {
+    @include span-columns(8);
+  }
+}
+
+.description {
+  @include span-columns(12);
+  label {
+    padding: 5px 10px;
+  }
+}
+
+.event-association-field {
+  margin: 30px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.time-container {
+  @include clearfix;
+  .left {
+    float: left;
+    width: 67%;
+  }
+
+  .right {
+    float: right;
+    width: 33%;
+  }
+
+  .time-separator {
+    display: block;
+    float: left;
+    font-size: 1.3em;
+    line-height: 2em;
+  }
+}
+
+.datetime-separator {
+  display: none;
+  @include media($new-event-mobile) {
+    display: block;
+  }
+}
+
+#event_started_at_1i, #event_started_at_2i, #event_started_at_3i, #event_started_at_4i, #event_started_at_5i {
+  @include media($new-event-mobile) {
+    margin: 0;
+    padding: .5em 0;
+  }
+}
+#event_started_at_1i, #event_started_at_2i, #event_started_at_3i {
+  @include media($new-event-mobile) {
+    @include span-columns(8);
+  }
+}
+
+.details select {
+  float: left;
+  padding: 5px 10px;
+  display: block;
+  font-size: 18px;
+  margin: 3px;
+  color: black;
+  line-height: 1.9;
+  width: auto;
+  box-shadow: none;
+  border: none;
+  transition: all 0.28s ease;
+  border-bottom: solid 2px #ddd;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #2d79b7;
+  }
+}
+
+.space-taker {
+  @include span-columns(1);
+  float: right;
+  @include media($special-break) {
+    display: none;
+  }
+}
+
+label {
+  @include media($new-event-mobile) {
+    color: #222;
+  }
+  color: #b4adad;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+// file upload customization
+input[type="file"] {
+  color: #b4adad;
+}
+
+
+.file_upload {
+  margin: 30px;
+  position: relative;
+  overflow: hidden;
+  font-size: 1em;
+  line-height: 2.5em;
+}
+
+.file_upload > button{
+  float: right;
+  margin-right: 13px;
+
+  @include media($special-break) {
+    float: none;
+  }
+
+  @include media($new-event-mobile) {
+    width: 100%;
+  }
+}
+
+.file_upload > div{
+  padding-left: 1em;
+}
+
+@media only screen and ( max-width: 500px ) {
+  .file_upload > div{
+    display: none
+  }
+  .file_upload > button{
+    width: 100%
+  }
+}
+
+.file_upload input[type=file]{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    letter-spacing: 10em;
+    opacity: 0;
+    cursor: pointer
+}
+
+.register-footer {
+  @include media($new-event-mobile) {
+    margin: 0;
+  }
+  .buttons {
+    @include media($new-event-mobile) {
+      width: 100%;
+    }
+  }
+}
