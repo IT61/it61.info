@@ -18,7 +18,18 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    # commit = @user.update user_params
+    @user.assign_attributes first_name: user_params[:first_name], last_name: user_params[:last_name],
+                                     email: user_params[:email], phone: user_params[:phone], bio: user_params[:bio]
+    if @user.valid?
+      @user = @user.decorate
+      flash.now[:notice] = 'Изменения сохранены'
+      render 'edit'
+    else
+      @user = @user.decorate
+      flash.now[:error] = 'Ошибка сохранения данных'
+      render 'edit'
+    end
   end
 
   # ajax call
@@ -59,6 +70,12 @@ class UsersController < ApplicationController
 
   def fetch_decorated_user
     @user = User.find(params[:id]).decorate
+  end
+
+  def user_params
+    params.require(:user).permit :first_name, :last_name,
+      :company_name, :company_site, :company_position,
+      :email, :phone, :hash_tag, :bio
   end
 
   def avatar_params

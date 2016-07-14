@@ -47,6 +47,44 @@ class UserDecorator < Draper::Decorator
     not (object.member_in_events.empty? && object.owner_of_events.empty?)
   end
 
+  def all_providers
+    # hard code for now. get rid of this
+    {  facebook: {
+         name: 'FACEBOOK',
+         class: 'fa fa-facebook',
+         buttonclass: 'btn btn-blue',
+         link:  '/users/auth/facebook'
+       },
+       google_oauth2: {
+         name: 'GOOGLE+',
+         class: 'fa fa-google-plus',
+         buttonclass: 'btn btn-red',
+         link:  '/users/auth/google_oauth2'
+       },
+       vkontakte: {
+         name: 'ВКОНТАКТЕ',
+         class: 'fa fa-facebook',
+         buttonclass: 'btn btn-blue',
+         link:  '/users/auth/vkontakte'
+       },
+       github: {
+         name: 'GITHUB',
+         class: 'fa fa-github',
+         buttonclass: 'btn btn-blue',
+         link:  '/users/auth/github'
+       }
+    }
+  end
+
+  def linked_providers
+    # hard code for now
+    {}
+  end
+
+  def not_linked_providers
+    all_providers
+  end
+
   private
 
   def linked(provider)

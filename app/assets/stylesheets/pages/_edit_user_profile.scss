@@ -125,7 +125,7 @@
           margin: .2em 0;
           margin-right: 80%;
         }
-        margin: 0 1em;
+        margin: 0 .2em;
         padding: .5em 1.2em;
         width: 10em;
         outline: none;
@@ -157,5 +157,12 @@
         text-align: center;
       }
     }
+  }
+
+  .bottom-flash {
+    width: 100%;
+    text-align: center;
+    color: $blue;
+    vertical-align: middle;
   }
 }

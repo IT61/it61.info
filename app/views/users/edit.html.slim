@@ -6,7 +6,6 @@ main.profile-container
       .image-container
         form#image_form
           .picture
-            / possible need to use asset_path for production minifier
             = image_tag "#{@user.avatar.file.nil? ?  'user_default.png' : @user.avatar}", id: 'image', default_img_src: asset_path('user_default.png')
             .edit-picture-buttons
               div.file_upload
@@ -55,25 +54,19 @@ main.profile-container
           .outer
             .social-container.full
               .social-label Подключенные
-              = link_to '/todo', class: 'btn btn-blue' do
-                i.fa.fa-github
-                span = 'GITHUB'
-                / todo: iterate over them
+              - @user.linked_providers.each do |provider, info|
+                = link_to info[:link], class: "#{info[:buttonclass]}" do
+                  i class="#{info[:class]}"
+                  span = info[:name]
             .social-container.full
               .social-label Добавить
-              = link_to '/todo', class: 'btn btn-blue' do
-                i.fa.fa-facebook
-                span = 'FACEBOOK'
-              = link_to '/todo', class: 'btn btn-red' do
-                i.fa.fa-google-plus
-                span = 'GOOGLE+'
-              = link_to '/todo', class: 'btn btn-blue' do
-                i.fa.fa-vk
-                span = 'ВКОНТАКТЕ'
-      .bottom-buttons
-        / should be reset or back button
-        = link_to '/todo', class: 'btn btn-gray' do
-          span = 'Отмена'
-        / should be submit button
-        = link_to '/todo', class: 'btn btn-blue' do
-          span = 'Сохранить'
+              - @user.not_linked_providers.each do |provider, info|
+                = link_to info[:link], class: "#{info[:buttonclass]}" do
+                  i class="#{info[:class]}"
+                  span = info[:name]
+        .bottom-flash
+          - if flash[:notice]
+            .notice = flash[:notice]
+        .bottom-buttons
+          button.btn.btn-gray type="reset" Отмена
+          button.btn.btn-blue type="submit" Сохранить
