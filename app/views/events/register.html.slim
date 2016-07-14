@@ -2,7 +2,7 @@
 .card.register-card
   .title
     h1 Регистрация на мероприятие
-    p &laquo;#{@event.title}&raquo;, #{@event.started_at}<br>#{@event.places.first.full_address}
+    p #{summary_info(@event).html_safe}
   = form_for(:participant_entry_form, url: register_to_event_path) do |f|
     .register-fields
       .association-field
