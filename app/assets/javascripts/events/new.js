@@ -5,7 +5,7 @@ $(document).ready(function () {
         forceSync: true
     }),
         $uploadContainer = $('#event_file_upload'),
-        $form = $('form'),
+        $form = $('form#new_event'),
         $imageInput = $('#event_image_input').get(0),
         $image = $('#image');
 
