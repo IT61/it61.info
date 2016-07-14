@@ -24,6 +24,7 @@
     padding: $input-spacer $input-spacer ($input-spacer / 2);
     font-size: $input-font-size;
     width: 100%;
+    color: transparent;
     box-shadow: none;
     border: none;
     border-bottom: solid 2px #ececec;
@@ -43,6 +44,10 @@
   input,
   textarea
   {
+    &.top-label {
+      color: #000;
+    }
+
     &:focus {
       color: #000;
       box-shadow: none;

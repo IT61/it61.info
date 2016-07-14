@@ -5,9 +5,9 @@ $(document).ready(function () {
 
     $input.on('blur show-input', function () {
         $(this).toggleClass('top-label', this.value !== "");
-    });
+    }).trigger('show-input');
 
-    // Autoresize
+    // Autoresize textarea
     function h(element) {
         $(element).css({'height': 'auto', 'overflow-y': 'hidden'}).height(element.scrollHeight);
     }
