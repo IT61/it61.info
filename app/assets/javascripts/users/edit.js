@@ -1,9 +1,9 @@
-function bindDeleteAvatarButton($imageForm, userId) {
+function bindDeleteAvatarButton($imageForm) {
     var $deleteBtn = $('#delete-avatar-button'),
         $image = $('#image');
 
     $deleteBtn.on('click', function () {
-        deleteAvatar($imageForm, userId);
+        deleteAvatar($imageForm);
         $image.attr('src', $image.attr('default_img_src'));
         return false;
     });
@@ -11,18 +11,17 @@ function bindDeleteAvatarButton($imageForm, userId) {
 
 $(document).ready(function () {
     var $imageForm = $('#image_form'),
-        id = $imageForm.attr('user_id'),
         $uploadContainer = $('#avatar_file_upload'),
         $imageInput = $('#avatar_image_input').get(0),
         $image = $('#image');
 
     if (fileReaderSupported() && $imageInput) {
         showImageOnLoad($imageInput, $image, function() {
-            uploadAvatar($imageForm, id);
+            uploadAvatar($imageForm);
         });
     }
     if ($uploadContainer.length) {
         handleFileUpload($uploadContainer);
     }
-    bindDeleteAvatarButton(id);
+    bindDeleteAvatarButton($imageForm);
 });

@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get "sign/up/complete" => "account#sign_up_complete"
   get "profile" => "account#profile"
   get "/events/places" => "events#places"
-  post "/users/:id/update_avatar" => "users#update_avatar"
-  get "/users/:id/delete_avatar" => "users#destroy_avatar"
 
-  resources :users, :events, :companies
+  resources :events, :companies
+
+  resources :users do
+    resource :avatars, only: [:create, :destroy], controller: 'users/avatars'
+  end
 end

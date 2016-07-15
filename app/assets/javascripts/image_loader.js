@@ -1,7 +1,7 @@
-function deleteAvatar(userId) {
+function deleteAvatar($imageForm) {
     $.ajax({
-        url: '/users/' + userId + '/delete_avatar',
-        type: 'GET',
+        url: $imageForm.attr('avatar_path'),
+        type: 'DELETE',
         success: function success() {
         },
         cache: false

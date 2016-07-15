@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!,   only: [:edit, :destroy]
-  before_action :fetch_user,           only: [:update, :update_avatar, :destroy_avatar, :destroy]
+  before_action :fetch_user,           only: [:update, :destroy]
   before_action :fetch_decorated_user, only: [:show, :edit]
 
   def index
@@ -10,11 +10,9 @@ class UsersController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
@@ -33,34 +31,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # ajax call
-  def update_avatar
-    avatar = avatar_params[:avatar]
-    @user.avatar = avatar
-    commit = @user.save
-    if commit
-      render json: {success: true}
-    else
-      render json: {success: false}
-    end
-  end
-
-  def destroy_avatar
-    # if @user != current_user
-    #   render_403
-    # else
-    @user.remove_avatar!
-    commit = @user.save
-      if commit
-        render json: {success: true}
-      else
-        render json: {success: false}
-      end
-    # end
-  end
-
   def destroy
-
+    # todo
   end
 
   private
@@ -77,9 +49,5 @@ class UsersController < ApplicationController
     params.require(:user).permit :first_name, :last_name,
       :company_name, :company_site, :company_position,
       :email, :phone, :hash_tag, :bio
-  end
-
-  def avatar_params
-    params.permit(:avatar, :id)
   end
 end

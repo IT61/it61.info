@@ -1,2 +1,0 @@
-class AvatarController < ApplicationController
-end
