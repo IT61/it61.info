@@ -8,7 +8,6 @@ RSpec.describe EventsController, type: :controller do
     @data = {
       title: @title,
       title_image: 'img.png',
-      description: 'whatever',
       started_at: @started_at,
       description: @description,
       place_title: 'test_title',
@@ -19,8 +18,8 @@ RSpec.describe EventsController, type: :controller do
     }
   end
 
-  describe "GET #index" do
-    it "returns http success" do
+  describe 'GET #index' do
+    it 'returns http success' do
       get :index
       expect(response.status).to eq(200)
     end

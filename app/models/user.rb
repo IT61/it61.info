@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, ImageUploader
 
-  enum role: { user: 0, admin: 1, moderator: 2 }
+  enum role: { member: 0, admin: 1, moderator: 2 }
 
   # Devise modules
   devise :rememberable, :trackable, :omniauthable,
