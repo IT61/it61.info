@@ -4,9 +4,9 @@ section.card.user
   .details
     h1.name= user.full_name
     .job
-      span= user.company
+      span= user.company_position
       br
-      a href="#{user.link}"= user.link
+      a href="#{user.company_site}"= user.company_name
     br
     .bio
       span=user.bio

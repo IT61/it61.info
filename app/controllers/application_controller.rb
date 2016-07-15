@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
 
   def welcome
   end
+
+  def render_403
+    render :status => :forbidden, :text => 'Forbidden access'
+  end
 end

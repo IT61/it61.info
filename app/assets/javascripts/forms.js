@@ -1,9 +1,9 @@
 // Input float label
 $(document).ready(function () {
-    var $input = $(".input-float-label input");
+    var $input = $('.input-float-label input');
 
     $input.blur(function () {
-        if (this.value !== "") {
+        if (this.value !== '') {
             $(this).addClass('top-label');
         } else {
             $(this).removeClass('top-label');
@@ -15,7 +15,7 @@ $(document).ready(function () {
     }
 
     $input.on('show-input', function(event) {
-        if (event.target.value !== "") {
+        if (event.target.value !== '') {
             $(this).addClass('top-label');
         }
         else {
