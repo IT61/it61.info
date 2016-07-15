@@ -10,7 +10,7 @@
     pointer-events: none;
     padding-left: $input-spacer;
     z-index: 1;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
     color: #adadad;
     transition: all $input-transition-speed ease;
@@ -73,7 +73,7 @@
     position: absolute;
     padding: 10px 5px;
     pointer-events: none;
-    font-size: 18px;
+    font-size: $input-font-size;
     color: #acacae;
   }
 

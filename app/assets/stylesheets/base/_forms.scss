@@ -32,7 +32,7 @@ select[multiple] {
   border-bottom: 2px solid #ececec;
   box-shadow: none;
   box-sizing: border-box;
-  font-size: 18px;
+  font-size: $input-font-size;
   margin-bottom: $small-spacing;
   padding: $base-spacing / 3 0;
   transition: border-color $base-duration $base-timing;
