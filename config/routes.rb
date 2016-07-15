@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "profile" => "account#profile"
   get "/events/places" => "events#places"
 
-  resources :users, :companies
+  resources :companies
 
   resources :events do
     member do
@@ -20,5 +20,9 @@ Rails.application.routes.draw do
       match 'register', to: 'events#register', via: [:get, :post], as: 'register_to'
       put 'publish'
     end
+  end
+
+  resources :users do
+    resource :avatars, only: [:create, :destroy], controller: 'users/avatars'
   end
 end

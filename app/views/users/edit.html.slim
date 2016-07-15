@@ -1,0 +1,72 @@
+.content-background
+main.profile-container
+  .inner-container
+    h1.my-profile Редактирование профиля
+    .card.edit-user-card
+      .image-container
+        form#image_form avatar_path=user_avatars_path(@user)
+          .picture
+            = image_tag "#{@user.avatar.file.nil? ?  'user_default.png' : @user.avatar}", id: 'image', default_img_src: asset_path('user_default.png')
+            .edit-picture-buttons
+              div.file_upload#avatar_file_upload
+                button.button.btn.btn-blue type="button" Загрузить фото
+                input#avatar_image_input type="file" name="avatar"
+              button.btn.btn-gray#delete-avatar-button type="nosubmit"
+                = 'Удалить фото'
+      = form_for @user do |f|
+        .inputs-container
+          .outer
+            .input-float-label.half
+              = f.text_field :first_name
+              = f.label :first_name, 'Имя'
+            .input-float-label.half
+              = f.text_field :last_name
+              = f.label :last_name, 'Фамилия'
+          .outer
+            .input-float-label.half
+              = f.text_field :company_name
+              = f.label :company_name, 'Компания'
+            .input-float-label.half
+              = f.text_field :company_site
+              = f.label :company_site, 'Сайт'
+          .outer
+            .input-float-label.full
+              = f.text_field :company_position
+              = f.label :company_position, 'Должность'
+          .outer
+            .input-float-label.half
+              = f.text_field :email
+              = f.label :email, 'E-mail'
+            .input-float-label.half
+              = f.telephone_field :phone
+              = f.label :phone, 'Телефон'
+              span.sub-label Не отображается на сайте и не передается в Slack
+          .outer
+            .input-float-label.full
+              = f.text_field :hash_tag
+              = f.label :hash_tag, 'Slack'
+        .bottom-container
+          .outer
+            .input-float-label.full
+              = f.text_area :bio
+              = f.label :bio, 'О себе'
+          h3 Социальные сети
+          .outer
+            .social-container.full
+              .social-label Подключенные
+              - @user.linked_providers.each do |provider, info|
+                = link_to info[:link], class: "#{info[:buttonclass]}" do
+                  i class="#{info[:class]}"
+                  span = info[:name]
+            .social-container.full
+              .social-label Добавить
+              - @user.not_linked_providers.each do |provider, info|
+                = link_to info[:link], class: "#{info[:buttonclass]}" do
+                  i class="#{info[:class]}"
+                  span = info[:name]
+        .bottom-flash
+          - if flash[:notice]
+            .notice = flash[:notice]
+        .bottom-buttons
+          button.btn.btn-blue type="submit" Сохранить
+          button.btn.btn-gray type="reset" Отмена

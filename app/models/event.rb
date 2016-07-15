@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   include PermalinkFor
   permalink_for :permalink_title, as: :pretty
 
-  mount_uploader :title_image, EventImageUploader
+  mount_uploader :title_image, ImageUploader
 
   enum registration_type: {opened: 0, closed: 1, paywalled: 2}
 
@@ -53,7 +53,7 @@ class Event < ActiveRecord::Base
     toggle :published
     self.published_at = DateTime.current
     save!
-    # send_slack_notification
+    send_slack_notification
     self
   end
 
@@ -70,7 +70,8 @@ class Event < ActiveRecord::Base
     [formatted_started_at, title].compact.join(" ")
   end
 
-  # def send_slack_notification
-  #   Event::SlackIntegration.notify(self)
-  # end
+  def send_slack_notification
+    SlackService.notify(self)
+  end
+
 end

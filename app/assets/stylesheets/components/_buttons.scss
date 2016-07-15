@@ -50,4 +50,15 @@
       }
     }
   }
+
+
+  &-red {
+    background-color: $red;
+    color: white;
+
+    &:focus {
+      background-color: shade($red, $btn-shade-percent);
+      color: white;
+    }
+  }
 }
