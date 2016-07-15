@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   before_action :fetch_user,           only: [:update, :destroy]
   before_action :fetch_decorated_user, only: [:show, :edit]
 
+  load_and_authorize_resource
+
   def index
     @users = User.all
   end

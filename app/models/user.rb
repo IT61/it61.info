@@ -4,12 +4,13 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, ImageUploader
 
-  has_many :social_accounts
+  enum role: { member: 0, admin: 1, moderator: 2 }
 
   # Devise modules
   devise :rememberable, :trackable, :omniauthable,
          omniauth_providers: [:github, :facebook, :google_oauth2, :vkontakte]
 
+  has_many :social_accounts
   has_many :owner_of_events, class_name: "Event", foreign_key: "organizer_id"
   has_many :event_participations, dependent: :destroy
   has_many :member_in_events, class_name: "Event", through: :event_participations, source: :event
@@ -21,6 +22,7 @@ class User < ActiveRecord::Base
 
   validates :phone, presence: true, if: :sms_reminders?
   validates :email, presence: true, if: :email_required?
+  validates :role,  presence: true
 
   # В случае, если OAuth провайдер не предоставляет email, в базу может быть записана пустая строка,
   # что приведет к нарушению уникальности index_users_on_email

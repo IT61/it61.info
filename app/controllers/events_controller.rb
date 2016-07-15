@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
+  authorize_resource
+
   def index
   
   end
@@ -48,8 +50,12 @@ class EventsController < ApplicationController
 
   end
 
+  def participate
+
+  end
+
   def places
-    @places = Place.where("title like :title and address like :address", title: "%#{params[:title]}%", address: "%#{params[:address]}%").limit(5)
+    @places = Place.where('title like :title and address like :address', title: "%#{params[:title]}%", address: "%#{params[:address]}%").limit(5)
     render json: @places.map { |p| to_yand_obj p }
   end
 
@@ -74,7 +80,6 @@ class EventsController < ApplicationController
     place = Place.where(title: event_params[:place_title], address: event_params[:address],
       latitude: event_params[:latitude], longitude: event_params[:longitude]).first_or_create
 
-    Location.where(extra_info: event_params[:extra_info],
-      place: place).first_or_create
+    Location.where(extra_info: event_params[:extra_info], place: place).first_or_create
   end
 end
