@@ -4,26 +4,26 @@ section.card.user
   .details
     h1.name= user.full_name
     .job
-      span= user.company
+      span= user.company_position
       br
-      a href="#{user.link}"= user.link
+      a href="#{user.company_site}"= user.company_name
     br
     .bio
       span=user.bio
     .social-buttons
-      = link_to user_github_omniauth_authorize_path, class: "button #{user.social_account_linked :github}" do
+      = link_to user_github_omniauth_authorize_path, class: "btn #{user.social_account_linked :github}" do
         i.fa.fa-github
-      = link_to user_vkontakte_omniauth_authorize_path, class: "button #{user.social_account_linked :vkontakte}" do
+      = link_to user_vkontakte_omniauth_authorize_path, class: "btn #{user.social_account_linked :vkontakte}" do
         i.fa.fa-vk
-      = link_to user_facebook_omniauth_authorize_path, class: "button #{user.social_account_linked :facebook}" do
+      = link_to user_facebook_omniauth_authorize_path, class: "btn #{user.social_account_linked :facebook}" do
         i.fa.fa-facebook
-      = link_to user_google_oauth2_omniauth_authorize_path, class: "button  #{user.social_account_linked :google_oauth2}" do
+      = link_to user_google_oauth2_omniauth_authorize_path, class: "btn  #{user.social_account_linked :google_oauth2}" do
         i.fa.fa-google
-      = link_to '/hashtag', class: 'button hashtag' do
+      = link_to '/hashtag', class: 'btn hashtag' do
         i.fa.fa-hashtag
       span.hashtag-label= user.hash_tag
     - if my_profile?(user)
       .bottom-buttons
-        button.button.button-blue Редактировать профиль
-        button.button.button-gray Настройки
+        button.btn.btn-blue Редактировать профиль
+        button.btn.btn-gray Настройки
       

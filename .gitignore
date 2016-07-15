@@ -14,3 +14,5 @@
 .byebug_history
 /.idea/*
 /.vendor
+/public/uploads/**
+.env

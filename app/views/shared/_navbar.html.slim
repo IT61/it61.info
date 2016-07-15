@@ -2,6 +2,13 @@ header.navbar.navbar-blue
   .navbar-wrapper
     i.fa.fa-bars.hamburger.open-sidebar
     .pull-right
-      = link_to signin_path, class: "button button-small button-blue" do
-        i.fa.fa-sign-in
-        | &nbsp; Войти
+      - if current_user.nil?
+        = link_to sign_in_path, class: "btn btn-small btn-blue" do
+          i.fa.fa-sign-in
+          | &nbsp;
+          = t(".sign_in")
+      - else
+        = link_to sign_out_path, class: "btn btn-small btn-blue" do
+          i.fa.fa-sign-in
+          | &nbsp;
+          = t(".sign_out")

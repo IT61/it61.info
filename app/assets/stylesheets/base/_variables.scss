@@ -32,7 +32,9 @@ $base-z-index: 0;
 
 // Colors
 $blue: #2d79b7;
+$blue-light: #3a90d7;
 $gray: #ececec;
+$red: #ce3118;
 
 $dark-gray: #333;
 $medium-gray: #999;
@@ -54,6 +56,9 @@ $secondary-background-color: tint($base-border-color, 75%);
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
 
+//Buttons
+$btn-shade-percent: 5%;
+
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
@@ -64,6 +69,7 @@ $sidebar-width: 300px;
 // Footer
 $footer-height: 170px;
 $footer-height-mobile: 290px;
+$footer-color: #999da1;
 
 //Media queries
 $mobile-xs: new-breakpoint(max-width 400px);

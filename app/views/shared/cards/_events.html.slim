@@ -4,5 +4,5 @@ section.card.organizator
     = render partial: 'events', locals: { events: events, no_events_message: no_events_message }
   - if my_profile?(user)
     .card-footer
-      = link_to footer_button_text, class: 'button' do
+      = link_to footer_button_link, class: 'button' do
         = footer_button_text

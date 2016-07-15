@@ -1,15 +1,18 @@
-# frozen_string_literal: true
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+
   devise_scope :user do
-    get "signin" => "users/omniauth_callbacks#signin"
-    delete "/users/sign_out" => "devise/sessions#destroy"
-  end
-  namespace :users do
-    get "user_profiles/last_step_register"
+    get "sign/out" => "devise/sessions#destroy"
   end
 
-  resources :users, only: [:show]
-  resources :events
-  resources :companies
+  get "sign/in" => "account#sign_in"
+  get "sign/up/complete" => "account#sign_up_complete"
+  get "profile" => "account#profile"
+  get "/events/places" => "events#places"
+
+  resources :events, :companies
+
+  resources :users do
+    resource :avatars, only: [:create, :destroy], controller: 'users/avatars'
+  end
 end

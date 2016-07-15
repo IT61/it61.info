@@ -1,4 +1,4 @@
-.button {
+.btn {
   &-small {
     padding: 9px 23px;
     font-size: 12px;
@@ -13,12 +13,22 @@
     color: #777;
   }
 
+  &-white {
+    background-color: #fff;
+    color: $blue;
+
+    &:focus {
+      background-color: shade(#fff, $btn-shade-percent);
+      color: $blue;
+    }
+  }
+
   &-gray {
     background-color: $gray;
     color: $blue;
 
     &:focus {
-      background-color: shade($gray, 5%);
+      background-color: shade($gray, $btn-shade-percent);
       color: $blue;
     }
   }
@@ -28,7 +38,7 @@
     color: #fff;
 
     &:focus {
-      background-color: shade($blue, 5%);
+      background-color: shade($blue, $btn-shade-percent);
     }
 
     &:disabled {
@@ -38,6 +48,17 @@
       &:hover {
         background-color: $blue;
       }
+    }
+  }
+
+
+  &-red {
+    background-color: $red;
+    color: white;
+
+    &:focus {
+      background-color: shade($red, $btn-shade-percent);
+      color: white;
     }
   }
 }
