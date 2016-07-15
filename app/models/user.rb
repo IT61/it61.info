@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
         u.name = auth.info.name
       end
     end
+    SlackService.invite(social.user)
     social.user
   end
 
