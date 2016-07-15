@@ -1,7 +1,7 @@
 section.card.organizator
   .sub-header: h3= header
   .events
-    = render partial: 'events', locals: { events: events, no_events_message: no_events_message }
+    = render partial: '/users/events', locals: { events: events, no_events_message: no_events_message }
   - if my_profile?(user)
     .card-footer
       = link_to footer_button_link, class: 'button' do

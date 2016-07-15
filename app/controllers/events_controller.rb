@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
+  load_and_authorize_resource
+
   def index
   
   end
@@ -45,6 +47,10 @@ class EventsController < ApplicationController
   end
 
   def unpublish
+
+  end
+
+  def participate
 
   end
 

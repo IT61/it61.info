@@ -14,4 +14,16 @@ class ApplicationController < ActionController::Base
   def render_403
     render :status => :forbidden, :text => 'Forbidden access'
   end
+
+  def render_404
+    render page_path('404')
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    render_404
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render_404
+  end
 end
