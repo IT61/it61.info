@@ -50,7 +50,7 @@ class Event < ActiveRecord::Base
     toggle :published
     self.published_at = DateTime.current
     save!
-    # send_slack_notification
+    send_slack_notification
     self
   end
 
@@ -67,7 +67,8 @@ class Event < ActiveRecord::Base
     [formatted_started_at, title].compact.join(" ")
   end
 
-  # def send_slack_notification
-  #   Event::SlackIntegration.notify(self)
-  # end
+  def send_slack_notification
+    SlackService.notify(self)
+  end
+
 end
