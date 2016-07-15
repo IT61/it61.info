@@ -8,10 +8,10 @@ function deleteAvatar(userId) {
     });
 }
 
-function uploadAvatar($imageForm, userId) {
+function uploadAvatar($imageForm) {
     var formData = new FormData($imageForm[0]);
     $.ajax({
-        url: '/users/' + userId + '/update_avatar',
+        url: $imageForm.attr('avatar_path'),
         type: 'POST',
         xhr: function () {  // Custom XMLHttpRequest
             var myXhr = $.ajaxSettings.xhr();

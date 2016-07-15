@@ -34,8 +34,13 @@
 
   .picture {
     width: auto;
+    max-width: 350px;
+    @include media($medium-viewport) {
+      max-width: 240px;
+    }
     @include media($mobile-viewport) {
       width: 100%;
+      max-width: 100%;
     }
   }
 
