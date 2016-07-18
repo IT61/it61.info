@@ -1,13 +1,15 @@
 .sidebar
   .sidebar__logo
     .sidebar__logo_img
-  .sidebar__profile
-    i.fa.fa-slack
-    | &nbsp; Мой профиль
+  - unless current_user.nil?
+    .sidebar__profile
+      i.fa.fa-slack
+      | &nbsp;
+      = active_link_to t(".my_profile"), profile_path
   ul.sidebar__menu
-    li Сообщество
-    = active_link_to t('.events'), events_path, wrap_tag: :li
-    li Личности
-    li Фото
-    li Slack
-    li Спонсорам
+    /= active_link_to t(".community"), events_path, wrap_tag: :li
+    = active_link_to t(".events"), events_path, wrap_tag: :li
+    = active_link_to t(".personalities"), users_path, wrap_tag: :li
+    /= active_link_to t(".photos"), photos_path, wrap_tag: :li
+    /= active_link_to t(".slack"), events_path, wrap_tag: :li
+    /= active_link_to t(".sponsorship"), events_path, wrap_tag: :li

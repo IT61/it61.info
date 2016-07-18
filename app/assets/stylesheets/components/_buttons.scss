@@ -51,6 +51,17 @@
     }
   }
 
+
+  &-red {
+    background-color: $red;
+    color: white;
+
+    &:focus {
+      background-color: shade($red, $btn-shade-percent);
+      color: white;
+    }
+  }
+
   &-light-blue {
     background-color: #5daef2;
     color: #fff;

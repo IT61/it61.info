@@ -16,6 +16,16 @@
     transition: all $input-transition-speed ease;
   }
 
+  .sub-label {
+    padding-top: $input-spacer;
+    top: 36px;
+    font-size: .7em;
+    width: 100%;
+    position: absolute;
+    color: #777;
+    text-align: center;
+  }
+
   input,
   textarea {
     display: block;
