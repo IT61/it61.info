@@ -10,7 +10,7 @@
     pointer-events: none;
     padding-left: $input-spacer;
     z-index: 1;
-    font-size: 16px;
+    font-size: $input-font-size;
     font-weight: normal;
     color: #adadad;
     transition: all $input-transition-speed ease;
@@ -52,7 +52,7 @@
     color: #000;
 
     ~ label {
-      font-size: 16px;
+      font-size: $input-font-size;
       color: $blue;
       top: $input-active-top;
       left: 0;
@@ -69,7 +69,7 @@
 
       &::-webkit-input-placeholder {
         color: $blue;
-        font-size: 16px;
+        font-size: $input-font-size;
         transform: translateY(-20px);
       }
     }
