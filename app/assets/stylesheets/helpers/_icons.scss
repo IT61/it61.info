@@ -27,17 +27,24 @@
     width: 26px;
     height: 15px;
     float: left;
-    background: image_url("arrows.png") no-repeat;
+    background: image_url("arrows.svg") no-repeat;
+    background-size: cover;
+    @include media(max-width 1000px) {
+      width: 17px;
+      height: 10px;
+    }
   }
 
   &-arrow {
-
     &-up {
-      background-position: -5px -29px;
+      background-position: 0 0;
     }
 
     &-down {
-      background-position: -5px -6px;
+      background-position: 0 -15px;
+      @include media(max-width 1000px) {
+        background-position-y: -9px;
+      }
     }
   }
 }

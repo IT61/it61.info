@@ -1,28 +1,28 @@
 .content-background
 .event-container
-  h1.event-title Приходи 27 ноября и проверь свою бизнес-идею на прочность!
+  h1.event-title Приходи и проверь свою бизнес-идею на прочность!
   .cards-group
     .card.event-card
-      = render "shared/share_buttons"
+      .event-share
+        = render "shared/share_buttons"
       .event-logo
         = image_tag "logo-show.png"
       .event-info
-        .icon-events.icon-calendar
-        span 27 ноября 2016, 16:00
-      .event-info
-        .icon-events.icon-marker
-        span ул. Троллейбусная, 24/2в, 5 этаж
-      .event-info
-        .icon-events.icon-link
-        =link_to "http://bit.ly/1MhEgYm", "http://bit.ly/1MhEgYm"
-      .event-info
-        = image_tag "user_default.png", class: "avatar avatar-sm avatar-circle"
-        span Трофим Жугастров (организатор)
-
+        .block-info
+          .icon-events.icon-calendar
+          span 27 ноября 2016, 16:00
+        .block-info
+          .icon-events.icon-marker
+          span ул. Троллейбусная, 24/2в, 5 этаж
+        .block-info
+          .icon-events.icon-link
+          = link_to "http://bit.ly/1MhEgYm", "http://bit.ly/1MhEgYm"
+        .block-info
+          = image_tag "user_default.png", class: "avatar avatar-sm avatar-circle"
+          span Трофим Жугастров (организатор)
       .btn-group.event-buttons
         button.btn.btn-shadow.btn-blue Я пойду
         button.btn.btn-shadow.btn-gray + Google calendar
-
     .card.card-fold
       .card-header
         h1 Описание
