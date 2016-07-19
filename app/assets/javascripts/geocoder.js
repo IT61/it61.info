@@ -29,7 +29,6 @@ $(document).ready(function () {
         setOursSuggestedLocations: function (locations) {
             model.suggestedLocations.ours = locations;
             updateContainer($oursContainer, locations);
-            // debugger;
         },
         approveSuggestion: function (location) {
             controller.reset();
@@ -37,10 +36,11 @@ $(document).ready(function () {
             if (location.place_title) {
                 $placeTitle.val(location.place_title);
             }
-            // fill input
             $placeAddress.val(location.meta.text);
             $placeTitle.trigger('show-input');
-            // sync hidden fields
+            $placeAddress.trigger('show-input');
+            buildMap(location);
+            $('#map-trigger').show();
             $autoPlaceAddress.val(location.meta.text);
             $autoPlaceLatitude.val(location.coordinates[0]);
             $autoEventLongitude.val(location.coordinates[1]);
@@ -48,7 +48,8 @@ $(document).ready(function () {
         reset: function () {
             model.suggestedLocations = {};
             model.approvedLocations = [];
-            // clear hidden fields
+            destroyMap();
+            $('#map-trigger').hide();
             $autoPlaceAddress.val('');
             $autoPlaceLatitude.val('');
             $autoEventLongitude.val('');
@@ -119,8 +120,7 @@ $(document).ready(function () {
             $.ajax({
                 url: '/events/places',
                 data: {
-                    title: titleInput,
-                    address: addressInput
+                    title: titleInput
                 },
                 dataType: 'json'
             }).done(function(data) {
@@ -151,15 +151,10 @@ $(document).ready(function () {
             }
         }
 
-        // we search in our database by title and address
-        // we search in yandex only by address
         $placeAddress.on('input', defer(searchYandex));
         $placeAddress.on('focus', defer(searchYandex));
-        $placeAddress.on('input', defer(searchOurs));
-        $placeAddress.on('focus', defer(searchOurs));
-
-        $placeTitle.on('input', searchOurs);
-        $placeTitle.on('focus', searchOurs);
+        $placeTitle.on('input', defer(searchOurs));
+        $placeTitle.on('focus', defer(searchOurs));
     }
 
     $('body').on('click', function () {
@@ -167,4 +162,36 @@ $(document).ready(function () {
     });
 
     ymaps.ready(bindGeocoder);
+
+    var myMap;
+    function buildMap(location) {
+        destroyMap();
+
+        myMap = new ymaps.Map('map', {
+            center: location.coordinates,
+            zoom: 14
+        }, {
+            searchControlProvider: 'yandex#search'
+        });
+
+        var myPlacemark = new ymaps.Placemark(location.coordinates, {
+            balloonContent: location.meta.text
+        });
+
+        myMap.controls.add(
+            new ymaps.control.ZoomControl()
+        );
+
+        myMap.geoObjects.add(myPlacemark);
+
+        $('.modal-close').first().onclick = function () {
+            myMap.destroy();
+        };
+    }
+    function destroyMap() {
+        if (myMap) {
+            myMap.destroy();
+            myMap = undefined;
+        }
+    }
 });

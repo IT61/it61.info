@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "locations", ["event_id", "place_id", "extra_info"], name: "index_locations_on_event_id_and_place_id_and_extra_info", unique: true, using: :btree
+
   create_table "participant_entry_forms", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.integer  "event_id",    null: false
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(version: 20160715095915) do
   end
 
   add_index "places", ["address"], name: "index_places_on_address", using: :btree
+  add_index "places", ["title", "address", "latitude", "longitude"], name: "index_places_on_title_and_address_and_latitude_and_longitude", unique: true, using: :btree
   add_index "places", ["title"], name: "index_places_on_title", using: :btree
 
   create_table "social_accounts", force: :cascade do |t|

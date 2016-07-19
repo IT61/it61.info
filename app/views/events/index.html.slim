@@ -9,25 +9,28 @@
         i class="fa fa-caret-down dropdown-icon"
       nav role="navigation"
         ul#js-navigation-menu
-          li.nav-link.active
-            a href="#" Ближайшие
-          li.nav-link
-            a href="#" Прошедшие
-          li.nav-link
-            a href="#" Создать новое
+          li.nav-link class=('active' if current_page?(upcoming_events_path))
+            = link_to "Ближайшие", upcoming_events_path
+          li.nav-link class=('active' if current_page?(past_events_path))
+            = link_to "Прошедшие", past_events_path
+          li.nav-link class=('active' if current_page?(new_event_path))
+            = link_to "Создать новое", new_event_path
 .container
-  .input-search
-    span class="fa fa-search"
-    input type="search"
-  .event-container
-    .card.event-card
-      .event-logo
-        = image_tag "47hours.png"
-      .event-info
-        h2 Приходи и проверь свою бизнес-идею на прочность!
-        p 6 декабря 2015, 16:00
-        p.place ул. Суворова 91, 7 этаж, Южный IT-парк
-      .card-footer
-        button.btn Подробнее
-      button.btn.btn-blue.button-participate Я пойду!
-  button.btn.btn-blue.event-more Показать ещё
+  - if @no_upcoming_events_message
+    .no-upcoming-events
+      h3 Пока ничего не запланировано,
+      h5 но вы можете это исправить
+      = image_tag "it61_smile.svg", class: 'smile'
+      = link_to new_event_path do
+        button.btn.btn-blue Создать мероприятие
+      h5
+        | Или посмотрите&nbsp;
+        = link_to "прошедшие мероприятия", past_events_path
+  - else
+    .input-search
+      span class="fa fa-search"
+      input type="search"
+    .events-container
+      = render partial: 'events/cards'
+    = link_to request.path, class: 'load-more' do
+      button.btn.btn-blue.btn-more Показать ещё

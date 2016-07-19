@@ -4,23 +4,31 @@ section.details
       = f.text_field :title, required: true
       label Название*
   .time-container
-    = f.label :started_at, 'Дата и время проведения*'
-    = datetime_select :event, :started_at, selected: Date.today, time_separator: '<span class="time-separator">:</span>', datetime_separator: '<br class="datetime-separator"/>', required: true
+    = f.label :started_at, 'Дата проведения*'
+    = date_select :event, :started_at_date, selected: Date.today, required: true
+  .time-container
+    = f.label :started_at, 'Время проведения*'
+    = time_select :event, :started_at_time, selected: Date.today, time_separator: '<span class="time-separator">:</span>', required: true
   .event-association-field
     .input-float-label
-      = text_field_tag 'event[place_title]', nil, id: 'place_title'
-      label required="true" Название места
+      = text_field_tag 'event[place_title]', nil, id: 'place_title', autocomplete: 'off'
+      label required="true" Место проведения*
   .event-association-field
     .input-float-label
       input#location type="text" autocomplete="off"
-      label Место проведения*
+      label Точный адрес*
       div#dropdown-container
         div#ours-dropdown-container
         div#yandexs-dropdown-container
-      = text_field_tag 'event[address]', nil, class: 'unchangeable-input', required: true, disabled: true
+  div.modal
+    label for="modal-1"
+      a.btn.btn-gray.modal-trigger#map-trigger Посмотреть карту
+    input.modal-state#modal-1 type="checkbox"
+    div.modal-fade-screen
+      div.modal-inner
+        div.modal-content
+          div#map
+        /div.modal-close for="modal-1" Ok / do we need close button on modal?
+      = text_field_tag 'event[address]', nil, class: 'unchangeable-input', required: true, disabled: true, type: 'hidden'
       = text_field_tag 'event[latitude]', nil, class: 'unchangeable-input', required: true, disabled: true, type: 'hidden'
       = text_field_tag 'event[longitude]', nil, class: 'unchangeable-input', required: true, disabled: true, type: 'hidden'
-  .event-association-field
-    .input-float-label
-      = text_area_tag 'event[extra_info]', nil
-      = f.label :extra_info, 'Дополнительная информация'

@@ -181,31 +181,6 @@ $card-padding: 15px;
         }
       }
     }
-
-    .bottom-buttons {
-      @include clearfix;
-      @include media($mobile-viewport) {
-        bottom: 23px;
-        position: static;
-        float: none;
-        margin-top: 25px;
-      }
-      @include media($medium-viewport) {
-        bottom: 23px;
-      }
-      margin-top: 25px;
-      float: right;
-
-      .btn {
-        @include media($mobile-viewport) {
-          width: 100%;
-          margin: 5px 0;
-          padding: 1em 1em;
-          font-size: 1.1em;
-        }
-        margin-right: $card-padding;
-      }
-    }
   }
 
   .mamont {
@@ -282,5 +257,47 @@ $card-padding: 15px;
     @include media($mobile-viewport) {
       @include span-columns(12);
     }
+  }
+
+  .event {
+    @include outer-container();
+    .small-picture-container {
+      @include span-columns(3);
+      width: 50px;
+      height: 50px;
+      .small-picture {
+        max-width: 50px;
+      }
+    }
+
+    .text {
+      @include span-columns(9);
+    }
+  }
+
+}
+
+.bottom-buttons {
+  @include clearfix;
+  @include media($mobile-viewport) {
+    bottom: 23px;
+    position: static;
+    float: none;
+    margin-top: 25px;
+  }
+  @include media($medium-viewport) {
+    bottom: 23px;
+  }
+  margin-top: 25px;
+  float: right;
+
+  .btn {
+    @include media($mobile-viewport) {
+      width: 100%;
+      margin: 5px 0;
+      padding: 1em 1em;
+      font-size: 1.1em;
+    }
+    margin-right: $card-padding;
   }
 }

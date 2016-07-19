@@ -1,0 +1,18 @@
+.users {
+  &-container {
+    @include clearfix();
+
+    @include media(max-width 500px) {
+      .user-block {
+        @include media-left;
+      }
+    }
+
+    @include media(min-width 500px 10) {
+      .user-block {
+        @include span-columns(1);
+        @include user-card;
+      }
+    }
+  }
+}

@@ -66,6 +66,10 @@
         margin-right: 70px;
         width: auto;
       }
+
+      &.active a {
+        color: #fff;
+      }
     }
 
     a {

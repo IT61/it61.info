@@ -12,8 +12,10 @@ gem "devise"
 gem "draper"
 gem "flutie"
 gem "high_voltage"
+gem "json"
 gem "jquery-rails"
 gem "neat", "~> 1.7.0"
+gem "nokogiri"
 gem "normalize-rails", "~> 3.0.0"
 gem "omniauth"
 gem "omniauth-github"
@@ -34,6 +36,7 @@ gem "sprockets", ">= 3.0.0"
 gem "sprockets-es6"
 gem "suspenders"
 gem "uglifier"
+gem 'will_paginate'
 
 group :development do
   gem "quiet_assets"

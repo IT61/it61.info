@@ -2,7 +2,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    return if user.nil? || user.role.nil?
+
+    if user.nil? || user.role.nil?
+      can :read, Event, published?
+      can :read, User
+      can :read, Company
+      return
+    end
 
     alias_action :create, :read, :update, :destroy, :to => :crud
 
@@ -18,6 +24,7 @@ class Ability
 
     can [:read, :participate], Event, published?
     can [:create, :read, :update], Event, organizer?(user)
+    can :places, Event
 
     can :show, User
     can :crud, User, id: user.id

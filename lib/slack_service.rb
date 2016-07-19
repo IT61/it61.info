@@ -17,12 +17,15 @@ class SlackService
   end
 
   def send_event_notification(event)
+    return unless service_configured?
     attachment = build_attachment(event)
     # notifier.ping I18n.t('slack_integration.new_event'), attachments: [attachment]
     notifier.ping 'Анонсировано новое мероприятие', attachments: [attachment]
   end
 
   def invite_new_user(user)
+    return unless service_configured?
+
     url = URI.parse(raw_api_url('users.admin.invite'))
     params = build_user_invite_params(user)
     response = Net::HTTP.post_form(url, params)
@@ -39,6 +42,11 @@ class SlackService
   end
 
   private
+
+  def service_configured?
+    keys = ['SLACK_TEAM_DOMAIN', 'SLACK_WEBHOOK_URL', 'SLACK_DEFAULT_CHANNELS', 'SLACK_ADMIN_TOKEN'].freeze
+    keys.none? { |k| ENV[k].nil? }
+  end
 
   def raw_api_url(action)
     "https://#{ENV['SLACK_TEAM_DOMAIN']}/api/#{action}"

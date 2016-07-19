@@ -3,25 +3,28 @@ require 'rails_helper'
 RSpec.describe EventsController, type: :controller do
   before :each do
     @title = 'New title'
-    @started_at = Time.now
+    @started_at = Time.now.change(sec: 0).change(usec: 0)
     @description = 'Test'
     @data = {
       title: @title,
       title_image: 'img.png',
-      started_at: @started_at,
+      'started_at_date(1i)' => @started_at.year,
+      'started_at_date(2i)' => @started_at.month,
+      'started_at_date(3i)' => @started_at.day,
+      'started_at_time(4i)' => @started_at.hour,
+      'started_at_time(5i)' => @started_at.min,
       description: @description,
       place_title: 'test_title',
       address: 'some address',
       latitude: 47.2268489,
-      longitude: 39.7149856,
-      extra_info: 'Этаж 25'
+      longitude: 39.7149856
     }
   end
 
   describe 'GET #index' do
-    it 'returns http success' do
+    it 'returns http redirect' do
       get :index
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(302)
     end
   end
 
@@ -32,7 +35,7 @@ RSpec.describe EventsController, type: :controller do
       post :create, event: @data
       event = assigns(:event)
       expect(event.title).to eq(@title)
-      expect(event.started_at).to eq(@started_at.to_s)
+      expect(event.started_at).to eq(@started_at.utc)
     end
 
     it 'populates event with location' do

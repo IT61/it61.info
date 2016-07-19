@@ -1,4 +1,4 @@
-.event {
+.events {
 
   &-container {
     @include clearfix;
@@ -63,17 +63,13 @@
 
     img {
       height: 240px;
+      width: 240px;
     }
   }
 
   &-info {
     position: relative;
     height: 240px;
-  }
-
-  &-more {
-    display: block;
-    margin: 30px auto;
   }
 
   @include media(min-width 1000px max-width 1250px) {
@@ -152,10 +148,6 @@
         transition: opacity 0.2s ease-out;
       }
     }
-
-    &-more {
-      width: 100%;
-    }
   }
 
   @include media(max-width 350px) {
@@ -167,4 +159,33 @@
       font-size: 14px;
     }
   }
+}
+
+.no-upcoming-events {
+  color: #777777;
+  text-align: center;
+  margin: 5em 0;
+
+  h3 {
+    font-size: 23px;
+    margin: .5em 0;
+    font-weight: 500;
+  }
+
+  h5 {
+    margin: .5em 0;
+    font-size: 16px;
+  }
+
+  .smile {
+    display: block;
+    margin: 2em auto;
+    width: 70px;
+    height: 70px;
+  }
+
+  button {
+    margin: 2em 0;
+  }
+
 }
