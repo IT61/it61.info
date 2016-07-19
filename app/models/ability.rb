@@ -22,7 +22,7 @@ class Ability
       # todo: can view and edit event participants
     end
 
-    can [:read, :participate], Event, published?
+    can [:read, :participate, :register], Event, published?
     can [:create, :read, :update], Event, organizer?(user)
     can :places, Event
 
