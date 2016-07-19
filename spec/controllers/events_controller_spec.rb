@@ -17,8 +17,7 @@ RSpec.describe EventsController, type: :controller do
       place_title: 'test_title',
       address: 'some address',
       latitude: 47.2268489,
-      longitude: 39.7149856,
-      extra_info: 'Этаж 25'
+      longitude: 39.7149856
     }
   end
 

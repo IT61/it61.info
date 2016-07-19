@@ -61,8 +61,17 @@ $special-break: new-breakpoint(max-width 1200px 8);
   }
 
   #yandexs-dropdown-container {
-
   }
+}
+
+#map {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+#map-trigger {
+  display: none;
 }
 
 .new-event-card {
@@ -295,12 +304,24 @@ input[type="file"] {
     cursor: pointer
 }
 
-.register-footer {
+.new-event-register-footer {
   @include media($new-event-mobile) {
     margin: 0;
   }
-  .buttons {
+  .new-event-buttons {
+    float: right;
+    @include media($new-event-tablet) {
+      width: 100%;
+      float: none;
+    }
     @include media($new-event-mobile) {
+      width: 100%;
+      float: none;
+    }
+  }
+
+  .required-fields {
+    @include media($new-event-tablet) {
       width: 100%;
     }
   }

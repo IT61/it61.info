@@ -24,6 +24,7 @@ class Ability
 
     can [:read, :participate], Event, published?
     can [:create, :read, :update], Event, organizer?(user)
+    can :places, Event
 
     can :show, User
     can :crud, User, id: user.id
