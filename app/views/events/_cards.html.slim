@@ -1,0 +1,12 @@
+- @events.each do |e|
+  .card.events-card
+    = link_to e do
+      .events-logo
+        = image_tag e.title_image
+      .events-info
+        h2 #{e.title}
+        p #{e.started_at}
+        p.place #{e.places.first.address}
+    .card-footer
+      = link_to e do
+        button.btn Подробнее

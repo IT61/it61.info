@@ -10,7 +10,14 @@ Rails.application.routes.draw do
   get "profile" => "account#profile"
   get "/events/places" => "events#places"
 
-  resources :events, :companies
+  resources :companies
+
+  resources :events do
+    collection do
+      get "/upcoming" => "events#index", scope: :upcoming
+      get "/past" => "events#index", scope: :past
+    end
+  end
 
   resources :users do
     resource :avatars, only: [:create, :destroy], controller: 'users/avatars'

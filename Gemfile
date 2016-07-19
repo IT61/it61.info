@@ -36,6 +36,7 @@ gem "sprockets", ">= 3.0.0"
 gem "sprockets-es6"
 gem "suspenders"
 gem "uglifier"
+gem 'will_paginate'
 
 group :development do
   gem "quiet_assets"
