@@ -4,25 +4,20 @@ class EventsController < ApplicationController
   respond_to :ics, only: :show
   respond_to :rss, only: :index
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
 
   authorize_resource
 
   def index
-    return show_correct_scope if params[:scope].nil?
+    redirect_to_relevant_scope
+  end
 
-    @events = Event.send(params[:scope])
-    @events = @events.published if current_user.member?
+  def upcoming
+    show_events(:upcoming)
+  end
 
-    @no_upcoming_events_message = (@events.count == 0 and params[:scope] == :upcoming)
-
-    @events = @events.page(params[:page]).decorate
-
-    # TODO: Вынести верстку 'events/index' в отдельный layout
-    view = request.xhr? ? 'events/_cards' : 'events/index'
-    respond_with @events do |f|
-      f.html { render view, layout: !request.xhr? }
-    end
+  def past
+    show_events(:past)
   end
 
   def show
@@ -79,14 +74,28 @@ class EventsController < ApplicationController
 
   private
 
+  def show_events(scope)
+    @events = Event.send(scope).published
+
+    @no_upcoming_events_message = (@events.count == 0 and scope == :upcoming)
+
+    @events = @events.page(params[:page]).decorate
+
+    # TODO: Вынести верстку 'events/index' в отдельный layout
+    view = request.xhr? ? 'events/_cards' : 'events/index'
+    respond_with @events do |f|
+      f.html { render view, layout: !request.xhr? }
+    end
+  end
+
+  def redirect_to_relevant_scope
+    path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
+    redirect_to path
+  end
+
   def parse_date_time(event_params)
     Time.new(event_params['started_at_date(1i)'].to_i, event_params['started_at_date(2i)'].to_i, event_params['started_at_date(3i)'].to_i,
              event_params['started_at_time(4i)'].to_i, event_params['started_at_time(5i)'].to_i, event_params['started_at_time(6i)'].to_i)
-  end
-  
-  def show_correct_scope
-    path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
-    redirect_to path
   end
 
   def to_yand_obj(place)

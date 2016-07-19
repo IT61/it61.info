@@ -3,14 +3,15 @@ class Ability
 
   def initialize(user)
 
+    alias_action :upcoming, :past, to: :index_categories
+    alias_action :create, :read, :update, :destroy, :to => :crud
+
     if user.nil? || user.role.nil?
-      can :read, Event, published?
+      can [:read, :index_categories], Event, published?
       can :read, User
       can :read, Company
       return
     end
-
-    alias_action :create, :read, :update, :destroy, :to => :crud
 
     # todo: add rules for companies later
 
@@ -22,7 +23,7 @@ class Ability
       # todo: can view and edit event participants
     end
 
-    can [:read, :participate], Event, published?
+    can [:read, :participate, :index_categories], Event, published?
     can [:create, :read, :update], Event, organizer?(user)
     can :places, Event
 

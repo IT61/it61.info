@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   resources :events do
     collection do
-      get "/upcoming" => "events#index", scope: :upcoming
-      get "/past" => "events#index", scope: :past
+      get "/upcoming" => "events#upcoming"
+      get "/past" => "events#past"
     end
   end
 
