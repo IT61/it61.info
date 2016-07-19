@@ -1,25 +1,20 @@
 // Input float label
 $(document).ready(function () {
-    var $input = $('.input-float-label input');
 
-    $input.blur(function () {
-        if (this.value !== '') {
-            $(this).addClass('top-label');
-        } else {
-            $(this).removeClass('top-label');
-        }
-    });
+    var $input = $(".input-float-label input, textarea");
 
-    if ($input.val() !== '') {
-        $input.addClass('top-label');
+    $input.on('blur show-input', function () {
+        $(this).toggleClass('top-label', this.value !== "");
+    }).trigger('show-input');
+
+    // Autoresize textarea
+    function h(element) {
+        $(element).css({'height': 'auto', 'overflow-y': 'hidden'}).height(element.scrollHeight);
     }
 
-    $input.on('show-input', function(event) {
-        if (event.target.value !== '') {
-            $(this).addClass('top-label');
-        }
-        else {
-            $(this).removeClass('top-label');
-        }
+    $('textarea').each(function () {
+        h(this);
+    }).on('input', function () {
+        h(this);
     });
 });

@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.datetime "started_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "registration_type"
+    t.integer  "participants_limit"
   end
 
   add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
@@ -61,6 +63,19 @@ ActiveRecord::Schema.define(version: 20160715095915) do
   end
 
   add_index "locations", ["event_id", "place_id", "extra_info"], name: "index_locations_on_event_id_and_place_id_and_extra_info", unique: true, using: :btree
+
+  create_table "participant_entry_forms", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "event_id",    null: false
+    t.text     "reason",      null: false
+    t.string   "profession",  null: false
+    t.text     "suggestions"
+    t.integer  "confidence",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "participant_entry_forms", ["user_id", "event_id"], name: "index_participant_entry_forms_on_user_id_and_event_id", unique: true, using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "title",      null: false
