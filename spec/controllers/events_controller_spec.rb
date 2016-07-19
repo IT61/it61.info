@@ -17,15 +17,14 @@ RSpec.describe EventsController, type: :controller do
       place_title: 'test_title',
       address: 'some address',
       latitude: 47.2268489,
-      longitude: 39.7149856,
-      extra_info: 'Этаж 25'
+      longitude: 39.7149856
     }
   end
 
   describe 'GET #index' do
-    it 'returns http success' do
+    it 'returns http redirect' do
       get :index
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(302)
     end
   end
 
