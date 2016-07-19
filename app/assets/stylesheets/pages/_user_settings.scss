@@ -1,0 +1,59 @@
+.inner-container {
+  margin-top: 100px;
+}
+
+.settings-card {
+  @include outer-container();
+  width: 100%;
+  margin: 0 auto;
+
+  .with-padding {
+    @include clearfix();
+    padding: 28px;
+  }
+
+  .notification-input {
+    margin: 1.3em 0;
+
+    @include outer-container();
+    @include media($mobile-viewport) {
+      font-size: 1.2em;
+    }
+
+    .left {
+      @include media($mobile-viewport) {
+        @include span-columns(2);
+      }
+      @include span-columns(1);
+      @include omega()
+    }
+
+    .right {
+      @include media($mobile-viewport) {
+        @include span-columns(10);
+      }
+      @include span-columns(11);
+      @include omega()
+    }
+    .switch {
+      @include media($mobile-viewport) {
+        top: 3px;
+      }
+      margin-right: 25px;
+      input {
+        + .checkbox {
+          @include media($mobile-viewport) {
+            height: 17px;
+            width: 39px;
+          }
+          &::after {
+            @include media($mobile-viewport) {
+              @include size(20px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

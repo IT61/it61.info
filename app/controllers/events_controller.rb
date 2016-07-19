@@ -39,7 +39,7 @@ class EventsController < ApplicationController
       e.title = ep[:title]
       e.title_image = ep[:title_image]
       e.description = ep[:description]
-      e.started_at = ep[:started_at]
+      e.started_at = parse_date_time ep
       e.organizer = current_user
       e.locations += [new_location_with_place]
     end
@@ -79,6 +79,11 @@ class EventsController < ApplicationController
 
   private
 
+  def parse_date_time(event_params)
+    Time.new(event_params['started_at_date(1i)'].to_i, event_params['started_at_date(2i)'].to_i, event_params['started_at_date(3i)'].to_i,
+             event_params['started_at_time(4i)'].to_i, event_params['started_at_time(5i)'].to_i, event_params['started_at_time(6i)'].to_i)
+  end
+  
   def show_correct_scope
     path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
     redirect_to path
@@ -99,7 +104,8 @@ class EventsController < ApplicationController
         :title,
         :description,
         :title_image,
-        :started_at,
+        :started_at_date,
+        :started_at_time,
         :extra_info,
         :place_title,
         :address,

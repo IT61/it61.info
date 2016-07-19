@@ -1,0 +1,41 @@
+.content-background
+main.container.profile-container
+  .inner-container
+    h1.my-profile Настройки профиля
+    section.card.settings-card
+      = form_for @user, url: settings_update_path do |f|
+        .with-padding
+          h2.sub-header Уведомления
+          .notification-input
+            .left
+              label.switch
+                = f.check_box :email_reminders
+                .checkbox
+            .right
+              span Я хочу получать e-mail уведомления о новых мероприятиях
+          / no functionality for now
+          /.notification-input
+            .left
+              label.switch
+                input type="checkbox"
+                .checkbox
+            .right
+              span Я хочу получать e-mail уведомления о новых вакансиях
+          /.notification-input
+            .left
+              label.switch
+                input type="checkbox"
+                .checkbox
+            .right
+              span Я хочу получать e-mail уведомления о новых компаниях
+          .notification-input
+            .left
+              label.switch
+                = f.check_box :sms_reminders
+                .checkbox
+            .right
+              span Я хочу получать SMS оповещения о мероприятиях, в которых я участвую
+
+          .bottom-buttons
+            button.btn.btn-blue type="submit" Сохранить
+            button.btn.btn-gray type="reset" Отмена

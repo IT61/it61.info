@@ -166,6 +166,9 @@ section {
 
 .time-container {
   @include clearfix;
+
+  margin-bottom: 30px;
+
   .left {
     float: left;
     width: 67%;

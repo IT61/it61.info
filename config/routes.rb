@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   get "sign/in" => "account#sign_in"
   get "sign/up/complete" => "account#sign_up_complete"
   get "profile" => "account#profile"
+
+  scope "profile" do
+    get   "edit" => "account#edit"
+    get   "settings" => "account#settings"
+    patch "settings_update" => "account#settings_update"
+  end
+
   get "/events/places" => "events#places"
 
   resources :companies
