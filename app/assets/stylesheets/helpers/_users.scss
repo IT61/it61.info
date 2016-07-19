@@ -1,0 +1,11 @@
+.avatar {
+
+  &-sm {
+    width: 30px;
+    height: 30px;
+  }
+
+  &-circle {
+    border-radius: 50%;
+  }
+}

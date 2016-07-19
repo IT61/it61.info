@@ -73,11 +73,11 @@
 
     .text {
       &-short {
-        padding-top: 7px;
+        padding-top: 6px;
       }
 
       &-long {
-        padding-top: 43px;
+        padding-top: 37px;
         @include media($register-mobile) {
           padding-top: 0;
         }
@@ -89,11 +89,11 @@
       padding-right: 0;
 
       &-long {
-        @include curve-association(106px);
+        @include curve-association(99px);
       }
 
       &-short {
-        @include curve-association(43px);
+        @include curve-association(40px);
       }
     }
 
