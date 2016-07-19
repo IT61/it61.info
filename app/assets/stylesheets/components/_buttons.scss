@@ -125,4 +125,12 @@
       margin-right: 0;
     }
   }
+
+  &-more {
+    display: block;
+    margin: 30px auto;
+    @include media(max-width $medium-screen) {
+      width: 100%;
+    }
+  }
 }

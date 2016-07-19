@@ -1,0 +1,28 @@
+.header-title
+  .container
+    h1 Нас уже больше 1000 человек!
+.navigation
+  .container
+    .navigation-wrapper
+      a#js-mobile-menu.navigation-menu-button
+        span Меню
+        i class="fa fa-caret-down dropdown-icon"
+      nav role="navigation"
+        ul#js-navigation-menu
+          li.nav-link.active
+            a href="#" Активные
+          li.nav-link
+            a href="#" Недавно добавленные
+.container
+  /TODO: Сделать поиск по пользователям
+  .input-search
+    span class="fa fa-search"
+    input type="search"
+  .users-container
+    - @users.each do |user|
+      .user-block
+        /TODO: Выводить нормальный аватар
+        = image_tag "user_default.png", class: "image"
+        .text = user.name
+  /TODO: Сделать пагинацию
+  button.btn.btn-blue.btn-more Показать ещё
