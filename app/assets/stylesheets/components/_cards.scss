@@ -1,14 +1,64 @@
 .card {
   border-radius: 2px;
-  box-shadow: 0 3px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
   background: #fff;
 
-  .card-footer {
+  &-header {
+    padding: 33px;
+    border-bottom: 1px solid #ccc;
+
+    h1 {
+      display: inline;
+      margin: 0;
+      font-size: 24px;
+    }
+
+    @include media(max-width 1000px) {
+      padding: 15px;
+
+      h1 {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &-body {
+    padding: 30px;
+  }
+
+  &-fold {
+    + .hidden {
+      .card-body {
+          display: none;
+      }
+    }
+
+    .btn-fold {
+      color: #d5d5d5;
+      float: right;
+
+      &:focus, &:active {
+        background: #fff;
+      }
+
+      @include media(max-width 1000px) {
+        padding: 7px 15px;
+      }
+    }
+  }
+
+  &-footer {
     border-top: 1px solid #ccc;
     text-align: center;
     color: #337ab7;
     text-transform: uppercase;
     font-size: 1em;
     font-weight: 600;
+  }
+}
+
+.cards-group {
+  .card {
+    margin-bottom: 11px;
   }
 }

@@ -1,0 +1,50 @@
+.icon {
+  &-events {
+    float: left;
+    background: image_url("event.svg") no-repeat;
+    background-size: cover;
+  }
+
+  &-calendar {
+    width: 27px;
+    height: 29px;
+    background-position: 0 0;
+  }
+
+  &-marker {
+    width: 24px;
+    height: 33px;
+    background-position: 1px -26px;
+  }
+
+  &-link {
+    width: 24px;
+    height: 33px;
+    background-position: 0 -60px;
+  }
+
+  &-arrows {
+    width: 26px;
+    height: 15px;
+    float: left;
+    background: image_url("arrows.svg") no-repeat;
+    background-size: cover;
+    @include media(max-width 1000px) {
+      width: 17px;
+      height: 10px;
+    }
+  }
+
+  &-arrow {
+    &-up {
+      background-position: 0 0;
+    }
+
+    &-down {
+      background-position: 0 -15px;
+      @include media(max-width 1000px) {
+        background-position-y: -9px;
+      }
+    }
+  }
+}
