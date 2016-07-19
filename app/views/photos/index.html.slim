@@ -1,0 +1,12 @@
+.page-header
+  .page-title
+    h3 Фото
+    h5 Наш официальный хэштег #IT61 в Instagram
+.photo
+  .photo-list
+    - @photos.each do |item|
+      .photo-item
+        a.photo [
+            href="https://instagram.com/p/#{item['code']}/"
+            style="background-image: url('#{item['thumbnail_src']}')"
+          ]

@@ -355,8 +355,10 @@ DEPENDENCIES
   fuubar
   high_voltage
   jquery-rails
+  json
   launchy
   neat (~> 1.7.0)
+  nokogiri
   normalize-rails (~> 3.0.0)
   omniauth
   omniauth-facebook

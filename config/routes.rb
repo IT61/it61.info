@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :users do
     resource :avatars, only: [:create, :destroy], controller: 'users/avatars'
   end
+
+  resources :photos, only: [:index]
 end
