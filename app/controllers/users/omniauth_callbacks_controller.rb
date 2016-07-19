@@ -34,7 +34,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to profile_url
   end
 
-  def get_user_from_omniauth(kind)
+  def get_user_from_omniauth(_kind)
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
       sign_in_and_redirect @user # this will throw if @user is not activated

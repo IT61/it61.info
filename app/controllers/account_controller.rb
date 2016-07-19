@@ -4,7 +4,6 @@ class AccountController < ApplicationController
   before_action :fetch_user, only: [:profile, :settings, :edit]
 
   def sign_in
-
   end
 
   def sign_up_complete
@@ -33,7 +32,7 @@ class AccountController < ApplicationController
     else
       flash.now[:error] = "Не получилось сохранить настройки."
       fetch_user
-      render 'settings'
+      render "settings"
     end
   end
 

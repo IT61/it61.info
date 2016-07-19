@@ -73,5 +73,4 @@ class Event < ActiveRecord::Base
   def send_slack_notification
     SlackService.notify(self)
   end
-
 end

@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     if user.nil? || user.role.nil?
       can :read, Event, published?
       can :read, User
@@ -10,7 +10,7 @@ class Ability
       return
     end
 
-    alias_action :create, :read, :update, :destroy, :to => :crud
+    alias_action :create, :read, :update, :destroy, to: :crud
 
     # todo: add rules for companies later
 
