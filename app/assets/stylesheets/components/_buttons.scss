@@ -61,4 +61,12 @@
       color: white;
     }
   }
+
+  &-more {
+    display: block;
+    margin: 30px auto;
+    @include media(max-width $medium-screen) {
+      width: 100%;
+    }
+  }
 }

@@ -27,3 +27,46 @@
     border-bottom: 1px solid $field-association-color;
   }
 }
+
+// Блок вида слева картинка, справа текст
+@mixin media-left {
+  display: table;
+  margin-bottom: 15px;
+
+  .image {
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    margin-right: 19px;
+  }
+
+  .text {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: 300;
+    color: #100f0f;
+  }
+}
+
+// Карточка пользователя
+@mixin user-card {
+  width: 121px;
+  margin-right: 7px;
+  margin-bottom: 30px;
+  overflow: hidden;
+
+  .image {
+    width: 121px;
+    height: 122px;
+    margin-bottom: 8px;
+  }
+
+  .text {
+    text-align: center;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    clear: both;
+  }
+}
