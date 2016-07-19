@@ -89,7 +89,7 @@ class EventsController < ApplicationController
   private
 
   def entry_form_params
-    params.require(:participant_entry_form).permit('reason', 'profession', 'suggestions', 'confidence')
+    params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
   end
 
   def unpublish
