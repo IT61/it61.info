@@ -1,0 +1,10 @@
+PreCommit:
+  RuboCop:
+    enabled: true
+    command: ["bundle", "exec", "rubocop"]
+  Brakeman:
+    enabled: true
+  ScssLint:
+    enabled: true
+  SlimLint:
+    enabled: true
