@@ -31,7 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def add_social_to_current_user(kind)
     current_user.add_social(request.env["omniauth.auth"])
     set_flash_message(:notice, :success, kind: kind) if is_navigational_format?
-    redirect_to profile_url
+    redirect_to edit_url
   end
 
   def get_user_from_omniauth(_kind)

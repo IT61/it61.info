@@ -37,10 +37,10 @@ class User < ApplicationRecord
 
   # Авторизация/регистрация пользователя
   def self.from_omniauth(auth)
-    social = SocialAccount.where(provider: auth.provider, uid: auth.uid).first_or_create do |account|
-      account.provider = auth.provider
-      account.uid = auth.uid
-      account.user = User.create do |u|
+    social = SocialAccount.where(provider: auth.provider, uid: auth.uid).first_or_create do |soc|
+      soc.provider = auth.provider
+      soc.uid = auth.uid
+      soc.user = User.create do |u|
         u.email = auth.info.email unless auth.info.email.nil?
         u.name = auth.info.name
       end

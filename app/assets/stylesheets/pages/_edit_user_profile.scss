@@ -30,7 +30,7 @@
 
 .edit-user-card {
   @include outer-container();
-  margin-bottom: 15px;
+  margin-bottom: $card-padding;
 
   .picture {
     width: auto;
@@ -90,9 +90,6 @@
 
   .bottom-container {
     @include span-columns(12);
-    @include media($mobile-viewport) {
-      border-top: 1px solid #d2d2d2;
-    }
     padding: $card-padding;
 
     h3 {
@@ -127,8 +124,7 @@
 
       > .btn {
         @include media($mobile-viewport) {
-          margin: .2em 0;
-          margin-right: 80%;
+          margin: .2em 30% .2em 0;
         }
         margin: 0 .2em;
         padding: .5em 1.2em;
@@ -138,6 +134,7 @@
 
         span {
           line-height: 1.5em;
+          vertical-align: middle;
         }
         .fa {
           font-size: 1.5em;
@@ -148,11 +145,19 @@
     }
   }
 
-  .bottom-buttons {
+  .edit-profile-bottom-buttons {
+    @include clearfix;
     @include media($mobile-viewport) {
+      bottom: 23px;
+      position: static;
+      float: none;
+      margin-top: 25px;
       width: 100%;
     }
-    float: right;
+    @include media($medium-viewport) {
+      bottom: 23px;
+    }
+
     padding: $card-padding;
 
     .btn {
@@ -161,6 +166,19 @@
         width: 45%;
         text-align: center;
       }
+    }
+
+    margin-top: 25px;
+    float: right;
+
+    .btn {
+      @include media($mobile-viewport) {
+        width: 100%;
+        margin: 5px 0;
+        padding: 1em 1em;
+        font-size: 1.1em;
+      }
+      margin-right: $card-padding;
     }
   }
 

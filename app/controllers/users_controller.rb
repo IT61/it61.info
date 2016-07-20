@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!,   only: [:edit, :destroy]
   before_action :fetch_user,           only: [:show, :edit, :update, :destroy]
 
+  respond_to :html
+
   load_and_authorize_resource
 
   def index
@@ -17,15 +19,18 @@ class UsersController < ApplicationController
 
   def update
     # commit = @user.update user_params
-    @user.assign_attributes first_name: user_params[:first_name], last_name: user_params[:last_name],
-                            email: user_params[:email], phone: user_params[:phone], bio: user_params[:bio]
+    @user.assign_attributes first_name: user_params[:first_name],
+                            last_name: user_params[:last_name],
+                            email: user_params[:email],
+                            phone: user_params[:phone],
+                            bio: user_params[:bio]
     @user.save
     if @user.valid?
-      flash.now[:notice] = "Изменения сохранены"
-      render "edit"
+      flash[:notice] = "Изменения сохранены"
+      respond_with @user, location: edit_path
     else
-      flash.now[:error] = "Ошибка сохранения данных"
-      render "edit"
+      flash[:error] = "Ошибка сохранения данных"
+      respond_with @user, location: edit_path
     end
   end
 
@@ -40,8 +45,19 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit :first_name, :last_name,
-                                 :company_name, :company_site, :company_position,
-                                 :email, :phone, :hash_tag, :bio
+    user_attributes = [
+      :first_name,
+      :last_name,
+      :company_name,
+      :company_site,
+      :company_position,
+      :email,
+      :phone,
+      :hash_tag,
+      :bio
+    ]
+
+    params.require(:user).permit *user_attributes
   end
+
 end
