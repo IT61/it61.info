@@ -10,7 +10,7 @@
       .event-info
         .block-info
           .icon-events.icon-calendar
-          span #{@event.started_at}
+          span #{I18n.l(@event.started_at, format: :date_time_full)}
         .block-info
           .icon-events.icon-marker
           span #{@event.places.first.full_address}

@@ -5,7 +5,7 @@
         = image_tag e.title_image
       .events-info
         h2 #{e.title}
-        p #{e.started_at}
+        p #{I18n.l(e.started_at, format: :date_time_full)}
         p.place #{e.places.first.full_address}
     .card-footer
       = link_to e do

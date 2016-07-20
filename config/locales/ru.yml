@@ -71,3 +71,8 @@ ru:
     - :day
     - :month
     - :year
+
+  time:
+    formats:
+      date_time_full: "%d %B %Y, %H:%M"
+      date_digits: "%d.%m.%y"
