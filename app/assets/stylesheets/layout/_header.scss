@@ -23,8 +23,8 @@
 
   &-wrapper {
     padding: 16px 30px;
-    @include clearfix;
     position: relative;
+    @include clearfix;
   }
 
   .hamburger {
@@ -70,7 +70,7 @@
 
 .header-title {
   background: $blue;
-  @include padding(80px null 25px null);
+  @include padding(0 0 25px 0);
   @include media(max-width $medium-screen) {
     padding-top: 40px;
   }
