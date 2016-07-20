@@ -14,9 +14,10 @@
         .block-info
           .icon-events.icon-marker
           span #{@event.places.first.full_address}
-        .block-info
-          .icon-events.icon-link
-          = link_to "http://bit.ly/1MhEgYm", "http://bit.ly/1MhEgYm"
+        - unless @event.link.nil?
+          .block-info
+            .icon-events.icon-link
+            = link_to @event.link, @event.link
         .block-info
           = image_tag @event.organizer.pic, class: "avatar avatar-sm avatar-circle"
           span #{@event.organizer.full_name}

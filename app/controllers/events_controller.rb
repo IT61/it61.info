@@ -35,6 +35,7 @@ class EventsController < ApplicationController
       e.title = ep[:title]
       e.title_image = ep[:title_image]
       e.description = ep[:description]
+      e.link = ep[:link]
       e.started_at = parse_date_time ep
       e.organizer = current_user
       e.places << find_place
@@ -139,6 +140,7 @@ class EventsController < ApplicationController
     permitted_attrs = [
       :title,
       :description,
+      :link,
       :title_image,
       :started_at_date,
       :started_at_time,

@@ -11,6 +11,10 @@ section.details
     = time_select :event, :started_at_time, selected: Date.today, time_separator: '<span class="time-separator">:</span>', required: true
   .event-association-field
     .input-float-label
+      = f.text_field :link
+      label Ссылка на внешний ресурс
+  .event-association-field
+    .input-float-label
       = text_field_tag 'event[place_title]', nil, id: 'place_title', autocomplete: 'off'
       label required="true" Место проведения*
   .event-association-field
