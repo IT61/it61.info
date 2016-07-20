@@ -74,8 +74,13 @@
 
   @include media(min-width 1000px max-width 1250px) {
 
-    &-card, &-info , &-logo img {
+    &-card, &-info {
       height: 170px;
+    }
+
+    &-logo img {
+      height: 170px;
+      width: 170px;
     }
 
     &-card {
@@ -105,8 +110,13 @@
       margin-right: -15px;
     }
 
-    &-card, &-info , &-logo img {
+    &-card, &-info {
       height: 119px;
+    }
+
+    &-logo img {
+      height: 119px;
+      width: 119px;
     }
 
     &-card {
