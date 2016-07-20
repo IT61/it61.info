@@ -20,9 +20,9 @@
     input type="search"
   .users-container
     - @users.each do |user|
-      .user-block
-        /TODO: Выводить нормальный аватар
-        = image_tag "user_default.png", class: "image"
-        .text = user.name
+      = link_to user_path(user) do
+        .user-block
+          = image_tag (user.avatar.url.nil? ? "user_default.png" : user.avatar), class: "image"
+          .text = user.name
   /TODO: Сделать пагинацию
   button.btn.btn-blue.btn-more Показать ещё
