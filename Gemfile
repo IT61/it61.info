@@ -26,7 +26,7 @@ gem "pg"
 gem "phony_rails"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 4.2.0"
+gem "rails", "~> 5.0.0"
 gem "recipient_interceptor"
 gem "redcarpet"
 gem "sass-rails", "~> 5.0"
@@ -36,10 +36,10 @@ gem "sprockets", ">= 3.0.0"
 gem "sprockets-es6"
 gem "suspenders"
 gem "uglifier"
-gem 'will_paginate'
+gem "will_paginate"
+gem "activemodel-serializers-xml"
 
 group :development do
-  gem "quiet_assets"
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"
@@ -53,7 +53,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.4.0"
+  gem "rspec-rails", "~> 3.5.0"
 end
 
 group :development, :staging do

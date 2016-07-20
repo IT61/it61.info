@@ -11,7 +11,6 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 module It61
   class Application < Rails::Application
-    config.quiet_assets = true
     config.generators do |generate|
       generate.helper false
       generate.javascript_engine false
