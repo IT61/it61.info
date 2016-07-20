@@ -64,7 +64,7 @@ class User < ApplicationRecord
   end
 
   def pic
-    avatar.url.nil? ? "user_default.png" : avatar
+    avatar.url? ? "user_default.png" : avatar
   end
 
   def remember_me
