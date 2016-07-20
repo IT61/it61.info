@@ -5,10 +5,6 @@ module UserHelper
     user == current_user
   end
 
-  def has_events?(user)
-    not (user.member_in_events.empty? && user.owner_of_events.empty?)
-  end
-
   def social_account_linked(user, provider)
     if linked user, provider
       "button-linked"

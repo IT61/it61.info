@@ -80,6 +80,10 @@ class User < ApplicationRecord
     @fresh
   end
 
+  def has_events?
+    not (member_in_events.empty? && owner_of_events.empty?)
+  end
+
   private
 
   def assign_defaults

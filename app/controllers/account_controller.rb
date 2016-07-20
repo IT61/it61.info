@@ -27,7 +27,7 @@ class AccountController < ApplicationController
   def settings_update
     commit = current_user.update_attributes subscribe_params
     if commit
-      flash[:info] = "Настройки успешно сохранены"
+      flash[:success] = "Настройки успешно сохранены"
       redirect_to settings_path
     else
       if current_user.errors.messages[:phone]

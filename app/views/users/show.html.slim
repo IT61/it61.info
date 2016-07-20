@@ -7,7 +7,7 @@ main.profile-container
       
     = render partial: 'shared/cards/user', locals: { user: @user }
     
-    - if has_events?(@user) or my_profile?(@user)
+    - if @user.has_events? or my_profile?(@user)
       = render partial: 'shared/cards/events', locals: { user: @user, 
         header: 'Организатор', events: @user.owner_of_events, 
         no_events_message: 'Этот пользователь создал ни одного мероприятия', 

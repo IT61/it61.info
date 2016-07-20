@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 
     @no_upcoming_events_message = (@events.count == 0 && params[:scope] == :upcoming)
 
-    @events = @events.page(params[:page]).decorate
+    @events = @events.page(params[:page])
 
     # TODO: Вынести верстку 'events/index' в отдельный layout
     view = request.xhr? ? "events/_cards" : "events/index"
@@ -65,7 +65,7 @@ class EventsController < ApplicationController
   end
 
   def register
-    @event = Event.find(params[:id]).decorate
+    @event = Event.find(params[:id])
 
     # if we have new registration...
     if request.post?
