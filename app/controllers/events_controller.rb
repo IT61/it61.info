@@ -86,16 +86,7 @@ class EventsController < ApplicationController
   def publish
   end
 
-  private
-
-  def entry_form_params
-    params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
-  end
-
   def unpublish
-  end
-
-  def participate
   end
 
   def places
@@ -104,6 +95,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def entry_form_params
+    params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
+  end
 
   def parse_date_time(event_params)
     Time.new(event_params["started_at_date(1i)"].to_i, event_params["started_at_date(2i)"].to_i, event_params["started_at_date(3i)"].to_i,
