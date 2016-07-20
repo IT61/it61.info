@@ -37,7 +37,7 @@ class EventsController < ApplicationController
       e.description = ep[:description]
       e.started_at = parse_date_time ep
       e.organizer = current_user
-      e.locations += [new_location_with_place]
+      e.places << find_place
     end
 
     if @event.persisted?
@@ -150,10 +150,8 @@ class EventsController < ApplicationController
     params.require(:event).permit(*permitted_attrs)
   end
 
-  def new_location_with_place
-    place = Place.where(title: event_params[:place_title], address: event_params[:address],
+  def find_place
+    Place.where(title: event_params[:place_title], address: event_params[:address],
                         latitude: event_params[:latitude], longitude: event_params[:longitude]).first_or_create
-
-    Location.where(place: place).first_or_create
   end
 end
