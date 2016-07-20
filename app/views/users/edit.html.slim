@@ -8,20 +8,20 @@ main.profile-container
           .picture
             = image_tag "#{@user.pic}", id: 'image', default_img_src: asset_path('user_default.png')
             .edit-picture-buttons
-              div.file_upload#avatar_file_upload
+              .file_upload#avatar_file_upload
                 button.button.btn.btn-blue type="button" Загрузить фото
                 input#avatar_image_input type="file" name="avatar"
               button.btn.btn-gray#delete-avatar-button type="nosubmit"
-                = 'Удалить фото'
+                = "Удалить фото"
       = form_for @user do |f|
         .inputs-container
           .outer
             .input-float-label.half
               = f.text_field :first_name
-              = f.label :first_name, 'Имя'
+              = f.label :first_name, "Имя"
             .input-float-label.half
               = f.text_field :last_name
-              = f.label :last_name, 'Фамилия'
+              = f.label :last_name, "Фамилия"
           / no support for companies for now
           /.outer
             .input-float-label.half
@@ -37,10 +37,10 @@ main.profile-container
           .outer
             .input-float-label.half
               = f.text_field :email
-              = f.label :email, 'E-mail'
+              = f.label :email, "E-mail"
             .input-float-label.half
               = f.telephone_field :phone
-              = f.label :phone, 'Телефон'
+              = f.label :phone, "Телефон"
               span.sub-label Не отображается на сайте и не передается в Slack
           / should be slack link?
           /.outer
@@ -51,7 +51,7 @@ main.profile-container
           .outer
             .input-float-label.full
               = f.text_area :bio
-              = f.label :bio, 'О себе'
+              = f.label :bio, "О себе"
           h3 Социальные сети
           .outer
             .social-container.full
@@ -62,8 +62,8 @@ main.profile-container
                   span = info[:name]
             .social-container.full
               .social-label Добавить
-              - not_linked_providers(@user).each do |provider, info|
-                = link_to info[:link], class: "#{info[:buttonclass]}" do
+              - not_linked_providers(@user).each do |_, info|
+                = link_to info[:link], class: info[:buttonclass].to_s do
                   i class="#{info[:class]}"
                   span = info[:name]
         .bottom-flash
