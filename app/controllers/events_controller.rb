@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class EventsController < ApplicationController
   respond_to :html
   respond_to :json
@@ -43,32 +44,58 @@ class EventsController < ApplicationController
       redirect_to event_path(@event)
     else
       flash[:errors] = @event.errors.messages
-      render 'new'
+      render "new"
     end
   end
 
   def edit
-
   end
 
   def destroy
-
-  end
-
-  def publish
-
-  end
-
-  def unpublish
-
   end
 
   def participate
+    @event = Event.find(params[:id])
+    @event.event_participations << EventParticipation.create(user: current_user, event: @event)
+    redirect_to event_path(@event)
+  end
 
+  def register
+    @event = Event.find(params[:id]).decorate
+
+    # if we have new registration...
+    if request.post?
+      # save participant entry form
+      @participant_entry_form = ParticipantEntryForm.new(entry_form_params)
+      @participant_entry_form.event = @event
+      @participant_entry_form.user = current_user
+      success = @participant_entry_form.save
+
+      # if ok, mark user as participant and redirect to event page
+      if success
+        @event.event_participations << EventParticipation.create(user: current_user, event: @event)
+        redirect_to event_path(@event)
+      end
+    end
+  end
+
+  def publish
+  end
+
+  private
+
+  def entry_form_params
+    params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
+  end
+
+  def unpublish
+  end
+
+  def participate
   end
 
   def places
-    @places = Place.where('title like :title', title: "%#{params[:title]}%").limit(5)
+    @places = Place.where("title like :title", title: "%#{params[:title]}%").limit(5)
     render json: @places.map { |p| to_yand_obj p }
   end
 
@@ -94,31 +121,36 @@ class EventsController < ApplicationController
   end
 
   def parse_date_time(event_params)
-    Time.new(event_params['started_at_date(1i)'].to_i, event_params['started_at_date(2i)'].to_i, event_params['started_at_date(3i)'].to_i,
-             event_params['started_at_time(4i)'].to_i, event_params['started_at_time(5i)'].to_i, event_params['started_at_time(6i)'].to_i)
+    Time.new(event_params["started_at_date(1i)"].to_i, event_params["started_at_date(2i)"].to_i, event_params["started_at_date(3i)"].to_i,
+             event_params["started_at_time(4i)"].to_i, event_params["started_at_time(5i)"].to_i, event_params["started_at_time(6i)"].to_i)
+  end
+
+  def show_correct_scope
+    path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
+    redirect_to path
   end
 
   def to_yand_obj(place)
     {
-        meta: {
-            text: place.address,
-        },
-        coordinates: [place.latitude, place.longitude],
-        place_title: place.title
+      meta: {
+        text: place.address,
+      },
+      coordinates: [place.latitude, place.longitude],
+      place_title: place.title,
     }
   end
 
   def event_params
     permitted_attrs = [
-        :title,
-        :description,
-        :title_image,
-        :started_at_date,
-        :started_at_time,
-        :place_title,
-        :address,
-        :latitude,
-        :longitude,
+      :title,
+      :description,
+      :title_image,
+      :started_at_date,
+      :started_at_time,
+      :place_title,
+      :address,
+      :latitude,
+      :longitude,
     ]
     params.require(:event).permit(*permitted_attrs)
   end

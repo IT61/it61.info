@@ -48,12 +48,7 @@ select[multiple] {
   }
 
   &:disabled {
-    background-color: shade($base-background-color, 5%);
     cursor: not-allowed;
-
-    &:hover {
-      border: $base-border;
-    }
   }
 
   &::placeholder {

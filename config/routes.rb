@@ -24,6 +24,14 @@ Rails.application.routes.draw do
       get "/upcoming" => "events#upcoming"
       get "/past" => "events#past"
     end
+
+    member do
+      # Use it for registration to opened events:
+      post 'participate'
+      # Use it for registration to closed events:
+      match 'register', to: 'events#register', via: [:get, :post], as: 'register_to'
+      put 'publish'
+    end
   end
 
   resources :users do

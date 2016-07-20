@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     alias_action :upcoming, :past, to: :index_categories
     alias_action :create, :read, :update, :destroy, :to => :crud
 
@@ -23,7 +23,8 @@ class Ability
       # todo: can view and edit event participants
     end
 
-    can [:read, :participate, :index_categories], Event, published?
+    can [:read, :participate, :register, :index_categories], Event, published?
+    can [:read, :participate], Event, published?
     can [:create, :read, :update], Event, organizer?(user)
     can :places, Event
 
