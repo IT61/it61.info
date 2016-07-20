@@ -20,8 +20,8 @@
     input type="search"
   .users-container
     - @users.each do |user|
-      = link_to user_path(user) do
-        .user-block
+      .user-block
+        = link_to user_path(user) do
           = image_tag user.pic, class: "image"
           .text = user.name
   /TODO: Сделать пагинацию
