@@ -15,7 +15,6 @@ class Ability
     return if user.nil? || user.role.nil?
 
     can :crud, User, id: user.id
-    can :crud, UserDecorator, id: user.id
 
     can :places, Event
     can [:participate, :register], Event, published?
