@@ -1,10 +1,11 @@
 $(document).ready(function () {
-    page = 2;
+    page = 1;
 
     function loadNextPage(e) {
         var $btn = $(this);
         var url = $btn.data('url');
         var container = $btn.data('container');
+        page++;
         $.get(url, {page: page}, function (response) {
             // hide button if no results here
             if(response == '')
@@ -12,7 +13,6 @@ $(document).ready(function () {
                 return $btn.css('display', 'none');
             }
             $(container).append(response);
-            page++;
         });
     }
 
