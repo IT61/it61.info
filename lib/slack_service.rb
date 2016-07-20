@@ -45,7 +45,7 @@ class SlackService
 
   def service_configured?
     keys = ['SLACK_TEAM_DOMAIN', 'SLACK_WEBHOOK_URL', 'SLACK_DEFAULT_CHANNELS', 'SLACK_ADMIN_TOKEN'].freeze
-    keys.any? { |k| ENV[k].nil? }
+    keys.none? { |k| ENV[k].nil? }
   end
 
   def raw_api_url(action)

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class Users::AvatarsController < ApplicationController
-
   before_action :authenticate_user!
   before_filter :fetch_user, only: [:update, :destroy]
   before_filter :check_if_same_user
@@ -9,13 +8,13 @@ class Users::AvatarsController < ApplicationController
     avatar = avatar_params[:avatar]
     current_user.avatar = avatar
     commit = current_user.save
-    render json: {success: commit}
+    render json: { success: commit }
   end
 
   def destroy
     current_user.remove_avatar!
     commit = current_user.save
-    render json: {success: commit}
+    render json: { success: commit }
   end
 
   private

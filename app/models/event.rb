@@ -1,12 +1,15 @@
 # frozen_string_literal: true
-class Event < ApplicationRecord
-  # include PermalinkFor
-  # permalink_for :permalink_title, as: :pretty
+class Event < ActiveRecord::Base
+  include PermalinkFor
+  permalink_for :permalink_title, as: :pretty
 
   mount_uploader :title_image, ImageUploader
 
+  enum registration_type: { opened: 0, closed: 1, paywalled: 2 }
+
   belongs_to :organizer, class_name: "User"
   has_many :event_participations, dependent: :destroy
+  has_many :participant_entry_forms, dependent: :destroy
   has_many :participants, class_name: "User", through: :event_participations, source: :user
 
   has_many :locations
@@ -70,5 +73,4 @@ class Event < ApplicationRecord
   def send_slack_notification
     SlackService.notify(self)
   end
-
 end

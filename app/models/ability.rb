@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     if user.nil? || user.role.nil?
       can :read, Event, published?
       can :read, User
@@ -10,7 +10,7 @@ class Ability
       return
     end
 
-    alias_action :create, :read, :update, :destroy, :to => :crud
+    alias_action :create, :read, :update, :destroy, to: :crud
 
     # todo: add rules for companies later
 
@@ -22,7 +22,7 @@ class Ability
       # todo: can view and edit event participants
     end
 
-    can [:read, :participate], Event, published?
+    can [:read, :participate, :register], Event, published?
     can [:create, :read, :update], Event, organizer?(user)
     can :places, Event
 
