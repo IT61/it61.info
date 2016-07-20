@@ -16,19 +16,17 @@ $(document).ready(function () {
     }
     
     // Ограничение по длине названия эвента для мобильных девайсов
-    if ($(this).width() < 500) {
-        $(".event-card h2").each(function () {
-            if ($(this).text().length > 34) {
-                var title = $(this).text().substr(0, 34) + "...";
-                $(this).text(title);
-            }
-        });
-    }
+    $(".events-card h2").each(function () {
+        if ($(this).text().length > 36) {
+            var title = $(this).text().substr(0, 36) + "...";
+            $(this).text(title);
+        }
+    });
     
     // Свайпы в мобильной версии карточек эвентов
-    $(".event-card").on("swipeleft", function () {
-        $(this).addClass("event-swipe");
+    $(".events-card").on("swipeleft", function () {
+        $(this).addClass("events-swipe");
     }).on("swiperight", function () {
-        $(this).removeClass("event-swipe");
+        $(this).removeClass("events-swipe");
     });
 });
