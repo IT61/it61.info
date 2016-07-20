@@ -6,7 +6,7 @@
       .events-info
         h2 #{e.title}
         p #{e.started_at}
-        p.place #{e.places.first.address}
+        p.place #{e.places.first.full_address}
     .card-footer
       = link_to e do
         button.btn Подробнее
