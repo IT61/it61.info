@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-require File.expand_path("../boot", __FILE__)
-require "rails"
+require_relative 'boot'
+
+require 'rails/all'
 require "active_model/railtie"
 require "active_job/railtie"
 require "active_record/railtie"
@@ -11,7 +12,6 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 module It61
   class Application < Rails::Application
-    config.quiet_assets = true
     config.generators do |generate|
       generate.helper false
       generate.javascript_engine false
@@ -23,7 +23,6 @@ module It61
     end
     config.eager_load_paths += ["#{Rails.root}/lib"]
     config.action_controller.action_on_unpermitted_parameters = :raise
-    config.active_record.raise_in_transactional_callbacks = true
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
     config.active_job.queue_adapter = :delayed_job

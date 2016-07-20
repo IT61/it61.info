@@ -27,10 +27,16 @@ class AccountController < ApplicationController
   def settings_update
     commit = current_user.update_attributes subscribe_params
     if commit
-      flash[:info] = "Настройки успешно сохранены"
-      redirect_to root_path
+      flash[:success] = "Настройки успешно сохранены"
+      redirect_to settings_path
     else
-      flash.now[:error] = "Не получилось сохранить настройки."
+      if current_user.errors.messages[:phone]
+        current_user.sms_reminders = false
+        current_user.save!
+        flash.now[:error] = "Вы должны добавить телефон, чтобы получать смс уведомления"
+      else
+        flash.now[:error] = "Не получилось сохранить настройки."
+      end
       fetch_user
       render "settings"
     end
@@ -39,7 +45,7 @@ class AccountController < ApplicationController
   private
 
   def fetch_user
-    @user = current_user.decorate
+    @user = current_user
   end
 
   def subscribe_params

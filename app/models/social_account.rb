@@ -1,4 +1,4 @@
 # frozen_string_literal: true
-class SocialAccount < ActiveRecord::Base
+class SocialAccount < ApplicationRecord
   belongs_to :user
 end

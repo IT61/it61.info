@@ -9,7 +9,6 @@ gem "carrierwave"
 gem "cancancan"
 gem "delayed_job_active_record"
 gem "devise"
-gem "draper"
 gem "flutie"
 gem "high_voltage"
 gem "json"
@@ -26,7 +25,7 @@ gem "pg"
 gem "phony_rails"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 4.2.0"
+gem "rails", "~> 5.0.0"
 gem "recipient_interceptor"
 gem "redcarpet"
 gem "sass-rails", "~> 5.0"
@@ -36,10 +35,10 @@ gem "sprockets", ">= 3.0.0"
 gem "sprockets-es6"
 gem "suspenders"
 gem "uglifier"
-gem 'will_paginate'
+gem "will_paginate"
+gem "activemodel-serializers-xml"
 
 group :development do
-  gem "quiet_assets"
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"
@@ -53,7 +52,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.4.0"
+  gem "rspec-rails", "~> 3.5.0"
 end
 
 group :development, :staging do
@@ -66,6 +65,7 @@ group :test do
   gem "formulaic"
   gem "fuubar"
   gem "launchy"
+  gem "rails-controller-testing"
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "timecop"

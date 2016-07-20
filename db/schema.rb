@@ -23,19 +23,17 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.string   "logo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["name"], name: "index_companies_on_name", using: :btree
   end
-
-  add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
 
   create_table "event_participations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["event_id"], name: "index_event_participations_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_event_participations_on_user_id", using: :btree
   end
-
-  add_index "event_participations", ["event_id"], name: "index_event_participations_on_event_id", using: :btree
-  add_index "event_participations", ["user_id"], name: "index_event_participations_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "title",                                         null: false
@@ -50,9 +48,8 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.datetime "updated_at"
     t.integer  "registration_type"
     t.integer  "participants_limit"
+    t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
   end
-
-  add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.integer  "event_id"
@@ -61,8 +58,6 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "locations", ["event_id", "place_id", "extra_info"], name: "index_locations_on_event_id_and_place_id_and_extra_info", unique: true, using: :btree
 
   create_table "participant_entry_forms", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -73,9 +68,8 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.integer  "confidence",  null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["user_id", "event_id"], name: "index_participant_entry_forms_on_user_id_and_event_id", unique: true, using: :btree
   end
-
-  add_index "participant_entry_forms", ["user_id", "event_id"], name: "index_participant_entry_forms_on_user_id_and_event_id", unique: true, using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "title",      null: false
@@ -84,11 +78,9 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_places_on_address", using: :btree
+    t.index ["title"], name: "index_places_on_title", using: :btree
   end
-
-  add_index "places", ["address"], name: "index_places_on_address", using: :btree
-  add_index "places", ["title", "address", "latitude", "longitude"], name: "index_places_on_title_and_address_and_latitude_and_longitude", unique: true, using: :btree
-  add_index "places", ["title"], name: "index_places_on_title", using: :btree
 
   create_table "social_accounts", force: :cascade do |t|
     t.integer  "user_id"
@@ -97,9 +89,8 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "link"
+    t.index ["user_id"], name: "index_social_accounts_on_user_id", using: :btree
   end
-
-  add_index "social_accounts", ["user_id"], name: "index_social_accounts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",               default: ""
@@ -123,12 +114,11 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.boolean  "subscribed",                       null: false
     t.string   "remember_token"
     t.string   "avatar"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["email_reminders"], name: "index_users_on_email_reminders", using: :btree
+    t.index ["name"], name: "index_users_on_name", using: :btree
+    t.index ["sms_reminders"], name: "index_users_on_sms_reminders", using: :btree
+    t.index ["subscribed"], name: "index_users_on_subscribed", using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["email_reminders"], name: "index_users_on_email_reminders", using: :btree
-  add_index "users", ["name"], name: "index_users_on_name", using: :btree
-  add_index "users", ["sms_reminders"], name: "index_users_on_sms_reminders", using: :btree
-  add_index "users", ["subscribed"], name: "index_users_on_subscribed", using: :btree
 
 end
