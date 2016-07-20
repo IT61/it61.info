@@ -101,6 +101,10 @@ class EventsController < ApplicationController
 
   private
 
+  def set_event
+    @event = Event.find(event_params[:id])
+  end
+
   def entry_form_params
     params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
   end
