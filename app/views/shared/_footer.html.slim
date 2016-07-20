@@ -3,15 +3,15 @@ footer
     .footer-left
       ul
         li
-          a Мероприятия
+          = link_to "Мероприятия", events_path
         li
-          a Личности
+          = link_to "Личности", users_path
         li
-          a Фото
+          = link_to "Фото", photos_path
         li
-          a Спонсорам
+          = link_to "Спонсорам", sponsorship_path
         li
-          a Slack
+          = link_to "Slack", slack_path
       .copyright
         = image_tag "logo-small.svg", class: "logo"
         p
