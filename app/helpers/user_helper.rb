@@ -19,27 +19,37 @@ module UserHelper
             name: 'FACEBOOK',
             class: 'fa fa-facebook',
             buttonclass: 'btn btn-fb',
-            link: '/users/auth/facebook',
+            link: '/users/auth/facebook'
         },
         google_oauth2: {
             name: 'GOOGLE+',
             class: 'fa fa-google-plus',
             buttonclass: 'btn btn-google',
-            link: '/users/auth/google_oauth2',
+            link: '/users/auth/google_oauth2'
         },
         vkontakte: {
             name: 'ВКОНТАКТЕ',
-            class: 'fa fa-facebook',
+            class: 'fa fa-vk',
             buttonclass: 'btn btn-vk',
-            link: '/users/auth/vkontakte',
+            link: '/users/auth/vkontakte'
         },
         github: {
             name: 'GITHUB',
             class: 'fa fa-github',
             buttonclass: 'btn btn-github',
-            link: '/users/auth/github',
+            link: '/users/auth/github'
         }
     }
+  end
+
+  def links_providers(user)
+    accounts = user.social_accounts
+    res = {}
+    accounts.each do |a|
+      provider = a.provider.to_sym
+      res[provider] = [ a.link, all_providers[provider][:class] ] unless a.link.nil?
+    end
+    res
   end
 
   def linked_providers(user)

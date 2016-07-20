@@ -44,6 +44,7 @@ class User < ApplicationRecord
         u.email = auth.info.email unless auth.info.email.nil?
         u.name = auth.info.name
       end
+      soc.link = link_for auth
     end
     SlackService.invite(social.user)
     social.user
@@ -51,10 +52,11 @@ class User < ApplicationRecord
 
   # Добавление социального аккаунта к текущему пользователю
   def add_social(auth)
-    social = SocialAccount.where(provider: auth.provider, uid: auth.uid).first_or_create do |account|
-      account.provider = auth.provider
-      account.uid = auth.uid
-      account.user = self
+    social = SocialAccount.where(provider: auth.provider, uid: auth.uid).first_or_create do |soc|
+      soc.provider = auth.provider
+      soc.uid = auth.uid
+      soc.user = self
+      soc.link = link_for auth
     end
     social.user
   end
@@ -85,6 +87,26 @@ class User < ApplicationRecord
   end
 
   private
+
+  def link_for(auth)
+    provider = auth.provider
+
+    if provider == 'google_oauth2'
+      auth.extra.raw_info.profile if
+        (not auth.extra.raw_info.nil?) && (not auth.extra.raw_info.profile.nil?)
+    elsif provider == 'vkontakte'
+      auth.info.urls.Vkontakte if
+          (not auth.info.urls.nil?)
+    elsif provider == 'facebook'
+      # facebook doesn't give a link to user website
+      nil
+    elsif provider == 'github'
+      auth.info.urls.GitHub if
+        (not auth.info.urls.nil?)
+    else
+      nil
+    end
+  end
 
   def assign_defaults
     self.role ||= 0
