@@ -1,27 +1,30 @@
 .content-background
 .event-container
-  h1.event-title Приходи и проверь свою бизнес-идею на прочность!
+  h1.event-title #{@event.title}
   .cards-group
     .card.event-card
       .event-share
         = render "shared/share_buttons"
       .event-logo
-        = image_tag "logo-show.png"
+        = image_tag @event.title_image
       .event-info
         .block-info
           .icon-events.icon-calendar
-          span 27 ноября 2016, 16:00
+          span #{@event.started_at}
         .block-info
           .icon-events.icon-marker
-          span ул. Троллейбусная, 24/2в, 5 этаж
+          span #{@event.places.first.full_address}
         .block-info
           .icon-events.icon-link
           = link_to "http://bit.ly/1MhEgYm", "http://bit.ly/1MhEgYm"
         .block-info
-          = image_tag "user_default.png", class: "avatar avatar-sm avatar-circle"
-          span Трофим Жугастров (организатор)
+          = image_tag @event.organizer.pic, class: "avatar avatar-sm avatar-circle"
+          span #{@event.organizer.full_name}
       .btn-group.event-buttons
-        button.btn.btn-shadow.btn-blue Я пойду
+        - if @event.opened?
+          = link_to "Я пойду", participate_event_path(@event), method: :post, class: "btn btn-shadow btn-blue"
+        - else
+          = link_to "Зарегистрироваться", register_to_event_path(@event), class: "btn btn-shadow btn-blue"
         button.btn.btn-shadow.btn-gray + Google calendar
     .card.card-fold
       .card-header
@@ -29,18 +32,23 @@
         button.btn.btn-fold
           .icon-arrows.icon-arrow-up
       .card-body
-        | Тут описание мероприятия
+        = @event.description
     .card.card-fold
       .card-header
         h1 Участники
         button.btn.btn-fold
           .icon-arrows.icon-arrow-up
       .card-body
-        | Тут участники
-    .card.card-fold.hidden
-      .card-header
-        h1 Пострелиз
-        button.btn.btn-fold
-          .icon-arrows.icon-arrow-down
-      .card-body
-        | Тут пострелиз
+        .users-container
+          - @event.participants.each do |user|
+            .user-block
+              = link_to user_path(user) do
+                = image_tag user.pic, class: "image"
+                .text = user.name
+    /.card.card-fold.hidden
+    /  .card-header
+    /    h1 Пострелиз
+    /    button.btn.btn-fold
+    /      .icon-arrows.icon-arrow-down
+    /  .card-body
+    /    | Тут пострелиз
