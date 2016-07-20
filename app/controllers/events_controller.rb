@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   end
 
   def show
-
+    @event = Event.find(params[:id])
   end
 
   def new
@@ -82,16 +82,7 @@ class EventsController < ApplicationController
   def publish
   end
 
-  private
-
-  def entry_form_params
-    params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
-  end
-
   def unpublish
-  end
-
-  def participate
   end
 
   def places
@@ -100,6 +91,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def entry_form_params
+    params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
+  end
 
   def show_events(scope)
     @events = Event.send(scope).published
