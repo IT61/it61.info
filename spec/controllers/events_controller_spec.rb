@@ -32,20 +32,20 @@ RSpec.describe EventsController, type: :controller do
     login_user
 
     it 'creates new event' do
-      post :create, event: @data
+      post :create, params: { event: @data }
       event = assigns(:event)
       expect(event.title).to eq(@title)
       expect(event.started_at).to eq(@started_at.utc)
     end
 
     it 'populates event with location' do
-      post :create, event: @data
+      post :create, params: { event: @data }
       event = assigns(:event)
       expect(event.locations.count).to eq(1)
     end
 
     it 'links created event to organizer' do
-      post :create, event: @data
+      post :create, params: { event: @data }
       event = assigns(:event)
       expect(event.organizer).to eq(subject.current_user)
     end

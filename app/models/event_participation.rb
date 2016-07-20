@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class EventParticipation < ActiveRecord::Base
+class EventParticipation < ApplicationRecord
   belongs_to :user
   belongs_to :event
 

@@ -62,7 +62,7 @@ class EventsController < ApplicationController
   end
 
   def register
-    @event = Event.find(params[:id]).decorate
+    @event = Event.find(params[:id])
 
     # if we have new registration...
     if request.post?

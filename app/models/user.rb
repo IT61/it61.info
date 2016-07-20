@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   @fresh = false
 
   mount_uploader :avatar, ImageUploader
@@ -82,6 +82,10 @@ class User < ActiveRecord::Base
 
   def fresh?
     @fresh
+  end
+
+  def has_events?
+    not (member_in_events.empty? && owner_of_events.empty?)
   end
 
   private

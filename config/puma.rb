@@ -1,29 +1,47 @@
-# frozen_string_literal: true
-# https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server
-
-# The environment variable WEB_CONCURRENCY may be set to a default value based
-# on dyno size. To manually configure this value use heroku config:set
-# WEB_CONCURRENCY.
+# Puma can serve each request in a thread from an internal thread pool.
+# The `threads` method setting takes two numbers a minimum and maximum.
+# Any libraries that use thread pools should be configured to match
+# the maximum value specified for Puma. Default is set to 5 threads for minimum
+# and maximum, this matches the default thread size of Active Record.
 #
-# Increasing the number of workers will increase the amount of resting memory
-# your dynos use. Increasing the number of threads will increase the amount of
-# potential bloat added to your dynos when they are responding to heavy
-# requests.
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
+threads threads_count, threads_count
+
+# Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
-# Starting with a low number of workers and threads provides adequate
-# performance for most applications, even under load, while maintaining a low
-# risk of overusing memory.
-workers Integer(ENV.fetch("WEB_CONCURRENCY", 2))
-threads_count = Integer(ENV.fetch("MAX_THREADS", 2))
-threads(threads_count, threads_count)
+port        ENV.fetch("PORT") { 3000 }
 
-preload_app!
+# Specifies the `environment` that Puma will run in.
+#
+environment ENV.fetch("RAILS_ENV") { "development" }
 
-rackup DefaultRackup
-environment ENV.fetch("RACK_ENV", "development")
+# Specifies the number of `workers` to boot in clustered mode.
+# Workers are forked webserver processes. If using threads and workers together
+# the concurrency of the application would be max `threads` * `workers`.
+# Workers do not work on JRuby or Windows (both of which do not support
+# processes).
+#
+# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
-on_worker_boot do
-  # Worker specific setup for Rails 4.1+
-  # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
-  ActiveRecord::Base.establish_connection
-end
+# Use the `preload_app!` method when specifying a `workers` number.
+# This directive tells Puma to first boot the application and load code
+# before forking the application. This takes advantage of Copy On Write
+# process behavior so workers use less memory. If you use this option
+# you need to make sure to reconnect any threads in the `on_worker_boot`
+# block.
+#
+# preload_app!
+
+# The code in the `on_worker_boot` will be called if you are using
+# clustered mode by specifying a number of `workers`. After each worker
+# process is booted this block will be run, if you are using `preload_app!`
+# option you will want to use this block to reconnect to any threads
+# or connections that may have been created at application boot, Ruby
+# cannot share connections between processes.
+#
+# on_worker_boot do
+#   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+# end
+
+# Allow puma to be restarted by `rails restart` command.
+plugin :tmp_restart
