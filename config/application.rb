@@ -23,7 +23,6 @@ module It61
     end
     config.eager_load_paths += ["#{Rails.root}/lib"]
     config.action_controller.action_on_unpermitted_parameters = :raise
-    config.active_record.raise_in_transactional_callbacks = true
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
     config.active_job.queue_adapter = :delayed_job

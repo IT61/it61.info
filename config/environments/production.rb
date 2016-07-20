@@ -60,7 +60,9 @@ Rails.application.configure do
   end
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
   config.middleware.use Rack::Deflater
-  config.static_cache_control = "public, max-age=31557600"
+  config.public_file_server.headers = {
+      'Cache-Control' => 'public, max-age=3600'
+  }
   config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
 end
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i

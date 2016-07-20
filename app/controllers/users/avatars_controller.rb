@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 class Users::AvatarsController < ApplicationController
   before_action :authenticate_user!
-  before_filter :fetch_user, only: [:update, :destroy]
-  before_filter :check_if_same_user
+  before_action :fetch_user, only: [:update, :destroy]
+  before_action :check_if_same_user
 
   def create
     avatar = avatar_params[:avatar]

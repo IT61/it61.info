@@ -66,6 +66,7 @@ group :test do
   gem "formulaic"
   gem "fuubar"
   gem "launchy"
+  gem "rails-controller-testing"
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "timecop"
