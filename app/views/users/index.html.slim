@@ -22,7 +22,7 @@
     - @users.each do |user|
       = link_to user_path(user) do
         .user-block
-          = image_tag (user.avatar.url.nil? ? "user_default.png" : user.avatar), class: "image"
+          = image_tag user.pic, class: "image"
           .text = user.name
   /TODO: Сделать пагинацию
   button.btn.btn-blue.btn-more Показать ещё

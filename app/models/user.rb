@@ -63,6 +63,10 @@ class User < ActiveRecord::Base
     [first_name, last_name].compact.join(" ").presence || name
   end
 
+  def pic
+    avatar.url.nil? ? "user_default.png" : avatar
+  end
+
   def remember_me
     true
   end
