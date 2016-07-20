@@ -25,6 +25,7 @@
 
     img {
       height: 492px;
+      width: 492px;
     }
   }
 
@@ -119,8 +120,13 @@
   }
 
   @include media(min-width 600px max-width 700px) {
-    &-card, &-logo img {
+    &-card {
       height: 280px;
+    }
+
+    &-logo img {
+      height: 280px;
+      width: 280px;
     }
 
     &-logo {
@@ -144,8 +150,13 @@
   }
 
   @include media(min-width 700px max-width 1000px) {
-    &-card, &-logo img {
+    &-card {
       height: 320px;
+    }
+
+    &-logo img {
+      height: 320px;
+      width: 320px;
     }
 
     &-info {
