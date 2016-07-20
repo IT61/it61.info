@@ -102,7 +102,7 @@ class EventsController < ApplicationController
 
     @no_upcoming_events_message = (@events.count == 0 and scope == :upcoming)
 
-    @events = @events.page(params[:page]).decorate
+    @events = @events.page(params[:page])
 
     # TODO: Вынести верстку 'events/index' в отдельный layout
     view = request.xhr? ? 'events/_cards' : 'events/index'
