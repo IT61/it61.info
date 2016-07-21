@@ -2,6 +2,9 @@ ru:
   errors:
     connection_refused: "В соединении отказано"
   devise:
+    sessions:
+      user:
+        signed_out: "Вы успешно вышли из своего аккаунта"
     omniauth_callbacks:
       user:
         success: "Вы успешно зашли с помощью аккаунта соц. сети"

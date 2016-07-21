@@ -1,5 +1,5 @@
-$first-breakpoint-value: 705px;
-$second-breakpoint-value: 1100px;
+$first-breakpoint-value: 767px;
+$second-breakpoint-value: 1150px;
 
 $mobile-viewport: new-breakpoint(max-width $first-breakpoint-value);
 $medium-viewport: new-breakpoint(min-width $first-breakpoint-value max-width $second-breakpoint-value);
@@ -46,7 +46,6 @@ $card-padding: 15px;
 
   .sub-header {
     @include media($mobile-viewport) {
-      padding: $card-padding 2.35765%;
       border-bottom: 1px solid #ccc;
       font-weight: 400;
     }
@@ -84,6 +83,7 @@ $card-padding: 15px;
     background-color: #ffffff;
     margin-bottom: $card-padding;
     width: 100%;
+    position: relative;
 
     @include media($mobile-viewport) {
       @include span-columns(12);
@@ -105,7 +105,6 @@ $card-padding: 15px;
 
       height: 100%;
       padding: $card-padding;
-      position: relative;
 
       .name {
         font-weight: 400;
@@ -126,9 +125,11 @@ $card-padding: 15px;
 
     .social-buttons {
       margin-top: 25px;
+      margin-bottom: 25px;
       @include media($medium-viewport) {
         position: static;
         margin-top: 8px;
+        margin-bottom: 50px;
       }
 
       .btn {
@@ -288,8 +289,10 @@ $card-padding: 15px;
   @include media($medium-viewport) {
     bottom: 23px;
   }
-  margin-top: 25px;
-  float: right;
+
+  position: absolute;
+  bottom: $card-padding;
+  right: 0;
 
   .btn {
     @include media($mobile-viewport) {
