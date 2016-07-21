@@ -12,9 +12,9 @@ section.card.user
     .bio
       span=user.bio
     .social-buttons
-      - provider_buttons_info(@user).each do |provider, info|
+      - provider_buttons_info(@user).each do |_, info|
         = link_to info[0], class: 'btn', target: '_blank' do
-          i class="#{info[1]}"
+          i class=info[1].to_s
     / should be slack link?
     / = link_to '/hashtag', class: 'btn hashtag' do
         i.fa.fa-hashtag
@@ -23,4 +23,3 @@ section.card.user
       .bottom-buttons
         button.btn.btn-blue Редактировать профиль
         button.btn.btn-gray Настройки
-      
