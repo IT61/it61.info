@@ -12,7 +12,7 @@ section.card.user
     .bio
       span=user.bio
     .social-buttons
-      - links_providers(@user).each do |provider, info|
+      - provider_buttons_info(@user).each do |provider, info|
         = link_to info[0], class: 'btn', target: '_blank' do
           i class="#{info[1]}"
     / should be slack link?

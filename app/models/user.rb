@@ -91,16 +91,17 @@ class User < ApplicationRecord
   def link_for(auth)
     provider = auth.provider
 
-    if provider == 'google_oauth2'
+    case provider
+    when 'google_oauth2'
       auth.extra.raw_info.profile if
         (not auth.extra.raw_info.nil?) && (not auth.extra.raw_info.profile.nil?)
-    elsif provider == 'vkontakte'
+    when 'vkontakte'
       auth.info.urls.Vkontakte if
           (not auth.info.urls.nil?)
-    elsif provider == 'facebook'
+    when 'facebook'
       # facebook doesn't give a link to user website
       nil
-    elsif provider == 'github'
+    when 'github'
       auth.info.urls.GitHub if
         (not auth.info.urls.nil?)
     else

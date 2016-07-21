@@ -42,12 +42,14 @@ module UserHelper
     }
   end
 
-  def links_providers(user)
+  def provider_buttons_info(user)
     accounts = user.social_accounts
     res = {}
     accounts.each do |a|
       provider = a.provider.to_sym
-      res[provider] = [ a.link, all_providers[provider][:class] ] unless a.link.nil?
+      link = a.link
+      button_class = all_providers[provider][:class]
+      res[provider] = [ link, button_class ] unless link.nil?
     end
     res
   end
