@@ -57,7 +57,7 @@ main.profile-container
             .social-container.full
               .social-label Подключенные
               - linked_providers(@user).each do |provider, info|
-                = link_to info[:link], class: "#{info[:buttonclass]}" do
+                = link_to '#', class: "#{info[:buttonclass]}" do
                   i class="#{info[:class]}"
                   span = info[:name]
             .social-container.full
@@ -69,6 +69,6 @@ main.profile-container
         .bottom-flash
           - if flash[:notice]
             .notice = flash[:notice]
-        .bottom-buttons
+        .edit-profile-bottom-buttons
           button.btn.btn-blue type="submit" Сохранить
           button.btn.btn-gray type="reset" Отмена

@@ -12,14 +12,9 @@ section.card.user
     .bio
       span=user.bio
     .social-buttons
-      = link_to user_github_omniauth_authorize_path, class: "btn #{social_account_linked user, :github}" do
-        i.fa.fa-github
-      = link_to user_vkontakte_omniauth_authorize_path, class: "btn #{social_account_linked user, :vkontakte}" do
-        i.fa.fa-vk
-      = link_to user_facebook_omniauth_authorize_path, class: "btn #{social_account_linked user, :facebook}" do
-        i.fa.fa-facebook
-      = link_to user_google_oauth2_omniauth_authorize_path, class: "btn  #{social_account_linked user, :google_oauth2}" do
-        i.fa.fa-google
+      - provider_buttons_info(@user).each do |_, info|
+        = link_to info[0], class: 'btn', target: '_blank' do
+          i class=info[1].to_s
     / should be slack link?
     / = link_to '/hashtag', class: 'btn hashtag' do
         i.fa.fa-hashtag
@@ -28,4 +23,3 @@ section.card.user
       .bottom-buttons
         button.btn.btn-blue Редактировать профиль
         button.btn.btn-gray Настройки
-      
