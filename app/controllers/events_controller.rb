@@ -34,15 +34,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    ep = event_params
-    @event = Event.create do |e|
-      e.title = ep[:title]
-      e.title_image = ep[:title_image]
-      e.description = ep[:description]
-      e.started_at = parse_date_time ep
-      e.organizer = current_user
-      e.locations += [new_location_with_place]
-    end
+    event_creator = EventCreator.new
+    @event = event_creator.create params, current_user
 
     if @event.persisted?
       redirect_to event_path(@event)
@@ -100,11 +93,6 @@ class EventsController < ApplicationController
     params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
   end
 
-  def parse_date_time(event_params)
-    Time.new(event_params["started_at_date(1i)"].to_i, event_params["started_at_date(2i)"].to_i, event_params["started_at_date(3i)"].to_i,
-             event_params["started_at_time(4i)"].to_i, event_params["started_at_time(5i)"].to_i, event_params["started_at_time(6i)"].to_i)
-  end
-
   def show_correct_scope
     path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
     redirect_to path
@@ -118,27 +106,5 @@ class EventsController < ApplicationController
       coordinates: [place.latitude, place.longitude],
       place_title: place.title,
     }
-  end
-
-  def event_params
-    permitted_attrs = [
-      :title,
-      :description,
-      :title_image,
-      :started_at_date,
-      :started_at_time,
-      :place_title,
-      :address,
-      :latitude,
-      :longitude,
-    ]
-    params.require(:event).permit(*permitted_attrs)
-  end
-
-  def new_location_with_place
-    place = Place.where(title: event_params[:place_title], address: event_params[:address],
-                        latitude: event_params[:latitude], longitude: event_params[:longitude]).first_or_create
-
-    Location.where(place: place).first_or_create
   end
 end

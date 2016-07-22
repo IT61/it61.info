@@ -1,0 +1,7 @@
+h1.event-card-header = form_header
+= form_for @event, url: submit_url do |f|
+  = render partial: 'events/details_section', locals: {f: f}
+  section.space-taker
+  = render partial: 'events/image_section', locals: {f: f}
+  = render partial: 'events/description_section', locals: {f: f}
+  = render partial: 'events/footer_buttons_section', locals: {f: f, submit_button_text: submit_button_text}

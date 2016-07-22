@@ -5,6 +5,10 @@
 
 .admin-table {
   text-align: center;
+
+  .event-picture {
+    max-height: 100px;
+  }
 }
 
 .pagination {
@@ -26,6 +30,6 @@
   padding: 25px;
 
   .input-float-label {
-    margin: 1em 0;
+    margin: 2em 0;
   }
 }

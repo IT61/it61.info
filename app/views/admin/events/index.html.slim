@@ -1,1 +1,17 @@
-h1 Events admin panel
+.container
+  h1.admin-header Мероприятия
+  .card
+    table.admin-table
+      thead
+        td Название
+        td Изображение
+        td Начало
+      tbody
+      - @events.each do |e|
+        tr.item
+          td
+            = link_to e.title, "events/#{e.id}/edit"
+          td = image_tag e.title_image, class: 'event-picture'
+          td = format_time e.started_at
+
+  = will_paginate @users
