@@ -1,1 +1,19 @@
-h1 Users admin panel
+.container
+  h1.admin-header Пользователи
+  .card
+    table.admin-table
+      thead
+        td Email
+        td Имя
+        td Телефон
+        td Права
+      tbody
+      - @users.each do |u|
+        tr.item
+          td
+            = link_to u.email, "users/#{u.id}/edit"
+          td = u.full_name
+          td = u.normalized_phone
+          td = u.role
+
+  = will_paginate @users

@@ -1,0 +1,25 @@
+.container
+  h1.admin-header Пользователь
+  .card.admin-edit-card
+    = form_for @user, url: "/admin/users/#{@user.id}" do |f|
+      .input-float-label
+        = f.text_field :email
+        = f.label :email, 'Email'
+      .input-float-label
+        = f.text_field :first_name
+        = f.label :first_name, 'Имя'
+      .input-float-label
+        = f.text_field :last_name
+        = f.label :last_name, 'Фамилия'
+      .input-float-label
+        = f.text_field :phone
+        = f.label :phone, 'Телефон'
+      .select-input
+        = f.label :role, 'Права'
+        = f.select :role, User.roles.keys.map { |role| [role.to_s, role] }
+      .register-footer
+        .buttons
+          button.btn.btn-shadow.btn-blue [type="submit"]
+            | Сохранить
+          button.btn.btn-shadow.btn-gray [type="reset"]
+            | Отмена

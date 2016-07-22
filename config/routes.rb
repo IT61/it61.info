@@ -41,8 +41,10 @@ Rails.application.routes.draw do
   resources :photos, only: [:index]
 
   scope "admin" do
-    resources :users, controller: 'admin/users'
-    resources :places, controller: 'admin/places'
-    resources :events, controller: 'admin/events'
+    get "/", to: "admin/users#index"
+    resources :users, controller: "admin/users"
+    resources :places, controller: "admin/places"
+    resources :events, controller: "admin/events"
   end
+
 end

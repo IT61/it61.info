@@ -78,3 +78,6 @@ ru:
     - :day
     - :month
     - :year
+  will_paginate:
+    previous_label: "Предыдущая страница"
+    next_label: "Следующая страница"
