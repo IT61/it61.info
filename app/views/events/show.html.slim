@@ -17,7 +17,7 @@
         - if @event.link?
           .block-info
             .icon-events.icon-link
-            = link_to @event.link, @event.link
+            = link_to @event.link, make_global(@event.link), target: '_blank'
         .block-info
           = image_tag @event.organizer.pic, class: "avatar avatar-sm avatar-circle"
           span= @event.organizer.full_name

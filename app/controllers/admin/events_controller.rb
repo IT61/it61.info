@@ -27,5 +27,5 @@ class Admin::EventsController < ApplicationController
 
   def fetch_event
     @event = Event.find params[:id]
-  end 
+  end
 end
