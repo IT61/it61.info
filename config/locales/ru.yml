@@ -9,6 +9,10 @@ ru:
       user:
         success: "Вы успешно зашли с помощью аккаунта соц. сети"
   shared:
+    admin_sidebar:
+      events: "События"
+      users: "Пользователи"
+      places: "Места"
     sidebar:
       my_profile: "Мой профиль"
       community: "Сообщество"

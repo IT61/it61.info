@@ -1,0 +1,7 @@
+.sidebar
+  .sidebar__logo
+    .sidebar__logo_img
+  ul.sidebar__menu
+    = active_link_to t(".events"), '/admin/events', wrap_tag: :li
+    = active_link_to t(".users"), '/admin/users', wrap_tag: :li
+    = active_link_to t(".places"), '/admin/places', wrap_tag: :li
