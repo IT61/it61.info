@@ -16,6 +16,7 @@ $(document).ready(function () {
     }
     
     // Ограничение по длине названия эвента для мобильных девайсов
+    // TODO: Переделать с использованием CSS вместо JS
     $(".events-card h2").each(function () {
         if ($(this).text().length > 36) {
             var title = $(this).text().substr(0, 36) + "...";
