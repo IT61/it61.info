@@ -125,7 +125,7 @@
     .buttons {
       @include span-columns(7);
 
-      button {
+      button, a {
         float: right;
         margin-left: 17px;
       }

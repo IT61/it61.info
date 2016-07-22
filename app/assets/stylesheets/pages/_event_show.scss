@@ -18,6 +18,10 @@
     @include clearfix;
   }
 
+  &-description p {
+    font-size: 15px;
+  }
+
   &-logo {
     float: left;
     margin-right: 25px;
@@ -25,17 +29,19 @@
 
     img {
       height: 492px;
+      width: 492px;
     }
   }
 
   &-info {
     color: #5f5f5f;
-    font-size: 18px;
+    font-size: 16px;
     height: 100%;
     overflow: hidden;
 
     .block-info {
       padding-top: 30px;
+      padding-right: 25px;
     }
 
     .icon-events {
@@ -119,8 +125,13 @@
   }
 
   @include media(min-width 600px max-width 700px) {
-    &-card, &-logo img {
+    &-card {
       height: 280px;
+    }
+
+    &-logo img {
+      height: 280px;
+      width: 280px;
     }
 
     &-logo {
@@ -144,8 +155,13 @@
   }
 
   @include media(min-width 700px max-width 1000px) {
-    &-card, &-logo img {
+    &-card {
       height: 320px;
+    }
+
+    &-logo img {
+      height: 320px;
+      width: 320px;
     }
 
     &-info {

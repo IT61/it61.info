@@ -21,8 +21,8 @@
   .users-container
     - @users.each do |user|
       .user-block
-        /TODO: Выводить нормальный аватар
-        = image_tag "user_default.png", class: "image"
-        .text = user.name
+        = link_to user_path(user) do
+          = image_tag user.pic, class: "image"
+          .text = user.full_name
   /TODO: Сделать пагинацию
   button.btn.btn-blue.btn-more Показать ещё

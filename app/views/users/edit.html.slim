@@ -6,7 +6,7 @@ main.profile-container
       .image-container
         form#image_form avatar_path=user_avatars_path(@user)
           .picture
-            = image_tag "#{@user.avatar.file.nil? ?  'user_default.png' : @user.avatar}", id: 'image', default_img_src: asset_path('user_default.png')
+            = image_tag "#{@user.pic}", id: 'image', default_img_src: asset_path('user_default.png')
             .edit-picture-buttons
               div.file_upload#avatar_file_upload
                 button.button.btn.btn-blue type="button" Загрузить фото
