@@ -1,6 +1,6 @@
 section.card.user
   .picture
-    = image_tag (user.avatar.file.nil? ? 'user_default.png' : user.avatar)
+    = image_tag user.pic
   .details
     h1.name= user.full_name
     / no support for companies for now

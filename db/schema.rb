@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715095915) do
+ActiveRecord::Schema.define(version: 20160722085828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +45,9 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.datetime "started_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "registration_type"
+    t.integer  "registration_type",             default: 0
     t.integer  "participants_limit"
+    t.string   "link"
     t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
   end
 
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.string   "extra_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id", "place_id", "extra_info"], name: "index_locations_on_event_id_and_place_id_and_extra_info", unique: true, using: :btree
   end
 
   create_table "participant_entry_forms", force: :cascade do |t|
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160715095915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_places_on_address", using: :btree
+    t.index ["title", "address", "latitude", "longitude"], name: "index_places_on_title_and_address_and_latitude_and_longitude", unique: true, using: :btree
     t.index ["title"], name: "index_places_on_title", using: :btree
   end
 

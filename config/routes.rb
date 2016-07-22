@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     get "sign/out" => "devise/sessions#destroy"
   end
 
+  # Static pages
+  get "welcome" => "pages#welcome"
+  get "sponsorship" => "pages#sponsorship"
+  get "slack" => "pages#slack"
+
   get "sign/in" => "account#sign_in"
   get "sign/up/complete" => "account#sign_up_complete"
   get "profile" => "account#profile"
@@ -21,8 +26,8 @@ Rails.application.routes.draw do
 
   resources :events do
     collection do
-      get "/upcoming" => "events#index", scope: :upcoming
-      get "/past" => "events#index", scope: :past
+      get "/upcoming" => "events#upcoming"
+      get "/past" => "events#past"
     end
 
     member do

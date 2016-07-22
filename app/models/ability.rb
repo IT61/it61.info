@@ -3,31 +3,29 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.nil? || user.role.nil?
-      can :read, Event, published?
-      can :read, User
-      can :read, Company
-      return
-    end
+    alias_action :upcoming, :past, to: :index_categories
+    alias_action :create, :read, :update, :destroy, :to => :crud
 
-    alias_action :create, :read, :update, :destroy, to: :crud
+    # Common abilities
+    can :read, User
+    can :read, Company
+    can [:read, :index_categories], Event, published?
 
-    # todo: add rules for companies later
+    # Cut off unauthorized users
+    return if user.nil? || user.role.nil?
+
+    can :crud, User, id: user.id
+
+    can :places, Event
+    can [:participate, :register], Event, published?
+    can [:create, :read, :update], Event, organizer?(user)
 
     if user.admin?
       can :manage, :all
     elsif user.moderator?
       can [:read, :edit, :publish!], Event, not_published?
-      can :index, User
       # todo: can view and edit event participants
     end
-
-    can [:read, :participate, :register], Event, published?
-    can [:create, :read, :update], Event, organizer?(user)
-    can :places, Event
-
-    can :show, User
-    can :crud, User, id: user.id
   end
 
   private

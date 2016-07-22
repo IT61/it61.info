@@ -81,3 +81,7 @@ ru:
   will_paginate:
     previous_label: "Предыдущая страница"
     next_label: "Следующая страница"
+  time:
+    formats:
+      date_time_full: "%d %B %Y, %H:%M"
+      date_digits: "%d.%m.%y"

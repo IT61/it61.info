@@ -7,6 +7,7 @@ class EventCreator
       e.title_image = ep[:title_image]
       e.description = ep[:description]
       e.started_at = parse_date_time ep
+      e.link = ep[:link]
       e.organizer = current_user
       e.locations += [new_location_with_place(ep)]
     end
@@ -21,6 +22,7 @@ class EventCreator
     event.started_at = parse_date_time ep
     event.organizer = current_user
     event.locations = [new_location_with_place(ep)]
+    event.link = ep[:link]
 
     event.save
     event
