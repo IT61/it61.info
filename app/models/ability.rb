@@ -7,7 +7,7 @@ class Ability
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     # Common abilities
-    can :read, User
+    can [:read, :active, :recent], User
     can :read, Company
     can [:read, :index_categories], Event, published?
 

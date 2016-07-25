@@ -1,9 +1,9 @@
 .header-title
   .container
-    - if @users.length.div(100) == 0
+    - if User.count.div(100) == 0
       h1 Всё только начинается!
     - else
-      h1 Нас уже больше #{@users.length.div(100) * 100} человек!
+      h1 Нас уже больше #{User.count.div(100) * 100} человек!
 .navigation
   .container
     .navigation-wrapper
@@ -13,9 +13,9 @@
       nav role="navigation"
         ul#js-navigation-menu
           li.nav-link.active
-            a href="#" Активные
+            = link_to "Активные", active_users_path
           li.nav-link
-            a href="#" Недавно добавленные
+            = link_to "Недавно добавленные", recent_users_path
 .container
   /TODO: Сделать поиск по пользователям
   .input-search

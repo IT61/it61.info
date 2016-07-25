@@ -44,6 +44,10 @@ Rails.application.routes.draw do
   end
 
   resources :users do
+    collection do
+      get "/active" => "users#active"
+      get "/recent" => "users#recent"
+    end
     resource :avatars, only: [:create, :destroy], controller: 'users/avatars'
   end
 
