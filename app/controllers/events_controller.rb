@@ -49,19 +49,27 @@ class EventsController < ApplicationController
 
   def participate
     @event = Event.find(params[:id])
-    @event.event_participations << EventParticipation.create(user: current_user, event: @event)
+    if @event.opened? || @event.past?
+      @event.event_participations << EventParticipation.create(user: current_user, event: @event)
+    end
     redirect_to event_path(@event)
   end
 
   def register
     @event = Event.find(params[:id])
 
+    # there is no business if event have open registration
+    return redirect_to event_path(@event) unless @event.closed?
+
+    # if user already have some entry form for this event...
+    @participant_entry_form = ParticipantEntryForm.where(user_id: current_user.id, event_id: @event.id).first_or_initialize
+
     # if we have new registration...
     if request.post?
       # save participant entry form
-      @participant_entry_form = ParticipantEntryForm.new(entry_form_params)
       @participant_entry_form.event = @event
       @participant_entry_form.user = current_user
+      @participant_entry_form.update(entry_form_params)
       success = @participant_entry_form.save
 
       # if ok, mark user as participant and redirect to event page
@@ -70,6 +78,13 @@ class EventsController < ApplicationController
         redirect_to event_path(@event)
       end
     end
+  end
+
+  def revoke_participation
+    @event = Event.find(params[:id])
+    participation = @event.participation_for(current_user)
+    EventParticipation.destroy(participation) unless participation.blank?
+    redirect_to event_path(@event)
   end
 
   def publish

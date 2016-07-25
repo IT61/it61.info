@@ -22,10 +22,10 @@
           = image_tag @event.organizer.pic, class: "avatar avatar-sm avatar-circle"
           span= @event.organizer.full_name
       .btn-group.event-buttons
-        - if @event.opened?
-          = link_to "Я пойду", participate_event_path(@event), method: :post, class: "btn btn-shadow btn-blue"
+        - if @event.user_participated?(current_user)
+          = revoke_registration_link(@event)
         - else
-          = link_to "Зарегистрироваться", register_to_event_path(@event), class: "btn btn-shadow btn-blue"
+          = participate_in_event_link(@event)
         button.btn.btn-shadow.btn-gray + Google calendar
     .card.card-fold
       .card-header

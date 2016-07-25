@@ -17,7 +17,7 @@ class Ability
     can :crud, User, id: user.id
 
     can :places, Event
-    can [:participate, :register], Event, published?
+    can [:participate, :register, :revoke_participation], Event, published?
     can [:create, :read, :update], Event, organizer?(user)
 
     if user.admin?

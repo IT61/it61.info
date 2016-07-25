@@ -35,7 +35,11 @@ Rails.application.routes.draw do
       post 'participate'
       # Use it for registration to closed events:
       match 'register', to: 'events#register', via: [:get, :post], as: 'register_to'
+      # Use it for revoke user registration
+      delete "revoke_participation", to: "events#revoke_participation"
+
       put 'publish'
+
     end
   end
 
