@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 class Users::AvatarsController < ApplicationController
   before_action :authenticate_user!
-  before_action :fetch_user, only: [:update, :destroy]
-  before_action :check_if_same_user
+  before_action :fetch_user, only: [:create, :update, :destroy]
+  before_action :check_if_same_user_or_admin
 
   def create
     avatar = avatar_params[:avatar]
@@ -20,7 +20,7 @@ class Users::AvatarsController < ApplicationController
   private
 
   def check_if_same_user_or_admin
-    if @user != current_user || current_user.admin?
+    if @user != current_user and (not current_user.admin?)
       raise CanCan::AccessDenied
     end
   end
