@@ -16,7 +16,7 @@
           li.nav-link class=('active' if current_page?(new_event_path))
             = link_to "Создать новое", new_event_path
 .container
-  - if @no_upcoming_events_message
+  - if @no_upcoming_events
     .no-upcoming-events
       h3 Пока ничего не запланировано,
       h5 но вы можете это исправить

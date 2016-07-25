@@ -22,9 +22,6 @@
     span class="fa fa-search"
     input type="search"
   .users-container
-    - @users.each do |user|
-      = link_to user_path(user), class: "user-block" do
-        = image_tag user.pic, class: "image"
-        .text = user.full_name
+    = render partial: '/shared/users/list', locals: { users: @users }
   /TODO: Сделать пагинацию
-  button.btn.btn-blue.btn-more Показать ещё
+  button.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"] Показать ещё

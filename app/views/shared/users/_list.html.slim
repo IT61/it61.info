@@ -1,0 +1,4 @@
+- users.each do |user|
+  = link_to user_path(user), class: "user-block" do
+    = image_tag user.pic, class: "image"
+    .text = user.full_name

@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 30)
+    view = request.xhr? ? 'shared/users/_list' : 'users/index'
+    respond_with @events do |f|
+      f.html { render view, layout: !request.xhr?, locals: {users: @users} }
+    end
   end
 
   def show
