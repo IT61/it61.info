@@ -1,5 +1,4 @@
 class Admin::EventsController < ApplicationController
-  helper AdminHelper
   layout 'admin'
   before_action :authenticate_admin!
   before_action :set_event, only: [:edit, :update]
