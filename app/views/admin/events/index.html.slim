@@ -1,0 +1,16 @@
+.container
+  h1.admin-header Мероприятия
+  .card
+    table.admin-table
+      thead
+        td Название
+        td Изображение
+        td Начало
+      tbody
+      - @events.each do |e|
+        tr.item
+          td = link_to e.title, edit_admin_event_path(e)
+          td = image_tag e.title_image, class: 'event-picture'
+          td = l e.started_at, format: :date_time_full
+
+  = will_paginate @users

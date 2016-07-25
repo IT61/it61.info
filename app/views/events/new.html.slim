@@ -1,9 +1,3 @@
 main.new-event-container
   .card.new-event-card
-    h1.card-header Новое мероприятие
-    = form_for @event do |f|
-      = render partial: 'details_section', locals: {f: f}
-      section.space-taker
-      = render partial: 'image_section', locals: {f: f}
-      = render partial: 'description_section', locals: {f: f}
-      = render partial: 'footer_buttons_section', locals: {f: f}
+    = render partial: 'form', locals: { submit_url: events_path(@event), form_header: "Новое мероприятие", submit_button_text: "Создать мероприятие" }

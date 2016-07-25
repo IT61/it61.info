@@ -15,11 +15,11 @@ section.details
       label Ссылка на внешний ресурс
   .event-association-field
     .input-float-label
-      = text_field_tag 'event[place_title]', nil, id: 'place_title', autocomplete: 'off'
+      = text_field_tag 'event[place_title]', event.places[0].nil? ? '' : event.places[0].title, id: 'place_title', autocomplete: 'off'
       label required="true" Место проведения*
   .event-association-field
     .input-float-label
-      input#location type="text" autocomplete="off"
+      input#location type="text" autocomplete="off" value=(event.places[0].nil?  ? '' : event.places[0].address)
       label Точный адрес*
       div#dropdown-container
         div#ours-dropdown-container
@@ -35,6 +35,6 @@ section.details
             h2 Карта
           div#map
         div.btn.modal-close for="modal-1" Закрыть
-      = text_field_tag 'event[address]', nil, class: 'unchangeable-input', required: true, disabled: true, type: 'hidden'
-      = text_field_tag 'event[latitude]', nil, class: 'unchangeable-input', required: true, disabled: true, type: 'hidden'
-      = text_field_tag 'event[longitude]', nil, class: 'unchangeable-input', required: true, disabled: true, type: 'hidden'
+      = text_field_tag 'event[address]', event.places[0].nil? ? '' :  event.places[0].address, class: 'unchangeable-input', required: true, type: 'hidden'
+      = text_field_tag 'event[latitude]', event.places[0].nil? ? '' : event.places[0].latitude, class: 'unchangeable-input', required: true, type: 'hidden'
+      = text_field_tag 'event[longitude]',  event.places[0].nil? ? '' : event.places[0].longitude, class: 'unchangeable-input', required: true, type: 'hidden'

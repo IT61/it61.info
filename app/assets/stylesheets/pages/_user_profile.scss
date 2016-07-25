@@ -184,11 +184,16 @@ $card-padding: 15px;
     }
   }
 
+  .mamont-card {
+    margin-top: 1em;
+    width: 100%;
+  }
+
   .mamont {
     color: #777;
-    margin-top: 3em;
     font-size: 1.2em;
     text-align: center;
+    margin: 1em $card-padding;
 
     i {
       vertical-align: middle;

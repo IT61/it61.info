@@ -86,7 +86,7 @@ $special-break: new-breakpoint(max-width 1200px 8);
   padding: 35px;
 }
 
-.card-header {
+.event-card-header {
   font-weight: 400;
   @include media($new-event-mobile) {
     font-weight: 700;

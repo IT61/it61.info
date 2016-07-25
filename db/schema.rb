@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722085828) do
+ActiveRecord::Schema.define(version: 20160720130625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20160722085828) do
     t.string   "extra_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id", "place_id", "extra_info"], name: "index_locations_on_event_id_and_place_id_and_extra_info", unique: true, using: :btree
   end
 
   create_table "participant_entry_forms", force: :cascade do |t|
@@ -80,7 +79,6 @@ ActiveRecord::Schema.define(version: 20160722085828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_places_on_address", using: :btree
-    t.index ["title", "address", "latitude", "longitude"], name: "index_places_on_title_and_address_and_latitude_and_longitude", unique: true, using: :btree
     t.index ["title"], name: "index_places_on_title", using: :btree
   end
 

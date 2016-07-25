@@ -6,22 +6,22 @@ class Users::AvatarsController < ApplicationController
 
   def create
     avatar = avatar_params[:avatar]
-    current_user.avatar = avatar
-    commit = current_user.save
+    @user.avatar = avatar
+    commit = @user.save
     render json: { success: commit }
   end
 
   def destroy
-    current_user.remove_avatar!
-    commit = current_user.save
+    @user.remove_avatar!
+    commit = @user.save
     render json: { success: commit }
   end
 
   private
 
-  def check_if_same_user
-    if @user != current_user
-      # render_403
+  def check_if_same_user_or_admin
+    if @user != current_user || current_user.admin?
+      raise CanCan::AccessDenied
     end
   end
 
@@ -32,4 +32,5 @@ class Users::AvatarsController < ApplicationController
   def avatar_params
     params.permit :avatar, :user_id
   end
+
 end

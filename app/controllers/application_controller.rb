@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
     render page_path("404")
   end
 
+  def authenticate_admin!
+    authenticate_user!
+
+    if current_user.nil? || (not current_user.admin?)
+      raise CanCan::AccessDenied
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |_exception|
     render_404
   end

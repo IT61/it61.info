@@ -44,4 +44,12 @@ Rails.application.routes.draw do
   end
 
   resources :photos, only: [:index]
+
+  namespace "admin" do
+    get "/", to: "users#index"
+    resources :users, controller: "users"
+    resources :places, controller: "places"
+    resources :events, controller: "events"
+  end
+
 end
