@@ -106,8 +106,8 @@ class EventsController < ApplicationController
 
   def show_events(scope)
     @events = Event.send(scope).published
-
-    @no_upcoming_events = (@events.count == 0 and scope == :upcoming)
+    @scope = scope
+    @no_events = (@events.count == 0)
     @events = @events.paginate(page: params[:page], per_page: 6)
 
     # TODO: Вынести верстку 'events/index' в отдельный layout
