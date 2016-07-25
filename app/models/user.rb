@@ -94,7 +94,7 @@ class User < ApplicationRecord
 
   private
 
-  def link_for(auth)
+  def self.link_for(auth)
     provider = auth.provider
 
     case provider
