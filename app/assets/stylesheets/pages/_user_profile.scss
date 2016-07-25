@@ -222,23 +222,6 @@ $card-padding: 15px;
       @include span-columns(12);
       margin-bottom: $card-padding;
     }
-
-
-    .picture {
-      margin-right: 1em;
-      width: 2.5em;
-      height: 2.5em;
-    }
-
-    .text {
-      font-size: 1.7em;
-      font-weight: 300;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: inline-block;
-      width: 80%;
-    }
   }
 
   .no-events {
@@ -266,19 +249,7 @@ $card-padding: 15px;
   }
 
   .event {
-    @include outer-container();
-    .small-picture-container {
-      @include span-columns(3);
-      width: 50px;
-      height: 50px;
-      .small-picture {
-        max-width: 50px;
-      }
-    }
-
-    .text {
-      @include span-columns(9);
-    }
+    @include media-left();
   }
 
 }

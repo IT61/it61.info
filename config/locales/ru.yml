@@ -2,6 +2,9 @@ ru:
   errors:
     connection_refused: "В соединении отказано"
   devise:
+    failure:
+      user:
+        unauthenticated: "Вы должны зарегистрироваться для этого действия"
     sessions:
       user:
         signed_out: "Вы успешно вышли из своего аккаунта"
