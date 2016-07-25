@@ -1,4 +1,5 @@
 .modal {
+  $mobile-screen: 767px !default;
   $medium-screen: 30em !default;
   $large-screen: 50em !default;
 
@@ -14,7 +15,7 @@
 
   .modal-fade-screen { // overlay
     @include position(fixed, 0 0 0 0);
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.6);
     opacity: 0;
     transition: opacity 0.25s ease;
     visibility: hidden;
@@ -32,26 +33,34 @@
 
   .modal-close {
     cursor: pointer;
+    float: right;
+    margin-top: 15px;
   }
 
   .modal-inner {
+    padding: 15px;
     background-color: #fff;
     margin: auto;
-    max-height: 95%;
-    //overflow: auto;
+    width: 650px;
+    height: 735px;
     position: relative;
     top: 0.5em;
     transition: opacity 0.25s ease;
-    width: 95%;
     overflow: hidden;
+    border-radius: 3px;
+
+    @include media($mobile-screen) {
+      width: 90%;
+    }
 
     @include media($medium-screen) {
-      max-height: 70%;
-      width: 60%;
     }
 
     @include media($large-screen) {
-      width: 50%;
+    }
+
+    #map {
+      width: auto;
     }
   }
 

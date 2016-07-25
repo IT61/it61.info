@@ -31,8 +31,10 @@ section.details
     div.modal-fade-screen
       div.modal-inner
         div.modal-content
+          .header
+            h2 Карта
           div#map
-        /div.modal-close for="modal-1" Ok / do we need close button on modal?
+        div.btn.modal-close for="modal-1" Закрыть
       = text_field_tag 'event[address]', event.places[0].nil? ? '' :  event.places[0].address, class: 'unchangeable-input', required: true, type: 'hidden'
       = text_field_tag 'event[latitude]', event.places[0].nil? ? '' : event.places[0].latitude, class: 'unchangeable-input', required: true, type: 'hidden'
       = text_field_tag 'event[longitude]',  event.places[0].nil? ? '' : event.places[0].longitude, class: 'unchangeable-input', required: true, type: 'hidden'
