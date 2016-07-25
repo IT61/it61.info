@@ -20,9 +20,8 @@
     input type="search"
   .users-container
     - @users.each do |user|
-      .user-block
-        = link_to user_path(user) do
-          = image_tag user.pic, class: "image"
-          .text = user.full_name
+      = link_to user_path(user), class: "user-block" do
+        = image_tag user.pic, class: "image"
+        .text = user.full_name
   /TODO: Сделать пагинацию
   button.btn.btn-blue.btn-more Показать ещё

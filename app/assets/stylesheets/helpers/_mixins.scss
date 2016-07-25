@@ -43,7 +43,7 @@
   .text {
     display: table-cell;
     vertical-align: middle;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
     color: #100f0f;
   }
@@ -68,5 +68,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     clear: both;
+    color: #100f0f;
   }
 }
