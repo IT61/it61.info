@@ -145,48 +145,48 @@
     }
   }
 
-  .edit-profile-bottom-buttons {
-    @include clearfix;
-    @include media($mobile-viewport) {
-      bottom: 23px;
-      position: static;
-      float: none;
-      margin-top: 25px;
-      width: 100%;
-    }
-    @include media($medium-viewport) {
-      bottom: 23px;
-    }
-
-    padding: $card-padding;
-
-    .btn {
-      margin-left: 15px;
-      @include media($mobile-viewport) {
-        width: 45%;
-        text-align: center;
-      }
-    }
-
-    margin-top: 25px;
-    float: right;
-
-    .btn {
-      @include media($mobile-viewport) {
-        width: 100%;
-        margin: 5px 0;
-        padding: 1em 1em;
-        font-size: 1.1em;
-      }
-      margin-right: $card-padding;
-    }
-  }
-
   .bottom-flash {
     float: left;
     width: 100%;
     text-align: center;
     color: $blue;
     vertical-align: middle;
+  }
+}
+
+.edit-profile-bottom-buttons {
+  @include clearfix;
+  @include media($mobile-viewport) {
+    bottom: 23px;
+    position: static;
+    float: none;
+    margin-top: 25px;
+    width: 100%;
+  }
+  @include media($medium-viewport) {
+    bottom: 23px;
+  }
+
+  padding: $card-padding;
+
+  .btn {
+    margin-left: 15px;
+    @include media($mobile-viewport) {
+      width: 45%;
+      text-align: center;
+    }
+  }
+
+  margin-top: 25px;
+  float: right;
+
+  .btn {
+    @include media($mobile-viewport) {
+      width: 100%;
+      margin: 5px 0;
+      padding: 1em 1em;
+      font-size: 1.1em;
+    }
+    margin-right: $card-padding;
   }
 }
