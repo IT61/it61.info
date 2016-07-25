@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get "profile" => "account#profile"
 
   scope "profile" do
-    get   "edit" => "account#edit"
-    get   "settings" => "account#settings"
+    get   "edit" => "account#edit", as: :edit_profile
+    get   "settings" => "account#settings", as: :profile_settings
     patch "settings_update" => "account#settings_update"
   end
 
