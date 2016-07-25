@@ -1,0 +1,22 @@
+.container
+  h1.admin-header Место
+  .card.admin-edit-card
+    = form_for @place, url: "/admin/places/#{@place.id}" do |f|
+      .input-float-label
+        = f.text_field :title
+        = f.label :title, 'Название места'
+      .input-float-label
+        = f.text_field :address
+        = f.label :address, 'Точный адрес'
+      .input-float-label
+        = f.text_field :latitude
+        = f.label :latitude, 'Широта'
+      .input-float-label
+        = f.text_field :longitude
+        = f.label :longitude, 'Долгота'
+      .register-footer
+        .buttons
+          button.btn.btn-shadow.btn-blue [type="submit"]
+            | Сохранить
+          button.btn.btn-shadow.btn-gray [type="reset"]
+            | Отмена

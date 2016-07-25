@@ -1,1 +1,19 @@
-h1 Places admin panel
+.container
+  h1.admin-header Места
+  .card
+    table.admin-table
+      thead
+        td Название
+        td Точный адрес
+        td Широта
+        td Долгота
+      tbody
+      - @places.each do |p|
+        tr.item
+          td
+            = link_to p.title, "places/#{p.id}/edit"
+          td = p.address
+          td = p.latitude
+          td = p.longitude
+
+  = will_paginate @places
