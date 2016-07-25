@@ -1,6 +1,9 @@
 .header-title
   .container
-    h1 Нас уже больше 1000 человек!
+    - if @users.length.div(100) == 0
+      h1 Всё только начинается!
+    - else
+      h1 Нас уже больше #{@users.length.div(100) * 100} человек!
 .navigation
   .container
     .navigation-wrapper
