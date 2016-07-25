@@ -8,7 +8,8 @@ header.navbar.navbar-blue
           | &nbsp;
           = t(".sign_in")
       - else
-        = link_to sign_out_path, class: "btn btn-small btn-blue" do
-          i.fa.fa-sign-in
-          | &nbsp;
-          = t(".sign_out")
+        .navbar-profile
+          .avatar = image_tag current_user.pic, class: "avatar-circle"
+          .name = current_user.first_name
+          = link_to sign_out_path, class: "btn btn-small btn-blue" do
+            i.fa.fa-sign-out
