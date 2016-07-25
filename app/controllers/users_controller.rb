@@ -35,10 +35,10 @@ class UsersController < ApplicationController
     @user.save
     if @user.valid?
       flash[:notice] = "Изменения сохранены"
-      respond_with @user, location: edit_path
+      respond_with @user, location: edit_profile_path
     else
       flash[:error] = "Ошибка сохранения данных"
-      respond_with @user, location: edit_path
+      respond_with @user, location: edit_profile_path
     end
   end
 
