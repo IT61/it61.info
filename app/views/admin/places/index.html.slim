@@ -10,8 +10,7 @@
       tbody
       - @places.each do |p|
         tr.item
-          td
-            = link_to p.title, "places/#{p.id}/edit"
+          td = link_to p.title, edit_admin_place_path(p)
           td = p.address
           td = p.latitude
           td = p.longitude

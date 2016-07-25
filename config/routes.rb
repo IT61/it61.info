@@ -45,11 +45,11 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:index]
 
-  scope "admin" do
-    get "/", to: "admin/users#index"
-    resources :users, controller: "admin/users"
-    resources :places, controller: "admin/places"
-    resources :events, controller: "admin/events"
+  namespace "admin" do
+    get "/", to: "users#index"
+    resources :users, controller: "users"
+    resources :places, controller: "places"
+    resources :events, controller: "events"
   end
 
 end

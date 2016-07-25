@@ -1,7 +1,7 @@
 .container
   h1.admin-header Место
   .card.admin-edit-card
-    = form_for @place, url: "/admin/places/#{@place.id}" do |f|
+    = form_for @place, url: admin_place_path(@place) do |f|
       .input-float-label
         = f.text_field :title
         = f.label :title, 'Название места'

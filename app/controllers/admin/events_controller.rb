@@ -2,7 +2,7 @@ class Admin::EventsController < ApplicationController
   helper AdminHelper
   layout 'admin'
   before_action :authenticate_admin!
-  before_action :fetch_event, only: [:edit, :update]
+  before_action :set_event, only: [:edit, :update]
 
   def index
     @events = Event.paginate page: params[:page], per_page: 5
@@ -25,7 +25,7 @@ class Admin::EventsController < ApplicationController
 
   private
 
-  def fetch_event
+  def set_event
     @event = Event.find params[:id]
   end
 end

@@ -1,7 +1,7 @@
 .container
   h1.admin-header Пользователь
   .card.admin-edit-card
-    = form_for @user, url: "/admin/users/#{@user.id}" do |f|
+    = form_for @user, url: admin_user_path(@user) do |f|
       .input-float-label
         = f.text_field :email
         = f.label :email, 'Email'

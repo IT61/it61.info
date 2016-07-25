@@ -1,17 +1,16 @@
 class Admin::PlacesController < ApplicationController
   layout 'admin'
   before_action :authenticate_admin!
+  before_action :set_place, only: [:edit, :update]
 
   def index
     @places = Place.paginate page: params[:page], per_page: 10
   end
 
   def edit
-    @place = fetch_place
   end
 
   def update
-    @place = fetch_place
     commit = @place.update place_params
     if commit
       redirect_to '/admin/places', notice: 'Данные места обновлены'
@@ -27,8 +26,8 @@ class Admin::PlacesController < ApplicationController
     params.require(:place).permit :address, :title, :latitude, :longitude
   end
 
-  def fetch_place
-    Place.find params[:id]
+  def set_place
+    @place = Place.find params[:id]
   end
 
 end

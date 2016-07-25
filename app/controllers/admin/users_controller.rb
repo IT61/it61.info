@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_admin!
-  before_action :fetch_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update]
 
   def index
     @users = User.paginate page: params[:page], per_page: 10
@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
 
   private
 
-  def fetch_user
+  def set_user
     @user = User.find params[:id]
   end
 

@@ -1,3 +1,6 @@
 .container
   .card.admin-edit-card
-    = render partial: 'events/form', locals: { submit_url: "/admin/events/#{@event.id}", form_header: "Редактировать мероприятие", submit_button_text: "Сохранить" }
+    = render partial: 'events/form',
+             locals: { submit_url: admin_event_path(@event),
+                       form_header: "Редактировать мероприятие",
+                       submit_button_text: "Сохранить" }

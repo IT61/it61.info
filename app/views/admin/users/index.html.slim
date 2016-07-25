@@ -10,8 +10,7 @@
       tbody
       - @users.each do |u|
         tr.item
-          td
-            = link_to u.email, "users/#{u.id}/edit"
+          td = link_to u.email, edit_admin_user_path(u)
           td = u.full_name
           td = u.normalized_phone
           td = u.role
