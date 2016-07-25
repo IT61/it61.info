@@ -15,7 +15,7 @@ class Admin::EventsController < ApplicationController
     event_creator.update @event, params, current_user
 
     if @event.persisted?
-      redirect_to '/admin/events', notice: 'Данные мероприятия обновлены'
+      redirect_to admin_events_path, notice: 'Данные мероприятия обновлены'
     else
       flash[:errors] = @event.errors.messages
       render "new"

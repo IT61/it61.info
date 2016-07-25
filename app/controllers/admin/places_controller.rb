@@ -13,7 +13,7 @@ class Admin::PlacesController < ApplicationController
   def update
     commit = @place.update place_params
     if commit
-      redirect_to '/admin/places', notice: 'Данные места обновлены'
+      redirect_to admin_places_path, notice: 'Данные места обновлены'
     else
       flash.now[:error] = 'Не получилось обновить место'
       render 'edit'

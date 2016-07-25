@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
   def update
     commit = @user.update user_params
     if commit
-      redirect_to '/admin/users', notice: 'Данные пользователи обновлены'
+      redirect_to admin_users_path, notice: 'Данные пользователи обновлены'
     else
       flash.now[:error] = 'Не получилось обновить пользователя'
       render 'edit'
