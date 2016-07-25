@@ -34,6 +34,7 @@ class EventsController < ApplicationController
     @event = event_creator.create params, current_user
 
     if @event.persisted?
+      flash[:success] = "Мероприятие появится в списке после одобрения администрации"
       redirect_to event_path(@event)
     else
       flash[:errors] = @event.errors.messages
