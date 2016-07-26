@@ -1,28 +1,28 @@
-$sidebar-width: 300px;
-
 .sidebar {
-  font-size: 14px;
   height: 100%;
   left: 0;
   margin-left: -$sidebar-width;
   position: fixed;
   top: 0;
+  font-size: 16px;
+  font-weight: bold;
   width: $sidebar-width;
   z-index: 100;
   background: #FFFFFF;
+  box-shadow: $base-box-shadow;
+  overflow: auto;
 
   &__logo {
     background:#363738;
     min-width: $sidebar-width;
-    min-height: 200px;
-    padding-top: 45px;
+    padding: 53px 0;
 
     &_img {
       background: image_url("logo-03.svg");
-      height: 100px;
+      height: 123px;
       margin-left: auto;
       margin-right: auto;
-      width: 100px;
+      width: 122px;
     }
   }
 
@@ -30,10 +30,14 @@ $sidebar-width: 300px;
     background: #F4F4F7;
     border-bottom: 1px solid #E9E9ED;
     color: #7F7F81;
-    font-weight: 500;
-    height: 56px;
-    padding: 18px 30px 16px;
+    height: 81px;
+    padding: 27px 40px 0;
     width: $sidebar-width;
+
+    .avatar {
+      float: left;
+      margin-right: 12px;
+    }
 
     &:hover {
       background-color: #BFE0FB;
@@ -44,12 +48,14 @@ $sidebar-width: 300px;
   &__menu {
     padding-left: 0;
 
+    a {
+      color: #191919;
+    }
+
     li {
-      font-size: 14px;
-      font-weight: 500;
-      height: 56px;
+      height: 81px;
       list-style: none;
-      padding: 18px 37px 16px;
+      padding: 30px 40px 0;
       text-transform: uppercase;
       width: $sidebar-width;
 
@@ -57,6 +63,32 @@ $sidebar-width: 300px;
         background-color: #BFE0FB;
         cursor: pointer;
       }
+    }
+  }
+
+  @include media(max-width 600px) {
+    margin-left: -$sidebar-mobile-width;
+    width: $sidebar-mobile-width;
+    font-size: 14px;
+
+    &__logo {
+      padding: 45px 0;
+      min-width: $sidebar-mobile-width;
+
+      &_img {
+        background: image_url("logo-horizontal.svg");
+        background-size: cover;
+        margin-left: auto;
+        margin-right: auto;
+        height: 49px;
+        width: 180px;
+      }
+    }
+
+    &__profile, &__menu li {
+      height: 60px;
+      padding: 20px 30px 0;
+      width: $sidebar-mobile-width;
     }
   }
 }

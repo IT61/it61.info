@@ -4,18 +4,17 @@
   - unless current_user.nil?
     = active_link_to profile_path
       .sidebar__profile
-        i.fa.fa-slack
-          | &nbsp;
+        = image_tag current_user.pic, class: "avatar avatar-xs avatar-circle"
         = t(".my_profile")
   ul.sidebar__menu
     /= active_link_to t(".community"), events_path, wrap_tag: :li
     = active_link_to events_path do
-      li=t(".events")
-    = active_link_to users_path do
-      li=t(".personalities")
+      li = t(".events")
     = active_link_to photos_path do
-      li=t(".photos")
+      li = t(".photos")
     = active_link_to slack_path do
-      li=t(".slack")
+      li = t(".slack")
+    = active_link_to users_path do
+      li = t(".personalities")
     = active_link_to sponsorship_path do
-      li=t(".sponsorship")
+      li = t(".sponsorship")
