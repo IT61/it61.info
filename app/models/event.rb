@@ -62,6 +62,11 @@ class Event < ActiveRecord::Base
     save!
   end
 
+  def register_user!(user)
+    event_participations << EventParticipation.new(user: user)
+    save!
+  end
+
   private
 
   def permalink_title
