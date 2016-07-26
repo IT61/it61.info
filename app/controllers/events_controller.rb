@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   respond_to :rss, only: :index
 
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
+  before_action :set_event, only: [:show, :participate, :register, :revoke_participation]
 
   authorize_resource
 
@@ -22,7 +23,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def new
@@ -49,7 +49,6 @@ class EventsController < ApplicationController
   end
 
   def participate
-    @event = Event.find(params[:id])
     if @event.opened? || @event.past?
       @event.event_participations << EventParticipation.create(user: current_user, event: @event)
     end
@@ -57,32 +56,14 @@ class EventsController < ApplicationController
   end
 
   def register
-    @event = Event.find(params[:id])
-
     # there is no business if event have open registration
     return redirect_to event_path(@event) unless @event.closed?
 
-    # if user already have some entry form for this event...
-    @participant_entry_form = ParticipantEntryForm.where(user_id: current_user.id, event_id: @event.id).first_or_initialize
-
-    # if we have new registration...
-    if request.post?
-      # save participant entry form
-      @participant_entry_form.event = @event
-      @participant_entry_form.user = current_user
-      @participant_entry_form.update(entry_form_params)
-      success = @participant_entry_form.save
-
-      # if ok, mark user as participant and redirect to event page
-      if success
-        @event.event_participations << EventParticipation.create(user: current_user, event: @event)
-        redirect_to event_path(@event)
-      end
-    end
+    @event.register_user!(current_user)
+    respond_with @event
   end
 
   def revoke_participation
-    @event = Event.find(params[:id])
     participation = @event.participation_for(current_user)
     EventParticipation.destroy(participation) unless participation.blank?
     redirect_to event_path(@event)
@@ -110,13 +91,10 @@ class EventsController < ApplicationController
   end
 
   def show_events(scope)
-    @events = Event.send(scope).published
-    @scope = scope
-    @no_events = (@events.count == 0)
-    @events = @events.paginate(page: params[:page], per_page: 6)
+    @events = Event.send(scope).published.paginate(page: params[:page], per_page: 6)
 
     # TODO: Вынести верстку 'events/index' в отдельный layout
-    view = request.xhr? ? 'events/_cards' : 'events/index'
+    view = request.xhr? ? "events/_cards" : "events/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr? }
     end

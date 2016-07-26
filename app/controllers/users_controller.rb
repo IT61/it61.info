@@ -26,20 +26,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    # commit = @user.update user_params
-    @user.assign_attributes first_name: user_params[:first_name],
-                            last_name: user_params[:last_name],
-                            email: user_params[:email],
-                            phone: user_params[:phone],
-                            bio: user_params[:bio]
-    @user.save
-    if @user.valid?
+    @user.assign_attributes(user_params.to_h)
+    if @user.save!
       flash[:notice] = "Изменения сохранены"
-      respond_with @user, location: edit_profile_path
     else
       flash[:error] = "Ошибка сохранения данных"
-      respond_with @user, location: edit_profile_path
     end
+
+    respond_with @user, location: edit_profile_path
   end
 
   def destroy
@@ -50,9 +44,9 @@ class UsersController < ApplicationController
 
   def show_users(scope)
     @users = User.send(scope).paginate(page: params[:page], per_page: 30)
-    view = request.xhr? ? 'shared/users/_list' : 'users/index'
+    view = request.xhr? ? "shared/users/_list" : "users/index"
     respond_with @events do |f|
-      f.html { render view, layout: !request.xhr?, locals: {users: @users} }
+      f.html { render view, layout: !request.xhr?, locals: { users: @users } }
     end
   end
 
