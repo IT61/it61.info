@@ -66,9 +66,6 @@ main.profile-container
                 = link_to info[:link], class: info[:buttonclass].to_s do
                   i class="#{info[:class]}"
                   span = info[:name]
-        .bottom-flash
-          - if flash[:notice]
-            .notice = flash[:notice]
         .edit-profile-bottom-buttons
           button.btn.btn-blue type="submit" Сохранить
           button.btn.btn-gray type="reset" Отмена
