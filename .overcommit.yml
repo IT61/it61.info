@@ -1,7 +1,7 @@
 PreCommit:
   RuboCop:
     enabled: true
-    command: ["bundle", "exec", "rubocop"]
+    command: ["bundle", "exec", "rubocop", "--rails"]
   Brakeman:
     enabled: true
   ScssLint:
