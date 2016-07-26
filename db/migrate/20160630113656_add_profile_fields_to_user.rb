@@ -1,6 +1,5 @@
 class AddProfileFieldsToUser < ActiveRecord::Migration
   def change
-
     add_column :users, :name, :string
     add_column :users, :role, :integer
     add_column :users, :first_name, :string
@@ -16,6 +15,5 @@ class AddProfileFieldsToUser < ActiveRecord::Migration
     add_index :users, :sms_reminders
     add_index :users, :subscribed
     add_index :users, :name
-
   end
 end

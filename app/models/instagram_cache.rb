@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 class InstagramCache < ApplicationRecord
-
   class << self
     def get(tag)
       json_string = $redis.get(tag)
@@ -11,5 +11,4 @@ class InstagramCache < ApplicationRecord
       $redis.expire(tag, 5.days)
     end
   end
-
 end

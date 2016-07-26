@@ -1,6 +1,5 @@
 class MakeRequiredFieldsNotNull < ActiveRecord::Migration
   def change
-
     # User model
     change_column_null :users, :role, false
     change_column_null :users, :email_reminders, false, false

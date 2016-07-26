@@ -1,6 +1,6 @@
+# frozen_string_literal: true
 require "nokogiri"
 require "json"
-
 
 class InstagramService
   OPENING_WITH_HTML = "<script type=\"text/javascript\">window._sharedData = "
@@ -39,7 +39,7 @@ class InstagramService
     end
     response = find_script_tag_with_content page
     json = JSON.parse (cleanup_response response)
-    get_nodes(json).map { |p| p.slice('code', 'thumbnail_src') }
+    get_nodes(json).map { |p| p.slice("code", "thumbnail_src") }
   end
 
   def cleanup_response(response)

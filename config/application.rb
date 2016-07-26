@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 require "active_model/railtie"
 require "active_job/railtie"
 require "active_record/railtie"

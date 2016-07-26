@@ -98,20 +98,18 @@ class User < ApplicationRecord
     provider = auth.provider
 
     case provider
-    when 'google_oauth2'
+    when "google_oauth2"
       auth.extra.raw_info.profile if
         (not auth.extra.raw_info.nil?) && (not auth.extra.raw_info.profile.nil?)
-    when 'vkontakte'
+    when "vkontakte"
       auth.info.urls.Vkontakte if
-          (not auth.info.urls.nil?)
-    when 'facebook'
+          not auth.info.urls.nil?
+    when "facebook"
       # facebook doesn't give a link to user website
       nil
-    when 'github'
+    when "github"
       auth.info.urls.GitHub if
-        (not auth.info.urls.nil?)
-    else
-      nil
+        not auth.info.urls.nil?
     end
   end
 

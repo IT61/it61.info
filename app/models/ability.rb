@@ -4,7 +4,7 @@ class Ability
 
   def initialize(user)
     alias_action :upcoming, :past, to: :index_categories
-    alias_action :create, :read, :update, :destroy, :to => :crud
+    alias_action :create, :read, :update, :destroy, to: :crud
 
     # Common abilities
     can [:read, :active, :recent], User

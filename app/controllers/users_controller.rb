@@ -70,10 +70,9 @@ class UsersController < ApplicationController
       :email,
       :phone,
       :hash_tag,
-      :bio
+      :bio,
     ]
 
     params.require(:user).permit *user_attributes
   end
-
 end
