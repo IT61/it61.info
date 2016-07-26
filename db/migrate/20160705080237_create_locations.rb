@@ -6,7 +6,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :extra_info
       t.timestamps null: false
     end
-    
+
     add_index :locations, [:event_id, :place_id, :extra_info], unique: true
   end
 end

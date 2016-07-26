@@ -1,5 +1,4 @@
 class EventCreator
-
   def create(params, current_user)
     ep = event_params(params)
     Event.create do |e|
@@ -33,23 +32,23 @@ class EventCreator
 
   def event_params(params)
     permitted_attrs = [
-        :title,
-        :description,
-        :title_image,
-        :link,
-        :started_at_date,
-        :started_at_time,
-        :place_title,
-        :address,
-        :latitude,
-        :longitude,
+      :title,
+      :description,
+      :title_image,
+      :link,
+      :started_at_date,
+      :started_at_time,
+      :place_title,
+      :address,
+      :latitude,
+      :longitude,
     ]
     params.require(:event).permit(*permitted_attrs)
   end
 
   def new_place(event_params)
     Place.where(title: event_params[:place_title], address: event_params[:address],
-                        latitude: event_params[:latitude], longitude: event_params[:longitude]).first_or_create
+                latitude: event_params[:latitude], longitude: event_params[:longitude]).first_or_create
   end
 
   def update_place(event_params, place)

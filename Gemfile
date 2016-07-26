@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "2.3.1"
 
 gem "active_link_to"
+gem "activemodel-serializers-xml"
 gem "autoprefixer-rails"
 gem "bourbon", "5.0.0.beta.5"
 gem "carrierwave"
@@ -38,7 +39,6 @@ gem "suspenders"
 gem "toastr-rails"
 gem "uglifier"
 gem "will_paginate"
-gem "activemodel-serializers-xml"
 
 group :development do
   gem "spring"
@@ -55,6 +55,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.5.0"
+  gem "slim_lint"
 end
 
 group :development, :staging do

@@ -1,44 +1,43 @@
 # frozen_string_literal: true
 module UserHelper
-
   def my_profile?(user)
     user == current_user
   end
 
   def social_account_linked(user, provider)
     if linked user, provider
-      'button-linked'
+      "button-linked"
     else
-      'button-not-linked'
+      "button-not-linked"
     end
   end
 
   def all_providers
     {
-        facebook: {
-            name: 'FACEBOOK',
-            class: 'fa fa-facebook',
-            buttonclass: 'btn btn-fb',
-            link: '/users/auth/facebook'
-        },
-        google_oauth2: {
-            name: 'GOOGLE+',
-            class: 'fa fa-google-plus',
-            buttonclass: 'btn btn-google',
-            link: '/users/auth/google_oauth2'
-        },
-        vkontakte: {
-            name: 'ВКОНТАКТЕ',
-            class: 'fa fa-vk',
-            buttonclass: 'btn btn-vk',
-            link: '/users/auth/vkontakte'
-        },
-        github: {
-            name: 'GITHUB',
-            class: 'fa fa-github',
-            buttonclass: 'btn btn-github',
-            link: '/users/auth/github'
-        }
+      facebook: {
+        name: "FACEBOOK",
+        class: "fa fa-facebook",
+        buttonclass: "btn btn-fb",
+        link: "/users/auth/facebook",
+      },
+      google_oauth2: {
+        name: "GOOGLE+",
+        class: "fa fa-google-plus",
+        buttonclass: "btn btn-google",
+        link: "/users/auth/google_oauth2",
+      },
+      vkontakte: {
+        name: "ВКОНТАКТЕ",
+        class: "fa fa-vk",
+        buttonclass: "btn btn-vk",
+        link: "/users/auth/vkontakte",
+      },
+      github: {
+        name: "GITHUB",
+        class: "fa fa-github",
+        buttonclass: "btn btn-github",
+        link: "/users/auth/github",
+      },
     }
   end
 
@@ -49,7 +48,7 @@ module UserHelper
       provider = a.provider.to_sym
       link = a.link
       button_class = all_providers[provider][:class]
-      res[provider] = [ link, button_class ] unless link.nil?
+      res[provider] = [link, button_class] unless link.nil?
     end
     res
   end
@@ -62,7 +61,7 @@ module UserHelper
 
   def not_linked_providers(user)
     select_providers user do |linked, p|
-      ! (linked.include? p.to_s)
+      !(linked.include? p.to_s)
     end
   end
 
@@ -78,5 +77,4 @@ module UserHelper
       yield linked, p
     end
   end
-
 end

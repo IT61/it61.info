@@ -6,13 +6,16 @@
 2. Install postgresql and create super user in it
 3. Install gems
     `bundle update`
-4. Configure your database.yml file with your username and password
-5. Setup database and run migrations
+4. Install `overcommit` for GIT commit hooks
+5. Install GIT hooks with `overcommit`: `overcommit --install -f`
+6. Run `overcommit --sign` to trust the hooks in this repository.
+7. Configure your database.yml file with your username and password
+8. Setup database and run migrations
     ```
     rake db:setup
     rake db:migrate
     ```
-6. Run server
+9. Run server
     `rails s`
 
 ## Guidelines
