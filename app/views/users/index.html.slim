@@ -1,6 +1,9 @@
 .header-title
   .container
-    h1 Нас уже больше 1000 человек!
+    - if User.count.div(100) == 0
+      h1 Всё только начинается!
+    - else
+      h1 Нас уже больше #{User.count.div(100) * 100} человек!
 .navigation
   .container
     .navigation-wrapper
@@ -10,18 +13,15 @@
       nav role="navigation"
         ul#js-navigation-menu
           li.nav-link.active
-            a href="#" Активные
+            = link_to "Активные", active_users_path
           li.nav-link
-            a href="#" Недавно добавленные
+            = link_to "Недавно добавленные", recent_users_path
 .container
   /TODO: Сделать поиск по пользователям
   .input-search
     span class="fa fa-search"
     input type="search"
   .users-container
-    - @users.each do |user|
-      = link_to user_path(user), class: "user-block" do
-        = image_tag user.pic, class: "image"
-        .text = user.full_name
+    = render partial: '/shared/users/list', locals: { users: @users }
   /TODO: Сделать пагинацию
-  button.btn.btn-blue.btn-more Показать ещё
+  button.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"] Показать ещё

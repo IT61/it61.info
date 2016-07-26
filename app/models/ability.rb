@@ -7,7 +7,7 @@ class Ability
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     # Common abilities
-    can :read, User
+    can [:read, :active, :recent], User
     can :read, Company
     can [:read, :index_categories], Event, published?
 
@@ -17,7 +17,7 @@ class Ability
     can :crud, User, id: user.id
 
     can :places, Event
-    can [:participate, :register], Event, published?
+    can [:participate, :register, :revoke_participation], Event, published?
     can [:create, :read, :update], Event, organizer?(user)
 
     if user.admin?

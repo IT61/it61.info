@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get "profile" => "account#profile"
 
   scope "profile" do
-    get   "edit" => "account#edit"
-    get   "settings" => "account#settings"
+    get   "edit" => "account#edit", as: :edit_profile
+    get   "settings" => "account#settings", as: :profile_settings
     patch "settings_update" => "account#settings_update"
   end
 
@@ -35,11 +35,19 @@ Rails.application.routes.draw do
       post 'participate'
       # Use it for registration to closed events:
       match 'register', to: 'events#register', via: [:get, :post], as: 'register_to'
+      # Use it for revoke user registration
+      delete "revoke_participation", to: "events#revoke_participation"
+
       put 'publish'
+
     end
   end
 
   resources :users do
+    collection do
+      get "/active" => "users#active"
+      get "/recent" => "users#recent"
+    end
     resource :avatars, only: [:create, :destroy], controller: 'users/avatars'
   end
 

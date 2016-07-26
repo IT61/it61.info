@@ -7,8 +7,16 @@ class UsersController < ApplicationController
 
   load_and_authorize_resource
 
+  def active
+    show_users(:active)
+  end
+
+  def recent
+    show_users(:recent)
+  end
+
   def index
-    @users = User.all
+    show_users(:active)
   end
 
   def show
@@ -27,10 +35,10 @@ class UsersController < ApplicationController
     @user.save
     if @user.valid?
       flash[:notice] = "Изменения сохранены"
-      respond_with @user, location: edit_path
+      respond_with @user, location: edit_profile_path
     else
       flash[:error] = "Ошибка сохранения данных"
-      respond_with @user, location: edit_path
+      respond_with @user, location: edit_profile_path
     end
   end
 
@@ -39,6 +47,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def show_users(scope)
+    @users = User.send(scope).paginate(page: params[:page], per_page: 30)
+    view = request.xhr? ? 'shared/users/_list' : 'users/index'
+    respond_with @events do |f|
+      f.html { render view, layout: !request.xhr?, locals: {users: @users} }
+    end
+  end
 
   def fetch_user
     @user = User.find(params[:id])

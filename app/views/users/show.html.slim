@@ -5,21 +5,21 @@ main.profile-container
     - if my_profile? @user
       h1.my-profile Мой профиль
       
-    = render partial: 'shared/cards/user', locals: { user: @user }
+    = render partial: '/users/cards/user', locals: { user: @user }
     
     - if @user.has_events? or my_profile?(@user)
-      = render partial: 'shared/cards/events', locals: { user: @user, 
+      = render partial: '/users/cards/events', locals: { user: @user,
         header: 'Организатор', events: @user.owner_of_events, 
         no_events_message: 'Этот пользователь создал ни одного мероприятия', 
         footer_button_text: 'Создать мероприятие', 
-        footer_button_link: '/new_event' }
+        footer_button_link: new_event_path }
         
-      = render partial: 'shared/cards/events', locals: { user: @user, 
+      = render partial: '/users/cards/events', locals: { user: @user,
         header: 'Участник', 
         events: @user.member_in_events, 
         no_events_message: 'Этот пользователь не участвовал ни в одном мероприятии', 
         footer_button_text: 'Ближайшие мероприятия', 
-        footer_button_link: '/closest_events'  }
+        footer_button_link: upcoming_events_path  }
     - else
       section.card.mamont-card
         .mamont

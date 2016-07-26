@@ -34,6 +34,8 @@ class User < ApplicationRecord
   scope :notify_by_sms, -> { where(sms_reminders: true).where.not(phone: nil) }
   scope :subscribed, -> { where(subscribed: true) }
   scope :with_email, -> { where.not(email: nil) }
+  scope :active, -> { order(last_sign_in_at: :desc) }
+  scope :recent, -> { order(created_at: :desc) }
 
   # Авторизация/регистрация пользователя
   def self.from_omniauth(auth)
@@ -92,7 +94,7 @@ class User < ApplicationRecord
 
   private
 
-  def link_for(auth)
+  def self.link_for(auth)
     provider = auth.provider
 
     case provider

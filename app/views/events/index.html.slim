@@ -16,16 +16,9 @@
           li.nav-link class=('active' if current_page?(new_event_path))
             = link_to "Создать новое", new_event_path
 .container
-  - if @no_upcoming_events_message
-    .no-upcoming-events
-      h3 Пока ничего не запланировано,
-      h5 но вы можете это исправить
-      = image_tag "it61_smile.svg", class: 'smile'
-      = link_to new_event_path do
-        button.btn.btn-blue Создать мероприятие
-      h5
-        | Или посмотрите&nbsp;
-        = link_to "прошедшие мероприятия", past_events_path
+  - if @no_events
+    .no-events-stub
+      = render partial: "events/stubs/#{@scope}"
   - else
     .input-search
       span class="fa fa-search"
