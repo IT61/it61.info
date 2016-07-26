@@ -11,6 +11,6 @@ header.navbar.navbar-blue
         .navbar-profile
           = link_to profile_path do
             .avatar = image_tag current_user.pic, class: "avatar-circle"
-            .name = current_user.first_name
+            .name = ( current_user.first_name.blank? ? current_user.full_name : current_user.first_name )
           = link_to sign_out_path, class: "btn btn-small btn-blue" do
             i.fa.fa-sign-out
