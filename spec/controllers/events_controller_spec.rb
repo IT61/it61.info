@@ -38,10 +38,10 @@ RSpec.describe EventsController, type: :controller do
       expect(event.started_at).to eq(@started_at.utc)
     end
 
-    it 'populates event with location' do
+    it 'populates event with place' do
       post :create, params: { event: @data }
       event = assigns(:event)
-      expect(event.locations.count).to eq(1)
+      expect(event.places.count).to eq(1)
     end
 
     it 'links created event to organizer' do

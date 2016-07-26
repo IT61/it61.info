@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class Place < ApplicationRecord
-  has_many :locations
-  has_many :events, through: :locations
+  has_and_belongs_to_many :events
 
   def full_address
     [address, title].compact.join(", ")

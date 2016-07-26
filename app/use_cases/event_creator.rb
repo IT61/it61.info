@@ -9,7 +9,7 @@ class EventCreator
       e.started_at = parse_date_time ep
       e.link = ep[:link]
       e.organizer = current_user
-      e.locations += [new_location_with_place(ep)]
+      e.places << new_place(ep)
     end
   end
 
@@ -23,7 +23,7 @@ class EventCreator
     event.organizer = current_user
     event.link = ep[:link]
 
-    update_place_location(ep, event.locations)
+    update_place(ep, event.places.first)
 
     event.save
     event
@@ -47,20 +47,13 @@ class EventCreator
     params.require(:event).permit(*permitted_attrs)
   end
 
-  def new_location_with_place(event_params)
-    place = Place.where(title: event_params[:place_title], address: event_params[:address],
+  def new_place(event_params)
+    Place.where(title: event_params[:place_title], address: event_params[:address],
                         latitude: event_params[:latitude], longitude: event_params[:longitude]).first_or_create
-
-    Location.where(place: place).first_or_create
   end
 
-  def update_place_location(event_params, locations)
-
-    if locations.count != 1
-      return places
-    end
-    location = locations[0]
-    place = location.place
+  def update_place(event_params, place)
+    return if place.blank?
 
     place.title = event_params[:place_title]
     place.address = event_params[:address]
