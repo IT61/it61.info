@@ -28,7 +28,7 @@ class AccountController < ApplicationController
     commit = current_user.update_attributes subscribe_params
     if commit
       flash[:success] = "Настройки успешно сохранены"
-      redirect_to settings_path
+      redirect_to profile_settings_path
     else
       if current_user.errors.messages[:phone]
         current_user.sms_reminders = false

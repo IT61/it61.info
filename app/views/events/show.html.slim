@@ -10,7 +10,7 @@
       .event-info
         .block-info
           .icon-events.icon-calendar
-          span=l  @event.started_at, format: :date_time_full
+          span=l @event.started_at, format: :date_time_full
         .block-info
           .icon-events.icon-marker
           span= @event.places.first.full_address
@@ -27,6 +27,17 @@
         - else
           = participate_in_event_link(@event)
         button.btn.btn-shadow.btn-gray + Google calendar
+
+    - if current_user.try(:manager?) && !@event.published?
+      .card
+        .card-header
+          h1 Мероприятие ещё не опубликовано.
+        .card-body
+          .event-actions
+            = link_to "Опубликовать", publish_event_path, method: :put, class: "btn btn-blue"
+            button.btn.btn-blue Редактировать
+            button.btn.btn-gray Удалить
+
     .card.card-fold
       .card-header
         h1 Описание
