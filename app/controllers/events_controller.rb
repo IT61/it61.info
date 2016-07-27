@@ -83,7 +83,7 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(event_params[:id])
+    @event = Event.find(params[:id])
   end
 
   def entry_form_params
