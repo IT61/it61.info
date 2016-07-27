@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 
   devise_scope :user do
     get "sign/out" => "devise/sessions#destroy"
@@ -59,5 +59,9 @@ Rails.application.routes.draw do
     resources :places, controller: "places"
     resources :events, controller: "events"
   end
+
+  # Errors
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
 
 end
