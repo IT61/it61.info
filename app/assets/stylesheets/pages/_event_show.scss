@@ -182,4 +182,12 @@
       padding: 9px 14px;
     }
   }
+
+  &-actions {
+    text-align: center;
+    .btn {
+      min-width: 200px;
+      margin: 5px;
+    }
+  }
 }

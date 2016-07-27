@@ -26,5 +26,6 @@ module It61
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
     config.active_job.queue_adapter = :delayed_job
+    config.exceptions_app = self.routes
   end
 end

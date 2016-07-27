@@ -1,7 +1,3 @@
-$new-event-tablet: new-breakpoint(min-width 551px max-width 1020px 8);
-$new-event-mobile: new-breakpoint(max-width 552px 8);
-$special-break: new-breakpoint(max-width 1200px 8);
-
 .CodeMirror, .CodeMirror-scroll {
   min-height: 150px;
 }
@@ -60,9 +56,6 @@ $special-break: new-breakpoint(max-width 1200px 8);
     border-bottom: 1px solid rgba(154, 154, 154, 0.24);
     font-weight: bold;
   }
-
-  #yandexs-dropdown-container {
-  }
 }
 
 #map {
@@ -85,6 +78,15 @@ $special-break: new-breakpoint(max-width 1200px 8);
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 35px;
+
+  section {
+    @include span-columns(5);
+    margin: 1em 0;
+
+    @include media($new-event-mobile) {
+      @include span-columns(8);
+    }
+  }
 }
 
 .event-card-header {
@@ -94,76 +96,89 @@ $special-break: new-breakpoint(max-width 1200px 8);
   }
 }
 
-section {
-  @include span-columns(5);
-  margin: 1em 0;
-
-  @include media($new-event-mobile) {
-    @include span-columns(8);
-  }
-}
-
-.image {
-  float: left;
-  @include media($special-break) {
-    @include span-columns(4);
-  }
-  @include media($new-event-mobile) {
-    @include span-columns(8);
-    text-align: center;
-  }
-  img {
-    @include media($new-event-mobile) {
-      display: none;
+.new_event {
+  .image {
+    float: left;
+    @include media($special-break) {
+      @include span-columns(4);
     }
-  }
-
-  .recommend {
-    width: 100%;
-    @include clearfix;
-    div{
+    @include media($new-event-mobile) {
+      @include span-columns(8);
+      text-align: center;
+    }
+    img {
       @include media($new-event-mobile) {
-        width: 100%;
-        color: #555;
-        padding: 15px 0;
+        display: none;
       }
-      @include media($new-event-tablet) {
-        float: inherit;
-        width: 200px;
-        padding: 0;
+    }
+
+    .recommend {
+      width: 100%;
+      @include clearfix;
+      div{
+        @include media($new-event-mobile) {
+          width: 100%;
+          color: #555;
+          padding: 15px 0;
+        }
+        @include media($new-event-tablet) {
+          float: inherit;
+          width: 200px;
+          padding: 0;
+        }
+        width: 49%;
+        float: right;
+        padding: 15px 30px;
+        font-size: .9em;
       }
-      width: 49%;
-      float: right;
-      padding: 15px 30px;
-      font-size: .9em;
+    }
+
+    .file_upload {
+      @include media($new-event-mobile) {
+        margin: 0
+      }
     }
   }
 
+  .details {
+    @include span-columns(6);
+    float: right;
 
-  .file_upload {
+    @include media($special-break) {
+      width: 42.82117%;
+    }
+
     @include media($new-event-mobile) {
-      margin: 0
+      @include span-columns(8);
+    }
+
+    select {
+      float: left;
+      padding: 5px 10px;
+      display: block;
+      font-size: 16px;
+      margin: 3px;
+      color: black;
+      line-height: 1.9;
+      width: auto;
+      box-shadow: none;
+      border: none;
+      transition: all 0.28s ease;
+      border-bottom: solid 2px #ddd;
+      background: transparent;
+
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid #2d79b7;
+      }
     }
   }
-}
 
-.details {
-  @include span-columns(6);
-  float: right;
-
-  @include media($special-break) {
-    width: 42.82117%;
-  }
-
-  @include media($new-event-mobile) {
-    @include span-columns(8);
-  }
-}
-
-.description {
-  @include span-columns(12);
-  label {
-    padding: 5px 10px;
+  .description {
+    @include span-columns(12);
+    label {
+      padding: 5px 10px;
+    }
   }
 }
 
@@ -176,7 +191,6 @@ section {
 
 .time-container {
   @include clearfix;
-
   margin-bottom: 30px;
 
   .left {
@@ -204,39 +218,6 @@ section {
   }
 }
 
-#event_started_at_1i, #event_started_at_2i, #event_started_at_3i, #event_started_at_4i, #event_started_at_5i {
-  @include media($new-event-mobile) {
-    margin: 0;
-    padding: .5em 0;
-  }
-}
-#event_started_at_1i, #event_started_at_2i, #event_started_at_3i {
-  @include media($new-event-mobile) {
-    @include span-columns(8);
-  }
-}
-
-.details select {
-  float: left;
-  padding: 5px 10px;
-  display: block;
-  font-size: 16px;
-  margin: 3px;
-  color: black;
-  line-height: 1.9;
-  width: auto;
-  box-shadow: none;
-  border: none;
-  transition: all 0.28s ease;
-  border-bottom: solid 2px #ddd;
-  background: transparent;
-
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid #2d79b7;
-  }
-}
-
 .space-taker {
   @include span-columns(1);
   float: right;
@@ -245,37 +226,12 @@ section {
   }
 }
 
-label {
-  @include media($new-event-mobile) {
-    color: #222;
-  }
-  color: #b4adad;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-// file upload customization
-input[type="file"] {
-  color: #b4adad;
-}
-
 .file_upload {
   margin: 30px;
   position: relative;
   overflow: hidden;
   font-size: 1em;
   line-height: 2.5em;
-
-  input[type="file"] {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    letter-spacing: 10em;
-    opacity: 0;
-    cursor: pointer
-  }
 
   & > button {
     float: right;
@@ -292,15 +248,20 @@ input[type="file"] {
 
   & > div {
     padding-left: 1em;
+    @include media(max-width 500px) {
+      display: none;
+    }
   }
-}
 
-@media only screen and ( max-width: 500px ) {
-  .file_upload > div{
-    display: none
-  }
-  .file_upload > button{
-    width: 100%
+  input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    letter-spacing: 10em;
+    opacity: 0;
+    cursor: pointer
   }
 }
 
@@ -308,6 +269,7 @@ input[type="file"] {
   @include media($new-event-mobile) {
     margin: 0;
   }
+
   .new-event-buttons {
     float: right;
     @include media($new-event-tablet) {

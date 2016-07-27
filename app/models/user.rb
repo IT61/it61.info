@@ -71,6 +71,10 @@ class User < ApplicationRecord
     avatar.url.blank? ? "user_default.png" : avatar
   end
 
+  def manager?
+    admin? || moderator?
+  end
+
   def remember_me
     true
   end

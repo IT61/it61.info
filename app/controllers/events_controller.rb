@@ -70,6 +70,8 @@ class EventsController < ApplicationController
   end
 
   def publish
+    @event = Event.find(params[:id])
+    @event.publish!
   end
 
   def unpublish
