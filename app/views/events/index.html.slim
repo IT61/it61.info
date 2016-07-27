@@ -25,4 +25,4 @@
       input type="search"
     .events-container
       = render partial: 'events/cards'
-    button.btn.btn-blue.btn-more [data-container=".events-container" data-url="#{request.path}"] Показать ещё
+    button.btn.btn-blue.btn-more [data-container=".events-container" data-url="#{request.path}"] = t("load_more")

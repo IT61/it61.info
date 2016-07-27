@@ -1,90 +1,26 @@
 ru:
-  errors:
-    connection_refused: "В соединении отказано"
-  devise:
-    failure:
-      user:
-        unauthenticated: "Вы должны зарегистрироваться для этого действия"
-    sessions:
-      user:
-        signed_out: "Вы успешно вышли из своего аккаунта"
-    omniauth_callbacks:
-      user:
-        success: "Вы успешно зашли с помощью аккаунта соц. сети"
-  shared:
-    admin_sidebar:
-      events: "События"
-      users: "Пользователи"
-      places: "Места"
-    sidebar:
-      my_profile: "Мой профиль"
-      community: "Сообщество"
-      events: "Мероприятия"
-      personalities: "Личности"
-      photos: "Фотографии"
-      slack: "Slack"
-      sponsorship: "Спонсорам"
 
+  pages:
+    my_profile: Мой профиль
+    community: Сообщество
+    events: События
+    personalities: Личности
+    photos: Фотографии
+    slack: Slack
+    sponsorship: Спонсорам
+
+  events: События
+  personalities: Личности
+  photos: Фотографии
+
+  errors:
+    connection_refused: В соединении отказано
+
+  shared:
     navbar:
-      sign_in: "Войти"
-      sign_out: "Выход"
-  date:
-    abbr_day_names:
-    - Вс
-    - Пн
-    - Вт
-    - Ср
-    - Чт
-    - Пт
-    - Сб
-    abbr_month_names:
-    -
-    - янв.
-    - февр.
-    - марта
-    - апр.
-    - мая
-    - июня
-    - июля
-    - авг.
-    - сент.
-    - окт.
-    - нояб.
-    - дек.
-    day_names:
-    - воскресенье
-    - понедельник
-    - вторник
-    - среда
-    - четверг
-    - пятница
-    - суббота
-    formats:
-      default: "%d.%m.%Y"
-      long: "%-d %B %Y"
-      short: "%-d %b"
-    month_names:
-    -
-    - января
-    - февраля
-    - марта
-    - апреля
-    - мая
-    - июня
-    - июля
-    - августа
-    - сентября
-    - октября
-    - ноября
-    - декабря
-    order:
-    - :day
-    - :month
-    - :year
-  will_paginate:
-    previous_label: "Предыдущая страница"
-    next_label: "Следующая страница"
-  time:
-    formats:
-      date_time_full: "%d %B %Y, %H:%M"
-      date_digits: "%d.%m.%y"
+      sign_in: Войти
+      sign_out: Выход
+    footer:
+      created_for_community_html: Сделано <a href="%{link}">сообществом</a> для сообщества
+      created_for_community_html: Сделано <a href="%{link}">сообществом</a> для сообщества
+      we_in_social_networks: "Мы в социальных сетях:"

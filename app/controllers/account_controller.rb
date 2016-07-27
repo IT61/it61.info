@@ -27,15 +27,15 @@ class AccountController < ApplicationController
   def settings_update
     commit = current_user.update_attributes subscribe_params
     if commit
-      flash[:success] = "Настройки успешно сохранены"
+      flash[:success] = t("flashes.profile_settings_saved")
       redirect_to profile_settings_path
     else
       if current_user.errors.messages[:phone]
         current_user.sms_reminders = false
         current_user.save!
-        flash.now[:error] = "Вы должны добавить телефон, чтобы получать смс уведомления"
+        flash.now[:error] = t("flashes.add_phone_for_sms_reminders")
       else
-        flash.now[:error] = "Не получилось сохранить настройки."
+        flash.now[:error] = t("flashes.error_during_save_settings")
       end
       fetch_user
       render "settings"

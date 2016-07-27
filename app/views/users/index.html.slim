@@ -24,4 +24,5 @@
   .users-container
     = render partial: '/shared/users/list', locals: { users: @users }
   /TODO: Сделать пагинацию
-  button.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"] Показать ещё
+  button.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"]
+    = t("load_more")

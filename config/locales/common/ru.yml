@@ -1,4 +1,14 @@
 ru:
+  application_name: "Ростовское IT-сообщество"
+
   will_paginate:
     previous_label: "Предыдущая страница"
     next_label: "Следующая страница"
+
+  required_fields: "* Поля, обязательные для заполнения"
+
+  load_more: "Показать ещё"
+
+  save: Сохранить
+  add: Добавить
+  cancel: Отмена

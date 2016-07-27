@@ -1,0 +1,35 @@
+ru:
+  activerecord:
+    models:
+      company:
+        one: Компания
+        few: Компании
+      event:
+        one: Событие
+        few: События
+      user:
+        one: Пользователь
+        few: Пользователи
+      place:
+        one: Место
+        few: Места
+      participant_entry_form:
+        one: Заявка на участие
+        few: Заявки на участие
+    attributes:
+      user:
+        email: E-Mail
+        first_name: Имя
+        first_name: Фамилия
+        bio: О себе
+        phone: Телефон
+        email_reminders: EMail-оповещения
+        sms_reminders: SMS-оповещения
+      event:
+        title: Название
+        description: Описание
+        title_image: Изображение
+        published_at: Дата публикации
+        started_at: Дата начала
+        participants: Участники
+        link: Внешняя ссылка

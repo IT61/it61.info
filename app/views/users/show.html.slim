@@ -3,7 +3,7 @@ main.profile-container
   .inner-container
     
     - if my_profile? @user
-      h1.my-profile Мой профиль
+      h1.my-profile = t("pages.my_profile")
       
     = render partial: '/users/cards/user', locals: { user: @user }
     
