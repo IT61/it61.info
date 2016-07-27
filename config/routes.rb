@@ -51,7 +51,9 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:index]
 
-  resources :places, only: [:index, :find]
+  resources :places, only: [:index] do
+    get "/find" => "places#find", on: :collection
+  end
 
   namespace "admin" do
     get "/", to: "users#index"

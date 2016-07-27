@@ -1,6 +1,7 @@
 $(document).ready(function () {
     // TODO: Move baseCity to option or anything else
-    var baseCity = "Ростов-на-Дону";
+    var baseCity = "Ростов-на-Дону",
+        suggestionsURL = "/places/find";
 
     var $yandexContainer = $('#yandexs-dropdown-container'),
         $oursContainer = $('#ours-dropdown-container'),
@@ -106,7 +107,12 @@ $(document).ready(function () {
     function updateContainer($container, objects) {
         $container.text('');
         objects.forEach(function (object) {
-            $row = $('<div class="location-suggestion">').text(object.addressLine);
+            label = [
+                object.place_title,
+                object.addressLine
+            ].filter(function (n) { return n != undefined }).join(", ");
+
+            $row = $('<div class="location-suggestion">').text(label);
             $container.append($row);
 
             $row.on('click', function () {
@@ -134,7 +140,7 @@ $(document).ready(function () {
             }
 
             $.ajax({
-                url: '/events/places',
+                url: suggestionsURL,
                 data: {
                     title: titleInput
                 },

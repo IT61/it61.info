@@ -17,12 +17,13 @@ section.details
     .input-float-label
       = text_field_tag 'event[place_title]', event.places[0].nil? ? '' : event.places[0].title, id: 'place_title', autocomplete: 'off'
       label required="true" Место проведения*
+      .dropdown-container
+        div#ours-dropdown-container
   .event-association-field
     .input-float-label
       input#location type="text" autocomplete="off" value=(event.places[0].nil?  ? '' : event.places[0].address)
       label Точный адрес*
-      div#dropdown-container
-        div#ours-dropdown-container
+      .dropdown-container
         div#yandexs-dropdown-container
   div.modal
     label for="modal-1"

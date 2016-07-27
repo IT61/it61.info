@@ -13,7 +13,7 @@ class PlacesController < ApplicationController
 
   def to_yandex_geoobject(place)
     {
-        meta: place.address,
+        addressLine: place.address,
         coordinates: [place.latitude, place.longitude],
         place_title: place.title,
     }
