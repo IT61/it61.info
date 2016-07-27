@@ -17,6 +17,11 @@ label {
   color: #b4adad;
   font-size: 16px;
   font-weight: normal;
+
+  &.required::after {
+    content: " *";
+    font-weight: bold;
+  }
 }
 
 input,
@@ -25,6 +30,10 @@ textarea {
   display: block;
   font-family: $base-font-family;
   font-size: $base-font-size;
+  &:required ~ label::after {
+    content: " *";
+    font-weight: bold;
+  }
 }
 
 #{$all-text-inputs},
