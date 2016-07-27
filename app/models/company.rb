@@ -1,4 +1,4 @@
-# frozen_string_literal: true
 class Company < ApplicationRecord
-  validates_presence_of :name, uniqueness: true
+  validates_presence_of :name
+  validates_uniqueness_of :name
 end

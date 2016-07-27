@@ -1,15 +1,20 @@
-# frozen_string_literal: true
-FactoryGirl.define do
-  sequence :email do |n|
-    "person#{n}@example.com"
-  end
-end
-
 FactoryGirl.define do
   factory :user do
-    email
-    first_name "Maxine"
-    last_name "Caulfield"
-    phone "+7 444 444 44 44"
+    email { Forgery(:internet).email_address }
+    first_name { Forgery(:name).first_name }
+    last_name { Forgery(:name).last_name }
+
+    factory :admin do
+      role :admin
+    end
+
+    factory :oauth_user do
+      name { Forgery::Name.full_name }
+      authentications { build_list :authentication, 1 }
+    end
+
+    trait :with_reset_password_token do
+      reset_password_token { Sorcery::Model::TemporaryToken.generate_random_token }
+    end
   end
 end

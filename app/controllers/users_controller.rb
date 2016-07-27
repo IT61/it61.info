@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class UsersController < ApplicationController
   before_action :authenticate_user!,   only: [:edit, :destroy]
   before_action :fetch_user,           only: [:show, :edit, :update, :destroy]

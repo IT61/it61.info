@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class Event < ActiveRecord::Base
   include PermalinkFor
   permalink_for :permalink_title, as: :pretty
@@ -14,7 +13,7 @@ class Event < ActiveRecord::Base
 
   has_and_belongs_to_many :places
 
-  validates_presence_of :title, :organizer
+  validates_presence_of :title, :description, :organizer
   validates :published_at, presence: true, if: :published?
 
   scope :ordered_desc, -> { order(started_at: :desc) }

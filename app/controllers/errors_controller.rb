@@ -1,6 +1,5 @@
 class ErrorsController < ApplicationController
-
-  layout 'application'
+  layout "application"
 
   def not_found
     render(status: 404)
