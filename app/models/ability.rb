@@ -1,7 +1,7 @@
-# frozen_string_literal: true
 class Ability
   include CanCan::Ability
 
+  # rubocop:disable Metrics/AbcSize
   def initialize(user)
     alias_action :upcoming, :past, to: :index_categories
     alias_action :create, :read, :update, :destroy, to: :crud
