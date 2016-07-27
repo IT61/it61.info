@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    // TODO: Move baseCity to option or anything else
+    var baseCity = "Ростов-на-Дону";
+
     var $yandexContainer = $('#yandexs-dropdown-container'),
         $oursContainer = $('#ours-dropdown-container'),
         $placeAddress = $('#location'),
@@ -36,12 +39,12 @@ $(document).ready(function () {
             if (location.place_title) {
                 $placeTitle.val(location.place_title);
             }
-            $placeAddress.val(location.meta.text);
+            $placeAddress.val(location.addressLine);
             $placeTitle.trigger('show-input');
             $placeAddress.trigger('show-input');
             buildMap(location);
             $('#map-trigger').show();
-            $autoPlaceAddress.val(location.meta.text);
+            $autoPlaceAddress.val(location.addressLine);
             $autoPlaceLatitude.val(location.coordinates[0]);
             $autoEventLongitude.val(location.coordinates[1]);
         },
@@ -62,25 +65,38 @@ $(document).ready(function () {
 
 
     var parser = {
+        nullifyBaseCity: function(city) {
+            return city === baseCity ? undefined : city;
+        },
         parse: function (rawData) {
             var objects = rawData.geoObjects,
                 count = rawData.metaData.geocoder.results;
             return parser.parseObjects(objects, count);
         },
         parseObject: function (object) {
-            var metaData = object.properties.get('metaDataProperty').GeocoderMetaData,
-                coordinates = object.geometry._coordinates;
+            var addressLine = [
+                parser.nullifyBaseCity(object.getLocalities()[0]),
+                object.getThoroughfare(),
+                object.getPremiseNumber(),
+                object.getPremise()
+            ].filter(function(n){ return n != undefined }).join(", ");
+
+            var coordinates = object.geometry._coordinates;
+
             return {
-                meta: metaData,
-                coordinates: coordinates
+                addressLine: addressLine,
+                coordinates: coordinates,
+                isRelevant: baseCity === object.getLocalities()[0]
             }
         },
         parseObjects: function (objects, count) {
+
             res = [];
             for (var i = 0; i < count; i++) {
                 var object = objects.get(i);
-                if (object !== null) {
-                    res.push(parser.parseObject(object));
+                if (object !== undefined) {
+                    geoObj = parser.parseObject(object);
+                    geoObj.isRelevant ? res.unshift(geoObj) : res.push(geoObj);
                 }
             }
             return res;
@@ -90,7 +106,7 @@ $(document).ready(function () {
     function updateContainer($container, objects) {
         $container.text('');
         objects.forEach(function (object) {
-            $row = $('<div class="location-suggestion">').text(object.meta.text);
+            $row = $('<div class="location-suggestion">').text(object.addressLine);
             $container.append($row);
 
             $row.on('click', function () {
@@ -175,7 +191,7 @@ $(document).ready(function () {
         });
 
         var myPlacemark = new ymaps.Placemark(location.coordinates, {
-            balloonContent: location.meta.text
+            balloonContent: location.addressLine
         });
 
         myMap.controls.add(
@@ -188,6 +204,7 @@ $(document).ready(function () {
             myMap.destroy();
         };
     }
+
     function destroyMap() {
         if (myMap) {
             myMap.destroy();

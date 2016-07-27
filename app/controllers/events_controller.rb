@@ -117,9 +117,7 @@ class EventsController < ApplicationController
 
   def to_yand_obj(place)
     {
-      meta: {
-        text: place.address,
-      },
+      meta: place.address,
       coordinates: [place.latitude, place.longitude],
       place_title: place.title,
     }
