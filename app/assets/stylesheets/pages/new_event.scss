@@ -36,7 +36,7 @@
   margin-bottom: 0;
 }
 
-#dropdown-container {
+.dropdown-container {
   position: absolute;
   background: white;
   z-index: 5;
@@ -54,6 +54,7 @@
 
   #ours-dropdown-container {
     border-bottom: 1px solid rgba(154, 154, 154, 0.24);
+    font-weight: bold;
   }
 }
 

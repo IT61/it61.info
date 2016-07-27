@@ -20,8 +20,6 @@ Rails.application.routes.draw do
     patch "settings_update" => "account#settings_update"
   end
 
-  get "/events/places" => "events#places"
-
   resources :companies
 
   resources :events do
@@ -52,6 +50,10 @@ Rails.application.routes.draw do
   end
 
   resources :photos, only: [:index]
+
+  resources :places, only: [:index] do
+    get "/find" => "places#find", on: :collection
+  end
 
   namespace "admin" do
     get "/", to: "users#index"
