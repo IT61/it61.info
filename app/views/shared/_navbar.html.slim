@@ -9,7 +9,8 @@ header.navbar.navbar-blue
           = t(".sign_in")
       - else
         .navbar-profile
-          .avatar = image_tag current_user.pic, class: "avatar-circle"
-          .name = current_user.first_name
+          = link_to profile_path do
+            .avatar = image_tag current_user.pic, class: "avatar-circle"
+            .name = current_user.first_name
           = link_to sign_out_path, class: "btn btn-small btn-blue" do
             i.fa.fa-sign-out

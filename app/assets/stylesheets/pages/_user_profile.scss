@@ -243,6 +243,7 @@ $card-padding: 15px;
 
   .organizator {
     @include span-columns(6);
+    margin-bottom: 20px;
     @include media($mobile-viewport) {
       @include span-columns(12);
     }

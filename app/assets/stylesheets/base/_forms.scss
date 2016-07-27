@@ -13,8 +13,10 @@ legend {
 
 label {
   display: block;
-  font-weight: 600;
   margin-bottom: $small-spacing / 2;
+  color: #b4adad;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 input,
@@ -71,6 +73,7 @@ textarea {
 }
 
 [type="file"] {
+  color: #b4adad;
   margin-bottom: $small-spacing;
   width: 100%;
 }
