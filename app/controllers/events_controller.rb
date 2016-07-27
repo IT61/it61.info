@@ -75,11 +75,6 @@ class EventsController < ApplicationController
   def unpublish
   end
 
-  def places
-    @places = Place.where("title like :title", title: "%#{params[:title]}%").limit(5)
-    render json: @places.map { |p| to_yand_obj p }
-  end
-
   private
 
   def set_event
@@ -113,13 +108,5 @@ class EventsController < ApplicationController
   def show_correct_scope
     path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
     redirect_to path
-  end
-
-  def to_yand_obj(place)
-    {
-      meta: place.address,
-      coordinates: [place.latitude, place.longitude],
-      place_title: place.title,
-    }
   end
 end
