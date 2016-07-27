@@ -16,7 +16,7 @@
           li.nav-link class=('active' if current_page?(new_event_path))
             = link_to "Создать новое", new_event_path
 .container
-  - if @no_events
+  - if @events.blank?
     .no-events-stub
       = render partial: "events/stubs/#{@scope}"
   - else

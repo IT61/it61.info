@@ -89,6 +89,7 @@ class EventsController < ApplicationController
 
   def show_events(scope)
     @events = Event.send(scope).published.paginate(page: params[:page], per_page: 6)
+    @scope = scope
 
     # TODO: Вынести верстку 'events/index' в отдельный layout
     view = request.xhr? ? "events/_cards" : "events/index"
