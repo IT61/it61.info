@@ -1,27 +1,26 @@
 .content-background
 main.profile-container
   .inner-container
-    h1.my-profile Редактирование профиля
+    h1.my-profile = t(".form_title")
     .card.edit-user-card
       .image-container
         form#image_form avatar_path=user_avatars_path(@user)
           .picture
-            = image_tag "#{@user.pic}", id: 'image', default_img_src: asset_path('user_default.png')
+            = image_tag @user.pic, id: "image", default_img_src: asset_path("user_default.png")
             .edit-picture-buttons
               .file_upload#avatar_file_upload
-                button.button.btn.btn-blue type="button" Загрузить фото
+                button.button.btn.btn-blue type="button" = t(".upload_photo")
                 input#avatar_image_input type="file" name="avatar"
-              button.btn.btn-gray#delete-avatar-button type="nosubmit"
-                = "Удалить фото"
+              button.btn.btn-gray#delete-avatar-button type="nosubmit" = t(".delete_photo")
       = form_for @user do |f|
         .inputs-container
           .outer
             .input-float-label.half
               = f.text_field :first_name
-              = f.label :first_name, "Имя"
+              = f.label :first_name, t("activerecord.attributes.user.first_name")
             .input-float-label.half
               = f.text_field :last_name
-              = f.label :last_name, "Фамилия"
+              = f.label :last_name, t("activerecord.attributes.user.last_name")
           / no support for companies for now
           /.outer
             .input-float-label.half
@@ -37,11 +36,11 @@ main.profile-container
           .outer
             .input-float-label.half
               = f.text_field :email
-              = f.label :email, "E-mail"
+              = f.label :email, t("activerecord.attributes.user.email")
             .input-float-label.half
               = f.telephone_field :phone
-              = f.label :phone, "Телефон"
-              span.sub-label Не отображается на сайте и не передается в Slack
+              = f.label :phone, t("activerecord.attributes.user.phone")
+              span.sub-label = t(".phone_for_sms_reminders")
           / should be slack link?
           /.outer
             .input-float-label.full
@@ -51,21 +50,21 @@ main.profile-container
           .outer
             .input-float-label.full
               = f.text_area :bio
-              = f.label :bio, "О себе"
-          h3 Социальные сети
+              = f.label :bio, t("activerecord.attributes.user.bio")
+          h3 = t(".social_accounts")
           .outer
             .social-container.full
-              .social-label Подключенные
-              - linked_providers(@user).each do |provider, info|
-                = link_to '#', class: "#{info[:buttonclass]}" do
-                  i class="#{info[:class]}"
+              .social-label = t(".connected")
+              - linked_providers(@user).each do |_provider, info|
+                = link_to "#", class: info[:buttonclass] do
+                  i class=(info[:class])
                   span = info[:name]
             .social-container.full
-              .social-label Добавить
+              .social-label = t("add")
               - not_linked_providers(@user).each do |_, info|
                 = link_to info[:link], class: info[:buttonclass].to_s do
                   i class="#{info[:class]}"
                   span = info[:name]
         .edit-profile-bottom-buttons
-          button.btn.btn-blue type="submit" Сохранить
-          button.btn.btn-gray type="reset" Отмена
+          button.btn.btn-blue type="submit" = t("save")
+          button.btn.btn-gray type="reset" = t("cancel")

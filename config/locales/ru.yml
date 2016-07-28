@@ -65,6 +65,13 @@ ru:
       no_organized_events: "Этот пользователь не организовал ни одного мероприятия"
       no_participations: "Этот пользователь не участвовал ни в одном мероприятии"
       inactive_user: "Это пользователь-мамонт, он никуда не ходит и ничего не организует"
+    edit:
+      form_title: "Редактирование профиля"
+      phone_for_sms_reminders: "Телефон не отображается на сайте и не передается в Slack"
+      social_accounts: "Социальные сети"
+      upload_photo: "Загрузить фото"
+      delete_photo: "Удалить фото"
+      connected: "Подключенные"
 
   photos:
     index:
@@ -128,6 +135,11 @@ ru:
     footer:
       created_for_community_html: Сделано <a href="%{link}">сообществом</a> для сообщества
       we_in_social_networks: "Мы в социальных сетях:"
+
+  admin:
+    events:
+      edit:
+        edit_event: "Редактировать мероприятие"
 
   # ====================================================
   # Date and Time Locales
@@ -217,6 +229,7 @@ ru:
         email: E-Mail
         first_name: Имя
         last_name: Фамилия
+        role: Тип аккаунта
         bio: О себе
         phone: Телефон
         email_reminders: EMail-оповещения
@@ -233,6 +246,8 @@ ru:
       place:
         title: Место проведения
         address: Точный адрес
+        latitude: "Широта"
+        longitude: "Долгота"
     errors:
       messages:
         record_invalid: "Record is invalid"
@@ -261,3 +276,5 @@ ru:
     omniauth_callbacks:
       user:
         success: "Добро пожаловать!"
+  upload_photo: "Загрузить фото"
+
