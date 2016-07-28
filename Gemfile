@@ -13,7 +13,6 @@ gem "devise"
 gem "flutie"
 gem "high_voltage"
 gem "i18n-tasks"
-gem "json"
 gem "jquery-rails"
 gem "neat", "~> 1.7.0"
 gem "nokogiri"
@@ -42,6 +41,7 @@ gem "uglifier"
 gem "will_paginate"
 
 group :development do
+  gem "listen"
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"
@@ -54,9 +54,11 @@ group :development, :test do
   gem "scss_lint", require: false
   gem "brakeman", require: false
   gem "dotenv-rails"
+  gem "forgery"
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
+  gem "rails-controller-testing"
   gem "rspec-rails", "~> 3.5.0"
   gem "slim_lint"
 end
@@ -71,8 +73,8 @@ group :test do
   gem "formulaic"
   gem "fuubar"
   gem "launchy"
-  gem "rails-controller-testing"
   gem "shoulda-matchers"
+  gem "shoulda-callback-matchers"
   gem "simplecov", require: false
   gem "timecop"
   gem "webmock"

@@ -1,7 +1,7 @@
 module Users
   class AvatarsController < ApplicationController
     before_action :authenticate_user!
-    before_action :fetch_user, only: [:create, :update, :destroy]
+    before_action :set_user, only: [:create, :update, :destroy]
     before_action :check_if_same_user_or_admin
 
     def create
@@ -25,8 +25,8 @@ module Users
       end
     end
 
-    def fetch_user
-      @user = User.find params[:user_id]
+    def set_user
+      @user = User.find(params[:user_id])
     end
 
     def avatar_params

@@ -10,12 +10,12 @@ html lang="ru"
     = stylesheet_link_tag :application, media: "all"
     = csrf_meta_tags
   body
-    .wrapper
-      = render "shared/sidebar"
-      .content
+    = render "shared/sidebar"
+    .content
+      .wrapper
         = render "flashes"
         = render "shared/navbar"
         = yield
-    = render "shared/footer"
+      = render "shared/footer"
     = render "javascript"
     = render "css_overrides"

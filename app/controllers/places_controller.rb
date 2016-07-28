@@ -1,5 +1,4 @@
 class PlacesController < ApplicationController
-
   def index
     render json: Place.all
   end
@@ -13,9 +12,9 @@ class PlacesController < ApplicationController
 
   def to_yandex_geoobject(place)
     {
-        addressLine: place.address,
-        coordinates: [place.latitude, place.longitude],
-        place_title: place.title,
+      addressLine: place.address,
+      coordinates: [place.latitude, place.longitude],
+      place_title: place.title,
     }
   end
 end

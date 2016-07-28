@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   devise_scope :user do
-    get "sign/out" => "devise/sessions#destroy"
+    get "sign_in" => "devise/sessions#new"
+    get "sign_out" => "devise/sessions#destroy"
   end
 
   # Static pages
-  get "welcome" => "pages#welcome"
-  get "sponsorship" => "pages#sponsorship"
-  get "slack" => "pages#slack"
+  %w(welcome sponsorship slack).each do |page_name|
+    get page_name => "pages##{page_name}"
+  end
 
-  get "sign/in" => "account#sign_in"
-  get "sign/up/complete" => "account#sign_up_complete"
+  get "sign_up/complete" => "account#sign_up_complete"
   get "profile" => "account#profile"
 
   scope "profile" do
@@ -30,14 +30,13 @@ Rails.application.routes.draw do
 
     member do
       # Use it for registration to opened events:
-      post 'participate'
+      post "participate"
       # Use it for registration to closed events:
-      match 'register', to: 'events#register', via: [:get, :post], as: 'register_to'
+      match "register", to: "events#register", via: [:get, :post], as: "register_to"
       # Use it for revoke user registration
       delete "revoke_participation", to: "events#revoke_participation"
 
-      put 'publish'
-
+      put "publish"
     end
   end
 
@@ -46,7 +45,7 @@ Rails.application.routes.draw do
       get "/active" => "users#active"
       get "/recent" => "users#recent"
     end
-    resource :avatars, only: [:create, :destroy], controller: 'users/avatars'
+    resource :avatars, only: [:create, :destroy], controller: "users/avatars"
   end
 
   resources :photos, only: [:index]
@@ -65,5 +64,4 @@ Rails.application.routes.draw do
   # Errors
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
-
 end
