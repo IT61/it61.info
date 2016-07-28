@@ -10,8 +10,16 @@ ru:
   more_info: "Подробнее"
   load_more: "Показать ещё"
 
+  menu: "Меню"
+
   save: Сохранить
   add: Добавить
+  edit: Редактировать
+  delete: Удалить
+
+  publish: "Опубликовать"
+  unpublish: "Распубликовать"
+
   cancel: Отмена
 
   modal:
@@ -33,11 +41,23 @@ ru:
   # Views Locales
   # ====================================================
   events:
+    index:
+      upcoming: "Ближайшие"
+      past: "Прошедшие"
+      create: "Создать новое"
+    show:
+      event_still_not_published: "Мероприятие ещё не опубликовано."
+      description: "Описание"
+      participants: "Участники (%{count})"
+      postrelease: "Пострелиз"
     participations:
       participate: "Я пойду!"
       register: "Зарегистрироваться"
       revoke_participation: "Отменить заявку"
       participated: "Я участвовал"
+    new:
+      header: "Новое мероприятие"
+      submit_button: "Создать мероприятие"
     form:
       image_section:
         title_image: "Изображение"
@@ -181,7 +201,9 @@ ru:
       place:
         title: Место проведения
         address: Точный адрес
-
+    errors:
+      messages:
+        record_invalid: "Record is invalid"
   # ====================================================
   # Flashes Locales
   # ====================================================

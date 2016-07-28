@@ -11,9 +11,10 @@
         .block-info
           .icon-events.icon-calendar
           span=l @event.started_at, format: :date_time_full
-        .block-info
-          .icon-events.icon-marker
-          span= @event.places.first.full_address
+        - @event.places.each do |place|
+          .block-info
+            .icon-events.icon-marker
+            span= place.full_address
         - if @event.link?
           .block-info
             .icon-events.icon-link
@@ -31,23 +32,23 @@
     - if current_user.try(:manager?) && !@event.published?
       .card
         .card-header
-          h1 Мероприятие ещё не опубликовано.
+          h1 = t(".event_still_not_published")
         .card-body
           .event-actions
-            = link_to "Опубликовать", publish_event_path, method: :put, class: "btn btn-blue"
-            button.btn.btn-blue Редактировать
-            button.btn.btn-gray Удалить
+            = link_to t("publish"), publish_event_path, method: :put, class: "btn btn-blue"
+            button.btn.btn-blue = t("edit")
+            button.btn.btn-gray = t("delete")
 
     .card.card-fold
       .card-header
-        h1 Описание
+        h1 = t(".description")
         button.btn.btn-fold
           .icon-arrows.icon-arrow-up
       .card-body.event-description
         = markdown @event.description
     .card.card-fold
       .card-header
-        h1 Участники
+        h1 = t(".participants", count: @event.participants.count )
         button.btn.btn-fold
           .icon-arrows.icon-arrow-up
       .card-body
@@ -55,7 +56,7 @@
           = render partial: '/shared/users/list', locals: { users: @event.participants }
     /.card.card-fold.hidden
     /  .card-header
-    /    h1 Пострелиз
+    /    h1 = t(".postrelease")
     /    button.btn.btn-fold
     /      .icon-arrows.icon-arrow-down
     /  .card-body

@@ -1,20 +1,20 @@
 .header-title
   .container
-    h1 Мероприятия
+    h1 = t("pages.events")
 .navigation
   .container
     .navigation-wrapper
       a#js-mobile-menu.navigation-menu-button
-        span Меню
+        span = t("menu")
         i class="fa fa-caret-down dropdown-icon"
       nav role="navigation"
         ul#js-navigation-menu
           li.nav-link class=('active' if current_page?(upcoming_events_path))
-            = link_to "Ближайшие", upcoming_events_path
+            = link_to t(".upcoming"), upcoming_events_path
           li.nav-link class=('active' if current_page?(past_events_path))
-            = link_to "Прошедшие", past_events_path
+            = link_to t(".past"), past_events_path
           li.nav-link class=('active' if current_page?(new_event_path))
-            = link_to "Создать новое", new_event_path
+            = link_to t(".create"), new_event_path
 .container
   - if @events.blank?
     .no-events-stub
