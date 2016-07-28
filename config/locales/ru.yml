@@ -40,11 +40,26 @@ ru:
   # ====================================================
   # Views Locales
   # ====================================================
+  users:
+    index:
+      active: "Активные"
+      recent: "Недавно добавленные"
+      its_only_beginning: "Всё только начинается!"
+      we_have_more_than: "Нас уже больше %{count} человек!"
+    show:
+      organizer: "Организатор"
+      participant: "Участник"
+      no_organized_events: "Этот пользователь не организовал ни одного мероприятия"
+      no_participations: "Этот пользователь не участвовал ни в одном мероприятии"
+      inactive_user: "Это пользователь-мамонт, он никуда не ходит и ничего не организует"
+
   photos:
     index:
       our_tag: "Наш официальный хэштег #%{tag} в Instagram"
 
   events:
+    upcoming: "Ближайшие меропрития"
+    past: "Прошедшие меропрития"
     index:
       upcoming: "Ближайшие"
       past: "Прошедшие"
@@ -61,7 +76,7 @@ ru:
       participated: "Я участвовал"
     new:
       header: "Новое мероприятие"
-      submit_button: "Создать мероприятие"
+      create_event: "Создать мероприятие"
     form:
       image_section:
         title_image: "Изображение"
