@@ -40,6 +40,19 @@ ru:
   # ====================================================
   # Views Locales
   # ====================================================
+  account:
+    sign_in:
+      sign_in: "Войдите"
+      using_preferred_way: "любым способом"
+    sign_up_complete:
+      complete_registration: "Завершение регистрации"
+      few_details: "Есть несколько тонкостей, которые не должны от вас ускользнуть:"
+      specify_real_name: "Указывайте настоящее имя и фамилию на русском языке для удобства общения в чате"
+      specify_email_for_invite: "Важно! На указанный адрес будет отправлен инвайт для доступа в Slack"
+      specify_phone_for_sms_reminders: "Будет использоваться для отправки напоминаний о мероприятиях, на которые Вы хотите пойти"
+      submit: "Всё верно"
+      fill_later: "Заполнить позже"
+
   users:
     index:
       active: "Активные"
@@ -203,7 +216,7 @@ ru:
       user:
         email: E-Mail
         first_name: Имя
-        first_name: Фамилия
+        last_name: Фамилия
         bio: О себе
         phone: Телефон
         email_reminders: EMail-оповещения

@@ -1,7 +1,7 @@
 .login-background
 .card.login-card
-  h2 Войдите
-  p любым способом
+  h2 = t(".sign_in")
+  p = t(".using_preferred_way")
   .social-buttons
     = link_to user_github_omniauth_authorize_path, class: "btn btn-small btn-gray" do
       i.fa.fa-github
