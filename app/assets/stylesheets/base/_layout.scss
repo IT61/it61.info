@@ -16,6 +16,10 @@ body {
   box-sizing: inherit;
 }
 
+.content {
+  height: 100%;
+}
+
 .wrapper {
   min-height: 100%;
   height: auto !important;
