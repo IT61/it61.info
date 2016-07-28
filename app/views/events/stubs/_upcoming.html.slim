@@ -1,8 +1,6 @@
-h3 Пока ничего не запланировано,
-h5 но вы можете это исправить
+h3 = t(".first_line")
+h5 = t(".second_line")
 = image_tag "it61_smile.svg", class: 'smile'
 = link_to new_event_path do
-  button.btn.btn-blue Создайте мероприятие
-h5
-  | или посмотрите&nbsp;
-  = link_to "прошедшие мероприятия", past_events_path
+  button.btn.btn-blue = t("events.stubs.create_event")
+h5 = t("events.stubs.or_watch_smth_html", link: (link_to t(".past_events"), past_events_path))

@@ -20,7 +20,7 @@ ru:
   pages:
     my_profile: Мой профиль
     community: Сообщество
-    events: События
+    events: Мероприятия
     personalities: Личности
     photos: Фотографии
     slack: Slack
@@ -57,7 +57,17 @@ ru:
         map: "Карта"
       footer_buttons_section:
         create: "Создать мероприятие"
-
+    stubs:
+      create_event: "Создайте мероприятие"
+      past:
+        first_line: "Здесь пока ещё пусто,"
+        second_line: "но вы можете это исправить"
+        upcoming_events: "ближайшие мероприятия"
+      upcoming:
+        first_line: "Пока ничего не запланировано,"
+        second_line: "но вы можете это исправить"
+        past_events: "прошедшие мероприятия"
+      or_watch_smth_html: "или посмотрите %{link}"
 
   shared:
     navbar:
@@ -139,8 +149,8 @@ ru:
         one: Компания
         few: Компании
       event:
-        one: Событие
-        few: События
+        one: Мероприятие
+        few: Мероприятия
       user:
         one: Пользователь
         few: Пользователи
@@ -180,7 +190,6 @@ ru:
     profile_settings_saved: "Настройки профиля успешно сохранены!"
     add_phone_for_sms_reminders: "Вы должны добавить телефон, чтобы получать SMS-уведомления."
     error_during_save_settings: "Произошла какая-то ошибка, попробуйте снова."
-
 
     # Events
     event_successfully_created: "Мероприятие успешно создано, но появится в ленте после одобрения администрации."
