@@ -28,9 +28,9 @@ class UsersController < ApplicationController
   def update
     @user.assign_attributes(user_params.to_h)
     if @user.save!
-      flash[:notice] = "Изменения сохранены"
+      flash[:notice] = t("flashes.profile_saved")
     else
-      flash[:error] = "Ошибка сохранения данных"
+      flash[:error] = t("flashes.error_during_save_settings")
     end
 
     respond_with @user, location: edit_profile_path

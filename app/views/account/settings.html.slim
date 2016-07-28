@@ -1,18 +1,18 @@
 .content-background
 main.container.profile-container
   .inner-container
-    h1.my-profile Настройки профиля
+    h1.my-profile = t("users.cards.user.settings")
     section.card.settings-card
       = form_for @user, url: settings_update_path do |f|
         .with-padding
-          h2.sub-header Уведомления
+          h2.sub-header = t("users.cards.user.notifications")
           .notification-input
             .left
               label.switch
                 = f.check_box :email_reminders
                 .checkbox
             .right
-              span Я хочу получать e-mail уведомления о новых мероприятиях
+              span = t(".want_email_reminders")
           / no functionality for now
           /.notification-input
             .left
@@ -34,8 +34,8 @@ main.container.profile-container
                 = f.check_box :sms_reminders
                 .checkbox
             .right
-              span Я хочу получать SMS оповещения о мероприятиях, в которых я участвую
+              span = t(".want_sms_reminders")
 
           .edit-profile-bottom-buttons
-            button.btn.btn-blue type="submit" Сохранить
-            button.btn.btn-gray type="reset" Отмена
+            button.btn.btn-blue type="submit" = t("save")
+            button.btn.btn-gray type="reset" = t("cancel")
