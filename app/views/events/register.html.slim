@@ -3,11 +3,11 @@
   .title
     h1 Регистрация на мероприятие
     p #{summary_info(@event).html_safe}
-  = form_for(:participant_entry_form, url: register_to_event_path) do |f|
+  = form_for(:entry_form, url: register_to_event_path) do |f|
     .register-fields
       .association-field
         .input-float-label
-          input [type="text" disabled value="#{current_user.full_name}"]
+          input [type="text" disabled value="#{current_user.full_name}" required]
           label Имя, фамилия
       .association-curve
         .curve-short
@@ -15,7 +15,7 @@
         | Организаторы будут узнавать Ваше имя на входе, так что не стесняйтесь указывать настоящее имя
       .association-field
         .input-float-label
-          input [type="text" disabled value="#{current_user.email}"]
+          input [type="text" disabled value="#{current_user.email}" required]
           label E-Mail
       .association-curve
         .curve-short
@@ -23,17 +23,17 @@
         | Указав E-Mail в настройках профиля, Вы сможете настроить оповещения о новых событиях
       .input-float-label.about-field
         = f.text_area :reason
-        label Почему Вы хотите принять участие в этом событии?
+        label.required Почему Вы хотите принять участие в этом событии?
       .input-float-label.about-field
         = f.text_area :profession
-        label Чем Вы занимаетесь?
+        label.required Чем Вы занимаетесь?
       .input-float-label.about-field
         = f.text_area :suggestions
         label Если событие повторится, что бы Вы хотели там увидеть в следующий раз?
     .register-footer
       .required-fields * Поля, обязательные для заполнения
       .buttons
-        button.btn.btn-shadow.btn-blue [type="submit" name="participant_entry_form[confidence]" value="sure"]
+        button.btn.btn-shadow.btn-blue [type="submit" name="entry_form[confidence]" value="sure"]
           | Точно пойду
-        button.btn.btn-shadow.btn-gray [type="submit" name="participant_entry_form[confidence]" value="not_sure"]
+        button.btn.btn-shadow.btn-gray [type="submit" name="entry_form[confidence]" value="not_sure"]
           | Возможно пойду

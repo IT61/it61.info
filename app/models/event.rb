@@ -43,6 +43,10 @@ class Event < ActiveRecord::Base
     event_participations.find_by(user_id: user.id)
   end
 
+  def entry_form_for(user)
+    participant_entry_forms.where(user_id: user.id).first_or_initialize
+  end
+
   def past?
     started_at <= DateTime.current
   end
