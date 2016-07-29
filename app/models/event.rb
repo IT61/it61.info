@@ -67,7 +67,6 @@ class Event < ActiveRecord::Base
 
   def register_user!(user)
     event_participations << EventParticipation.new(user: user)
-    save!
   end
 
   private
