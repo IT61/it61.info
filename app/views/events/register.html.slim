@@ -1,39 +1,35 @@
 .login-background
 .card.register-card
   .title
-    h1 Регистрация на мероприятие
+    h1 = t(".registration_to_event")
     p #{summary_info(@event).html_safe}
-  = form_for(:participant_entry_form, url: register_to_event_path) do |f|
+  = form_for(:entry_form, url: register_to_event_path) do |f|
     .register-fields
       .association-field
         .input-float-label
-          input [type="text" disabled value="#{current_user.full_name}"]
-          label Имя, фамилия
+          input [type="text" disabled value="#{current_user.full_name}" required]
+          label = t(".full_name")
       .association-curve
         .curve-short
-      .association-text.text-short
-        | Организаторы будут узнавать Ваше имя на входе, так что не стесняйтесь указывать настоящее имя
+      .association-text.text-short = t("organizers_will_check_name")
       .association-field
         .input-float-label
           input [type="text" disabled value="#{current_user.email}"]
-          label E-Mail
+          label = t(".email")
       .association-curve
         .curve-short
-      .association-text.text-short
-        | Указав E-Mail в настройках профиля, Вы сможете настроить оповещения о новых событиях
+      .association-text.text-short = t(".you_will_recieve_notifications")
       .input-float-label.about-field
         = f.text_area :reason
-        label Почему Вы хотите принять участие в этом событии?
+        label.required = t(".why")
       .input-float-label.about-field
         = f.text_area :profession
-        label Чем Вы занимаетесь?
+        label.required = t(".who_are_you")
       .input-float-label.about-field
         = f.text_area :suggestions
-        label Если событие повторится, что бы Вы хотели там увидеть в следующий раз?
+        label = t(".suggestions")
     .register-footer
-      .required-fields * Поля, обязательные для заполнения
+      .required-fields = t("required_fields")
       .buttons
-        button.btn.btn-shadow.btn-blue [type="submit" name="participant_entry_form[confidence]" value="sure"]
-          | Точно пойду
-        button.btn.btn-shadow.btn-gray [type="submit" name="participant_entry_form[confidence]" value="not_sure"]
-          | Возможно пойду
+        button.btn.btn-shadow.btn-blue [type="submit" name="entry_form[confidence]" value="sure"] = t(".sure_will_go")
+        button.btn.btn-shadow.btn-gray [type="submit" name="entry_form[confidence]" value="not_sure"] = t(".maybe_will_go")

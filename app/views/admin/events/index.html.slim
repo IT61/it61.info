@@ -1,11 +1,11 @@
 .container
-  h1.admin-header Мероприятия
+  h1.admin-header = t("activerecord.models.event.few")
   .card
     table.admin-table
       thead
-        td Название
-        td Изображение
-        td Начало
+        td = t("activerecord.attributes.event.title")
+        td = t("activerecord.attributes.event.title_image")
+        td = t("activerecord.attributes.event.started_at")
       tbody
       - @events.each do |e|
         tr.item

@@ -1,21 +1,21 @@
 .header-title
   .container
     - if User.count.div(100) == 0
-      h1 Всё только начинается!
+      h1 = t(".its_only_beginning")
     - else
-      h1 Нас уже больше #{User.count.div(100) * 100} человек!
+      h1 = t(".we_have_more_than", count: User.count.div(100) * 100)
 .navigation
   .container
     .navigation-wrapper
       a#js-mobile-menu.navigation-menu-button
-        span Меню
+        span = t("menu")
         i class="fa fa-caret-down dropdown-icon"
       nav role="navigation"
         ul#js-navigation-menu
           li.nav-link.active
-            = link_to "Активные", active_users_path
+            = link_to t(".active"), active_users_path
           li.nav-link
-            = link_to "Недавно добавленные", recent_users_path
+            = link_to t(".recent"), recent_users_path
 .container
   /TODO: Сделать поиск по пользователям
   .input-search
@@ -24,4 +24,5 @@
   .users-container
     = render partial: '/shared/users/list', locals: { users: @users }
   /TODO: Сделать пагинацию
-  button.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"] Показать ещё
+  button.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"]
+    = t("load_more")

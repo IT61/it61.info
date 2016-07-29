@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     @event = event_creator.create params, current_user
 
     if @event.persisted?
-      flash[:success] = "Мероприятие появится в списке после одобрения администрации"
+      flash[:success] = t("flashes.event_successfully_created")
       redirect_to event_path(@event)
     else
       flash[:errors] = @event.errors.messages
@@ -50,17 +50,20 @@ class EventsController < ApplicationController
 
   def participate
     if @event.opened? || @event.past?
-      @event.event_participations << EventParticipation.create(user: current_user, event: @event)
+      @event.register_user!(current_user)
     end
     redirect_to event_path(@event)
   end
 
   def register
     # there is no business if event have open registration
-    return redirect_to event_path(@event) unless @event.closed?
+    unless @event.closed? || @event.user_participated?(current_user)
+      return redirect_to @event
+    end
 
-    @event.register_user!(current_user)
-    respond_with @event
+    # if user already have some entry form for this event...
+    @entry_form = @event.entry_form_for(current_user)
+    save_entry_form if request.post?
   end
 
   def revoke_participation
@@ -83,8 +86,20 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def save_entry_form
+    # save entry form
+    @entry_form.event = @event
+    @entry_form.user = current_user
+    @entry_form.update(entry_form_params)
+    @entry_form.save
+
+    # mark user as participant
+    @event.register_user!(current_user)
+    redirect_to @event
+  end
+
   def entry_form_params
-    params.require(:participant_entry_form).permit("reason", "profession", "suggestions", "confidence")
+    params.require(:entry_form).permit("reason", "profession", "suggestions", "confidence")
   end
 
   def show_events(scope)

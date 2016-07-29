@@ -1,12 +1,12 @@
 .container
-  h1.admin-header Места
+  h1.admin-header = t("activerecord.models.place.few")
   .card
     table.admin-table
       thead
-        td Название
-        td Точный адрес
-        td Широта
-        td Долгота
+        td = t("activerecord.attributes.place.title")
+        td = t("activerecord.attributes.place.address")
+        td = t("activerecord.attributes.place.latitude")
+        td = t("activerecord.attributes.place.longitude")
       tbody
       - @places.each do |p|
         tr.item

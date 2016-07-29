@@ -134,6 +134,12 @@
     }
 
     .file_upload {
+      label {
+        margin-right: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
       @include media($new-event-mobile) {
         margin: 0
       }

@@ -9,8 +9,8 @@
         p.place= e.places.first.full_address
     .card-footer
       = link_to e do
-        button.btn Подробнее
+        button.btn = t("more_info")
     - if e.opened?
-      = button_to "Я пойду", participate_event_path(e), method: :post, class: "btn btn-blue button-participate"
+      = button_to t("events.participations.participate"), participate_event_path(e), method: :post, class: "btn btn-blue button-participate"
     - else
-      = button_to "Я пойду", register_to_event_path(e), class: "btn btn-blue button-participate"
+      = button_to t("events.participations.participate"), register_to_event_path(e), class: "btn btn-blue button-participate"

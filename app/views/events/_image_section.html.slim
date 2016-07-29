@@ -1,9 +1,0 @@
-section.image
-  = f.label :title_image, 'Титульное изображение*'
-  label.recommend
-    = image_tag event.title_image, id: 'image', width: 200, height: 200
-    div Рекомендуется изображение размером 500x500 px в формате jpg и png
-  div.file_upload#event_file_upload
-    button.btn.btn-shadow.btn-blue type="button" Выбрать файл
-    = f.file_field :title_image, required: true, id: 'event_image_input'
-    label Файл не выбран

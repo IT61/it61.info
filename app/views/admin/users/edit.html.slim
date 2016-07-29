@@ -1,25 +1,23 @@
 .container
-  h1.admin-header Пользователь
+  h1.admin-header = t("activerecord.models.user.one")
   .card.admin-edit-card
     = form_for @user, url: admin_user_path(@user) do |f|
       .input-float-label
         = f.text_field :email
-        = f.label :email, 'Email'
+        = f.label :email, t("activerecord.attributes.user.email")
       .input-float-label
         = f.text_field :first_name
-        = f.label :first_name, 'Имя'
+        = f.label :first_name, t("activerecord.attributes.user.first_name")
       .input-float-label
         = f.text_field :last_name
-        = f.label :last_name, 'Фамилия'
+        = f.label :last_name, t("activerecord.attributes.user.last_name")
       .input-float-label
         = f.text_field :phone
-        = f.label :phone, 'Телефон'
+        = f.label :phone, t("activerecord.attributes.user.phone")
       .select-input
-        = f.label :role, 'Права'
+        = f.label :role, t("activerecord.attributes.user.role")
         = f.select :role, User.roles.keys.map { |role| [role.to_s, role] }
       .register-footer
         .buttons
-          button.btn.btn-shadow.btn-blue [type="submit"]
-            | Сохранить
-          button.btn.btn-shadow.btn-gray [type="reset"]
-            | Отмена
+          button.btn.btn-shadow.btn-blue [type="submit"] = t("save")
+          button.btn.btn-shadow.btn-gray [type="reset"] = t("cancel")

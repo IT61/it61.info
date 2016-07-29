@@ -1,33 +1,176 @@
 ru:
-  errors:
-    connection_refused: "В соединении отказано"
-  devise:
-    failure:
-      user:
-        unauthenticated: "Вы должны зарегистрироваться для этого действия"
-    sessions:
-      user:
-        signed_out: "Вы успешно вышли из своего аккаунта"
-    omniauth_callbacks:
-      user:
-        success: "Вы успешно зашли с помощью аккаунта соц. сети"
-  shared:
-    admin_sidebar:
-      events: "События"
-      users: "Пользователи"
-      places: "Места"
-    sidebar:
-      my_profile: "Мой профиль"
-      community: "Сообщество"
-      events: "Мероприятия"
-      personalities: "Личности"
-      photos: "Фотографии"
-      slack: "Slack"
-      sponsorship: "Спонсорам"
+  application_name: "Ростовское IT-сообщество"
 
+  will_paginate:
+    previous_label: "Предыдущая страница"
+    next_label: "Следующая страница"
+
+  required_fields: "* Поля, обязательные для заполнения"
+
+  more_info: "Подробнее"
+  load_more: "Показать ещё"
+
+  menu: "Меню"
+
+  save: Сохранить
+  add: Добавить
+  edit: Редактировать
+  delete: Удалить
+
+  publish: "Опубликовать"
+  unpublish: "Распубликовать"
+
+  cancel: Отмена
+
+  modal:
+    close: "Закрыть"
+
+  pages:
+    my_profile: Мой профиль
+    community: Сообщество
+    events: Мероприятия
+    personalities: Личности
+    photos: Фотографии
+    slack: Slack
+    sponsorship: Спонсорам
+
+  errors:
+    connection_refused: В соединении отказано
+
+  socials:
+    github: "GitHub"
+    vk: "ВКонтакте"
+    google_plus: "Google+"
+    facebook: "Facebook"
+
+
+  # ====================================================
+  # Views Locales
+  # ====================================================
+  account:
+    sign_in:
+      sign_in: "Войдите"
+      using_preferred_way: "любым способом"
+    sign_up_complete:
+      complete_registration: "Завершение регистрации"
+      few_details: "Есть несколько тонкостей, которые не должны от вас ускользнуть:"
+      specify_real_name: "Указывайте настоящее имя и фамилию на русском языке для удобства общения в чате"
+      specify_email_for_invite: "Важно! На указанный адрес будет отправлен инвайт для доступа в Slack"
+      specify_phone_for_sms_reminders: "Будет использоваться для отправки напоминаний о мероприятиях, на которые Вы хотите пойти"
+      submit: "Всё верно"
+      fill_later: "Заполнить позже"
+    settings:
+      want_sms_reminders: "Я хочу получать SMS оповещения о мероприятиях, в которых я участвую"
+      want_email_reminders: "Я хочу получать e-mail уведомления о новых мероприятиях"
+
+  users:
+    index:
+      active: "Активные"
+      recent: "Недавно добавленные"
+      its_only_beginning: "Всё только начинается!"
+      we_have_more_than: "Нас уже больше %{count} человек!"
+    show:
+      organizer: "Организатор"
+      participant: "Участник"
+      no_organized_events: "Этот пользователь не организовал ни одного мероприятия"
+      no_participations: "Этот пользователь не участвовал ни в одном мероприятии"
+      inactive_user: "Это пользователь-мамонт, он никуда не ходит и ничего не организует"
+    edit:
+      form_title: "Редактирование профиля"
+      phone_for_sms_reminders: "Телефон не отображается на сайте и не передается в Slack"
+      social_accounts: "Социальные сети"
+      upload_photo: "Загрузить фото"
+      delete_photo: "Удалить фото"
+      connected: "Подключенные"
+    cards:
+      user:
+        edit_profile: "Редактировать профиль"
+        settings: "Настройки"
+        notifications: "Уведомления"
+
+  photos:
+    index:
+      our_tag: "Наш официальный хэштег #%{tag} в Instagram"
+
+  events:
+    upcoming: "Ближайшие меропрития"
+    past: "Прошедшие меропрития"
+    index:
+      upcoming: "Ближайшие"
+      past: "Прошедшие"
+      create: "Создать новое"
+    show:
+      event_still_not_published: "Мероприятие ещё не опубликовано."
+      description: "Описание"
+      participants: "Участники (%{count})"
+      postrelease: "Пострелиз"
+    participations:
+      participate: "Я пойду!"
+      register: "Зарегистрироваться"
+      revoke_participation: "Отменить заявку"
+      participated: "Я участвовал"
+    new:
+      header: "Новое мероприятие"
+      create_event: "Создать мероприятие"
+    form:
+      image_section:
+        title_image: "Изображение"
+        recommendations: "Рекомендуется использовать изображение размером 500x500 px в формате .jpg или .png"
+        choose_file_btn: "Выберите файл"
+        no_file_label: "Файл не выбран"
+      description_section:
+        description: "Описание"
+      details_section:
+        title: "Название"
+        time: "Время начала"
+        date: "Дата начала"
+        link: "Ссылка на сторонний сайт"
+        place: "Место проведения"
+        address: "Точный адрес"
+        show_map_btn: "Посмотреть на карте"
+        map: "Карта"
+      footer_buttons_section:
+        create: "Создать мероприятие"
+    stubs:
+      create_event: "Создайте мероприятие"
+      past:
+        first_line: "Здесь пока ещё пусто,"
+        second_line: "но вы можете это исправить"
+        upcoming_events: "ближайшие мероприятия"
+      upcoming:
+        first_line: "Пока ничего не запланировано,"
+        second_line: "но вы можете это исправить"
+        past_events: "прошедшие мероприятия"
+      or_watch_smth_html: "или посмотрите %{link}"
+    register:
+      registration_to_event: "Регистрация на мероприятие"
+      full_name: "Имя, фамилия"
+      organizers_will_check_name: "Организаторы будут узнавать Ваше имя на входе, так что не стесняйтесь указывать настоящее имя"
+      email: "E-Mail"
+      you_will_recieve_notifications: "Указав E-Mail в настройках профиля, Вы сможете настроить оповещения о новых событиях"
+      why: "Почему Вы хотите принять участие в этом событии?"
+      who_are_you: "Чем Вы занимаетесь?"
+      suggestions: "Если событие повторится, что бы Вы хотели там увидеть в следующий раз?"
+      sure_will_go: "Точно пойду"
+      maybe_will_go: "Возможно пойду"
+
+  shared:
     navbar:
-      sign_in: "Войти"
-      sign_out: "Выход"
+      sign_in: Войти
+      sign_out: Выход
+    footer:
+      created_for_community_html: Сделано <a href="%{link}">сообществом</a> для сообщества
+      we_in_social_networks: "Мы в социальных сетях:"
+
+  admin:
+    events:
+      edit:
+        edit_event: "Редактировать мероприятие"
+
+  # ====================================================
+  # Date and Time Locales
+  # ====================================================
+
   date:
     abbr_day_names:
     - Вс
@@ -81,10 +224,84 @@ ru:
     - :day
     - :month
     - :year
-  will_paginate:
-    previous_label: "Предыдущая страница"
-    next_label: "Следующая страница"
+
   time:
     formats:
       date_time_full: "%d %B %Y, %H:%M"
       date_digits: "%d.%m.%y"
+
+  # ====================================================
+  # Active Record Locales
+  # ====================================================
+  activerecord:
+    models:
+      company:
+        one: Компания
+        few: Компании
+      event:
+        one: Мероприятие
+        few: Мероприятия
+      user:
+        one: Пользователь
+        few: Пользователи
+      place:
+        one: Место
+        few: Места
+      participant_entry_form:
+        one: Заявка на участие
+        few: Заявки на участие
+    attributes:
+      user:
+        email: E-Mail
+        first_name: Имя
+        last_name: Фамилия
+        role: Тип аккаунта
+        bio: О себе
+        phone: Телефон
+        email_reminders: EMail-оповещения
+        sms_reminders: SMS-оповещения
+        full_name: "Полное имя"
+      event:
+        title: Название
+        description: Описание
+        title_image: Изображение
+        published_at: Дата публикации
+        started_at: Дата проведения
+        started_at_time: Время проведения
+        participants: Участники
+        link: Внешняя ссылка
+      place:
+        title: Место проведения
+        address: Точный адрес
+        latitude: "Широта"
+        longitude: "Долгота"
+    errors:
+      messages:
+        record_invalid: "Record is invalid"
+  # ====================================================
+  # Flashes Locales
+  # ====================================================
+  flashes:
+    # Profile settings
+    profile_saved: "Данные профиля успешно сохранены!"
+    profile_settings_saved: "Настройки профиля успешно сохранены!"
+    add_phone_for_sms_reminders: "Вы должны добавить телефон, чтобы получать SMS-уведомления."
+    error_during_save_settings: "Произошла какая-то ошибка, проверьте данные и попробуйте снова."
+
+    # Events
+    event_successfully_created: "Мероприятие успешно создано, но появится в ленте после одобрения администрации."
+    event_successfully_published: "Мероприятие успешно опубликовано!"
+    event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
+    event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
+
+  devise:
+    failure:
+      user:
+        unauthenticated: "Вы должны зарегистрироваться для этого действия!"
+    sessions:
+      user:
+        signed_out: "Всего доброго!"
+    omniauth_callbacks:
+      user:
+        success: "Добро пожаловать!"
+  upload_photo: "Загрузить фото"

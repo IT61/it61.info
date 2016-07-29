@@ -1,42 +1,45 @@
 .login-background
 .card.register-card
   .title
-    h1 Завершение регистрации
-    p Есть несколько тонкостей, которые<br>не должны от вас ускользнуть:
+    h1 = t(".complete_registration")
+    p = t(".few_details")
   = form_for current_user do |f|
     .register-fields
       .association-field
         .input-float-label
-          = f.text_field :first_name
-          = f.label :first_name, 'Имя*'
+          = f.text_field :first_name, required: true
+          = f.label :first_name, t("activerecord.attributes.user.first_name")
         .input-float-label
-          = f.text_field :last_name
-          = f.label :last_name, 'Фамилия*'
+          = f.text_field :last_name, required: true
+          = f.label :last_name, t("activerecord.attributes.user.last_name")
       .association-curve
         .curve-long
       .association-text.text-long
-        | 1. Указывайте настоящее имя и фамилию на русском языке для удобства общения в чате
+        | 1.&nbsp;
+        = t(".specify_real_name")
       .association-field
         .input-float-label
-          = f.text_field :email
-          = f.label :email, 'E-Mail*'
+          = f.text_field :email, required: true
+          = f.label :email, t("activerecord.attributes.user.email")
       .association-curve
         .curve-short
       .association-text.text-short
-        | 2. Важно! На указанный адрес будет отправлен инвайт для доступа в Slack
+        | 2.&nbsp;
+        = t(".specify_email_for_invite")
       .association-field
         .input-float-label
           = f.telephone_field :phone
-          = f.label :phone, 'Телефон'
+          = f.label :phone, t("activerecord.attributes.user.phone")
       .association-curve
         .curve-short
       .association-text.text-short
-        | 3. Будет использован для отправки напоминаний о мероприятиях, на которые Вы хотите пойти
+        | 3.&nbsp;
+        = t(".specify_phone_for_sms_reminders")
       .input-float-label.about-field
         = f.text_area :bio
-        = f.label :bio, 'О себе'
+        = f.label :bio, t("activerecord.attributes.user.bio")
     .register-footer
-      .required-fields * Поля, обязательные для заполнения
+      .required-fields = t("required_fields")
       .buttons
-        button.btn.btn-shadow.btn-blue type='submit' Все верно
-        = link_to "Заполнить позже", root_path, class: "btn btn-shadow btn-gray"
+        button.btn.btn-shadow.btn-blue type='submit' = t(".submit")
+        = link_to t(".fill_later"), root_path, class: "btn btn-shadow btn-gray"

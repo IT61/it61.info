@@ -12,6 +12,7 @@ gem "delayed_job_active_record"
 gem "devise"
 gem "flutie"
 gem "high_voltage"
+gem "i18n-tasks"
 gem "jquery-rails"
 gem "neat", "~> 1.7.0"
 gem "nokogiri"
@@ -50,6 +51,8 @@ group :development, :test do
   gem "awesome_print"
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
+  gem "scss_lint", require: false
+  gem "brakeman", require: false
   gem "dotenv-rails"
   gem "forgery"
   gem "factory_girl_rails"

@@ -3,24 +3,21 @@ footer
     .footer-left
       ul
         li
-          = link_to "Мероприятия", events_path
+          = link_to t("pages.events"), events_path
         li
-          = link_to "Личности", users_path
+          = link_to t("pages.personalities"), users_path
         li
-          = link_to "Фото", photos_path
+          = link_to t("pages.photos"), photos_path
         li
-          = link_to "Спонсорам", sponsorship_path
+          = link_to t("pages.sponsorship"), sponsorship_path
         li
-          = link_to "Slack", slack_path
+          = link_to t("pages.slack"), slack_path
       .copyright
         = image_tag "logo-small.svg", class: "logo"
-        p
-          | Сделано&nbsp;
-          = link_to "сообществом", "http://it61.info"
-          |&nbsp;для сообщества
+        p = t(".created_for_community_html", link: request.base_url)
     .social
       .social-wrapper
-        p Мы в социальных сетях:
+        p = t(".we_in_social_networks")
         ul
           li
             = link_to "http://fb.com" do

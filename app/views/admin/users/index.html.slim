@@ -1,12 +1,12 @@
 .container
-  h1.admin-header Пользователи
+  h1.admin-header = t("activerecord.models.user.few")
   .card
     table.admin-table
       thead
-        td Email
-        td Имя
-        td Телефон
-        td Права
+        td = t("activerecord.attributes.user.email")
+        td = t("activerecord.attributes.user.full_name")
+        td = t("activerecord.attributes.user.phone")
+        td = t("activerecord.attributes.user.role")
       tbody
       - @users.each do |u|
         tr.item

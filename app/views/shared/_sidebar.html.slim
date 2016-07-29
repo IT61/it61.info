@@ -5,16 +5,17 @@
     = active_link_to profile_path
       .sidebar__profile
         = image_tag current_user.pic, class: "avatar avatar-xs avatar-circle"
-        = t(".my_profile")
+        = t("pages.my_profile")
   ul.sidebar__menu
-    /= active_link_to t(".community"), events_path, wrap_tag: :li
     = active_link_to events_path do
-      li = t(".events")
+      li=t("pages.community")
+    = active_link_to events_path do
+      li=t("pages.events")
     = active_link_to photos_path do
-      li = t(".photos")
+      li=t("pages.photos")
     = active_link_to slack_path do
-      li = t(".slack")
+      li=t("pages.slack")
     = active_link_to users_path do
-      li = t(".personalities")
+      li=t("pages.personalities")
     = active_link_to sponsorship_path do
-      li = t(".sponsorship")
+      li=t("pages.sponsorship")

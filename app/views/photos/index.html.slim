@@ -1,7 +1,7 @@
 .page-header
   .page-title
-    h3 Фото
-    h5 Наш официальный хэштег ##{@tag} в Instagram
+    h3 = t("pages.photos")
+    h5 = t(".our_tag", tag: @tag)
 .photo
   .photo-list
     - @photos.each do |item|
