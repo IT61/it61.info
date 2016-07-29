@@ -305,3 +305,5 @@ ru:
       user:
         success: "Добро пожаловать!"
   upload_photo: "Загрузить фото"
+  places:
+    root: "Главная страница"
