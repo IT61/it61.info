@@ -45,7 +45,7 @@ class User < ApplicationRecord
         u.email = auth.info.email unless auth.info.email.nil?
         u.name = auth.info.name
       end
-      soc.link = link_for auth
+      soc.link = User.link_for auth
     end
     SlackService.invite(social.user)
     social.user
@@ -57,7 +57,7 @@ class User < ApplicationRecord
       soc.provider = auth.provider
       soc.uid = auth.uid
       soc.user = self
-      soc.link = link_for auth
+      soc.link = User.link_for auth
     end
     social.user
   end
