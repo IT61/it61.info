@@ -3,29 +3,32 @@ section.details
     .input-float-label
       = f.text_field :title, required: true
       label = t(".title")
+
   .time-container
     = f.label :started_at, t(".date"), class: "required"
     = date_select :event, :started_at_date, selected: Date.today
+
   .time-container
     = f.label :started_at, t(".time"), class: "required"
     = time_select :event, :started_at_time, selected: Date.today, time_separator: "<span class='time-separator'>:</span>"
+
   .event-association-field
     .input-float-label
-      = f.text_field :link
+      = f.text_field :link, id: "link", class: "autocomplete-input"
       label = t(".link")
+
   .event-association-field
     .input-float-label
-      = text_field_tag 'event[place_title]', event.places[0].nil? ? "" : event.places[0].title, id: "place_title", autocomplete: "off", required: true
+      = text_field_tag 'event[place_title]', event.places[0].nil? ? "" : event.places[0].title, { id: "place_title",
+              class: "autocomplete-input", autocomplete: "off", required: true }
       label = t(".place")
-      .dropdown-container
-        div#ours-dropdown-container
+
   .event-association-field
     .input-float-label
-      input#location type="text" autocomplete="off" required="true" value=(event.places[0].nil?  ? "" : event.places[0].address)
+      input#location.autocomplete-input type="text" autocomplete="off" required="true" value=(event.places[0].nil?  ? "" : event.places[0].address)
       label = t(".address")
-      .dropdown-container
-        div#yandexs-dropdown-container
-  div.modal
+
+  .modal
     label for="modal-1"
       a.btn.btn-gray.modal-trigger#map-trigger = t(".show_map_btn")
     input.modal-state#modal-1 type="checkbox"

@@ -1,5 +1,5 @@
-h1.event-card-header = form_header
-= form_for @event, url: submit_url do |f|
+h1.event-form-card-header = form_header
+= form_for @event, url: submit_url, html: { class: "event-form" } do |f|
   = render partial: 'events/form/details_section', locals: {f: f, event: @event}
   section.space-taker
   = render partial: 'events/form/image_section', locals: {f: f, event: @event}
