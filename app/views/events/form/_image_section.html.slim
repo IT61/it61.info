@@ -4,6 +4,6 @@ section.image
     = image_tag event.title_image, id: "image", width: 200, height: 200
     div = t(".recommendations")
   .file_upload#event_file_upload
-    button.btn.btn-shadow.btn-blue type="button" = t(".choose_file_btn")
     = f.file_field :title_image, required: true, id: "event_image_input"
     label = t(".no_file_label")
+    button.btn.btn-shadow.btn-blue type="button" = t(".choose_file_btn")

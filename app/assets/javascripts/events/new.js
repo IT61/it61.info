@@ -5,7 +5,8 @@ $(document).ready(function () {
         var editor = new SimpleMDE({
             element: editorElem,
             autofocus: false,
-            forceSync: true
+            forceSync: true,
+            spellChecker: false
         });
     }
 

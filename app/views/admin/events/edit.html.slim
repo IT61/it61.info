@@ -1,6 +1,6 @@
-.container
-  .card.admin-edit-card
-    = render partial: 'events/form',
-             locals: { submit_url: admin_event_path(@event),
-                       form_header: t(".edit_event"),
-                       submit_button_text: t("save") }
+main.new-event-container
+  .card.new-event-card
+    = render partial: '/events/form',
+            locals: {submit_url: admin_event_path(@event),
+                    form_header: t(".edit_event"),
+                    submit_button_text: t("save")}

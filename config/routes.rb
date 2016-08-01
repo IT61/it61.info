@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   devise_scope :user do
-    get "sign_in" => "devise/sessions#new"
+    get "sign_in" => "account#sign_in"
     get "sign_out" => "devise/sessions#destroy"
   end
 

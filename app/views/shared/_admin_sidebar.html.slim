@@ -2,6 +2,7 @@
   .sidebar__logo
     .sidebar__logo_img
   ul.sidebar__menu
-    = active_link_to t(".events"), admin_events_path, wrap_tag: :li
-    = active_link_to t(".users"), admin_users_path, wrap_tag: :li
-    = active_link_to t(".places"), admin_places_path, wrap_tag: :li
+    = active_link_to t("places.root"), root_path, wrap_tag: :li
+    = active_link_to t("activerecord.models.event.few"), admin_events_path, wrap_tag: :li
+    = active_link_to t("activerecord.models.user.few"), admin_users_path, wrap_tag: :li
+    = active_link_to t("activerecord.models.place.few"), admin_places_path, wrap_tag: :li
