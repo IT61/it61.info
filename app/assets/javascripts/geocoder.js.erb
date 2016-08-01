@@ -1,10 +1,12 @@
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
+
 (function() {
     "use strict";
     window.Geocoder = function () {
 
-        var baseCity = "Ростов-на-Дону",
-            suggestionsURL = "/places/find",
-            bounds = [[46.061107, 37.603739], [49.073023, 42.767521]];
+        var baseCity = "<%= APP_CONFIG.community.city.name %>",
+            suggestionsURL = "<%= find_places_path %>",
+            bounds = <%= APP_CONFIG.community.city.bounds %>;
 
         var myMap;
 

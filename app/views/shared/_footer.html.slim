@@ -20,14 +20,14 @@ footer
         p = t(".we_in_social_networks")
         ul
           li
-            = link_to "http://fb.com" do
+            = link_to APP_CONFIG.community.link_to.facebook do
               i.fa.fa-facebook
           li
-            = link_to "http://github.com" do
+            = link_to APP_CONFIG.community.link_to.github do
               i.fa.fa-github
           li
-            = link_to "http://vk.com" do
+            = link_to APP_CONFIG.community.link_to.vk do
               i.fa.fa-vk
           li
-            = link_to "http://github.com" do
+            = link_to APP_CONFIG.community.link_to.youtube do
               i.fa.fa-youtube

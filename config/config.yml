@@ -1,0 +1,21 @@
+community:
+  # Community full title
+  title: "Ростовское IT-сообщество"
+
+  # For geocoder.js.erb
+  city:
+    name: "Ростов-на-Дону"
+    bounds:
+      - [46.061107, 37.603739]
+      - [49.073023, 42.767521]
+
+  # For parsing instagram photos
+  instagram_hashtag: "it61"
+
+  # Footer links
+  link_to:
+    vk: "https://vk.com/it_61"
+    facebook: ""
+    github: ""
+    youtube: ""
+    slack: ""
