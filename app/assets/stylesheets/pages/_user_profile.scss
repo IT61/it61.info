@@ -224,10 +224,14 @@ $card-padding: 15px;
     }
   }
 
+  .event-link {
+    display: block;
+  }
+
   .no-events {
     @include outer-container;
     color: #777;
-    margin: 1em 0;
+    margin: 12px 0;
 
     .fa {
       @include span-columns(1);

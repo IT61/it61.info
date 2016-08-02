@@ -4,7 +4,8 @@
     .message= no_events_message
 - else
   - events.each do |e|
-    .event
-      .image
-        = image_tag e.title_image, class: 'small-picture'
-      .text= e.title
+    = link_to event_path(e), class: "event-link"
+      .event
+        .image
+          = image_tag e.title_image, class: 'small-picture'
+        .text= e.title
