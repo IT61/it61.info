@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801070239) do
+ActiveRecord::Schema.define(version: 20160803132648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,14 +48,9 @@ ActiveRecord::Schema.define(version: 20160801070239) do
     t.integer  "registration_type",             default: 0
     t.integer  "participants_limit"
     t.string   "link"
-    t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
-  end
-
-  create_table "events_places", force: :cascade do |t|
-    t.integer  "event_id"
     t.integer  "place_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
+    t.index ["place_id"], name: "index_events_on_place_id", using: :btree
   end
 
   create_table "participant_entry_forms", force: :cascade do |t|
@@ -122,4 +117,5 @@ ActiveRecord::Schema.define(version: 20160801070239) do
     t.index ["subscribed"], name: "index_users_on_subscribed", using: :btree
   end
 
+  add_foreign_key "events", "places"
 end

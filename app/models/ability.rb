@@ -9,6 +9,7 @@ class Ability
     # Common abilities
     can [:read, :active, :recent], User
     can :read, Company
+    can :create, Event
     can [:read, :index_categories], Event, published?
 
     # Cut off unauthorized users
@@ -19,7 +20,7 @@ class Ability
     can :places, Event
     can [:participate, :register, :revoke_participation,
          :add_to_google_calendar, :download_ics_file], Event, published?
-    can [:create, :read, :update], Event, organizer?(user)
+    can [:update], Event, organizer?(user)
 
     if user.admin?
       can :manage, :all

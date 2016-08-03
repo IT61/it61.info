@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require "slack-notifier"
 class SlackService
   include ApplicationHelper
