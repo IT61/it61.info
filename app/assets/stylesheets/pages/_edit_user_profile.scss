@@ -1,4 +1,3 @@
-
 .half, .full {
   @include media($mobile-viewport) {
     margin: .5em 0;

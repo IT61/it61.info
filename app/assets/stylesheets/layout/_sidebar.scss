@@ -15,7 +15,7 @@
   &__logo {
     background:#363738;
     min-width: $sidebar-width;
-    padding: 53px 0;
+    padding: 30px 0;
 
     &_img {
       background: image_url("logo-03.svg");
@@ -50,12 +50,12 @@
 
     a {
       color: #191919;
+      display: inline-block;
+      padding: 15px 40px 15px;
     }
 
     li {
-      height: 81px;
       list-style: none;
-      padding: 30px 40px 0;
       text-transform: uppercase;
       width: $sidebar-width;
 
