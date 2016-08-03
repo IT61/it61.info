@@ -27,5 +27,6 @@ module It61
     config.i18n.default_locale = :ru
     config.active_job.queue_adapter = :delayed_job
     config.exceptions_app = routes
+    config.assets.paths << Rails.root.join("vendor", "assets", "components")
   end
 end
