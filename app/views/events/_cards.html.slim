@@ -6,7 +6,7 @@
       .events-info
         h2= e.title
         p= l e.started_at, format: :date_time_full
-        p.place= e.places.first.full_address
+        p.place= e.place.full_address
     .card-footer
       = link_to e do
         button.btn = t("more_info")

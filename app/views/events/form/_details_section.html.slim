@@ -19,26 +19,26 @@ section.details
 
   .event-association-field
     .input-float-label
-      = text_field_tag 'event[place_title]', event.places[0].nil? ? "" : event.places[0].title, { id: "place_title",
+      = text_field_tag "event[place_title]", event.place.nil? ? "" : event.place.title, { id: "place_title",
               class: "autocomplete-input", autocomplete: "off", required: true }
       label = t(".place")
 
   .event-association-field
     .input-float-label
-      input#location.autocomplete-input type="text" autocomplete="off" required="true" value=(event.places[0].nil?  ? "" : event.places[0].address)
+      input#location.autocomplete-input type="text" autocomplete="off" required="true" value=(event.place.nil? ? "" : event.place.address)
       label = t(".address")
 
   .modal
     label for="modal-1"
       a.btn.btn-gray.modal-trigger#map-trigger = t(".show_map_btn")
     input.modal-state#modal-1 type="checkbox"
-    div.modal-fade-screen
-      div.modal-inner
-        div.modal-content
+    .modal-fade-screen
+      .modal-inner
+        .modal-content
           .header
             h2 = t(".map")
-          div#map
-        div.btn.modal-close for="modal-1" = t("modal.close")
-      = text_field_tag 'event[address]', event.places[0].nil? ? '' :  event.places[0].address, class: 'unchangeable-input', required: true, type: 'hidden'
-      = text_field_tag 'event[latitude]', event.places[0].nil? ? '' : event.places[0].latitude, class: 'unchangeable-input', required: true, type: 'hidden'
-      = text_field_tag 'event[longitude]',  event.places[0].nil? ? '' : event.places[0].longitude, class: 'unchangeable-input', required: true, type: 'hidden'
+          #map
+        .btn.modal-close for="modal-1" = t("modal.close")
+      = text_field_tag "event[address]", event.place.nil? ? "" :  event.place.address, class: "unchangeable-input", required: true, type: "hidden"
+      = text_field_tag "event[latitude]", event.place.nil? ? "" : event.place.latitude, class: "unchangeable-input", required: true, type: "hidden"
+      = text_field_tag "event[longitude]",  event.place.nil? ? "" : event.place.longitude, class: "unchangeable-input", required: true, type: "hidden"

@@ -1,6 +1,10 @@
 module EventsHelper
+  def quoted_title
+    ["&laquo;", event.title, "&raquo;"].join
+  end
+
   def summary_info(event)
-    "&laquo;#{event.title}&raquo;, #{event.started_at}<br>#{event.places.first.full_address}"
+    [quoted_title, event.place.full_address, event.started_at].compact.join("<br>")
   end
 
   def make_global(link)

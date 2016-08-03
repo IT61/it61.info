@@ -11,10 +11,9 @@
         .block-info
           .icon-events.icon-calendar
           span=l @event.started_at, format: :date_time_full
-        - @event.places.each do |place|
-          .block-info
-            .icon-events.icon-marker
-            span= place.full_address
+        .block-info
+          .icon-events.icon-marker
+          span= @event.place.full_address
         - if @event.link?
           .block-info
             .icon-events.icon-link
@@ -51,12 +50,12 @@
         = markdown @event.description
     .card.card-fold
       .card-header
-        h1 = t(".participants", count: @event.participants.count )
+        h1 = t(".participants", count: @event.participants.count)
         button.btn.btn-fold
           .icon-arrows.icon-arrow-up
       .card-body
         .users-container
-          = render partial: '/shared/users/list', locals: { users: @event.participants }
+          = render partial: "/shared/users/list", locals: { users: @event.participants }
     /.card.card-fold.hidden
     /  .card-header
     /    h1 = t(".postrelease")
