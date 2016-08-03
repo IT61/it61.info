@@ -1,0 +1,33 @@
+.inputs-container
+  .outer
+    .input-float-label.half
+      = f.text_field :first_name
+      = f.label :first_name, t("activerecord.attributes.user.first_name")
+    .input-float-label.half
+      = f.text_field :last_name
+      = f.label :last_name, t("activerecord.attributes.user.last_name")
+  / no support for companies for now
+  /.outer
+        .input-float-label.half
+          = f.text_field :company_name
+          = f.label :company_name, 'Компания'
+        .input-float-label.half
+          = f.text_field :company_site
+          = f.label :company_site, 'Сайт'
+  /.outer
+        .input-float-label.full
+          = f.text_field :company_position
+          = f.label :company_position, 'Должность'
+  .outer
+    .input-float-label.half
+      = f.text_field :email
+      = f.label :email, t("activerecord.attributes.user.email")
+    .input-float-label.half
+      = f.telephone_field :phone
+      = f.label :phone, t("activerecord.attributes.user.phone")
+      span.sub-label = t(".phone_for_sms_reminders")
+        / should be slack link?
+        /.outer
+        .input-float-label.full
+          = f.text_field :hash_tag
+          = f.label :hash_tag, 'Slack'

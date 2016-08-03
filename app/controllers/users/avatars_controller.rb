@@ -6,8 +6,19 @@ module Users
 
     def create
       avatar = avatar_params[:avatar]
-      @user.avatar = avatar
+
+      # Create temporary .png file for creating image
+      tmpfile = Dir::Tmpname.make_tmpname(["blob", ".png"], nil)
+      fpath = Rails.root.join("tmp", tmpfile)
+      File.open(fpath, "wb") do |f|
+        f.write(avatar.read)
+        @user.avatar = f
+      end
       commit = @user.save
+
+      # Delete temporary file after usage
+      File.delete(fpath)
+
       render json: { success: commit }
     end
 
