@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     skip_before_action :verify_authenticity_token
@@ -12,6 +13,10 @@ module Users
 
     def google_oauth2
       oauth_for "Google"
+
+      current_user.update_attributes(
+        google_refresh_token: request.env["omniauth.auth"]["credentials"]["refresh_token"]
+      )
     end
 
     def vkontakte
