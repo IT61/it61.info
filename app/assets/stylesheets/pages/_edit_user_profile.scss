@@ -52,6 +52,11 @@
     }
 
     .edit-picture-buttons {
+
+      input {
+        display: none;
+      }
+
       @include media($mobile-viewport) {
         margin-top: 2em;
       }

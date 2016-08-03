@@ -77,11 +77,15 @@ ru:
       inactive_user: "Это пользователь-мамонт, он никуда не ходит и ничего не организует"
     edit:
       form_title: "Редактирование профиля"
-      phone_for_sms_reminders: "Телефон не отображается на сайте и не передается в Slack"
-      social_accounts: "Социальные сети"
-      upload_photo: "Загрузить фото"
-      delete_photo: "Удалить фото"
-      connected: "Подключенные"
+    form:
+      image_upload_section:
+        upload_photo: "Загрузить фото"
+        delete_photo: "Удалить фото"
+      details_section:
+        phone_for_sms_reminders: "Телефон не отображается на сайте и не передается в Slack"
+      social_accounts_section:
+        social_accounts: "Социальные сети"
+        connected: "Подключенные"
     cards:
       user:
         edit_profile: "Редактировать профиль"
