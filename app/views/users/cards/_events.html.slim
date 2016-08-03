@@ -1,7 +1,17 @@
 section.card.organizator
   .sub-header: h3= header
   .events
-    = render partial: "/users/events", locals: { events: events, no_events_message: no_events_message }
+    - if events.empty?
+      .no-events
+        i.fa.fa-smile-o
+        .message= no_events_message
+    - else
+      - events.each do |e|
+        = link_to event_path(e), class: "event-link"
+        .event
+          .image
+            = image_tag e.title_image, class: 'small-picture'
+          .text= e.title
   - if my_profile?(user)
     .card-footer
       = link_to footer_button_link, class: "button" do
