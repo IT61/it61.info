@@ -1,6 +1,6 @@
 function deleteAvatar($imageForm) {
     $.ajax({
-        url: $imageForm.attr('avatar_path'),
+        url: $imageForm.data('avatar-path'),
         type: 'DELETE',
         success: function success() {
         },
@@ -11,7 +11,7 @@ function deleteAvatar($imageForm) {
 function uploadAvatar($imageForm) {
     var formData = new FormData($imageForm[0]);
     $.ajax({
-        url: $imageForm.attr('avatar_path'),
+        url: $imageForm.data('avatar-path'),
         type: 'POST',
         xhr: function () {  // Custom XMLHttpRequest
             var myXhr = $.ajaxSettings.xhr();
