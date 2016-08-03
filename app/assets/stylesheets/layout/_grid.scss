@@ -1,7 +1,7 @@
 .container {
   @include outer-container(1290px);
-  @include media(max-width 1300px) {
-    padding-left: 15px;
-    padding-right: 15px;
+  @include media(max-width 1350px) {
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }

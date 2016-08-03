@@ -35,7 +35,8 @@ Rails.application.routes.draw do
       match "register", to: "events#register", via: [:get, :post], as: "register_to"
       # Use it for revoke user registration
       delete "revoke_participation", to: "events#revoke_participation"
-
+	    post "add_to_google_calendar"
+      get "download_ics_file"
       put "publish"
     end
   end

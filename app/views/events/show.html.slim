@@ -18,7 +18,7 @@
         - if @event.link?
           .block-info
             .icon-events.icon-link
-            = link_to @event.link, make_global(@event.link), target: '_blank'
+            = link_to @event.link, make_global(@event.link), target: "_blank"
         .block-info
           = image_tag @event.organizer.pic, class: "avatar avatar-sm avatar-circle"
           span= @event.organizer.full_name
@@ -27,7 +27,10 @@
           = revoke_registration_link(@event)
         - else
           = participate_in_event_link(@event)
-        button.btn.btn-shadow.btn-gray + Google calendar
+        - if user_signed_in? && current_user.has_google_refresh_token?
+          = link_to t(".event_add_to_google_calendar"), add_to_google_calendar_event_path(@event), class: "btn btn-shadow btn-gray", method: "post"
+        - else
+          = link_to t(".download_ics_file"), download_ics_file_event_path(@event), class: "btn btn-shadow btn-gray"
 
     - if current_user.try(:manager?) && !@event.published?
       .card

@@ -80,6 +80,29 @@ class EventsController < ApplicationController
   def unpublish
   end
 
+  def add_to_google_calendar
+    refresh_token = current_user.google_refresh_token
+    service = GoogleService.new
+    event = Event.find params[:id]
+
+    @result = service.add_event_to_calendar refresh_token, event
+
+    if @result && @result.status == 200
+      redirect_to event_path(event), notice: t("flashes.event_successfully_added_to_google_calendar")
+    else
+      redirect_to event_path(event), error: t("flashes.event_failure_to_add_to_google_calendar")
+    end
+  end
+
+  def download_ics_file
+    event = Event.find params[:id]
+    ics_service = IcsService.new
+    event_url = event_url(event)
+    calendar = ics_service.to_ics_calendar event, event_url
+
+    send_data calendar.to_ical, filename: "#{event.title}.ics", type: "application/ics"
+  end
+
   private
 
   def set_event
@@ -106,7 +129,7 @@ class EventsController < ApplicationController
     @events = Event.send(scope).published.paginate(page: params[:page], per_page: 6)
     @scope = scope
 
-    # TODO: Вынести верстку 'events/index' в отдельный layout
+    # TODO: Вынести верстку "events/index" в отдельный layout
     view = request.xhr? ? "events/_cards" : "events/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr? }
@@ -127,4 +150,5 @@ class EventsController < ApplicationController
     path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
     redirect_to path
   end
+
 end

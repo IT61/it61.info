@@ -105,6 +105,8 @@ ru:
       create: "Создать новое"
     show:
       event_still_not_published: "Мероприятие ещё не опубликовано."
+      event_add_to_google_calendar: "+ Google calendar"
+      download_ics_file: "Скачать ICS"
       description: "Описание"
       participants: "Участники (%{count})"
       postrelease: "Пострелиз"
@@ -297,6 +299,8 @@ ru:
     event_successfully_published: "Мероприятие успешно опубликовано!"
     event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
     event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
+    event_successfully_added_to_google_calendar: "Событие добавлено в Ваш google календарь"
+    event_failure_to_add_to_google_calendar: "Ошибка добавления в календарь"
 
   devise:
     failure:
