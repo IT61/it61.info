@@ -31,7 +31,6 @@ $(document).ready(function () {
         canvas.toBlob(function (blob) {
             var formData = new FormData();
             formData.append('avatar', blob);
-            debugger;
             $.ajax($imageForm.data('avatar-path'), {
                 method: "POST",
                 data: formData,
