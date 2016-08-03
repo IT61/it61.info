@@ -6,6 +6,7 @@ FactoryGirl.define do
     title_image { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec", "support", "files", "event_title_image.jpg")) }
 
     association :organizer, factory: :user
+    association :place, factory: :place
   end
 
   trait :upcoming do

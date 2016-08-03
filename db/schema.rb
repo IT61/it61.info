@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726143118) do
+ActiveRecord::Schema.define(version: 20160802150339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,14 +48,9 @@ ActiveRecord::Schema.define(version: 20160726143118) do
     t.integer  "registration_type",             default: 0
     t.integer  "participants_limit"
     t.string   "link"
+    t.integer  "place_id",                                      null: false
     t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
-  end
-
-  create_table "events_places", force: :cascade do |t|
-    t.integer  "event_id"
-    t.integer  "place_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_events_on_place_id", using: :btree
   end
 
   create_table "participant_entry_forms", force: :cascade do |t|
@@ -93,27 +88,30 @@ ActiveRecord::Schema.define(version: 20160726143118) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",               default: ""
+    t.string   "email",                  default: ""
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "name"
-    t.integer  "role",                default: 0,  null: false
+    t.integer  "role",                   default: 0,  null: false
     t.string   "first_name"
     t.string   "last_name"
     t.text     "bio"
     t.string   "phone"
     t.string   "normalized_phone"
-    t.boolean  "email_reminders",                  null: false
-    t.boolean  "sms_reminders",                    null: false
-    t.boolean  "subscribed",                       null: false
+    t.boolean  "email_reminders",                     null: false
+    t.boolean  "sms_reminders",                       null: false
+    t.boolean  "subscribed",                          null: false
     t.string   "remember_token"
     t.string   "avatar"
+    t.string   "encrypted_password"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["email_reminders"], name: "index_users_on_email_reminders", using: :btree
     t.index ["name"], name: "index_users_on_name", using: :btree
@@ -121,4 +119,5 @@ ActiveRecord::Schema.define(version: 20160726143118) do
     t.index ["subscribed"], name: "index_users_on_subscribed", using: :btree
   end
 
+  add_foreign_key "events", "places"
 end
