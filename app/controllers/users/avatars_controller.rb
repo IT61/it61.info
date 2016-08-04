@@ -5,19 +5,10 @@ module Users
     before_action :check_if_same_user_or_admin
 
     def create
-      avatar = avatar_params[:avatar]
+      params[:avatar].original_filename << '.png'
+      @user.avatar = avatar_params[:avatar]
 
-      # Create temporary .png file for creating image
-      tmpfile = Dir::Tmpname.make_tmpname(["blob", ".png"], nil)
-      fpath = Rails.root.join("tmp", tmpfile)
-      File.open(fpath, "wb") do |f|
-        f.write(avatar.read)
-        @user.avatar = f
-      end
       commit = @user.save
-
-      # Delete temporary file after usage
-      File.delete(fpath)
 
       render json: { success: commit }
     end
