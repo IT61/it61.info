@@ -9,8 +9,8 @@ section.card.user
       br
       a href="#{user.company_site}"= user.company_name
     /br
-    .bio
-      span=user.bio
+    .bio.text-content
+      = simple_format user.bio
     .social-buttons
       - provider_buttons_info(@user).each do |_, info|
         = link_to info[0], class: 'btn', target: '_blank' do
