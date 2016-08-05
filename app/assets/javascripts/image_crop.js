@@ -6,8 +6,9 @@ $(document).ready(function () {
 
     // Initialize cropper
     $image.cropper({
+        background: false,
         aspectRatio: 1,
-        viewMode: 3,
+        viewMode: 2,
         dragMode: 'move',
         built: function () {
             // Set crop box to most filled part of image by smartcrop
