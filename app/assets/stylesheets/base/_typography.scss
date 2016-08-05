@@ -23,6 +23,7 @@ h6 {
 
 p {
   margin: 0 0 $small-spacing;
+  .text-content & { text-align: justify; }
 }
 
 a {
