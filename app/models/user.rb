@@ -35,31 +35,15 @@ class User < ApplicationRecord
   scope :active, -> { order(last_sign_in_at: :desc) }
   scope :recent, -> { order(created_at: :desc) }
 
-  # Авторизация/регистрация пользователя
-  # rubocop:disable Metrics/AbcSize
   def self.from_omniauth(auth)
-    social = SocialAccount.where(provider: auth.provider, uid: auth.uid).first_or_create do |soc|
-      soc.provider = auth.provider
-      soc.uid = auth.uid
-      soc.user = User.create do |u|
-        u.email = auth.info.email unless auth.info.email.nil?
-        u.name = auth.info.name
-      end
-      soc.link = User.link_for auth
+    User.first_or_create(email: auth.info.email) do |u|
+      u.email = auth.info.email unless auth.info.email.nil?
+      u.name = auth.info.name
     end
-    SlackService.invite(social.user)
-    social.user
   end
 
-  # Добавление социального аккаунта к текущему пользователю
   def add_social(auth)
-    social = SocialAccount.where(provider: auth.provider, uid: auth.uid).first_or_create do |soc|
-      soc.provider = auth.provider
-      soc.uid = auth.uid
-      soc.user = self
-      soc.link = User.link_for auth
-    end
-    social.user
+    SocialAccount.from_omniauth auth, self
   end
 
   def full_name
@@ -97,26 +81,6 @@ class User < ApplicationRecord
 
   def has_google_refresh_token?
     !google_refresh_token.blank?
-  end
-
-  # rubocop:disable Metrics/AbcSize
-  def self.link_for(auth)
-    provider = auth.provider
-
-    case provider
-    when "google_oauth2"
-      auth.extra.raw_info.profile if
-        (not auth.extra.raw_info.nil?) && (not auth.extra.raw_info.profile.nil?)
-    when "vkontakte"
-      auth.info.urls.Vkontakte if
-          not auth.info.urls.nil?
-    when "facebook"
-      # facebook doesn't give a link to user website
-      nil
-    when "github"
-      auth.info.urls.GitHub if
-        not auth.info.urls.nil?
-    end
   end
 
   private

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
     skip_before_action :verify_authenticity_token
 
     def github
@@ -14,9 +15,11 @@ module Users
     def google_oauth2
       oauth_for "Google"
 
-      current_user.update_attributes(
-        google_refresh_token: request.env["omniauth.auth"]["credentials"]["refresh_token"]
-      )
+      if user_signed_in?
+        current_user.update_attributes(
+          google_refresh_token: request.env["omniauth.auth"]["credentials"]["refresh_token"]
+        )
+      end
     end
 
     def vkontakte
@@ -25,7 +28,7 @@ module Users
 
     def oauth_for(kind)
       if current_user.nil?
-        get_user_from_omniauth kind
+        create_user_from_omniauth kind
       else
         add_social_to_current_user kind
       end
@@ -39,13 +42,22 @@ module Users
       redirect_to edit_profile_path
     end
 
-    def get_user_from_omniauth(_kind)
-      @user = User.from_omniauth(request.env["omniauth.auth"])
-      if @user.persisted?
-        sign_in_and_redirect @user # this will throw if @user is not activated
+    def create_user_from_omniauth(_kind)
+      auth = request.env["omniauth.auth"]
+
+      @user = User.from_omniauth(auth)
+
+      if @user.valid?
+        SocialAccount.from_omniauth(auth, @user)
+        SlackService.invite(@user)
+
+        @user.save
+        sign_in_and_redirect @user
       else
         if @user.errors && @user.errors.messages[:email]
-          flash[:error] = "Вы уже зарегистрировались с таким email адресом под другим провайдером"
+          flash[:error] = t("flashes.user.failure.email")
+        else
+          flash[:error] = t("flashes.user.failure.something_is_wrong")
         end
         redirect_to root_url
       end

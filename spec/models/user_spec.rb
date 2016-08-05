@@ -67,10 +67,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  describe "public class methods" do
-    context "responds to its methods" do
-      it { expect(User).to respond_to(:link_for) }
-    end
-  end
 end
