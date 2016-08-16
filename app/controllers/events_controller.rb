@@ -152,13 +152,9 @@ class EventsController < ApplicationController
       :link,
       :place_id,
       :organizer_id,
-      :started_at_date,
       :started_at,
     ]
-    ep = params.require(:event).permit(*permitted_attrs).to_h
-    datetime = TimeParams.flatten_datetime_array(ep, "started_at_date", "started_at")
-    ep[:started_at] = Time.new *datetime
-    ep.except("started_at_date(1i)", "started_at_date(2i)", "started_at_date(3i)")
+    params.require(:event).permit(*permitted_attrs)
   end
 
   def place_params
