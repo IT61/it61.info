@@ -27,8 +27,7 @@
 
 .photo {
   @include outer-container(1500px);
-  @include pad(0 default);
-  padding-top: 2.5em;
+  @include pad(2.5em default);
 
   &-list {
     @include span-columns(12);

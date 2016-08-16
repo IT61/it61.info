@@ -17,12 +17,4 @@ module ApplicationHelper
   def render_editor?
     controller.controller_name == "events" && !["index", "show"].include?(controller.action_name)
   end
-
-  def title
-    if content_for?(:title)
-      content_for :title
-    else
-      # t("pages.#{controller_path.tr('/', '.')}")
-    end
-  end
 end
