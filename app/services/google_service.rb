@@ -1,6 +1,6 @@
 class GoogleService
-
-  def add_event_to_calendar(refresh_token, event)
+  # rubocop:disable Metrics/AbcSize
+  def self.add_event_to_calendar(refresh_token, event)
     client = Google::APIClient.new(
       access_type: "offline",
       scope: "https://www.googleapis.com/auth/calendar"
@@ -17,25 +17,24 @@ class GoogleService
     service = client.discovered_api("calendar", "v3")
 
     client.execute(
-        :api_method => service.events.insert,
-        :parameters => { calendarId: "primary" },
-        :body => JSON.dump(to_google_calendar_obj event),
-        :headers => {"Content-Type" => "application/json"})
+      api_method: service.events.insert,
+      parameters: { calendarId: "primary" },
+      body: JSON.dump(to_google_calendar_obj(event)),
+      headers: { "Content-Type" => "application/json" }
+    )
   end
 
-  private
-
-  def to_google_calendar_obj(event)
+  def self.to_google_calendar_obj(event)
     {
-        "summary" => event.title,
-        "location" => event.places.first.address,
-        "description" => event.description.nil? ? "" : event.description,
-        "start" => {
-            "dateTime" => event.started_at.iso8601
-        },
-        "end" => {
-            "dateTime" => event.started_at.iso8601
-        }
+      summary: :event.title,
+      location: :event.place.full_address,
+      description: :event.description.nil? ? "" : event.description,
+      start: {
+        dateTime: event.started_at.iso8601,
+      },
+      end: {
+        dateTime: event.started_at.iso8601,
+      },
     }
   end
 end

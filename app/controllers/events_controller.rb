@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class EventsController < ApplicationController
   respond_to :html
   respond_to :json
@@ -27,18 +26,21 @@ class EventsController < ApplicationController
 
   def new
     @event ||= Event.new
+    @event.build_place
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
-    event_creator = EventCreator.new
-    @event = event_creator.create params, current_user
+    @event = Event.new(event_params)
+    @event.organizer = current_user
+    @event.place ||= Place.first_or_create(place_params)
 
-    if @event.persisted?
+    if @event.save
       flash[:success] = t("flashes.event_successfully_created")
-      redirect_to event_path(@event)
+      redirect_to @event
     else
-      flash[:errors] = @event.errors.messages
-      render "new"
+      flash.now[:errors] = @event.errors.messages
+      render :new
     end
   end
 
@@ -82,10 +84,7 @@ class EventsController < ApplicationController
 
   def add_to_google_calendar
     refresh_token = current_user.google_refresh_token
-    service = GoogleService.new
-    event = Event.find params[:id]
-
-    @result = service.add_event_to_calendar refresh_token, event
+    @result = GoogleService.add_event_to_calendar(refresh_token, @event)
 
     if @result && @result.status == 200
       redirect_to event_path(event), notice: t("flashes.event_successfully_added_to_google_calendar")
@@ -129,7 +128,6 @@ class EventsController < ApplicationController
     @events = Event.send(scope).published.paginate(page: params[:page], per_page: 6)
     @scope = scope
 
-    # TODO: Вынести верстку "events/index" в отдельный layout
     view = request.xhr? ? "events/_cards" : "events/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr? }
@@ -137,18 +135,30 @@ class EventsController < ApplicationController
   end
 
   def redirect_to_relevant_scope
-    path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
+    path = Event.published.upcoming.count.positive? ? upcoming_events_path : past_events_path
     redirect_to path
-  end
-
-  def parse_date_time(event_params)
-    Time.new(event_params["started_at_date(1i)"].to_i, event_params["started_at_date(2i)"].to_i, event_params["started_at_date(3i)"].to_i,
-             event_params["started_at_time(4i)"].to_i, event_params["started_at_time(5i)"].to_i, event_params["started_at_time(6i)"].to_i)
   end
 
   def show_correct_scope
-    path = Event.published.upcoming.count > 0 ? upcoming_events_path : past_events_path
+    path = Event.published.upcoming.count.positive? ? upcoming_events_path : past_events_path
     redirect_to path
   end
 
+  def event_params
+    permitted_attrs = [
+      :title,
+      :description,
+      :title_image,
+      :link,
+      :place_id,
+      :organizer_id,
+      :started_at,
+    ]
+    params.require(:event).permit(*permitted_attrs)
+  end
+
+  def place_params
+    place_attrs = [:title, :address, :latitude, :longitude]
+    params.require(:place).permit(*place_attrs)
+  end
 end

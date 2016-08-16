@@ -1,9 +1,9 @@
 $(document).ready(function () {
     var $placeAddress = $('#location').autocomplete({containerID: "yandex_places"}),
         $placeTitle = $('#place_title').autocomplete({containerID: "known_places"}),
-        $autoPlaceAddress = $('#event_address'),
-        $autoPlaceLatitude = $('#event_latitude'),
-        $autoEventLongitude = $('#event_longitude'),
+        $autoPlaceAddress = $('#place_address'),
+        $autoPlaceLatitude = $('#place_latitude'),
+        $autoEventLongitude = $('#place_longitude'),
         searchLatency = 0.2;
 
     var model = {

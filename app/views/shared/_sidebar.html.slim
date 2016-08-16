@@ -13,3 +13,7 @@
     = active_link_to t("pages.slack"), slack_path, wrap_tag: :li
     = active_link_to t("pages.users"), users_path, wrap_tag: :li
     = active_link_to t("pages.sponsorship"), sponsorship_path, wrap_tag: :li
+    - if can? :manage, :all
+      = active_link_to t("places.root"), root_path, wrap_tag: :li
+      = active_link_to t("activerecord.models.event.few"), admin_events_path, wrap_tag: :li
+      = active_link_to t("activerecord.models.user.few"), admin_users_path, wrap_tag: :li

@@ -4,32 +4,52 @@ describe EventsController do
   describe "valid route table" do
     it "get /index redirects" do
       get :index
-
       expect(response.status).to eq(302)
     end
   end
 
   describe "published events" do
-    let(:events) { create_list(:event, 5) }
-
     it "can view" do
       get :upcoming
 
       expect(response.content_type).to eq "text/html"
       expect(response).to render_template(:index)
-      expect(assigns(:events).size).to eq(5)
     end
   end
 
-  describe "creating an event" do
-    let(:event_attributes) { attributes_for(:event) }
+  context "while logged in as an user" do
+    login_user
 
-    it "create an event" do
-      post :create, params: { event: :event_attributes }
+    describe "creating a new event" do
+      context "with valid attributes" do
+        let(:event_attributes) { attributes_for_with_foreign_keys(:event) }
 
-      expect(response.content_type).to eq "text/html"
-      expect(response).to redirect_to Event.first
-      expect(Event.count).to eq(1)
+        it "creates a new event" do
+          expect {
+            post :create, params: { event: event_attributes }
+          }.to change(Event, :count).by(1)
+        end
+
+        it "redirects to the created event" do
+          post :create, params: { event: event_attributes }
+          expect(response).to redirect_to Event.last
+        end
+      end
+
+      context "with invalid attributes" do
+        let(:event_attributes) { attributes_for_with_foreign_keys(:event, title: nil) }
+
+        it "does not save the new event" do
+          expect {
+            post :create, params: { event: event_attributes }
+          }.to_not change(Event, :count)
+        end
+
+        it "re-renders the .new method" do
+          post :create, params: { event: event_attributes }
+          expect(response).to render_template :new
+        end
+      end
     end
   end
 end

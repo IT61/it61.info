@@ -6,11 +6,11 @@ section.details
 
   .time-container
     = f.label :started_at, t(".date"), class: "required"
-    = date_select :event, :started_at_date, selected: Date.today
+    = date_select :event, :started_at, selected: Date.today
 
   .time-container
     = f.label :started_at, t(".time"), class: "required"
-    = time_select :event, :started_at_time, selected: Date.today, time_separator: "<span class='time-separator'>:</span>"
+    = time_select :event, :started_at, selected: Date.today, ignore_date: true, time_separator: "<span class='time-separator'>:</span>"
 
   .event-association-field
     .input-float-label
@@ -19,7 +19,7 @@ section.details
 
   .event-association-field
     .input-float-label
-      = text_field_tag "event[place_title]", event.place.nil? ? "" : event.place.title, { id: "place_title",
+      = text_field_tag "place[title]", event.place.nil? ? "" : event.place.title, { id: "place_title",
               class: "autocomplete-input", autocomplete: "off", required: true }
       label = t(".place")
 
@@ -39,6 +39,6 @@ section.details
             h2 = t(".map")
           #map
         .btn.modal-close for="modal-1" = t("modal.close")
-      = text_field_tag "event[address]", event.place.nil? ? "" :  event.place.address, class: "unchangeable-input", required: true, type: "hidden"
-      = text_field_tag "event[latitude]", event.place.nil? ? "" : event.place.latitude, class: "unchangeable-input", required: true, type: "hidden"
-      = text_field_tag "event[longitude]",  event.place.nil? ? "" : event.place.longitude, class: "unchangeable-input", required: true, type: "hidden"
+      = text_field_tag "place[address]", event.place.nil? ? "" :  event.place.address, class: "unchangeable-input", required: true, type: "hidden"
+      = text_field_tag "place[latitude]", event.place.nil? ? "" : event.place.latitude, class: "unchangeable-input", required: true, type: "hidden"
+      = text_field_tag "place[longitude]",  event.place.nil? ? "" : event.place.longitude, class: "unchangeable-input", required: true, type: "hidden"
