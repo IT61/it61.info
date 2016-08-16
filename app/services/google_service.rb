@@ -27,7 +27,7 @@ class GoogleService
   def self.to_google_calendar_obj(event)
     {
       summary: :event.title,
-      location: :event.places.first.address,
+      location: :event.place.full_address,
       description: :event.description.nil? ? "" : event.description,
       start: {
         dateTime: event.started_at.iso8601,

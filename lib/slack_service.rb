@@ -78,7 +78,7 @@ class SlackService
       fields: [
         {
           title: Event.human_attribute_name(:place),
-          value: event.place,
+          value: event.place.full_address,
           short: true,
         },
         {

@@ -26,10 +26,14 @@ class EventsController < ApplicationController
 
   def new
     @event ||= Event.new
+    @event.build_place
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     @event = Event.new(event_params)
+    @event.organizer = current_user
+    @event.place ||= Place.first_or_create(place_params)
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
@@ -124,7 +128,6 @@ class EventsController < ApplicationController
     @events = Event.send(scope).published.paginate(page: params[:page], per_page: 6)
     @scope = scope
 
-    # TODO: Вынести верстку 'events/index' в отдельный layout
     view = request.xhr? ? "events/_cards" : "events/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr? }
@@ -147,10 +150,19 @@ class EventsController < ApplicationController
       :description,
       :title_image,
       :link,
-      :started_at,
       :place_id,
       :organizer_id,
+      :started_at_date,
+      :started_at,
     ]
-    params.require(:event).permit(*permitted_attrs)
+    ep = params.require(:event).permit(*permitted_attrs).to_h
+    datetime = TimeParams.flatten_datetime_array(ep, "started_at_date", "started_at")
+    ep[:started_at] = Time.new *datetime
+    ep.except("started_at_date(1i)", "started_at_date(2i)", "started_at_date(3i)")
+  end
+
+  def place_params
+    place_attrs = [:title, :address, :latitude, :longitude]
+    params.require(:place).permit(*place_attrs)
   end
 end

@@ -22,7 +22,7 @@ module ApplicationHelper
     if content_for?(:title)
       content_for :title
     else
-      t("pages.#{controller_path.tr('/', '.')}")
+      # t("pages.#{controller_path.tr('/', '.')}")
     end
   end
 end
