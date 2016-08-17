@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   respond_to :rss, only: :index
 
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
-  before_action :set_event, only: [:show, :participate, :register, :revoke_participation]
+  before_action :set_event, only: [:show, :participate, :register, :revoke_participation, :add_to_google_calendar]
 
   authorize_resource
 
@@ -34,8 +34,9 @@ class EventsController < ApplicationController
     event_params[:title_image].original_filename << ".png"
     @event = Event.new(event_params)
     @event.organizer = current_user
-    @event.place ||= Place.first_or_create(place_params)
-    @event.title_image =
+    p = place_params
+    @event.place ||= Place.where(title: p[:title], address: p[:address],
+       latitude: p[:latitude], longitude: p[:longitude]).first_or_create
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
@@ -89,9 +90,9 @@ class EventsController < ApplicationController
     @result = GoogleService.add_event_to_calendar(refresh_token, @event)
 
     if @result && @result.status == 200
-      redirect_to event_path(event), notice: t("flashes.event_successfully_added_to_google_calendar")
+      redirect_to event_path(@event), notice: t("flashes.event_successfully_added_to_google_calendar")
     else
-      redirect_to event_path(event), error: t("flashes.event_failure_to_add_to_google_calendar")
+      redirect_to event_path(@event), error: t("flashes.event_failure_to_add_to_google_calendar")
     end
   end
 
