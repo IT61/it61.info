@@ -22,7 +22,7 @@ $(document).ready(function () {
   function uploadImageToServer($croppedModalImage, $currentImage, $form) {
     var canvas = $croppedModalImage.cropper('getCroppedCanvas');
     canvas.toBlob(function (blob) {
-      var formData = new FormData(); // todo: check if works as intented
+      var formData = new FormData();
       formData.append('avatar', blob);
       $.ajax($form.data('avatar-path'), {
         method: "POST",
@@ -47,7 +47,8 @@ $(document).ready(function () {
     });
   }
 
-  // bindDeleteAvatarButton($imageForm, $image, $deleteBtn); // todo: make it work!
+  bindDeleteAvatarButton($imageForm, $currentImage, $deleteBtn);
+
   imageImport.bind($croppedModalImage, $imageInput, $modal);
   cropper.create($croppedModalImage, $currentImage, $imageForm, function onCropperCreated() {
     $uploadImage.on('click', function () {
