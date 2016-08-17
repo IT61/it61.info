@@ -1,21 +1,21 @@
 function bindDeleteAvatarButton($imageForm, $image, $deleteBtn) {
-    $deleteBtn.on('click', function () {
-        deleteAvatar($imageForm);
-        $image.attr('src', $image.attr('default_img_src'));
-        return false;
-    });
+  $deleteBtn.on('click', function () {
+    deleteAvatar($imageForm);
+    $image.attr('src', $image.attr('default_img_src'));
+    return false;
+  });
 }
 
 $(document).ready(function () {
-    var $imageForm = $('#imageForm'),
-        $currentImage = $('#image'),
-        $modal = $('#croppedModal'),
-        $croppedModalImage = $('#croppedModalImage'),
-        $imageInput = $('#imageInput'),
-        $uploadImage = $('#uploadImage'),
-        $deleteBtn = $('#deleteAvatarBtn');
+  var $imageForm = $('#imageForm'),
+      $currentImage = $('#image'),
+      $modal = $('#croppedModal'),
+      $croppedModalImage = $('#croppedModalImage'),
+      $imageInput = $('#imageInput'),
+      $uploadImage = $('#uploadImage'),
+      $deleteBtn = $('#deleteAvatarBtn');
 
-    // bindDeleteAvatarButton($imageForm, $image, $deleteBtn);
-    imageImport.bind($croppedModalImage, $imageInput, $modal);
-    cropper.create($croppedModalImage, $currentImage, $uploadImage, $imageForm);
+  // bindDeleteAvatarButton($imageForm, $image, $deleteBtn); // todo: make it work!
+  imageImport.bind($croppedModalImage, $imageInput, $modal);
+  cropper.create($croppedModalImage, $currentImage, $uploadImage, $imageForm);
 });

@@ -1,29 +1,26 @@
 $(document).ready(function () {
 
-    var editorElem = document.getElementById('editor');
-    if (editorElem) {
-        var editor = new SimpleMDE({
-            element: editorElem,
-            autofocus: false,
-            forceSync: true,
-            spellChecker: false
-        });
-    }
-
-    var $uploadContainer = $('#event_file_upload'),
-        $form = $('form#new_event'),
-        $imageInput = $('#event_image_input').get(0),
-        $image = $('#image');
-
-    $form.bind('submit', function () {
-        $(this).find(':input').prop('disabled', false);
+  var editorElem = document.getElementById('editor');
+  if (editorElem) {
+    var editor = new SimpleMDE({
+      element: editorElem,
+      autofocus: false,
+      forceSync: true,
+      spellChecker: false
     });
+  }
 
-    if (fileReaderSupported() && $imageInput) {
-        showImageOnLoad($imageInput, $image);
-    }
+  var $form = $('form#new_event'),
+      $imageInput = $('#imageInput'),
+      $currentImage = $('#image'),
+      $modal = $('#croppedModal'),
+      $croppedModalImage = $('#croppedModalImage'),
+      $uploadImage = $('#uploadImage');
 
-    if ($imageInput) {
-        handleFileUpload($uploadContainer);
-    }
+  $form.bind('submit', function () {
+    $(this).find(':input').prop('disabled', false);
+  });
+
+  imageImport.bind($croppedModalImage, $imageInput, $modal);
+  cropper.create($croppedModalImage, $currentImage, $uploadImage, $form);
 });
