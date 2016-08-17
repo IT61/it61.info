@@ -1,5 +1,6 @@
 var cropper = (function () {
-  var createCropper = function ($croppedModalImage, $currentImage, $saveImageBtn, $form) {
+
+  var createCropper = function ($croppedModalImage, $currentImage, $form, onCropperCreated) {
     // Initialize cropper
     $croppedModalImage.cropper({
       background: false,
@@ -19,67 +20,11 @@ var cropper = (function () {
             scaleY: 1
           });
         });
-        $saveImageBtn.on('click', function () {
-          uploadImageToServer($croppedModalImage, $currentImage, $form)
-        });
+
+        if (onCropperCreated) {
+          onCropperCreated();
+        }
       }
-    });
-  };
-
-  var uploadImageToServer = function ($croppedModalImage, $currentImage, $form) {
-    var canvas = $croppedModalImage.cropper('getCroppedCanvas');
-    canvas.toBlob(function (blob) {
-      var formData = new FormData(); // todo: check if works as intented
-      formData.append('avatar', blob);
-      $.ajax($form.data('avatar-path'), {
-        method: "POST",
-        data: formData,
-        processData: false,
-        contentType: false,
-        xhr: function () {  // Custom XMLHttpRequest
-          var myXhr = $.ajaxSettings.xhr();
-          if (myXhr.upload) { // Check if upload property exists
-            myXhr.upload.addEventListener('progress', function progressHandlingFunction() {
-            }, false); // For handling the progress of the upload
-          }
-          return myXhr;
-        },
-        success: function () {
-          $currentImage.replaceWith($('<div>', {'id': 'image'}).html(canvas));
-        },
-        error: function () {
-          console.log('Upload error');
-        }
-      });
-    });
-  };
-
-  // todo: get rid of copypaste!
-  var uploadFullFormToServer = function ($croppedModalImage, $currentImage, $form) {
-    var canvas = $croppedModalImage.cropper('getCroppedCanvas');
-    canvas.toBlob(function (blob) {
-      var formData = new FormData($form[0]); // todo: check if works as intented
-      formData.append('avatar', blob);
-      $.ajax($form.data('avatar-path'), {
-        method: "POST",
-        data: formData,
-        processData: false,
-        contentType: false,
-        xhr: function () {  // Custom XMLHttpRequest
-          var myXhr = $.ajaxSettings.xhr();
-          if (myXhr.upload) { // Check if upload property exists
-            myXhr.upload.addEventListener('progress', function progressHandlingFunction() {
-            }, false); // For handling the progress of the upload
-          }
-          return myXhr;
-        },
-        success: function () {
-          $currentImage.replaceWith($('<div>', {'id': 'image'}).html(canvas));
-        },
-        error: function () {
-          console.log('Upload error');
-        }
-      });
     });
   };
 

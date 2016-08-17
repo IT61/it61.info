@@ -168,7 +168,6 @@
 }
 
 .file_upload {
-  margin: 30px;
   position: relative;
   overflow: hidden;
   font-size: 1em;
@@ -177,7 +176,6 @@
   @include clearfix();
 
   & > button {
-    float: right;
     margin-right: 13px;
 
     @include media($special-break) {

@@ -19,7 +19,39 @@ $(document).ready(function () {
     return;
   }
 
+  function uploadImageToServer($croppedModalImage, $currentImage, $form) {
+    var canvas = $croppedModalImage.cropper('getCroppedCanvas');
+    canvas.toBlob(function (blob) {
+      var formData = new FormData(); // todo: check if works as intented
+      formData.append('avatar', blob);
+      $.ajax($form.data('avatar-path'), {
+        method: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        xhr: function () {  // Custom XMLHttpRequest
+          var myXhr = $.ajaxSettings.xhr();
+          if (myXhr.upload) { // Check if upload property exists
+            myXhr.upload.addEventListener('progress', function progressHandlingFunction() {
+            }, false); // For handling the progress of the upload
+          }
+          return myXhr;
+        },
+        success: function () {
+          $currentImage.replaceWith($('<div>', {'id': 'image'}).html(canvas));
+        },
+        error: function () {
+          console.log('Upload error');
+        }
+      });
+    });
+  }
+
   // bindDeleteAvatarButton($imageForm, $image, $deleteBtn); // todo: make it work!
   imageImport.bind($croppedModalImage, $imageInput, $modal);
-  cropper.create($croppedModalImage, $currentImage, $uploadImage, $imageForm);
+  cropper.create($croppedModalImage, $currentImage, $imageForm, function onCropperCreated() {
+    $uploadImage.on('click', function () {
+      uploadImageToServer($croppedModalImage, $currentImage, $imageForm);
+    });
+  });
 });

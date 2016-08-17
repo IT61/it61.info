@@ -5,6 +5,6 @@
       .modal-content
         .header
           h2 Выбрать миниатюру
-        img#croppedModalImage src=object.pic
-      button.btn.modal-close#uploadImage for="modal-1" = t("save")
-      button.btn.modal-close for="modal-1" = t("cancel")
+        img#croppedModalImage src=picture
+      button.btn.modal-close#uploadImage type="nosubmit"  for="modal-1" = t("save")
+      button.btn.modal-close type="nosubmit" for="modal-1" = t("cancel")

@@ -14,23 +14,14 @@ function handleFileUpload($uploadContainer) {
     wrapper.removeClass('focus');
   });
 
-  var file_api = ( window.File && window.FileReader && window.FileList && window.Blob ) ? true : false;
-
   inp.change(function () {
-    var file_name;
-    if (file_api && inp[0].files[0])
-      file_name = inp[0].files[0].name;
-    else
-      file_name = inp.val().replace('C:\\fakepath\\', '');
-
-    if (!file_name.length)
-      return;
-
     if (lbl.is(':visible')) {
-      lbl.text(file_name);
+      lbl.text('');
       btn.text('Выбрать файл');
-    } else
-      btn.text(file_name);
+    } else {
+      lbl.text('');
+      btn.text('');
+    }
   }).change();
 
   $(window).resize(function () {

@@ -20,7 +20,7 @@ class Ability
     can :places, Event
     can [:participate, :register, :revoke_participation,
          :add_to_google_calendar, :download_ics_file], Event, published?
-    can [:update], Event, organizer?(user)
+    can [:read, :update], Event, organizer?(user)
 
     if user.admin?
       can :manage, :all

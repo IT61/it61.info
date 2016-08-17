@@ -31,16 +31,18 @@ class EventsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def create
+    event_params[:title_image].original_filename << ".png"
     @event = Event.new(event_params)
     @event.organizer = current_user
     @event.place ||= Place.first_or_create(place_params)
+    @event.title_image =
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
-      redirect_to @event
+      render json: {success: event_path(@event)}
     else
       flash.now[:errors] = @event.errors.messages
-      render :new
+      render json: {success: false}
     end
   end
 

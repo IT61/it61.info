@@ -77,8 +77,8 @@ $mobile-xs: new-breakpoint(max-width 400px);
 $register-mobile: new-breakpoint(max-width 750px);
 $device-xs-max: new-breakpoint(max-width 767px);
 // New event queries
-$new-event-tablet: new-breakpoint(min-width 551px max-width 1020px 8);
-$new-event-mobile: new-breakpoint(max-width 552px 8);
+$new-event-tablet: new-breakpoint(min-width 689px max-width 1020px 8);
+$new-event-mobile: new-breakpoint(max-width 690px 8);
 $special-break: new-breakpoint(max-width 1200px 8);
 
 //Box shadow

@@ -1,12 +1,12 @@
 h1.my-profile = form_header
 .card.edit-user-card
-  = render partial: 'users/form/image_upload_section', locals: { user: user }
-  = render partial: 'shared/cropper_modal', locals: { object: user }
+  = render partial: "users/form/image_upload_section", locals: { user: user }
+  = render partial: "shared/cropper_modal", locals: { object: user, picture: user.pic }
   = form_for user do |f|
-    = render partial: 'users/form/details_section', locals: { f: f, user: user }
+    = render partial: "users/form/details_section", locals: { f: f, user: user }
     .bottom-container
-      = render partial: 'users/form/biography_section', locals: { f: f, user: user }
-      = render partial: 'users/form/social_accounts_section', locals: { f: f, user: user }
+      = render partial: "users/form/biography_section", locals: { f: f, user: user }
+      = render partial: "users/form/social_accounts_section", locals: { f: f, user: user }
     .edit-profile-bottom-buttons
       button.btn.btn-blue type="submit" = t("save")
       button.btn.btn-gray type="reset" = t("cancel")
