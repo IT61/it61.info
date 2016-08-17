@@ -1,7 +1,7 @@
 h1.my-profile = form_header
 .card.edit-user-card
   = render partial: 'users/form/image_upload_section', locals: { user: user }
-  = render partial: 'users/form/cropper_modal', locals: { user: user }
+  = render partial: 'shared/cropper_modal', locals: { object: user }
   = form_for user do |f|
     = render partial: 'users/form/details_section', locals: { f: f, user: user }
     .bottom-container

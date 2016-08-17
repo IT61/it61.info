@@ -123,8 +123,6 @@ ru:
       image_section:
         title_image: "Изображение"
         recommendations: "Рекомендуется использовать изображение размером 500x500 px в формате .jpg или .png"
-        choose_file_btn: "Выберите файл"
-        no_file_label: "Файл не выбран"
       description_section:
         description: "Описание"
       details_section:

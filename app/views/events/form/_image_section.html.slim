@@ -1,9 +1,10 @@
 section.image
-  = f.label :title_image, t(".title_image"), class: "required"
-  label.recommend
-    = image_tag event.title_image, id: "image", width: 200, height: 200
-    div = t(".recommendations")
-  .file_upload#event_file_upload
-    = f.file_field :title_image, required: true, id: "event_image_input"
-    label = t(".no_file_label")
-    button.btn.btn-shadow.btn-blue type="button" = t(".choose_file_btn")
+  form#imageForm data-avatar-path=user_avatars_path(user)
+    .picture
+      = image_tag event.title_image, id: "image", default_img_src: asset_path("user_default.png"), width: 200, height: 200
+      .edit-picture-buttons
+        label.btn.btn-blue for="imageInput"
+          input#imageInput type="file" name="file" accept="image/*"
+          = t(".upload_photo")
+        button.btn.btn-gray#deleteAvatarBtn type="nosubmit" = t(".delete_photo")
+  = render partial: 'shared/cropper_modal', locals: { object: user }

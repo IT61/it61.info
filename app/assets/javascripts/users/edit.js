@@ -1,7 +1,4 @@
-function bindDeleteAvatarButton($imageForm) {
-    var $deleteBtn = $('#delete-avatar-button'),
-        $image = $('#image');
-
+function bindDeleteAvatarButton($imageForm, $image, $deleteBtn) {
     $deleteBtn.on('click', function () {
         deleteAvatar($imageForm);
         $image.attr('src', $image.attr('default_img_src'));
@@ -10,18 +7,15 @@ function bindDeleteAvatarButton($imageForm) {
 }
 
 $(document).ready(function () {
-    var $imageForm = $('#image_form'),
-        $uploadContainer = $('#avatar_file_upload'),
-        $imageInput = $('#avatar_image_input').get(0),
-        $image = $('#image');
+    var $imageForm = $('#imageForm'),
+        $currentImage = $('#image'),
+        $modal = $('#croppedModal'),
+        $croppedModalImage = $('#croppedModalImage'),
+        $imageInput = $('#imageInput'),
+        $uploadImage = $('#uploadImage'),
+        $deleteBtn = $('#deleteAvatarBtn');
 
-    if (fileReaderSupported() && $imageInput) {
-        showImageOnLoad($imageInput, $image, function() {
-            uploadAvatar($imageForm);
-        });
-    }
-    if ($uploadContainer.length) {
-        handleFileUpload($uploadContainer);
-    }
-    bindDeleteAvatarButton($imageForm);
+    // bindDeleteAvatarButton($imageForm, $image, $deleteBtn);
+    imageImport.bind($croppedModalImage, $imageInput, $modal);
+    cropper.create($croppedModalImage, $currentImage, $uploadImage, $imageForm);
 });

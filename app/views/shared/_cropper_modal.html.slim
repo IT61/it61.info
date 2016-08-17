@@ -1,10 +1,10 @@
 .modal
-  input.modal-state#cropper_modal type="checkbox"
+  input.modal-state#croppedModal type="checkbox"
   .modal-fade-screen
     .modal-inner
       .modal-content
         .header
           h2 Выбрать миниатюру
-        img#uploadedImage src=(user.pic) /
-      button.btn.modal-close#saveImage for="modal-1" = t("save")
+        img#croppedModalImage src=object.pic
+      button.btn.modal-close#uploadImage for="modal-1" = t("save")
       button.btn.modal-close for="modal-1" = t("cancel")
