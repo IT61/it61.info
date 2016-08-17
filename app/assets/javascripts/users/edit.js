@@ -38,7 +38,7 @@ $(document).ready(function () {
           return myXhr;
         },
         success: function () {
-          $currentImage.replaceWith($('<div>', {'id': 'image'}).html(canvas));
+          $('#image').replaceWith($('<div>', {'id': 'image'}).html(canvas));
         },
         error: function () {
           console.log('Upload error');
