@@ -15,6 +15,10 @@ $(document).ready(function () {
       $uploadImage = $('#uploadImage'),
       $deleteBtn = $('#deleteAvatarBtn');
 
+  if (!$imageForm || !$imageForm.length) {
+    return;
+  }
+
   // bindDeleteAvatarButton($imageForm, $image, $deleteBtn); // todo: make it work!
   imageImport.bind($croppedModalImage, $imageInput, $modal);
   cropper.create($croppedModalImage, $currentImage, $uploadImage, $imageForm);

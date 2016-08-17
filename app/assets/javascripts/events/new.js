@@ -17,6 +17,10 @@ $(document).ready(function () {
       $croppedModalImage = $('#croppedModalImage'),
       $uploadImage = $('#uploadImage');
 
+  if (!$form || !$form.length) {
+    return;
+  }
+
   $form.bind('submit', function () {
     $(this).find(':input').prop('disabled', false);
   });
