@@ -28,4 +28,11 @@ module EventsHelper
   def revoke_registration_link(event)
     link_to t("events.participations.revoke_participation"), revoke_participation_event_path(event), method: :delete, class: "btn btn-shadow btn-blue"
   end
+
+  def to_yandex_location(place)
+    {
+        addressLine: place.full_address,
+        coordinates: [place.latitude, place.longitude]
+    }.to_json
+  end
 end
