@@ -37,7 +37,7 @@ $(document).ready(function () {
       $placeAddress.val(location.addressLine);
       $placeTitle.trigger('show-input');
       $placeAddress.trigger('show-input');
-      Geocoder.buildMap(location);
+      Geocoder.buildMap('map', location);
       $('#map-trigger').show();
       $autoPlaceAddress.val(location.addressLine);
       $autoPlaceLatitude.val(location.coordinates[0]);

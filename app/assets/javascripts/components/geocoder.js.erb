@@ -93,10 +93,10 @@
         });
       },
 
-      buildMap: function (location) {
+      buildMap: function (mapContainer, location) {
         destroyMap();
 
-        myMap = new ymaps.Map("map", {
+        myMap = new ymaps.Map(mapContainer, {
           center: location.coordinates,
           zoom: 14
         }, {searchControlProvider: "yandex#search"});

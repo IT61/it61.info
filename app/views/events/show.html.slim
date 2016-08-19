@@ -10,10 +10,10 @@
       .event-info
         .block-info
           .icon-events.icon-calendar
-          span=l @event.started_at, format: :date_time_full
+          span = l(@event.started_at, format: :date_time_full)
         .block-info
           .icon-events.icon-marker
-          span= @event.place.full_address
+          = render partial: "events/map_modal", locals: {event: @event}
         - if @event.link?
           .block-info
             .icon-events.icon-link
