@@ -1,7 +1,6 @@
 var cropper = (function () {
 
   var createCropper = function ($croppedModalImage, $currentImage, $form, onCropperCreated) {
-    // Initialize cropper
     $croppedModalImage.cropper({
       background: false,
       aspectRatio: 1,

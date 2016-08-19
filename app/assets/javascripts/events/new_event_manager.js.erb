@@ -1,0 +1,58 @@
+<%
+  environment.context_class.instance_eval do
+    include Rails.application.routes.url_helpers
+  end
+%>
+
+var newEventManager = {
+  initEditor: function() {
+    var editorElem = document.getElementById('editor');
+    if (editorElem) {
+      var editor = new SimpleMDE({
+        element: editorElem,
+        autofocus: false,
+        forceSync: true,
+        spellChecker: false
+      });
+    }
+  },
+
+  initCropper: function() {
+    var $form = $('form#new_event'),
+      $imageInput = $('#imageInput'),
+      $currentImage = $('#image'),
+      $modal = $('#croppedModal'),
+      $croppedModalImage = $('#croppedModalImage'),
+      $saveImageBtn = $('#uploadImage');
+
+    if (!$form || !$form.length) {
+      return;
+    }
+
+    $form.bind('submit', function () {
+      $(this).find(':input').prop('disabled', false);
+    });
+
+    imageImport.bind($croppedModalImage, $imageInput, $modal);
+    cropper.create($croppedModalImage, $currentImage, $form);
+
+    $saveImageBtn.on('click', function () {
+      var canvas = $('#croppedModalImage').cropper('getCroppedCanvas');
+      $(canvas).width(200).height(200);
+      $('#image').replaceWith($('<div>', {'id': 'image'}).html(canvas));
+    });
+  },
+
+  uploadFormWithImageBlob: function(form, canvas) {
+    canvas.toBlob(function (blob) {
+      var formData = new FormData(form);
+      formData.append('event[title_image]', blob);
+      var request = new XMLHttpRequest();
+      request.open("POST", <%= "'#{events_path(@event)}'" %>);
+      request.onload = function() {
+        window.location = <%= "'#{events_path}'" %>;
+      };
+      request.send(formData);
+    });
+  }
+};
