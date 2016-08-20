@@ -5,7 +5,12 @@ class EventsController < ApplicationController
   respond_to :rss, only: :index
 
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
-  before_action :set_event, only: [:show, :participate, :register, :revoke_participation, :add_to_google_calendar]
+  before_action :set_event, only: [:show,
+                                   :participate,
+                                   :register,
+                                   :revoke_participation,
+                                   :add_to_google_calendar,
+                                   :download_ics_file]
 
   authorize_resource
 
@@ -42,8 +47,7 @@ class EventsController < ApplicationController
       flash[:success] = t("flashes.event_successfully_created")
       render json: {success: event_path(@event)}
     else
-      flash.now[:errors] = @event.errors.messages
-      render json: {success: false}
+      render json: {success: false, errors: @event.errors.messages}
     end
   end
 
@@ -62,13 +66,14 @@ class EventsController < ApplicationController
 
   def register
     # there is no business if event have open registration
+    # todo: refactor complex logic with unless into its own method
     unless @event.closed? || @event.user_participated?(current_user)
       return redirect_to @event
     end
 
     # if user already have some entry form for this event...
     @entry_form = @event.entry_form_for(current_user)
-    save_entry_form if request.post?
+    save_entry_form(@entry_form) if request.post?
   end
 
   def revoke_participation
@@ -97,12 +102,9 @@ class EventsController < ApplicationController
   end
 
   def download_ics_file
-    event = Event.find params[:id]
-    ics_service = IcsService.new
-    event_url = event_url(event)
-    calendar = ics_service.to_ics_calendar event, event_url
-
-    send_data calendar.to_ical, filename: "#{event.title}.ics", type: "application/ics"
+    calendar = IcsService.to_ics_calendar(@event, event_url(@event))
+    options = IcsService.file_options_for(@event)
+    send_data calendar, options
   end
 
   private
@@ -111,12 +113,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def save_entry_form
+  def save_entry_form(form)
     # save entry form
-    @entry_form.event = @event
-    @entry_form.user = current_user
-    @entry_form.update(entry_form_params)
-    @entry_form.save
+    form.event = @event
+    form.user = current_user
+    form.update(entry_form_params)
+    form.save
 
     # mark user as participant
     @event.register_user!(current_user)
