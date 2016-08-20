@@ -36,7 +36,7 @@ class User < ApplicationRecord
   scope :recent, -> { order(created_at: :desc) }
 
   def self.from_omniauth(auth)
-    User.first_or_create(email: auth.info.email) do |u|
+    User.where(email: auth.info.email).first_or_create do |u|
       u.email = auth.info.email unless auth.info.email.nil?
       u.name = auth.info.name
     end
