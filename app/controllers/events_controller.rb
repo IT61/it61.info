@@ -36,8 +36,8 @@ class EventsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def create
-    event_params[:title_image].original_filename << ".png"
-    @event = Event.new(event_params)
+    # todo: event creation is too long for controller. needs to encapsulate it somewhere
+    @event = Event.new(event_params_for_create)
     @event.organizer = current_user
     p = place_params
     @event.place ||= Place.where(title: p[:title], address: p[:address],
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
-      render json: {success: event_path(@event)}
+      render json: {success: true}
     else
       render json: {success: false, errors: @event.errors.messages}
     end
@@ -73,7 +73,12 @@ class EventsController < ApplicationController
 
     # if user already have some entry form for this event...
     @entry_form = @event.entry_form_for(current_user)
-    save_entry_form(@entry_form) if request.post?
+    # todo: more meaningful explanation for why is this logic executed on post request?
+    if request.post?
+      save_entry_form(@entry_form)
+      @event.register_user!(current_user)
+      redirect_to @event
+    end
   end
 
   def revoke_participation
@@ -91,10 +96,9 @@ class EventsController < ApplicationController
   end
 
   def add_to_google_calendar
-    refresh_token = current_user.google_refresh_token
-    @result = GoogleService.add_event_to_calendar(refresh_token, @event)
+    success = GoogleService.add_event_to_calendar(current_user, @event)
 
-    if @result && @result.status == 200
+    if success
       redirect_to event_path(@event), notice: t("flashes.event_successfully_added_to_google_calendar")
     else
       redirect_to event_path(@event), error: t("flashes.event_failure_to_add_to_google_calendar")
@@ -114,15 +118,10 @@ class EventsController < ApplicationController
   end
 
   def save_entry_form(form)
-    # save entry form
     form.event = @event
     form.user = current_user
     form.update(entry_form_params)
     form.save
-
-    # mark user as participant
-    @event.register_user!(current_user)
-    redirect_to @event
   end
 
   def entry_form_params
@@ -147,6 +146,12 @@ class EventsController < ApplicationController
   def show_correct_scope
     path = Event.published.upcoming.count.positive? ? upcoming_events_path : past_events_path
     redirect_to path
+  end
+
+  def event_params_for_create
+    p = event_params
+    p[:title_image].original_filename << ".png"
+    p
   end
 
   def event_params

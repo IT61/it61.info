@@ -50,7 +50,14 @@ var newEventManager = {
       var request = new XMLHttpRequest();
       request.open("POST", <%= "'#{events_path(@event)}'" %>);
       request.onload = function() {
-        window.location = <%= "'#{events_path}'" %>;
+        response = JSON.parse(request.response);
+
+        if (response.success) {
+          window.location = <%= "'#{events_path}'" %>;
+        }
+        else {
+          toastr['error']("Что-то пошло не так.");
+        }
       };
       request.send(formData);
     });
