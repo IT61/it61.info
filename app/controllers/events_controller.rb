@@ -41,7 +41,7 @@ class EventsController < ApplicationController
     @event.organizer = current_user
     p = place_params
     @event.place ||= Place.where(title: p[:title], address: p[:address],
-       latitude: p[:latitude], longitude: p[:longitude]).first_or_create
+       latitude: p[:latitude], longitude: p[:longitude]).first_or_create(p)
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
