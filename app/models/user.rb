@@ -46,6 +46,13 @@ class User < ApplicationRecord
     SocialAccount.from_omniauth auth, self
   end
 
+  def create_event(event_params, place_params)
+    Event.new(event_params) do |e|
+      e.organizer = self
+      e.place ||= Place.first_or_create_place(place_params)
+    end
+  end
+
   def full_name
     [first_name, last_name].compact.join(" ").presence || name
   end

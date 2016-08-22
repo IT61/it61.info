@@ -34,14 +34,8 @@ class EventsController < ApplicationController
     @event.build_place
   end
 
-  # rubocop:disable Metrics/AbcSize
   def create
-    # todo: event creation is too long for controller. needs to encapsulate it somewhere
-    @event = Event.new(event_params_for_create)
-    @event.organizer = current_user
-    p = place_params
-    @event.place ||= Place.where(title: p[:title], address: p[:address],
-       latitude: p[:latitude], longitude: p[:longitude]).first_or_create(p)
+    @event = current_user.create_event(event_params_for_create, place_params)
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
@@ -58,9 +52,7 @@ class EventsController < ApplicationController
   end
 
   def participate
-    if @event.opened? || @event.past?
-      @event.register_user!(current_user)
-    end
+    @event.register_user!(current_user) if @event.able_to_participate?
     redirect_to event_path(@event)
   end
 

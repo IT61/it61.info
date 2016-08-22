@@ -23,16 +23,24 @@ class IcsService
 
     def file_options_for(event)
       {
-          filename: filename(event),
-          type: "application/ics"
+        filename: filename(event),
+        type: ics_type
       }
     end
 
     private
 
     def filename(event)
-      "#{event.title}.ics"
+      filename = sanitize_filename(event.title)
+      "#{filename}.ics"
     end
 
+    def ics_type
+      "application/ics"
+    end
+
+    def sanitize_filename(filename)
+      filename.gsub(/[^0-9A-zа-яА-Я.\-]/, '_')
+    end
   end
 end
