@@ -24,13 +24,13 @@ describe EventsController do
       context "with valid attributes" do
         let(:event_attributes) { attributes_for_with_foreign_keys(:event) }
 
-        it "creates a new event" do
+        xit "creates a new event" do
           expect {
             post :create, params: { event: event_attributes }
           }.to change(Event, :count).by(1)
         end
 
-        it "redirects to the created event" do
+        xit "redirects to the created event" do
           post :create, params: { event: event_attributes }
           expect(response).to redirect_to Event.last
         end
@@ -39,13 +39,13 @@ describe EventsController do
       context "with invalid attributes" do
         let(:event_attributes) { attributes_for_with_foreign_keys(:event, title: nil) }
 
-        it "does not save the new event" do
+        xit "does not save the new event" do
           expect {
             post :create, params: { event: event_attributes }
           }.to_not change(Event, :count)
         end
 
-        it "re-renders the .new method" do
+        xit "re-renders the .new method" do
           post :create, params: { event: event_attributes }
           expect(response).to render_template :new
         end
