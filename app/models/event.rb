@@ -38,6 +38,10 @@ class Event < ActiveRecord::Base
     user && event_participations.find_by(user_id: user.id)
   end
 
+  def able_to_participate?
+    opened? || past?
+  end
+
   def participation_for(user)
     event_participations.find_by(user_id: user.id)
   end

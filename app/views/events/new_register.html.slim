@@ -3,7 +3,7 @@
   .title
     h1 = t(".registration_to_event")
     p #{summary_info(@event).html_safe}
-  = form_for(:entry_form, url: register_to_event_path) do |f|
+  = form_for(:entry_form, url: create_register_to_event_path) do |f|
     .register-fields
       .association-field
         .input-float-label
@@ -11,7 +11,7 @@
           label = t(".full_name")
       .association-curve
         .curve-short
-      .association-text.text-short = t("organizers_will_check_name")
+      .association-text.text-short = t(".organizers_will_check_name")
       .association-field
         .input-float-label
           input [type="text" disabled value="#{current_user.email}"]

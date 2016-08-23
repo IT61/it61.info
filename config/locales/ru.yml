@@ -123,8 +123,8 @@ ru:
       image_section:
         title_image: "Изображение"
         recommendations: "Рекомендуется использовать изображение размером 500x500 px в формате .jpg или .png"
-        choose_file_btn: "Выберите файл"
         no_file_label: "Файл не выбран"
+        choose_file_btn: "Выберите файл"
       description_section:
         description: "Описание"
       details_section:
@@ -149,7 +149,7 @@ ru:
         second_line: "но вы можете это исправить"
         past_events: "прошедшие мероприятия"
       or_watch_smth_html: "или посмотрите %{link}"
-    register:
+    new_register:
       registration_to_event: "Регистрация на мероприятие"
       full_name: "Имя, фамилия"
       organizers_will_check_name: "Организаторы будут узнавать Ваше имя на входе, так что не стесняйтесь указывать настоящее имя"

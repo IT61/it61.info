@@ -1,10 +1,10 @@
 module EventsHelper
-  def quoted_title
+  def quoted_title(event)
     ["&laquo;", event.title, "&raquo;"].join
   end
 
   def summary_info(event)
-    [quoted_title, event.place.full_address, event.started_at].compact.join("<br>")
+    [quoted_title(event), event.place.full_address, event.started_at].compact.join("<br>")
   end
 
   def make_global(link)
@@ -27,5 +27,12 @@ module EventsHelper
 
   def revoke_registration_link(event)
     link_to t("events.participations.revoke_participation"), revoke_participation_event_path(event), method: :delete, class: "btn btn-shadow btn-blue"
+  end
+
+  def to_yandex_location(place)
+    {
+        addressLine: place.full_address,
+        coordinates: [place.latitude, place.longitude]
+    }.to_json
   end
 end

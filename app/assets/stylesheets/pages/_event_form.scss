@@ -41,37 +41,17 @@
 
   .image {
     float: left;
+    @include span-columns(4);
     @include media($special-break) {
-      @include span-columns(4);
+      @include span-columns(3);
     }
     @include media($new-event-mobile) {
       @include span-columns(8);
       text-align: center;
     }
-    img {
+    #image {
       @include media($new-event-mobile) {
         display: none;
-      }
-    }
-
-    .recommend {
-      width: 100%;
-      @include clearfix;
-      div {
-        @include media($new-event-mobile) {
-          width: 100%;
-          color: #555;
-          padding: 15px 0;
-        }
-        @include media($new-event-tablet) {
-          float: inherit;
-          width: 200px;
-          padding: 0;
-        }
-        width: 49%;
-        float: right;
-        padding: 15px 30px;
-        font-size: .9em;
       }
     }
 
@@ -90,7 +70,7 @@
     float: right;
 
     @include media($special-break) {
-      width: 42.82117%;
+      width: 55%;
     }
 
     @include media($new-event-mobile) {
@@ -169,12 +149,6 @@
 
   #known-places {
     font-weight: bold;
-  }
-
-  #map {
-    width: 600px;
-    height: 600px;
-    margin: 0 auto;
   }
 
   #map-trigger {

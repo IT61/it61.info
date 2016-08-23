@@ -5,7 +5,13 @@ class EventsController < ApplicationController
   respond_to :rss, only: :index
 
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
-  before_action :set_event, only: [:show, :participate, :register, :revoke_participation]
+  before_action :set_event, only: [:show,
+                                   :participate,
+                                   :register,
+                                   :new_register,
+                                   :revoke_participation,
+                                   :add_to_google_calendar,
+                                   :download_ics_file]
 
   authorize_resource
 
@@ -29,18 +35,14 @@ class EventsController < ApplicationController
     @event.build_place
   end
 
-  # rubocop:disable Metrics/AbcSize
   def create
-    @event = Event.new(event_params)
-    @event.organizer = current_user
-    @event.place ||= Place.first_or_create(place_params)
+    @event = current_user.create_event(event_params_for_create, place_params)
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
-      redirect_to @event
+      render json: {success: true}
     else
-      flash.now[:errors] = @event.errors.messages
-      render :new
+      render json: {success: false, errors: @event.errors.messages}
     end
   end
 
@@ -51,26 +53,27 @@ class EventsController < ApplicationController
   end
 
   def participate
-    if @event.opened? || @event.past?
-      @event.register_user!(current_user)
-    end
+    @event.register_user!(current_user) if @event.able_to_participate?
     redirect_to event_path(@event)
   end
 
   def register
-    # there is no business if event have open registration
-    unless @event.closed? || @event.user_participated?(current_user)
-      return redirect_to @event
-    end
+    return redirect_to @event unless current_user.can_fill_entry_form?(@event)
 
-    # if user already have some entry form for this event...
+    ParticipantEntryForm.resave_for(current_user, @event)
+    @event.register_user!(current_user)
+    redirect_to @event
+  end
+
+  def new_register
+    return redirect_to @event unless current_user.can_fill_entry_form?(@event)
+
     @entry_form = @event.entry_form_for(current_user)
-    save_entry_form if request.post?
   end
 
   def revoke_participation
     participation = @event.participation_for(current_user)
-    EventParticipation.destroy(participation) unless participation.blank?
+    EventParticipation.destroy_if_exists(participation)
     redirect_to event_path(@event)
   end
 
@@ -83,23 +86,19 @@ class EventsController < ApplicationController
   end
 
   def add_to_google_calendar
-    refresh_token = current_user.google_refresh_token
-    @result = GoogleService.add_event_to_calendar(refresh_token, @event)
+    success = GoogleService.add_event_to_calendar(current_user, @event)
 
-    if @result && @result.status == 200
-      redirect_to event_path(event), notice: t("flashes.event_successfully_added_to_google_calendar")
+    if success
+      redirect_to event_path(@event), notice: t("flashes.event_successfully_added_to_google_calendar")
     else
-      redirect_to event_path(event), error: t("flashes.event_failure_to_add_to_google_calendar")
+      redirect_to event_path(@event), error: t("flashes.event_failure_to_add_to_google_calendar")
     end
   end
 
   def download_ics_file
-    event = Event.find params[:id]
-    ics_service = IcsService.new
-    event_url = event_url(event)
-    calendar = ics_service.to_ics_calendar event, event_url
-
-    send_data calendar.to_ical, filename: "#{event.title}.ics", type: "application/ics"
+    calendar = IcsService.to_ics_calendar(@event, event_url(@event))
+    options = IcsService.file_options_for(@event)
+    send_data calendar, options
   end
 
   private
@@ -108,16 +107,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def save_entry_form
-    # save entry form
-    @entry_form.event = @event
-    @entry_form.user = current_user
-    @entry_form.update(entry_form_params)
-    @entry_form.save
-
-    # mark user as participant
-    @event.register_user!(current_user)
-    redirect_to @event
+  def save_entry_form(form)
+    form.event = @event
+    form.user = current_user
+    form.update(entry_form_params)
+    form.save
   end
 
   def entry_form_params
@@ -142,6 +136,12 @@ class EventsController < ApplicationController
   def show_correct_scope
     path = Event.published.upcoming.count.positive? ? upcoming_events_path : past_events_path
     redirect_to path
+  end
+
+  def event_params_for_create
+    p = event_params
+    p[:title_image].original_filename << ".png"
+    p
   end
 
   def event_params

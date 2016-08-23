@@ -1,27 +1,16 @@
-function bindDeleteAvatarButton($imageForm) {
-    var $deleteBtn = $('#delete-avatar-button'),
-        $image = $('#image');
-
-    $deleteBtn.on('click', function () {
-        deleteAvatar($imageForm);
-        $image.attr('src', $image.attr('default_img_src'));
-        return false;
-    });
-}
-
 $(document).ready(function () {
-    var $imageForm = $('#image_form'),
-        $uploadContainer = $('#avatar_file_upload'),
-        $imageInput = $('#avatar_image_input').get(0),
-        $image = $('#image');
+  var $imageForm = $('#imageForm'),
+      $currentImage = $('#image'),
+      $modal = $('#croppedModal'),
+      $croppedModalImage = $('#croppedModalImage'),
+      $imageInput = $('#imageInput'),
+      $uploadImage = $('#uploadImage'),
+      $deleteBtn = $('#deleteAvatarBtn');
 
-    if (fileReaderSupported() && $imageInput) {
-        showImageOnLoad($imageInput, $image, function() {
-            uploadAvatar($imageForm);
-        });
-    }
-    if ($uploadContainer.length) {
-        handleFileUpload($uploadContainer);
-    }
-    bindDeleteAvatarButton($imageForm);
+  if (!$imageForm || !$imageForm.length) {
+    return;
+  }
+
+  editEventManager.bindDeleteAvatarButton($imageForm, $currentImage, $deleteBtn);
+  editEventManager.initCropper($croppedModalImage, $imageInput, $modal, $uploadImage, $imageForm, $currentImage);
 });

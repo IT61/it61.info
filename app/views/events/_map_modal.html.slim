@@ -1,0 +1,11 @@
+.modal
+  label for="modal-1"
+    a.btn.modal-trigger#map-trigger data-location=to_yandex_location(event.place) = event.place.address
+  input.modal-state#modal-1 type="checkbox"
+  .modal-fade-screen
+    .modal-inner
+      .modal-content
+        .header
+          h2 Карта
+        #map
+      .btn.modal-close for="modal-1" = t("modal.close")

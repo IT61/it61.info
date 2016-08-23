@@ -25,8 +25,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.assign_attributes(user_params.to_h)
-    if @user.save!
+    commit = @user.update(user_params)
+
+    if commit
       flash[:notice] = t("flashes.profile_saved")
     else
       flash[:error] = t("flashes.error_during_save_settings")
