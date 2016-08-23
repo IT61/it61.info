@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show,
                                    :participate,
                                    :register,
+                                   :new_register,
                                    :revoke_participation,
                                    :add_to_google_calendar,
                                    :download_ics_file]
@@ -57,25 +58,22 @@ class EventsController < ApplicationController
   end
 
   def register
-    # there is no business if event have open registration
-    # todo: refactor complex logic with unless into its own method
-    unless @event.closed? || @event.user_participated?(current_user)
-      return redirect_to @event
-    end
+    return redirect_to @event unless current_user.can_fill_entry_form?(@event)
 
-    # if user already have some entry form for this event...
+    ParticipantEntryForm.resave_for(current_user, @event)
+    @event.register_user!(current_user)
+    redirect_to @event
+  end
+
+  def new_register
+    return redirect_to @event unless current_user.can_fill_entry_form?(@event)
+
     @entry_form = @event.entry_form_for(current_user)
-    # todo: more meaningful explanation for why is this logic executed on post request?
-    if request.post?
-      save_entry_form(@entry_form)
-      @event.register_user!(current_user)
-      redirect_to @event
-    end
   end
 
   def revoke_participation
     participation = @event.participation_for(current_user)
-    EventParticipation.destroy(participation) unless participation.blank?
+    EventParticipation.destroy_if_exists(participation)
     redirect_to event_path(@event)
   end
 

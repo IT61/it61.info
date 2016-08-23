@@ -90,6 +90,10 @@ class User < ApplicationRecord
     !google_refresh_token.blank?
   end
 
+  def can_fill_entry_form?(event)
+    event.closed? || event.user_participated?(self)
+  end
+
   private
 
   def assign_defaults

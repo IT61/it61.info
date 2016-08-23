@@ -32,7 +32,9 @@ Rails.application.routes.draw do
       # Use it for registration to opened events:
       post "participate"
       # Use it for registration to closed events:
-      match "register", to: "events#register", via: [:get, :post], as: "register_to"
+      get "register" => "events#new_register", as: "register_to"
+      post "register" => "events#register", as: "create_register_to"
+
       # Use it for revoke user registration
       delete "revoke_participation", to: "events#revoke_participation"
       post "add_to_google_calendar"
