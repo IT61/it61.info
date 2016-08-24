@@ -40,7 +40,7 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
-      render json: {success: true}
+      render json: {success: true, url: event_url(@event)}
     else
       render json: {success: false, errors: @event.errors.messages}
     end
