@@ -7,9 +7,19 @@ class Event < ActiveRecord::Base
   enum registration_type: { opened: 0, closed: 1, paywalled: 2 }
 
   belongs_to :organizer, class_name: "User"
+
   has_many :event_participations, dependent: :destroy
-  has_many :participant_entry_forms, dependent: :destroy
-  has_many :participants, class_name: "User", through: :event_participations, source: :user
+  has_many :registrations, dependent: :destroy
+
+  has_many :participants, class_name: "User", through: :event_participations, source: :user do
+    def visited
+      where("event_participations.visited = ?", true)
+    end
+
+    def non_visited
+      where("event_participations.visited = ?", false)
+    end
+  end
 
   belongs_to :place
 
@@ -34,6 +44,8 @@ class Event < ActiveRecord::Base
   }
   scope :not_notified_about, -> { where(subscribers_notification_send: false) }
 
+  before_save :set_secret_hash, if: :closed?
+
   def user_participated?(user)
     user && event_participations.find_by(user_id: user.id)
   end
@@ -46,8 +58,8 @@ class Event < ActiveRecord::Base
     event_participations.find_by(user_id: user.id)
   end
 
-  def entry_form_for(user)
-    participant_entry_forms.where(user_id: user.id).first_or_initialize
+  def registration_for(user)
+    registrations.where(user_id: user.id).first_or_initialize
   end
 
   def past?
@@ -69,11 +81,15 @@ class Event < ActiveRecord::Base
     save!
   end
 
-  def register_user!(user)
+  def new_participant!(user)
     event_participations << EventParticipation.new(user: user)
   end
 
   private
+
+  def set_secret_hash
+    self.secret_hash = rand(36**20).to_s(36)
+  end
 
   def permalink_title
     formatted_started_at = started_at.to_date.to_s if started_at.present?

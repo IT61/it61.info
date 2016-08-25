@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :social_accounts
   has_many :owner_of_events, class_name: "Event", foreign_key: "organizer_id"
   has_many :event_participations, dependent: :destroy
+  has_many :registrations, dependent: :destroy
   has_many :member_in_events, class_name: "Event", through: :event_participations, source: :event
 
   phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
