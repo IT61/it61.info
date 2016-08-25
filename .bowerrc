@@ -1,6 +1,0 @@
-{
-  "directory": "vendor/assets/components/",
-  "ignoredDependencies": [
-    "jquery"
-  ]
-}

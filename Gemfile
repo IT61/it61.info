@@ -44,6 +44,12 @@ gem "toastr-rails"
 gem "uglifier"
 gem "will_paginate"
 
+source "https://rails-assets.org" do
+  gem "rails-assets-cropper"
+  gem "rails-assets-simplemde"
+  gem "rails-assets-smartcrop"
+end
+
 group :development do
   gem "listen"
   gem "spring"
