@@ -44,7 +44,7 @@ class Event < ActiveRecord::Base
   }
   scope :not_notified_about, -> { where(subscribers_notification_send: false) }
 
-  before_save :set_secret_hash, if: :closed?
+  before_create :set_secret_word
 
   def user_participated?(user)
     user && event_participations.find_by(user_id: user.id)
@@ -87,8 +87,8 @@ class Event < ActiveRecord::Base
 
   private
 
-  def set_secret_hash
-    self.secret_hash = rand(36**20).to_s(36)
+  def set_secret_word
+    self.secret_word = rand(36**20).to_s(36)
   end
 
   def permalink_title
