@@ -68,6 +68,8 @@ GEM
       sass (~> 3.4)
       thor (~> 0.19)
     brakeman (3.3.5)
+    bower (0.0.5)
+      multi_json
     builder (3.2.2)
     bullet (5.3.0)
       activesupport (>= 3.0.0)
@@ -446,6 +448,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   bourbon (= 5.0.0.beta.5)
+  bower
   brakeman
   bullet
   bundler-audit (>= 0.5.0)
