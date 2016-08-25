@@ -181,6 +181,10 @@ GEM
       term-ansicolor (>= 1.3.2)
       terminal-table (>= 1.5.1)
     icalendar (2.4.0)
+    icheck-rails (1.0.2.2)
+      jquery-rails
+      rails (>= 3.1.0)
+      sass-rails
     jquery-rails (4.2.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -466,6 +470,7 @@ DEPENDENCIES
   high_voltage
   i18n-tasks
   icalendar
+  icheck-rails
   jquery-rails
   launchy
   listen

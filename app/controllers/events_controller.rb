@@ -7,9 +7,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
   before_action :set_event, only: [:show,
                                    :participate,
-                                   :register,
-                                   :new_register,
-                                   :revoke_participation,
+                                   :leave,
                                    :add_to_google_calendar,
                                    :download_ics_file]
 
@@ -46,32 +44,12 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def destroy
-  end
-
   def participate
-    @event.register_user!(current_user) if @event.able_to_participate?
+    @event.new_participant!(current_user) if @event.able_to_participate?
     redirect_to event_path(@event)
   end
 
-  def register
-    return redirect_to @event unless current_user.can_fill_entry_form?(@event)
-
-    ParticipantEntryForm.resave_for(current_user, @event)
-    @event.register_user!(current_user)
-    redirect_to @event
-  end
-
-  def new_register
-    return redirect_to @event unless current_user.can_fill_entry_form?(@event)
-
-    @entry_form = @event.entry_form_for(current_user)
-  end
-
-  def revoke_participation
+  def leave
     participation = @event.participation_for(current_user)
     EventParticipation.destroy_if_exists(participation)
     redirect_to event_path(@event)
@@ -80,9 +58,6 @@ class EventsController < ApplicationController
   def publish
     @event = Event.find(params[:id])
     @event.publish!
-  end
-
-  def unpublish
   end
 
   def add_to_google_calendar
@@ -105,17 +80,6 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
-  end
-
-  def save_entry_form(form)
-    form.event = @event
-    form.user = current_user
-    form.update(entry_form_params)
-    form.save
-  end
-
-  def entry_form_params
-    params.require(:entry_form).permit("reason", "profession", "suggestions", "confidence")
   end
 
   def show_events(scope)
