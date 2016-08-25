@@ -11,5 +11,6 @@
 @import "components/index";
 @import "pages/index";
 
-@import "cropper/dist/cropper.min";
-@import "simplemde/dist/simplemde.min";
+// Rails Assets
+@import "cropper";
+@import "simplemde";

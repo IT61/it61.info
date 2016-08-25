@@ -1,7 +1,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require toastr
-//= require simplemde/dist/simplemde.min.js
-//= require cropper/dist/cropper
-//= require smartcrop/smartcrop
+
+// Rails assets
+//= require cropper
+// HACK: simplemde dist is f*cked
+//= require simplemde/simplemde.min.js
+//= require smartcrop
+
 //= require_tree .

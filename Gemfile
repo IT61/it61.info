@@ -6,7 +6,6 @@ gem "active_link_to"
 gem "activemodel-serializers-xml"
 gem "autoprefixer-rails"
 gem "bourbon", "5.0.0.beta.5"
-gem "bower"
 gem "carrierwave"
 gem "cancancan"
 gem "config"
@@ -43,6 +42,12 @@ gem "suspenders"
 gem "toastr-rails"
 gem "uglifier"
 gem "will_paginate"
+
+source "https://rails-assets.org" do
+  gem "rails-assets-cropper"
+  gem "rails-assets-simplemde"
+  gem "rails-assets-smartcrop"
+end
 
 group :development do
   gem "listen"
