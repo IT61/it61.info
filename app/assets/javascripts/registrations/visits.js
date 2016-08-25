@@ -24,11 +24,17 @@ $(document).ready(function () {
   });
 
   var moveItemToList = function(item, fromList, toList) {
-    $(toList.list).append(item);
+    // Show all items
+    $(".search").val("");
+    toList.search();
+    fromList.search();
+
+    // Move item to destination list
+    $(toList.list).prepend(item);
+
+    // Rebuild search index from HTML
     toList.reIndex();
-    toList.update();
     fromList.reIndex();
-    fromList.update();
   };
 
   var markVisit = function(checkbox) {
