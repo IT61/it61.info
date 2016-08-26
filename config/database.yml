@@ -18,4 +18,8 @@ production: &deploy
   timeout: 5000
   url:  <%= ENV.fetch("DATABASE_URL", "") %>
 
+it61_old:
+  <<: *default
+  database: it61-prod
+
 staging: *deploy
