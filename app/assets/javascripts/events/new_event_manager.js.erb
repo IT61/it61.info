@@ -53,7 +53,7 @@ var newEventManager = {
         response = JSON.parse(request.response);
 
         if (response.success) {
-          window.location = <%= "'#{events_path}'" %>;
+          window.location = response.url;
         }
         else {
           toastr['error']("Что-то пошло не так.");

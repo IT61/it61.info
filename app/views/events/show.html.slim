@@ -13,14 +13,15 @@
           span = l(@event.started_at, format: :date_time_full)
         .block-info
           .icon-events.icon-marker
-          = render partial: "events/map_modal", locals: {event: @event}
+          label for="modal-1"
+            a.modal-trigger#map-trigger data-location=to_yandex_location(@event.place) = @event.place.full_address
         - if @event.link?
           .block-info
             .icon-events.icon-link
             = link_to make_global(@event.link), @event.link, target: "_blank"
         .block-info
           = image_tag @event.organizer.pic, class: "avatar avatar-sm avatar-circle"
-          span= @event.organizer.full_name
+          = link_to @event.organizer.full_name, @event.organizer
       .btn-group.event-buttons
         - if @event.user_participated?(current_user)
           = revoke_registration_link(@event)
@@ -56,10 +57,4 @@
       .card-body
         .users-container
           = render partial: "/shared/users/list", locals: { users: @event.participants }
-    /.card.card-fold.hidden
-    /  .card-header
-    /    h1 = t(".postrelease")
-    /    button.btn.btn-fold
-    /      .icon-arrows.icon-arrow-down
-    /  .card-body
-    /    | Тут пострелиз
+= render partial: "events/map_modal", locals: {event: @event}

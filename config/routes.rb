@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
   resources :companies
 
+  # Interface for marking participants as visited
+  get "visits/:hash" => "registrations#visits"
+  put "visits/:hash/mark" => "registrations#mark_visit"
+
   resources :events do
     collection do
       get "/upcoming" => "events#upcoming"
@@ -30,15 +34,20 @@ Rails.application.routes.draw do
 
     member do
       # Use it for registration to opened events:
-      post "participate"
-      # Use it for registration to closed events:
-      get "register" => "events#new_register", as: "register_to"
-      post "register" => "events#register", as: "create_register_to"
+      get "participate" => "events#participate"
 
-      # Use it for revoke user registration
-      delete "revoke_participation", to: "events#revoke_participation"
+      # Use it for registration to closed events:
+      get "registrations" => "registrations#index", as: "registrations_for"
+      get "register" => "registrations#new", as: "register_to"
+      post "register" => "registrations#create", as: "create_register_to"
+
+      # Use it for revoke user registration of any type
+      get "leave", to: "events#leave"
+
+      # Calendars integration
       post "add_to_google_calendar"
       get "download_ics_file"
+
       put "publish"
     end
   end

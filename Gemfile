@@ -16,6 +16,7 @@ gem "google-api-client", "~> 0.8.2", require: "google/api_client"
 gem "high_voltage"
 gem "i18n-tasks"
 gem "icalendar"
+gem "icheck-rails"
 gem "jquery-rails"
 gem "neat", "~> 1.7.0"
 gem "nokogiri"
@@ -47,6 +48,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-cropper"
   gem "rails-assets-simplemde"
   gem "rails-assets-smartcrop"
+  gem "rails-assets-listjs"
 end
 
 group :development do

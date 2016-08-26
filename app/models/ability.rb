@@ -18,7 +18,7 @@ class Ability
     can :crud, User, id: user.id
 
     can :places, Event
-    can [:participate, :register, :new_register, :revoke_participation,
+    can [:participate, :leave,
          :add_to_google_calendar, :download_ics_file], Event, published?
     can [:read, :update], Event, organizer?(user)
 

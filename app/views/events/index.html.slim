@@ -17,9 +17,9 @@
     .no-events-stub
       = render partial: "events/stubs/#{@scope}"
   - else
-    .input-search
-      span class="fa fa-search"
-      input type="search"
+    /.input-search
+    /  span class="fa fa-search"
+    /  input type="search"
     .events-container
       = render partial: 'events/cards'
     button.btn.btn-blue.btn-more [data-container=".events-container" data-url="#{request.path}"] = t("load_more")
