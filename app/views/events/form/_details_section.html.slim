@@ -5,12 +5,13 @@ section.details
       label = t(".title")
 
   .time-container
-    = f.label :started_at, t(".date"), class: "required"
-    = date_select :event, :started_at, selected: Date.today
+    .time-select
+      = f.label :started_at, t(".date"), class: "required"
+      = date_select :event, :started_at, selected: Date.today
 
-  .time-container
-    = f.label :started_at, t(".time"), class: "required"
-    = time_select :event, :started_at, selected: Date.today, ignore_date: true, time_separator: "<span class='time-separator'>:</span>"
+    .time-select
+      = f.label :started_at, t(".time"), class: "required"
+      = time_select :event, :started_at, selected: Date.today, ignore_date: true, time_separator: "<span class='time-separator'>:</span>"
 
   .event-association-field
     .input-float-label

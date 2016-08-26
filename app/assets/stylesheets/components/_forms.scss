@@ -140,16 +140,16 @@
 
 .time-container {
   @include clearfix;
-  margin-bottom: 30px;
 
-  .left {
+  .time-select {
     float: left;
-    width: 67%;
-  }
-
-  .right {
-    float: right;
-    width: 33%;
+    margin-right: 20px;
+    @include media($new-event-mobile) {
+      margin-bottom: 30px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .time-separator {
@@ -188,7 +188,6 @@
   }
 
   & > label {
-    max-width: 50%;
     float: left;
     display: block;
     white-space: nowrap;

@@ -40,7 +40,6 @@
   }
 
   .image {
-    float: left;
     @include span-columns(4);
     @include media($special-break) {
       @include span-columns(3);
@@ -50,14 +49,33 @@
       text-align: center;
     }
     #image {
+      &.no-image-selected {
+        height: 200px;
+        width: 200px;
+        margin-bottom: 6px;
+        line-height: 200px;
+        text-align: center;
+        background: lighten($gray, 3%);
+        border: 1px solid darken($gray, 10%);
+
+        .message {
+          line-height: 1.5;
+          display: inline-block;
+          vertical-align: middle;
+          color: darken($gray, 20%);
+        }
+      }
       @include media($new-event-mobile) {
         display: none;
       }
     }
 
     .file_upload {
+      width: 200px;
       label {
         margin-right: 15px;
+        width: 100%;
+        text-align: center;
       }
       @include media($new-event-mobile) {
         margin: 0

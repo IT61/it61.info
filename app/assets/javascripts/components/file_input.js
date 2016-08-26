@@ -14,16 +14,6 @@ function initFileInput($uploadContainer) {
     wrapper.removeClass('focus');
   });
 
-  input.change(function () {
-    if (label.is(':visible')) {
-      label.text('');
-      button.text('Выбрать файл');
-    } else {
-      label.text('');
-      button.text('');
-    }
-  }).change();
-
   $(window).resize(function () {
     $uploadContainer.find('input').triggerHandler('change');
   });
