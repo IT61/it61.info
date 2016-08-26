@@ -1,6 +1,5 @@
-.CodeMirror, .CodeMirror-scroll {
-  min-height: 150px;
-}
+$image-size: 300px;
+$image-size-smaller: 200px;
 
 .event-form {
   &-container {
@@ -23,12 +22,7 @@
     padding: 35px;
 
     section {
-      @include span-columns(5);
       margin: 1em 0;
-
-      @include media($new-event-mobile) {
-        @include span-columns(8);
-      }
     }
 
     &-header {
@@ -39,80 +33,33 @@
     }
   }
 
-  .image {
-    @include span-columns(4);
-    @include media($special-break) {
-      @include span-columns(3);
-    }
-    @include media($new-event-mobile) {
-      @include span-columns(8);
-      text-align: center;
-    }
-    #image {
-      &.no-image-selected {
-        height: 200px;
-        width: 200px;
-        margin-bottom: 6px;
-        line-height: 200px;
-        text-align: center;
-        background: lighten($gray, 3%);
-        border: 1px solid darken($gray, 10%);
+  // Form layout
+  .info-container {
+    @include outer-container;
 
-        .message {
-          line-height: 1.5;
-          display: inline-block;
-          vertical-align: middle;
-          color: darken($gray, 20%);
-        }
+    .details-container {
+      @include span-columns(7);
+      float: right;
+
+      @include media($new-event-tablet) {
+        @include span-columns(5);
       }
+
       @include media($new-event-mobile) {
-        display: none;
+        @include span-columns(8);
       }
     }
 
-    .file_upload {
-      width: 200px;
-      label {
-        margin-right: 15px;
-        width: 100%;
-        text-align: center;
+    .image-container {
+      @include span-columns(5);
+
+      @include media($new-event-tablet) {
+        @include span-columns(3);
       }
+
       @include media($new-event-mobile) {
-        margin: 0
-      }
-    }
-  }
-
-  .details {
-    @include span-columns(6);
-    float: right;
-
-    @include media($special-break) {
-      width: 55%;
-    }
-
-    @include media($new-event-mobile) {
-      @include span-columns(8);
-    }
-
-    select {
-      float: left;
-      padding: 5px 10px;
-      display: block;
-      font-size: 16px;
-      margin: 3px;
-      color: black;
-      line-height: 1.9;
-      width: auto;
-      box-shadow: none;
-      border: none;
-      transition: all 0.28s ease;
-      border-bottom: solid 2px #ddd;
-      background: transparent;
-
-      &:focus {
-        outline: none;
-        border-bottom: 1px solid #2d79b7;
+        @include span-columns(8);
+        text-align: center;
       }
     }
   }
@@ -121,6 +68,65 @@
     @include span-columns(12);
     label {
       padding: 5px 10px;
+    }
+  }
+
+  #image {
+    width: $image-size;
+
+    @include media($new-event-tablet) {
+      width: $image-size-smaller;
+    }
+
+    canvas {
+      width: $image-size;
+      height: $image-size;
+      @include media($new-event-tablet) {
+        width: $image-size-smaller;
+        height: $image-size-smaller;
+      }
+    }
+
+    &.no-image-selected {
+      margin-bottom: 6px;
+      line-height: $image-size;
+      @include media($new-event-tablet) {
+        line-height: $image-size-smaller;
+      }
+      text-align: center;
+      background: lighten($gray, 3%);
+      border: 1px solid darken($gray, 10%);
+
+      .message {
+        line-height: 1.5;
+        display: inline-block;
+        vertical-align: middle;
+        color: darken($gray, 20%);
+      }
+    }
+
+    @include media($new-event-mobile) {
+      display: none;
+    }
+  }
+
+  .file_upload {
+    label {
+      margin-right: 15px;
+      text-align: center;
+
+      width: $image-size;
+      @include media($new-event-tablet) {
+        width: $image-size-smaller;
+      }
+      @include media($new-event-mobile) {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+    @include media($new-event-mobile) {
+      margin: 0;
+      text-align: center;
     }
   }
 
@@ -163,10 +169,6 @@
         width: 100%;
       }
     }
-  }
-
-  #known-places {
-    font-weight: bold;
   }
 
   #map-trigger {

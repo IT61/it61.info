@@ -92,6 +92,27 @@
   }
 }
 
+select {
+  float: left;
+  padding: 5px 10px;
+  display: block;
+  font-size: 16px;
+  margin: 3px;
+  color: black;
+  line-height: 1.9;
+  width: auto;
+  box-shadow: none;
+  border: none;
+  transition: all 0.28s ease;
+  border-bottom: solid 2px #ddd;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #2d79b7;
+  }
+}
+
 .input-search {
   position: relative;
 
