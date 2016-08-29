@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :event_participations, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :member_in_events, class_name: "Event", through: :event_participations, source: :event
+  has_and_belongs_to_many :groups
 
   phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
 
