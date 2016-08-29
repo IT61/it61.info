@@ -22,3 +22,8 @@ INSERT INTO public.places (id, title, address, latitude, longitude, created_at, 
 ActiveRecord::Base.transaction do
   ActiveRecord::Base.connection.execute(PLACES_SQL)
 end
+
+# Groups
+Group.create(title: "Администратор IT61")
+Group.create(title: "Команда IT61")
+Group.create(title: "Разработчик IT61")
