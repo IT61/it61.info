@@ -46,11 +46,11 @@ ActiveRecord::Schema.define(version: 20160829121829) do
     t.datetime "started_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "registration_type",             default: 0
     t.integer  "participants_limit"
     t.string   "link"
     t.integer  "place_id"
     t.string   "secret_word"
+    t.boolean  "has_closed_registration",       default: false
     t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
     t.index ["place_id"], name: "index_events_on_place_id", using: :btree
   end
