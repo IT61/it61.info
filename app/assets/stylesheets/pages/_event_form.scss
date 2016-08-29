@@ -71,6 +71,13 @@ $image-size-smaller: 200px;
     }
   }
 
+  .settings {
+    @include span-columns(12);
+    label {
+      padding: 5px 10px;
+    }
+  }
+
   #image {
     width: $image-size;
 

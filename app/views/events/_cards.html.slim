@@ -10,7 +10,7 @@
     .card-footer
       = link_to e do
         button.btn = t("more_info")
-    - if e.opened?
+    - if !e.has_closed_registration?
       = button_to t("events.participations.participate"), participate_event_path(e), method: :post, class: "btn btn-blue button-participate"
     - else
       = button_to t("events.participations.participate"), register_to_event_path(e), class: "btn btn-blue button-participate"

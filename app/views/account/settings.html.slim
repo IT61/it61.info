@@ -6,34 +6,16 @@ main.container.profile-container
       = form_for @user, url: settings_update_path do |f|
         .with-padding
           h2.sub-header = t("users.cards.user.notifications")
+
           .notification-input
-            .left
-              label.switch
-                = f.check_box :email_reminders
-                .checkbox
-            .right
+            label.switch
+              = f.check_box :email_reminders
+              .checkbox
               span = t(".want_email_reminders")
-          / no functionality for now
-          /.notification-input
-            .left
-              label.switch
-                input type="checkbox"
-                .checkbox
-            .right
-              span Я хочу получать e-mail уведомления о новых вакансиях
-          /.notification-input
-            .left
-              label.switch
-                input type="checkbox"
-                .checkbox
-            .right
-              span Я хочу получать e-mail уведомления о новых компаниях
           .notification-input
-            .left
-              label.switch
-                = f.check_box :sms_reminders
-                .checkbox
-            .right
+            label.switch
+              = f.check_box :sms_reminders
+              .checkbox
               span = t(".want_sms_reminders")
 
           .edit-profile-bottom-buttons
