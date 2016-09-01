@@ -1,16 +1,13 @@
 - @events.each do |e|
-  .card.events-card
-    = link_to e do
+  = link_to e do
+    .card.events-card
       .events-logo
         = image_tag e.title_image
       .events-info
         h2= e.title
         p= l e.started_at, format: :date_time_full
         p.place= e.place.full_address
-    .card-footer
-      = link_to e do
-        button.btn = t("more_info")
-    - if !e.has_closed_registration?
-      = button_to t("events.participations.participate"), participate_event_path(e), method: :post, class: "btn btn-blue button-participate"
-    - else
-      = button_to t("events.participations.participate"), register_to_event_path(e), class: "btn btn-blue button-participate"
+      - if !e.has_closed_registration?
+        = button_to t("events.participations.participate"), participate_event_path(e), method: :post, class: "btn btn-blue button-participate"
+      - else
+        = button_to t("events.participations.participate"), register_to_event_path(e), class: "btn btn-blue button-participate"
