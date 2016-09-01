@@ -117,6 +117,7 @@ class EventsController < ApplicationController
       :place_id,
       :organizer_id,
       :started_at,
+      :has_closed_registration
     ]
     params.require(:event).permit(*permitted_attrs)
   end

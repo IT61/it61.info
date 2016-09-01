@@ -38,7 +38,6 @@ var newEventManager = {
 
     $saveImageBtn.on('click', function () {
       var canvas = $('#croppedModalImage').cropper('getCroppedCanvas');
-      $(canvas).width(200).height(200);
       $('#image').replaceWith($('<div>', {'id': 'image'}).html(canvas));
     });
   },

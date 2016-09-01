@@ -1,4 +1,6 @@
 .switch {
+  @include clearfix;
+
   $switch-width: 30px;
   $switch-padding: 2px;
   $switch-height: 13px;
@@ -12,6 +14,12 @@
   display: inline-block;
   position: relative;
   top: 4px;
+  margin-right: 15px;
+  span {
+    line-height: $switch-height * 2;
+    color: #333;
+    margin-left: 15px;
+  }
 
   input {
     display: none;
@@ -22,6 +30,8 @@
       cursor: pointer;
       position: relative;
       width: $switch-width;
+      float: left;
+      margin-top: 6px;
       z-index: 0;
       border-radius: 20px;
 

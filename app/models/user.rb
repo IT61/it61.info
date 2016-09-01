@@ -97,7 +97,7 @@ class User < ApplicationRecord
   end
 
   def can_fill_entry_form?(event)
-    event.closed? || event.user_participated?(self)
+    event.has_closed_registration? || event.user_participated?(self)
   end
 
   private

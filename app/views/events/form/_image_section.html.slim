@@ -1,12 +1,11 @@
-section.image
-  .picture
-    = f.label :title_image, t(".title_image"), class: "required"
-    - unless event.title_image.blank?
-      = image_tag event.title_image, id: "image", default_img_src: asset_path("user_default.png"), width: 200, height: 200
-    - else
-      #image.no-image-selected
-        .message Файл не выбран
-    .file_upload#imageInputContainer
-      label.btn.btn-blue
-        input#imageInput type="file" name="imageInput" accept="image/*"
-        = t(".choose_file_btn")
+.image-container
+  = f.label :title_image, t(".title_image"), class: "required"
+  - unless event.title_image.blank?
+    = image_tag event.title_image, id: "image", default_img_src: asset_path("user_default.png"), width: 200, height: 200
+  - else
+    #image.no-image-selected
+      .message = t(".no_file_label")
+  .file_upload#imageInputContainer
+    label.btn.btn-blue
+      input#imageInput type="file" name="imageInput" accept="image/*"
+      = t(".choose_file_btn")

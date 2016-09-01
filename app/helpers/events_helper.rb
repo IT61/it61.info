@@ -15,10 +15,10 @@ module EventsHelper
 
   def participate_in_event_link(event)
     if Event.upcoming.exists?(event)
-      if event.opened?
-        link_to t("events.participations.participate"), participate_event_path(event), class: "btn btn-shadow btn-blue"
-      else
+      if event.has_closed_registration?
         link_to t("events.participations.register"), register_to_event_path(event), class: "btn btn-shadow btn-blue"
+      else
+        link_to t("events.participations.participate"), participate_event_path(event), class: "btn btn-shadow btn-blue"
       end
     else
       link_to t("events.participations.participated"), participate_event_path(event), class: "btn btn-shadow btn-blue"

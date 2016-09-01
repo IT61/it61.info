@@ -136,7 +136,7 @@ ru:
         address: "Точный адрес"
         show_map_btn: "Посмотреть на карте"
         map: "Карта"
-      footer_buttons_section:
+      footer_section:
         create: "Создать мероприятие"
     stubs:
       create_event: "Создайте мероприятие"
