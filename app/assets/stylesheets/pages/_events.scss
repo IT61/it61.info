@@ -10,7 +10,6 @@
     height: 240px;
     min-width: 460px;
     margin-bottom: 11px;
-    padding-right: 15px;
     box-shadow: none;
     position: relative;
 
@@ -55,6 +54,24 @@
     }
   }
 
+  &-manage
+  {
+    float: right;
+    .dropdown-trigger {
+      @include size(40px);
+      color: $dark-gray;
+
+
+    }
+    &-trigger {
+      @include size(40px);
+      text-align: center;
+      display: block;
+      font-size: 20px;
+      line-height: 40px;
+    }
+  }
+
   &-logo {
     float: left;
     margin-right: 15px;
@@ -70,6 +87,7 @@
   &-info {
     position: relative;
     height: 240px;
+    padding-right: 15px;
   }
 
   @include media(min-width 1000px max-width 1250px) {

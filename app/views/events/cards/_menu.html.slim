@@ -1,0 +1,13 @@
+.events-manage
+  .dropdown-trigger
+    i.fa.fa-ellipsis-h.events-manage-trigger
+    ul.dropdown-menu
+      - if can? :update, event
+        = link_to edit_event_path(event) do
+          li
+            i.fa.fa-pencil
+            | Редактировать
+      = link_to event_visits_path(event.secret_word) do
+        li
+          i.fa.fa-check-circle-o
+          | Регистрация участников

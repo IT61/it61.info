@@ -119,6 +119,9 @@ ru:
     new:
       header: "Новое мероприятие"
       create_event: "Создать мероприятие"
+    edit:
+      header: "Редактирование мероприятия"
+      edit_event: "Редактировать мероприятие"
     form:
       image_section:
         title_image: "Изображение"

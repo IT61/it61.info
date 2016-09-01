@@ -6,6 +6,8 @@ class EventsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
   before_action :set_event, only: [:show,
+                                   :edit,
+                                   :update,
                                    :participate,
                                    :leave,
                                    :add_to_google_calendar,
@@ -31,6 +33,15 @@ class EventsController < ApplicationController
   def new
     @event ||= Event.new
     @event.build_place
+  end
+
+  def edit
+
+  end
+
+  def update
+    @event.update(event_params)
+    redirect_to @event
   end
 
   def create
