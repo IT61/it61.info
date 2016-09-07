@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20160829121829) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_places_on_address", using: :btree
-    t.index ["title", "address", "latitude", "longitude"], name: "index_places_on_title_and_address_and_latitude_and_longitude", unique: true, using: :btree
     t.index ["title"], name: "index_places_on_title", using: :btree
   end
 
