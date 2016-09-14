@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-
+  overflow: hidden;
   &-blue {
     background: $blue;
 
@@ -47,7 +47,8 @@
 
   &-profile {
     .avatar, .name, .btn {
-      float: left;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .avatar {
