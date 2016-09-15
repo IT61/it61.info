@@ -96,7 +96,7 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.eager_load(:place, :organizer).find(Event.id_from_permalink(params[:id]))
   end
 
   def show_events(scope, all = false)
