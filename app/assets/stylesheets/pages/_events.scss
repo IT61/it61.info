@@ -7,7 +7,6 @@
   &-card {
     @include span-columns(6);
     @include omega(2n);
-    height: 240px;
     min-width: 460px;
     margin-bottom: 11px;
     box-shadow: none;
@@ -26,42 +25,26 @@
     p {
       color: #7f7f7f;
     }
-    
-    .card-footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      text-align: right;
-      padding: 10px 10px 10px 0;
-      border-top-color: #efefef;
-
-      button {
-        font-weight: normal;
-      }
-    }
 
     &:hover {
       box-shadow: 0 3px 24px rgba(0, 0, 0, 0.2);
-
-      .card-footer button {
-        font-weight: bold;
-      }
     }
 
     .button-participate {
+      display: none;
       visibility: hidden;
       opacity: 0;
     }
   }
 
-  &-manage
-  {
-    float: right;
+  &-manage {
+    position: absolute;
+    top: 0;
+    right: 0;
+
     .dropdown-trigger {
       @include size(40px);
       color: $dark-gray;
-
-
     }
     &-trigger {
       @include size(40px);
@@ -73,33 +56,35 @@
   }
 
   &-logo {
-    float: left;
-    margin-right: 15px;
+    display: inline-block;
+    vertical-align: top;
     position: relative;
     z-index: 2;
+    width: 38%;
 
     img {
-      height: 240px;
-      width: 240px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
     }
   }
 
   &-info {
-    position: relative;
-    height: 240px;
-    padding-right: 15px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 15px;
+    width: 62%;
   }
 
   @include media(min-width 1000px max-width 1250px) {
-
-    &-card, &-info {
-      height: 170px;
-    }
-
-    &-logo img {
-      height: 170px;
-      width: 170px;
-    }
 
     &-card {
 
@@ -121,6 +106,26 @@
     }
   }
 
+  @include media(min-width 800px max-width 1000px) {
+    &-logo {
+      width: 25%;
+    }
+
+    &-info {
+      width: 75%;
+    }
+  }
+
+  @include media(min-width $medium-screen max-width 800px) {
+    &-logo {
+      width: 30%;
+    }
+
+    &-info {
+      width: 70%;
+    }
+  }
+
   @include media(max-width $medium-screen) {
 
     &-container {
@@ -128,13 +133,12 @@
       margin-right: -15px;
     }
 
-    &-card, &-info {
-      height: 119px;
+    &-logo {
+      width: 34%;
     }
 
-    &-logo img {
-      height: 119px;
-      width: 119px;
+    &-info {
+      width: 66%;
     }
 
     &-card {
@@ -156,6 +160,7 @@
       }
 
       .button-participate {
+        display: block;
         position: absolute;
         top: 0;
         right: 0;
@@ -179,8 +184,12 @@
   }
 
   @include media(max-width 350px) {
-    &-card, &-info , &-logo img {
-      height: 100px;
+    &-logo {
+      width: 34%;
+    }
+
+    &-info {
+      width: 66%;
     }
 
     &-card h2 {
