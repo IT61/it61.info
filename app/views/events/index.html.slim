@@ -6,6 +6,9 @@
         i class="fa fa-caret-down dropdown-icon"
       nav role="navigation"
         ul#js-navigation-menu
+          - if current_user.try(:manager?)
+            li.nav-link class=('active' if current_page?(unpublished_events_path))
+              = link_to t(".unpublished"), unpublished_events_path
           li.nav-link class=('active' if current_page?(upcoming_events_path))
             = link_to t(".upcoming"), upcoming_events_path
           li.nav-link class=('active' if current_page?(past_events_path))

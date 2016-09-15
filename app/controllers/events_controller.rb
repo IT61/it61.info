@@ -27,6 +27,10 @@ class EventsController < ApplicationController
     show_events(:past)
   end
 
+  def unpublished
+    show_events(:unpublished, true)
+  end
+
   def show
   end
 
@@ -57,18 +61,20 @@ class EventsController < ApplicationController
 
   def participate
     @event.new_participant!(current_user) if @event.able_to_participate?
-    redirect_to event_path(@event)
+    redirect_to @event
   end
 
   def leave
     participation = @event.participation_for(current_user)
     EventParticipation.destroy_if_exists(participation)
-    redirect_to event_path(@event)
+    redirect_to @event
   end
 
   def publish
     @event = Event.find(params[:id])
     @event.publish!
+    flash[:success] = t("flashes.event_successfully_published")
+    redirect_to @event
   end
 
   def add_to_google_calendar
@@ -93,8 +99,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def show_events(scope)
-    @events = Event.send(scope).published.paginate(page: params[:page], per_page: 6)
+  def show_events(scope, all = false)
+    @events = Event.send(scope).paginate(page: params[:page], per_page: 6)
+    @events = @events.published unless all
     @scope = scope
 
     view = request.xhr? ? "events/cards/_card" : "events/index"
@@ -104,11 +111,6 @@ class EventsController < ApplicationController
   end
 
   def redirect_to_relevant_scope
-    path = Event.published.upcoming.count.positive? ? upcoming_events_path : past_events_path
-    redirect_to path
-  end
-
-  def show_correct_scope
     path = Event.published.upcoming.count.positive? ? upcoming_events_path : past_events_path
     redirect_to path
   end

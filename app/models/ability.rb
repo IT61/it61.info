@@ -25,7 +25,7 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.moderator?
-      can [:read, :edit, :publish!], Event, not_published?
+      can [:read, :unpublished, :edit, :publish!], Event, not_published?
       # todo: can view and edit event participants
     end
   end

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     collection do
       get "/upcoming" => "events#upcoming"
       get "/past" => "events#past"
+      get "/unpublished" => "events#unpublished"
     end
 
     member do
