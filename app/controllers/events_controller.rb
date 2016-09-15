@@ -100,7 +100,7 @@ class EventsController < ApplicationController
   end
 
   def show_events(scope, all = false)
-    @events = Event.send(scope).paginate(page: params[:page], per_page: 6).eager_load(:place)
+    @events = Event.send(scope).published.paginate(page: params[:page], per_page: Settings.per_page.events).eager_load(:place)
     @events = @events.published unless all
     @scope = scope
 
