@@ -81,10 +81,10 @@ $new-event-tablet: new-breakpoint(min-width 689px max-width 1020px 8);
 $new-event-mobile: new-breakpoint(max-width 690px 8);
 $special-break: new-breakpoint(max-width 1200px 8);
 $desktop-md-max: new-breakpoint(max-width 1350px);
+$tablet-screen-max: new-breakpoint(max-width 960px);
 
 //Box shadow
 $base-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
 
 // Sidebar
-$sidebar-width: 250px;
-$sidebar-mobile-width: 200px;
+$sidebar-width: 200px;

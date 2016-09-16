@@ -1,23 +1,11 @@
 .navbar {
   width: 100%;
 
-  &-white {
-    background: #fff;
-
-    .btn {
-      @extend .btn-blue;
-    }
-  }
-
   &-blue {
     background: $blue;
 
     .hamburger {
       color: #fff;
-    }
-
-    .btn {
-      @extend .btn-white;
     }
   }
 
@@ -33,9 +21,28 @@
   }
 
   .hamburger {
+    display: none;
     font-size: 18px;
-    vertical-align: bottom;
+    line-height: 30px;
     cursor: pointer;
+
+    @include media($tablet-screen-max) {
+      display: inline-block;
+    }
+  }
+
+  // TODO: Поменять на белое лого
+  .logo {
+    display: inline-block;
+    vertical-align: bottom;
+    background: image_url("logo-small.svg") no-repeat;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+
+    @include media($tablet-screen-max) {
+      display: none;
+    }
   }
 
   &-profile {
@@ -65,6 +72,30 @@
       padding: 6px 9px;
     }
   }
+
+  &-menu {
+    display: inline-block;
+    vertical-align: text-bottom;
+    @include media($tablet-screen-max) {
+      display: none;
+    }
+
+    li {
+      display: inline;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 35px;
+    }
+
+    a {
+      color: white;
+
+      &.active, &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
 }
 
 .content-background {
@@ -77,9 +108,9 @@
 
 .header-title {
   background: $blue;
-  @include padding(0 0 25px 0);
-  @include media(max-width $medium-screen) {
-    padding-top: 40px;
+  padding: 45px 0 20px;
+  @include media($tablet-screen-max) {
+    padding-top: 20px;
   }
 
   h1 {
