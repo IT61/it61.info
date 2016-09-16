@@ -1,7 +1,8 @@
 header.navbar.navbar-blue
   .navbar-wrapper
     i.fa.fa-bars.hamburger.open-sidebar
-    .logo
+    a href="/"
+      .logo
     nav.navbar-menu
       ul
         = active_link_to t("pages.events"), events_path, wrap_tag: :li
