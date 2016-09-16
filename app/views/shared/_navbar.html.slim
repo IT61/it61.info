@@ -1,6 +1,6 @@
 header.navbar.navbar-blue
   .navbar-wrapper
-    /i.fa.fa-bars.hamburger.open-sidebar
+    i.fa.fa-bars.hamburger.open-sidebar
     .logo
     nav.navbar-menu
       ul
@@ -11,7 +11,7 @@ header.navbar.navbar-blue
         = active_link_to t("pages.slack"), slack_path, wrap_tag: :li
     .pull-right
       - if current_user.nil?
-        = link_to sign_in_path, class: "btn btn-small btn-blue" do
+        = link_to sign_in_path, class: "btn btn-small btn-white" do
           i.fa.fa-sign-in
           | &nbsp;
           = t(".sign_in")
@@ -20,5 +20,5 @@ header.navbar.navbar-blue
           = link_to profile_path do
             .avatar = image_tag current_user.pic, class: "avatar-circle"
             .name = ( current_user.first_name.blank? ? current_user.full_name : current_user.first_name )
-          = link_to sign_out_path, class: "btn btn-small btn-blue" do
+          = link_to sign_out_path, class: "btn btn-small btn-white" do
             i.fa.fa-sign-out

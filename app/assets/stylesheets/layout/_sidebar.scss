@@ -4,7 +4,7 @@
   margin-left: -$sidebar-width;
   position: fixed;
   top: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   width: $sidebar-width;
   z-index: 100;
@@ -15,14 +15,15 @@
   &__logo {
     background:#363738;
     min-width: $sidebar-width;
-    padding: 30px 0;
+    padding: 45px 0;
 
     &_img {
-      background: image_url("logo-03.svg");
-      height: 123px;
+      background: image_url("logo-horizontal.svg");
+      background-size: cover;
       margin-left: auto;
       margin-right: auto;
-      width: 122px;
+      height: 40px;
+      width: 150px;
     }
   }
 
@@ -30,8 +31,8 @@
     background: #F4F4F7;
     border-bottom: 1px solid #E9E9ED;
     color: #7F7F81;
-    height: 63px;
-    padding: 20px 40px 0;
+    height: 51px;
+    padding: 13px 30px 0;
     line-height: 27px;
     width: 100%;
 
@@ -52,7 +53,7 @@
     a {
       color: #191919;
       display: inline-block;
-      padding: 20px 40px;
+      padding: 15px 30px;
       width: 100%;
     }
 
@@ -65,35 +66,6 @@
         background-color: #BFE0FB;
         cursor: pointer;
       }
-    }
-  }
-
-  @include media(max-width 600px) {
-    margin-left: -$sidebar-mobile-width;
-    width: $sidebar-mobile-width;
-    font-size: 14px;
-
-    &__logo {
-      padding: 45px 0;
-      min-width: $sidebar-mobile-width;
-
-      &_img {
-        background: image_url("logo-horizontal.svg");
-        background-size: cover;
-        margin-left: auto;
-        margin-right: auto;
-        height: 40px;
-        width: 150px;
-      }
-    }
-
-    &__profile {
-      height: 51px;
-      padding: 13px 30px 0;
-    }
-
-    &__menu a {
-      padding: 15px 30px;
     }
   }
 }

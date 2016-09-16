@@ -7,8 +7,10 @@
 
   &-title {
     @include outer-container(1500px);
-    @include pad(0 default);
-    padding-bottom: 2em;
+    @include pad(40px default 20px);
+    @include media($tablet-screen-max) {
+      padding-top: 10px;
+    }
 
     color: white;
     h3 {
@@ -28,6 +30,10 @@
 .photo {
   @include outer-container(1500px);
   @include pad(2.5em default);
+  @include media($tablet-screen-max) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   &-list {
     @include span-columns(12);
