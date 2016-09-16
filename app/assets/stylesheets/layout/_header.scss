@@ -33,9 +33,18 @@
   }
 
   .hamburger {
+    display: inline-block;
     font-size: 18px;
-    vertical-align: bottom;
     cursor: pointer;
+  }
+
+  .logo {
+    display: inline-block;
+    vertical-align: bottom;
+    background: image_url("logo-small.svg") no-repeat;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
   }
 
   &-profile {
@@ -65,6 +74,27 @@
       padding: 6px 9px;
     }
   }
+
+  &-menu {
+    display: inline-block;
+    vertical-align: text-bottom;
+
+    li {
+      display: inline;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 25px;
+    }
+
+    a {
+      color: white;
+
+      &.active, &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
 }
 
 .content-background {
@@ -77,7 +107,7 @@
 
 .header-title {
   background: $blue;
-  @include padding(0 0 25px 0);
+  padding: 25px 0;
   @include media(max-width $medium-screen) {
     padding-top: 40px;
   }

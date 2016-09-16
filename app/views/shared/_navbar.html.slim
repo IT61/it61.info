@@ -1,6 +1,14 @@
 header.navbar.navbar-blue
   .navbar-wrapper
-    i.fa.fa-bars.hamburger.open-sidebar
+    /i.fa.fa-bars.hamburger.open-sidebar
+    .logo
+    nav.navbar-menu
+      ul
+        = active_link_to t("pages.events"), events_path, wrap_tag: :li
+        = active_link_to t("pages.users"), users_path, wrap_tag: :li
+        = active_link_to t("pages.photos"), photos_path, wrap_tag: :li
+        = active_link_to t("pages.sponsorship"), sponsorship_path, wrap_tag: :li
+        = active_link_to t("pages.slack"), slack_path, wrap_tag: :li
     .pull-right
       - if current_user.nil?
         = link_to sign_in_path, class: "btn btn-small btn-blue" do
