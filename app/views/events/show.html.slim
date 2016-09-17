@@ -40,8 +40,7 @@
         .card-body
           .event-actions
             = link_to t("publish"), publish_event_path, method: :put, class: "btn btn-blue"
-            button.btn.btn-blue = t("edit")
-            button.btn.btn-gray = t("delete")
+            = link_to t("edit"), edit_event_path(@event), class: "btn btn-blue"
 
     .card.card-fold
       .card-header
