@@ -13,6 +13,10 @@ module EventsHelper
     end
   end
 
+  def event_organizer?(event, user)
+    event.organizer_id == user.id
+  end
+
   def participate_in_event_link(event)
     if Event.upcoming.exists?(event)
       if event.has_closed_registration?

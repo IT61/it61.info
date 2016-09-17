@@ -3,6 +3,10 @@ module UserHelper
     user == current_user
   end
 
+  def is_manager?(user)
+    !user.member?
+  end
+
   def social_account_linked(user, provider)
     if linked user, provider
       "button-linked"

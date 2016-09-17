@@ -6,6 +6,8 @@ class EventsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
   before_action :set_event, only: [:show,
+                                   :edit,
+                                   :update,
                                    :participate,
                                    :leave,
                                    :add_to_google_calendar,
@@ -31,6 +33,15 @@ class EventsController < ApplicationController
   def new
     @event ||= Event.new
     @event.build_place
+  end
+
+  def edit
+
+  end
+
+  def update
+    @event.update(event_params)
+    redirect_to @event
   end
 
   def create
@@ -86,7 +97,7 @@ class EventsController < ApplicationController
     @events = Event.send(scope).published.paginate(page: params[:page], per_page: 6)
     @scope = scope
 
-    view = request.xhr? ? "events/_cards" : "events/index"
+    view = request.xhr? ? "events/cards/_card" : "events/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr? }
     end

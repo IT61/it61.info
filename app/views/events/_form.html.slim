@@ -7,7 +7,8 @@ h1.event-form-card-header = form_header
     = render partial: "events/form/details_section", locals: {f: f, event: event}
   section.description
     = render partial: "events/form/description_section", locals: {f: f, event: event}
-  section.settings
-    = render partial: "events/form/settings_section", locals: {f: f, event: event}
+  - if event.new_record?
+    section.settings
+      = render partial: "events/form/settings_section", locals: {f: f, event: event}
   section.footer
     = render partial: "events/form/footer_section", locals: {f: f, submit_button_text: submit_button_text}

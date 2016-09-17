@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :companies
 
   # Interface for marking participants as visited
-  get "visits/:hash" => "registrations#visits"
+  get "visits/:hash" => "registrations#visits", as: :event_visits
   put "visits/:hash/mark" => "registrations#mark_visit"
 
   resources :events do

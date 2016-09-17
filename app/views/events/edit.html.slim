@@ -2,6 +2,6 @@ main.event-form-container
   .card.event-form-card
     = render partial: "form",
              locals: { event: @event,
-                       submit_url: events_path,
+                       submit_url: event_path(@event),
                        form_header: t(".header"),
-                       submit_button_text: t(".create_event") }
+                       submit_button_text: t(".edit_event") }
