@@ -96,11 +96,11 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.eager_load(:place, :organizer).find(Event.id_from_permalink(params[:id]))
   end
 
   def show_events(scope, all = false)
-    @events = Event.send(scope).paginate(page: params[:page], per_page: 6)
+    @events = Event.send(scope).published.paginate(page: params[:page], per_page: Settings.per_page.events).eager_load(:place)
     @events = @events.published unless all
     @scope = scope
 

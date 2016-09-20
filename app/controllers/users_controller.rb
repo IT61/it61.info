@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   private
 
   def show_users(scope)
-    @users = User.send(scope).paginate(page: params[:page], per_page: 30)
+    @users = User.send(scope).paginate(page: params[:page], per_page: Settings.per_page.users)
     view = request.xhr? ? "shared/users/_list" : "users/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr?, locals: { users: @users } }

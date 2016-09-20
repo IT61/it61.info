@@ -19,3 +19,7 @@ community:
     github: ""
     youtube: ""
     slack: ""
+
+per_page:
+  events: 10
+  users: 90

@@ -11,9 +11,12 @@ module PermalinkFor
     end
 
     module ClassMethods
+      def id_from_permalink(link)
+        link.split("-").last.to_i if link.is_a? String
+      end
+
       def find(id)
-        id = id.split("-").last.to_i if id.is_a? String
-        super id
+        super id_from_permalink(id)
       end
     end
   end
