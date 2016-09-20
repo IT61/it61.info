@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404
-    render page_path("404")
+    render "errors/not_found"
   end
 
   def authenticate_admin!
@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActiveRecord::RecordNotFound do |_exception|
+    render_404
+  end
+
+  rescue_from ActionView::MissingTemplate do |_exception|
     render_404
   end
 end
