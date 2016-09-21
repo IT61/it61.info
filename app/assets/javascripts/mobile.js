@@ -15,13 +15,18 @@ $(document).ready(function () {
     });
   }
 
+  window.truncateTitle = function($title, maxLength) {
+    debugger;
+    if ($title.text().length > maxLength) {
+      var title = $title.text().substr(0, maxLength) + "...";
+      $title.text(title);
+    }
+  };
+
   // Ограничение по длине названия эвента для мобильных девайсов
   // TODO: Переделать с использованием CSS вместо JS
-  $(".events-card h2").each(function () {
-    if ($(this).text().length > 36) {
-      var title = $(this).text().substr(0, 36) + "...";
-      $(this).text(title);
-    }
+  $(".events-card h2").each(function() {
+    truncateTitle($(this), 36);
   });
 
   // Свайпы в мобильной версии карточек эвентов

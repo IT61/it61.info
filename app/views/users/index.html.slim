@@ -23,6 +23,6 @@
     input type="search"
   .users-container
     = render partial: '/shared/users/list', locals: { users: @users }
-  - if !fit_on_one_page?(@users)
-    button.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"]
+  - if !users_fit_on_one_page?(@users)
+    button#users_more.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"]
       = t("load_more")

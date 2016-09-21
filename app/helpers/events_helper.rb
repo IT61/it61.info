@@ -1,5 +1,5 @@
 module EventsHelper
-  def fit_on_one_page?(events)
+  def events_fit_on_one_page?(events)
     events.count <= Settings.per_page.events
   end
 

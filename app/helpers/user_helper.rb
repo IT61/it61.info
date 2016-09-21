@@ -1,5 +1,5 @@
 module UserHelper
-  def fit_on_one_page?(users)
+  def users_fit_on_one_page?(users)
     users.count <= Settings.per_page.users
   end
 
