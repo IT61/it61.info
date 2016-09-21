@@ -1,4 +1,8 @@
 module EventsHelper
+  def fit_on_one_page?(events)
+    events.count <= Settings.per_page.events
+  end
+
   def quoted_title(event)
     ["&laquo;", event.title, "&raquo;"].join
   end
@@ -14,6 +18,7 @@ module EventsHelper
   end
 
   def event_organizer?(event, user)
+    return false if event.blank? || user.blank?
     event.organizer_id == user.id
   end
 
