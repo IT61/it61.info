@@ -308,6 +308,7 @@ ru:
 
     # Events
     event_successfully_created: "Мероприятие успешно создано, но появится в ленте после одобрения администрации."
+    event_successfully_updated: "Мероприятие успешно обновлено!"
     event_successfully_published: "Мероприятие успешно опубликовано!"
     event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
     event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."

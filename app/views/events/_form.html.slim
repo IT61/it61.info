@@ -1,7 +1,7 @@
 h1.event-form-card-header = form_header
 = render partial: "shared/cropper_modal", locals: { picture: event.title_image }
 
-= form_for event, url: submit_url, html: { onsubmit: "onSubmitEventCreate(); return false;", class: "event-form"} do |f|
+= form_for event, url: submit_url, html: { onsubmit: "onSubmitEvent(); return false;", class: "event-form"} do |f|
   section.info-container
     = render partial: "events/form/image_section", locals: {f: f, event: event}
     = render partial: "events/form/details_section", locals: {f: f, event: event}

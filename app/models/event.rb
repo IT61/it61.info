@@ -62,6 +62,10 @@ class Event < ActiveRecord::Base
     registrations.where(user_id: user.id).first_or_initialize
   end
 
+  def set_place(place_params)
+    self.place = Place.first_or_create_place(place_params)
+  end
+
   def past?
     started_at <= DateTime.current
   end
