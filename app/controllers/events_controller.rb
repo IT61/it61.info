@@ -7,7 +7,6 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
   before_action :set_event, only: [:show,
                                    :edit,
-                                   :update,
                                    :participate,
                                    :leave,
                                    :add_to_google_calendar,
@@ -32,6 +31,13 @@ class EventsController < ApplicationController
   end
 
   def show
+    set_meta_tags og: {
+        title: @event.title,
+        description: MarkdownService.render_plain(@event.description),
+        type: "website",
+        url: event_url(@event),
+        image: image_url(@event.title_image)
+    }
   end
 
   def new
@@ -40,16 +46,22 @@ class EventsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    @event.update(event_params)
-    redirect_to @event
+    @event = Event.find(params[:id])
+    @event.assign_attributes(event_params.except(:title_image, :place))
+    @event.set_place(place_params)
+    if @event.save
+      flash[:success] = t("flashes.event_successfully_updated")
+      render json: {success: true, url: event_url(@event)}
+    else
+      render json: {success: false, errors: @event.errors.messages}
+    end
   end
 
   def create
-    @event = current_user.create_event(event_params_for_create, place_params)
+    @event = current_user.create_event(event_params, place_params)
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
@@ -100,7 +112,7 @@ class EventsController < ApplicationController
   end
 
   def show_events(scope, all = false)
-    @events = Event.send(scope).published.paginate(page: params[:page], per_page: Settings.per_page.events).eager_load(:place)
+    @events = Event.send(scope).paginate(page: params[:page], per_page: Settings.per_page.events).eager_load(:place)
     @events = @events.published unless all
     @scope = scope
 
@@ -115,22 +127,16 @@ class EventsController < ApplicationController
     redirect_to path
   end
 
-  def event_params_for_create
-    p = event_params
-    p[:title_image].original_filename << ".png"
-    p
-  end
-
   def event_params
     permitted_attrs = [
-      :title,
-      :description,
-      :title_image,
-      :link,
-      :place_id,
-      :organizer_id,
-      :started_at,
-      :has_closed_registration
+        :title,
+        :description,
+        :title_image,
+        :link,
+        :place_id,
+        :organizer_id,
+        :started_at,
+        :has_closed_registration
     ]
     params.require(:event).permit(*permitted_attrs)
   end

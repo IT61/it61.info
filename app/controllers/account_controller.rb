@@ -48,6 +48,6 @@ class AccountController < ApplicationController
   end
 
   def subscribe_params
-    params.require(:user).permit(:email_reminders, :sms_reminders)
+    params.require(:user).permit(:email_reminders, :sms_reminders, :is_social_profiles_hidden)
   end
 end

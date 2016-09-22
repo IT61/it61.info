@@ -17,6 +17,11 @@ main.container.profile-container
               = f.check_box :sms_reminders
               .checkbox
               span = t(".want_sms_reminders")
+          .notification-input
+            label.switch
+              = f.check_box :is_social_profiles_hidden
+              .checkbox
+              span = t(".want_to_hide_social_profiles")
 
           .edit-profile-bottom-buttons
             button.btn.btn-blue type="submit" = t("save")

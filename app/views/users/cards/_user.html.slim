@@ -2,7 +2,7 @@ section.card.user
   .picture
     = image_tag user.pic
   .details
-    h1.name= user.full_name
+    h1.name = title user.full_name
 
     - user.groups.each do |g|
       .chip = g.title
@@ -15,10 +15,12 @@ section.card.user
     /br
     .bio.text-content
       = simple_format user.bio
-    .social-buttons
-      - provider_buttons_info(@user).each do |_, info|
-        = link_to info[0], class: 'btn', target: '_blank' do
-          i class=info[1].to_s
+    - if !my_profile?(user) && !user.is_social_profiles_hidden
+    - if my_profile?(user) || !user.is_social_profiles_hidden
+      .social-buttons
+        - provider_buttons_info(@user).each do |_, info|
+          = link_to info[0], class: 'btn', target: '_blank' do
+            i class=info[1].to_s
     / should be slack link?
     / = link_to '/hashtag', class: 'btn hashtag' do
         i.fa.fa-hashtag

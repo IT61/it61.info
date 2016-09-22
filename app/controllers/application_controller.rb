@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  include ActionView::Helpers::AssetUrlHelper
+
   def after_sign_in_path_for(_resource_or_scope)
     current_user.fresh? ? sign_up_complete_path : events_path
   end
@@ -15,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404
-    render "errors/not_found"
+    render "errors/not_found", status: :not_found
   end
 
   def authenticate_admin!

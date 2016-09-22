@@ -1,11 +1,5 @@
-<%
-  environment.context_class.instance_eval do
-    include Rails.application.routes.url_helpers
-  end
-%>
-
-var newEventManager = {
-  initEditor: function() {
+var eventManager = {
+  initEditor: function () {
     var editorElem = document.getElementById('editor');
     if (editorElem) {
       var editor = new SimpleMDE({
@@ -17,13 +11,13 @@ var newEventManager = {
     }
   },
 
-  initCropper: function() {
-    var $form = $('form#new_event'),
-      $imageInput = $('#imageInput'),
-      $currentImage = $('#image'),
-      $modal = $('#croppedModal'),
-      $croppedModalImage = $('#croppedModalImage'),
-      $saveImageBtn = $('#uploadImage');
+  initCropper: function () {
+    var $form = $('.event-form'),
+        $imageInput = $('#imageInput'),
+        $currentImage = $('#image'),
+        $modal = $('#croppedModal'),
+        $croppedModalImage = $('#croppedModalImage'),
+        $saveImageBtn = $('#uploadImage');
 
     if (!$form || !$form.length) {
       return;
@@ -42,13 +36,13 @@ var newEventManager = {
     });
   },
 
-  uploadFormWithImageBlob: function(form, canvas) {
+  sendFormWithImageBlob: function (form, canvas) {
     canvas.toBlob(function (blob) {
       var formData = new FormData(form);
-      formData.append('event[title_image]', blob);
+      formData.append('event[title_image]', blob, "blob.png");
       var request = new XMLHttpRequest();
-      request.open("POST", <%= "'#{events_path(@event)}'" %>);
-      request.onload = function() {
+      request.open(form.method, form.action);
+      request.onload = function () {
         response = JSON.parse(request.response);
 
         if (response.success) {
