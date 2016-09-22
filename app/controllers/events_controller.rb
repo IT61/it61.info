@@ -31,6 +31,13 @@ class EventsController < ApplicationController
   end
 
   def show
+    set_meta_tags og: {
+        title: @event.title,
+        description: MarkdownService.render_plain(@event.description),
+        type: "website",
+        url: event_url(@event),
+        image: image_url(@event.title_image)
+    }
   end
 
   def new
