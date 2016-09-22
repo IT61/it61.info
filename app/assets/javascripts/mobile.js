@@ -16,7 +16,6 @@ $(document).ready(function () {
   }
 
   window.truncateTitle = function($title, maxLength) {
-    debugger;
     if ($title.text().length > maxLength) {
       var title = $title.text().substr(0, maxLength) + "...";
       $title.text(title);
