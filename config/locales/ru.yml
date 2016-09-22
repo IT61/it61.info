@@ -101,6 +101,7 @@ ru:
   events:
     upcoming: "Ближайшие меропрития"
     past: "Прошедшие меропрития"
+    unpublished: "Неопубликованные меропрития"
     index:
       unpublished: "Неопубликованные"
       upcoming: "Ближайшие"

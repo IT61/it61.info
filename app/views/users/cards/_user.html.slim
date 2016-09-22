@@ -2,7 +2,7 @@ section.card.user
   .picture
     = image_tag user.pic
   .details
-    h1.name= user.full_name
+    h1.name = title user.full_name
 
     - user.groups.each do |g|
       .chip = g.title

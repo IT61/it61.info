@@ -5,8 +5,7 @@ html lang="ru"
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
     /TODO: Добавить fb:app для корректного шаринга в facebook
     /TODO: Проставлять в тег og:title динамический тайтл
-    meta property="og:title" content="IT61"
-    title = page_title
+    = display_meta_tags site: Settings.community.title, reverse: true, separator: raw("&ndash;")
     = stylesheet_link_tag :application, media: "all"
     = csrf_meta_tags
   body
