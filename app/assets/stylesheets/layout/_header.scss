@@ -35,10 +35,10 @@
   .logo {
     display: inline-block;
     vertical-align: bottom;
-    background: image_url("logo-small.svg") no-repeat;
+    background: image_url("logo-white.svg") no-repeat;
     background-size: cover;
-    width: 32px;
-    height: 32px;
+    width: 33px;
+    height: 33px;
 
     @include media($tablet-screen-max) {
       display: none;
@@ -76,7 +76,7 @@
 
   &-menu {
     display: inline-block;
-    vertical-align: text-bottom;
+    vertical-align: super;
     @include media($tablet-screen-max) {
       display: none;
     }
