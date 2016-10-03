@@ -116,7 +116,6 @@ ru:
       postrelease: "Пострелиз"
     participations:
       participate: "Я пойду!"
-      register: "Зарегистрироваться"
       revoke_participation: "Отменить заявку"
       participated: "Я участвовал"
     new:
