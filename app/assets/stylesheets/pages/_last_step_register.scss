@@ -89,11 +89,11 @@
       padding-right: 0;
 
       &-long {
-        @include curve-association(99px);
+        @include curve-association(107px);
       }
 
       &-short {
-        @include curve-association(40px);
+        @include curve-association(44px);
       }
     }
 
