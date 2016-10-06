@@ -1,20 +1,8 @@
-class RegistrationsController < ApplicationController
-  before_action :set_event, except: [:visits, :mark_visit]
+class Events::RegistrationsController < ApplicationController
+  before_action :set_event
 
   def index
     @participants = @event.registrations
-  end
-
-  def visits
-    @event = Event.find_by_secret_word(params[:hash])
-    @participants
-  end
-
-  def mark_visit
-    @event = Event.find_by_secret_word(params[:hash])
-    p = @event.participation_for(User.find(params[:user_id]))
-    p.visited = params[:visited]
-    p.save
   end
 
   def new
@@ -47,6 +35,6 @@ class RegistrationsController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.eager_load(:place, :organizer).find(Event.id_from_permalink(params[:id]))
   end
 end

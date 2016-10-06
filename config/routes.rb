@@ -1,53 +1,53 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth" }
 
   devise_scope :user do
-    get "sign_in" => "account#sign_in"
-    get "sign_out" => "devise/sessions#destroy"
+    get "sign_in", to: "users/profile#sign_in"
+    get "sign_out", to: "devise/sessions#destroy"
   end
 
   # Static pages
   %w(welcome sponsorship slack).each do |page_name|
-    get page_name => "pages##{page_name}"
+    get page_name, to: "pages##{page_name}"
   end
 
-  get "sign_up/complete" => "account#sign_up_complete"
-  get "profile" => "account#profile"
+  get "sign_up/complete", to: "users/profile#sign_up_complete"
+  get "profile", to: "users/profile#profile"
 
   scope "profile" do
-    get   "edit" => "account#edit", as: :edit_profile
-    get   "settings" => "account#settings", as: :profile_settings
-    patch "settings_update" => "account#settings_update"
+    get   "edit", to: "users/profile#edit", as: :edit_profile
+    get   "settings", to:  "users/profile#settings", as: :profile_settings
+    patch "settings_update", to: "users/profile#settings_update"
   end
 
   resources :companies
 
-  # Interface for marking participants as visited
-  get "visits/:hash" => "registrations#visits", as: :event_visits
-  put "visits/:hash/mark" => "registrations#mark_visit"
-
   resources :events do
     collection do
-      get "/upcoming" => "events#upcoming"
-      get "/past" => "events#past"
-      get "/unpublished" => "events#unpublished"
+      get "/upcoming", to: "events#upcoming"
+      get "/past", to: "events#past"
+      get "/unpublished", to: "events#unpublished"
     end
 
     member do
+      # Events visits
+      get "visits/:hash", to: "events/visits#index", as: :visits_for
+      put "visits/:hash/mark", to: "events/visits#mark"
+
       # Use it for registration to opened events:
-      get "participate" => "events#participate"
+      get "participate", to: "events/participations#participate"
 
       # Use it for registration to closed events:
-      get "registrations" => "registrations#index", as: "registrations_for"
-      get "register" => "registrations#new", as: "register_to"
-      post "register" => "registrations#create", as: "create_register_to"
+      get "registrations", to: "events/registrations#index", as: :registrations_for
+      get "register", to: "events/registrations#new", as: :register_to
+      post "register", to: "events/registrations#create", as: :create_register_to
 
       # Use it for revoke user registration of any type
-      get "leave", to: "events#leave"
+      get "leave", to: "events/participations#leave"
 
       # Calendars integration
-      post "add_to_google_calendar"
-      get "download_ics_file"
+      post "add_to_google_calendar", to: "events/integrations#add_to_google_calendar"
+      get "download_ics_file", to: "events/integrations#download_ics_file"
 
       put "publish"
     end
@@ -55,8 +55,8 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
-      get "/active" => "users#active"
-      get "/recent" => "users#recent"
+      get "/active", to: "users#active"
+      get "/recent", to: "users#recent"
     end
     resource :avatars, only: [:create, :destroy], controller: "users/avatars"
   end
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   resources :photos, only: [:index]
 
   resources :places, only: [:index] do
-    get "/find" => "places#find", on: :collection
+    get "/find", to: "places#find", on: :collection
   end
 
   namespace "admin" do
@@ -73,8 +73,4 @@ Rails.application.routes.draw do
     resources :places, controller: "places"
     resources :events, controller: "events"
   end
-
-  # Errors
-  match "/404", to: "errors#not_found", via: :all
-  match "/500", to: "errors#internal_server_error", via: :all
 end

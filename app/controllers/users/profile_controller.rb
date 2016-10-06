@@ -1,4 +1,4 @@
-class AccountController < ApplicationController
+class Users::ProfileController < ApplicationController
   before_action :authenticate_user!, except: [:sign_in]
   before_action :set_user, only: [:profile, :settings, :edit]
 
@@ -14,13 +14,6 @@ class AccountController < ApplicationController
   end
 
   def settings
-  end
-
-  def edit
-    render "users/edit"
-  end
-
-  def update
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -39,6 +32,13 @@ class AccountController < ApplicationController
       end
       render "settings"
     end
+  end
+
+  def edit
+    render "users/edit"
+  end
+
+  def update
   end
 
   private

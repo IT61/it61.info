@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |_exception|
-    render_404
+    Rails.env == "development" ? render_403 : render_404
   end
 
   rescue_from ActiveRecord::RecordNotFound do |_exception|
