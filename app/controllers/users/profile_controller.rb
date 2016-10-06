@@ -1,6 +1,6 @@
 class Users::ProfileController < ApplicationController
   before_action :authenticate_user!, except: [:sign_in]
-  before_action :set_user, only: [:profile, :settings, :edit]
+  before_action :set_user, only: [:profile, :settings, :settings_update, :edit]
 
   def sign_in
   end
