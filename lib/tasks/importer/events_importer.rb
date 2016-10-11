@@ -3,7 +3,7 @@ module EventsImporter
 
   FIELDS_TO_SKIP = [
     "published_to_google_calendar",
-    "google_calendar_id"
+    "google_calendar_id",
   ].freeze
 
   def import_events
@@ -20,12 +20,11 @@ module EventsImporter
       # for events we save all fields as is
       event = Event.new
       row.fields.each do |f|
-
         next if FIELDS_TO_SKIP.include?(f)
 
         if f === "place"
           # set the correct Place
-          suggested_places = Geocoder.search(row.get('place'), params: { countrycodes: "ru" })
+          suggested_places = Geocoder.search(row.get("place"), params: { countrycodes: "ru" })
           suggested_places.each do |suggested_place|
             place = Place.find_by(latitude: suggested_place.latitude, longitude: suggested_place.longitude)
             event.place = place if place.present?

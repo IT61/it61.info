@@ -1,6 +1,5 @@
 class IcsService
   class << self
-
     # rubocop:disable Metrics/AbcSize
     def to_ics_calendar(event, event_url)
       calendar = Icalendar::Calendar.new
@@ -24,7 +23,7 @@ class IcsService
     def file_options_for(event)
       {
         filename: filename(event),
-        type: ics_type
+        type: ics_type,
       }
     end
 
@@ -40,7 +39,7 @@ class IcsService
     end
 
     def sanitize_filename(filename)
-      filename.gsub(/[^0-9A-zа-яА-Я.\-]/, '_')
+      filename.gsub(/[^0-9A-zа-яА-Я.\-]/, "_")
     end
   end
 end

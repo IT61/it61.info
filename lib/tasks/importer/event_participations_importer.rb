@@ -11,7 +11,8 @@ module EventParticipationsImporter
 
       event_participation = EventParticipation.new(
         event_id: row.get("event_id"),
-        user_id: row.get("user_id"))
+        user_id: row.get("user_id")
+      )
 
       begin
         event_participation.save!

@@ -35,7 +35,7 @@ module PermalinkFor
 
       attempts_number = 100
       attempts = attempts_number
-      while attempts > 0 && generated_permalink.nil?
+      while attempts.positive? && generated_permalink.nil?
         if self.class.find_by(permalink: permalink_candidate)
           attempts -= 1
           permalink_candidate = permalink_base + (attempts_number - attempts).to_s
@@ -50,7 +50,7 @@ module PermalinkFor
 
     module ClassMethods
       def find(id)
-        if id.is_a?(Array) || id.is_a?(Fixnum) || (id.is_a?(String) && id[/^\d+$/])
+        if id.is_a?(Array) || id.is_a?(Integer) || (id.is_a?(String) && id[/^\d+$/])
           super
         else
           find_by!(permalink: id.to_s.downcase)
