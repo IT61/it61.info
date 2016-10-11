@@ -21,30 +21,30 @@ module UserHelper
 
   def all_providers
     {
-        facebook: {
-            name: t("socials.facebook"),
-            class: "fa fa-facebook",
-            buttonclass: "btn btn-fb",
-            link: "/users/auth/facebook",
-        },
-        google_oauth2: {
-            name: t("socials.google_plus"),
-            class: "fa fa-google-plus",
-            buttonclass: "btn btn-google",
-            link: "/users/auth/google_oauth2",
-        },
-        vkontakte: {
-            name: t("socials.vk"),
-            class: "fa fa-vk",
-            buttonclass: "btn btn-vk",
-            link: "/users/auth/vkontakte",
-        },
-        github: {
-            name: t("socials.github"),
-            class: "fa fa-github",
-            buttonclass: "btn btn-github",
-            link: "/users/auth/github",
-        },
+      facebook: {
+        name: t("socials.facebook"),
+        class: "fa fa-facebook",
+        buttonclass: "btn btn-fb",
+        link: "/users/auth/facebook",
+      },
+      google_oauth2: {
+        name: t("socials.google_plus"),
+        class: "fa fa-google-plus",
+        buttonclass: "btn btn-google",
+        link: "/users/auth/google_oauth2",
+      },
+      vkontakte: {
+        name: t("socials.vk"),
+        class: "fa fa-vk",
+        buttonclass: "btn btn-vk",
+        link: "/users/auth/vkontakte",
+      },
+      github: {
+        name: t("socials.github"),
+        class: "fa fa-github",
+        buttonclass: "btn btn-github",
+        link: "/users/auth/github",
+      },
     }
   end
 

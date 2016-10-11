@@ -7,12 +7,12 @@
   h3.title Регистрация участников
   h5.tip Поделитесь ссылкой на эту страницу с тем, кто будет регистрировать участников мероприятия.
 
-  = render partial: "registrations/registrations_partial", locals: {id: "registered",
+  = render partial: "events/visits/participants", locals: {id: "registered",
           title: "Не пришли",
           participants: @event.participants.non_visited,
           checked: false}
 
-  = render partial: "registrations/registrations_partial", locals: {id: "visited",
+  = render partial: "events/visits/participants", locals: {id: "visited",
           title: "Пришли",
           participants: @event.participants.visited,
           checked: true}

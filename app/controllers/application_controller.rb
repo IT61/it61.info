@@ -29,14 +29,17 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |_exception|
+    throw exception if Rails.env === "development"
     render_404
   end
 
   rescue_from ActiveRecord::RecordNotFound do |_exception|
+    throw exception if Rails.env === "development"
     render_404
   end
 
   rescue_from ActionView::MissingTemplate do |_exception|
+    throw exception if Rails.env === "development"
     render_404
   end
 end

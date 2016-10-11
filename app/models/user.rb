@@ -6,7 +6,7 @@ class User < ApplicationRecord
   enum role: {
     member: 0,
     admin: 1,
-    moderator: 2
+    moderator: 2,
   }
 
   # Devise modules
@@ -14,10 +14,10 @@ class User < ApplicationRecord
          omniauth_providers: [:github, :facebook, :google_oauth2, :vkontakte]
 
   has_many :social_accounts
-  has_many :owner_of_events, class_name: "Event", foreign_key: "organizer_id"
+  has_many :owner_of_events, -> { published }, class_name: "Event", foreign_key: "organizer_id"
+  has_many :member_in_events, -> { published }, class_name: "Event", through: :event_participations, source: :event
   has_many :event_participations, dependent: :destroy
   has_many :registrations, dependent: :destroy
-  has_many :member_in_events, class_name: "Event", through: :event_participations, source: :event
   has_and_belongs_to_many :groups
 
   phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
@@ -40,6 +40,7 @@ class User < ApplicationRecord
   scope :with_email, -> { where.not(email: nil) }
   scope :active, -> { order(last_sign_in_at: :desc) }
   scope :recent, -> { order(created_at: :desc) }
+  scope :with_name, -> { where("(first_name is not null and last_name is not null) or name is not null") }
 
   def self.from_omniauth(auth)
     User.where(email: auth.info.email).first_or_create do |u|

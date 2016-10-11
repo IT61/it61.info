@@ -8,6 +8,6 @@ ul.dropdown-content id="event-menu-#{event.id}"
         i.fa.fa-pencil
         | Редактировать
   li
-    = link_to event_visits_path(event.secret_word) do
+    = link_to visits_for_event_path(event, event.secret_word) do
       i.fa.fa-check-circle-o
       | Регистрация участников

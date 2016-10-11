@@ -4,8 +4,6 @@ class Event < ActiveRecord::Base
 
   mount_uploader :title_image, ImageUploader
 
-  enum registration_type: { opened: 0, closed: 1, paywalled: 2 }
-
   belongs_to :organizer, class_name: "User"
 
   has_many :event_participations, dependent: :destroy
@@ -51,7 +49,7 @@ class Event < ActiveRecord::Base
   end
 
   def able_to_participate?
-    opened? || past?
+    !has_closed_registration? || past?
   end
 
   def participation_for(user)

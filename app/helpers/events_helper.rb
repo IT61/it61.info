@@ -45,8 +45,8 @@ module EventsHelper
 
   def to_yandex_location(place)
     {
-        addressLine: place.full_address,
-        coordinates: [place.latitude, place.longitude]
+      addressLine: place.full_address,
+      coordinates: [place.latitude, place.longitude],
     }.to_json
   end
 end
