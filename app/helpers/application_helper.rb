@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def markdown(text)
     # rubocop:disable Rails/OutputSafety
     raw(MarkdownService.render_markdown(text))

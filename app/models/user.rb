@@ -6,7 +6,7 @@ class User < ApplicationRecord
   enum role: {
     member: 0,
     admin: 1,
-    moderator: 2
+    moderator: 2,
   }
 
   # Devise modules

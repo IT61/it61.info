@@ -29,11 +29,11 @@ class EventsController < ApplicationController
 
   def show
     set_meta_tags og: {
-        title: @event.title,
-        description: MarkdownService.render_plain(@event.description),
-        type: "website",
-        url: event_url(@event),
-        image: image_url(@event.title_image)
+      title: @event.title,
+      description: MarkdownService.render_plain(@event.description),
+      type: "website",
+      url: event_url(@event),
+      image: image_url(@event.title_image),
     }
   end
 
@@ -47,9 +47,9 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:success] = t("flashes.event_successfully_created")
-      render json: {success: true, url: event_url(@event)}
+      render json: { success: true, url: event_url(@event) }
     else
-      render json: {success: false, errors: @event.errors.messages}
+      render json: { success: false, errors: @event.errors.messages }
     end
   end
 
@@ -62,9 +62,9 @@ class EventsController < ApplicationController
     @event.set_place(place_params)
     if @event.save
       flash[:success] = t("flashes.event_successfully_updated")
-      render json: {success: true, url: event_url(@event)}
+      render json: { success: true, url: event_url(@event) }
     else
-      render json: {success: false, errors: @event.errors.messages}
+      render json: { success: false, errors: @event.errors.messages }
     end
   end
 
@@ -77,6 +77,17 @@ class EventsController < ApplicationController
 
   private
 
+  def show_events(scope, include_unpublished = false)
+    @events = Event.send(scope).paginate(page: params[:page], per_page: Settings.per_page.events).eager_load(:place)
+    @events = @events.published unless include_unpublished
+    @scope = scope
+
+    view = request.xhr? ? "events/cards/_card" : "events/index"
+    respond_with @events do |f|
+      f.html { render view, layout: !request.xhr? }
+    end
+  end
+
   def set_event
     @event = Event.eager_load(:place, :organizer).find(Event.id_from_permalink(params[:id]))
   end
@@ -88,14 +99,14 @@ class EventsController < ApplicationController
 
   def event_params
     permitted_attrs = [
-        :title,
-        :description,
-        :title_image,
-        :link,
-        :place_id,
-        :organizer_id,
-        :started_at,
-        :has_closed_registration
+      :title,
+      :description,
+      :title_image,
+      :link,
+      :place_id,
+      :organizer_id,
+      :started_at,
+      :has_closed_registration,
     ]
     params.require(:event).permit(*permitted_attrs)
   end

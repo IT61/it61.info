@@ -5,5 +5,4 @@ class Registration < ActiveRecord::Base
   enum confidence: { not_sure: 0, sure: 1 }
 
   validates_presence_of :profession, :reason, :user, :event
-
 end

@@ -12,7 +12,7 @@ class Place < ApplicationRecord
       title: place_params[:title],
       address: place_params[:address],
       latitude: place_params[:latitude],
-      longitude: place_params[:longitude])
-        .first_or_create(place_params)
+      longitude: place_params[:longitude]
+    ).first_or_create(place_params)
   end
 end
