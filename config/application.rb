@@ -1,14 +1,9 @@
-# frozen_string_literal: true
 require_relative "boot"
 
 require "rails/all"
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
+
+require_relative "../lib/rails_routes_reloader"
+
 Bundler.require(*Rails.groups)
 module It61
   class Application < Rails::Application
