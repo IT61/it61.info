@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'whenever'
-gem 'google-api-client'
+gem 'google-api-client', '~> 0.8.7'
 gem 'sinatra', require: false
 gem 'phony_rails'
 gem 'dotenv-rails'
