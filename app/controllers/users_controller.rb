@@ -67,6 +67,6 @@ class UsersController < ApplicationController
       :bio,
     ]
 
-    params.require(:user).permit *user_attributes
+    params.require(:user).permit(*user_attributes)
   end
 end
