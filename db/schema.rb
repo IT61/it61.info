@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920113635) do
+ActiveRecord::Schema.define(version: 20161011114921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20160920113635) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "title"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,18 +68,6 @@ ActiveRecord::Schema.define(version: 20160920113635) do
     t.index ["user_id"], name: "index_groups_users_on_user_id", using: :btree
   end
 
-  create_table "participant_entry_forms", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "event_id",    null: false
-    t.text     "reason",      null: false
-    t.string   "profession",  null: false
-    t.text     "suggestions"
-    t.integer  "confidence",  null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id", "event_id"], name: "index_participant_entry_forms_on_user_id_and_event_id", unique: true, using: :btree
-  end
-
   create_table "places", force: :cascade do |t|
     t.string   "title",      null: false
     t.string   "address",    null: false
@@ -88,7 +76,6 @@ ActiveRecord::Schema.define(version: 20160920113635) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_places_on_address", using: :btree
-    t.index ["title", "address", "latitude", "longitude"], name: "index_places_on_title_and_address_and_latitude_and_longitude", unique: true, using: :btree
     t.index ["title"], name: "index_places_on_title", using: :btree
   end
 
