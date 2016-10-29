@@ -1,14 +1,25 @@
-h1.event-form-card-header = form_header
-= render partial: "shared/cropper_modal", locals: { picture: event.title_image }
+h1.event-form-card-header TODO
+= render partial: "shared/cropper_modal", locals: { picture: @event.title_image }
 
-= form_for event, url: submit_url, html: { onsubmit: "onSubmitEvent(); return false;", class: "event-form"} do |f|
+= form_for @event, html: { onsubmit: "onSubmitEvent(); return false;", class: "event-form"} do |f|
   section.info-container
-    = render partial: "events/form/image_section", locals: {f: f, event: event}
-    = render partial: "events/form/details_section", locals: {f: f, event: event}
+    .image-container
+      = f.label :title_image, t(".title_image"), class: "required"
+      - if @event.title_image?
+        #image.no-image-selected
+          .message = t(".no_file_label")
+        .file_upload#imageInputContainer
+          label.btn.btn-blue
+            input#imageInput type="file" name="imageInput" accept="image/*"
+            = t(".choose_file_btn")
+      - else
+        = image_tag @event.title_image, id: "image", default_img_src: asset_path("user_default.png")
+
+    = render partial: "events/form/details", locals: { f: f }
   section.description
-    = render partial: "events/form/description_section", locals: {f: f, event: event}
-  - if event.new_record?
+    = render partial: "events/form/description", locals: { f: f }
+  - if @event.new_record?
     section.settings
-      = render partial: "events/form/settings_section", locals: {f: f, event: event}
+      = render partial: "events/form/settings", locals: { f: f }
   section.footer
-    = render partial: "events/form/footer_section", locals: {f: f, submit_button_text: submit_button_text}
+    = render partial: "events/form/footer", locals: { f: f }

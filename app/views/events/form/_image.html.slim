@@ -1,11 +1,11 @@
 .image-container
   = f.label :title_image, t(".title_image"), class: "required"
-  - unless event.title_image.blank?
-    = image_tag event.title_image, id: "image", default_img_src: asset_path("user_default.png")
-  - else
+  - if event.title_image?
     #image.no-image-selected
       .message = t(".no_file_label")
     .file_upload#imageInputContainer
       label.btn.btn-blue
         input#imageInput type="file" name="imageInput" accept="image/*"
         = t(".choose_file_btn")
+  - else
+    = image_tag event.title_image, id: "image", default_img_src: asset_path("user_default.png")

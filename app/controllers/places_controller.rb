@@ -1,6 +1,9 @@
 class PlacesController < ApplicationController
+  respond_to :json
+
   def index
-    render json: Place.all
+    @places = Place.all
+    respond_with(@places)
   end
 
   def find

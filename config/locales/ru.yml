@@ -136,14 +136,13 @@ ru:
       header: "Редактирование мероприятия"
       edit_event: "Редактировать мероприятие"
     form:
-      image_section:
-        title_image: "Изображение"
-        recommendations: "Рекомендуется использовать изображение размером 500x500 px в формате .jpg или .png"
-        no_file_label: "Файл не выбран"
-        choose_file_btn: "Выберите файл"
-      description_section:
+      title_image: "Изображение"
+      recommendations: "Рекомендуется использовать изображение размером 500x500 px в формате .jpg или .png"
+      no_file_label: "Файл не выбран"
+      choose_file_btn: "Выберите файл"
+      description:
         description: "Описание"
-      details_section:
+      details:
         title: "Название"
         time: "Время начала"
         date: "Дата начала"
@@ -152,7 +151,7 @@ ru:
         address: "Точный адрес"
         show_map_btn: "Посмотреть на карте"
         map: "Карта"
-      footer_section:
+      footer:
         create: "Создать мероприятие"
     stubs:
       create_event: "Создайте мероприятие"

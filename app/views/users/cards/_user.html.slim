@@ -18,7 +18,7 @@ section.card.user
     - if !my_profile?(user) && !user.is_social_profiles_hidden
     - if my_profile?(user) || !user.is_social_profiles_hidden
       .social-buttons
-        - provider_buttons_info(@user).each do |_, info|
+        - provider_buttons_info(user).each do |_, info|
           = link_to info[0], class: 'btn', target: '_blank' do
             i class=info[1].to_s
     / should be slack link?

@@ -25,7 +25,11 @@ module Events
     private
 
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.find(event_params[:id])
+    end
+
+    def event_params
+      params.require(:event).permit(:id)
     end
   end
 end

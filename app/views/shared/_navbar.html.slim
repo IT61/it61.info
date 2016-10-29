@@ -1,7 +1,7 @@
 header.navbar.navbar-blue
   .navbar-wrapper
     i.fa.fa-bars.hamburger.open-sidebar
-    a href="/"
+    = link_to root_path do
       .logo
     .pull-right
       - if current_user.nil?

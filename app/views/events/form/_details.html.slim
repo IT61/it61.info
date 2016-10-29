@@ -20,13 +20,13 @@
 
   .event-association-field
     .input-float-label
-      = text_field_tag "place[title]", event.place.nil? ? "" : event.place.title, { id: "place_title",
+      = text_field_tag "place[title]", @event.place_title, { id: "place_title",
               class: "autocomplete-input", autocomplete: "off", required: true }
       label = t(".place")
 
   .event-association-field
     .input-float-label
-      input#location.autocomplete-input type="text" autocomplete="off" required="true" value=(event.place.nil? ? "" : event.place.address)
+      input#location.autocomplete-input type="text" autocomplete="off" required="true" value=(@event.place_address)
       label = t(".address")
 
   .modal
@@ -40,6 +40,6 @@
             h2 = t(".map")
           #map
         .btn.modal-close for="modal-1" = t("modal.close")
-      = text_field_tag "place[address]", event.place.nil? ? "" :  event.place.address, class: "unchangeable-input", required: true, type: "hidden"
-      = text_field_tag "place[latitude]", event.place.nil? ? "" : event.place.latitude, class: "unchangeable-input", required: true, type: "hidden"
-      = text_field_tag "place[longitude]",  event.place.nil? ? "" : event.place.longitude, class: "unchangeable-input", required: true, type: "hidden"
+      = text_field_tag "place[address]", @event.place_address, class: "unchangeable-input", required: true, type: "hidden"
+      = text_field_tag "place[latitude]", @event.place_latitude, class: "unchangeable-input", required: true, type: "hidden"
+      = text_field_tag "place[longitude]",  @event.place_longitude, class: "unchangeable-input", required: true, type: "hidden"

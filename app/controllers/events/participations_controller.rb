@@ -1,6 +1,6 @@
 module Events
-  class ParticipationsController < ApplicationControlle
-    before_action :set_event, only: [:participate, :leave]
+  class ParticipationsController < ApplicationController
+    before_action :set_event
 
     def participate
       @event.new_participant!(current_user) if @event.able_to_participate?
@@ -16,7 +16,11 @@ module Events
     private
 
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.find(event_params[:id])
+    end
+
+    def event_params
+      params.require(:event).permit(:id)
     end
   end
 end

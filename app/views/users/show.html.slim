@@ -1,22 +1,22 @@
 .content-background
 main.profile-container
   .inner-container
-    
+
     - if my_profile? @user
       h1.my-profile = t("pages.my_profile")
-      
+
     = render partial: '/users/cards/user', locals: { user: @user }
-    
+
     - if @user.has_events? or my_profile?(@user)
       = render partial: '/users/cards/events', locals: { user: @user,
         header: t(".organizer"), events: @user.owner_of_events,
         no_events_message: t(".no_organized_events"),
         footer_button_text: t("events.new.create_event"),
         footer_button_link: new_event_path }
-        
+
       = render partial: '/users/cards/events', locals: { user: @user,
         header: t(".participant"),
-        events: @user.member_in_events, 
+        events: @user.member_in_events,
         no_events_message: t(".no_participations"),
         footer_button_text: t("events.upcoming"),
         footer_button_link: upcoming_events_path  }

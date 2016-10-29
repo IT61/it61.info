@@ -1,5 +1,5 @@
-- @events.each do |event|
+- events.each do |event|
   .card.events-card
     - if is_manager?(current_user) || event_organizer?(event, current_user)
-      = render partial: 'events/cards/menu', locals: {event: event}
-    = render partial: 'events/cards/content', locals: {event: event}
+      = render partial: 'events/cards/menu', locals: { event: event }
+    = render partial: 'events/cards/content', locals: { event: event }

@@ -32,11 +32,18 @@ module Events
     end
 
     def registration_params
-      params.require(:entry_form).permit("reason", "profession", "suggestions", "confidence")
+      attributes = [
+        :event_id,
+        :reason,
+        :profession,
+        :suggestions,
+        :confidence,
+      ]
+      params.require(:entry_form).permit(*attributes)
     end
 
     def set_event
-      @event = Event.eager_load(:place, :organizer).find(Event.id_from_permalink(params[:id]))
+      @event = Event.id_from_permalink(registration_params[:event_id])
     end
   end
 end
