@@ -48,10 +48,9 @@ $(document).ready(function () {
         visited: checkbox.checked
       },
       success: function() {
-        if(!checkbox.checked) {
+        if (!checkbox.checked) {
           moveItemToList($participant.parent(), visitedList, registeredList);
-        }
-        else {
+        } else {
           moveItemToList($participant.parent(), registeredList, visitedList);
         }
         $registeredCounter.text(registeredList.size());
