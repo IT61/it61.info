@@ -2,8 +2,6 @@ require_relative "boot"
 
 require "rails/all"
 
-require_relative "../lib/rails_routes_reloader"
-
 Bundler.require(*Rails.groups)
 module It61
   class Application < Rails::Application
