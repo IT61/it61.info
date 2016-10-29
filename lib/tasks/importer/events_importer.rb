@@ -36,7 +36,7 @@ module EventsImporter
 
       begin
         event.save!
-      rescue Exception => e
+      rescue => e
         puts "Failed to save [#{event.id}] #{event.title}: #{e.message} because of: #{event.errors.full_messages.join(', ')}"
       end
     end

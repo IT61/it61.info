@@ -36,7 +36,7 @@ module UsersImporter
 
       begin
         user.save!
-      rescue Exception => e
+      rescue => e
         puts "Failed to save [#{user.id}] #{user.full_name}: #{e.message} because of: #{user.errors.full_messages.join(', ')}"
       end
     end

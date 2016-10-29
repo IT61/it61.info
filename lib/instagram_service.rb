@@ -1,10 +1,9 @@
-# frozen_string_literal: true
 require "nokogiri"
 require "json"
 
 class InstagramService
-  OPENING_WITH_HTML = "<script type=\"text/javascript\">window._sharedData = "
-  CLOSING_WITH_HTML = ";</script>"
+  OPENING_WITH_HTML = "<script type=\"text/javascript\">window._sharedData = ".freeze
+  CLOSING_WITH_HTML = ";</script>".freeze
 
   def self.instance
     @__instance__ ||= new

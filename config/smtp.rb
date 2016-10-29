@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 SMTP_SETTINGS = {
   address: ENV.fetch("SMTP_ADDRESS"), # example: "smtp.sendgrid.net"
   authentication: :plain,

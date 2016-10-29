@@ -21,7 +21,7 @@ module SocialAccountsImporter
 
       begin
         social_account.save!
-      rescue Exception => e
+      rescue => e
         puts "Failed to save #{social_account.uid} for #{social_account.user_id}: #{e.message} because of: #{social_account.errors.full_messages.join(', ')}"
       end
     end
