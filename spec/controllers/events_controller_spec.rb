@@ -2,17 +2,9 @@ require "rails_helper"
 
 describe EventsController do
   describe "valid route table" do
-    it "get /index redirects" do
+    it "get /index shows the events list" do
       get :index
-      expect(response.status).to eq(302)
-    end
-  end
-
-  describe "published events" do
-    it "can view" do
-      get :upcoming
-
-      expect(response.content_type).to eq "text/html"
+      expect(response.status).to eq(200)
       expect(response).to render_template(:index)
     end
   end
@@ -24,13 +16,13 @@ describe EventsController do
       context "with valid attributes" do
         let(:event_attributes) { attributes_for_with_foreign_keys(:event) }
 
-        xit "creates a new event" do
+        it "creates a new event" do
           expect {
             post :create, params: { event: event_attributes }
           }.to change(Event, :count).by(1)
         end
 
-        xit "redirects to the created event" do
+        it "redirects to the created event" do
           post :create, params: { event: event_attributes }
           expect(response).to redirect_to Event.last
         end
@@ -39,13 +31,13 @@ describe EventsController do
       context "with invalid attributes" do
         let(:event_attributes) { attributes_for_with_foreign_keys(:event, title: nil) }
 
-        xit "does not save the new event" do
+        it "does not save the new event" do
           expect {
             post :create, params: { event: event_attributes }
           }.to_not change(Event, :count)
         end
 
-        xit "re-renders the .new method" do
+        it "re-renders the .new method" do
           post :create, params: { event: event_attributes }
           expect(response).to render_template :new
         end

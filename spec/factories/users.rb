@@ -1,14 +1,18 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:organizer] do
     email { Forgery(:internet).email_address }
     first_name { Forgery(:name).first_name }
     last_name { Forgery(:name).last_name }
 
-    factory :admin do
+    trait :admin do
       role :admin
     end
 
-    factory :oauth_user do
+    trait :moderator do
+      role :moderator
+    end
+
+    trait :oauth_user do
       name { Forgery::Name.full_name }
       authentications { build_list :authentication, 1 }
     end

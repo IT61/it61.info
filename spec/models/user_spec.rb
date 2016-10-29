@@ -36,7 +36,6 @@ RSpec.describe User, type: :model do
       it { expect(user).to respond_to(:remember_me) }
       it { expect(user).to respond_to(:event_participations) }
       it { expect(user).to respond_to(:subscribe!) }
-      it { expect(user).to respond_to(:fresh?) }
       it { expect(user).to respond_to(:has_events?) }
     end
 
@@ -65,6 +64,51 @@ RSpec.describe User, type: :model do
           end
         end
       end
+    end
+  end
+
+  describe "abilities" do
+    subject(:ability) { Ability.new(user) }
+    let!(:user) { nil }
+    let!(:event) { create(:event) }
+    let!(:published_event) { create(:event, :published) }
+
+    context "when is an unauthorized user" do
+      it { should have_abilities(:read, User.new) }
+      it { should have_abilities(:read, published_event) }
+
+      it { should_not have_abilities([:edit, :update, :destroy], user) }
+      it { should_not have_abilities([:edit, :update, :destroy], event) }
+      it { should_not have_abilities([:read], event) }
+    end
+
+    context "when is an authorized user" do
+      let! (:user) { create(:user) }
+      it { should have_abilities(:read, User.new) }
+      # manage himself
+      it { should have_abilities([:edit, :update, :destroy], user) }
+      it { should have_abilities(:read, published_event) }
+
+      it { should_not have_abilities([:edit, :update, :destroy], event) }
+      it { should_not have_abilities([:read], event) }
+    end
+
+    context "when is a moderator" do
+      let! (:user) { create(:user, :moderator) }
+      it { should have_abilities(:read, User.new) }
+      it { should have_abilities(:read, event) }
+      it { should have_abilities([:edit, :update], event) }
+    end
+  end
+
+  describe "abilities" do
+    subject(:ability) { AdminAbility.new(user) }
+    let! (:user) { create(:user, :admin) }
+    let!(:event) { create(:event) }
+
+    context "when is an administrator" do
+      it { should have_abilities(:all, event) }
+      it { should have_abilities(:all, User.new ) }
     end
   end
 end
