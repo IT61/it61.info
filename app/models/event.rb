@@ -4,26 +4,30 @@ class Event < ActiveRecord::Base
 
   mount_uploader :title_image, ImageUploader
 
+  # Relations
   belongs_to :organizer, class_name: "User"
+  belongs_to :place
 
   has_many :event_participations, dependent: :destroy
   has_many :registrations, dependent: :destroy
+  has_many :participants, class_name: "User", through: :event_participations
 
-  has_many :participants, class_name: "User", through: :event_participations, source: :user do
-    def visited
-      where("event_participations.visited = ?", true)
-    end
+  accepts_nested_attributes_for :place, reject_if: :all_blank?, limit: 1
 
-    def non_visited
-      where("event_participations.visited = ?", false)
-    end
-  end
-
-  belongs_to :place
-
-  validates_presence_of :title, :description, :organizer, :place
+  # Validations
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :organizer, presence: true
+  validates :place, presence: true
   validates :published_at, presence: true, if: :published?
 
+  delegate :title, :address, :latitude, :longitude, to: :place, prefix: true
+
+  # Callbacks
+  before_create :set_secret_word
+  after_save :send_notifications, if: :published?
+
+  # Scopes
   scope :ordered_desc, -> { order(started_at: :desc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
@@ -42,8 +46,6 @@ class Event < ActiveRecord::Base
   }
   scope :not_notified_about, -> { where(subscribers_notification_send: false) }
 
-  before_create :set_secret_word
-
   def user_participated?(user)
     user && event_participations.find_by(user_id: user.id)
   end
@@ -60,27 +62,8 @@ class Event < ActiveRecord::Base
     registrations.where(user_id: user.id).first_or_initialize
   end
 
-  def set_place(place_params)
-    self.place = Place.first_or_create_place(place_params)
-  end
-
   def past?
     started_at <= DateTime.current
-  end
-
-  def publish!
-    return if published
-    toggle :published
-    self.published_at = DateTime.current
-    save!
-    send_slack_notification
-    self
-  end
-
-  def cancel_publication!
-    self.published = false
-    self.published_at = nil
-    save!
   end
 
   def new_participant!(user)
@@ -98,7 +81,7 @@ class Event < ActiveRecord::Base
     [formatted_started_at, title].compact.join(" ")
   end
 
-  def send_slack_notification
-    SlackService.notify(self)
+  def send_notifications
+    # SlackService.notify(self)
   end
 end
