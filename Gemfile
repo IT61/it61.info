@@ -59,7 +59,7 @@ group :development do
   gem 'letter_opener'
 end
 
-group 'production' do
+group :production do
   gem 'rails_12factor'
 end
 
@@ -70,7 +70,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-doc', require: false
-  gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
 end
@@ -80,6 +79,7 @@ group :development, :staging do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'vcr'
   gem 'webmock', '~> 1.21'
 end

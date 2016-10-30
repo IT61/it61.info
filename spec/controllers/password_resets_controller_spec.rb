@@ -15,7 +15,7 @@ describe PasswordResetsController, type: :controller do
         expect(ActionMailer::Base.deliveries.count).to eq(1)
       end
 
-      it { expect(controller).to set_the_flash[:success] }
+      it { expect(controller).to set_flash[:success] }
       it { expect(request).to redirect_to root_url }
     end
 
@@ -27,8 +27,8 @@ describe PasswordResetsController, type: :controller do
       end
 
       it do
-        expect(controller).to set_the_flash[:danger]
-          .to(/Пользователь с таким Email не найден/).now
+        expect(controller).to set_flash.now[:danger]
+          .to(/Пользователь с таким Email не найден/)
       end
       it { expect(response).to render_template(:new) }
     end
