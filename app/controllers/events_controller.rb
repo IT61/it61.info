@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   has_scope :ordered_desc, type: :boolean, allow_blank: true, default: true
 
   def index
-    @events = apply_scopes(@events)
+    @events = apply_scopes(Event).all
     first_upcoming_event = @events.upcoming.last
     last_past_event = @events.past.first
 

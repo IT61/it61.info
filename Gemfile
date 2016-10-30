@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.1'
 
-gem 'rails', '~> 4.1.9'
+gem 'rails', '~> 4.2.0'
 gem 'rails-i18n'
 gem 'unicode'
 gem 'sorcery'
@@ -33,22 +33,21 @@ gem 'meta-tags'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-gem 'unicorn'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'whenever'
-gem 'google-api-client'
+gem 'google-api-client', '~> 0.8.7'
 gem 'sinatra', require: false
 gem 'phony_rails'
 gem 'dotenv-rails'
 gem 'e_pochta', '~> 0.5.2'
 gem 'slack-notifier'
 
-gem 'pry-rails'
-gem 'pry-doc', require: false
-gem 'awesome_print'
+gem 'puma'
 
 group :development do
+  gem 'bundler-audit', '>= 0.5.0', require: false
+  gem 'brakeman', require: false
   gem 'spring'
   gem 'quiet_assets'
   gem 'capistrano'
@@ -60,15 +59,27 @@ group :development do
   gem 'letter_opener'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
+  gem 'awesome_print'
+  gem 'bullet'
   gem 'forgery'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers', require: false
+  gem 'pry-rails'
+  gem 'pry-doc', require: false
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
 end
 
+group :development, :staging do
+  gem 'rack-mini-profiler', require: false
+end
+
 group :test do
+  gem 'shoulda-matchers'
   gem 'vcr'
   gem 'webmock', '~> 1.21'
 end
