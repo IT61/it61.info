@@ -70,13 +70,13 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-doc', require: false
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
 end
 
 group :development, :staging do
-  gem "rack-mini-profiler", require: false
+  gem 'rack-mini-profiler', require: false
 end
 
 group :test do
