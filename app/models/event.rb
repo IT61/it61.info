@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
   validates :place, presence: true
   validates :published_at, presence: true, if: :published?
 
-  scope :ordered_desc, -> { order(started_at: :desc) }
+  scope :ordered_desc, -> (_) { order(started_at: :desc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
   scope :upcoming, -> { where('started_at > ?', DateTime.current ) }
