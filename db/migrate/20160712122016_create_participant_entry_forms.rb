@@ -1,4 +1,4 @@
-class CreateParticipantEntryForms < ActiveRecord::Migration
+class CreateParticipantEntryForms < ActiveRecord::Migration[5.0]
   def change
     create_table :participant_entry_forms do |t|
       t.belongs_to :user, index: true, null: false

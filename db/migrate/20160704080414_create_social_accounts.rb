@@ -1,4 +1,4 @@
-class CreateSocialAccounts < ActiveRecord::Migration
+class CreateSocialAccounts < ActiveRecord::Migration[5.0]
   def change
     create_table :social_accounts do |t|
       t.belongs_to :user, index: true

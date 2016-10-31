@@ -1,4 +1,4 @@
-class DeviseExcludeModulesFromUser < ActiveRecord::Migration
+class DeviseExcludeModulesFromUser < ActiveRecord::Migration[5.0]
   def change
     # Database authenticatable
     remove_column :users, :encrypted_password, :string
