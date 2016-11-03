@@ -1,3 +1,4 @@
+# coding: utf-8
 Rails.application.routes.draw do
   # Вход и регистрация
   resource :user_registration, only: [:new, :create]
@@ -17,11 +18,6 @@ Rails.application.routes.draw do
     patch :publish, on: :member
     patch :cancel_publication, on: :member
     resource :google_calendar_integrations, controller: 'events/google_calendar_integrations', only: [:create, :destroy]
-  end
-
-  resources :companies, except: [:destroy] do
-    patch :publish, on: :member
-    patch :cancel_publication, on: :member
   end
 
   post '/participate_in_event' => 'event_participations#create'
