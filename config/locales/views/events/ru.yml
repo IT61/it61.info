@@ -1,0 +1,67 @@
+---
+ru:
+  events:
+    index:
+      unpublished: "Неопубликованные"
+      upcoming: "Ближайшие"
+      past: "Прошедшие"
+      create: "Создать новое"
+      first_line: "Мероприятий пока нет"
+      second_line: "но вы можете это исправить"
+    upcoming: "Ближайшие меропрития"
+    past: "Прошедшие меропрития"
+    unpublished: "Неопубликованные меропрития"
+    show:
+      event_still_not_published: "Мероприятие ещё не опубликовано."
+      event_add_to_google_calendar: "+ Google calendar"
+      download_ics_file: "Скачать ICS"
+      description: "Описание"
+      participants: "Участники (%{count})"
+      postrelease: "Пострелиз"
+    participations:
+      participate: "Я пойду!"
+      revoke_participation: "Отменить заявку"
+      participated: "Я участвовал"
+    new:
+      header: "Новое мероприятие"
+      create_event: "Создать мероприятие"
+    edit:
+      header: "Редактирование мероприятия"
+      edit_event: "Редактировать мероприятие"
+    form:
+      cover: "Изображение"
+      recommendations: "Рекомендуется использовать изображение размером 500x500 px в формате .jpg или .png"
+      no_file_label: "Файл не выбран"
+      choose_file_btn: "Выберите файл"
+      description:
+        description: "Описание"
+      details:
+        title: "Название"
+        time: "Время начала"
+        date: "Дата начала"
+        link: "Ссылка на сторонний сайт"
+        place: "Место проведения"
+        address: "Точный адрес"
+        show_map_btn: "Посмотреть на карте"
+        map: "Карта"
+      footer:
+        create: "Создать мероприятие"
+    stubs:
+      create_event: "Создайте мероприятие"
+      past:
+        upcoming_events: "ближайшие мероприятия"
+      upcoming:
+        past_events: "прошедшие мероприятия"
+      or_watch_smth_html: "или посмотрите %{link}"
+    registrations:
+      new:
+        registration_to_event: "Регистрация на мероприятие"
+        full_name: "Имя, фамилия"
+        organizers_will_check_name: "Организаторы будут узнавать Ваше имя на входе, так что не стесняйтесь указывать настоящее имя"
+        email: "E-Mail"
+        you_will_recieve_notifications: "Указав E-Mail в настройках профиля, Вы сможете настроить оповещения о новых событиях"
+        why: "Почему Вы хотите принять участие в этом событии?"
+        who_are_you: "Чем Вы занимаетесь?"
+        suggestions: "Если событие повторится, что бы Вы хотели там увидеть в следующий раз?"
+        sure_will_go: "Точно пойду"
+        maybe_will_go: "Возможно пойду"

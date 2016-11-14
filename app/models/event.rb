@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   include PermalinkFor
   permalink_for :permalink_title, as: :pretty
 
-  mount_uploader :title_image, ImageUploader
+  mount_uploader :cover, ImageUploader
 
   # Relations
   belongs_to :organizer, class_name: "User"
@@ -82,6 +82,6 @@ class Event < ActiveRecord::Base
   end
 
   def send_notifications
-    # SlackService.notify(self)
+    SlackService.notify(self) if Rails.env.production?
   end
 end
