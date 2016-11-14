@@ -16,6 +16,7 @@ module It61
     end
     config.eager_load_paths += ["#{Rails.root}/lib"]
     config.action_controller.action_on_unpermitted_parameters = :raise
+    config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
     config.active_job.queue_adapter = :delayed_job
