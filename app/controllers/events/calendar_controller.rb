@@ -1,12 +1,8 @@
 module Events
-  class IntegrationsController < ApplicationController
-    respond_to :json
-    respond_to :ics, only: :show
-    respond_to :rss, only: :index
+  class CalendarController < ApplicationController
+    before_action :set_event, only: [:add, :ics]
 
-    before_action :set_event, only: [:add_to_google_calendar, :download_ics_file]
-
-    def add_to_google_calendar
+    def add
       success = GoogleService.add_event_to_calendar(current_user, @event)
 
       if success
@@ -16,7 +12,7 @@ module Events
       end
     end
 
-    def download_ics_file
+    def ics
       calendar = IcsService.to_ics_calendar(@event, event_url(@event))
       options = IcsService.file_options_for(@event)
       send_data calendar, options

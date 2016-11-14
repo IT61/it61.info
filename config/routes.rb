@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   scope "profile" do
     get   "edit", to: "users/profile#edit", as: :edit_profile
-    get   "settings", to:  "users/profile#settings", as: :profile_settings
+    get   "settings", to: "users/profile#settings", as: :profile_settings
     patch "settings_update", to: "users/profile#settings_update"
   end
 
