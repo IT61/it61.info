@@ -42,7 +42,7 @@ class EventsController < ApplicationController
     permitted_attrs = [
       :title,
       :description,
-      :title_image,
+      :cover,
       :link,
       :started_at,
       :has_closed_registration,
