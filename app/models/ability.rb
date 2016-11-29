@@ -10,13 +10,9 @@ class Ability
     can :manage, User, id: user.id
 
     if user.admin?
-      can :manage, Event
-      can :manage, User
+      can :manage, :all
       can :publish, Event
-      can :manage, EventParticipation
-    end
-
-    if user.member?
+    elsif user.member?
       can :create, Event
       can :view, Event, organizer_id: user.id
       can :update, Event, organizer_id: user.id
