@@ -369,7 +369,7 @@ DEPENDENCIES
   brakeman
   bullet
   bundler-audit (>= 0.5.0)
-  cancancan (~> 1.7)
+  cancancan
   capistrano
   capistrano-bundler
   capistrano-db-tasks
