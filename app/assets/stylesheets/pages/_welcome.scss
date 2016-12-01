@@ -24,6 +24,10 @@
     font-size: 50px;
     font-weight: 700;
     color: white;
+
+    @include media($device-xs-max) {
+      font-size: 35px;
+    }
   }
 
   &-statistics {
@@ -32,12 +36,25 @@
 
     ul {
 
+      @include media($mobile-lg) {
+        display: inline-block;
+      }
+
       li {
         display: inline-block;
         color: white;
 
         &:not(:last-child) {
           margin-right: 50px;
+
+          @include media($mobile-lg) {
+            margin-right: 0;
+          }
+        }
+
+        @include media($mobile-lg) {
+          display: block;
+          text-align: left;
         }
       }
     }
