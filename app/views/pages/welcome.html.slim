@@ -1,2 +1,60 @@
-h1 Pages#welcome
-p Find me in app/views/pages/welcome.html.slim
+.welcome-background
+.welcome-container
+  .welcome-header
+    h1.welcome-title Ростовское<br>IT-сообщество
+    .welcome-statistics
+      ul
+        li
+          .statistics-count 2752
+          .statistics-label Человек<br>в сообществе
+        li
+          .statistics-count 343
+          .statistics-label Мероприятий<br>организовано
+        li
+          .statistics-count 42
+          .statistics-label Канала<br>в Slack
+    = link_to "Присоединяйся!", sign_in_path, class: "btn btn-blue welcome-btn"
+  .card.welcome-card
+    
+    .manifest-title Манифест
+    p 
+      | Сообщество не преследует коммерческих целей и не аффилировано с конкретными компаниями. Главная задача — общение, обмен опытом, знакомства и полезные контакты среди IT-специалистов в Ростове и области.
+      | Для этого мы собираем в одном месте информацию обо всех мероприятиях, личностях компаниях и событиях IT-сферы нашего региона.
+    p Мы предлагаем 2 формата для общения: онлайн с помощью чата на базе Slackи оффлайн на мероприятиях, которые мы проводим в горое регулярно.
+    p
+      | Мы просим вас указывать настоящие имя и фамилию для удобства общения в чате с коллегами.
+      | Мы просим поделиться ссылкой на сообщество компании, где вы работаете и пригласить друзей на мероприятие.
+
+    p Использование ресурсов IT61 бесплатно для конечного пользователя и всегда останется бесплатным.
+
+    ul.social-widgets
+      li
+        .social-widget
+          = render "shared/widgets/vk"
+        .social-description
+          = link_to "Наше сообщество вконтакте", "https://vk.com/it_61", class: "social-link", target: "_blank"
+          p Это наш самый активный ресурс, где мы делимся новостями, анонсами, и другими материалами, которые не всегда есть на сайте.
+      li
+        .social-widget
+          = render "shared/widgets/fb"
+        .social-description
+           = link_to "Наше сообщество facebook", "https://www.facebook.com/it61.info", class: "social-link", target: "_blank"
+           p Тут меньше людей, они постарше, серьезнее и обсуждают больше вопросы связанные с бизнесом, чем с программированием
+      li
+        .social-widget
+          = render "shared/widgets/youtube"
+        .social-description
+          = link_to "Наш канал на youtube", "https://www.youtube.com/channel/UC63xTveSry1vvpWbM877K9Q", class: "social-link", target: "_blank"
+          p Тут выложены видеозаписи докладов, для тех кто, забыл придти лично. Или не смог по уважительной причине :)
+    
+    .slack-block
+      = link_to "Наш чат в Slack", "https://it61.slack.com", class: "social-link", target: "_blank"
+      .slack-description
+        | тут вы найдете собеседников на любые интересующие темы, которые удобно разбиты на каналы.
+      .slack-rules
+        | Правила каналов Slack:<br>
+        | Если подходящего канала не нашлось среди уже открытых, вы можете создать его сами. Имя канала не может содержать пробела, поэтому вместо него нужно использовать знак подчеркивания. 
+        | Но лучше всего назвать новый канал в одно слово. Учтите важное правило — если в течении четырех недель в канале не напишут ни одного сообщения, он будет автоматически закрыт.
+    
+    .text-center
+      = link_to "Присоединяйся!", sign_in_path, class: "btn btn-blue welcome-btn"

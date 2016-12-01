@@ -73,6 +73,7 @@ $footer-color: #999da1;
 
 //Media queries
 $mobile-xs: new-breakpoint(max-width 400px);
+$mobile-sm: new-breakpoint(max-width 500px);
 // Register page mobile version
 $register-mobile: new-breakpoint(max-width 750px);
 $device-xs-max: new-breakpoint(max-width 767px);

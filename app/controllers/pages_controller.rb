@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def slack
   end
+
+  def about
+  end
 end
