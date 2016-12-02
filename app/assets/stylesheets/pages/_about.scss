@@ -1,0 +1,59 @@
+.about {
+
+   &-background {
+    position: absolute;
+    height: 700px;
+    width: 100%;
+    background: image_url("it61_bg_about.jpg") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+  }
+
+  &-container {
+    @extend .container;
+    max-width: 900px;
+    margin-bottom: 80px;
+
+    .btn-donat {
+      margin-top: 60px;
+    }
+  }
+
+  &-header {
+    margin: 130px 0;
+    text-align: center;
+    color: white;
+  }
+
+  &-title {
+    margin-bottom: 5px;
+    font-size: 50px;
+    font-weight: 700;
+  }
+
+  &-subtitle {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &-card {
+    padding: 50px;
+    
+    p {
+      margin: 5px 0px;
+    }
+
+    .topic {
+      margin-bottom: 0;
+    }
+
+    .subtopic {
+      margin-bottom: 17px;
+    }
+  }
+
+  &-peoples {
+    margin: 50px 0 30px;
+  }
+
+}

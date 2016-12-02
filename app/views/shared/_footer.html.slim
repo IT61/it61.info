@@ -9,9 +9,7 @@ footer
         li
           = link_to t("pages.photos"), photos_path
         li
-          = link_to t("pages.sponsorship"), sponsorship_path
-        li
-          = link_to t("pages.slack"), slack_path
+          = link_to t("pages.about.link"), about_path
       .copyright
         = image_tag "logo-small.svg", class: "logo"
         p = t(".created_for_community_html", link: request.base_url)
