@@ -50,6 +50,10 @@ hr {
   margin-bottom: 17px;
   font-size: 21px;
   text-transform: uppercase;
+
+  @include media($mobile-sm) {
+    font-size: 17px;
+  }
 }
 
 .subtopic {

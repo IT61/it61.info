@@ -13,7 +13,8 @@
         li
           .statistics-count 42
           .statistics-label = raw t(".slack_channels_count")
-    = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
+    - if current_user.nil?
+      = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
   .card.welcome-card
     
     .topic Манифест
@@ -55,6 +56,6 @@
         | Правила каналов Slack:<br>
         | Если подходящего канала не нашлось среди уже открытых, вы можете создать его сами. Имя канала не может содержать пробела, поэтому вместо него нужно использовать знак подчеркивания. 
         | Но лучше всего назвать новый канал в одно слово. Учтите важное правило — если в течении четырех недель в канале не напишут ни одного сообщения, он будет автоматически закрыт.
-    
-    .text-center
-      = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
+    - if current_user.nil?
+      .text-center
+        = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"

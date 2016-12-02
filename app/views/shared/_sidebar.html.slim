@@ -1,17 +1,14 @@
 .sidebar
-  .sidebar__logo
-    .sidebar__logo_img
+  a href="/"
+    .sidebar__logo
+      .sidebar__logo_img
   - unless current_user.nil?
     = active_link_to profile_path
       .sidebar__profile
         = image_tag current_user.pic, class: "avatar avatar-xs avatar-circle"
         = t("pages.my_profile")
   ul.sidebar__menu
-    = active_link_to t("pages.community"), events_path, wrap_tag: :li
-    = active_link_to t("pages.events"), events_path, wrap_tag: :li
-    = active_link_to t("pages.photos"), photos_path, wrap_tag: :li
-    = active_link_to t("pages.about.link"), about_path, wrap_tag: :li
-    = active_link_to t("pages.users"), users_path, wrap_tag: :li
+    = render "shared/menu"
     - if can? :manage, :all
       = active_link_to t("places.root"), root_path, wrap_tag: :li
       = active_link_to t("activerecord.models.event.few"), admin_events_path, wrap_tag: :li

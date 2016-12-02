@@ -2,14 +2,7 @@ footer
   div
     .footer-left
       ul
-        li
-          = link_to t("pages.events"), events_path
-        li
-          = link_to t("pages.users"), users_path
-        li
-          = link_to t("pages.photos"), photos_path
-        li
-          = link_to t("pages.about.link"), about_path
+        = render "shared/menu"
       .copyright
         = image_tag "logo-small.svg", class: "logo"
         p = t(".created_for_community_html", link: request.base_url)

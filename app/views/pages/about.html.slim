@@ -21,5 +21,12 @@
     p Организаторы мероприятия удерживают 10% комиссии.
     br
     p По вопросами спонсорства обращаться к Трофиму Жугастрову.
-  .about-peoples.text-center
+  / TODO: Organizers and developers
+  .about-peoples
     .topic = t(".organizers_team")
+    .users-container
+      = render partial: '/shared/users/list', locals: { users: User.all }
+  .about-peoples
+    .topic = t(".developers_team")
+    .users-container
+      = render partial: '/shared/users/list', locals: { users: User.all }

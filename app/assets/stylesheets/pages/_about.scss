@@ -29,15 +29,27 @@
     margin-bottom: 5px;
     font-size: 50px;
     font-weight: 700;
+
+    @include media($device-xs-max) {
+      font-size: 30px;
+    }
   }
 
   &-subtitle {
     font-size: 22px;
     font-weight: 700;
+
+    @include media($device-xs-max) {
+      font-size: 14px;
+    }
   }
 
   &-card {
     padding: 50px;
+
+    @include media($mobile-sm) {
+      padding: 25px;
+    }
     
     p {
       margin: 5px 0px;
@@ -54,6 +66,16 @@
 
   &-peoples {
     margin: 50px 0 30px;
+    text-align: center;
+
+    .users-container {
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .image {
+      border-radius: 100px;
+    }
   }
 
 }
