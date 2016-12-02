@@ -1,22 +1,22 @@
 .welcome-background
 .welcome-container
   .welcome-header
-    h1.welcome-title Ростовское<br>IT-сообщество
+    h1.welcome-title = raw t(".title")
     .welcome-statistics
       ul
         li
           .statistics-count = User.count
-          .statistics-label Человек<br>в сообществе
+          .statistics-label = raw t(".user_count")
         li
           .statistics-count = Event.count
-          .statistics-label Мероприятий<br>организовано
+          .statistics-label = raw t(".event_count")
         li
           .statistics-count 42
-          .statistics-label Канала<br>в Slack
-    = link_to "Присоединяйся!", sign_in_path, class: "btn btn-blue welcome-btn"
+          .statistics-label = raw t(".slack_channels_count")
+    = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
   .card.welcome-card
     
-    .manifest-title Манифест
+    .topic Манифест
     p 
       | Сообщество не преследует коммерческих целей и не аффилировано с конкретными компаниями. Главная задача — общение, обмен опытом, знакомства и полезные контакты среди IT-специалистов в Ростове и области.
       | Для этого мы собираем в одном месте информацию обо всех мероприятиях, личностях компаниях и событиях IT-сферы нашего региона.
@@ -57,4 +57,4 @@
         | Но лучше всего назвать новый канал в одно слово. Учтите важное правило — если в течении четырех недель в канале не напишут ни одного сообщения, он будет автоматически закрыт.
     
     .text-center
-      = link_to "Присоединяйся!", sign_in_path, class: "btn btn-blue welcome-btn"
+      = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"

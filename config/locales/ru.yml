@@ -34,6 +34,12 @@ ru:
     photos: Фотографии
     slack: Slack
     sponsorship: Спонсорам
+    welcome:
+      title: Ростовское<br>IT-сообщество
+      user_count: Человек<br>в сообществе
+      event_count: Мероприятий<br>организовано
+      slack_channels_count: Канала<br>в Slack 
+      sign_in: Присоединяйся! 
 
   errors:
     connection_refused: В соединении отказано
