@@ -1,0 +1,63 @@
+.thanks {
+
+  &-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: image_url('it61_bg_about.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+  }
+
+  &-card {
+    margin: 100px auto;
+    max-width: 480px;
+
+    .card-body {
+      @include clearfix;
+    }
+  }
+
+  &-icon {
+    @include span-columns(3);
+
+    @include media($mobile-xs) {
+      display: none;
+    }
+
+    margin-right: 25px;
+    height: 42px;
+    width: 38px;
+    background: image_url("success.png") no-repeat;
+  }
+
+  &-text {
+    @include span-columns(9);
+
+    @include media($mobile-xs) {
+      @include span-columns(12);
+    }
+
+    .btn {
+      margin-top: 40px;
+    }
+  }
+
+  &-title {
+    color: $blue;
+    font-size: 24px;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  &-description {
+    margin-top: 15px;
+    color: #999da1;
+    font-size: 16px;
+  }
+}
