@@ -64,7 +64,6 @@ group :development, :test do
   gem "awesome_print"
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
-  gem "scss_lint", require: false
   gem "brakeman", require: false
   gem "dotenv-rails"
   gem "forgery"
@@ -73,7 +72,7 @@ group :development, :test do
   gem "pry-rails"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 3.5.0"
-  gem "slim_lint"
+  gem "scss_lint", require: false
 end
 
 group :development, :staging do
