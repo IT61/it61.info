@@ -1,8 +1,8 @@
 class CreateGroupsUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table :groups_users, id: false do |t|
-      t.belongs_to :group
-      t.belongs_to :user
+    create_join_table :groups, :users do |t|
+      t.index :group_id
+      t.index :user_id
     end
   end
 end
