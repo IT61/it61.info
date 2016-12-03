@@ -1,6 +1,6 @@
 section.card.user
   .picture
-    = image_tag user.pic
+    = image_tag user.gravatar_url(size: 512)
   .details
     h1.name = title user.full_name
 

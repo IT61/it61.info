@@ -1,7 +1,8 @@
 h1.my-profile = form_header
 .card.edit-user-card
-  = render partial: "users/form/image_upload_section", locals: { user: user }
-  = render partial: "shared/cropper_modal", locals: { object: user, picture: user.pic }
+  .image-container
+    .picture
+      = image_tag user.gravatar_url(size: 512), id: "image", default_img_src: asset_path("user_default.png")
   = form_for user do |f|
     = render partial: "users/form/details_section", locals: { f: f, user: user }
     .bottom-container

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Gravtastic
+  gravtastic
   mount_uploader :avatar, ImageUploader
 
   enum role: {
@@ -50,12 +52,16 @@ class User < ApplicationRecord
     SocialAccount.from_omniauth auth, self
   end
 
-  def full_name
-    [first_name, last_name].compact.join(" ").presence || name
+  def display_name
+    if first_name.presence
+      first_name
+    else
+      full_name
+    end
   end
 
-  def pic
-    avatar.url.blank? ? "user_default.png" : avatar
+  def full_name
+    [first_name, last_name].compact.join(" ").presence || name
   end
 
   def remember_me

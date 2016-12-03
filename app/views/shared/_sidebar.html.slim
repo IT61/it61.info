@@ -5,7 +5,7 @@
   - unless current_user.nil?
     = active_link_to profile_path
       .sidebar__profile
-        = image_tag current_user.pic, class: "avatar avatar-xs avatar-circle"
+        = image_tag current_user.gravatar_url, class: "avatar avatar-xs avatar-circle"
         = t("pages.my_profile")
   ul.sidebar__menu
     = render "shared/menu"

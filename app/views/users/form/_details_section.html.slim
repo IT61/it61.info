@@ -2,10 +2,10 @@
   .outer
     .input-float-label.half
       = f.text_field :first_name
-      = f.label :first_name, t("activerecord.attributes.user.first_name")
+      = f.label :first_name
     .input-float-label.half
       = f.text_field :last_name
-      = f.label :last_name, t("activerecord.attributes.user.last_name")
+      = f.label :last_name
   / no support for companies for now
   /.outer
         .input-float-label.half
@@ -21,10 +21,10 @@
   .outer
     .input-float-label.half
       = f.text_field :email
-      = f.label :email, t("activerecord.attributes.user.email")
+      = f.label :email
     .input-float-label.half
       = f.telephone_field :phone
-      = f.label :phone, t("activerecord.attributes.user.phone")
+      = f.label :phone
       span.sub-label = t(".phone_for_sms_reminders")
         / should be slack link?
         /.outer

@@ -159,6 +159,7 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
+    gravtastic (3.2.6)
     hashdiff (0.3.0)
     hashie (3.4.6)
     high_voltage (3.0.0)
@@ -431,6 +432,7 @@ DEPENDENCIES
   fuubar
   geocoder
   google-api-client (~> 0.8.2)
+  gravtastic
   high_voltage
   icalendar
   icheck-rails

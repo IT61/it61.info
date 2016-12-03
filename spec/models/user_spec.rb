@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
   describe "public instance methods" do
     context "responds to its methods" do
       it { expect(user).to respond_to(:full_name) }
-      it { expect(user).to respond_to(:pic) }
+      it { expect(user).to respond_to(:name) }
       it { expect(user).to respond_to(:remember_me) }
       it { expect(user).to respond_to(:event_participations) }
       it { expect(user).to respond_to(:subscribe!) }
@@ -44,20 +44,20 @@ RSpec.describe User, type: :model do
           expect(user.full_name).to eq(expected_value)
         end
 
-        context "full_name partial" do
+        context "partial" do
           let!(:name_expected_value) { user.name }
 
           before { subject.first_name = nil }
-          it "return name if first name is empty" do
+          it "returns name if first name is empty" do
             expect(user.full_name).to eq(name_expected_value)
           end
 
           before { subject.last_name = nil }
-          it "return name if last name is empty" do
+          it "returns name if last name is empty" do
             expect(user.full_name).to eq(name_expected_value)
           end
 
-          it "return only name if first name and last name are empty" do
+          it "returns only name if first name and last name are empty" do
             expect(user.full_name).to eq(name_expected_value)
           end
         end
