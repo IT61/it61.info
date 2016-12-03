@@ -1,5 +1,5 @@
 h1.event-form-card-header TODO
-= render partial: "shared/cropper_modal", locals: { picture: @event.title_image }
+= render partial: "shared/cropper_modal", locals: { picture: @event.cover }
 
 = form_for @event, html: { onsubmit: "onSubmitEvent(); return false;", class: "event-form"} do |f|
   section.info-container
