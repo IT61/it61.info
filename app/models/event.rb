@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
 
   mount_uploader :cover, ImageUploader
 
+  strip_strings :title
+
   # Relations
   belongs_to :organizer, class_name: "User"
   belongs_to :place
