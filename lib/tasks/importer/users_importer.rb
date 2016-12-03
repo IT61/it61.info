@@ -27,8 +27,6 @@ module UsersImporter
         user.write_attribute(field_name, row.get(field_name))
       end
 
-      user.write_attribute("avatar", row.get("avatar_image"))
-
       # create migration token
       if has_password
         user.write_attribute("migration_token", SecureRandom.hex)
