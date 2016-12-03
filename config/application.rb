@@ -1,6 +1,13 @@
 require_relative "boot"
 
-require "rails/all"
+require "rails"
+require "active_model/railtie"
+require "active_job/railtie"
+require "active_record/railtie"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "action_view/railtie"
+require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 module It61
@@ -15,10 +22,12 @@ module It61
       generate.view_specs false
     end
     config.eager_load_paths += ["#{Rails.root}/lib"]
+
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
     config.i18n.available_locales = [:ru]
     config.i18n.default_locale = :ru
+
     config.active_job.queue_adapter = :delayed_job
     config.exceptions_app = routes
     config.assets.paths << Rails.root.join("vendor", "assets", "components")
