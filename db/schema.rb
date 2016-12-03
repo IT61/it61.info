@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20161114214504) do
   create_table "event_participations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.boolean  "visited",    default: false
     t.index ["event_id"], name: "index_event_participations_on_event_id", using: :btree
     t.index ["user_id"], name: "index_event_participations_on_user_id", using: :btree
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20161114214504) do
     t.datetime "published_at"
     t.boolean  "subscribers_notification_send", default: false
     t.datetime "started_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "participants_limit"
     t.string   "link"
     t.integer  "place_id"
@@ -66,18 +66,6 @@ ActiveRecord::Schema.define(version: 20161114214504) do
     t.integer "user_id"
     t.index ["group_id"], name: "index_groups_users_on_group_id", using: :btree
     t.index ["user_id"], name: "index_groups_users_on_user_id", using: :btree
-  end
-
-  create_table "participant_entry_forms", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "event_id",    null: false
-    t.text     "reason",      null: false
-    t.string   "profession",  null: false
-    t.text     "suggestions"
-    t.integer  "confidence",  null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id", "event_id"], name: "index_participant_entry_forms_on_user_id_and_event_id", unique: true, using: :btree
   end
 
   create_table "places", force: :cascade do |t|
