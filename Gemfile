@@ -48,7 +48,6 @@ gem "will_paginate"
 
 source "https://rails-assets.org" do
   gem "rails-assets-cropper"
-  gem "rails-assets-simplemde"
   gem "rails-assets-smartcrop"
   gem "rails-assets-listjs"
 end
