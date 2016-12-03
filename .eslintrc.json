@@ -3,6 +3,9 @@
     "browser": true,
     "jquery": true
   },
+  "globals": {
+    "Geocoder": true
+  },
   "extends": "eslint:recommended",
   "rules": {
     "indent": [
