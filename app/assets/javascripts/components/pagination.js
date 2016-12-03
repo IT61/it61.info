@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  page = 1;
+  var page = 1;
 
   function loadNextPage(onItemsAppended) {
     var $btn = $(this);
@@ -18,14 +18,13 @@ $(document).ready(function () {
     });
   }
 
-  $("#users_more").click(loadNextPage);
-  $("#events_more").click(function () {
+  $('#users_more').click(loadNextPage);
+  $('#events_more').click(function () {
     loadNextPage.call(this, function () {
-      $(".events-card h2").each(function () {
+      $('.events-card h2').each(function () {
         truncateTitle($(this), 36);
       });
       $('.dropdown-button').dropdown();
-    })
+    });
   });
-
 });

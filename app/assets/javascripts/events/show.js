@@ -1,9 +1,7 @@
-"use strict";
-
-$(document).ready(function() {
+$(document).ready(function () {
 
   var $mapTrigger = $('#map-trigger'),
-      $map = $('#map')[0];
+    $map = $('#map')[0];
 
   if (!$mapTrigger || !$mapTrigger.length) {
     return;
@@ -15,7 +13,7 @@ $(document).ready(function() {
     return;
   }
 
-  Geocoder.ready(function() {
+  Geocoder.ready(function () {
     Geocoder.buildMap($map, location);
   });
 });

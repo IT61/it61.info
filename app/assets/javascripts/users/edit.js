@@ -1,11 +1,11 @@
 $(document).ready(function () {
   var $imageForm = $('#imageForm'),
-      $currentImage = $('#image'),
-      $modal = $('#croppedModal'),
-      $croppedModalImage = $('#croppedModalImage'),
-      $imageInput = $('#imageInput'),
-      $uploadImage = $('#uploadImage'),
-      $deleteBtn = $('#deleteAvatarBtn');
+    $currentImage = $('#image'),
+    $modal = $('#croppedModal'),
+    $croppedModalImage = $('#croppedModalImage'),
+    $imageInput = $('#imageInput'),
+    $uploadImage = $('#uploadImage'),
+    $deleteBtn = $('#deleteAvatarBtn');
 
   if (!$imageForm || !$imageForm.length) {
     return;

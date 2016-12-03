@@ -1,10 +1,14 @@
 $(document).ready(function () {
-  var $placeAddress = $('#location').autocomplete({containerID: "yandex_places"}),
-      $placeTitle = $('#place_title').autocomplete({containerID: "known_places"}),
-      $autoPlaceAddress = $('#place_address'),
-      $autoPlaceLatitude = $('#place_latitude'),
-      $autoEventLongitude = $('#place_longitude'),
-      searchLatency = 0.2;
+  var $placeAddress = $('#location').autocomplete({
+      containerID: 'yandex_places'
+    }),
+    $placeTitle = $('#place_title').autocomplete({
+      containerID: 'known_places'
+    }),
+    $autoPlaceAddress = $('#place_address'),
+    $autoPlaceLatitude = $('#place_latitude'),
+    $autoEventLongitude = $('#place_longitude'),
+    searchLatency = 0.2;
 
   var model = {
     suggestedLocations: {
@@ -16,7 +20,10 @@ $(document).ready(function () {
 
   var controller = {
     clearSuggestions: function () {
-      model.suggestedLocations = {ours: [], yandexs: []};
+      model.suggestedLocations = {
+        ours: [],
+        yandexs: []
+      };
       $placeAddress.$autocomplete.clear();
       $placeTitle.$autocomplete.clear();
     },
@@ -61,12 +68,12 @@ $(document).ready(function () {
   function updateSuggestions($input, objects) {
     $input.$autocomplete.clear();
     objects.forEach(function (object) {
-      label = [
+      var label = [
         object.place_title,
         object.addressLine
       ].filter(function (n) {
-        return n != undefined
-      }).join(", ");
+        return n != undefined;
+      }).join(', ');
 
       $input.$autocomplete.addItem(label, function () {
         controller.approveSuggestion(object);
@@ -85,7 +92,7 @@ $(document).ready(function () {
       return $placeTitle.val();
     }
 
-    function searchOurs(event) {
+    function searchOurs() {
       var addressInput = addressValue(),
         titleInput = titleValue();
       if (addressInput.length === 0 && titleInput.length === 0) {
@@ -94,7 +101,7 @@ $(document).ready(function () {
       Geocoder.searchKnown(titleInput, controller.setOursSuggestedLocations);
     }
 
-    function searchYandex(event) {
+    function searchYandex() {
       var addressText = addressValue();
       if (addressText.length === 0) {
         return;
@@ -105,7 +112,7 @@ $(document).ready(function () {
     function defer(func) {
       return function () {
         setTimeout(func, searchLatency);
-      }
+      };
     }
 
     $placeAddress.on('input', defer(searchYandex));

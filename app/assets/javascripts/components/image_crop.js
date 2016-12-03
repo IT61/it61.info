@@ -29,5 +29,5 @@ var cropper = (function () {
 
   return {
     create: createCropper
-  }
+  };
 })();
