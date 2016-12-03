@@ -1,4 +1,3 @@
-h1.event-form-card-header TODO
 = render partial: "shared/cropper_modal", locals: { picture: @event.cover }
 
 = form_for @event, html: { onsubmit: "onSubmitEvent(); return false;", class: "event-form"} do |f|
@@ -13,7 +12,7 @@ h1.event-form-card-header TODO
             input#imageInput type="file" name="imageInput" accept="image/*"
             = t(".choose_file_btn")
       - else
-        = image_tag @event.cover, id: "image", default_img_src: asset_path("user_default.png")
+        = image_tag image_url("user_default.png")
 
     = render partial: "events/form/details", locals: { f: f }
   section.description
