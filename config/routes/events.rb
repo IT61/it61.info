@@ -5,5 +5,10 @@ Rails.application.routes.draw do
     resources :participations
 
     resource :calendar
+
+    collection do
+      get "upcoming"
+      get "past"
+    end
   end
 end
