@@ -2,9 +2,9 @@ class PagesController < ApplicationController
   def welcome
   end
 
-  def sponsorship
+  def about
   end
 
-  def slack
+  def thanks
   end
 end

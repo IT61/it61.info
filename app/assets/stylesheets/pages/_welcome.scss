@@ -1,0 +1,170 @@
+.welcome {
+
+  &-container {
+    @extend .container;
+    margin-bottom: 70px;
+    max-width: 900px;
+  }
+
+  &-background {
+    position: absolute;
+    height: 700px;
+    width: 100%;
+    background: image_url("it61_bg_general.jpg") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+  }
+
+  &-header {
+    margin: 100px 0;
+    text-align: center;
+  }
+
+  &-title {
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+
+    @include media($device-xs-max) {
+      font-size: 32px;
+    }
+  }
+
+  &-statistics {
+    margin: 45px 0 65px;
+    text-align: center;
+
+    ul {
+
+      @include media($mobile-lg) {
+        display: inline-block;
+      }
+
+      li {
+        display: inline-block;
+        color: white;
+
+        &:not(:last-child) {
+          margin-right: 50px;
+
+          @include media($mobile-lg) {
+            margin-right: 0;
+          }
+        }
+
+        @include media($mobile-lg) {
+          display: block;
+          text-align: left;
+        }
+      }
+    }
+
+    .statistics {
+      &-count, &-label {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      &-count {
+        margin-right: 10px;
+        font-size: 40px;
+      }
+
+      &-label {
+        line-height: 1.2;
+        font-weight: 700;
+        text-align: left;
+      }
+    }
+
+  }
+
+  &-btn {
+    font-size: 18px;
+    font-weight: 400;
+    box-shadow: $base-box-shadow;
+  }
+
+  &-card {
+    margin-top: 100px;
+    padding: 60px;
+
+    @include media($mobile-sm) {
+      padding: 30px;
+    }
+
+    @include media(max-width 350px) {
+      padding: 15px;
+    }
+
+    .btn {
+      margin: 50px 0 30px;
+    }
+  }
+
+}
+
+.social {
+  $social-tablet: max-width 900px;
+  $social-mobile: max-width 760px;
+  
+  &-widgets {
+    margin: 50px 0;
+
+    li {
+      @include clearfix;
+      padding: 15px 0;
+      border-bottom: 1px solid #efefef;
+    }
+  }
+
+  &-widget {
+    @include span-columns(4);
+
+    @include media($social-tablet) {
+      @include span-columns(5);
+    }
+
+    @include media($social-mobile) {
+      margin: 10px 0 20px;
+    }
+
+  }
+
+  &-description {
+    @include span-columns(6);
+
+    @include media($social-tablet) {
+      @include span-columns(5);
+    }
+
+    @include media($social-mobile) {
+      @include span-columns(12);
+    }
+  }
+
+  &-widget, &-description {
+    @include media($social-mobile) {
+      @include span-columns(12);
+      text-align: center;
+    }
+  }
+
+  &-link {
+    margin-top: 5px;
+    font-size: 21px;
+    color: #2477b6;
+    text-transform: uppercase;
+  }
+}
+
+.slack {
+
+  &-block {
+    margin-top: 45px;
+  }
+
+  &-rules {
+    margin-top: 20px;
+  }
+}

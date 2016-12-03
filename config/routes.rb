@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   # Static pages
-  %w(welcome sponsorship slack).each do |page_name|
+  %w(welcome about).each do |page_name|
     get page_name, to: "pages##{page_name}"
   end
 

@@ -32,8 +32,18 @@ ru:
     events: Мероприятия
     users: Личности
     photos: Фотографии
-    slack: Slack
-    sponsorship: Спонсорам
+    welcome:
+      title: Ростовское<br>IT-сообщество
+      user_count: Человек<br>в сообществе
+      event_count: Мероприятий<br>организовано
+      slack_channels_count: Канала<br>в Slack 
+      sign_in: Присоединяйся!
+    about:
+      link: О нас
+      title: Пожертвование
+      subtitle: Если вы хотите помочь проекту, вы можете<br>пожертвовать небольшую сумму на развитие сайта
+      organizers_team: Команда организаторов мероприятий
+      developers_team: Команда разработчиков сайта
 
   errors:
     connection_refused: В соединении отказано
