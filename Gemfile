@@ -29,6 +29,7 @@ gem 'redcarpet'
 gem 'styx'
 gem 'draper'
 gem 'meta-tags'
+gem 'newrelic_rpm'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'

@@ -24,7 +24,6 @@ nginx_rewrite.txt
 
 /config/application.yml
 /config/settings.yml
-/config/newrelic.yml
 /config/thinking_sphinx.yml
 /config/development.sphinx.conf
 
