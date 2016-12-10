@@ -1,5 +1,3 @@
-require "rails_helper"
-
 RSpec.describe Admin::UsersController, type: :controller do
   context "while logged in as an user" do
     login_user

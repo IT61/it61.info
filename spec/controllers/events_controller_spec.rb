@@ -1,5 +1,3 @@
-require "rails_helper"
-
 describe EventsController do
   describe "valid route table" do
     it "get /index shows the events list" do
