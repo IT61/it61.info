@@ -5,9 +5,11 @@ $(document).ready(function () {
     $placeTitle = $('#place_title').autocomplete({
       containerID: 'known_places'
     }),
-    $autoPlaceAddress = $('#place_address'),
-    $autoPlaceLatitude = $('#place_latitude'),
-    $autoEventLongitude = $('#place_longitude'),
+    $autoPlaceAddress = $('#event_place_attributes_address'),
+    $autoPlaceLatitude = $('#event_place_attributes_latitude'),
+    $autoEventLongitude = $('#event_place_attributes_longitude'),
+    $autoPlaceId = $('#event_place_attributes_id'),
+    $place = $('#place_id'),
     searchLatency = 0.2;
 
   var model = {
@@ -40,6 +42,7 @@ $(document).ready(function () {
       model.approvedLocations.push(location);
       if (location.place_title) {
         $placeTitle.val(location.place_title);
+        $place.val(location.place_id);
       }
       $placeAddress.val(location.addressLine);
       $placeTitle.trigger('show-input');
@@ -49,6 +52,7 @@ $(document).ready(function () {
       $autoPlaceAddress.val(location.addressLine);
       $autoPlaceLatitude.val(location.coordinates[0]);
       $autoEventLongitude.val(location.coordinates[1]);
+      $autoPlaceId.val(location.id);
     },
     reset: function () {
       model.suggestedLocations = {};
@@ -58,6 +62,7 @@ $(document).ready(function () {
       $autoPlaceAddress.val('');
       $autoPlaceLatitude.val('');
       $autoEventLongitude.val('');
+      $autoPlaceId.val('');
     },
     hideContainers: function () {
       $placeAddress.$autocomplete.hide();

@@ -2,17 +2,7 @@
 
 = form_for @event, html: { onsubmit: "onSubmitEvent(); return false;", class: "event-form"} do |f|
   section.info-container
-    .image-container
-      = f.label :cover, t(".cover"), class: "required"
-      - if @event.cover?
-        #image.no-image-selected
-          .message = t(".no_file_label")
-        .file_upload#imageInputContainer
-          label.btn.btn-blue
-            input#imageInput type="file" name="imageInput" accept="image/*"
-            = t(".choose_file_btn")
-      - else
-        = image_tag image_url("user_default.png")
+    = render partial: "events/form/image", locals: { f: f }
 
     = render partial: "events/form/details", locals: { f: f }
   section.description

@@ -466,6 +466,7 @@ DEPENDENCIES
   recipient_interceptor
   redcarpet
   redis
+  responders
   rspec-rails (~> 3.5.0)
   sass-rails (~> 5.0)
   scss_lint

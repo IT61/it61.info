@@ -18,6 +18,7 @@ class PlacesController < ApplicationController
       addressLine: place.address,
       coordinates: [place.latitude, place.longitude],
       place_title: place.title,
+      id: place.id,
     }
   end
 end

@@ -1,11 +1,11 @@
 .image-container
   = f.label :cover, t(".cover"), class: "required"
-  - if event.cover?
+  - if @event.cover?
+    = image_tag @event.cover, id: "image", default_img_src: asset_path("user_default.png")
+  - else
     #image.no-image-selected
       .message = t(".no_file_label")
-    .file_upload#imageInputContainer
+    .file_upload#imageInputContainer style="max-width: 300px;"
       label.btn.btn-blue
-        input#imageInput type="file" name="imageInput" accept="image/*"
+        input#imageInput type="file" name="event[cover]" accept="image/*"
         = t(".choose_file_btn")
-  - else
-    = image_tag event.cover, id: "image", default_img_src: asset_path("user_default.png")

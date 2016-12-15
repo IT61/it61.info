@@ -1,0 +1,27 @@
+- @events.each do |event|
+  .card.events-card
+    - if can? :manage, event
+      a.dropdown-button.events-manage href="#!" data-activates="event-menu-#{event.id}"
+        i.fa.fa-ellipsis-h.events-manage-trigger
+
+      ul.dropdown-content id="event-menu-#{event.id}"
+        - if can? :update, event
+          li
+            = link_to edit_event_path(event) do
+              i.fa.fa-pencil = t(:edit)
+        li
+          = link_to visits_for_event_path(event, event.secret_word) do
+            i.fa.fa-check-circle-o
+            | Регистрация участников
+    = link_to event do
+      .events-logo
+        = image_tag event.cover
+
+      .events-info
+        h2 = event.title
+        p = l event.started_at, format: :date_time_full
+        p.place = event.place.full_address
+        - if event.has_closed_registration?
+          /= button_to t("events.participations.participate"), register_to_event_path(event), class: "btn btn-blue button-participate"
+        - else
+          /= button_to t("events.participations.participate"), participate_event_path(event), method: :post, class: "btn btn-blue button-participate"

@@ -1,9 +1,7 @@
 class Event < ActiveRecord::Base
   include PermalinkFor
   permalink_for :permalink_title, as: :pretty
-
   mount_uploader :cover, ImageUploader
-
   strip_strings :title
 
   # Relations
@@ -12,9 +10,9 @@ class Event < ActiveRecord::Base
 
   has_many :event_participations, dependent: :destroy
   has_many :registrations, dependent: :destroy
-  has_many :participants, class_name: "User", through: :event_participations
+  has_many :participants, class_name: "User", through: :event_participations, source: :user
 
-  accepts_nested_attributes_for :place, reject_if: :all_blank?, limit: 1
+  accepts_nested_attributes_for :place, reject_if: :all_blank, limit: 1
 
   # Validations
   validates :title, presence: true
@@ -23,7 +21,7 @@ class Event < ActiveRecord::Base
   validates :place, presence: true
   validates :published_at, presence: true, if: :published?
 
-  delegate :title, :address, :latitude, :longitude, to: :place, prefix: true
+  delegate :title, :address, :latitude, :longitude, to: :place, prefix: true, allow_nil: true
 
   # Callbacks
   before_create :set_secret_word
@@ -36,12 +34,12 @@ class Event < ActiveRecord::Base
   scope :upcoming, -> { where("started_at > ?", DateTime.current) }
   scope :past, -> { where("started_at <= ?", DateTime.current) }
   scope :today, -> { started_in(DateTime.current) }
-  scope :started_in, -> (datetime) {
+  scope :started_in, ->(datetime) {
     where("started_at > :start and started_at < :end",
           start: datetime.beginning_of_day,
           end: datetime.end_of_day)
   }
-  scope :published_in, -> (from_day, to_day = nil) {
+  scope :published_in, ->(from_day, to_day = nil) {
     where("published_at > :from and published_at < :to",
           from: from_day.beginning_of_day,
           to: to_day.end_of_day)
@@ -70,6 +68,15 @@ class Event < ActiveRecord::Base
 
   def new_participant!(user)
     event_participations << EventParticipation.new(user: user)
+  end
+
+  def place_attributes=(place_attrs)
+    _place = Place.find(place_attrs[:id])
+    if _place
+      self.place = _place
+    else
+      super(place_attrs)
+    end
   end
 
   private

@@ -12,6 +12,8 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 module It61
   class Application < Rails::Application
+    config.app_generators.scaffold_controller :responders_controller
+
     config.generators do |generate|
       generate.helper false
       generate.javascript_engine false
@@ -24,11 +26,13 @@ module It61
     config.eager_load_paths += ["#{Rails.root}/lib"]
 
     config.action_controller.action_on_unpermitted_parameters = :raise
+    config.action_view.raise_on_missing_translations = true
+    config.active_job.queue_adapter = :delayed_job
+
     config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
     config.i18n.available_locales = [:ru, :en]
     config.i18n.default_locale = :ru
 
-    config.active_job.queue_adapter = :delayed_job
     config.exceptions_app = routes
     config.assets.paths << Rails.root.join("vendor", "assets", "components")
   end

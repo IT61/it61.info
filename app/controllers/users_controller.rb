@@ -4,8 +4,6 @@ class UsersController < ApplicationController
 
   respond_to :html
 
-  load_and_authorize_resource
-
   def active
     show_users(:active)
   end

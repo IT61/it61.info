@@ -6,7 +6,7 @@
       .event-share
         = render "shared/share_buttons"
       .event-logo
-        = image_tag @event.title_image
+        = image_tag @event.cover
       .event-info
         .block-info
           .icon-events.icon-calendar
@@ -20,7 +20,7 @@
             .icon-events.icon-link
             = link_to make_global(@event.link), @event.link, target: "_blank"
         .block-info
-          = image_tag @event.organizer.pic, class: "avatar avatar-sm avatar-circle"
+          = image_tag @event.organizer.gravatar_url, class: "avatar avatar-sm avatar-circle"
           = link_to @event.organizer.full_name, @event.organizer
       - if @event.published?
         .btn-group.event-buttons
@@ -28,12 +28,9 @@
             = revoke_registration_link(@event)
           - else
             = participate_in_event_link(@event)
-          - if user_signed_in? && current_user.has_google_refresh_token?
-            = link_to t(".event_add_to_google_calendar"), add_to_google_calendar_event_path(@event), class: "btn btn-shadow btn-gray", method: "post"
-          - else
-            = link_to t(".download_ics_file"), download_ics_file_event_path(@event), class: "btn btn-shadow btn-gray"
+          = link_to t(".download_ics_file"), ics_file_event_calendar_path(@event), class: "btn btn-shadow btn-gray"
 
-    - if current_user.try(:manager?) && !@event.published?
+    - if can? :manage, @event
       .card
         .card-header
           h1 = t(".event_still_not_published")
@@ -56,5 +53,5 @@
           .icon-arrows.icon-arrow-up
       .card-body
         .users-container
-          = render partial: "/shared/users/list", locals: { users: @event.participants }
-= render partial: "events/map_modal", locals: {event: @event}
+          = render partial: "users/list", locals: { users: @event.participants }
+= render partial: "events/map_modal", locals: { event: @event }

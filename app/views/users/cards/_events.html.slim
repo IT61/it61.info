@@ -1,5 +1,5 @@
 section.card.organizator
-  .sub-header: h3= header
+  .sub-header: h3 = header
   .events
     - if events.empty?
       .no-events
@@ -10,7 +10,7 @@ section.card.organizator
         = link_to event_path(e), class: "event-link"
           .event
             .image
-              = image_tag e.title_image, class: 'small-picture'
+              = image_tag e.cover, class: 'small-picture'
             .text= e.title
   - if my_profile?(user)
     .card-footer

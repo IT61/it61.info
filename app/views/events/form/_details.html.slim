@@ -11,35 +11,41 @@
 
     .time-select
       = f.label :started_at, t(".time"), class: "required"
-      = time_select :event, :started_at, default: Date.today, ignore_date: true, time_separator: "<span class='time-separator'>:</span>"
+      = time_select :event, :started_at, default: Time.current, ignore_date: true, time_separator: "<span class='time-separator'>:</span>"
 
   .event-association-field
     .input-float-label
       = f.text_field :link, id: "link", class: "autocomplete-input"
       label = t(".link")
 
-  .event-association-field
-    .input-float-label
-      = text_field_tag "place[title]", @event.place_title, { id: "place_title",
-              class: "autocomplete-input", autocomplete: "off", required: true }
-      label = t(".place")
+  = f.fields_for :place do |ff|
+    .event-association-field
+      .input-float-label
+        = ff.text_field :title, \
+        { id: "place_title", \
+          class: "autocomplete-input", \
+          autocomplete: "off", \
+          required: true, \
+        }
+        = ff.hidden_field :id
+        label = t(".place")
 
-  .event-association-field
-    .input-float-label
-      input#location.autocomplete-input type="text" autocomplete="off" required="true" value=(@event.place_address)
-      label = t(".address")
+    .event-association-field
+      .input-float-label
+        input#location.autocomplete-input type="text" autocomplete="off" required="true" value=(@event.place_address)
+        label = t(".address")
 
-  .modal
-    label for="modal-1"
-      a.btn.btn-gray.modal-trigger#map-trigger = t(".show_map_btn")
-    input.modal-state#modal-1 type="checkbox"
-    .modal-fade-screen
-      .modal-inner
-        .modal-content
-          .header
-            h2 = t(".map")
-          #map
-        .btn.modal-close for="modal-1" = t("modal.close")
-      = text_field_tag "place[address]", @event.place_address, class: "unchangeable-input", required: true, type: "hidden"
-      = text_field_tag "place[latitude]", @event.place_latitude, class: "unchangeable-input", required: true, type: "hidden"
-      = text_field_tag "place[longitude]",  @event.place_longitude, class: "unchangeable-input", required: true, type: "hidden"
+    .modal
+      label for="modal-1"
+        a.btn.btn-gray.modal-trigger#map-trigger = t(".show_map_btn")
+      input.modal-state#modal-1 type="checkbox"
+      .modal-fade-screen
+        .modal-inner
+          .modal-content
+            .header
+              h2 = t(".map")
+            #map
+          .btn.modal-close for="modal-1" = t("modal.close")
+        = ff.hidden_field :address, class: "unchangeable-input", required: true
+        = ff.hidden_field :latitude, class: "unchangeable-input", required: true
+        = ff.hidden_field :longitude, class: "unchangeable-input", required: true
