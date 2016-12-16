@@ -15,6 +15,7 @@ module PermalinkFor
       include PERMALINK_TYPES[as]
 
       self::ActiveRecord_AssociationRelation.include PERMALINK_TYPES[as]::ClassMethods
+      self::ActiveRecord_Relation.include PERMALINK_TYPES[as]::ClassMethods
 
       config = { target_field: field }
       cattr_reader :permalink_configuration
