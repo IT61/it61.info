@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :fetch_user,           only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  load_and_authorize_resource
 
   def active
     show_users(:active)

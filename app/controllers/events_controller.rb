@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show, :upcoming, :past]
   before_action :set_event, only: [:show, :edit, :publish]
+  load_and_authorize_resource
 
   def index
     @events = Event.ordered_desc

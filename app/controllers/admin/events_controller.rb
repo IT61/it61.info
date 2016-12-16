@@ -1,6 +1,7 @@
 module Admin
   class EventsController < BaseController
     before_action :set_event, only: [:edit, :update]
+    load_and_authorize_resource
 
     def index
       @events = Event.paginate(page: params[:page], per_page: 5)

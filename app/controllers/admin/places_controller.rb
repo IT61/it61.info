@@ -1,6 +1,7 @@
 module Admin
   class PlacesController < BaseController
     before_action :set_place, only: [:edit, :update]
+    load_and_authorize_resource
 
     def index
       @places = Place.paginate(page: params[:page], per_page: 10)
