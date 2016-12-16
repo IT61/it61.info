@@ -33,7 +33,11 @@ class Importer
 
   def use_old_db
     ActiveRecord::Base.establish_connection({
-      adapter: :postgresql, database: @old_db
+      adapter: :postgresql,
+      host: ENV.fetch("DATABASE_HOST", ""),
+      username: ENV.fetch("DATABASE_USERNAME", ""),
+      password: ENV.fetch("DATABASE_PASSWORD", ""),
+      database: @old_db
     })
   end
 
