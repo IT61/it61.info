@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :visits
     resources :participations
 
-    resource :calendar
+    resource :calendar do
+      get :ics, to: "calendar#ics", as: "ics_file"
+    end
 
     collection do
       get "upcoming"
