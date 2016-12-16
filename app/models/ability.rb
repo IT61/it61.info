@@ -6,12 +6,14 @@ class Ability
 
     can :read, User
     can [:edit, :update, :destroy], user
-    can :read, Event, published: true
+    can [:read, :upcoming, :past], Event, published: true
     can :create, Event
     can [:edit, :update, :destroy], organizer_id: user.id
 
     if user.moderator?
       define_moderator(user)
+    elsif user.admin?
+      can :manage, :all
     end
   end
 

@@ -3,9 +3,10 @@ RSpec.describe Admin::UsersController, type: :controller do
     login_user
 
     describe "get /index" do
-      it "redirects to /welcome" do
-        get :index
-        expect(response.status).to eq(302)
+      it "raises RoutingError (404)" do
+        expect {
+          get :index
+        }.to raise_error(ActionController::RoutingError)
       end
     end
   end

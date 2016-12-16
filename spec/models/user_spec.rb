@@ -70,6 +70,8 @@ RSpec.describe User, type: :model do
     context "when is an unauthorized user" do
       it { should have_abilities(:read, User.new) }
       it { should have_abilities(:read, published_event) }
+      it { should have_abilities(:upcoming, Event) }
+      it { should have_abilities(:past, Event) }
 
       it { should_not have_abilities([:edit, :update, :destroy], user) }
       it { should_not have_abilities([:edit, :update, :destroy], event) }
@@ -92,17 +94,16 @@ RSpec.describe User, type: :model do
       it { should have_abilities(:read, User.new) }
       it { should have_abilities(:read, event) }
       it { should have_abilities([:edit, :update], event) }
-    end
-  end
 
-  describe "abilities" do
-    subject(:ability) { AdminAbility.new(user) }
-    let! (:user) { create(:user, :admin) }
-    let!(:event) { create(:event) }
+      it { should_not have_abilities(:destroy, User) }
+      it { should_not have_abilities(:destroy, Place) }
+    end
 
     context "when is an administrator" do
-      it { should have_abilities(:all, event) }
-      it { should have_abilities(:all, User.new ) }
+      let! (:user) { create(:user, :admin) }
+      it { should have_abilities(:manage, event) }
+      it { should have_abilities(:manage, published_event) }
+      it { should have_abilities(:manage, User) }
     end
   end
 end

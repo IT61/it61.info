@@ -1,6 +1,5 @@
 module Admin
   class UsersController < BaseController
-    before_action :set_user, only: [:edit, :update]
     load_and_authorize_resource
 
     def index

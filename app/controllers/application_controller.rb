@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
-    throw exception if Rails.env === "development"
+    throw exception unless Rails.env.production?
     render_404
+  end
+
+  def render_404
+    render "errors/not_found", status: :not_found
   end
 end
