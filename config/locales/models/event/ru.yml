@@ -2,5 +2,5 @@ ru:
   activerecord:
     models:
       event:
-        one:  Мероприятие
+        one: Мероприятие
         few: Мероприятия
