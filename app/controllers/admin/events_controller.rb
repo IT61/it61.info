@@ -6,8 +6,7 @@ module Admin
       @events = Event.paginate(page: params[:page], per_page: 5)
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
       event_creator = EventCreator.new

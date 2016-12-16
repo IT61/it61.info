@@ -32,13 +32,13 @@ class Importer
   end
 
   def use_old_db
-    ActiveRecord::Base.establish_connection({
+    ActiveRecord::Base.establish_connection(
       adapter: :postgresql,
       host: ENV.fetch("DATABASE_HOST", ""),
       username: ENV.fetch("DATABASE_USERNAME", ""),
       password: ENV.fetch("DATABASE_PASSWORD", ""),
-      database: @old_db
-    })
+      database: @old_db,
+    )
   end
 
   def reset_sequence(table)
@@ -60,8 +60,10 @@ class Row
   end
 end
 
-class PG::Result
-  def get_row(index)
-    Row.new fields, values[index].to_a
+module PG
+  class Result
+    def get_row(index)
+      Row.new fields, values[index].to_a
+    end
   end
 end

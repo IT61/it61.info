@@ -6,8 +6,7 @@ module Admin
       @places = Place.paginate(page: params[:page], per_page: 10)
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
       commit = @place.update place_params

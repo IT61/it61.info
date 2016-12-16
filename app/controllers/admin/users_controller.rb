@@ -6,8 +6,7 @@ module Admin
       @users = User.paginate page: params[:page], per_page: 10
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
       commit = @user.update user_params

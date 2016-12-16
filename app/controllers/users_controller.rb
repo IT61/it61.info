@@ -17,11 +17,9 @@ class UsersController < ApplicationController
     show_users(:active)
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     commit = @user.update(user_params)
@@ -35,14 +33,12 @@ class UsersController < ApplicationController
     respond_with @user, location: edit_profile_path
   end
 
-  def destroy
-    # todo
-  end
+  def destroy; end
 
   private
 
   def show_users(scope)
-    @users = User.send(scope).with_name.paginate(page: params[:page], per_page: Settings.per_page.users)
+    @users = User.send(scope).presentable.paginate(page: params[:page], per_page: Settings.per_page.users)
     view = request.xhr? ? "users/_list" : "users/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr?, locals: { users: @users } }
