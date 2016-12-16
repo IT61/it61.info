@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @events = Event.includes(:place).ordered_desc
+    @events = Event.includes(:place).ordered_desc.paginate(page: params[:page], per_page: 5)
   end
 
   def show; end
