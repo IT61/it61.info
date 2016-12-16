@@ -39,8 +39,23 @@ Rails.application.routes.draw do
   resources :places, only: [:index] do
     get "/find", to: "places#find", on: :collection
   end
+
+  resources :events do
+    resources :registrations
+    resources :visits
+    resources :participations
+
+    resource :calendar do
+      get :ics, to: "calendar#ics", as: "ics_file"
+    end
+
+    collection do
+      get "upcoming"
+      get "past"
+    end
+  end
 end
 
-[:admin, :events].each do |route_file|
-  require "#{Rails.root}/config/routes/#{route_file}"
+[:admin].each do |route_file|
+  require_dependency "#{Rails.root}/config/routes/#{route_file}"
 end

@@ -33,7 +33,6 @@ module It61
     config.i18n.available_locales = [:ru, :en]
     config.i18n.default_locale = :ru
 
-    config.exceptions_app = routes
     config.assets.paths << Rails.root.join("vendor", "assets", "components")
   end
 end
