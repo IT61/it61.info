@@ -7,9 +7,11 @@ module Events
     end
 
     def new
-      return redirect_to @event unless current_user.can_fill_entry_form?(@event)
-
-      @entry_form = @event.registration_for(current_user)
+      if current_user.can_fill_entry_form?(@event)
+        @entry_form = @event.registration_for(current_user)
+      else
+        redirect_to @event
+      end
     end
 
     def create
