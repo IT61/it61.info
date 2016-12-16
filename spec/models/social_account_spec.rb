@@ -1,5 +1,3 @@
-require "rails_helper"
-
 RSpec.describe SocialAccount, type: :model do
 
   describe "public class methods" do

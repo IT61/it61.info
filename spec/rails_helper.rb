@@ -1,12 +1,21 @@
 if ENV.fetch("COVERAGE", false)
   require "simplecov"
 
+  SimpleCov.profiles.define "coverage" do
+    load_profile "rails"
+    # Don't include vendored stuff
+    add_filter ".vendor"
+    add_filter "lib/tasks"
+
+    add_group "Uploaders", "app/uploaders"
+  end
+
   if ENV["CIRCLE_ARTIFACTS"]
     dir = File.join(ENV["CIRCLE_ARTIFACTS"], "coverage")
     SimpleCov.coverage_dir(dir)
   end
 
-  SimpleCov.start "rails"
+  SimpleCov.start "coverage"
 end
 
 ENV["RAILS_ENV"] ||= "test"
@@ -14,6 +23,7 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
 
 require "rspec/rails"
+require "cancan/matchers"
 require "webmock/rspec"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }

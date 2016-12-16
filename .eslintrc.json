@@ -1,6 +1,11 @@
 {
   "env": {
-    "browser": true
+    "browser": true,
+    "jquery": true
+  },
+  "globals": {
+    "Geocoder": true,
+    "SimpleMDE": true
   },
   "extends": "eslint:recommended",
   "rules": {

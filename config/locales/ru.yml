@@ -12,31 +12,31 @@ ru:
 
   menu: "Меню"
 
-  save: Сохранить
-  add: Добавить
-  edit: Редактировать
-  delete: Удалить
+  save: "Сохранить"
+  add: "Добавить"
+  edit: "Редактировать"
+  delete: "Удалить"
 
   publish: "Опубликовать"
   unpublish: "Распубликовать"
 
-  cancel: Отмена
+  cancel: "Отмена"
 
   modal:
     close: "Закрыть"
 
   pages:
-    account: Мой профиль
-    my_profile: Мой профиль
-    community: Сообщество
-    events: Мероприятия
-    users: Личности
-    photos: Фотографии
+    account: "Мой профиль"
+    my_profile: "Мой профиль"
+    community: "Сообщество"
+    events: "Мероприятия"
+    users: "Личности"
+    photos: "Фотографии"
     welcome:
       title: Ростовское<br>IT-сообщество
       user_count: Человек<br>в сообществе
       event_count: Мероприятий<br>организовано
-      slack_channels_count: Канала<br>в Slack 
+      slack_channels_count: Канала<br>в Slack
       sign_in: Присоединяйся!
     about:
       link: О нас
@@ -108,78 +108,6 @@ ru:
   photos:
     index:
       our_tag: "Наш официальный хэштег #%{tag} в Instagram"
-
-  events:
-    upcoming: "Ближайшие меропрития"
-    past: "Прошедшие меропрития"
-    unpublished: "Неопубликованные меропрития"
-    index:
-      unpublished: "Неопубликованные"
-      upcoming: "Ближайшие"
-      past: "Прошедшие"
-      create: "Создать новое"
-    show:
-      event_still_not_published: "Мероприятие ещё не опубликовано."
-      event_add_to_google_calendar: "+ Google calendar"
-      download_ics_file: "Скачать ICS"
-      description: "Описание"
-      participants: "Участники (%{count})"
-      postrelease: "Пострелиз"
-    participations:
-      participate: "Я пойду!"
-      revoke_participation: "Отменить заявку"
-      participated: "Я участвовал"
-    new:
-      header: "Новое мероприятие"
-      create_event: "Создать мероприятие"
-    edit:
-      header: "Редактирование мероприятия"
-      edit_event: "Редактировать мероприятие"
-    form:
-      image_section:
-        title_image: "Изображение"
-        recommendations: "Рекомендуется использовать изображение размером 500x500 px в формате .jpg или .png"
-        no_file_label: "Файл не выбран"
-        choose_file_btn: "Выберите файл"
-      description_section:
-        description: "Описание"
-      details_section:
-        title: "Название"
-        time: "Время начала"
-        date: "Дата начала"
-        link: "Ссылка на сторонний сайт"
-        place: "Место проведения"
-        address: "Точный адрес"
-        show_map_btn: "Посмотреть на карте"
-        map: "Карта"
-      footer_section:
-        create: "Создать мероприятие"
-    stubs:
-      create_event: "Создайте мероприятие"
-      past:
-        first_line: "Здесь пока ещё пусто,"
-        second_line: "но вы можете это исправить"
-        upcoming_events: "ближайшие мероприятия"
-      upcoming:
-        first_line: "Пока ничего не запланировано,"
-        second_line: "но вы можете это исправить"
-        past_events: "прошедшие мероприятия"
-      unpublished:
-        first_line: "Мероприятий пока нет,"
-        second_line: "так что можно расслабиться"
-      or_watch_smth_html: "или посмотрите %{link}"
-    registrations:
-      new:
-        registration_to_event: "Регистрация на мероприятие"
-        full_name: "Имя, фамилия"
-        organizers_will_check_name: "Организаторы будут узнавать Ваше имя на входе, так что не стесняйтесь указывать настоящее имя"
-        email: "E-Mail"
-        you_will_recieve_notifications: "Указав E-Mail в настройках профиля, Вы сможете настроить оповещения о новых событиях"
-        why: "Почему Вы хотите принять участие в этом событии?"
-        who_are_you: "Чем Вы занимаетесь?"
-        suggestions: "Если событие повторится, что бы Вы хотели там увидеть в следующий раз?"
-        sure_will_go: "Точно пойду"
-        maybe_will_go: "Возможно пойду"
 
   shared:
     navbar:
@@ -337,3 +265,56 @@ ru:
   upload_photo: "Загрузить фото"
   places:
     root: "Главная страница"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Возникли ошибки: %{errors}'
+        restrict_dependent_destroy:
+          has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
+          has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: нужно подтвердить
+      blank: не может быть пустым
+      present: нужно оставить пустым
+      confirmation: не совпадает со значением поля %{attribute}
+      empty: не может быть пустым
+      equal_to: может иметь лишь значение, равное %{count}
+      even: может иметь лишь нечетное значение
+      exclusion: имеет зарезервированное значение
+      greater_than: может иметь значение большее %{count}
+      greater_than_or_equal_to: может иметь значение большее или равное %{count}
+      inclusion: имеет непредусмотренное значение
+      invalid: имеет неверное значение
+      less_than: может иметь значение меньшее чем %{count}
+      less_than_or_equal_to: может иметь значение меньшее или равное %{count}
+      model_invalid: 'Возникли ошибки: %{errors}'
+      not_a_number: не является числом
+      not_an_integer: не является целым числом
+      odd: может иметь лишь четное значение
+      required: не может отсутствовать
+      taken: уже существует
+      too_long:
+        few: слишком большой длины (не может быть больше чем %{count} символа)
+        many: слишком большой длины (не может быть больше чем %{count} символов)
+        one: слишком большой длины (не может быть больше чем %{count} символ)
+        other: слишком большой длины (не может быть больше чем %{count} символа)
+      too_short:
+        few: недостаточной длины (не может быть меньше %{count} символов)
+        many: недостаточной длины (не может быть меньше %{count} символов)
+        one: недостаточной длины (не может быть меньше %{count} символа)
+        other: недостаточной длины (не может быть меньше %{count} символа)
+      wrong_length:
+        few: неверной длины (может быть длиной ровно %{count} символа)
+        many: неверной длины (может быть длиной ровно %{count} символов)
+        one: неверной длины (может быть длиной ровно %{count} символ)
+        other: неверной длины (может быть длиной ровно %{count} символа)
+      other_than: должно отличаться от %{count}
+    template:
+      body: 'Проблемы возникли со следующими полями:'
+      header:
+        few: "%{model}: сохранение не удалось из-за %{count} ошибок"
+        many: "%{model}: сохранение не удалось из-за %{count} ошибок"
+        one: "%{model}: сохранение не удалось из-за %{count} ошибки"
+        other: "%{model}: сохранение не удалось из-за %{count} ошибки"

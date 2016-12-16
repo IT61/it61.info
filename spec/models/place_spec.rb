@@ -1,5 +1,3 @@
-require "rails_helper"
-
 RSpec.describe Place, type: :model do
   it "has a valid factory" do
     expect(build(:place)).to be_valid
@@ -9,7 +7,6 @@ RSpec.describe Place, type: :model do
   subject { place }
 
   describe "ActiveModel validations" do
-    it { expect(place).to validate_presence_of(:title) }
     it { expect(place).to validate_presence_of(:address) }
   end
 

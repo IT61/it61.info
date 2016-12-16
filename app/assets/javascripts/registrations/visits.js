@@ -1,7 +1,7 @@
 $(document).ready(function () {
-  "use strict";
+  'use strict';
 
-  var $chekboxes = $(".icheckbox");
+  var $chekboxes = $('.icheckbox');
 
   var options = {
     item: '<li></li>',
@@ -9,13 +9,13 @@ $(document).ready(function () {
       {name: 'id', attr: 'data-id'},
       'name'
     ],
-    searchColumns: ["name"]
+    searchColumns: ['name']
   };
 
-  var registeredList = new List("registered", options);
-  var visitedList = new List("visited", options);
-  var $registeredCounter = $("#registered_counter");
-  var $visitedCounter = $("#visited_counter");
+  var registeredList = new List('registered', options);
+  var visitedList = new List('visited', options);
+  var $registeredCounter = $('#registered_counter');
+  var $visitedCounter = $('#visited_counter');
 
   $chekboxes.iCheck({
     checkboxClass: 'icheckbox_square-blue',
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
   var moveItemToList = function(item, fromList, toList) {
     // Show all items
-    $(".search").val("");
+    $('.search').val('');
     toList.search();
     fromList.search();
 
@@ -38,20 +38,19 @@ $(document).ready(function () {
   };
 
   var markVisit = function(checkbox) {
-    var $participant = $(checkbox).closest(".participant");
-    var userID = $participant.data("id");
+    var $participant = $(checkbox).closest('.participant');
+    var userID = $participant.data('id');
     $.ajax({
-      url: window.location + "/mark",
-      type: "PUT",
+      url: window.location + '/mark',
+      type: 'PUT',
       data: {
         user_id: userID,
         visited: checkbox.checked
       },
       success: function() {
-        if(!checkbox.checked) {
+        if (!checkbox.checked) {
           moveItemToList($participant.parent(), visitedList, registeredList);
-        }
-        else {
+        } else {
           moveItemToList($participant.parent(), registeredList, visitedList);
         }
         $registeredCounter.text(registeredList.size());
@@ -60,7 +59,7 @@ $(document).ready(function () {
     });
   };
 
-  $chekboxes.on("ifChanged", function() {
+  $chekboxes.on('ifChanged', function() {
     markVisit(this);
   });
 

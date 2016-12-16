@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920113635) do
+ActiveRecord::Schema.define(version: 20161216082402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20160920113635) do
   create_table "event_participations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.boolean  "visited",    default: false
     t.index ["event_id"], name: "index_event_participations_on_event_id", using: :btree
     t.index ["user_id"], name: "index_event_participations_on_user_id", using: :btree
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20160920113635) do
   create_table "events", force: :cascade do |t|
     t.string   "title",                                         null: false
     t.text     "description",                                   null: false
-    t.string   "title_image"
+    t.string   "cover"
     t.integer  "organizer_id",                                  null: false
     t.boolean  "published",                     default: false
     t.datetime "published_at"
     t.boolean  "subscribers_notification_send", default: false
     t.datetime "started_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "participants_limit"
     t.string   "link"
     t.integer  "place_id"
@@ -56,20 +56,21 @@ ActiveRecord::Schema.define(version: 20160920113635) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "title"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_groups_on_name", using: :btree
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer "group_id", null: false
+    t.integer "user_id",  null: false
     t.index ["group_id"], name: "index_groups_users_on_group_id", using: :btree
     t.index ["user_id"], name: "index_groups_users_on_user_id", using: :btree
   end
 
   create_table "places", force: :cascade do |t|
-    t.string   "title",      null: false
+    t.string   "title"
     t.string   "address",    null: false
     t.float    "latitude"
     t.float    "longitude"
@@ -127,7 +128,6 @@ ActiveRecord::Schema.define(version: 20160920113635) do
     t.string   "google_refresh_token"
     t.string   "migration_token"
     t.boolean  "is_social_profiles_hidden", default: false, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["email_reminders"], name: "index_users_on_email_reminders", using: :btree
     t.index ["name"], name: "index_users_on_name", using: :btree
     t.index ["sms_reminders"], name: "index_users_on_sms_reminders", using: :btree

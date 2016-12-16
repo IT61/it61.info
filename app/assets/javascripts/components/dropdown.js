@@ -37,7 +37,7 @@ jQuery.extend(jQuery.easing,
     };
 
     // Open dropdown.
-    if (options === "open") {
+    if (options === 'open') {
       this.each(function () {
         $(this).trigger('open');
       });
@@ -45,7 +45,7 @@ jQuery.extend(jQuery.easing,
     }
 
     // Close dropdown.
-    if (options === "close") {
+    if (options === 'close') {
       this.each(function () {
         $(this).trigger('close');
       });
@@ -58,7 +58,7 @@ jQuery.extend(jQuery.easing,
       var isFocused = false;
 
       // Dropdown menu
-      var activates = $("#" + origin.attr('data-activates'));
+      var activates = $('#' + origin.attr('data-activates'));
 
       function updateOptions() {
         if (origin.data('induration') !== undefined)
@@ -209,7 +209,7 @@ jQuery.extend(jQuery.easing,
         var open = false;
         origin.unbind('click.' + origin.attr('id'));
         // Hover handler to show dropdown
-        origin.on('mouseenter', function (e) { // Mouse over
+        origin.on('mouseenter', function () { // Mouse over
           if (open === false) {
             placeDropdown();
             open = true;

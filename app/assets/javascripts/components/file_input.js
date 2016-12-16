@@ -1,11 +1,10 @@
 function initFileInput($uploadContainer) {
   var wrapper = $uploadContainer,
-      input = wrapper.find('input'),
-      button = wrapper.find('button'),
-      label = wrapper.find('label');
+    input = wrapper.find('input'),
+    button = wrapper.find('button');
 
   button.focus(function () {
-    input.focus()
+    input.focus();
   });
   // Crutches for the :focus style:
   input.focus(function () {

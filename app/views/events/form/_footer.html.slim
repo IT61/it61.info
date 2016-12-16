@@ -1,0 +1,5 @@
+.register-footer
+  .required-fields = t("required_fields")
+  .buttons.event-form-buttons
+    = link_to t("cancel"), events_path, class: "btn btn-shadow btn-gray", formnovalidate: true
+    button.btn.btn-shadow.btn-blue#create-event-button Сохранить

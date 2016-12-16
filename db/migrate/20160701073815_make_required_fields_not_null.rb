@@ -1,4 +1,4 @@
-class MakeRequiredFieldsNotNull < ActiveRecord::Migration
+class MakeRequiredFieldsNotNull < ActiveRecord::Migration[5.0]
   def change
     # User model
     change_column_null :users, :role, false

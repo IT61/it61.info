@@ -1,44 +1,13 @@
+require "application_responder"
+
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  self.responder = ApplicationResponder
+  respond_to :html
+
   protect_from_forgery with: :exception
 
-  include ActionView::Helpers::AssetUrlHelper
-
-  def after_sign_in_path_for(_resource_or_scope)
-    current_user.fresh? ? sign_up_complete_path : events_path
-  end
-
-  def welcome
-  end
-
-  def render_403
-    render status: :forbidden, text: "Forbidden access"
-  end
-
-  def render_404
-    render "errors/not_found", status: :not_found
-  end
-
-  def authenticate_admin!
-    authenticate_user!
-
-    if current_user.nil? || (not current_user.admin?)
-      raise CanCan::AccessDenied
-    end
-  end
-
-  rescue_from CanCan::AccessDenied do |_exception|
-    throw exception if Rails.env === "development"
-    render_404
-  end
-
-  rescue_from ActiveRecord::RecordNotFound do |_exception|
-    throw exception if Rails.env === "development"
-    render_404
-  end
-
-  rescue_from ActionView::MissingTemplate do |_exception|
+  rescue_from CanCan::AccessDenied do |exception|
+    Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
     throw exception if Rails.env === "development"
     render_404
   end

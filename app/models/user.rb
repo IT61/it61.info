@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  @fresh = false
-
+  include Gravtastic
+  gravtastic
   mount_uploader :avatar, ImageUploader
 
   enum role: {
@@ -22,16 +22,14 @@ class User < ApplicationRecord
 
   phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
 
-  validates_presence_of :phone, if: :sms_reminders?
-  validates_presence_of :email, if: :email_required?
-  validates_presence_of :role
-  validates_uniqueness_of :email, case_sensitive: false
+  validates :phone, presence: true, if: :sms_reminders?
+  validates :email, presence: true, if: :email_required?
+  validates :role, presence: true
   validates_plausible_phone :phone, country_code: "RU"
 
   # В случае, если OAuth провайдер не предоставляет email, в базу может быть записана пустая строка,
   # что приведет к нарушению уникальности index_users_on_email
   before_save :nullify_empty_email
-
   before_create :assign_defaults
 
   scope :notify_by_email, -> { where(email_reminders: true).where.not(email: nil) }
@@ -53,23 +51,16 @@ class User < ApplicationRecord
     SocialAccount.from_omniauth auth, self
   end
 
-  def create_event(event_params, place_params)
-    Event.new(event_params) do |e|
-      e.organizer = self
-      e.place ||= Place.first_or_create_place(place_params)
+  def display_name
+    if first_name.presence
+      first_name
+    else
+      full_name
     end
   end
 
   def full_name
     [first_name, last_name].compact.join(" ").presence || name
-  end
-
-  def pic
-    avatar.url.blank? ? "user_default.png" : avatar
-  end
-
-  def manager?
-    admin? || moderator?
   end
 
   def remember_me
@@ -83,10 +74,6 @@ class User < ApplicationRecord
   def subscribe!
     self.subscribed = true
     save!
-  end
-
-  def fresh?
-    @fresh
   end
 
   def has_events?
@@ -108,11 +95,10 @@ class User < ApplicationRecord
     self.email_reminders ||= false
     self.sms_reminders ||= false
     self.subscribed ||= false
-    @fresh = true
   end
 
   def email_required?
-    subscribed? || email_reminders?
+    false
   end
 
   def restore_event_participations

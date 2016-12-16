@@ -32,7 +32,7 @@ class GoogleService
     {
       summary: event.title,
       location: event.place.full_address,
-      description: event.description.nil? ? "" : event.description,
+      description: event.description? ? "" : event.description,
       start: {
         dateTime: event.started_at.iso8601,
       },

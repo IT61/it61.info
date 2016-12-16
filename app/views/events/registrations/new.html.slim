@@ -2,7 +2,8 @@
 .card.register-card
   .title
     h1 = t(".registration_to_event")
-    p #{summary_info(@event).html_safe}
+    p
+      = summary_info(@event).sanitize
   = form_for(:entry_form, url: create_register_to_event_path) do |f|
     .register-fields
       .association-field

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require "redcarpet/render_strip"
 
 class MarkdownService

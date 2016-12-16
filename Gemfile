@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.3.1"
+ruby "2.3.3"
 
 gem "active_link_to"
 gem "activemodel-serializers-xml"
@@ -14,8 +14,8 @@ gem "devise"
 gem "flutie"
 gem "geocoder"
 gem "google-api-client", "~> 0.8.2", require: "google/api_client"
+gem "gravtastic"
 gem "high_voltage"
-gem "i18n-tasks"
 gem "icalendar"
 gem "icheck-rails"
 gem "jquery-rails"
@@ -37,6 +37,7 @@ gem "rails-i18n"
 gem "recipient_interceptor"
 gem "redcarpet"
 gem "redis"
+gem "responders"
 gem "sass-rails", "~> 5.0"
 gem "slack-notifier"
 gem "slim-rails"
@@ -49,7 +50,6 @@ gem "will_paginate"
 
 source "https://rails-assets.org" do
   gem "rails-assets-cropper"
-  gem "rails-assets-simplemde"
   gem "rails-assets-smartcrop"
   gem "rails-assets-listjs"
 end
@@ -65,7 +65,6 @@ group :development, :test do
   gem "awesome_print"
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
-  gem "scss_lint", require: false
   gem "brakeman", require: false
   gem "dotenv-rails"
   gem "forgery"
@@ -74,7 +73,7 @@ group :development, :test do
   gem "pry-rails"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 3.5.0"
-  gem "slim_lint"
+  gem "scss_lint", require: false
 end
 
 group :development, :staging do

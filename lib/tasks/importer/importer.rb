@@ -1,4 +1,4 @@
-Dir[File.join(File.dirname(__FILE__), '*importer.rb')].each {|file| require file }
+Dir[File.join(File.dirname(__FILE__), "*importer.rb")].each { |file| require file }
 
 class Importer
   include UsersImporter
@@ -11,7 +11,7 @@ class Importer
     { table: "social_accounts", reset: true },
     { table: "events", reset: true },
     { table: "event_participations", reset: true },
-  ]
+  ].freeze
 
   def initialize(old_db, new_db)
     puts "Importing data from #{old_db} to #{new_db}"
@@ -32,7 +32,9 @@ class Importer
   end
 
   def use_old_db
-    ActiveRecord::Base.establish_connection(@old_db)
+    ActiveRecord::Base.establish_connection({
+      adapter: :postgresql, database: @old_db
+    })
   end
 
   def reset_sequence(table)
@@ -55,7 +57,7 @@ class Row
 end
 
 class PG::Result
-  def get_row index
-    Row.new self.fields, self.values[index].to_a
+  def get_row(index)
+    Row.new fields, values[index].to_a
   end
 end

@@ -1,11 +1,9 @@
 module Admin
-  class EventsController < ApplicationController
-    layout "admin"
-    before_action :authenticate_admin!
+  class EventsController < BaseController
     before_action :set_event, only: [:edit, :update]
 
     def index
-      @events = Event.paginate page: params[:page], per_page: 5
+      @events = Event.paginate(page: params[:page], per_page: 5)
     end
 
     def edit
@@ -19,14 +17,23 @@ module Admin
         redirect_to admin_events_path, notice: "Данные мероприятия обновлены"
       else
         flash[:errors] = @event.errors.messages
-        render "new"
+        render :new
       end
+    end
+
+    def publish
+      Event::Publisher.new(@event, current_user).publish!
+      respond_with(@event)
     end
 
     private
 
     def set_event
-      @event = Event.find params[:id]
+      @event = Event.find(event_params[:id])
+    end
+
+    def event_params
+      params.require(:event).permit(:id)
     end
   end
 end

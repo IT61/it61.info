@@ -1,6 +1,5 @@
 module ApplicationHelper
   def markdown(text)
-    # rubocop:disable Rails/OutputSafety
     raw(MarkdownService.render_markdown(text))
   end
 
@@ -8,7 +7,7 @@ module ApplicationHelper
     MarkdownService.render_plain(text)
   end
 
-  def render_editor?
-    controller.controller_name == "events" && !["index", "show"].include?(controller.action_name)
+  def social_networks
+    Dir["#{Rails.root}/app/views/shared/widgets/*"].sort_by {|file| file.scan(/\d+/).last.to_i }
   end
 end

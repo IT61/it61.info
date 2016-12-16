@@ -1,6 +1,9 @@
 class PlacesController < ApplicationController
+  respond_to :json
+
   def index
-    render json: Place.all
+    @places = Place.all
+    respond_with(@places)
   end
 
   def find
@@ -15,6 +18,7 @@ class PlacesController < ApplicationController
       addressLine: place.address,
       coordinates: [place.latitude, place.longitude],
       place_title: place.title,
+      id: place.id,
     }
   end
 end

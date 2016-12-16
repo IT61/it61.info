@@ -4,8 +4,6 @@ class UsersController < ApplicationController
 
   respond_to :html
 
-  load_and_authorize_resource
-
   def active
     show_users(:active)
   end
@@ -67,6 +65,6 @@ class UsersController < ApplicationController
       :bio,
     ]
 
-    params.require(:user).permit *user_attributes
+    params.require(:user).permit(*user_attributes)
   end
 end

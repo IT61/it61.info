@@ -6,7 +6,7 @@
 //= require icheck
 //= require cropper
 // HACK: simplemde dist is f*cked
-//= require simplemde/simplemde.min.js
+//= require simplemde/simplemde
 //= require smartcrop
 //= require listjs
 

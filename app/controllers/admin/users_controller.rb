@@ -1,8 +1,5 @@
 module Admin
-  class UsersController < ApplicationController
-    layout "admin"
-
-    before_action :authenticate_admin!
+  class UsersController < BaseController
     before_action :set_user, only: [:edit, :update]
 
     def index
@@ -25,11 +22,19 @@ module Admin
     private
 
     def set_user
-      @user = User.find params[:id]
+      @user = User.find(user_params[:od])
     end
 
     def user_params
-      params.require(:user).permit :email, :first_name, :last_name, :phone, :role
+      attributes = [
+        :id,
+        :email,
+        :first_name,
+        :last_name,
+        :phone,
+        :role,
+      ]
+      params.require(:user).permit(*attributes)
     end
   end
 end

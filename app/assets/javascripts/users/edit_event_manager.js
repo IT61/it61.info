@@ -2,9 +2,9 @@ function uploadImageToServer($croppedModalImage, $currentImage, $form) {
   var canvas = $croppedModalImage.cropper('getCroppedCanvas');
   canvas.toBlob(function (blob) {
     var formData = new FormData();
-    formData.append('avatar', blob, "blob.png");
+    formData.append('avatar', blob, 'blob.png');
     $.ajax($form.data('avatar-path'), {
-      method: "POST",
+      method: 'POST',
       data: formData,
       processData: false,
       contentType: false,

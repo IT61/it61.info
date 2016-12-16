@@ -15,14 +15,15 @@ module SocialAccountsImporter
         value = row.get(f)
         # rename vk => vkontakte
         value = "vkontakte" if value == "vk"
+        value = "google_oauth2" if value == "google"
 
         social_account.write_attribute(f, value)
       end
 
       begin
         social_account.save!
-      rescue Exception => e
-        puts "Failed to save #{social_account.uid} for #{social_account.user_id}: #{e.message} because of: #{social_account.errors.full_messages.join(', ')}"
+      rescue => e
+        puts "Failed to save #{social_account.uid} for #{social_account.user_id}: #{e.message}"
       end
     end
   end

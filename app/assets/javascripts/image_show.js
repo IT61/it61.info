@@ -1,5 +1,5 @@
 function fileReaderSupported() {
-  return window.File && window.FileReader && window.FileList && window.Blob
+  return window.File && window.FileReader && window.FileList && window.Blob;
 }
 
 function showImageOnLoad($imageInput, $image, onLoadCallback) {

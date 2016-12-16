@@ -13,11 +13,11 @@ var eventManager = {
 
   initCropper: function () {
     var $form = $('.event-form'),
-        $imageInput = $('#imageInput'),
-        $currentImage = $('#image'),
-        $modal = $('#croppedModal'),
-        $croppedModalImage = $('#croppedModalImage'),
-        $saveImageBtn = $('#uploadImage');
+      $imageInput = $('#imageInput'),
+      $currentImage = $('#image'),
+      $modal = $('#croppedModal'),
+      $croppedModalImage = $('#croppedModalImage'),
+      $saveImageBtn = $('#uploadImage');
 
     if (!$form || !$form.length) {
       return;
@@ -32,27 +32,25 @@ var eventManager = {
 
     $saveImageBtn.on('click', function () {
       var canvas = $('#croppedModalImage').cropper('getCroppedCanvas');
-      $('#image').replaceWith($('<div>', {'id': 'image'}).html(canvas));
+      $('#image').replaceWith($('<div>', {
+        'id': 'image'
+      }).html(canvas));
     });
   },
 
   sendFormWithImageBlob: function (form, canvas) {
-    canvas.toBlob(function (blob) {
-      var formData = new FormData(form);
-      formData.append('event[title_image]', blob, "blob.png");
-      var request = new XMLHttpRequest();
-      request.open(form.method, form.action);
-      request.onload = function () {
-        response = JSON.parse(request.response);
+    var poster = canvas.toDataURL().replace(/^data:image\/(png|jpg);base64,/, ''),
+      postData = $(form).serializeObject();
 
-        if (response.success) {
-          window.location = response.url;
-        }
-        else {
-          toastr['error']("Что-то пошло не так.");
-        }
-      };
-      request.send(formData);
+    postData['event[cover]'] = poster;
+
+    $.ajax({
+      url: '/events',
+      dataType: 'json',
+      data: postData,
+      method: 'POST'
+    }).fail(function (response) {
+      toastr['error'](response.responseText);
     });
   }
 };

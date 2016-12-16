@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-require "rails_helper"
-
 RSpec.describe CompaniesController, type: :controller do
   context "GET index" do
     it "reads like a sentence" do
