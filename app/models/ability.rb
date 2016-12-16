@@ -11,7 +11,7 @@ class Ability
     can [:edit, :update, :destroy], organizer_id: user.id
 
     if user.moderator?
-      can [:read, :update, :destroy], Event
+      can [:read, :update, :destroy, :publish], Event
     elsif user.admin?
       can :manage, :all
     end
