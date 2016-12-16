@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :read, User
+    can [:read, :active, :recent], User
     can [:edit, :update, :destroy], user
     can [:read, :upcoming, :past, :ics], Event, published: true
     can :create, Event

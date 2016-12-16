@@ -28,8 +28,8 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
-      get "/active", to: "users#active"
-      get "/recent", to: "users#recent"
+      get :active
+      get :recent
     end
     resource :avatars, only: [:create, :destroy], controller: "users/avatars"
   end
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources :photos, only: [:index]
 
   resources :places, only: [:index] do
-    get "/find", to: "places#find", on: :collection
+    get :find, to: "places#find", on: :collection
   end
 
   resources :events do
@@ -48,12 +48,12 @@ Rails.application.routes.draw do
     end
 
     collection do
-      get "upcoming"
-      get "past"
+      get :upcoming
+      get :past
     end
 
     member do
-      get "ics"
+      get :ics
     end
   end
 end

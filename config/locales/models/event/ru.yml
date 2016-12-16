@@ -1,0 +1,6 @@
+ru:
+  activerecord:
+    models:
+      event:
+        one:  Мероприятие
+        few: Мероприятия
