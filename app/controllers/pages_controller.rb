@@ -3,6 +3,8 @@ class PagesController < ApplicationController
   end
 
   def about
+    @team = User.team
+    @developers = User.developers
   end
 
   def thanks
