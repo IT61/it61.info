@@ -37,8 +37,8 @@ class User < ApplicationRecord
   scope :recent, -> { order(created_at: :desc) }
   scope :with_name, -> { where("(first_name is not null and last_name is not null) or name is not null") }
   scope :presentable, -> { with_name }
-  scope :team, -> { joins(:groups).where("groups.name = 'Команда IT61'") }
-  scope :developers, -> { joins(:groups).where("groups.name = 'Разработчик IT61'") }
+  scope :team, -> { joins(:groups).where("groups.kind = 2") }
+  scope :developers, -> { joins(:groups).where("groups.kind = 1") }
 
   def self.from_omniauth(auth)
     User.where(email: auth.info.email).first_or_create do |u|

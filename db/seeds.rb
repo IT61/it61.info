@@ -24,6 +24,5 @@ ActiveRecord::Base.transaction do
 end
 
 # Groups
-Group.create!(name: "Администратор IT61")
-Group.create!(name: "Команда IT61")
-Group.create!(name: "Разработчик IT61")
+Group.create!(name: "Разработчик IT61", kind: 1)
+Group.create!(name: "Команда IT61", kind: 2)
