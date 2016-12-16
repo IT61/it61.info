@@ -1,4 +1,4 @@
-= render "cropper_modal", locals: { picture: @event.cover }
+= render partial: "cropper_modal", locals: { picture: @event.cover }
 
 = form_for @event, html: { onsubmit: "onSubmitEvent(); return false;", class: "event-form"} do |f|
   section.info-container

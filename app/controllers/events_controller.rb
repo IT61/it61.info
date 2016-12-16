@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @events = Event.ordered_desc
+    @events = Event.includes(:place).ordered_desc
   end
 
   def show; end
