@@ -34,12 +34,12 @@ class EventsController < ApplicationController
   end
 
   def past
-    @events = Event.past
+    @events = Event.past.ordered_desc
     render :index
   end
 
   def upcoming
-    @events = Event.upcoming
+    @events = Event.upcoming.ordered_desc
     render :index
   end
 
