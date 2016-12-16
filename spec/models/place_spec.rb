@@ -7,7 +7,6 @@ RSpec.describe Place, type: :model do
   subject { place }
 
   describe "ActiveModel validations" do
-    it { expect(place).to validate_presence_of(:title) }
     it { expect(place).to validate_presence_of(:address) }
   end
 
