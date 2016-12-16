@@ -17,7 +17,7 @@ module EventParticipationsImporter
       begin
         event_participation.save!
       rescue => e
-        puts "Failed to save [#{event_participation.user_id}] #{event_participation.event_id}: #{e.message} because of: #{event_participation.errors.full_messages.join(', ')}"
+        puts "Failed to save [#{event_participation.user_id}] #{event_participation.event_id}: #{e.message}"
       end
     end
   end

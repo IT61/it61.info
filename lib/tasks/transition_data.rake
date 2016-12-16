@@ -1,5 +1,5 @@
 namespace :db do
-  require File.dirname(__FILE__) + "/importer/importer"
+  require_relative "./importer/importer"
 
   desc "Transition data from old database, usage: rake db:transition['old_db_name']"
   task :transition, [:old_database] => :environment do |_t, args|

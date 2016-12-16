@@ -32,7 +32,9 @@ class Importer
   end
 
   def use_old_db
-    ActiveRecord::Base.establish_connection(@old_db)
+    ActiveRecord::Base.establish_connection({
+      adapter: :postgresql, database: @old_db
+    })
   end
 
   def reset_sequence(table)
