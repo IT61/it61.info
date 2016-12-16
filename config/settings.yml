@@ -15,10 +15,10 @@ community:
   # Footer links
   link_to:
     vk: "https://vk.com/it_61"
-    facebook: ""
-    github: ""
-    youtube: ""
-    slack: ""
+    facebook: "https://www.facebook.com/it61.info"
+    github: "https://github.com/orgs/IT61"
+    youtube: "https://www.youtube.com/channel/UC63xTveSry1vvpWbM877K9Q"
+    slack: "https://it61.slack.com"
 
 per_page:
   events: 10
