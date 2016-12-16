@@ -4,3 +4,6 @@ ru:
       user:
         one: Пользователь
         few: Пользователи
+    attributes:
+      user:
+        bio: О себе
