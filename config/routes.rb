@@ -1,6 +1,10 @@
-Rails.application.routes.draw do
-  root "pages#welcome"
+class ActionDispatch::Routing::Mapper
+  def draw(routes_name)
+    instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
+  end
+end
 
+Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth",
   }
@@ -36,28 +40,10 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:index]
 
-  resources :places, only: [:index] do
-    get :find, to: "places#find", on: :collection
-  end
+  draw :events
+  draw :places
 
-  resources :events do
-    scope module: :events do
-      resources :registrations
-      resources :visits
-      resources :participations, only: [:create, :destroy]
-    end
+  draw :admin
 
-    collection do
-      get :upcoming
-      get :past
-    end
-
-    member do
-      get :ics
-    end
-  end
-end
-
-[:admin].each do |route_file|
-  require_dependency "#{Rails.root}/config/routes/#{route_file}"
+  root "pages#welcome"
 end
