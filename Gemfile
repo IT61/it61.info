@@ -58,7 +58,6 @@ group :development do
   gem "listen"
   gem "spring"
   gem "spring-commands-rspec"
-  gem "web-console"
 end
 
 group :development, :test do
