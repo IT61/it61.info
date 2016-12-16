@@ -19,7 +19,6 @@ RSpec.describe User, type: :model do
   context "callbacks" do
     let(:user) { create(:user) }
 
-    it { expect(user).to callback(:nullify_empty_email).before(:save) }
     it { expect(user).to callback(:assign_defaults).before(:create) }
   end
 
@@ -93,7 +92,7 @@ RSpec.describe User, type: :model do
       let! (:user) { create(:user, :moderator) }
       it { should have_abilities(:read, User.new) }
       it { should have_abilities(:read, event) }
-      it { should have_abilities([:edit, :update], event) }
+      it { should have_abilities([:edit, :update, :publish], event) }
 
       it { should_not have_abilities(:destroy, User) }
       it { should_not have_abilities(:destroy, Place) }
