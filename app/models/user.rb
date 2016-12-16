@@ -25,7 +25,6 @@ class User < ApplicationRecord
   validates :phone, presence: true, if: :sms_reminders?
   validates :email, presence: true, if: :email_required?
   validates :role, presence: true
-  validates :email, uniqueness: true, case_sensitive: false
   validates_plausible_phone :phone, country_code: "RU"
 
   # В случае, если OAuth провайдер не предоставляет email, в базу может быть записана пустая строка,
@@ -99,7 +98,7 @@ class User < ApplicationRecord
   end
 
   def email_required?
-    subscribed? || email_reminders?
+    false
   end
 
   def restore_event_participations

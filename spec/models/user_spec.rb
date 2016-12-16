@@ -13,8 +13,6 @@ RSpec.describe User, type: :model do
     it { expect(user).to validate_presence_of(:phone) }
 
     before { subject.email_reminders = true }
-    it { expect(user).to validate_presence_of(:email) }
-    it { expect(user).to validate_uniqueness_of(:email).case_insensitive }
     it { expect(user.role).to eq("member") }
   end
 

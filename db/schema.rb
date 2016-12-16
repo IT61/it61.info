@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 20161114214504) do
     t.string   "google_refresh_token"
     t.string   "migration_token"
     t.boolean  "is_social_profiles_hidden", default: false, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["email_reminders"], name: "index_users_on_email_reminders", using: :btree
     t.index ["name"], name: "index_users_on_name", using: :btree
     t.index ["sms_reminders"], name: "index_users_on_sms_reminders", using: :btree
