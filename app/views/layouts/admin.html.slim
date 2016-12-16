@@ -11,11 +11,11 @@ html lang="ru"
     = csrf_meta_tags
   body
     .wrapper
-      = render 'shared/sidebar'
+      = render 'sidebar'
       .content
         = render 'flashes'
-        = render 'shared/navbar'
+        = render 'navbar'
         = yield
-  = render 'shared/footer'
+  = render 'footer'
   = render 'javascript'
   = render 'css_overrides'

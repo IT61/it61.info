@@ -4,7 +4,7 @@
     .about-title = t(".title")
     .about-subtitle = raw t(".subtitle")
     .btn-donat
-      = render "shared/btn_donation"
+      = render "btn_donation"
   .card.about-card
     .topic Спонсорство на мероприятиях
     .subtopic Пакет «Митап»
@@ -25,8 +25,8 @@
   .about-peoples
     .topic = t(".organizers_team")
     .users-container
-      = render partial: '/shared/users/list', locals: { users: User.all }
+      = render partial: '/users/list', locals: { users: User.all }
   .about-peoples
     .topic = t(".developers_team")
     .users-container
-      = render partial: '/shared/users/list', locals: { users: User.all }
+      = render partial: '/users/list', locals: { users: User.all }

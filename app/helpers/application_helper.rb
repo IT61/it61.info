@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def social_networks
-    Dir["#{Rails.root}/app/views/shared/widgets/*"].sort_by {|file| file.scan(/\d+/).last.to_i }
+    Dir["#{Rails.root}/app/views/application/widgets/*"].sort_by {|file| file.scan(/\d+/).last.to_i }
   end
 end

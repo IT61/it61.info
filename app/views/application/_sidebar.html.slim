@@ -8,7 +8,7 @@
         = image_tag current_user.gravatar_url, class: "avatar avatar-xs avatar-circle"
         = t("pages.my_profile")
   ul.sidebar__menu
-    = render "shared/menu"
+    = render "menu"
     - if can? :manage, :all
       = active_link_to t("places.root"), root_path, wrap_tag: :li
       = active_link_to t("activerecord.models.event.few"), admin_events_path, wrap_tag: :li
