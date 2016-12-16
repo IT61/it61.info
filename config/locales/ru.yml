@@ -109,14 +109,6 @@ ru:
     index:
       our_tag: "Наш официальный хэштег #%{tag} в Instagram"
 
-  shared:
-    navbar:
-      sign_in: Войти
-      sign_out: Выход
-    footer:
-      created_for_community_html: Сделано <a href="%{link}">сообществом</a> для сообщества
-      we_in_social_networks: "Мы в социальных сетях:"
-
   admin:
     events:
       edit:
