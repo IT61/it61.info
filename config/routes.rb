@@ -42,5 +42,5 @@ Rails.application.routes.draw do
 end
 
 [:admin, :events].each do |route_file|
-  require_dependency "#{Rails.root}/config/routes/#{route_file}"
+  require "#{Rails.root}/config/routes/#{route_file}"
 end
