@@ -27,9 +27,6 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates_plausible_phone :phone, country_code: "RU"
 
-  # В случае, если OAuth провайдер не предоставляет email, в базу может быть записана пустая строка,
-  # что приведет к нарушению уникальности index_users_on_email
-  before_save :nullify_empty_email
   before_create :assign_defaults
 
   scope :notify_by_email, -> { where(email_reminders: true).where.not(email: nil) }
@@ -39,6 +36,7 @@ class User < ApplicationRecord
   scope :active, -> { order(last_sign_in_at: :desc) }
   scope :recent, -> { order(created_at: :desc) }
   scope :with_name, -> { where("(first_name is not null and last_name is not null) or name is not null") }
+  scope :presentable, -> { with_name }
   scope :team, -> { joins(:groups).where("groups.name = 'Команда IT61'") }
   scope :developers, -> { joins(:groups).where("groups.name = 'Разработчик IT61'") }
 
@@ -110,9 +108,5 @@ class User < ApplicationRecord
           where(user_id: id).
           pluck(:id)
     EventParticipation.restore ids
-  end
-
-  def nullify_empty_email
-    self.email = nil unless email.present?
   end
 end
