@@ -1,6 +1,6 @@
 module Events
   class ParticipationsController < ApplicationController
-    before_action :set_event
+    load_and_authorize_resource
 
     def participate
       @event.new_participant!(current_user) if @event.able_to_participate?
@@ -14,10 +14,6 @@ module Events
     end
 
     private
-
-    def set_event
-      @event = Event.find(event_params[:id])
-    end
 
     def event_params
       params.require(:event).permit(:id)

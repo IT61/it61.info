@@ -1,6 +1,6 @@
 module Events
   class RegistrationsController < ApplicationController
-    before_action :set_event
+    load_and_authorize_resource
 
     def index
       @participants = @event.registrations
@@ -42,10 +42,6 @@ module Events
         :confidence,
       ]
       params.require(:entry_form).permit(*attributes)
-    end
-
-    def set_event
-      @event = Event.id_from_permalink(registration_params[:event_id])
     end
   end
 end

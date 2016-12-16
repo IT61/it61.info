@@ -41,17 +41,19 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :registrations
-    resources :visits
-    resources :participations
-
-    resource :calendar do
-      get :ics, to: "calendar#ics", as: "ics_file"
+    scope module: :events do
+      resources :registrations
+      resources :visits
+      resources :participations, only: [:create, :destroy]
     end
 
     collection do
       get "upcoming"
       get "past"
+    end
+
+    member do
+      get "ics"
     end
   end
 end

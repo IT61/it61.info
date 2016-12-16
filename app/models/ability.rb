@@ -6,7 +6,7 @@ class Ability
 
     can :read, User
     can [:edit, :update, :destroy], user
-    can [:read, :upcoming, :past], Event, published: true
+    can [:read, :upcoming, :past, :ics], Event, published: true
     can :create, Event
     can [:edit, :update, :destroy], organizer_id: user.id
 
