@@ -16,6 +16,7 @@ INSERT INTO public.places (id, title, address, latitude, longitude, created_at, 
 INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (14, 'DobroCowork University', 'улица 16-я Линия, 7В', 47.231355, 39.759354, '2016-08-26 09:14:22.045622', '2016-08-26 09:14:22.045622');
 INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (15, 'AZIMUT Hotel Sochi 3*', 'Сочи, Континентальный проспект, 6', 43.402584, 39.973099, '2016-08-26 09:14:48.345412', '2016-08-26 09:14:48.345412');
 INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (16, 'ДГТУ, Академия строительства и архитектуры', 'Социалистическая улица, 162/32', 47.223736, 39.732278, '2016-08-26 09:16:23.618108', '2016-08-26 09:16:23.618108');
+SELECT setval('places_id_seq', COALESCE((SELECT MAX(id)+1 FROM places), 1), false);
 "
 
 ActiveRecord::Base.transaction do
