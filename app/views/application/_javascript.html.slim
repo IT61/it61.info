@@ -1,4 +1,7 @@
-= javascript_include_tag "https://api-maps.yandex.ru/2.1/?mode=debug&lang=ru-RU&key=AHZRg1cBAAAAVJVoUwIAHgEeJgNyoRKXD7E-Ckx19BG3CxsAAAAAAAAAAAATskglMkTslg1wn1UJZXWqc-V2FQ=="
+- if Rails.env.development?
+  = javascript_include_tag "https://api-maps.yandex.ru/2.1/?mode=debug&lang=ru-RU"
+- else
+  = javascript_include_tag "https://api-maps.yandex.ru/2.1/?lang=ru-RU"
 = javascript_include_tag :application
 = yield :javascript
 
@@ -6,7 +9,6 @@
 
 javascript:
   $('.sidebar').sidebar({ trigger: '.open-sidebar' });
-  ymaps.ready(function() { console.log("READY") });
 - if Rails.env.test?
   javascript:
     $.fx.off = true;
