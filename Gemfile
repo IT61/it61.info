@@ -56,6 +56,7 @@ end
 
 group :development do
   gem "listen"
+  gem "meta_request"
   gem "spring"
   gem "spring-commands-rspec"
 end
