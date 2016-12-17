@@ -5,7 +5,7 @@ section.card.user
     h1.name = title user.full_name
 
     - user.groups.each do |g|
-      .chip = g.title
+      .chip = g.name
 
     / no support for companies for now
     /.job
@@ -15,7 +15,6 @@ section.card.user
     /br
     .bio.text-content
       = simple_format user.bio
-    - if !my_profile?(user) && !user.is_social_profiles_hidden
     - if my_profile?(user) || !user.is_social_profiles_hidden
       .social-buttons
         - provider_buttons_info(user).each do |_, info|
