@@ -20,7 +20,7 @@
             .icon-events.icon-link
             = link_to make_global(@event.link), @event.link, target: "_blank"
         .block-info
-          = image_tag @event.organizer.gravatar_url, class: "avatar avatar-sm avatar-circle"
+          = image_tag photo(@event.organizer), class: "avatar avatar-sm avatar-circle"
           = link_to @event.organizer.full_name, @event.organizer
       - if @event.published?
         .btn-group.event-buttons

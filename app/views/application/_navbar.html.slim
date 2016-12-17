@@ -12,7 +12,7 @@ header.navbar.navbar-blue
       - else
         .navbar-profile
           = link_to profile_path do
-            .avatar = image_tag current_user.gravatar_url, class: "avatar-circle"
+            .avatar = image_tag photo(current_user), class: "avatar-circle"
             .name = current_user.display_name
             = link_to sign_out_path, class: "btn btn-small btn-white" do
               i.fa.fa-sign-out

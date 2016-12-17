@@ -2,7 +2,7 @@ h1.my-profile = form_header
 .card.edit-user-card
   .image-container
     .picture
-      = image_tag user.gravatar_url(size: 512), id: "image", default_img_src: asset_path("user_default.png")
+      = image_tag photo(user), id: "image"
   = form_for user do |f|
     = render partial: "users/form/details_section", locals: { f: f, user: user }
     .bottom-container

@@ -7,10 +7,6 @@ module UserHelper
     user == current_user
   end
 
-  def is_manager?(user)
-    user.try(:manager?)
-  end
-
   def social_account_linked(user, provider)
     if linked user, provider
       "button-linked"
@@ -70,6 +66,14 @@ module UserHelper
     select_providers user do |linked, p|
       !(linked.include? p.to_s)
     end
+  end
+
+  def default_avatar_url
+    CGI.escape(image_url("user_default.svg"))
+  end
+
+  def photo(user)
+    user.avatar? ? user.avatar : image_url("user_default.png")
   end
 
   private

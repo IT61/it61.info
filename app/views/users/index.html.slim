@@ -25,7 +25,7 @@
     span class="fa fa-search"
     input type="search"
   .users-container
-    = render partial: 'list', locals: { users: @users }
+    = render partial: "list", locals: { users: @users }
   - unless users_fit_on_one_page?(@users)
     button#users_more.btn.btn-blue.btn-more [data-container=".users-container" data-url="#{request.path}"]
       = t("load_more")

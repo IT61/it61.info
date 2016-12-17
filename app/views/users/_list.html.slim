@@ -1,5 +1,5 @@
 - users.each do |user|
   = link_to user_path(user), class: "user-block" do
     .image-container
-      = image_tag user.gravatar_url(size: 256), class: "image"
+      = image_tag photo(user), class: "image"
     .text = user.full_name
