@@ -57,6 +57,17 @@ class EventsController < ApplicationController
     send_data calendar, options
   end
 
+  def leave
+    @event.participants.destroy(current_user)
+    render :show
+  end
+
+  def participate
+    @event.participants << current_user
+    @event.save
+    render :show
+  end
+
   private
 
   def scoped(scope)

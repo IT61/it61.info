@@ -14,5 +14,7 @@ resources :events do
   member do
     get :ics
     post :publish
+    get :leave
+    get :participate
   end
 end

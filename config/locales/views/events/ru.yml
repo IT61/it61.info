@@ -20,7 +20,7 @@ ru:
       postrelease: "Пострелиз"
     participations:
       participate: "Я пойду!"
-      revoke_participation: "Отменить заявку"
+      revoke_participation: "Я не участвовал"
       participated: "Я участвовал"
     new:
       header: "Новое мероприятие"
