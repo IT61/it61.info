@@ -79,6 +79,17 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def publish!
+    self.published = true
+    self.published_at = Time.current
+    self.save!
+  end
+
+  def unpublish!
+    self.published = false
+    self.save!
+  end
+
   private
 
   def set_secret_word

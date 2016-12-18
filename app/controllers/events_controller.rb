@@ -63,8 +63,20 @@ class EventsController < ApplicationController
   end
 
   def participate
-    @event.participants << current_user
-    @event.save
+    unless @event.participants.include?(current_user)
+      @event.participants << current_user
+      @event.save
+    end
+    render :show
+  end
+
+  def publish
+    @event.publish!
+    render :show
+  end
+
+  def unpublish
+    @event.unpublish!
     render :show
   end
 

@@ -33,10 +33,16 @@
     - if can? :manage, @event
       .card
         .card-header
-          h1 = t(".event_still_not_published")
+          - if @event.published
+            h1 = t(".event_published")
+          - else
+            h1 = t(".event_still_not_published")
         .card-body
           .event-actions
-            = link_to t("publish"), publish_event_path, method: :put, class: "btn btn-blue"
+            - if @event.published
+              = link_to t("unpublish"), unpublish_event_path, method: :put, class: "btn btn-blue"
+            - else
+              = link_to t("publish"), publish_event_path, method: :put, class: "btn btn-blue"
             = link_to t("edit"), edit_event_path(@event), class: "btn btn-blue"
 
     .card.card-fold
