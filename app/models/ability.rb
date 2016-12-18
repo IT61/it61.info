@@ -5,10 +5,14 @@ class Ability
     user ||= User.new
 
     can [:read, :active, :recent], User
-    can [:edit, :update, :destroy], user
     can [:read, :upcoming, :past, :ics], Event, published: true
-    can :create, Event
-    can [:edit, :update, :destroy], organizer_id: user.id
+
+    # Eh, can we do it in another way?
+    if User.exists?(user)
+      can [:edit, :update, :destroy], user
+      can :create, Event
+      can [:edit, :update, :destroy], organizer_id: user.id
+    end
 
     if user.moderator?
       can [:read, :update, :destroy, :publish], Event
