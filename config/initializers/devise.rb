@@ -3,7 +3,7 @@ Devise.setup do |config|
   config.mailer_sender = "no-reply@it61.info"
 
   require "devise/orm/active_record"
-  config.authentication_keys = [:name]
+  config.authentication_keys = [:email]
   config.case_insensitive_keys = [:email]
   config.strip_whitespace_keys = [:email]
   config.skip_session_storage = [:http_auth]
