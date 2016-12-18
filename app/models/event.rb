@@ -31,8 +31,8 @@ class Event < ActiveRecord::Base
   scope :ordered_desc, -> { order(started_at: :desc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
-  scope :upcoming, -> { where("started_at > ?", DateTime.current) }
-  scope :past, -> { where("started_at <= ?", DateTime.current) }
+  scope :upcoming, -> { where("started_at > ?", DateTime.current).ordered_desc }
+  scope :past, -> { where("started_at <= ?", DateTime.current).ordered_desc }
   scope :today, -> { started_in(DateTime.current) }
   scope :started_in, ->(datetime) {
     where("started_at > :start and started_at < :end",

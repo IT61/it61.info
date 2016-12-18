@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @events = Event.includes(:place).ordered_desc.paginate(page: params[:page], per_page: 5)
+    scoped(:ordered_desc)
   end
 
   def show; end
@@ -34,13 +34,11 @@ class EventsController < ApplicationController
   end
 
   def past
-    @events = Event.past.ordered_desc
-    render :index
+    scoped(:past)
   end
 
   def upcoming
-    @events = Event.upcoming.ordered_desc
-    render :index
+    scoped(:upcoming)
   end
 
   def add
@@ -60,6 +58,14 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def scoped(scope)
+    @events = Event.includes(:place).send(scope).paginate(page: params[:page], per_page: Settings.per_page.events)
+    view = request.xhr? ? "events/_card" : "events/index"
+    respond_with @events do |f|
+      f.html { render view, layout: !request.xhr?, locals: { events: @events } }
+    end
+  end
 
   def set_event
     @event = Event.includes(:participants).find(params[:id])
