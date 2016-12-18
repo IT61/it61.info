@@ -27,6 +27,7 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates_plausible_phone :phone, country_code: "RU"
 
+  before_save :nullify_empty_email
   before_create :assign_defaults
 
   scope :notify_by_email, -> { where(email_reminders: true).where.not(email: nil) }
@@ -108,5 +109,9 @@ class User < ApplicationRecord
           where(user_id: id).
           pluck(:id)
     EventParticipation.restore ids
+  end
+
+  def nullify_empty_email
+    self.email = nil unless email.present?
   end
 end
