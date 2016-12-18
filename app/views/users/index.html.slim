@@ -21,9 +21,6 @@
             = link_to t(".recent"), recent_users_path
 .container
   /TODO: Сделать поиск по пользователям
-  .input-search
-    span class="fa fa-search"
-    input type="search"
   .users-container
     = render partial: "list", locals: { users: @users }
   - unless users_fit_on_one_page?(@users)
