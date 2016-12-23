@@ -8,10 +8,11 @@ class Ability
     if persisted_in_db
       can [:edit, :update, :destroy], user
     end
-    return if user.is_fresh?
 
     can [:read, :active, :recent], User
     can [:read, :upcoming, :past, :ics], Event, published: true
+
+    return if user.is_fresh?
 
     # Eh, can we do it in another way?
     if persisted_in_db

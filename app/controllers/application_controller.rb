@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    if current_user.is_fresh?
+    if user_signed_in? &&   current_user.is_fresh?
       redirect_to sign_up_complete_path
     else
       Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"

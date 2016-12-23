@@ -28,7 +28,6 @@ Rails.application.routes.draw do
     patch "settings_update", to: "users/profile#settings_update"
   end
 
-
   resources :users do
     collection do
       get :active
