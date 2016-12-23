@@ -6,13 +6,14 @@ class Ability
     persisted_in_db = User.exists?(user.id)
 
     give_fresh_privileges(user, persisted_in_db)
-    give_mature_privileges(user, persisted_in_db) unless user.is_fresh?
+    give_mature_privileges(user, persisted_in_db) unless user.fresh?
   end
 
   private
 
   def give_fresh_privileges(user, persisted_in_db)
     if persisted_in_db
+      can [:profile, :edit, :settings, :settings_update], User, id: user.id
       can [:edit, :update, :destroy], user
     end
 
@@ -21,7 +22,6 @@ class Ability
   end
 
   def give_mature_privileges(user, persisted_in_db)
-    # Eh, can we do it in another way?
     if persisted_in_db
       can :create, Event
       can :find, Place

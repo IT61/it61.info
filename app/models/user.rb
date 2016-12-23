@@ -91,7 +91,7 @@ class User < ApplicationRecord
 
   def update_with_fresh(params)
     assign_attributes(params)
-    self.is_fresh = false if fresh_fields_present?
+    self.fresh = false if fresh_fields_present?
     save
   end
 

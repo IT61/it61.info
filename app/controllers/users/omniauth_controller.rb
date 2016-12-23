@@ -3,7 +3,7 @@ module Users
     skip_before_action :verify_authenticity_token
 
     def after_sign_in_path_for(_resource_or_scope)
-      current_user.is_fresh? ? sign_up_complete_path : events_path
+      current_user.fresh? ? sign_up_complete_path : events_path
     end
 
     def github
