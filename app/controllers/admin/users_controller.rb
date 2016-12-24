@@ -9,20 +9,11 @@ module Admin
     def edit; end
 
     def update
-      commit = @user.update user_params
-      if commit
-        redirect_to admin_users_path, notice: "Данные пользователи обновлены"
-      else
-        flash.now[:error] = "Не получилось обновить пользователя"
-        render "edit"
-      end
+      @user.update(user_params)
+      respond_with(@user)
     end
 
     private
-
-    def set_user
-      @user = User.find(user_params[:od])
-    end
 
     def user_params
       attributes = [

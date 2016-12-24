@@ -9,27 +9,15 @@ module Admin
     def edit; end
 
     def update
-      event_creator = EventCreator.new
-      event_creator.update @event, params, current_user
-
-      if @event.persisted?
-        redirect_to admin_events_path, notice: "Данные мероприятия обновлены"
-      else
-        flash[:errors] = @event.errors.messages
-        render :new
-      end
+      # TODO: Implement
     end
 
     def publish
-      Event::Publisher.new(@event, current_user).publish!
+      @event.publish!(current_user)
       respond_with(@event)
     end
 
     private
-
-    def set_event
-      @event = Event.find(event_params[:id])
-    end
 
     def event_params
       params.require(:event).permit(:id)

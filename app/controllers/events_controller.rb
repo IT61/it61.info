@@ -3,7 +3,6 @@ class EventsController < ApplicationController
   respond_to :ics, only: :ics
   respond_to :rss, only: :index
 
-  before_action :set_event, only: [:show]
   load_and_authorize_resource
 
   def index

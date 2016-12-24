@@ -3,8 +3,7 @@ module Users
     before_action :authenticate_user!, except: [:sign_in]
     before_action :set_user, only: [:profile, :settings, :settings_update, :edit]
 
-    def sign_in
-    end
+    def sign_in; end
 
     def sign_up_complete
       redirect_to sign_in_path if current_user.nil?
@@ -14,8 +13,7 @@ module Users
       render "users/show"
     end
 
-    def settings
-    end
+    def settings; end
 
     # rubocop:disable Metrics/AbcSize
     def settings_update
@@ -39,8 +37,7 @@ module Users
       render "users/edit"
     end
 
-    def update
-    end
+    def update; end
 
     private
 

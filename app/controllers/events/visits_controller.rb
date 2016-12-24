@@ -1,6 +1,6 @@
 module Events
   class VisitsController < ApplicationController
-    before_action :set_event
+    load_and_authorize_resource
 
     def index
       @participants

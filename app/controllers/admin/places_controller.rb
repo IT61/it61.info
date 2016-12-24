@@ -9,12 +9,8 @@ module Admin
     def edit; end
 
     def update
-      commit = @place.update place_params
-      if commit
-        redirect_to admin_places_path, notice: "Данные места обновлены"
-      else
-        flash.now[:error] = "Не получилось обновить место"
-        render :edit
+      @place.update(place_params)
+      respond_with(@place)
       end
     end
 
@@ -29,10 +25,6 @@ module Admin
         :longitude,
       ]
       params.require(:place).permit(*attributes)
-    end
-
-    def set_place
-      @place = Place.find(place_params[:id])
     end
   end
 end
