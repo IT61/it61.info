@@ -13,7 +13,6 @@ class Ability
 
   def give_fresh_privileges(user, persisted_in_db)
     if persisted_in_db
-      can [:profile, :edit, :settings, :settings_update], User, id: user.id
       can [:edit, :update, :destroy], user
     end
 
@@ -25,6 +24,7 @@ class Ability
     if persisted_in_db
       can :create, Event
       can :find, Place
+      can [:profile, :edit, :settings, :settings_update], User, id: user.id
       can [:edit, :update, :destroy], organizer_id: user.id
     end
 
