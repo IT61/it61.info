@@ -89,6 +89,12 @@ class User < ApplicationRecord
     event.has_closed_registration? || event.user_participated?(self)
   end
 
+  def update_with_fresh(params)
+    assign_attributes(params)
+    self.fresh = false if fresh_fields_present?
+    save
+  end
+
   private
 
   def assign_defaults
@@ -113,5 +119,9 @@ class User < ApplicationRecord
 
   def nullify_empty_email
     self.email = nil unless email.present?
+  end
+
+  def fresh_fields_present?
+    email.present? && first_name.present? && last_name.present?
   end
 end

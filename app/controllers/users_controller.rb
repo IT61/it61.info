@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    commit = @user.update(user_params)
+    commit = @user.update_with_fresh(user_params)
 
     if commit
       flash[:notice] = t("flashes.profile_saved")

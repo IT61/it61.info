@@ -7,9 +7,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
-    throw exception unless Rails.env.production?
-    render_404
+    if user_signed_in? && current_user.fresh?
+      redirect_to sign_up_complete_path
+    else
+      Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
+      throw exception unless Rails.env.production?
+      render_404
+    end
   end
 
   def render_404
