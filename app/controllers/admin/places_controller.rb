@@ -11,7 +11,6 @@ module Admin
     def update
       @place.update(place_params)
       respond_with(@place)
-      end
     end
 
     private
