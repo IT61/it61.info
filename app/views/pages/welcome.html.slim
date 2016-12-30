@@ -32,21 +32,6 @@
       - social_networks.each do |widget|
         li
           = render file: Rails.root.join(widget)
-
-    .slack-block
-      = link_to "Наш чат в Slack", Settings.community.link_to.slack, class: "social-link", target: "_blank"
-      /.subtopic
-        /span> Активных каналов:
-        /span = SlackService.members_info(true)[:message].count
-      /.subtopic
-        /span> Пользователей:
-        /span = SlackService.channels_info(false)[:message].count
-      .subtopic
-        | Тут вы найдете собеседников на любые интересующие темы, которые удобно разбиты на каналы.
-      .slack-rules
-        | Правила каналов Slack:<br>
-        | Если подходящего канала не нашлось среди уже открытых, вы можете создать его сами. Имя канала не может содержать пробела, поэтому вместо него нужно использовать знак подчеркивания.&nbsp;
-        | Но лучше всего назвать новый канал в одно слово. Учтите важное правило — если в течении четырех недель в канале не напишут ни одного сообщения, он будет автоматически закрыт.
     - if current_user.nil?
       .text-center
         = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
