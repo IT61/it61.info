@@ -113,8 +113,11 @@
 
     li {
       @include clearfix;
-      padding: 15px 0;
-      border-bottom: 1px solid #efefef;
+      padding: 25px 0;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #efefef;
+      }
     }
   }
 
@@ -161,10 +164,18 @@
 .slack {
 
   &-block {
+    @include clearfix;
     margin-top: 45px;
   }
 
   &-rules {
     margin-top: 20px;
+  }
+
+  &-logo {
+    @include size(150px);
+    margin: auto;
+    background: image_url("slack.png") no-repeat center;
+    background-size: contain;
   }
 }
