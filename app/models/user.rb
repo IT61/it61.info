@@ -43,7 +43,7 @@ class User < ApplicationRecord
   scope :developers, -> { joins(:groups).where("groups.kind = 1") }
 
   def self.from_omniauth(auth)
-    email = auth.info.email
+    email = auth.info.email&.downcase
 
     User.where(email: email).first_or_create do |u|
       u.email = email unless email.nil?
