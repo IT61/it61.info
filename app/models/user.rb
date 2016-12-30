@@ -23,11 +23,12 @@ class User < ApplicationRecord
   phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
 
   validates :phone, presence: true, if: :sms_reminders?
-  validates :email, presence: true, if: :email_required?
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, if: :email_required?
   validates :role, presence: true
   validates_plausible_phone :phone, country_code: "RU"
 
   before_save :nullify_empty_email
+  before_save :downcase_email
   before_create :assign_defaults
 
   scope :notify_by_email, -> { where(email_reminders: true).where.not(email: nil) }
@@ -42,8 +43,10 @@ class User < ApplicationRecord
   scope :developers, -> { joins(:groups).where("groups.kind = 1") }
 
   def self.from_omniauth(auth)
-    User.where(email: auth.info.email).first_or_create do |u|
-      u.email = auth.info.email unless auth.info.email.nil?
+    email = auth.info.email
+
+    User.where(email: email).first_or_create do |u|
+      u.email = email unless email.nil?
       u.name = auth.info.name
       u.first_name = auth.info.first_name
       u.last_name = auth.info.last_name
@@ -131,6 +134,10 @@ class User < ApplicationRecord
 
   def nullify_empty_email
     self.email = nil unless email.present?
+  end
+
+  def downcase_email
+    self.email = email.downcase if email.present?
   end
 
   def fresh_fields_present?
