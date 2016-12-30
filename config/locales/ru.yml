@@ -32,6 +32,7 @@ ru:
     events: "Мероприятия"
     users: "Личности"
     photos: "Фотографии"
+    slack: "Slack"
     welcome:
       title: Ростовское<br>IT-сообщество
       user_count: Человек<br>в сообществе
