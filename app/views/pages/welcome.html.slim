@@ -32,11 +32,6 @@
       - social_networks.each do |widget|
         li
           = render file: Rails.root.join(widget)
-
-    / /.slack-block
-    /   = link_to "https://it61.slack.com", class: "slack-logo", target: "_blank" do
-    /   /.slack-description
-        
     - if current_user.nil?
       .text-center
         = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"

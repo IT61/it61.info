@@ -5,7 +5,7 @@ footer
         = render "menu"
       .copyright
         = image_tag "logo-small.svg", class: "logo"
-        p = t(".created_for_community_html", link: request.base_url)
+        p = t(".created_for_community_html", link: about_path)
     .social
       .social-wrapper
         p = t(".we_in_social_networks")
@@ -19,6 +19,12 @@ footer
           li
             = link_to Settings.community.link_to.vk do
               i.fa.fa-vk
+          li
+            = link_to Settings.community.link_to.twitter do
+              i.fa.fa-twitter
+          li
+            = link_to Settings.community.link_to.instagram do
+              i.fa.fa-instagram
           li
             = link_to Settings.community.link_to.youtube do
               i.fa.fa-youtube

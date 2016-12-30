@@ -1,8 +1,8 @@
 .social-widget
-  = link_to "https://it61.slack.com", target: "_blank" do
+  = link_to Settings.community.link_to.slack, target: "_blank" do
     .slack-logo
 .social-description
-  = link_to "Наш чат в Slack", "https://it61.slack.com", class: "social-link", target: "_blank"
+  = link_to "Наш чат в Slack", Settings.community.link_to.slack, class: "social-link", target: "_blank"
   /.subtopic
     /span> Активных каналов:
     /span = SlackService.members_info(true)[:message].count
