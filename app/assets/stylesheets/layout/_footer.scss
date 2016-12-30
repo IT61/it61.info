@@ -20,7 +20,7 @@ footer {
   }
 
   .footer-left {
-    @include span-columns(6);
+    @include span-columns(7);
 
     @include media($device-xs-max) {
       @include span-columns(12);
@@ -82,7 +82,7 @@ footer {
   }
 
   .social {
-    @include span-columns(6);
+    @include span-columns(5);
 
     &-wrapper {
       float: right;
