@@ -23,7 +23,7 @@ class User < ApplicationRecord
   phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
 
   validates :phone, presence: true, if: :sms_reminders?
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, if: :email_required?
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :role, presence: true
   validates_plausible_phone :phone, country_code: "RU"
 
@@ -117,10 +117,6 @@ class User < ApplicationRecord
     self.email_reminders ||= false
     self.sms_reminders ||= false
     self.subscribed ||= false
-  end
-
-  def email_required?
-    false
   end
 
   def restore_event_participations
