@@ -43,9 +43,9 @@ class User < ApplicationRecord
   scope :developers, -> { joins(:groups).where("groups.kind = 1") }
 
   def self.from_omniauth(auth)
-    email = auth.info.email.downcase
+    email = auth.info.email
 
-    User.where("lower(email) = :email", email: email).first_or_create do |u|
+    User.where(email: email).first_or_create do |u|
       u.email = email unless email.nil?
       u.name = auth.info.name
       u.first_name = auth.info.first_name
