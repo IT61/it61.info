@@ -49,9 +49,8 @@ module Users
 
       @user = User.from_omniauth(auth)
 
-      if @user.valid?
+      if @user.persisted?
         SocialAccount.from_omniauth(auth, @user)
-        SlackService.invite(@user)
 
         @user.save
         sign_in_and_redirect @user

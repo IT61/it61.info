@@ -45,6 +45,8 @@ class User < ApplicationRecord
     User.where(email: auth.info.email).first_or_create do |u|
       u.email = auth.info.email unless auth.info.email.nil?
       u.name = auth.info.name
+      u.first_name = auth.info.first_name
+      u.last_name = auth.info.last_name
     end
   end
 
@@ -91,8 +93,18 @@ class User < ApplicationRecord
 
   def update_with_fresh(params)
     assign_attributes(params)
-    self.fresh = false if fresh_fields_present?
-    save
+    if fresh_fields_present?
+      self.fresh = false
+
+      if save
+        yield self
+        true
+      else
+        false
+      end
+    else
+      false
+    end
   end
 
   private
