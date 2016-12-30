@@ -3,10 +3,8 @@ html lang="ru"
   head
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    /TODO: Добавить fb:app для корректного шаринга в facebook
-    /TODO: Проставлять в тег og:title динамический тайтл
     = render "favicons"
-    = display_meta_tags site: Settings.community.title, reverse: true, separator: raw("&ndash;")
+    = display_meta_tags(default_meta_tags)
     = stylesheet_link_tag :application, media: "all"
     = csrf_meta_tags
   body
