@@ -1,7 +1,0 @@
-dt = t('.title')
-dd
-  ul.list-inline
-    - @user.authentications.each do |auth|
-      li
-        = link_to t(auth.provider), auth.link,
-          target: '_blank', class: "btn btn-default btn-#{auth.provider}"

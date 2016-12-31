@@ -1,6 +1,0 @@
-.flash-messages {
-  @media (max-width: $screen-xs-max) {
-    // Для того, чтобы на смартфонах flash-сообщения не прилипали к топбару.
-    margin-top: $grid-gutter-width/2;
-  }
-}
