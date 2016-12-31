@@ -24,6 +24,7 @@ module It61
       generate.view_specs false
     end
     config.eager_load_paths += ["#{Rails.root}/lib"]
+    config.exceptions_app = self.routes
 
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.action_view.raise_on_missing_translations = true
