@@ -3,10 +3,10 @@
 
 .header-title
   .container
-    - if User.count.div(100) == 0
+    - if @total.div(100) == 0
       h1 = t(".its_only_beginning")
     - else
-      h1 = t(".we_have_more_than", count: User.count.div(100) * 100)
+      h1 = t(".we_have", count: @total, plural_form: Russian.p(@total, 'человек', 'человек', 'человека'))
 .navigation
   .container
     .navigation-wrapper

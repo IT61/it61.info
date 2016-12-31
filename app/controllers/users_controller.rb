@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   private
 
   def show_users(scope)
+    @total = User.count
     @users = User.send(scope).presentable.paginate(page: params[:page], per_page: Settings.per_page.users)
     view = request.xhr? ? "users/_list" : "users/index"
     respond_with @events do |f|

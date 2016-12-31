@@ -326,6 +326,8 @@ GEM
     rspec-support (3.5.0)
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
+    russian (0.6.0)
+      i18n (>= 0.5.0)
     safe_yaml (1.0.4)
     sass (3.4.22)
     sass-rails (5.0.6)
@@ -467,6 +469,7 @@ DEPENDENCIES
   responders
   rollbar
   rspec-rails (~> 3.5.0)
+  russian
   sass-rails (~> 5.0)
   scss_lint
   shoulda-callback-matchers

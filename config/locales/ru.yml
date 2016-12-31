@@ -82,7 +82,7 @@ ru:
       active: "Активные"
       recent: "Недавно добавленные"
       its_only_beginning: "Всё только начинается!"
-      we_have_more_than: "Нас уже больше %{count} человек!"
+      we_have: "Нас уже %{count} %{plural_form}!"
     show:
       organizer: "Организатор"
       participant: "Участник"
