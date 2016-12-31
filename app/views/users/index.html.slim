@@ -15,10 +15,9 @@
         i class="fa fa-caret-down dropdown-icon"
       nav role="navigation"
         ul#js-navigation-menu
-          li.nav-link.active
-            = link_to t(".active"), active_users_path
-          li.nav-link
-            = link_to t(".recent"), recent_users_path
+          = active_link_to t(".active"), active_users_path, wrap_tag: :li, class: "nav-link"
+          = active_link_to t(".recent"), recent_users_path, wrap_tag: :li, class: "nav-link"
+
 .container
   /TODO: Сделать поиск по пользователям
   .users-container
