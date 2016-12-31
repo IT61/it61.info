@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    @event = Event.update(event_params)
+    @event.update(event_params)
     respond_with(@event)
   end
 
