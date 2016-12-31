@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     else
       Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
       throw exception unless Rails.env.production?
-      render_404
+      redirect_to sign_in_path
     end
   end
 
