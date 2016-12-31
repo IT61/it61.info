@@ -1,0 +1,29 @@
+community:
+  # Community full title
+  title: "Ростовское IT-сообщество"
+  description: "Ростовское IT-сообщество — коммуникационная площадка, цель которой состоит в обмене опытом между участниками, приобретении полезных знакомств, повышении квалификации и просто в приятном неформальном общении с коллегами."
+  keywords: "it"
+
+  # For geocoder.js.erb
+  city:
+    name: "Ростов-на-Дону"
+    bounds:
+      - [46.061107, 37.603739]
+      - [49.073023, 42.767521]
+
+  # For parsing instagram photos
+  instagram_hashtag: "it61"
+
+  # Footer links
+  link_to:
+    vk: "https://vk.com/it_61"
+    facebook: "https://www.facebook.com/it61.info"
+    github: "https://github.com/orgs/IT61"
+    youtube: "https://www.youtube.com/channel/UC63xTveSry1vvpWbM877K9Q"
+    slack: "https://it61.slack.com"
+    twitter: "https://twitter.com/it_rostov"
+    instagram: "https://www.instagram.com/rostovcommunity"
+
+per_page:
+  events: 10
+  users: 90

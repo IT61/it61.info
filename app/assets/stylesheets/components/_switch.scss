@@ -1,0 +1,68 @@
+.switch {
+  @include clearfix;
+
+  $switch-width: 30px;
+  $switch-padding: 2px;
+  $switch-height: 13px;
+  $knob-size: $switch-height - ($switch-padding * 2) + 8px;
+  $knob-width: $knob-size;
+
+  $knob-position: -2px 0 0 -5px;
+  $knob-after-position: $switch-width - $knob-width - ($switch-padding * 2) + 1px + 5px;
+
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  margin-right: 15px;
+  span {
+    line-height: $switch-height * 2;
+    color: #333;
+    margin-left: 15px;
+  }
+
+  input {
+    display: none;
+
+    + .checkbox {
+      @include size($switch-width, $switch-height);
+      background-color: #b0afaf;
+      cursor: pointer;
+      position: relative;
+      width: $switch-width;
+      float: left;
+      margin-top: 6px;
+      z-index: 0;
+      border-radius: 20px;
+
+      &::before {
+        @include position(absolute, $switch-padding 0 0 $switch-padding);
+        content: "";
+        width: $switch-width - ($switch-padding * 2);
+        z-index: 1;
+      }
+
+      &::after {
+        @include position(absolute, $knob-position);
+        @include size($knob-size);
+        background-color: #f1f1f1;
+        box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.39);
+        content: "";
+        transition: all 0.3s ease;
+        z-index: 2;
+        border-radius: 100%;
+      }
+    }
+
+    &:checked {
+      + .checkbox {
+        background-color: #99cfff;
+
+        &::after {
+          left: $knob-after-position;
+          background-color: #4ba8fb;
+        }
+      }
+    }
+  }
+}

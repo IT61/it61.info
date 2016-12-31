@@ -1,0 +1,7 @@
+- if flash.any?
+  - user_facing_flashes.each do |key, value|
+    - type = key.gsub('alert', 'error').gsub('notice', 'success')
+    javascript:
+      document.addEventListener("DOMContentLoaded", function () {
+        toastr["#{type}"]("#{value}");
+      });

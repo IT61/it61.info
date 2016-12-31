@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #f6f6f9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.content {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -$footer-height;
+  @include media($device-xs-max) {
+    margin-bottom: -$footer-height-mobile;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+  }
+ }

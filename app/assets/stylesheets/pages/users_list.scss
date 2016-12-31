@@ -1,0 +1,23 @@
+.users {
+  &-container {
+    @include clearfix();
+
+    @include media(max-width 500px) {
+      .user-block {
+        @include media-left;
+      }
+    }
+
+    @include media(min-width 500px 10) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
+
+      .user-block {
+        @include user-card;
+      }
+    }
+  }
+}

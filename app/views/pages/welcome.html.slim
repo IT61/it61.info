@@ -1,0 +1,35 @@
+.welcome-background
+.welcome-container
+  .welcome-header
+    h1.welcome-title = raw t(".title")
+    .welcome-statistics
+      ul
+        li
+          .statistics-count = User.count
+          .statistics-label = raw t(".user_count")
+        li
+          .statistics-count = Event.count
+          .statistics-label = raw t(".event_count")
+        li
+          .statistics-count 42
+          .statistics-label = raw t(".slack_channels_count")
+    - if current_user.nil?
+      = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
+  .card.welcome-card
+
+    .topic Манифест
+    p
+      | Мы — сообщество профессионалов.
+    p Сообщество не преследует коммерческих целей и не аффилировано с конкретными компаниями. Главная наша задача — общение, обмен опытом, знакомства и полезные контакты среди IT-специалистов. Для этого мы собираем в одном месте информацию обо всех мероприятиях, личностях, компаниях и событиях    IT-сферы нашего региона. Мы объединяем профессионалов во всех IT сферах: разработка, администрирование, тестирование, управление проектами и смежные области.
+    p Мы предлагаем два формата для общения: онлайн с помощью чата на базе Slack и оффлайн на мероприятиях, которые мы проводим в городе регулярно.
+    p Мы просим рассказывать коллегам о сообществе, поделиться с ними ссылкой #{link_to "it61.info", "https://www.it61.info"}, а также приглашать друзей и коллег на мероприятия.
+
+    p Использование ресурсов IT61 бесплатно для конечного пользователя и всегда останется бесплатным, а исходный код выложен на GitHub под свободной лицензией.
+
+    ul.social-widgets
+      - social_networks.each do |widget|
+        li
+          = render file: Rails.root.join(widget)
+    - if current_user.nil?
+      .text-center
+        = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"

@@ -1,0 +1,15 @@
+.sidebar
+  = link_to root_path do
+    .sidebar__logo
+      .sidebar__logo_img
+  - unless current_user.nil?
+    = active_link_to profile_path
+      .sidebar__profile
+        = image_tag photo(current_user), class: "avatar avatar-xs avatar-circle"
+        = t("pages.my_profile")
+  ul.sidebar__menu
+    = render "menu"
+    - if can? :manage, :all
+      = active_link_to t("places.root"), root_path, wrap_tag: :li
+      = active_link_to t("activerecord.models.event.few"), admin_events_path, wrap_tag: :li
+      = active_link_to t("activerecord.models.user.few"), admin_users_path, wrap_tag: :li

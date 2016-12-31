@@ -1,0 +1,92 @@
+// Breakpoints
+$medium-screen: 600px;
+$large-screen: 900px;
+
+// Typography
+$base-font-family: 'Roboto', "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$heading-font-family: $base-font-family;
+
+// Input float label
+$input-font-size: 16px !default;
+$input-active-font-size: $input-font-size * 0.8 !default;
+$input-active-top: -$input-font-size !default;
+
+$input-gap: $input-font-size * 1.5 !default;
+$input-spacer: $input-font-size / 8 !default;
+
+$input-transition-speed: 0.28s !default;
+$body-bg: #fff;
+
+// Font Sizes
+$base-font-size: 14px;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Other Sizes
+$base-border-radius: 2px;
+$base-spacing: $base-line-height * 1em;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+// Colors
+$blue: #2d79b7;
+$blue-light: #3a90d7;
+$gray: #ececec;
+$red: #ce3118;
+
+$dark-gray: #333;
+$medium-gray: #999;
+$light-gray: #ddd;
+
+// Font Colors
+$base-font-color: $dark-gray;
+$action-color: $blue;
+
+// Border
+$base-border-color: $light-gray;
+$base-border: 1px solid $base-border-color;
+
+// Background Colors
+$base-background-color: #fff;
+$secondary-background-color: tint($base-border-color, 75%);
+
+// Forms
+$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+
+//Buttons
+$btn-shade-percent: 5%;
+
+// Animations
+$base-duration: 150ms;
+$base-timing: ease;
+
+//Sidebar
+$sidebar-width: 300px;
+
+// Footer
+$footer-height: 170px;
+$footer-height-mobile: 290px;
+$footer-color: #999da1;
+
+//Media queries
+$mobile-xs: new-breakpoint(max-width 400px);
+$mobile-sm: new-breakpoint(max-width 500px);
+$mobile-lg: new-breakpoint(max-width 650px);
+// Register page mobile version
+$register-mobile: new-breakpoint(max-width 750px);
+$device-xs-max: new-breakpoint(max-width 767px);
+// New event queries
+$new-event-tablet: new-breakpoint(min-width 689px max-width 1020px 8);
+$new-event-mobile: new-breakpoint(max-width 690px 8);
+$special-break: new-breakpoint(max-width 1200px 8);
+$desktop-md-max: new-breakpoint(max-width 1350px);
+$tablet-screen-max: new-breakpoint(max-width 960px);
+
+//Box shadow
+$base-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+
+// Sidebar
+$sidebar-width: 200px;

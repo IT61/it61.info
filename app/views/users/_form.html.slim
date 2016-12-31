@@ -1,0 +1,12 @@
+h1.my-profile = form_header
+.card.edit-user-card
+  .image-container
+    .picture
+      = image_tag photo(user), id: "image"
+  = form_for user do |f|
+    = render partial: "users/form/details_section", locals: { f: f, user: user }
+    .bottom-container
+      = render partial: "users/form/biography_section", locals: { f: f, user: user }
+      = render partial: "users/form/social_accounts_section", locals: { f: f, user: user }
+    .edit-profile-bottom-buttons
+      button.btn.btn-blue type="submit" = t("save")

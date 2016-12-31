@@ -1,0 +1,85 @@
+.modal {
+  $mobile-screen: 767px !default;
+  $medium-screen: 30em !default;
+  $large-screen: 50em !default;
+
+  label {
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+
+  .modal-state {
+    display: none;
+  }
+
+  .modal-fade-screen { // overlay
+    @include position(fixed, 0 0 0 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    visibility: hidden;
+    z-index: 99999;
+
+    @include media($large-screen) {
+      padding-top: 5em;
+    }
+  }
+
+  .modal-bg {
+    @include position(absolute, 0 0 0 0);
+    cursor: pointer;
+  }
+
+  .modal-close {
+    cursor: pointer;
+    float: right;
+    margin-top: 15px;
+  }
+
+  .modal-inner {
+    padding: 15px;
+    background-color: #fff;
+    margin: auto;
+    max-width: 750px;
+    position: relative;
+    top: 0.5em;
+    transition: opacity 0.25s ease;
+    overflow: hidden;
+    border-radius: 3px;
+
+    @include media($mobile-screen) {
+      width: 90%;
+    }
+
+    @include media($medium-screen) {
+    }
+
+    @include media($large-screen) {
+    }
+
+    #map {
+      width: auto;
+      height: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .modal-state:checked + .modal-fade-screen {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-content {
+    max-height: 600px;
+    overflow: hidden;
+  }
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.modal-closed {
+  overflow: auto;
+}

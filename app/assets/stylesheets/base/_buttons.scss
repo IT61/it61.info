@@ -1,0 +1,35 @@
+.btn {
+  appearance: none;
+  background-color: #fff;
+  border: 0;
+  border-radius: $base-border-radius;
+  color: $blue;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  line-height: 1;
+  padding: $small-spacing $base-spacing;
+  text-decoration: none;
+  transition: background-color $base-duration $base-timing;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-transform: uppercase;
+  outline: none;
+
+  &:focus {
+    background-color: shade(#fff, 7%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: $gray;
+    }
+  }
+}

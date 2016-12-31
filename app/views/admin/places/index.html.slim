@@ -1,0 +1,18 @@
+.container
+  h1.admin-header = t("activerecord.models.place.few")
+  .card
+    table.admin-table
+      thead
+        td = t("activerecord.attributes.place.title")
+        td = t("activerecord.attributes.place.address")
+        td = t("activerecord.attributes.place.latitude")
+        td = t("activerecord.attributes.place.longitude")
+      tbody
+      - @places.each do |p|
+        tr.item
+          td = link_to p.title, edit_admin_place_path(p)
+          td = p.address
+          td = p.latitude
+          td = p.longitude
+
+  = will_paginate @places

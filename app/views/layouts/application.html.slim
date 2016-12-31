@@ -1,0 +1,19 @@
+doctype html
+html lang="ru"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    = render "favicons"
+    = display_meta_tags(default_meta_tags)
+    = stylesheet_link_tag :application, media: "all"
+    = csrf_meta_tags
+  body
+    = render "sidebar"
+    .content
+      .wrapper
+        = render "flashes"
+        = render "navbar"
+        = yield
+      = render "footer"
+    = render "javascript"
+    = render "css_overrides"

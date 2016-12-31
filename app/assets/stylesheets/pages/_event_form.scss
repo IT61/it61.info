@@ -1,0 +1,188 @@
+$image-size: 300px;
+$image-size-smaller: 200px;
+
+.event-form {
+  &-container {
+    @extend .container;
+    @include media($new-event-mobile) {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &-card {
+    @include outer-container;
+    @include media($new-event-mobile) {
+      margin: 0;
+      width: 100%;
+      padding: 30px;
+    }
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 35px;
+
+    section {
+      margin: 1em 0;
+    }
+
+    &-header {
+      font-weight: 400;
+      @include media($new-event-mobile) {
+        font-weight: 700;
+      }
+    }
+  }
+
+  // Form layout
+  .info-container {
+    @include outer-container;
+
+    .details-container {
+      @include span-columns(7);
+      float: right;
+
+      @include media($new-event-tablet) {
+        @include span-columns(5);
+      }
+
+      @include media($new-event-mobile) {
+        @include span-columns(8);
+      }
+    }
+
+    .image-container {
+      @include span-columns(5);
+
+      @include media($new-event-tablet) {
+        @include span-columns(3);
+      }
+
+      @include media($new-event-mobile) {
+        @include span-columns(8);
+        text-align: center;
+      }
+    }
+  }
+
+  .description {
+    @include span-columns(12);
+    label {
+      padding: 5px 10px;
+    }
+  }
+
+  .settings {
+    @include span-columns(12);
+    label {
+      padding: 5px 10px;
+    }
+  }
+
+  #image {
+    width: $image-size;
+
+    @include media($new-event-tablet) {
+      width: $image-size-smaller;
+    }
+
+    canvas {
+      width: $image-size;
+      height: $image-size;
+      @include media($new-event-tablet) {
+        width: $image-size-smaller;
+        height: $image-size-smaller;
+      }
+    }
+
+    &.no-image-selected {
+      margin-bottom: 6px;
+      line-height: $image-size;
+      @include media($new-event-tablet) {
+        line-height: $image-size-smaller;
+      }
+      text-align: center;
+      background: lighten($gray, 3%);
+      border: 1px solid darken($gray, 10%);
+
+      .message {
+        line-height: 1.5;
+        display: inline-block;
+        vertical-align: middle;
+        color: darken($gray, 20%);
+      }
+    }
+
+    @include media($new-event-mobile) {
+      display: none;
+    }
+  }
+
+  .file_upload {
+    label {
+      margin-right: 15px;
+      text-align: center;
+
+      width: $image-size;
+      @include media($new-event-tablet) {
+        width: $image-size-smaller;
+      }
+      @include media($new-event-mobile) {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+    @include media($new-event-mobile) {
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  // Div with this class should wrap input and label
+  .event-association-field {
+    margin: 30px 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .space-taker {
+    @include span-columns(1);
+    float: right;
+    @include media($special-break) {
+      display: none;
+    }
+  }
+
+  // Form footer
+  &-footer {
+    @include media($new-event-mobile) {
+      margin: 0;
+    }
+
+    &-buttons {
+      float: right;
+      @include media($new-event-tablet) {
+        width: 100%;
+        float: none;
+      }
+      @include media($new-event-mobile) {
+        width: 100%;
+        float: none;
+      }
+    }
+
+    .required-fields {
+      @include media($new-event-tablet) {
+        width: 100%;
+      }
+    }
+  }
+
+  #map-trigger {
+    display: none;
+  }
+}
+
+
+
+

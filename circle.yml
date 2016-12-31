@@ -1,0 +1,9 @@
+database:
+  override:
+    - bin/setup
+test:
+  override:
+    - COVERAGE=true bin/rake
+machine:
+  environment:
+    SECRET_KEY_BASE: abcdef123456

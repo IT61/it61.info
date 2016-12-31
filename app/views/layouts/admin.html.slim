@@ -1,0 +1,21 @@
+doctype html
+html lang="ru"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    /TODO: Добавить fb:app для корректного шаринга в facebook
+    /TODO: Проставлять в тег og:title динамический тайтл
+    meta property="og:title" content="IT61"
+    title IT61
+    = stylesheet_link_tag :application, media: 'all'
+    = csrf_meta_tags
+  body
+    .wrapper
+      = render 'sidebar'
+      .content
+        = render 'flashes'
+        = render 'navbar'
+        = yield
+  = render 'footer'
+  = render 'javascript'
+  = render 'css_overrides'

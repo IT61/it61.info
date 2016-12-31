@@ -1,0 +1,313 @@
+ru:
+  application_name: "Ростовское IT-сообщество"
+
+  will_paginate:
+    previous_label: "Предыдущая страница"
+    next_label: "Следующая страница"
+
+  required_fields: "* Поля, обязательные для заполнения"
+
+  more_info: "Подробнее"
+  load_more: "Показать ещё"
+
+  menu: "Меню"
+
+  save: "Сохранить"
+  add: "Добавить"
+  edit: "Редактировать"
+  delete: "Удалить"
+
+  publish: "Опубликовать"
+  unpublish: "Снять с публикации"
+
+  cancel: "Отмена"
+
+  modal:
+    close: "Закрыть"
+
+  pages:
+    account: "Мой профиль"
+    my_profile: "Мой профиль"
+    community: "Сообщество"
+    events: "Мероприятия"
+    users: "Личности"
+    photos: "Фотографии"
+    slack: "Slack"
+    welcome:
+      title: Ростовское<br>IT-сообщество
+      user_count: Человек<br>в сообществе
+      event_count: Мероприятий<br>организовано
+      slack_channels_count: Канала<br>в Slack
+      sign_in: Присоединяйся!
+    about:
+      link: О нас
+      title: Пожертвования
+      subtitle: Если вы хотите помочь проекту, вы можете<br>пожертвовать небольшую сумму на развитие сайта
+      organizers_team: Команда организаторов мероприятий
+      developers_team: Команда разработчиков сайта
+
+  errors:
+    connection_refused: В соединении отказано
+
+  socials:
+    github: "GitHub"
+    vk: "ВКонтакте"
+    google_plus: "Google+"
+    facebook: "Facebook"
+
+
+  # ====================================================
+  # Views Locales
+  # ====================================================
+
+
+  users:
+    profile:
+      sign_in:
+        sign_in: "Войдите"
+        using_preferred_way: "любым способом"
+      sign_up_complete:
+        complete_registration: "Завершение регистрации"
+        few_details: "Есть несколько тонкостей, которые не должны от вас ускользнуть:"
+        specify_real_name: "Указывайте настоящее имя и фамилию на русском языке для удобства общения в чате"
+        specify_email_for_invite: "Важно! На указанный адрес будет отправлен инвайт для доступа в Slack"
+        specify_phone_for_sms_reminders: "Будет использоваться для отправки напоминаний о мероприятиях, на которые Вы хотите пойти"
+        submit: "Всё верно"
+        fill_later: "Заполнить позже"
+      settings:
+        want_sms_reminders: "Я хочу получать SMS оповещения о мероприятиях, в которых я участвую"
+        want_email_reminders: "Я хочу получать e-mail уведомления о новых мероприятиях"
+        want_to_hide_social_profiles: "Я не хочу показывать другим социальные аккаунты в своем профиле"
+    index:
+      active: "Активные"
+      recent: "Недавно добавленные"
+      its_only_beginning: "Всё только начинается!"
+      we_have_more_than: "Нас уже больше %{count} человек!"
+    show:
+      organizer: "Организатор"
+      participant: "Участник"
+      no_organized_events: "Этот пользователь не организовал ни одного мероприятия"
+      no_participations: "Этот пользователь не участвовал ни в одном мероприятии"
+      inactive_user: "Это пользователь-мамонт, он никуда не ходит и ничего не организует"
+    edit:
+      form_title: "Редактирование профиля"
+    form:
+      image_upload_section:
+        upload_photo: "Загрузить фото"
+        delete_photo: "Удалить фото"
+      details_section:
+        phone_for_sms_reminders: "Телефон не отображается на сайте и не передается в Slack"
+      social_accounts_section:
+        social_accounts: "Социальные сети"
+        connected: "Подключенные"
+    cards:
+      user:
+        edit_profile: "Редактировать профиль"
+        settings: "Настройки"
+        notifications: "Уведомления"
+
+  photos:
+    index:
+      our_tag: "Наш официальный хэштег #%{tag} в Instagram"
+
+  admin:
+    events:
+      edit:
+        edit_event: "Редактировать мероприятие"
+
+  # ====================================================
+  # Date and Time Locales
+  # ====================================================
+
+  date:
+    abbr_day_names:
+    - Вс
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    abbr_month_names:
+    -
+    - янв.
+    - февр.
+    - марта
+    - апр.
+    - мая
+    - июня
+    - июля
+    - авг.
+    - сент.
+    - окт.
+    - нояб.
+    - дек.
+    day_names:
+    - воскресенье
+    - понедельник
+    - вторник
+    - среда
+    - четверг
+    - пятница
+    - суббота
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    -
+    - января
+    - февраля
+    - марта
+    - апреля
+    - мая
+    - июня
+    - июля
+    - августа
+    - сентября
+    - октября
+    - ноября
+    - декабря
+    order:
+    - :day
+    - :month
+    - :year
+
+  time:
+    formats:
+      date_time_full: "%d %B %Y, %H:%M"
+      date_digits: "%d.%m.%y"
+
+  # ====================================================
+  # Active Record Locales
+  # ====================================================
+  activerecord:
+    models:
+      company:
+        one: Компания
+        few: Компании
+      event:
+        one: Мероприятие
+        few: Мероприятия
+      user:
+        one: Пользователь
+        few: Пользователи
+      place:
+        one: Место
+        few: Места
+      participant_entry_form:
+        one: Заявка на участие
+        few: Заявки на участие
+    attributes:
+      user:
+        email: E-Mail
+        first_name: Имя
+        last_name: Фамилия
+        role: Тип аккаунта
+        bio: О себе
+        phone: Телефон
+        email_reminders: EMail-оповещения
+        sms_reminders: SMS-оповещения
+        full_name: "Полное имя"
+      event:
+        title: Название
+        description: Описание
+        title_image: Изображение
+        published_at: Дата публикации
+        started_at: Дата проведения
+        started_at_time: Время проведения
+        participants: Участники
+        link: Внешняя ссылка
+      place:
+        title: Место проведения
+        address: Точный адрес
+        latitude: "Широта"
+        longitude: "Долгота"
+    errors:
+      messages:
+        record_invalid: "Record is invalid"
+  # ====================================================
+  # Flashes Locales
+  # ====================================================
+  flashes:
+    # Profile settings
+    profile_saved: "Данные профиля успешно сохранены!"
+    profile_settings_saved: "Настройки профиля успешно сохранены!"
+    add_phone_for_sms_reminders: "Вы должны добавить телефон, чтобы получать SMS-уведомления."
+    error_during_save_settings: "Произошла какая-то ошибка, проверьте данные и попробуйте снова."
+
+    # Events
+    event_successfully_created: "Мероприятие успешно создано, но появится в ленте после одобрения администрации."
+    event_successfully_updated: "Мероприятие успешно обновлено!"
+    event_successfully_published: "Мероприятие успешно опубликовано!"
+    event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
+    event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
+    event_successfully_added_to_google_calendar: "Событие добавлено в Ваш google календарь"
+    event_failure_to_add_to_google_calendar: "Ошибка добавления в календарь"
+
+  devise:
+    failure:
+      user:
+        unauthenticated: "Вы должны зарегистрироваться для этого действия!"
+    sessions:
+      user:
+        signed_out: "Всего доброго!"
+    omniauth_callbacks:
+      user:
+        success: "Добро пожаловать!"
+  upload_photo: "Загрузить фото"
+  places:
+    root: "Главная страница"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Возникли ошибки: %{errors}'
+        restrict_dependent_destroy:
+          has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
+          has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: нужно подтвердить
+      blank: не может быть пустым
+      present: нужно оставить пустым
+      confirmation: не совпадает со значением поля %{attribute}
+      empty: не может быть пустым
+      equal_to: может иметь лишь значение, равное %{count}
+      even: может иметь лишь нечетное значение
+      exclusion: имеет зарезервированное значение
+      greater_than: может иметь значение большее %{count}
+      greater_than_or_equal_to: может иметь значение большее или равное %{count}
+      inclusion: имеет непредусмотренное значение
+      invalid: имеет неверное значение
+      less_than: может иметь значение меньшее чем %{count}
+      less_than_or_equal_to: может иметь значение меньшее или равное %{count}
+      model_invalid: 'Возникли ошибки: %{errors}'
+      not_a_number: не является числом
+      not_an_integer: не является целым числом
+      odd: может иметь лишь четное значение
+      required: не может отсутствовать
+      taken: уже существует
+      too_long:
+        few: слишком большой длины (не может быть больше чем %{count} символа)
+        many: слишком большой длины (не может быть больше чем %{count} символов)
+        one: слишком большой длины (не может быть больше чем %{count} символ)
+        other: слишком большой длины (не может быть больше чем %{count} символа)
+      too_short:
+        few: недостаточной длины (не может быть меньше %{count} символов)
+        many: недостаточной длины (не может быть меньше %{count} символов)
+        one: недостаточной длины (не может быть меньше %{count} символа)
+        other: недостаточной длины (не может быть меньше %{count} символа)
+      wrong_length:
+        few: неверной длины (может быть длиной ровно %{count} символа)
+        many: неверной длины (может быть длиной ровно %{count} символов)
+        one: неверной длины (может быть длиной ровно %{count} символ)
+        other: неверной длины (может быть длиной ровно %{count} символа)
+      other_than: должно отличаться от %{count}
+    template:
+      body: 'Проблемы возникли со следующими полями:'
+      header:
+        few: "%{model}: сохранение не удалось из-за %{count} ошибок"
+        many: "%{model}: сохранение не удалось из-за %{count} ошибок"
+        one: "%{model}: сохранение не удалось из-за %{count} ошибки"
+        other: "%{model}: сохранение не удалось из-за %{count} ошибки"

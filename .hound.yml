@@ -1,0 +1,16 @@
+# See https://houndci.com/configuration for help.
+haml:
+  enabled: false
+javascript:
+  enabled: false
+eslint:
+  enabled: true
+  config_file: .eslintrc.json
+ruby:
+  config_file: .rubocop.yml
+  enabled: true
+scss:
+  config_file: .scss-lint.yml
+  enabled: true
+coffeescript:
+  enabled: false

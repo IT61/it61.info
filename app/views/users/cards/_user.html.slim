@@ -1,0 +1,30 @@
+section.card.user
+  .picture
+    = image_tag photo(user)
+  .details
+    h1.name = title user.full_name
+
+    - user.groups.each do |g|
+      .chip = g.name
+
+    / no support for companies for now
+    /.job
+      span= user.company_position
+      br
+      a href="#{user.company_site}"= user.company_name
+    /br
+    .bio.text-content
+      = simple_format user.bio
+    - if my_profile?(user) || !user.is_social_profiles_hidden
+      .social-buttons
+        - provider_buttons_info(user).each do |_, info|
+          = link_to info[0], class: 'btn', target: '_blank' do
+            i class=info[1].to_s
+    / should be slack link?
+    / = link_to '/hashtag', class: 'btn hashtag' do
+        i.fa.fa-hashtag
+    / span.hashtag-label= user.hash_tag
+    - if my_profile?(user)
+      .bottom-buttons
+        = link_to t(".edit_profile"), edit_profile_path, class: "btn btn-blue"
+        = link_to t(".settings"), profile_settings_path, class: "btn btn-gray"

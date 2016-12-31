@@ -1,0 +1,47 @@
+/ Meta
+- title t(".complete_registration")
+
+.login-background
+.card.register-card
+  .title
+    h1 = t(".complete_registration")
+    p = t(".few_details")
+  = form_for current_user do |f|
+    .register-fields
+      .association-field
+        .input-float-label
+          = f.text_field :first_name, required: true
+          = f.label :first_name, t("activerecord.attributes.user.first_name")
+        .input-float-label
+          = f.text_field :last_name, required: true
+          = f.label :last_name, t("activerecord.attributes.user.last_name")
+      .association-curve
+        .curve-long
+      .association-text.text-long
+        | 1.&nbsp;
+        = t(".specify_real_name")
+      .association-field
+        .input-float-label
+          = f.text_field :email, required: true
+          = f.label :email, t("activerecord.attributes.user.email")
+      .association-curve
+        .curve-short
+      .association-text.text-short
+        | 2.&nbsp;
+        = t(".specify_email_for_invite")
+      .association-field
+        .input-float-label
+          = f.telephone_field :phone
+          = f.label :phone, t("activerecord.attributes.user.phone")
+      .association-curve
+        .curve-short
+      .association-text.text-short
+        | 3.&nbsp;
+        = t(".specify_phone_for_sms_reminders")
+      .input-float-label.about-field
+        = f.text_area :bio
+        = f.label :bio, t("activerecord.attributes.user.bio")
+    .register-footer
+      .required-fields = t("required_fields")
+      .buttons
+        button.btn.btn-shadow.btn-blue type='submit' = t(".submit")

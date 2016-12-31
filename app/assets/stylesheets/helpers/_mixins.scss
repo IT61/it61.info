@@ -1,0 +1,93 @@
+// Кривая объединения
+@mixin curve-association($height) {
+  $field-association-color: #85bceb;
+
+  box-sising: border-box;
+  width: 60px;
+  height: $height;
+  padding-left: 75px;
+
+  &:before {
+    display: block;
+    content: '';
+    height: 10px;
+    width: 10px;
+    margin-left: -100px;
+    border-top: 1px solid $field-association-color;
+    border-right: 1px solid $field-association-color;
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    width: 10px;
+    height: $height;
+    margin-left: -100px;
+    border-right: 1px solid $field-association-color;
+    border-bottom: 1px solid $field-association-color;
+  }
+}
+
+// Блок вида слева картинка, справа текст
+@mixin media-left {
+  display: table;
+  margin-bottom: 15px;
+
+  .image {
+    display: table-cell;
+    float: left;
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 19px;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .text {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 300;
+    color: #100f0f;
+  }
+}
+
+// Карточка пользователя
+@mixin user-card {
+  width: 10.60%;
+  margin-right: 0.25%;
+  margin-left: 0.25%;
+  margin-bottom: 30px;
+  overflow: hidden;
+
+  .image-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+    .image {
+      position:  absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    margin-bottom: 8px;
+  }
+
+  .text {
+    text-align: center;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    clear: both;
+    color: #100f0f;
+  }
+}

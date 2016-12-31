@@ -1,0 +1,30 @@
+- title t("pages.events")
+
+.navigation
+  .container
+    .navigation-wrapper
+      a#js-mobile-menu.navigation-menu-button
+        span = t("menu")
+        i class="fa fa-caret-down dropdown-icon"
+      nav role="navigation"
+        ul#js-navigation-menu
+          - if can? :manage, Event
+            li.nav-link class=('active' if current_page?(unpublished_events_path))
+              = link_to t(".unpublished"), unpublished_events_path
+          = active_link_to t(".upcoming"), upcoming_events_path, wrap_tag: :li, class: "nav-link"
+          = active_link_to t(".past"), past_events_path, wrap_tag: :li, class: "nav-link"
+          li.nav-link
+            = link_to t(".create"), new_event_path
+.container
+  - if @events.blank?
+    .no-events-stub
+      h3 = t(".first_line")
+      h5 = t(".second_line")
+      = image_tag "it61_smile.svg", class: "smile"
+      = link_to new_event_path do
+        button.btn.btn-blue = t("events.stubs.create_event")
+  - else
+    .events-container
+      = render partial: "card"
+    - unless events_fit_on_one_page?(@events)
+      button#events_more.btn.btn-blue.btn-more [data-container=".events-container" data-url="#{request.path}"] = t("load_more")

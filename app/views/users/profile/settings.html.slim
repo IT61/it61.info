@@ -1,0 +1,28 @@
+.content-background
+main.container.profile-container
+  .inner-container
+    h1.my-profile = t("users.cards.user.settings")
+    section.card.settings-card
+      = form_for @user, url: settings_update_path do |f|
+        .with-padding
+          h2.sub-header = t("users.cards.user.notifications")
+
+          .notification-input
+            label.switch
+              = f.check_box :email_reminders
+              .checkbox
+              span = t(".want_email_reminders")
+          .notification-input
+            label.switch
+              = f.check_box :sms_reminders
+              .checkbox
+              span = t(".want_sms_reminders")
+          .notification-input
+            label.switch
+              = f.check_box :is_social_profiles_hidden
+              .checkbox
+              span = t(".want_to_hide_social_profiles")
+
+          .edit-profile-bottom-buttons
+            button.btn.btn-blue type="submit" = t("save")
+            button.btn.btn-gray type="reset" = t("cancel")

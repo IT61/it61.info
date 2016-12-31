@@ -1,0 +1,35 @@
+.admin-header {
+  margin: 2em 0 1em;
+  text-align: center;
+}
+
+.admin-table {
+  text-align: center;
+
+  .event-picture {
+    max-height: 100px;
+  }
+}
+
+.pagination {
+  text-align: center;
+}
+
+.select-input {
+  padding: 10px 0;
+  select {
+    background: none;
+    padding: 5px 10px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  }
+}
+
+.admin-edit-card {
+  padding: 25px;
+
+  .input-float-label {
+    margin: 2em 0;
+  }
+}

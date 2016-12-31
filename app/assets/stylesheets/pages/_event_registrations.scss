@@ -1,0 +1,64 @@
+.registration-container {
+
+  @include outer-container;
+  width: 1100px;
+  font-size: 16px;
+  margin-bottom: 40px;
+
+  .sub-header {
+    width: 100%;
+    @include clearfix;
+    line-height: 34px;
+    margin-bottom: 6px;
+
+    .sub-title {
+      font-size: 30px;
+      line-height: 34px;
+      margin: 0;
+      float: left;
+      display: block;
+    }
+
+    .counter {
+      float: right;
+      font-size: 20px;
+    }
+  }
+
+  .title {
+    margin: 10px 0;
+    color: #FFFFFF;
+  }
+
+  .tip {
+    margin-bottom: 40px;
+    font-size: 16px;
+    color: #FFFFFF;
+  }
+
+  .card {
+    @include span-columns(6);
+    padding: 20px;
+    .list {
+      height: 800px;
+      overflow-y: scroll;
+    }
+  }
+
+  .participant {
+    @include media-left;
+    .checkbox {
+      float: left;
+      display: table-cell;
+      > div {
+        left: 20%;
+        top: 25%;
+      }
+      width: 50px;
+      height: 50px;
+    }
+    .text {
+      width: 75%;
+    }
+  }
+}

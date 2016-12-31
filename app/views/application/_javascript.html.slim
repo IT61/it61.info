@@ -1,0 +1,15 @@
+- if Rails.env.development?
+  = javascript_include_tag "https://api-maps.yandex.ru/2.1/?mode=debug&lang=ru-RU"
+- else
+  = javascript_include_tag "https://api-maps.yandex.ru/2.1/?lang=ru-RU"
+= javascript_include_tag :application
+= yield :javascript
+
+= render "analytics"
+
+javascript:
+  $('.sidebar').sidebar({ trigger: '.open-sidebar' });
+- if Rails.env.test?
+  javascript:
+    $.fx.off = true;
+    $.ajaxSetup({ async: false });

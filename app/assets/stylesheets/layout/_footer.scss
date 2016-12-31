@@ -1,0 +1,139 @@
+footer {
+  background: #fff;
+  width: 100%;
+  padding: 40px 150px;
+  color: $footer-color;
+  font-size: 14px;
+
+  @include media(max-width 1025px) {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 13px;
+  }
+
+  a {
+    color: $footer-color;
+
+    &:hover {
+      color: shade($footer-color, 20%);
+    }
+  }
+
+  .footer-left {
+    @include span-columns(7);
+
+    @include media($device-xs-max) {
+      @include span-columns(12);
+
+      ul {
+        display: none;
+      }
+
+      .copyright {
+        margin: 0 auto 40px auto;
+        display: table;
+
+        .logo {
+          float: inherit;
+          display: table;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50px;
+          height: 49px;
+        }
+
+        p {
+          margin-left: 0;
+          margin-top: 15px;
+        }
+      }
+    }
+
+    li {
+      display: inline;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-right: 30px;
+      cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .copyright {
+    margin-top: 35px;
+
+    .logo {
+      float: left;
+      width: 28px;
+      height: 28px;
+    }
+
+    p {
+      padding-top: 5px;
+      margin-left: 35px;
+
+      a {
+        color: $blue;
+      }
+    }
+  }
+
+  .social {
+    @include span-columns(5);
+
+    &-wrapper {
+      float: right;
+    }
+    p {
+      font-weight:bold;
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      li {
+        display: inline;
+        margin-left: 25px;
+      }
+
+      a {
+        font-size: 29px;
+      }
+    }
+
+    @include media($device-xs-max) {
+      @include span-columns(12);
+
+      &-wrapper {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+        clear: both;
+      }
+
+      p, li {
+        text-align: center;
+      }
+
+      ul li {
+        margin-left: 20px;
+        font-size: 25px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+footer, .wrapper:after {
+  height: $footer-height;
+  @include media($device-xs-max) {
+    height: $footer-height-mobile;
+  }
+}

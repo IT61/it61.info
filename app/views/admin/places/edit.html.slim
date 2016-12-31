@@ -1,0 +1,20 @@
+.container
+  h1.admin-header = t("activerecord.models.place.one")
+  .card.admin-edit-card
+    = form_for @place, url: admin_place_path(@place) do |f|
+      .input-float-label
+        = f.text_field :title
+        = f.label :title, t("activerecord.attributes.place.title")
+      .input-float-label
+        = f.text_field :address
+        = f.label :address, t("activerecord.attributes.place.address")
+      .input-float-label
+        = f.text_field :latitude
+        = f.label :latitude, t("activerecord.attributes.place.latitude")
+      .input-float-label
+        = f.text_field :longitude
+        = f.label :longitude, t("activerecord.attributes.place.longitude")
+      .register-footer
+        .buttons
+          button.btn.btn-shadow.btn-blue [type="submit"] = t("save")
+          button.btn.btn-shadow.btn-gray [type="reset"] = t("cancel")

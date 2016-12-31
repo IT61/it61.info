@@ -1,0 +1,33 @@
+.inputs-container
+  .outer
+    .input-float-label.half
+      = f.text_field :first_name
+      = f.label :first_name
+    .input-float-label.half
+      = f.text_field :last_name
+      = f.label :last_name
+  / no support for companies for now
+  /.outer
+        .input-float-label.half
+          = f.text_field :company_name
+          = f.label :company_name
+        .input-float-label.half
+          = f.text_field :company_site
+          = f.label :company_site
+  /.outer
+        .input-float-label.full
+          = f.text_field :company_position
+          = f.label :company_position
+  .outer
+    .input-float-label.half
+      = f.text_field :email
+      = f.label :email
+    .input-float-label.half
+      = f.telephone_field :phone
+      = f.label :phone
+      span.sub-label = t(".phone_for_sms_reminders")
+        / should be slack link?
+        /.outer
+        .input-float-label.full
+          = f.text_field :hash_tag
+          = f.label :hash_tag

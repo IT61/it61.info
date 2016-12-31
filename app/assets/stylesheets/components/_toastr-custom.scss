@@ -1,0 +1,14 @@
+#toast-container {
+  top: 75px;
+
+  & > div {
+    box-shadow: $base-box-shadow;
+    &:hover {
+      box-shadow: $base-box-shadow;
+    }
+  }
+}
+
+.toast-success, .toast-info {
+  background-color: $blue-light;
+}

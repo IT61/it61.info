@@ -1,0 +1,237 @@
+.input-float-label {
+  position: relative;
+  textarea, input {
+    min-height: ($input-font-size * 1.9);
+  }
+
+  // ----- Label style
+  label {
+    position: absolute;
+    top: ($input-font-size / 4);
+    pointer-events: none;
+    padding-left: $input-spacer;
+    z-index: 1;
+    font-size: $input-font-size;
+    font-weight: normal;
+    color: #adadad;
+    transition: all $input-transition-speed ease;
+  }
+
+  .sub-label {
+    padding-top: $input-spacer;
+    top: 36px;
+    font-size: .7em;
+    width: 100%;
+    position: absolute;
+    color: #777;
+    text-align: center;
+  }
+
+  input,
+  textarea {
+    display: block;
+    padding: $input-spacer $input-spacer ($input-spacer / 2);
+    font-size: $input-font-size;
+    width: 100%;
+    color: transparent;
+    box-shadow: none;
+    border: none;
+    border-bottom: solid 2px #ececec;
+  }
+
+  input {
+    line-height: 1.9;
+  }
+
+  textarea {
+    line-height: 1.5;
+    resize: none;
+  }
+
+  // ----- Focused state, filled state
+  input,
+  textarea
+  {
+    &.top-label {
+      color: #000;
+    }
+
+    &:focus {
+      color: #000;
+      box-shadow: none;
+      outline: none;
+      border-bottom: 2px solid $blue;
+
+      &::-webkit-input-placeholder {
+        color: $blue;
+        font-size: $input-font-size;
+        transform: translateY(-20px);
+      }
+    }
+
+    &:focus ~ label, &.top-label ~ label {
+      font-size: $input-font-size;
+      color: $blue;
+      top: $input-active-top;
+      left: 0;
+    }
+  }
+
+  // ----- Disabled state
+  input:disabled,
+  textarea:disabled {
+    color: #555;
+    border-bottom: solid 2px #ececec;
+
+    ~ label {
+      font-size: 16px;
+      color: #adadad;
+      top: $input-active-top;
+      left: 0;
+    }
+  }
+}
+
+select {
+  float: left;
+  padding: 5px 10px;
+  display: block;
+  font-size: 16px;
+  margin: 3px;
+  color: black;
+  line-height: 1.9;
+  width: auto;
+  box-shadow: none;
+  border: none;
+  transition: all 0.28s ease;
+  border-bottom: solid 2px #ddd;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #2d79b7;
+  }
+}
+
+.input-search {
+  position: relative;
+
+  span {
+    position: absolute;
+    padding: 10px 5px;
+    pointer-events: none;
+    font-size: $input-font-size;
+    color: #acacae;
+  }
+
+  input {
+    padding-left: 35px;
+    box-sizing: border-box;
+  }
+}
+
+.autocomplete {
+  &-input {
+    margin-bottom: 0;
+  }
+
+  &-container {
+    position: absolute;
+    background: white;
+    z-index: 5;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+
+    &-item {
+      padding: 7px 10px;
+      border-bottom: 1px solid #e0e0e0;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #eee;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.time-container {
+  @include clearfix;
+
+  .time-select {
+    float: left;
+    margin-right: 20px;
+    @include media($new-event-mobile) {
+      margin-bottom: 30px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .time-separator {
+    display: block;
+    float: left;
+    font-size: 1.3em;
+    line-height: 2em;
+  }
+}
+
+.datetime-separator {
+  display: none;
+  @include media($new-event-mobile) {
+    display: block;
+  }
+}
+
+.file_upload {
+  position: relative;
+  overflow: hidden;
+  font-size: 1em;
+  line-height: 2.5em;
+
+  @include clearfix();
+
+  & > button {
+    margin-right: 13px;
+
+    @include media($special-break) {
+      float: none;
+    }
+
+    @include media($new-event-mobile) {
+      width: 100%;
+    }
+  }
+
+  & > label {
+    float: left;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include media($special-break) {
+      float: none;
+    }
+
+    @include media($new-event-mobile) {
+      max-width: 100%;
+    }
+  }
+
+  input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    letter-spacing: 10em;
+    opacity: 0;
+    cursor: pointer
+  }
+}

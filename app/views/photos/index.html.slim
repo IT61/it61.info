@@ -1,0 +1,15 @@
+/ Meta
+- title t("pages.photos")
+
+.page-header
+  .page-title
+    h3 = t("pages.photos")
+    h5 = t(".our_tag", tag: @tag)
+.photo
+  .photo-list
+    - @photos.each do |item|
+      .photo-item
+        a.photo [
+            href="https://instagram.com/p/#{item["code"]}"
+            style="background-image: url('#{item["thumbnail_src"]}')"
+          ]

@@ -1,0 +1,71 @@
+.sidebar {
+  height: 100%;
+  left: 0;
+  margin-left: -$sidebar-width;
+  position: fixed;
+  top: 0;
+  font-size: 14px;
+  font-weight: bold;
+  width: $sidebar-width;
+  z-index: 100;
+  background: #FFFFFF;
+  box-shadow: $base-box-shadow;
+  overflow: auto;
+
+  &__logo {
+    background:#363738;
+    min-width: $sidebar-width;
+    padding: 45px 0;
+
+    &_img {
+      background: image_url("logo-horizontal.svg");
+      background-size: cover;
+      margin-left: auto;
+      margin-right: auto;
+      height: 40px;
+      width: 150px;
+    }
+  }
+
+  &__profile {
+    background: #F4F4F7;
+    border-bottom: 1px solid #E9E9ED;
+    color: #7F7F81;
+    height: 51px;
+    padding: 13px 30px 0;
+    line-height: 27px;
+    width: 100%;
+
+    .avatar {
+      float: left;
+      margin-right: 12px;
+    }
+
+    &:hover {
+      background-color: #BFE0FB;
+      cursor: pointer;
+    }
+  }
+
+  &__menu {
+    padding-left: 0;
+
+    a {
+      color: #191919;
+      display: inline-block;
+      padding: 15px 30px;
+      width: 100%;
+    }
+
+    li {
+      list-style: none;
+      text-transform: uppercase;
+      width: 100%;
+
+      &:hover {
+        background-color: #BFE0FB;
+        cursor: pointer;
+      }
+    }
+  }
+}

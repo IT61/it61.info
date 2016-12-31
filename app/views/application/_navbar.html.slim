@@ -1,0 +1,21 @@
+header.navbar.navbar-blue
+  .navbar-wrapper
+    i.fa.fa-bars.hamburger.open-sidebar
+    = link_to root_path do
+      .logo
+    .pull-right
+      - if current_user.nil?
+        = link_to sign_in_path, class: "btn btn-small btn-white" do
+          i.fa.fa-sign-in
+          | &nbsp;
+          = t(".sign_in")
+      - else
+        .navbar-profile
+          = link_to profile_path do
+            .avatar = image_tag photo(current_user), class: "avatar-circle"
+            .name = current_user.display_name
+            = link_to sign_out_path, class: "btn btn-small btn-white" do
+              i.fa.fa-sign-out
+    nav.navbar-menu
+      ul
+        = render "menu"

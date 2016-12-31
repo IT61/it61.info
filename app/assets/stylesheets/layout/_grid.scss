@@ -1,0 +1,7 @@
+.container {
+  @include outer-container(1290px);
+  @include media($desktop-md-max) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

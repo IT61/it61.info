@@ -1,0 +1,10 @@
+.social-widget
+  #vk_groups style="display: inline-block"
+.social-description
+  = link_to "Наше сообщество ВКонтакте", "https://vk.com/it_61", class: "social-link", target: "_blank"
+  p Это наш самый активный ресурс, где мы делимся новостями, анонсами, и другими материалами, которые не всегда есть на сайте.
+
+script type="text/javascript" src="//vk.com/js/api/openapi.js?136"
+javascript:
+  // VK Widget
+  VK.Widgets.Group("vk_groups", {mode: 3, width: "230"}, 55614321);
