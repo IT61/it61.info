@@ -1,12 +1,10 @@
 // Кривая объединения
 @mixin curve-association($height) {
   $field-association-color: #85bceb;
-
   box-sising: border-box;
   width: 60px;
   height: $height;
   padding-left: 75px;
-
   &:before {
     display: block;
     content: '';
@@ -16,7 +14,6 @@
     border-top: 1px solid $field-association-color;
     border-right: 1px solid $field-association-color;
   }
-
   &:after {
     display: block;
     content: '';
@@ -32,20 +29,20 @@
 @mixin media-left {
   display: table;
   margin-bottom: 15px;
-
   .image {
     display: table-cell;
     float: left;
     max-width: 50px;
     max-height: 50px;
     margin-right: 19px;
-
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
     img {
       width: 50px;
       height: 50px;
     }
   }
-
   .text {
     display: table-cell;
     vertical-align: middle;
@@ -62,7 +59,6 @@
   margin-left: 0.25%;
   margin-bottom: 30px;
   overflow: hidden;
-
   .image-container {
     width: 100%;
     position: relative;
@@ -73,7 +69,7 @@
       padding-top: 100%;
     }
     .image {
-      position:  absolute;
+      position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
@@ -81,7 +77,6 @@
     }
     margin-bottom: 8px;
   }
-
   .text {
     text-align: center;
     line-height: 16px;
