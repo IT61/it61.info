@@ -9,6 +9,6 @@ h3 = t(".social_accounts")
   .social-container.full
     .social-label = t("add")
     - not_linked_providers(user).each do |_, info|
-      = link_to info[:link], class: info[:buttonclass].to_s do
+      = link_to info[:link], class: info[:buttonclass].to_s, target: "_blank" do
         i class="#{info[:class]}"
         span = info[:name]
