@@ -1,12 +1,20 @@
 class EventsController < ApplicationController
   respond_to :json, only: [:create]
   respond_to :ics, only: :ics
-  respond_to :rss, only: :index
+  respond_to :rss, only: :feed
 
   load_and_authorize_resource
+  skip_authorize_resource only: :feed
 
   def index
     scoped(:ordered_desc)
+  end
+
+  def feed
+    @events = Event.includes(:organizer)
+    respond_to do |format|
+      format.rss { render layout: false }
+    end
   end
 
   def show; end

@@ -6,9 +6,9 @@ resources :events do
   end
 
   collection do
-    get :upcoming
     get :past
     get :unpublished
+    get :upcoming
   end
 
   member do
