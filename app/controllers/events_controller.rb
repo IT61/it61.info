@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def feed
-    @events = Event.includes(:organizer)
+    @events = Event.includes(:organizer).published
     respond_to do |format|
       format.rss { render layout: false }
     end
