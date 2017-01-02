@@ -22,14 +22,15 @@ class Ability
 
   def give_mature_privileges(user, persisted_in_db)
     if persisted_in_db
-      can :create, Event
+      can [:create], Event
+      can [:participate, :leave], Event, published: true
       can :find, Place
       can [:profile, :edit, :settings, :settings_update], User, id: user.id
       can [:edit, :update, :destroy], organizer_id: user.id
     end
 
     if user.moderator?
-      can [:read, :update, :destroy, :publish], Event
+      can [:read, :update, :destroy, :publish, :unpublish], Event
     elsif user.admin?
       can :manage, :all
     end
