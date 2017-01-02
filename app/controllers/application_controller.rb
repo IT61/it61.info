@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
   respond_to :html
 
+  before_action :enable_profiler, if: proc { Rails.env.production? }
+
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -18,5 +20,13 @@ class ApplicationController < ActionController::Base
 
   def render_404
     render "errors/not_found", status: :not_found
+  end
+
+  private
+
+  def enable_profiler
+    if current_user && current_user.admin?
+      Rack::MiniProfiler.authorize_request
+    end
   end
 end
