@@ -3,7 +3,10 @@ $(document).ready(function () {
   if ($(this).width() < 600) {
     var menuToggle = $('#js-mobile-menu').unbind();
 
-    menuToggle.find('span').text($('li.nav-link.active a').text());
+    var $activeNavLink = $('li.nav-link.active a');
+    if ($activeNavLink.length) {
+      menuToggle.find('span').text($activeNavLink.text());
+    }
 
     menuToggle.on('click', function (e) {
       e.preventDefault();
