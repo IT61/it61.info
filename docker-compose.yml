@@ -16,7 +16,5 @@ services:
       - redis
   db:
     image: postgres
-    environment:
-      - POSTGRES_DB=it61_development
   redis:
     image: redis
