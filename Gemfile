@@ -50,6 +50,13 @@ gem "uglifier"
 gem "will_paginate"
 gem "jquery-serialize-object-rails"
 
+
+# IMPORTANT: mini profiler monkey patches, so it better be required last
+gem "flamegraph", require: false
+gem "memory_profiler", require: false, platform: :mri
+gem "rack-mini-profiler", require: false
+gem "stackprof", require: false, platform: :mri
+
 source "https://rails-assets.org" do
   gem "rails-assets-cropper"
   gem "rails-assets-smartcrop"
@@ -76,10 +83,6 @@ group :development, :test do
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 3.5.0"
   gem "scss_lint", require: false
-end
-
-group :development, :staging do
-  gem "rack-mini-profiler", require: false
 end
 
 group :test do
