@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
   respond_to :html
 
-  before_action :enable_profiler, if: proc { Rails.env.production? }
-
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|

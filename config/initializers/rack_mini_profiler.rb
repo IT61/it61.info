@@ -14,12 +14,10 @@ if Rails.configuration.respond_to?(:load_mini_profiler) && Rails.configuration.l
 end
 
 if defined?(Rack::MiniProfiler)
+  uri = URI.parse(ENV["REDIS_URL"])
+  Rack::MiniProfiler.config.storage_options = { host: uri.host, port: uri.port, password: uri.password }
+  Rack::MiniProfiler.config.storage = Rack::MiniProfiler::RedisStore
 
-  # note, we may want to add some extra security here that disables mini profiler in a multi hosted env unless user global admin
-  #   raw_connection means results are not namespaced
-  #
-  # namespacing gets complex, cause mini profiler is in the rack chain way before multisite
-  Rack::MiniProfiler.config.storage_instance = Rack::MiniProfiler::RedisStore.new($redis)
   skip = [
     /assets/,
     /\/avatar\//,
@@ -36,7 +34,7 @@ if defined?(Rack::MiniProfiler)
     path = env["PATH_INFO"]
 
     (env["HTTP_USER_AGENT"] !~ /iPad|iPhone|Android/) &&
-      !skip.any?{|re| re =~ path}
+      !skip.any? { |re| re =~ path }
   end
 
   Rack::MiniProfiler.config.position = "left"
