@@ -1,0 +1,22 @@
+version: '2'
+services:
+  app:
+    build: .
+    command: rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=postgres
+      - REDIS_URL=redis://redis:6379/1
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=it61_development
+  redis:
+    image: redis
