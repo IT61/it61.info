@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     else
       Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
       throw exception unless Rails.env.production?
-      redirect_to sign_in_path
+      redirect_to new_session_path
     end
   end
 
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   private
 
   def enable_profiler
-    if current_user && current_user.admin?
+    if current_user&.admin?
       Rack::MiniProfiler.authorize_request
     end
   end
