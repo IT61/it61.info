@@ -6,13 +6,19 @@
       ul
         li
           .statistics-count = User.count
-          .statistics-label = raw t(".user_count")
+          .statistics-label
+            = t(".user_count", :count => User.count)
+            = raw t(".user_count_label")
         li
           .statistics-count = Event.count
-          .statistics-label = raw t(".event_count")
+          .statistics-label
+            = t(".event_count", :count => Event.count)
+            = raw t(".event_count_label")
         li
           .statistics-count 42
-          .statistics-label = raw t(".slack_channels_count")
+          .statistics-label
+            = t(".slack_channels_count", :count => 42)
+            = raw t(".slack_channels_count_label")
     - if current_user.nil?
       = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
   .card.welcome-card

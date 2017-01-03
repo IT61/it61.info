@@ -35,9 +35,21 @@ ru:
     slack: "Slack"
     welcome:
       title: Ростовское<br>IT-сообщество
-      user_count: Человек<br>в сообществе
-      event_count: Мероприятий<br>организовано
-      slack_channels_count: Канала<br>в Slack
+      user_count:
+        one: Человек
+        few: Человека
+        many: Человек
+      user_count_label: <br>в сообществе
+      event_count:
+        one: Мероприятие
+        few: Мероприятия
+        many: Мероприятий
+      event_count_label: <br>организовано
+      slack_channels_count:
+        one: Канал
+        few: Канала
+        many: Каналов
+      slack_channels_count_label: <br>в Slack
       sign_in: Присоединяйся!
     about:
       link: О нас
