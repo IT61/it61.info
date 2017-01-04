@@ -1,3 +1,7 @@
+- users_count = User.count
+- events_count = Event.count
+- slack_channels_count = 42
+
 .welcome-background
 .welcome-container
   .welcome-header
@@ -5,19 +9,19 @@
     .welcome-statistics
       ul
         li
-          .statistics-count = User.count
+          .statistics-count = users_count
           .statistics-label
-            = t(".user_count", :count => User.count)
+            = t(".user_count", count: users_count)
             = raw t(".user_count_label")
         li
-          .statistics-count = Event.count
+          .statistics-count = events_count
           .statistics-label
-            = t(".event_count", :count => Event.count)
+            = t(".event_count", count: events_count)
             = raw t(".event_count_label")
         li
-          .statistics-count 42
+          .statistics-count = slack_channels_count
           .statistics-label
-            = t(".slack_channels_count", :count => 42)
+            = t(".slack_channels_count", count: slack_channels_count)
             = raw t(".slack_channels_count_label")
     - if current_user.nil?
       = link_to t(".sign_in"), new_session_path, class: "btn btn-blue welcome-btn"
