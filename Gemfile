@@ -48,6 +48,7 @@ gem "suspenders"
 gem "toastr-rails"
 gem "uglifier"
 gem "will_paginate"
+gem "jquery-serialize-object-rails"
 
 source "https://rails-assets.org" do
   gem "rails-assets-cropper"
