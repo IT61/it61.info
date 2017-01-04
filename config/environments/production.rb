@@ -15,14 +15,12 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
-  if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-    ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
-  end
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
   config.middleware.use Rack::Deflater
   config.public_file_server.headers = {
     "Cache-Control" => "public, max-age=3600",
   }
   config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
+  config.load_mini_profiler = true
 end
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i

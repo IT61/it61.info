@@ -2,7 +2,7 @@ module Users
   class OmniauthController < Devise::OmniauthCallbacksController
     skip_before_action :verify_authenticity_token
 
-    def after_sign_in_path_for(_resource_or_scope)
+    def after_sign_in_path_for(_)
       current_user.fresh? ? sign_up_complete_path : events_path
     end
 

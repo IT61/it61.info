@@ -20,7 +20,7 @@
             = t(".slack_channels_count", :count => 42)
             = raw t(".slack_channels_count_label")
     - if current_user.nil?
-      = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
+      = link_to t(".sign_in"), new_session_path, class: "btn btn-blue welcome-btn"
   .card.welcome-card
 
     .topic Манифест
@@ -38,4 +38,4 @@
           = render file: Rails.root.join(widget)
     - if current_user.nil?
       .text-center
-        = link_to t(".sign_in"), sign_in_path, class: "btn btn-blue welcome-btn"
+        = link_to t(".sign_in"), new_session_path, class: "btn btn-blue welcome-btn"
