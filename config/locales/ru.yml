@@ -69,13 +69,13 @@ ru:
       sign_up_complete:
         complete_registration: "Завершение регистрации"
         few_details: "Есть несколько тонкостей, которые не должны от вас ускользнуть:"
-        specify_real_name: "Указывайте настоящее имя и фамилию на русском языке для удобства общения в чате"
+        specify_real_name: "Указывайте настоящие имя и фамилию на русском языке для удобства общения в чате"
         specify_email_for_invite: "Важно! На указанный адрес будет отправлен инвайт для доступа в Slack"
         specify_phone_for_sms_reminders: "Будет использоваться для отправки напоминаний о мероприятиях, на которые Вы хотите пойти"
         submit: "Всё верно"
         fill_later: "Заполнить позже"
       settings:
-        want_sms_reminders: "Я хочу получать SMS оповещения о мероприятиях, в которых я участвую"
+        want_sms_reminders: "Я хочу получать SMS-оповещения о мероприятиях, в которых я участвую"
         want_email_reminders: "Я хочу получать e-mail уведомления о новых мероприятиях"
         want_to_hide_social_profiles: "Я не хочу показывать другим социальные аккаунты в своем профиле"
     index:
@@ -242,7 +242,7 @@ ru:
     event_successfully_published: "Мероприятие успешно опубликовано!"
     event_participation_created: "Заявка на участие в &laquo;%{title}&raquo; принята."
     event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
-    event_successfully_added_to_google_calendar: "Событие добавлено в Ваш google календарь"
+    event_successfully_added_to_google_calendar: "Событие добавлено в Ваш Google-календарь"
     event_failure_to_add_to_google_calendar: "Ошибка добавления в календарь"
 
   devise:
