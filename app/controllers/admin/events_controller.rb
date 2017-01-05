@@ -13,7 +13,7 @@ module Admin
     end
 
     def publish
-      @event.publish!(current_user)
+      @event.publish!
       respond_with(@event)
     end
 

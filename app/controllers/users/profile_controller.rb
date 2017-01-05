@@ -5,11 +5,11 @@ module Users
 
     authorize_resource class: User, except: [:sign_in, :sign_up_complete]
 
-    
+
     def sign_in; end
 
     def sign_up_complete
-      redirect_to sign_in_path if current_user.nil?
+      redirect_to new_session_path if current_user.nil?
     end
 
     def profile

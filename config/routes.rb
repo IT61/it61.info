@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get "sign_in", to: "users/profile#sign_in"
+    get "sign_in", to: "users/profile#sign_in", as: :new_session
     get "sign_out", to: "devise/sessions#destroy"
   end
 
