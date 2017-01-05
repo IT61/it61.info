@@ -33,6 +33,7 @@ ru:
     users: "Личности"
     photos: "Фотографии"
     slack: "Slack"
+    places: "Площадки"
     welcome:
       title: Ростовское<br>IT-сообщество
       user_count:

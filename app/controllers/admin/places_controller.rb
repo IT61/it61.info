@@ -10,7 +10,7 @@ module Admin
 
     def update
       @place.update(place_params)
-      respond_with(@place)
+      respond_with(:admin, @place)
     end
 
     private

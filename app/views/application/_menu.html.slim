@@ -6,3 +6,8 @@ li = link_to Settings.community.link_to.slack, target: "_blank"
   i.fa.fa-external-link
   | &nbsp;
   = t("pages.slack")
+
+- if current_user&.admin?
+  = active_link_to t("pages.places"), admin_places_path, wrap_tag: :li
+  = active_link_to t("pages.users"), admin_users_path, wrap_tag: :li
+  = active_link_to t("pages.events"), admin_events_path, wrap_tag: :li

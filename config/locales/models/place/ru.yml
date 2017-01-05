@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      place:
+        one: "Место проведения"
+        few: "Места проведения"
+        other: "Места проведения"
+    attributes:
+      place:
+        title: "Место проведения"
+        address: "Адрес"
+        latitude: "Широта"
+        longitude: "Долгота"

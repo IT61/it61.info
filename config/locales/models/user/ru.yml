@@ -11,3 +11,5 @@ ru:
         last_name: Фамилия
         email: E-mail
         phone: Телефон
+        full_name: ФИО
+        role: Роль
