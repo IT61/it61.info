@@ -39,17 +39,17 @@ ru:
         one: Человек
         few: Человека
         many: Человек
-      user_count_label: <br>в сообществе
+      user_count_html: <br>в сообществе
       event_count:
         one: Мероприятие
         few: Мероприятия
         many: Мероприятий
-      event_count_label: <br>организовано
+      event_count_html: <br>организовано
       slack_channels_count:
         one: Канал
         few: Канала
         many: Каналов
-      slack_channels_count_label: <br>в Slack
+      slack_channels_count_html: <br>в Slack
       sign_in: Присоединяйся!
     about:
       link: О нас
