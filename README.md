@@ -32,6 +32,25 @@
 9. Run server
     `bundle exec rails server`
 
+## Docker development setup
+
+Run / Stop (daemon mode)
+```bash
+$ docker-compose up -d
+$ docker-compose stop
+```
+
+Forwarded ports and access:
+
+Web: http://localhost:3000 (host machine)
+Database: postgres://postgres@localhost:6543 (host machine)
+
+Action | Command
+------------ | -------------
+Bundler | `docker-compose exec app bundle install`
+Setup DB | `docker-compose exec app bundle exec rails db:create db:migrate`
+Console | `docker-compose exec app bundle exec rails c`
+
 ## Guidelines
 
 Use the following guides for getting things done, programming well, and
