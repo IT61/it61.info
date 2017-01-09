@@ -1,0 +1,8 @@
+form#imageForm data-avatar-path=user_avatars_path(user)
+  .picture
+    = image_tag photo(user), id: "image", default_img_src: asset_path("user_default.png")
+    .edit-picture-buttons
+      label.btn.btn-blue for="imageInput"
+        input#imageInput type="file" name="file" accept="image/*"
+        = t(".upload_photo")
+      button.btn.btn-gray#deleteAvatarBtn type="nosubmit" = t(".delete_photo")

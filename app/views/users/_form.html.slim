@@ -1,8 +1,8 @@
 h1.my-profile = form_header
 .card.edit-user-card
   .image-container
-    .picture
-      = image_tag photo(user), id: "image"
+    = render partial: "users/form/image_upload_section", locals: { user: user }
+    = render partial: "application/cropper_modal", locals: { object: user, picture: user.avatar.url }
   = form_for user do |f|
     = render partial: "users/form/details_section", locals: { f: f, user: user }
     .bottom-container
