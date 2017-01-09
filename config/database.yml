@@ -1,8 +1,5 @@
 development: &default
-  adapter: postgresql
-  database: it61_development
-  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
-  username: <%= ENV.fetch("DATABASE_USER", "root") %>
+  url: <%= ENV.fetch("DATABASE_URL") %>_development
   encoding: utf8
   min_messages: warning
   pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
@@ -11,7 +8,7 @@ development: &default
 
 test:
   <<: *default
-  database: it61_test
+  database: <%= ENV.fetch("DATABASE_URL") %>_test
 
 production:
   encoding: utf8

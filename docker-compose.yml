@@ -11,8 +11,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_HOST=db
-      - DATABASE_USER=postgres
+      - DATABASE_URL=postgres://postgres@db:5432/it61
       - REDIS_URL=redis://redis:6379/1
     depends_on:
       - db
