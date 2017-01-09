@@ -42,19 +42,29 @@ class User < ApplicationRecord
   scope :team, -> { joins(:groups).where("groups.kind = 2") }
   scope :developers, -> { joins(:groups).where("groups.kind = 1") }
 
-  def self.from_omniauth(auth)
-    email = auth.info.email&.downcase
+  def self.from_omniauth!(auth)
+    social = SocialAccount.where(uid: auth.uid, provider: auth.provider).first
 
-    User.where(email: email).first_or_create do |u|
-      u.email = email unless email.nil?
-      u.name = auth.info.name
-      u.first_name = auth.info.first_name
-      u.last_name = auth.info.last_name
+    if social.present?
+      social.user
+    else
+      email = auth.info.email&.downcase
+      User.where(email: email).first_or_create! do |u|
+        u.email = email
+        u.name = auth.info.name
+        u.first_name = auth.info.first_name
+        u.last_name = auth.info.last_name
+        u.social_accounts << SocialAccount.create! do |s|
+          s.provider = auth.provider
+          s.uid = auth.uid
+          s.link = SocialAccount.link_for(auth)
+        end
+      end
     end
   end
 
   def add_social(auth)
-    SocialAccount.from_omniauth auth, self
+    SocialAccount.from_omniauth(auth, self)
   end
 
   def display_name
