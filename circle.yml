@@ -6,4 +6,5 @@ test:
     - COVERAGE=true bin/rake
 machine:
   environment:
+    DATABASE_URL: postgres://root@localhost:5432/it61
     SECRET_KEY_BASE: abcdef123456
