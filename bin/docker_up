@@ -1,5 +1,5 @@
 #!/bin/bash
 
-bundle check || bundle install
+bundle check || bundle install --jobs=7
 rm tmp/pids/*
 bundle exec rails s -b 0.0.0.0
