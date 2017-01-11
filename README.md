@@ -48,8 +48,8 @@ Database: postgres://postgres@localhost:6543 (host machine)
 Action | Command
 ------------ | -------------
 Bundler | `docker-compose exec app bundle install`
-Setup DB | `docker-compose exec app bundle exec rails db:create db:migrate`
-Console | `docker-compose exec app bundle exec rails c`
+Setup DB | `docker-compose exec app rails db:create db:migrate`
+Console | `docker-compose exec app rails c`
 
 ## Guidelines
 
