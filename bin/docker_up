@@ -1,5 +1,7 @@
 #!/bin/bash
+BUNDLE_JOBS=${BUNDLE_JOBS:-$(nproc)}
+echo "Number of jobs used for bundler: ${BUNDLE_JOBS}"
 
-bundle check || bundle install --jobs=7
+bundle check || bundle install
 rm tmp/pids/*
 bundle exec rails s -b 0.0.0.0
