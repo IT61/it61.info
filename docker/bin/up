@@ -1,4 +1,8 @@
 #!/bin/bash
+# This script is used by Docker Compose to
+# check dependencies and start application server.
+
+# Utilizes all available CPUs to speed up installing gems
 BUNDLE_JOBS=${BUNDLE_JOBS:-$(nproc)}
 echo "Number of jobs used for bundler: ${BUNDLE_JOBS}"
 

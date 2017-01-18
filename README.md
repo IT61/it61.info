@@ -42,8 +42,8 @@ $ docker-compose stop
 
 Forwarded ports and access:
 
-Web: http://localhost:3000 (host machine)
-Database: postgres://postgres@localhost:6543 (host machine)
+* Web: [http://localhost:3000](http://localhost:3000) (host machine).
+* Database: `postgres://postgres@localhost:6543` (host machine).
 
 Action | Command
 ------------ | -------------
