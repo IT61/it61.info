@@ -24,36 +24,70 @@ type docker-compose >/dev/null 2>&1 || {
 }
 
 APP_PATH=`pwd`
+ARGS=$*
 COMPOSE_BIN=`which docker-compose`
 COMPOSE_RUN="${COMPOSE_BIN} -f ${APP_PATH}/docker/docker-compose.yml"
 
 # General usage help
 help() {
   info "${BF}${PACKAGE_NAME} ($PACKAGE_VERSION)${NF} - environment manager for ${BF}it61-rails${NF}."
-  info "Uses docker-compose to run application containers localy."
+  info "Uses docker-compose to run application containers for local develo."
   info " "
-  info "usage:"
-  info "${BF}  ${PACKAGE_NAME} command${NF}"
+  info "Usage:"
+  info "${BF}  ${PACKAGE_NAME} [COMMAND] [ARGS...]${NF}"
+  info "${BF}  ${PACKAGE_NAME} -h|--help${NF}"
   info " "
-  info "commands:"
-  info "${BF}  up    ${NF}- prepare dev environment (build containers and start them)"
-  info "${BF}  start ${NF}- start dev environment (start application containers)"
-  info "${BF}  stop  ${NF}- stop dev environment (stop application containers)"
-  info "${BF}  down  ${NF}- remove dev environment (stop and remove containers)"
-  info "${BF}  exec  ${NF}- execute commands in application containers"
+  info "Docker commands (find more here: ${BF}${COMPOSE_BIN} -h${NF}):"
+  info "${BF}  create${NF} - build containers"
+  info "${BF}  down${NF} - stop and remove containers"
+  info "${BF}  exec${NF} - execute commands in containers"
+  info "${BF}  prepare${NF} - build containers and start dev environment (daemon)"
+  info "${BF}  start${NF} - start dev environment"
+  info "${BF}  stop${NF} - stop dev environment"
+  info "${BF}  log${NF} - continuous log streaming"
+  info "${BF}  up${NF} - build containers and start dev environment (with output)"
+  info " "
+  info "Application container commands:"
+  info "${BF}  bash${NF} - run bash inside"
+  info "${BF}  bundler${NF} - install gems into app container"
+  info "${BF}  console${NF} - run rails console inside app container"
+  info "${BF}  migrate${NF} - run db:migrate inside app container"
   exit 0
+}
+
+run() {
+  ${COMPOSE_RUN} $1
+  exit $?
 }
 
 # Main commands and options selector.
 while test $# -gt 0; do
   case "$1" in
-    up|down|start|stop|exec )
-      info "Executing: '${COMPOSE_RUN} $*'"
-      ${COMPOSE_RUN} $*
-      exit $?
+    # Docker functions.
+    prepare)
+      run "up -d"
     ;;
-    -h|--help|*)
+    log)
+      run "logs -f"
+    ;;
+    # App functions.
+    bundler)
+      run "exec app bundle install"
+    ;;
+    console)
+      run "exec app rails c"
+    ;;
+    migrate)
+      run "exec app rails db:create db:migrate"
+    ;;
+    bash)
+      run "exec app /bin/bash"
+    ;;
+    -h|--help)
       help
+    ;;
+    *)
+      run "${ARGS}"
     ;;
   esac
 done
