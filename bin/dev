@@ -31,7 +31,7 @@ COMPOSE_RUN="${COMPOSE_BIN} -f ${APP_PATH}/docker/docker-compose.yml"
 # General usage help
 help() {
   info "${BF}${PACKAGE_NAME} ($PACKAGE_VERSION)${NF} - environment manager for ${BF}it61-rails${NF}."
-  info "Uses docker-compose to run application containers for local develo."
+  info "Uses docker-compose to run application containers for local development."
   info " "
   info "Usage:"
   info "${BF}  ${PACKAGE_NAME} [COMMAND] [ARGS...]${NF}"
@@ -48,7 +48,7 @@ help() {
   info "${BF}  up${NF} - build containers and start dev environment (with output)"
   info " "
   info "Application container commands:"
-  info "${BF}  bash${NF} - run bash inside"
+  info "${BF}  bash${NF} - run bash inside app container"
   info "${BF}  bundler${NF} - install gems into app container"
   info "${BF}  console${NF} - run rails console inside app container"
   info "${BF}  migrate${NF} - run db:migrate inside app container"
