@@ -26,15 +26,15 @@ type docker-compose >/dev/null 2>&1 || {
 APP_PATH=`pwd`
 COMPOSE_BIN=`which docker-compose`
 COMPOSE_RUN="${COMPOSE_BIN} -f ${APP_PATH}/docker/docker-compose.yml"
-ARGS=$*
 
 # General usage help
 help() {
-  info "${BF}${PACKAGE_NAME}${NF} - environment manager for it61. Uses Docker-compose to run application containers localy."
+  info "${BF}${PACKAGE_NAME}${NF} - environment manager for ${BF}it61-rails${NF}."
+  info "Uses Docker-compose to run application containers localy."
   info "VERSION: ${BF}$PACKAGE_VERSION${NF}"
   info " "
   info "usage:"
-  info "${BF}${PACKAGE_NAME} command [options]${NF}"
+  info "${BF}${PACKAGE_NAME} command${NF}"
   info " "
   info "commands:"
   info "${BF}  up    ${NF}- prepare dev environment (build containers and start them)"
@@ -42,9 +42,6 @@ help() {
   info "${BF}  stop  ${NF}- stop dev environment (stop application containers)"
   info "${BF}  down  ${NF}- remove dev environment (stop and remove containers)"
   info "${BF}  exec  ${NF}- execute commands in application containers"
-  info " "
-  info "options:"
-  info "  -h, --help                show this help"
   exit 0
 }
 
@@ -52,7 +49,8 @@ help() {
 while test $# -gt 0; do
   case "$1" in
     up|down|start|stop|exec )
-      ${COMPOSE_RUN} ${ARGS}
+      info "Executing: '${COMPOSE_RUN} $*'"
+      ${COMPOSE_RUN} $*
       exit $?
     ;;
     -h|--help|*)
