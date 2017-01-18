@@ -1,0 +1,65 @@
+#!/bin/bash
+
+PACKAGE_NAME="dev"
+PACKAGE_VERSION="1.0.0"
+
+BF=`tput bold`
+NF=`tput sgr0`
+
+error() {
+  echo >&2 $1;
+}
+
+info() {
+  echo $1;
+}
+
+# Check for docker-composer.
+type docker-compose >/dev/null 2>&1 || {
+  error "${BF}docker-compose${NF} required, but it's not installed."
+  error "Visit ${BF}https://docs.docker.com/compose/install/${NF} for more details."
+  error ""
+  error "Aborting."
+  exit 1;
+}
+
+APP_PATH=`pwd`
+COMPOSE_BIN=`which docker-compose`
+COMPOSE_RUN="${COMPOSE_BIN} -f ${APP_PATH}/docker/docker-compose.yml"
+ARGS=$*
+
+# General usage help
+help() {
+  info "${BF}${PACKAGE_NAME}${NF} - environment manager for it61. Uses Docker-compose to run application containers localy."
+  info "VERSION: ${BF}$PACKAGE_VERSION${NF}"
+  info " "
+  info "usage:"
+  info "${BF}${PACKAGE_NAME} command [options]${NF}"
+  info " "
+  info "commands:"
+  info "${BF}  up    ${NF}- prepare dev environment (build containers and start them)"
+  info "${BF}  start ${NF}- start dev environment (start application containers)"
+  info "${BF}  stop  ${NF}- stop dev environment (stop application containers)"
+  info "${BF}  down  ${NF}- remove dev environment (stop and remove containers)"
+  info "${BF}  exec  ${NF}- execute commands in application containers"
+  info " "
+  info "options:"
+  info "  -h, --help                show this help"
+  exit 0
+}
+
+# Main commands and options selector.
+while test $# -gt 0; do
+  case "$1" in
+    up|down|start|stop|exec )
+      ${COMPOSE_RUN} ${ARGS}
+      exit $?
+    ;;
+    -h|--help|*)
+      help
+    ;;
+  esac
+done
+
+# If no options given, just show help.
+help
