@@ -1,4 +1,5 @@
 development: &default
+  adapter: postgresql
   url: <%= ENV.fetch("DATABASE_URL") %>_development
   encoding: utf8
   min_messages: warning

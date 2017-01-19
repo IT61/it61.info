@@ -1,18 +1,18 @@
 FROM ruby:2.3.3
 
+ENV APP_PATH=/app \
+    BUNDLE_PATH=/gems
+
 RUN apt-get update -qq && apt-get install -y \
     build-essential \
     libpq-dev \
     nodejs
 
-ENV app /app
-ENV BUNDLE_PATH /gems
-
-RUN mkdir -p $app
-WORKDIR $app
+RUN mkdir -p $APP_PATH
+WORKDIR $APP_PATH
 
 # Copy the main application.
-ADD . $app
+ADD . $APP_PATH
 
 EXPOSE 3000
 
