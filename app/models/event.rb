@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   has_many :registrations, dependent: :destroy
   has_many :participants, class_name: "User", through: :event_participations, source: :user
 
-  accepts_nested_attributes_for :place, reject_if: :all_blank, limit: 1
+  accepts_nested_attributes_for :place, reject_if: :invalid_place, limit: 1
 
   # Validations
   validates :title, presence: true
@@ -50,6 +50,10 @@ class Event < ActiveRecord::Base
     user && event_participations.find_by(user_id: user.id)
   end
 
+  def invalid_place(attributes)
+    attributes["title"].blank?
+  end
+
   def able_to_participate?
     !has_closed_registration? || past?
   end
@@ -68,15 +72,6 @@ class Event < ActiveRecord::Base
 
   def new_participant!(user)
     event_participations << EventParticipation.new(user: user)
-  end
-
-  def place_attributes=(place_attrs)
-    _place = Place.find(place_attrs[:id])
-    if _place
-      self.place = _place
-    else
-      super(place_attrs)
-    end
   end
 
   def publish!
