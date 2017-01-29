@@ -39,7 +39,7 @@
       this.$sidebar.css({'animation': 'slidein .2s ease-in-out'});
     },
     slideOut: function () {
-      this.$sidebar.css({ 'animation': 'slideout .2s ease-in-out' });
+      this.$sidebar.css({'animation': 'slideout .2s ease-in-out'});
       this.$sidebar.removeClass('sidebar-opened');
     }
   };
