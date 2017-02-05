@@ -39,8 +39,12 @@ var eventManager = {
   },
 
   sendFormWithImageBlob: function (form, canvas) {
-    var poster = canvas.toDataURL().replace(/^data:image\/(png|jpg);base64,/, ''),
-      postData = $(form).serializeObject();
+    var poster = null;
+
+    if ($.isFunction(canvas.toDataURL)) {
+      poster = canvas.toDataURL();
+    }
+    var postData = $(form).serializeObject();
 
     postData['event[cover]'] = poster;
 

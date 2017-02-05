@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   include PermalinkFor
   permalink_for :permalink_title, as: :pretty
-  mount_uploader :cover, ImageUploader
+  mount_base64_uploader :cover, ImageUploader
   strip_strings :title
 
   # Relations
