@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   has_many :registrations, dependent: :destroy
   has_many :participants, class_name: "User", through: :event_participations, source: :user
 
-  accepts_nested_attributes_for :place, reject_if: :invalid_place, limit: 1
+  accepts_nested_attributes_for :place, reject_if: :all_blank, limit: 1
 
   # Validations
   validates :title, presence: true
@@ -20,6 +20,7 @@ class Event < ActiveRecord::Base
   validates :organizer, presence: true
   validates :place, presence: true
   validates :published_at, presence: true, if: :published?
+  validates :started_at, presence: true
 
   delegate :title, :address, :latitude, :longitude, to: :place, prefix: true, allow_nil: true
 
@@ -46,8 +47,11 @@ class Event < ActiveRecord::Base
   }
   scope :not_notified_about, -> { where(subscribers_notification_send: false) }
 
-  def user_participated?(user)
-    user && event_participations.find_by(user_id: user.id)
+  def place_attributes=(attributes)
+    if attributes['id'].present?
+      self.place = Place.find(attributes['id'])
+    end
+    super
   end
 
   def invalid_place(attributes)
