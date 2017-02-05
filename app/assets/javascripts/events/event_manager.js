@@ -68,9 +68,16 @@ var eventManager = {
       url: '/events',
       dataType: 'json',
       data: postData,
-      method: 'POST'
+      method: 'POST',
     }).fail(function (response) {
-      toastr['error'](response.responseText);
+      if (!response) return;
+
+      if (response.status != 200 && response.responseJSON.errors) {
+        var errors = response.responseJSON.errors;
+        $.map(errors, toastr['error']);
+      } else if (response.status == 302) {
+        window.location.replace(response.responseJSON.eventPath);
+      }
     });
   }
 };

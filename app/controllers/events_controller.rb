@@ -29,11 +29,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(event_params.merge(organizer: current_user))
-    if @event.persisted?
-      respond_with(@event, location: -> { event_path(@event) }, status: 302)
+    @event = Event.new(event_params.merge(organizer: current_user))
+    if @event.save
+      render json: { eventPath: event_path(@event) }, status: 302
     else
-      respond_with(@event)
+      render json: { errors: @event.errors.full_messages }, status: 422
     end
   end
 
