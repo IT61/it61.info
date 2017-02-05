@@ -26,7 +26,7 @@ class Ability
       can [:participate, :leave], Event, published: true
       can :find, Place
       can [:profile, :edit, :settings, :settings_update], User, id: user.id
-      can [:edit, :update, :destroy], organizer_id: user.id
+      can [:show, :edit, :update, :destroy], Event, organizer_id: user.id
     end
 
     if user.moderator?
