@@ -94,7 +94,7 @@ class EventsController < ApplicationController
   private
 
   def scoped(scope)
-    @events = Event.includes(:place).send(scope).paginate(page: params[:page], per_page: Settings.per_page.events)
+    @events = Event.includes(:place).send(scope).published.paginate(page: params[:page], per_page: Settings.per_page.events)
     view = request.xhr? ? "events/_card" : "events/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr?, locals: { events: @events } }
