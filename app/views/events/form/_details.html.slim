@@ -7,11 +7,11 @@
   .time-container
     .time-select
       = f.label :started_at, t(".date"), class: "required"
-      = date_select :event, :started_at, default: Date.today
+      = f.date_select :started_at, default: Date.today
 
     .time-select
       = f.label :started_at, t(".time"), class: "required"
-      = time_select :event, :started_at, default: Time.current, ignore_date: true, time_separator: "<span class='time-separator'>:</span>"
+      = f.time_select :started_at, default: Time.current, ignore_date: true, time_separator: "<span class='time-separator'>:</span>"
 
   .event-association-field
     .input-float-label
