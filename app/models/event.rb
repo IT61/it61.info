@@ -54,6 +54,10 @@ class Event < ActiveRecord::Base
     super
   end
 
+  def user_participated?(user) 
+    user && event_participations.find_by(user_id: user.id) 
+  end
+
   def invalid_place(attributes)
     attributes["title"].blank?
   end
