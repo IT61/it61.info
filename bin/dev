@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PACKAGE_NAME="dev"
-PACKAGE_VERSION="1.0.0"
+PACKAGE_VERSION="1.0.1"
 
 BF=`tput bold`
 NF=`tput sgr0`
@@ -76,10 +76,10 @@ while test $# -gt 0; do
       run "exec app bundle install"
     ;;
     console)
-      run "exec app rails c"
+      run "exec app ./bin/rails console"
     ;;
     migrate)
-      run "exec app rails db:create db:migrate"
+      run "exec app ./bin/rails db:create db:migrate"
     ;;
     bash)
       run "exec app /bin/bash"

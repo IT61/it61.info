@@ -39,8 +39,8 @@
 
 ## Docker development setup
 
-Docker-based development environment requires `docker-compose >= 1.9.0`. 
-Visit [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) for more details. 
+Docker-based development environment requires `docker-compose >= 1.9.0`.  
+Visit [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) for more details.
 
 Use `bin/dev` helper script for docker-compose management. Run `bin/dev` to see some commands to get started.
 
@@ -55,11 +55,16 @@ Forwarded ports and access:
 * Web: [http://localhost:3000](http://localhost:3000) (host machine).
 * Database: `postgres://postgres@localhost:6543` (host machine).
 
-Action | Command
+Most of `bin/dev` commands are proxied as is to `docker-compose`. But some are just handy shortcuts.
+
+Command | Action
 ------------ | -------------
-Bundler | `bin/dev exec app bundle install`
-Setup DB | `bin/dev exec app rails db:create db:migrate`
-Console | `bin/dev exec app rails c`
+`bin/dev prepare` | build containers and start dev environment (daemon) = `bin/dev up -d`
+`bin/dev log` | continuous log streaming = `bin/dev logs -f`
+`bin/dev bundler` | install gems into app container (containers should be up and running) = `bin/dev exec app bundle install`
+`bin/dev console` | run rails console inside app container (containers should be up and running) = `bin/dev exec app ./bin/rails console`
+`bin/dev migrate` | run db:migrate inside app container (containers should be up and running) = `bin/dev exec app ./bin/rails db:create db:migrate`
+`bin/dev open` | open browser with dev version [http://localhost:3000](http://localhost:3000)
 
 ## Guidelines
 
