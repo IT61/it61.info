@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery.serialize-object
 //= require toastr
 
 // Rails assets

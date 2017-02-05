@@ -50,7 +50,6 @@ gem "suspenders"
 gem "toastr-rails"
 gem "uglifier"
 gem "will_paginate"
-gem "jquery-serialize-object-rails"
 
 
 # IMPORTANT: mini profiler monkey patches, so it better be required last
