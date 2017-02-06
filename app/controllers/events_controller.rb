@@ -107,6 +107,7 @@ class EventsController < ApplicationController
 
   def event_params
     permitted_attrs = [
+      :id,
       :title,
       :description,
       :cover,

@@ -8,9 +8,11 @@ $(document).ready(function () {
   eventManager.initEditor();
   eventManager.initCropper();
   initFileInput($('#image-input-container'));
+
+  $('.event-form').on('submit', onSubmit);
 });
 
-function onSubmitEvent() {
+function onSubmit() {
   var $croppedModalImage = $('#cropped-modal-image'),
       form = $('.event-form')[0],
       canvas = $croppedModalImage.cropper('getCroppedCanvas');
