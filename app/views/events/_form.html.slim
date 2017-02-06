@@ -1,6 +1,7 @@
 = render partial: "cropper_modal", locals: { picture: @event.cover }
 
 = form_for @event, html: { class: "event-form" } do |f|
+  = f.hidden_field :id
   section.info-container
     = render partial: "events/form/image", locals: { f: f }
 

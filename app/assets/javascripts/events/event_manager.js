@@ -60,12 +60,13 @@ var eventManager = {
     if ($.isFunction(canvas.toDataURL)) {
       poster = canvas.toDataURL();
     }
-    var postData = $(form).serializeObject();
+    var postData = $(form).serializeObject(),
+      eventId = $('#event_id').val();
 
     postData['event[cover]'] = poster;
 
     $.ajax({
-      url: '/events',
+      url: eventId === '' ? '/events' : '/events/' + eventId,
       dataType: 'json',
       data: postData,
       method: 'POST',
