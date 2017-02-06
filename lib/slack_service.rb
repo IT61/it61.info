@@ -24,7 +24,7 @@ class SlackService
   end
 
   def send_event_notification(event)
-    return unless service_configured?
+    #return unless service_configured?
     attachment = build_attachment(event)
     # notifier.ping I18n.t('slack_integration.new_event'), attachments: [attachment]
     notifier.ping "Анонсировано новое мероприятие", attachments: [attachment]
@@ -126,7 +126,7 @@ class SlackService
     text = plain_text(event.description)
     {
       title: event.title,
-      title_link: event_url(event),
+      title_link: event_url(event, host: ENV['APPLICATION_HOST']),
       thumb_url: event.title_image.url(:square_500),
       text: text,
       fallback: text,
