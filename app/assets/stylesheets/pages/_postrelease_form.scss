@@ -1,0 +1,36 @@
+.postrelease {
+
+  &-nested {
+    display: flex;
+
+    .link { width: 50%; }
+    .icon {
+      margin-top: 15px;
+      margin-left: 10px;
+      color: #FF0000;
+    }
+  }
+
+  &-form {
+    align-items: flex-end;
+
+    .link { width: 50%; }
+    .icon {
+      margin-top: 15px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.links {
+  display: flex;
+
+  &-presentation { padding-right: 10px; }
+
+  .icon { color: #FF0000; }
+}
+
+.show { margin-top: 2%; }
+
+.links-edit { display: flex; }
+

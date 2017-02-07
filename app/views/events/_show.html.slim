@@ -1,0 +1,9 @@
+.card.card-fold
+  .card-header
+    h1 = t(".postrelease")
+    button.btn.btn-fold
+      .icon-arrows.icon-arrow-up
+    .card-body.event-description.text-content
+      = markdown @event.postrelease.body
+      - @event.postrelease.materials.each do |material|
+        div = raw(material.raw_info["html"])

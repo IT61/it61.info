@@ -1,0 +1,17 @@
+---
+ru:
+  postreleases:
+    name: "Пострелиз"
+    show:
+      publish: "Опубликовать пострелиз"
+      edit: "Редактировать мероприятие"
+      unpublish: "Снять пострелиз с публикации"
+    new:
+      header: "Новый пострелиз"
+      create_postrelease: "Создать пострелиз"
+      presentation: "Презентации/Видео:"
+    edit:
+      header: "Редактирование пострелиза"
+      edit_postrelease: "Редактировать пострелиз"
+    form:
+      body: "Описание"

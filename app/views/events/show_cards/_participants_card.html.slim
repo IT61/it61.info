@@ -1,0 +1,8 @@
+.card.card-fold
+  .card-header
+    h1 = t(".participants", count: @event.participants.count)
+    button.btn.btn-fold
+      .icon-arrows.icon-arrow-up
+  .card-body
+    .users-container
+      = render partial: "users/list", locals: { users: @event.participants }

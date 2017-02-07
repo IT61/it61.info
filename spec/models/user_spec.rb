@@ -75,6 +75,7 @@ RSpec.describe User, type: :model do
       it { should_not have_abilities([:edit, :update, :destroy], user) }
       it { should_not have_abilities([:edit, :update, :destroy], event) }
       it { should_not have_abilities([:read], event) }
+      it { should_not have_abilities([:edit, :update, :publish, :unpublish], Postrelease) }
     end
 
     context "when is an authorized user" do
@@ -93,6 +94,7 @@ RSpec.describe User, type: :model do
       it { should have_abilities(:read, User.new) }
       it { should have_abilities(:read, event) }
       it { should have_abilities([:edit, :update, :publish, :unpublish], event) }
+      it { should have_abilities([:edit, :update, :publish, :unpublish], Postrelease) }
 
       it { should_not have_abilities(:destroy, User) }
       it { should_not have_abilities(:destroy, Place) }
@@ -103,6 +105,7 @@ RSpec.describe User, type: :model do
       it { should have_abilities(:manage, event) }
       it { should have_abilities(:manage, published_event) }
       it { should have_abilities(:manage, User) }
+      it { should have_abilities(:manage, Postrelease) }
     end
   end
 end

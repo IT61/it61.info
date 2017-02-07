@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     resources :users
     resources :places
     resources :events
+    resources :postreleases
   end
 end

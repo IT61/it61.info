@@ -1,0 +1,14 @@
+main.event-form-container
+  .card.event-form-card
+    h1.event-form-card-header = t("postreleases.new.create_postrelease")
+    = form_for [:event,@postrelease] do |f|
+      = f.label :body, t("postreleases.form.body"), class: "required"
+      = f.text_area :body, id: "editor"
+      .required-fields = t("postreleases.new.presentation")
+      #links
+        = f.fields_for :materials do |material|
+          = render "material_fields", f: material
+        .links
+          = link_to_add_association "Добавить", f, :materials, class: "btn btn-presentation-gr"
+
+      = f.submit "Создать пострелиз", class: "btn btn-blue"

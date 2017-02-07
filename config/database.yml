@@ -9,7 +9,7 @@ development: &default
 
 test:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_URL") %>_test
+  url: <%= ENV.fetch("DATABASE_URL") %>_test
 
 production:
   encoding: utf8

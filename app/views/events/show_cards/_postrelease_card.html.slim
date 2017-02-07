@@ -1,0 +1,5 @@
+- if @event.postrelease.published? || can?(:update, @event)
+  = render partial: "events/postreleases/show"
+- else
+  - if can? :manage, @event
+    = render partial: "events/postreleases/show"

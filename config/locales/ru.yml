@@ -22,6 +22,9 @@ ru:
 
   cancel: "Отмена"
 
+  create_postrelease: "Создать пострелиз"
+  edit_postrelease: "Редактировать пострелиз"
+
   modal:
     close: "Закрыть"
 
@@ -215,8 +218,8 @@ ru:
         email: E-Mail
         first_name: Имя
         last_name: Фамилия
-        role: Тип аккаунта
-        bio: О себе
+        role: "Тип аккаунта"
+        bio: "О себе"
         phone: Телефон
         email_reminders: EMail-оповещения
         sms_reminders: SMS-оповещения
@@ -256,6 +259,15 @@ ru:
     event_participation_canceled: "Вы отказались от участия в &laquo;%{title}&raquo;."
     event_successfully_added_to_google_calendar: "Событие добавлено в Ваш Google-календарь"
     event_failure_to_add_to_google_calendar: "Ошибка добавления в календарь"
+
+    # Postreleases
+    postrelease_already_created: "Пострелиз уже существует"
+    empty_postrelease_publicate: "Нельзя опубликовать пустой пострелиз"
+    postrelease_published: "Пострелиз успешно опубликован"
+    postrelease_unpublished: "Пострелиз снят с публикации"
+
+    # Links
+    empty_link_field: "Ссылка не может быть пустой"
 
   devise:
     failure:

@@ -59,14 +59,68 @@
     }
   }
 
+  &-presentation {
+    background-color: $blue;
+    color: #fff;
+    margin-top: 10px;
+
+    &:hover {
+      color: shade(#fff, 5%);
+    }
+
+    &:after {
+      color: shade(#fff, 5%);
+    }
+
+    &:focus {
+      color: shade(#fff, 5%);
+      background-color: shade($blue, $btn-shade-percent);
+    }
+
+    &-gr {
+      background-color: #d6d6d6;
+      color: $blue;
+      margin-top: 30px;
+      margin-bottom: 10px;
+
+      &:hover {
+        color: shade($blue, 10%);
+      }
+
+      &:focus {
+        background-color: shade(#d6d6d6, $btn-shade-percent);
+      }
+    }
+
+    &-blue {
+      margin-top: 5%;
+      float: right;
+      background-color: $blue;
+      color: #fff;
+
+      &:hover {
+        color: shade(#fff, 5%);
+      }
+
+      &:focus {
+        background-color: shade($blue, $btn-shade-percent);
+      }
+    }
+  }
+
 
   &-red {
     background-color: $red;
     color: white;
+    margin-bottom: 25px;
+
+    &:hover {
+      color: shade(#fff, 5%);
+    }
 
     &:focus {
       background-color: shade($red, $btn-shade-percent);
-      color: white;
+      color: shade(#fff, 5%);
     }
   }
 

@@ -1,0 +1,21 @@
+- if can?(:manage, @event) || can?(:update, @event)
+  .card
+    .card-header
+      - if @event.published
+        h1 = t(".event_published")
+      - else
+        h1 = t(".event_still_not_published")
+    .card-body
+      .event-actions
+        - if can?(:manage, @event)
+          - if @event.published
+            = link_to t("events.show.unpublish"), unpublish_event_path, method: :put, class: "btn btn-blue"
+          - else
+            = link_to t("events.show.publish"), publish_event_path, method: :put, class: "btn btn-blue"
+        = link_to t("events.show.edit"), edit_event_path(@event), class: "btn btn-blue"
+      .event-actions
+        - if @event.postrelease.published?
+          = link_to t("postreleases.show.unpublish"), unpublish_event_postrelease_path(@event, @event.postrelease), method: :put, class: "btn btn-blue"
+        - else
+          = link_to t("postreleases.show.publish"), publish_event_postrelease_path(@event, @event.postrelease), method: :put, class: "btn btn-blue"
+        = link_to t("edit_postrelease"), edit_event_postrelease_path(@event, @event.postrelease), class: "btn btn-blue"

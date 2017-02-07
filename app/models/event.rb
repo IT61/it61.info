@@ -12,6 +12,10 @@ class Event < ActiveRecord::Base
   has_many :registrations, dependent: :destroy
   has_many :participants, class_name: "User", through: :event_participations, source: :user
 
+  has_one :postrelease
+
+  after_create :add_postrelease
+
   accepts_nested_attributes_for :place, reject_if: :all_blank, limit: 1
 
   # Validations
@@ -29,6 +33,7 @@ class Event < ActiveRecord::Base
   after_save :send_notifications, if: :notify?
 
   # Scopes
+
   scope :ordered_desc, -> { order(started_at: :desc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
@@ -106,6 +111,10 @@ class Event < ActiveRecord::Base
   end
 
   private
+
+  def add_postrelease
+    Postrelease.create(event_id: id)
+  end
 
   def set_secret_word
     self.secret_word = rand(36**20).to_s(36)

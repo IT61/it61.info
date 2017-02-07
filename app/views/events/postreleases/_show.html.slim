@@ -1,0 +1,11 @@
+.card.card-fold
+  .card-header
+    h1 = t("postreleases.name")
+    button.btn.btn-fold
+      .icon-arrows.icon-arrow-up
+  .card-body.event-frames
+    - unless @event.postrelease.body.nil?
+      = markdown @event.postrelease.body
+    - @event.postrelease.materials.each do |material|
+      .show
+        = raw(material.raw_info["html"])

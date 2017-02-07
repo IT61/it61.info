@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221144006) do
+ActiveRecord::Schema.define(version: 20170228123237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 20161221144006) do
     t.index ["user_id"], name: "index_groups_users_on_user_id", using: :btree
   end
 
+  create_table "materials", force: :cascade do |t|
+    t.string  "url",                            null: false
+    t.jsonb   "raw_info",       default: "{}"
+    t.integer "postrelease_id"
+    t.boolean "processed",      default: false
+    t.index ["postrelease_id"], name: "index_materials_on_postrelease_id", using: :btree
+  end
+
   create_table "places", force: :cascade do |t|
     t.string   "title"
     t.string   "address",    null: false
@@ -70,6 +78,11 @@ ActiveRecord::Schema.define(version: 20161221144006) do
     t.index ["address"], name: "index_places_on_address", using: :btree
     t.index ["title", "address", "latitude", "longitude"], name: "index_places_on_title_and_address_and_latitude_and_longitude", unique: true, using: :btree
     t.index ["title"], name: "index_places_on_title", using: :btree
+  end
+
+  create_table "postreleases", force: :cascade do |t|
+    t.text    "body"
+    t.boolean "publshed", default: false
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -127,4 +140,5 @@ ActiveRecord::Schema.define(version: 20161221144006) do
   end
 
   add_foreign_key "events", "places"
+  add_foreign_key "materials", "postreleases"
 end

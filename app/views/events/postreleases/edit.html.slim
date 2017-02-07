@@ -1,0 +1,23 @@
+main.event-form-container
+  .card.event-form-card
+    h1.event-form-card-header = t("postreleases.edit.edit_postrelease")
+    = form_for [:event, @postrelease] do |f|
+      = f.label :body, t("postreleases.form.body"), class: "required"
+      = f.text_area :body, id: "editor"
+      .required-fields = t("postreleases.new.presentation")
+      - @postrelease.materials.each do |material|
+        .links
+          .links-presentation
+            - if material.processed?
+              = link_to "[#{material.raw_info["provider_name"]}] #{material.raw_info["title"]}", material.url
+            -else
+              = link_to "#{material.url}", material.url
+          .links.pull-right
+            = link_to event_postrelease_material_path(@postrelease.event_id, @postrelease, material), method: :delete, data: {confirm: "Точно удалить?"} do
+              i.fa.fa-times.icon
+      = f.submit "Сохранить", class: "btn btn-presentation-blue icon"
+    .postrelease-form
+      = form_tag event_postrelease_materials_path(@postrelease.event, @postrelease.id), method: :post do
+        .links-edit
+          = text_field_tag "materials[url]", nil, class: "link"
+          = submit_tag "Добавить", class: "btn btn-presentation-gr icon"

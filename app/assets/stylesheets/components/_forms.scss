@@ -39,6 +39,7 @@
     border-bottom: solid 2px #ececec;
   }
 
+
   input {
     line-height: 1.9;
   }
@@ -233,5 +234,10 @@ select {
     letter-spacing: 10em;
     opacity: 0;
     cursor: pointer
+  }
+  input[type='text'] {
+    display: block;
+    float: left;
+    width: 50%;
   }
 }

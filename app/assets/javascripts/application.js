@@ -10,5 +10,6 @@
 //= require simplemde/simplemde
 //= require smartcrop
 //= require listjs
+//= require cocoon
 
 //= require_tree .

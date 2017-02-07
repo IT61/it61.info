@@ -1,6 +1,18 @@
 ---
 ru:
   events:
+    show_cards:
+      event_card:
+        download_ics_file: "Скачать ICS"
+      manage_card:
+        event_published: "Мероприятие опубликовано"
+        event_still_not_published: "Мероприятие ещё не опубликовано."
+      postrelease_card:
+      event_description_card:
+        description: "Описание"
+      participants_card:
+        participants: "Участники (%{count})"
+
     index:
       unpublished: "Неопубликованные"
       upcoming: "Ближайшие"
@@ -12,12 +24,11 @@ ru:
     past: "Прошедшие меропрития"
     unpublished: "Неопубликованные меропрития"
     show:
-      event_still_not_published: "Мероприятие ещё не опубликовано."
-      event_published: "Мероприятие опубликовано"
       event_add_to_google_calendar: "+ Google calendar"
-      download_ics_file: "Скачать ICS"
       description: "Описание"
-      participants: "Участники (%{count})"
+      publish: "Опубликовать мероприятие"
+      unpublish: "Снять мероприятие с публикации"
+      edit: "Редактировать мероприятие"
       postrelease: "Пострелиз"
     participations:
       participate: "Я пойду!"
@@ -36,7 +47,7 @@ ru:
         choose_file_btn: "Выберите файл"
       recommendations: "Рекомендуется использовать изображение размером 500x500 px в формате .jpg или .png"
       description:
-        description: "Описание"
+            description: "Описание"
       details:
         title: "Название"
         time: "Время начала"

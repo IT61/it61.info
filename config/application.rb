@@ -23,8 +23,10 @@ module It61
       generate.test_framework :rspec
       generate.view_specs false
     end
-    config.eager_load_paths += ["#{Rails.root}/lib"]
+    config.eager_load_paths += ["#{Rails.root}/lib", "#{config.root}/app/validators/"]
     config.exceptions_app = self.routes
+
+    config.autoload_paths += %W["#{config.root}/app/validators/"]
 
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.action_view.raise_on_missing_translations = true

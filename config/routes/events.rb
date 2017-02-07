@@ -1,5 +1,10 @@
 resources :events do
   scope module: :events do
+    resources :postreleases do
+      resources :materials
+      put :publish, on: :member
+      put :unpublish, on: :member
+    end
     resources :registrations
     resources :visits
     resources :participations, only: [:create, :destroy, :index]
