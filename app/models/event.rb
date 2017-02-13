@@ -26,7 +26,7 @@ class Event < ActiveRecord::Base
 
   # Callbacks
   before_create :set_secret_word
-  after_save :send_notifications, if: :published?
+  after_save :send_notifications, if: :notify?
 
   # Scopes
   scope :ordered_desc, -> { order(started_at: :desc) }
@@ -47,6 +47,10 @@ class Event < ActiveRecord::Base
   }
   scope :not_notified_about, -> { where(subscribers_notification_send: false) }
 
+  def notify?
+    published? && !published_was
+  end
+
   def place_attributes=(attributes)
     if attributes['id'].present?
       self.place = Place.find(attributes['id'])
@@ -54,8 +58,8 @@ class Event < ActiveRecord::Base
     super
   end
 
-  def user_participated?(user) 
-    user && event_participations.find_by(user_id: user.id) 
+  def user_participated?(user)
+    user && event_participations.find_by(user_id: user.id)
   end
 
   def invalid_place(attributes)
