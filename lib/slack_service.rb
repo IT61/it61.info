@@ -127,7 +127,7 @@ class SlackService
     {
       title: event.title,
       title_link: event_url(event, host: ENV['APPLICATION_HOST']),
-      thumb_url: event.title_image.url(:square_500),
+      thumb_url: event.cover.url(:square_500),
       text: text,
       fallback: text,
       color: :good,
