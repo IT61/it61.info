@@ -32,7 +32,13 @@
 
     .event-association-field
       .input-float-label
-        input#location.autocomplete-input type="text" autocomplete="off" required="true" value=(@event.place_address)
+        = ff.text_field :address, \
+        { id: "location", \
+          class: "autocomplete-input", \
+          autocomplete: "off", \
+          required: true, \
+          value: (@event.place_address), \
+        }
         label = t(".address")
 
     .modal
@@ -46,6 +52,5 @@
               h2 = t(".map")
             #map
           .btn.modal-close for="modal-1" = t("modal.close")
-        = ff.hidden_field :address, class: "unchangeable-input", required: true
         = ff.hidden_field :latitude, class: "unchangeable-input", required: true
         = ff.hidden_field :longitude, class: "unchangeable-input", required: true
