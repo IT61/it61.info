@@ -17,10 +17,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def render_404
-    render "errors/not_found", status: :not_found
-  end
-
   private
 
   def enable_profiler
