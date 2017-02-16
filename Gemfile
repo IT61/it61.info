@@ -51,7 +51,6 @@ gem "toastr-rails"
 gem "uglifier"
 gem "will_paginate"
 
-
 # IMPORTANT: mini profiler monkey patches, so it better be required last
 gem "flamegraph", require: false
 gem "memory_profiler", require: false, platform: :mri
