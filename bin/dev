@@ -41,7 +41,8 @@ help() {
   info "${BF}  create${NF} - build containers"
   info "${BF}  down${NF} - stop and remove containers"
   info "${BF}  exec${NF} - execute commands in containers"
-  info "${BF}  prepare${NF} - build containers and start dev environment (daemon)"
+  info "${BF}  prepare${NF} - prepare containers (build, download gems, \
+                              create and fill databases) and start dev environment (daemon)"
   info "${BF}  start${NF} - start dev environment"
   info "${BF}  stop${NF} - stop dev environment"
   info "${BF}  log${NF} - continuous log streaming"
@@ -52,6 +53,7 @@ help() {
   info "${BF}  bundler${NF} - install gems into app container"
   info "${BF}  console${NF} - run rails console inside app container"
   info "${BF}  migrate${NF} - run db:migrate inside app container"
+  info "${BF}  rspec${NF} - run rspec tests inside app container"
   info "${BF}  open${NF} - open browser with dev version (http://localhost:3000)"
   exit 0
 }
@@ -113,7 +115,9 @@ while test $# -gt 0; do
   esac
 done
 
-exit $?
-
 # If no options given, just show help.
-help
+if test $# -eq 0; then
+  help
+fi
+
+exit $?
