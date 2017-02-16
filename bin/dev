@@ -57,8 +57,8 @@ help() {
 }
 
 run() {
+  info "Running: ${BF}${COMPOSE_RUN} $1${NF}"
   ${COMPOSE_RUN} $1
-  exit $?
 }
 
 # Main commands and options selector.
@@ -67,35 +67,53 @@ while test $# -gt 0; do
     # Docker functions.
     prepare)
       run "up -d"
+      run "exec app bundle install"
+      run "exec app ./bin/rails db:create"
+      run "exec app ./bin/rails db:migrate"
+      run "exec app ./bin/rails db:test:prepare"
+      break
     ;;
     log)
       run "logs -f"
+      break
     ;;
     # App functions.
     bundler)
       run "exec app bundle install"
+      break
     ;;
     console)
       run "exec app ./bin/rails console"
+      break
     ;;
     migrate)
       run "exec app ./bin/rails db:create db:migrate"
+      break
+    ;;
+    rspec)
+      run "exec app ./bin/rails db:test:prepare"
+      run "exec app ./bin/rspec"
+      break
     ;;
     bash)
       run "exec app /bin/bash"
+      break
     ;;
     open)
       python -mwebbrowser http://localhost:3000
-      exit $?
+      break
     ;;
     -h|--help)
       help
     ;;
     *)
       run "${ARGS}"
+      break
     ;;
   esac
 done
+
+exit $?
 
 # If no options given, just show help.
 help
