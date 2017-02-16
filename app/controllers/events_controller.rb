@@ -21,7 +21,12 @@ class EventsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.ics { ics }
+    end
+  end
 
   def new
     @event = Event.new
@@ -63,9 +68,7 @@ class EventsController < ApplicationController
   end
 
   def ics
-    calendar = IcsService.to_ics_calendar(@event, event_url(@event))
-    options = IcsService.file_options_for(@event)
-    send_data calendar, options
+    send_data @event.to_ical, @event.ical_options
   end
 
   def leave

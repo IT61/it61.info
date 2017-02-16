@@ -1,19 +1,18 @@
 class IcsService
   class << self
     # rubocop:disable Metrics/AbcSize
-    def to_ics_calendar(event, event_url)
+    def to_ics_calendar(event)
       calendar = Icalendar::Calendar.new
-      place = event.place
-      tzid = "Europe/Moscow"
 
+      place = event.place
+      date_start = Icalendar::Values::DateTime.new event.started_at, tzid: Time.zone.name
       calendar.event do |e|
-        e.dtstart = Icalendar::Values::DateTime.new event.started_at, "tzid" => tzid
-        e.dtend   = Icalendar::Values::DateTime.new event.started_at, "tzid" => tzid
+        e.dtstart = date_start
+        e.dtend = date_start
         e.summary = event.title
         e.description = event.description
         e.location = place.full_address
         e.geo = [place.latitude, place.longitude]
-        e.uid = e.url = event_url
       end
 
       calendar.publish

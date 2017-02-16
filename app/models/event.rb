@@ -97,6 +97,14 @@ class Event < ActiveRecord::Base
     self.save!
   end
 
+  def to_ical
+    IcsService.to_ics_calendar(self)
+  end
+
+  def ical_options
+    IcsService.file_options_for(self)
+  end
+
   private
 
   def set_secret_word
