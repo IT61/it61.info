@@ -14,8 +14,8 @@ module PermalinkFor
       def id_from_permalink(link)
         if link.is_a?(Integer) || link[/^\d+$/]
           link.to_i
-        else
-          link.split("-").last.to_i if link.is_a? String
+        elsif link.is_a? String
+          link.split("-").last.to_i
         end
       end
 

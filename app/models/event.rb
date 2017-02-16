@@ -52,8 +52,8 @@ class Event < ActiveRecord::Base
   end
 
   def place_attributes=(attributes)
-    if attributes['id'].present?
-      self.place = Place.find(attributes['id'])
+    if attributes["id"].present?
+      self.place = Place.find(attributes["id"])
     end
     super
   end
