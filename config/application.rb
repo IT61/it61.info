@@ -35,5 +35,7 @@ module It61
     config.i18n.default_locale = :ru
 
     config.assets.paths << Rails.root.join("vendor", "assets", "components")
+
+    config.time_zone = ENV.fetch("TIME_ZONE", "Europe/Moscow")
   end
 end
