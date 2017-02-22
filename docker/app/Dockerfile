@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:2.4.0
 
 ENV APP_PATH=/app \
     BUNDLE_PATH=/gems
@@ -16,4 +16,4 @@ ADD . $APP_PATH
 
 EXPOSE 3000
 
-CMD rails s -b 0.0.0.0
+CMD ./bin/rails server -b 0.0.0.0
