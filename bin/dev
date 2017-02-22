@@ -41,8 +41,6 @@ help() {
   info "${BF}  create${NF} - build containers"
   info "${BF}  down${NF} - stop and remove containers"
   info "${BF}  exec${NF} - execute commands in containers"
-  info "${BF}  prepare${NF} - prepare containers (build, download gems, \
-                              create and fill databases) and start dev environment (daemon)"
   info "${BF}  start${NF} - start dev environment"
   info "${BF}  stop${NF} - stop dev environment"
   info "${BF}  log${NF} - continuous log streaming"
@@ -67,16 +65,12 @@ run() {
 while test $# -gt 0; do
   case "$1" in
     # Docker functions.
-    prepare)
-      run "up -d"
-      run "exec app bundle install"
-      run "exec app ./bin/rails db:create"
-      run "exec app ./bin/rails db:migrate"
-      run "exec app ./bin/rails db:test:prepare"
-      break
-    ;;
     log)
       run "logs -f"
+      break
+    ;;
+    bash)
+      run "exec app /bin/bash"
       break
     ;;
     # App functions.
@@ -89,16 +83,12 @@ while test $# -gt 0; do
       break
     ;;
     migrate)
-      run "exec app ./bin/rails db:create db:migrate"
+      run "exec app ./bin/rails db:create db:migrate db:test:prepare"
       break
     ;;
     rspec)
       run "exec app ./bin/rails db:test:prepare"
       run "exec app ./bin/rspec"
-      break
-    ;;
-    bash)
-      run "exec app /bin/bash"
       break
     ;;
     open)

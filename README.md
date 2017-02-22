@@ -42,29 +42,26 @@
 Docker-based development environment requires `docker-compose >= 1.9.0`.  
 Visit [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) for more details.
 
-Use `bin/dev` helper script for docker-compose management. Run `bin/dev` to see some commands to get started.
-
-Run / Stop (daemon mode)
-```bash
-$ bin/dev up -d
-$ bin/dev stop
-```
-
 Forwarded ports and access:
 
 * Web: [http://localhost:3000](http://localhost:3000) (host machine).
 * Database: `postgres://postgres@localhost:6543` (host machine).
 
-Most of `bin/dev` commands are proxied as is to `docker-compose`. But some are just handy shortcuts.
+Use `bin/dev` helper script for `docker-compose` management. Run `bin/dev -h` to see help for this tool.
 
-Command | Action
------------- | -------------
-`bin/dev prepare` | build containers and start dev environment (daemon) = `bin/dev up -d`
-`bin/dev log` | continuous log streaming = `bin/dev logs -f`
-`bin/dev bundler` | install gems into app container (containers should be up and running) = `bin/dev exec app bundle install`
-`bin/dev console` | run rails console inside app container (containers should be up and running) = `bin/dev exec app ./bin/rails console`
-`bin/dev migrate` | run db:migrate inside app container (containers should be up and running) = `bin/dev exec app ./bin/rails db:create db:migrate`
-`bin/dev open` | open browser with dev version [http://localhost:3000](http://localhost:3000)
+First time you will need to build containers, get gems installed and manually migrate database.
+
+```bash
+$ bin/dev up -d
+$ bin/dev log
+### wait until gems installed
+$ bin/dev migrate
+### develop
+$ bin/dev stop
+```
+
+After first run when all gems installed and migration applied you can just use simple `bin/dev start`
+and `bin/dev stop` commands to start and stop dev environment.
 
 ## Guidelines
 
