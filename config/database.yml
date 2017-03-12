@@ -1,15 +1,19 @@
-development: &default
+default: &default
   adapter: postgresql
-  url: <%= ENV.fetch("DATABASE_URL") %>_development
+  url: <%= ENV.fetch("DATABASE_URL") %>
   encoding: utf8
   min_messages: warning
   pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
   reaping_frequency: <%= Integer(ENV.fetch("DB_REAPING_FREQUENCY", 10)) %>
   timeout: 5000
 
+development:
+  <<: *default
+  url: <%= ENV.fetch("DATABASE_URL") %>_development
+
 test:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_URL") %>_test
+  url: <%= ENV.fetch("DATABASE_URL") %>_test
 
 production:
   encoding: utf8
