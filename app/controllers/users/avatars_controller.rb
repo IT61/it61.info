@@ -5,7 +5,7 @@ module Users
     before_action :check_if_same_user_or_admin
 
     def create
-      params[:avatar].original_filename << ".png"
+      params[:avatar].original_filename = "blob.#{Time.now.to_i}.png"
       @user.avatar = avatar_params[:avatar]
 
       commit = @user.save
