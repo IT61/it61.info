@@ -47,12 +47,9 @@ module Users
     def create_user_from_omniauth(_kind)
       auth = request.env["omniauth.auth"]
 
-      @user = User.from_omniauth(auth)
+      @user = User.from_omniauth!(auth)
 
       if @user.persisted?
-        SocialAccount.from_omniauth(auth, @user)
-
-        @user.save
         sign_in_and_redirect @user
       else
         if @user.errors && @user.errors.messages[:email]
