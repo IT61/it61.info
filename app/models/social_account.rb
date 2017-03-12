@@ -16,8 +16,7 @@ class SocialAccount < ApplicationRecord
 
     case provider
     when "google_oauth2"
-      auth.extra.raw_info.profile if
-          (not auth.extra.raw_info.nil?) && (not auth.extra.raw_info.profile.nil?)
+      auth.extra&.raw_info&.profile
     when "vkontakte"
       auth.info.urls&.Vkontakte
     when "facebook"

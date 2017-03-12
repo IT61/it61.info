@@ -13,11 +13,11 @@ var eventManager = {
 
   initCropper: function () {
     var $form = $('.event-form'),
-      $imageInput = $('#imageInput'),
+      $imageInput = $('#image-input'),
       $currentImage = $('#image'),
-      $modal = $('#croppedModal'),
-      $croppedModalImage = $('#croppedModalImage'),
-      $saveImageBtn = $('#uploadImage');
+      $modal = $('#cropped-modal'),
+      $croppedModalImage = $('#cropped-modal-image'),
+      $saveImageBtn = $('#upload-image');
 
     if (!$form || !$form.length) {
       return;
@@ -31,7 +31,7 @@ var eventManager = {
     cropper.create($croppedModalImage, $currentImage, $form);
 
     $saveImageBtn.on('click', function () {
-      var canvas = $('#croppedModalImage').cropper('getCroppedCanvas');
+      var canvas = $('#cropped-modal-image').cropper('getCroppedCanvas');
       $('#image').replaceWith($('<div>', {
         'id': 'image'
       }).html(canvas));
