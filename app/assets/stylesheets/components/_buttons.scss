@@ -132,6 +132,11 @@
     &:hover {
       color: #eee;
     }
+    
+    &:active,
+    &:focus {
+      color: #225b89;
+    }
   }
 
 
