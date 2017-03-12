@@ -1,0 +1,113 @@
+#!/bin/bash
+
+PACKAGE_NAME="dev"
+PACKAGE_VERSION="1.0.1"
+
+BF=`tput bold`
+NF=`tput sgr0`
+
+error() {
+  echo >&2 $1;
+}
+
+info() {
+  echo $1;
+}
+
+# Check for docker-composer.
+type docker-compose >/dev/null 2>&1 || {
+  error "${BF}docker-compose${NF} required, but it's not installed."
+  error "Visit ${BF}https://docs.docker.com/compose/install/${NF} for more details."
+  error ""
+  error "Aborting."
+  exit 1;
+}
+
+APP_PATH=`pwd`
+ARGS=$*
+COMPOSE_BIN=`which docker-compose`
+COMPOSE_RUN="${COMPOSE_BIN} -f ${APP_PATH}/docker/docker-compose.yml"
+
+# General usage help
+help() {
+  info "${BF}${PACKAGE_NAME} ($PACKAGE_VERSION)${NF} - environment manager for ${BF}it61-rails${NF}."
+  info "Uses docker-compose to run application containers for local development."
+  info " "
+  info "Usage:"
+  info "${BF}  ${PACKAGE_NAME} [COMMAND] [ARGS...]${NF}"
+  info "${BF}  ${PACKAGE_NAME} -h|--help${NF}"
+  info " "
+  info "Docker commands (find more here: ${BF}${COMPOSE_BIN} -h${NF}):"
+  info "${BF}  create${NF} - build containers"
+  info "${BF}  down${NF} - stop and remove containers"
+  info "${BF}  exec${NF} - execute commands in containers"
+  info "${BF}  start${NF} - start dev environment"
+  info "${BF}  stop${NF} - stop dev environment"
+  info "${BF}  log${NF} - continuous log streaming"
+  info "${BF}  up${NF} - build containers and start dev environment (with output)"
+  info " "
+  info "Application container commands:"
+  info "${BF}  bash${NF} - run bash inside app container"
+  info "${BF}  bundler${NF} - install gems into app container"
+  info "${BF}  console${NF} - run rails console inside app container"
+  info "${BF}  migrate${NF} - run db:migrate inside app container"
+  info "${BF}  rspec${NF} - run rspec tests inside app container"
+  info "${BF}  open${NF} - open browser with dev version (http://localhost:3000)"
+  exit 0
+}
+
+run() {
+  info "Running: ${BF}${COMPOSE_RUN} $1${NF}"
+  ${COMPOSE_RUN} $1
+}
+
+# Main commands and options selector.
+while test $# -gt 0; do
+  case "$1" in
+    # Docker functions.
+    log)
+      run "logs -f"
+      break
+    ;;
+    bash)
+      run "exec app /bin/bash"
+      break
+    ;;
+    # App functions.
+    bundler)
+      run "exec app bundle install"
+      break
+    ;;
+    console)
+      run "exec app ./bin/rails console"
+      break
+    ;;
+    migrate)
+      run "exec app ./bin/rails db:create db:migrate db:test:prepare"
+      break
+    ;;
+    rspec)
+      run "exec app ./bin/rails db:test:prepare"
+      run "exec app ./bin/rspec"
+      break
+    ;;
+    open)
+      python -mwebbrowser http://localhost:3000
+      break
+    ;;
+    -h|--help)
+      help
+    ;;
+    *)
+      run "${ARGS}"
+      break
+    ;;
+  esac
+done
+
+# If no options given, just show help.
+if test $# -eq 0; then
+  help
+fi
+
+exit $?

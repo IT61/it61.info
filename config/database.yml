@@ -1,19 +1,23 @@
-development: &default
+default: &default
   adapter: postgresql
-  database: it61_development
+  url: <%= ENV.fetch("DATABASE_URL") %>
   encoding: utf8
   min_messages: warning
   pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
   reaping_frequency: <%= Integer(ENV.fetch("DB_REAPING_FREQUENCY", 10)) %>
   timeout: 5000
 
+development:
+  <<: *default
+  url: <%= ENV.fetch("DATABASE_URL") %>_development
+
 test:
   <<: *default
-  database: it61_test
+  url: <%= ENV.fetch("DATABASE_URL") %>_test
 
 production:
   encoding: utf8
   min_messages: warning
   pool: <%= [Integer(ENV.fetch("MAX_THREADS", 5)), Integer(ENV.fetch("DB_POOL", 5))].max %>
   timeout: 5000
-  url:  <%= ENV.fetch("DATABASE_URL", "") %>
+  url: <%= ENV.fetch("DATABASE_URL", "") %>

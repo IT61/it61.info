@@ -5,14 +5,20 @@
     .welcome-statistics
       ul
         li
-          .statistics-count = User.count
-          .statistics-label = raw t(".user_count")
+          .statistics-count = @users_count
+          .statistics-label
+            = t(".user_count", count: @users_count)
+            = t(".user_count_html")
         li
-          .statistics-count = Event.count
-          .statistics-label = raw t(".event_count")
+          .statistics-count = @events_count
+          .statistics-label
+            = t(".event_count", count: @events_count)
+            = t(".event_count_html")
         li
-          .statistics-count 42
-          .statistics-label = raw t(".slack_channels_count")
+          .statistics-count = @slack_channels_count
+          .statistics-label
+            = t(".slack_channels_count", count: @slack_channels_count)
+            = t(".slack_channels_count_html")
     - if current_user.nil?
       = link_to t(".sign_in"), new_session_path, class: "btn btn-blue welcome-btn"
   .card.welcome-card

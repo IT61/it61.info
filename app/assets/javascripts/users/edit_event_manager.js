@@ -1,4 +1,4 @@
-function uploadImageToServer($croppedModalImage, $currentImage, $form) {
+function uploadImageToServer($croppedModalImage, $form) {
   var canvas = $croppedModalImage.cropper('getCroppedCanvas');
   canvas.toBlob(function (blob) {
     var formData = new FormData();
@@ -30,7 +30,7 @@ var editEventManager = {
   bindDeleteAvatarButton: function($imageForm, $image, $deleteBtn) {
     $deleteBtn.on('click', function () {
       deleteAvatar($imageForm);
-      $image.attr('src', $image.attr('default_img_src'));
+      $image.attr('src', $image.data('default-avatar-path'));
       return false;
     });
   },
@@ -39,7 +39,7 @@ var editEventManager = {
     imageImport.bind($croppedModalImage, $imageInput, $modal);
     cropper.create($croppedModalImage, $currentImage, $imageForm, function onCropperCreated() {
       $uploadImage.on('click', function () {
-        uploadImageToServer($croppedModalImage, $currentImage, $imageForm);
+        uploadImageToServer($croppedModalImage, $imageForm);
       });
     });
   }

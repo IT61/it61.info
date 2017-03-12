@@ -7,11 +7,11 @@ end
 $(document).ready(function () {
   eventManager.initEditor();
   eventManager.initCropper();
-  initFileInput($('#imageInputContainer'));
+  initFileInput($('#image-input-container'));
 });
 
 function onSubmitEvent() {
-  var $croppedModalImage = $('#croppedModalImage'),
+  var $croppedModalImage = $('#cropped-modal-image'),
       form = $('.event-form')[0],
       canvas = $croppedModalImage.cropper('getCroppedCanvas');
 

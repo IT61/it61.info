@@ -1,0 +1,37 @@
+version: '2'
+services:
+  # Main application container
+  app:
+    build:
+      context: ../.
+      dockerfile: ./docker/app/Dockerfile
+    command: ./docker/bin/up
+    volumes:
+      - ../.:/app
+    volumes_from:
+      - gems
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres@db:5432/it61
+      - REDIS_URL=redis://redis:6379/1
+      # Uncomment if you REALLY know what this variable stands for and you REALLY need this
+      # - BUNDLE_JOBS=6
+    depends_on:
+      - db
+      - redis
+
+  # Mounted folder for Gemfile gems container
+  gems:
+    image: busybox
+    volumes:
+      - /gems
+
+  # Container with database
+  db:
+    image: postgres
+    ports:
+      - "6543:5432"
+
+  redis:
+    image: redis
