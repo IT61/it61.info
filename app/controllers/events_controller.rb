@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create!(event_params.merge(organizer: current_user))
+    @event = Event.create(event_params.merge(organizer: current_user))
     respond_to do |format|
       format.html { respond_with(@event) }
       format.json {
