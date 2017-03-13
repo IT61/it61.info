@@ -396,7 +396,7 @@ GEM
       railties (>= 3.1.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.2)
+    uglifier (3.1.7)
       execjs (>= 0.3.0, < 3)
     uniform_notifier (1.10.0)
     warden (1.2.6)
