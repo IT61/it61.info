@@ -188,7 +188,7 @@ GEM
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     memoist (0.15.0)
-    memory_profiler (0.9.7)
+    memory_profiler (0.9.8)
     meta-tags (2.3.1)
       actionpack (>= 3.2.0, <= 5.1.0)
     meta_request (0.4.0)
