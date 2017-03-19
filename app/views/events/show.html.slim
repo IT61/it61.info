@@ -24,13 +24,13 @@
           = link_to @event.organizer.full_name, @event.organizer
       - if @event.published?
         .btn-group.event-buttons
-          - if @event.user_participated?(current_user)
-            = revoke_registration_link(@event)
+          - if @event.user_attended?(current_user)
+            = remove_from_event_link(@event)
           - else
-            = participate_in_event_link(@event)
+            = attend_in_event_link(@event)
           = link_to t(".download_ics_file"), ics_event_path(@event), class: "btn btn-shadow btn-gray"
 
-    - if can? :manage, @event
+    - if can? :edit, @event
       .card
         .card-header
           - if @event.published
@@ -39,10 +39,11 @@
             h1 = t(".event_still_not_published")
         .card-body
           .event-actions
-            - if @event.published
-              = link_to t("unpublish"), unpublish_event_path, method: :put, class: "btn btn-blue"
-            - else
-              = link_to t("publish"), publish_event_path, method: :put, class: "btn btn-blue"
+            - if can? :manage, @event
+              - if @event.published
+                = link_to t("unpublish"), unpublish_event_path, method: :put, class: "btn btn-blue"
+              - else
+                = link_to t("publish"), publish_event_path, method: :put, class: "btn btn-blue"
             = link_to t("edit"), edit_event_path(@event), class: "btn btn-blue"
 
     .card.card-fold
@@ -54,10 +55,12 @@
         = markdown @event.description
     .card.card-fold
       .card-header
-        h1 = t(".participants", count: @event.participants.count)
-        button.btn.btn-fold
-          .icon-arrows.icon-arrow-up
-      .card-body
-        .users-container
-          = render partial: "users/list", locals: { users: @event.participants }
+        h1 = t(".participants", count: @attendees_count)
+        - if @attendees_count.positive?
+          button.btn.btn-fold
+            .icon-arrows.icon-arrow-up
+      - if @attendees_count.positive?
+        .card-body
+          .users-container
+            = render partial: "users/list", locals: { users: @event.attendees }
 = render partial: "events/map_modal", locals: { event: @event }

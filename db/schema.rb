@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221144006) do
+ActiveRecord::Schema.define(version: 20170317090729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "event_participations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "visited",    default: false
-    t.index ["event_id"], name: "index_event_participations_on_event_id", using: :btree
-    t.index ["user_id"], name: "index_event_participations_on_user_id", using: :btree
-  end
 
   create_table "events", force: :cascade do |t|
     t.string   "title",                                         null: false
@@ -36,13 +26,23 @@ ActiveRecord::Schema.define(version: 20161221144006) do
     t.datetime "started_at"
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
-    t.integer  "participants_limit"
+    t.integer  "attendees_limit",               default: -1,    null: false
     t.string   "link"
     t.integer  "place_id"
-    t.string   "secret_word"
     t.boolean  "has_closed_registration",       default: false
+    t.boolean  "has_attendees_limit",           default: false, null: false
     t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
     t.index ["place_id"], name: "index_events_on_place_id", using: :btree
+  end
+
+  create_table "events_attendees", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_events_attendees_on_event_id", using: :btree
+    t.index ["user_id", "event_id"], name: "index_events_attendees_on_user_id_and_event_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_events_attendees_on_user_id", using: :btree
   end
 
   create_table "groups", force: :cascade do |t|
@@ -70,18 +70,6 @@ ActiveRecord::Schema.define(version: 20161221144006) do
     t.index ["address"], name: "index_places_on_address", using: :btree
     t.index ["title", "address", "latitude", "longitude"], name: "index_places_on_title_and_address_and_latitude_and_longitude", unique: true, using: :btree
     t.index ["title"], name: "index_places_on_title", using: :btree
-  end
-
-  create_table "registrations", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "event_id",    null: false
-    t.text     "reason",      null: false
-    t.string   "profession",  null: false
-    t.text     "suggestions"
-    t.integer  "confidence",  null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id", "event_id"], name: "index_registrations_on_user_id_and_event_id", unique: true, using: :btree
   end
 
   create_table "social_accounts", force: :cascade do |t|
@@ -127,4 +115,6 @@ ActiveRecord::Schema.define(version: 20161221144006) do
   end
 
   add_foreign_key "events", "places"
+  add_foreign_key "events_attendees", "events"
+  add_foreign_key "events_attendees", "users"
 end

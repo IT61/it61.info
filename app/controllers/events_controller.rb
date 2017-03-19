@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   respond_to :rss, only: :feed
 
   load_and_authorize_resource
-  skip_authorize_resource only: :feed
+  skip_load_and_authorize_resource only: :feed
 
   def index
     if request.format.rss?
@@ -22,6 +22,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @attendees_count = @event.attendees.size || 0
     respond_to do |format|
       format.html
       format.ics { ics }
@@ -77,13 +78,13 @@ class EventsController < ApplicationController
   end
 
   def leave
-    @event.participants.destroy(current_user)
+    @event.attendees.destroy(current_user)
     render :show
   end
 
   def participate
-    unless @event.participants.include?(current_user)
-      @event.participants << current_user
+    unless @event.attendees.include?(current_user)
+      @event.attendees << current_user
       @event.save
     end
     render :show
@@ -91,12 +92,17 @@ class EventsController < ApplicationController
 
   def publish
     @event.publish!
-    render :show
+    respond_with(@event)
   end
 
   def unpublish
     @event.unpublish!
     render :show
+  end
+
+  def unpublished
+    @events = Event.unpublished.ordered_desc
+    render :index
   end
 
   private
@@ -109,10 +115,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def set_event
-    @event = Event.includes(:participants).find(params[:id])
-  end
-
   def event_params
     permitted_attrs = [
       :id,
@@ -121,7 +123,7 @@ class EventsController < ApplicationController
       :cover,
       :link,
       :started_at,
-      :has_closed_registration,
+      :has_attendees_limit,
       :organizer_id,
       :place_id,
       place_attributes: [
@@ -131,6 +133,7 @@ class EventsController < ApplicationController
         :latitude,
         :longitude,
       ],
+      attendees_limit: [],
     ]
     params.require(:event).permit(*permitted_attrs)
   end

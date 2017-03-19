@@ -1,3 +1,8 @@
+ActiveRecordQueryTrace.enabled = true
+ActiveRecordQueryTrace.colorize = 'light purple'
+ActiveRecordQueryTrace.colorize = true # Colorize in default color
+ActiveRecordQueryTrace.colorize = 35 # Magenta
+
 Rails.application.configure do
   config.cache_classes = false
   config.eager_load = false
