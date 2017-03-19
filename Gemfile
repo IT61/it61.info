@@ -64,6 +64,7 @@ source "https://rails-assets.org" do
 end
 
 group :development do
+  gem "active_record_query_trace"
   gem "listen"
   gem "meta_request"
   gem "spring"

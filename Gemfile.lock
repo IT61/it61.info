@@ -27,6 +27,7 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_link_to (1.0.3)
       actionpack
+    active_record_query_trace (1.5.4)
     activejob (5.0.2)
       activesupport (= 5.0.2)
       globalid (>= 0.3.6)
@@ -417,6 +418,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
+  active_record_query_trace
   autoprefixer-rails
   awesome_print
   bourbon (= 5.0.0.beta.5)

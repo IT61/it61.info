@@ -3,14 +3,14 @@ Dir[File.join(File.dirname(__FILE__), "*importer.rb")].each { |file| require fil
 class Importer
   include UsersImporter
   include EventsImporter
-  include EventParticipationsImporter
+  include EventsAttendeesImporter
   include SocialAccountsImporter
 
   SEQUENCE_MAP = [
     { table: "users", reset: true },
     { table: "social_accounts", reset: true },
     { table: "events", reset: true },
-    { table: "event_participations", reset: true },
+    { table: "events_attendees", reset: true },
   ].freeze
 
   def initialize(old_db, new_db)

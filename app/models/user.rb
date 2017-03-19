@@ -15,9 +15,9 @@ class User < ApplicationRecord
 
   has_many :social_accounts
   has_many :owner_of_events, -> { published }, class_name: "Event", foreign_key: "organizer_id"
-  has_many :member_in_events, -> { published }, class_name: "Event", through: :event_participations, source: :event
-  has_many :event_participations, dependent: :destroy
-  has_many :registrations, dependent: :destroy
+  has_many :member_in_events, -> { published }, class_name: "Event", through: :events_attendees, source: :event
+  has_many :events_attendees, dependent: :destroy
+  has_many :events, through: :events_attendees
   has_and_belongs_to_many :groups
 
   phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
@@ -43,21 +43,27 @@ class User < ApplicationRecord
   scope :developers, -> { joins(:groups).where("groups.kind = 1") }
 
   def self.from_omniauth!(auth)
-    social = SocialAccount.where(uid: auth.uid, provider: auth.provider).first
+    social = SocialAccount.includes(:user).find_or_initialize_by(uid: auth.uid, provider: auth.provider)
 
-    return social.user if social.present?
+    return social.user if social.user.present?
 
-    email = auth.info.email&.downcase
-    User.where(email: email).first_or_create! do |u|
-      u.email = email
-      u.name = auth.info.name
-      u.first_name = auth.info.first_name
-      u.last_name = auth.info.last_name
-      u.social_accounts << SocialAccount.create! do |s|
-        s.provider = auth.provider
-        s.uid = auth.uid
-        s.link = SocialAccount.link_for(auth)
-      end
+    social.build_user do |user|
+      puts user.class
+      user.email = auth.info.email
+      user.name = auth.info.name
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.remote_avatar_url = avatar_from_auth(auth)
+
+      social.link = SocialAccount.link_for(auth)
+    end
+    social.save
+    social.user
+  end
+
+  def self.avatar_from_auth(auth)
+    if auth.provider == "vkontakte"
+      auth.extra.raw_info.photo_400_orig
     end
   end
 
@@ -79,10 +85,6 @@ class User < ApplicationRecord
 
   def remember_me
     true
-  end
-
-  def event_participations
-    EventParticipation.unscoped { super }
   end
 
   def subscribe!
@@ -125,15 +127,6 @@ class User < ApplicationRecord
     self.email_reminders ||= false
     self.sms_reminders ||= false
     self.subscribed ||= false
-  end
-
-  def restore_event_participations
-    # Идентификаторы заявок пользователя на участие в мероприятиях, которые не удалены
-    ids = EventParticipation.only_deleted.joins(:event).
-          where("events.deleted_at is null").
-          where(user_id: id).
-          pluck(:id)
-    EventParticipation.restore ids
   end
 
   def nullify_empty_email

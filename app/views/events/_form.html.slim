@@ -8,8 +8,7 @@
     = render partial: "events/form/details", locals: { f: f }
   section.description
     = render partial: "events/form/description", locals: { f: f }
-  - if @event.new_record?
-    section.settings
-      = render partial: "events/form/settings", locals: { f: f }
+  section.settings
+    = render partial: "events/form/settings", locals: { f: f }
   section.footer
     = render partial: "events/form/footer", locals: { f: f }

@@ -1,8 +1,6 @@
 resources :events do
   scope module: :events do
-    resources :registrations
-    resources :visits
-    resources :participations, only: [:create, :destroy, :index]
+    resources :attendees, only: [:create, :destroy, :index]
   end
 
   collection do
@@ -15,7 +13,5 @@ resources :events do
     get :ics
     put :publish
     put :unpublish
-    get :leave
-    get :participate
   end
 end

@@ -4,3 +4,13 @@ ru:
       event:
         one: Мероприятие
         few: Мероприятия
+    attributes:
+      event:
+        title: Название
+        description: Описание
+        title_image: Изображение
+        published_at: Дата публикации
+        started_at: Дата проведения
+        started_at_time: Время проведения
+        participants: Участники
+        link: Внешняя ссылка
