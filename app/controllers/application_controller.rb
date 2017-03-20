@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
   private
 
   def enable_profiler
-    if current_user&.admin?
+    if current_user&.admin? &&
+        Rails.configuration.respond_to?(:load_mini_profiler) &&
+        Rails.configuration.load_mini_profiler
       Rack::MiniProfiler.authorize_request
     end
   end
