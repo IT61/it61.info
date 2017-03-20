@@ -15,8 +15,18 @@ RSpec.describe Events::AttendeesController, type: :controller do
     login_user
 
     describe "POST #create" do
-      it "returns http found and redirect to the event" do
+      it "returns http found and redirects to the event" do
         post :create, params: { event_id: event.id }
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to(event)
+      end
+    end
+
+    describe "DELETE #destroy" do
+      let(:events_attendee) { create(:events_attendee) }
+
+      it "returns http found and redirects to the event" do
+        delete :destroy, params: { event_id: event.id, id: events_attendee.id }
         expect(response).to have_http_status(:found)
         expect(response).to redirect_to(event)
       end

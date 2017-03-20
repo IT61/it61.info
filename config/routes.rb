@@ -5,18 +5,6 @@ class ActionDispatch::Routing::Mapper
 end
 
 Rails.application.routes.draw do
-  namespace :events do
-    get 'participants/index'
-  end
-
-  namespace :events do
-    get 'participants/create'
-  end
-
-  namespace :events do
-    get 'participants/destroy'
-  end
-
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth",
   }
