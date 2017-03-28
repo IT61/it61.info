@@ -3,7 +3,7 @@
 
 ## Requirements
 
-- Ruby 2.4.0 (with bundler)
+- Ruby 2.4.1 (with bundler)
 - PostgreSQL >= 9.5
 - Redis
 
