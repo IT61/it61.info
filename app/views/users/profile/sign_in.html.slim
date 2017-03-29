@@ -2,7 +2,7 @@
 .card.login-card
   h2 = t(".sign_in")
   p = t(".using_preferred_way")
-  .social-buttons
+  .login-buttons
     = link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-small btn-gray" do
       i.fa.fa-google
     = link_to user_vkontakte_omniauth_authorize_path, class: "btn btn-small btn-gray" do
