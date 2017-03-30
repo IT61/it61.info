@@ -1,6 +1,7 @@
 class Events::AttendeesController < ApplicationController
   respond_to :html
   load_and_authorize_resource :event
+  authorize_resource class: false
   skip_authorize_resource only: :index
 
   def index

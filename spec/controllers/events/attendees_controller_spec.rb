@@ -2,10 +2,13 @@ RSpec.describe Events::AttendeesController, type: :controller do
   context "while not logged in as an user" do
     let(:event) { create(:event, :published) }
 
-    describe "GET #index" do
-      it "returns http success" do
-        get :index, params: { event_id: event.id }
-        expect(response).to have_http_status(:success)
+    describe "attending the published event" do
+      let(:event) { create(:event, :published) }
+
+      it "should redirect to sign_in page" do
+        post :create, params: { event_id: event.id }
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to(new_session_path)
       end
     end
   end
@@ -16,7 +19,9 @@ RSpec.describe Events::AttendeesController, type: :controller do
 
     describe "POST #create" do
       it "returns http found and redirects to the event" do
-        post :create, params: { event_id: event.id }
+        expect {
+          post :create, params: { event_id: event.id }
+        }.to change(event.attendees, :count).by(1)
         expect(response).to have_http_status(:found)
         expect(response).to redirect_to(event)
       end
