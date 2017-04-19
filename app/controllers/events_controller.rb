@@ -123,8 +123,8 @@ class EventsController < ApplicationController
       :cover,
       :link,
       :started_at,
-      :has_attendees_limit,
       :organizer_id,
+      :has_attendees_limit,
       :place_id,
       place_attributes: [
         :id,
@@ -133,6 +133,7 @@ class EventsController < ApplicationController
         :latitude,
         :longitude,
       ],
+      has_attendees_limit: [],
       attendees_limit: [],
     ]
     params.require(:event).permit(*permitted_attrs)
