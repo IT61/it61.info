@@ -19,8 +19,6 @@ Rails.application.routes.draw do
     get page_name, to: "pages##{page_name}"
   end
 
-  get 404, to: "errors#not_found"
-
   get "sign_up/complete", to: "users/profile#sign_up_complete"
   get "profile", to: "users/profile#profile"
 
@@ -48,4 +46,6 @@ Rails.application.routes.draw do
   draw :admin
 
   root "pages#welcome"
+
+  get "*any", via: :all, to: "errors#not_found"
 end
