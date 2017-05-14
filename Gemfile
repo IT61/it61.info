@@ -1,11 +1,12 @@
 source "https://rubygems.org"
 
-ruby "2.3.3"
+ruby "2.4.1"
 
 gem "active_link_to"
 gem "autoprefixer-rails"
 gem "bourbon", "5.0.0.beta.5"
 gem "carrierwave"
+gem "carrierwave-base64"
 gem "cancancan"
 gem "config"
 gem "delayed_job_active_record"
@@ -19,6 +20,7 @@ gem "icalendar"
 gem "icheck-rails"
 gem "jquery-rails"
 gem "meta-tags"
+gem "mini_magick"
 gem "neat", "~> 1.7.0"
 gem "nokogiri"
 gem "normalize-rails", "~> 3.0.0"
@@ -48,8 +50,6 @@ gem "suspenders"
 gem "toastr-rails"
 gem "uglifier"
 gem "will_paginate"
-gem "jquery-serialize-object-rails"
-
 
 # IMPORTANT: mini profiler monkey patches, so it better be required last
 gem "flamegraph", require: false
@@ -64,6 +64,7 @@ source "https://rails-assets.org" do
 end
 
 group :development do
+  gem "active_record_query_trace", require: false
   gem "listen"
   gem "meta_request"
   gem "spring"

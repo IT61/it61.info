@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
   load_and_authorize_resource
@@ -46,10 +45,6 @@ class UsersController < ApplicationController
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr?, locals: { users: @users } }
     end
-  end
-
-  def set_user
-    @user = User.includes(:event_participations).find(params[:id])
   end
 
   def user_params

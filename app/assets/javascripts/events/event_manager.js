@@ -1,3 +1,19 @@
+$.fn.serializeObject = function () {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function () {
+    if (o[this.name] !== undefined) {
+      if (!o[this.name].push) {
+        o[this.name] = [o[this.name]];
+      }
+      o[this.name].push(this.value || '');
+    } else {
+      o[this.name] = this.value || '';
+    }
+  });
+  return o;
+};
+
 var eventManager = {
   initEditor: function () {
     var editorElem = document.getElementById('editor');
@@ -13,11 +29,11 @@ var eventManager = {
 
   initCropper: function () {
     var $form = $('.event-form'),
-      $imageInput = $('#imageInput'),
+      $imageInput = $('#image-input'),
       $currentImage = $('#image'),
-      $modal = $('#croppedModal'),
-      $croppedModalImage = $('#croppedModalImage'),
-      $saveImageBtn = $('#uploadImage');
+      $modal = $('#cropped-modal'),
+      $croppedModalImage = $('#cropped-modal-image'),
+      $saveImageBtn = $('#upload-image');
 
     if (!$form || !$form.length) {
       return;
@@ -31,7 +47,7 @@ var eventManager = {
     cropper.create($croppedModalImage, $currentImage, $form);
 
     $saveImageBtn.on('click', function () {
-      var canvas = $('#croppedModalImage').cropper('getCroppedCanvas');
+      var canvas = $('#cropped-modal-image').cropper('getCroppedCanvas');
       $('#image').replaceWith($('<div>', {
         'id': 'image'
       }).html(canvas));
@@ -39,18 +55,30 @@ var eventManager = {
   },
 
   sendFormWithImageBlob: function (form, canvas) {
-    var poster = canvas.toDataURL().replace(/^data:image\/(png|jpg);base64,/, ''),
-      postData = $(form).serializeObject();
+    var poster = null;
+
+    if ($.isFunction(canvas.toDataURL)) {
+      poster = canvas.toDataURL();
+    }
+    var postData = $(form).serializeObject(),
+      eventId = $('#event_id').val();
 
     postData['event[cover]'] = poster;
 
     $.ajax({
-      url: '/events',
+      url: eventId === '' ? '/events' : '/events/' + eventId,
       dataType: 'json',
       data: postData,
-      method: 'POST'
+      method: 'POST',
     }).fail(function (response) {
-      toastr['error'](response.responseText);
+      if (!response) return;
+
+      if (response.status != 200 && response.responseJSON.errors) {
+        var errors = response.responseJSON.errors;
+        $.map(errors, toastr['error']);
+      } else if (response.status == 302) {
+        window.location.replace(response.responseJSON.eventPath);
+      }
     });
   }
 };

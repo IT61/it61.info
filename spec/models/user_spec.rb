@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
       it { expect(user).to respond_to(:full_name) }
       it { expect(user).to respond_to(:name) }
       it { expect(user).to respond_to(:remember_me) }
-      it { expect(user).to respond_to(:event_participations) }
+      it { expect(user).to respond_to(:events_attendees) }
       it { expect(user).to respond_to(:subscribe!) }
       it { expect(user).to respond_to(:has_events?) }
     end
@@ -74,6 +74,7 @@ RSpec.describe User, type: :model do
 
       it { should_not have_abilities([:edit, :update, :destroy], user) }
       it { should_not have_abilities([:edit, :update, :destroy], event) }
+      it { should_not have_abilities([:edit, :update, :destroy], published_event) }
       it { should_not have_abilities([:read], event) }
     end
 
@@ -82,10 +83,10 @@ RSpec.describe User, type: :model do
       it { should have_abilities(:read, User.new) }
       # manage himself
       it { should have_abilities([:edit, :update, :destroy], user) }
-      it { should have_abilities([:participate, :leave], published_event) }
+      it { should have_abilities([:attend, :leave], published_event) }
 
       it { should_not have_abilities([:edit, :update, :destroy], event) }
-      it { should_not have_abilities([:participate, :leave], event) }
+      it { should_not have_abilities([:attend, :leave], event) }
     end
 
     context "when is a moderator" do

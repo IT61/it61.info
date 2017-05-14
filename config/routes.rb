@@ -19,9 +19,7 @@ Rails.application.routes.draw do
     get page_name, to: "pages##{page_name}"
   end
 
-  %w(404).each do |code|
-    get code, to: "errors#code_#{code}"
-  end
+  get 404, to: "errors#not_found"
 
   get "sign_up/complete", to: "users/profile#sign_up_complete"
   get "profile", to: "users/profile#profile"

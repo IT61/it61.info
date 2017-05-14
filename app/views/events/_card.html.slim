@@ -8,7 +8,13 @@
         - if can? :update, event
           li
             = link_to edit_event_path(event) do
-              i.fa.fa-pencil = t(:edit)
+              i.fa.fa-pencil
+              = t(:edit)
+        - if can? :destroy, event
+          li
+            = link_to event, method: :delete do
+              i.fa.fa-trash
+              = t(:delete)
     = link_to event do
       .events-logo
         = image_tag event.cover
@@ -20,4 +26,4 @@
         - if event.has_closed_registration?
           = button_to t("events.participations.participate"), register_to_event_path(event), class: "btn btn-blue button-participate"
         - else
-          = button_to t("events.participations.participate"), event_participations_path(event), method: :post, class: "btn btn-blue button-participate"
+          = button_to t("events.participations.participate"), event_attendees_path(event), method: :post, class: "btn btn-blue button-participate"

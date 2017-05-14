@@ -1,18 +1,17 @@
 class Event < ActiveRecord::Base
   include PermalinkFor
   permalink_for :permalink_title, as: :pretty
-  mount_uploader :cover, ImageUploader
+  mount_base64_uploader :cover, ImageUploader
   strip_strings :title
 
   # Relations
   belongs_to :organizer, class_name: "User"
   belongs_to :place
 
-  has_many :event_participations, dependent: :destroy
-  has_many :registrations, dependent: :destroy
-  has_many :participants, class_name: "User", through: :event_participations, source: :user
+  has_many :events_attendees
+  has_many :attendees, through: :events_attendees
 
-  accepts_nested_attributes_for :place, reject_if: :invalid_place, limit: 1
+  accepts_nested_attributes_for :place, reject_if: :all_blank, limit: 1
 
   # Validations
   validates :title, presence: true
@@ -20,12 +19,14 @@ class Event < ActiveRecord::Base
   validates :organizer, presence: true
   validates :place, presence: true
   validates :published_at, presence: true, if: :published?
+  validates :started_at, presence: true
+  validates :has_attendees_limit, inclusion: { in: [true, false] }
+  validates :attendees_limit, presence: true, numericality: { greater_than_or_equal_to: -1 }
 
   delegate :title, :address, :latitude, :longitude, to: :place, prefix: true, allow_nil: true
 
   # Callbacks
-  before_create :set_secret_word
-  after_save :send_notifications, if: :published?
+  after_save :send_notifications, if: :notify?
 
   # Scopes
   scope :ordered_desc, -> { order(started_at: :desc) }
@@ -46,32 +47,27 @@ class Event < ActiveRecord::Base
   }
   scope :not_notified_about, -> { where(subscribers_notification_send: false) }
 
-  def user_participated?(user)
-    user && event_participations.find_by(user_id: user.id)
+  def notify?
+    published? && !published_was
   end
 
-  def invalid_place(attributes)
-    attributes["title"].blank?
+  def place_attributes=(attributes)
+    if attributes["id"].present?
+      self.place = Place.find(attributes["id"])
+    end
+    super
   end
 
-  def able_to_participate?
-    !has_closed_registration? || past?
-  end
-
-  def participation_for(user)
-    event_participations.find_by(user_id: user.id)
-  end
-
-  def registration_for(user)
-    registrations.where(user_id: user.id).first_or_initialize
+  def user_attended?(user)
+    user && attendees.include?(user)
   end
 
   def past?
     started_at <= DateTime.current
   end
 
-  def new_participant!(user)
-    event_participations << EventParticipation.new(user: user)
+  def upcoming?
+    started_at >= Time.current
   end
 
   def publish!
@@ -85,11 +81,15 @@ class Event < ActiveRecord::Base
     self.save!
   end
 
-  private
-
-  def set_secret_word
-    self.secret_word = rand(36**20).to_s(36)
+  def to_ical
+    IcsService.to_ics_calendar(self)
   end
+
+  def ical_options
+    IcsService.file_options_for(self)
+  end
+
+  private
 
   def permalink_title
     formatted_started_at = started_at.to_date.to_s if started_at.present?

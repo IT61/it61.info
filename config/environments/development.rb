@@ -18,11 +18,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_caching = false
   config.action_mailer.raise_delivery_errors = true
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.bullet_logger = true
-    Bullet.rails_logger = true
-  end
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
   config.assets.debug = true
@@ -31,7 +26,16 @@ Rails.application.configure do
   config.assets.quiet = true
   config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: "localhost:3000" }
-  config.load_mini_profiler = true
+  config.load_mini_profiler = ENV["ENABLE_MINI_PROFILER"]
+  config.use_query_trace = ENV["ENABLE_QUERY_TRACE"]
 
-  config.middleware.use RoutesReloader
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.rails_logger = true
+  end
+
+  if ENV["ENABLE_ROUTES_RELOADER"]
+    config.middleware.use RoutesReloader
+  end
 end

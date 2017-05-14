@@ -198,9 +198,6 @@ ru:
       company:
         one: Компания
         few: Компании
-      event:
-        one: Мероприятие
-        few: Мероприятия
       user:
         one: Пользователь
         few: Пользователи
@@ -221,15 +218,7 @@ ru:
         email_reminders: EMail-оповещения
         sms_reminders: SMS-оповещения
         full_name: "Полное имя"
-      event:
-        title: Название
-        description: Описание
-        title_image: Изображение
-        published_at: Дата публикации
-        started_at: Дата проведения
-        started_at_time: Время проведения
-        participants: Участники
-        link: Внешняя ссылка
+        full_name: "Полное имя"
       place:
         title: Место проведения
         address: Точный адрес

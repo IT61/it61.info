@@ -17,20 +17,11 @@ module EventsHelper
     end
   end
 
-  def event_organizer?(event, user)
-    return false if event.blank? || user.blank?
-    event.organizer_id == user.id
-  end
-
-  def participate_in_event_link(event)
+  def attend_in_event_link(event)
     if Event.upcoming.exists?(event.id)
-      if event.has_closed_registration?
-        registration_link(register_to_event_path(event))
-      else
-        registration_link(participate_event_path(event))
-      end
+      link_to "Я пойду", event_attendees_path(event), method: :post, class: "btn btn-shadow btn-blue"
     else
-      link_to t("events.participations.participated"), participate_event_path(event), class: "btn btn-shadow btn-blue"
+      link_to t("events.participations.participated"), event_attendees_path(event), method: :post, class: "btn btn-shadow btn-blue"
     end
   end
 
@@ -38,8 +29,9 @@ module EventsHelper
     link_to t("events.participations.participate"), path, class: "btn btn-shadow btn-blue"
   end
 
-  def revoke_registration_link(event)
-    link_to t("events.participations.revoke_participation"), leave_event_path(event), class: "btn btn-shadow btn-blue"
+  def remove_from_event_link(event)
+    btn_text = event.upcoming? ? "Я не пойду" : t("events.participations.revoke_participation")
+    link_to btn_text, event_attendee_path(event), method: :delete, class: "btn btn-shadow btn-blue"
   end
 
   def to_yandex_location(place)

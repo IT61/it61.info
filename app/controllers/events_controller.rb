@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   respond_to :rss, only: :feed
 
   load_and_authorize_resource
-  skip_authorize_resource only: :feed
+  skip_load_and_authorize_resource only: :feed
 
   def index
     if request.format.rss?
@@ -21,7 +21,13 @@ class EventsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @attendees_count = @event.attendees.size || 0
+    respond_to do |format|
+      format.html
+      format.ics { ics }
+    end
+  end
 
   def new
     @event = Event.new
@@ -30,10 +36,15 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.create(event_params.merge(organizer: current_user))
-    if @event.persisted?
-      respond_with(@event, location: -> { event_path(@event) }, status: 302)
-    else
-      respond_with(@event)
+    respond_to do |format|
+      format.html { respond_with(@event) }
+      format.json {
+        if @event.save
+          render json: { eventPath: event_path(@event) }, status: 302
+        else
+          render json: { errors: @event.errors.full_messages }, status: 422
+        end
+      }
     end
   end
 
@@ -63,19 +74,17 @@ class EventsController < ApplicationController
   end
 
   def ics
-    calendar = IcsService.to_ics_calendar(@event, event_url(@event))
-    options = IcsService.file_options_for(@event)
-    send_data calendar, options
+    send_data @event.to_ical, @event.ical_options
   end
 
   def leave
-    @event.participants.destroy(current_user)
+    @event.attendees.destroy(current_user)
     render :show
   end
 
   def participate
-    unless @event.participants.include?(current_user)
-      @event.participants << current_user
+    unless @event.attendees.include?(current_user)
+      @event.attendees << current_user
       @event.save
     end
     render :show
@@ -83,7 +92,7 @@ class EventsController < ApplicationController
 
   def publish
     @event.publish!
-    render :show
+    respond_with(@event)
   end
 
   def unpublish
@@ -91,29 +100,36 @@ class EventsController < ApplicationController
     render :show
   end
 
+  def unpublished
+    @events = Event.unpublished.ordered_desc
+    render :index
+  end
+
+  def destroy
+    @event.destroy
+    respond_with(@event, location: unpublished_events_path)
+  end
+
   private
 
   def scoped(scope)
-    @events = Event.includes(:place).send(scope).paginate(page: params[:page], per_page: Settings.per_page.events)
+    @events = Event.includes(:place).send(scope).published.paginate(page: params[:page], per_page: Settings.per_page.events)
     view = request.xhr? ? "events/_card" : "events/index"
     respond_with @events do |f|
       f.html { render view, layout: !request.xhr?, locals: { events: @events } }
     end
   end
 
-  def set_event
-    @event = Event.includes(:participants).find(params[:id])
-  end
-
   def event_params
     permitted_attrs = [
+      :id,
       :title,
       :description,
       :cover,
       :link,
       :started_at,
-      :has_closed_registration,
       :organizer_id,
+      :has_attendees_limit,
       :place_id,
       place_attributes: [
         :id,
@@ -122,6 +138,8 @@ class EventsController < ApplicationController
         :latitude,
         :longitude,
       ],
+      has_attendees_limit: [],
+      attendees_limit: [],
     ]
     params.require(:event).permit(*permitted_attrs)
   end
