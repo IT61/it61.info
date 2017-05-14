@@ -74,6 +74,7 @@ RSpec.describe User, type: :model do
 
       it { should_not have_abilities([:edit, :update, :destroy], user) }
       it { should_not have_abilities([:edit, :update, :destroy], event) }
+      it { should_not have_abilities([:edit, :update, :destroy], published_event) }
       it { should_not have_abilities([:read], event) }
     end
 
