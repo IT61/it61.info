@@ -105,6 +105,11 @@ class EventsController < ApplicationController
     render :index
   end
 
+  def destroy
+    @event.destroy
+    respond_with(@event, location: unpublished_events_path)
+  end
+
   private
 
   def scoped(scope)

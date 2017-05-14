@@ -8,7 +8,13 @@
         - if can? :update, event
           li
             = link_to edit_event_path(event) do
-              i.fa.fa-pencil = t(:edit)
+              i.fa.fa-pencil
+              = t(:edit)
+        - if can? :destroy, event
+          li
+            = link_to event, method: :delete do
+              i.fa.fa-trash
+              = t(:delete)
     = link_to event do
       .events-logo
         = image_tag event.cover
