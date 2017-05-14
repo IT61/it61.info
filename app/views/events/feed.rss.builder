@@ -6,7 +6,7 @@ xml.rss version: "2.0" do
     xml.title "Мероприятия"
     xml.author "IT61"
     xml.description "Лента мероприятий IT61"
-    xml.link "https://www.it61.ru"
+    xml.link "https://it61.info"
     xml.language "ru"
 
     for event in @events
