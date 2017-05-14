@@ -28,6 +28,9 @@
 
     @include media($tablet-screen-max) {
       display: inline-block;
+      position: absolute;
+      padding: 15px;
+      top: 0;
     }
   }
 
