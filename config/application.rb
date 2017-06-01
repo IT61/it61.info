@@ -28,7 +28,6 @@ module It61
 
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.action_view.raise_on_missing_translations = true
-    config.active_job.queue_adapter = :delayed_job
 
     config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
     config.i18n.available_locales = [:ru, :en]
