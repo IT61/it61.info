@@ -66,8 +66,6 @@ group :development do
   gem "active_record_query_trace", require: false
   gem "listen"
   gem "meta_request"
-  gem "spring"
-  gem "spring-commands-rspec"
 end
 
 group :development, :test do
