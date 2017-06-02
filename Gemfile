@@ -73,7 +73,7 @@ group :development, :test do
   gem "bundler-audit", ">= 0.5.0", require: false
   gem "brakeman", require: false
   gem "dotenv-rails"
-  gem "forgery"
+  gem "faker"
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"

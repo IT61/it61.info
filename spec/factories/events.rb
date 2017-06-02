@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :event do
-    title { Forgery::LoremIpsum.title(random: true) }
-    description { Forgery::LoremIpsum.paragraphs }
-    started_at { Forgery::Date.date }
+    title { Faker::Name.title }
+    description { Faker::Lorem.paragraph }
+    started_at { Faker::Date.forward }
     cover { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec", "support", "files", "event_title_image.jpg")) }
 
     organizer
@@ -10,15 +10,15 @@ FactoryGirl.define do
   end
 
   trait :upcoming do
-    started_at { Forgery::Date.date(future: true) }
+    started_at { Faker::Date.forward }
   end
 
   trait :past do
-    started_at { Forgery::Date.date(past: true) }
+    started_at { Faker::Date.backward }
   end
 
   trait :published do
-    published_at { Forgery::Date.date(future: true) }
+    published_at { Faker::Date.backward }
     published { true }
   end
 end
