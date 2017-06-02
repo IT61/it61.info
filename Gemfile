@@ -44,7 +44,6 @@ gem "sass-rails", "~> 5.0"
 gem "slack-notifier"
 gem "slim-rails"
 gem "sprockets", ">= 3.0.0"
-gem "suspenders"
 gem "toastr-rails"
 gem "uglifier"
 gem "webpacker"
@@ -79,7 +78,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rails-controller-testing"
-  gem "rspec-rails", "~> 3.5.0"
+  gem "rspec-rails"
   gem "scss_lint", require: false
 end
 

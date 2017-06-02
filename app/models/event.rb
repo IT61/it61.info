@@ -48,7 +48,7 @@ class Event < ActiveRecord::Base
   scope :not_notified_about, -> { where(subscribers_notification_send: false) }
 
   def notify?
-    published? && !published_was
+    published? && !published_before_last_save
   end
 
   def place_attributes=(attributes)
