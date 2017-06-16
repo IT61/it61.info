@@ -1,4 +1,10 @@
 .btn {
+  
+  &-new-image{
+    display: flex;
+    justify-content: center;
+  }
+
   &-small {
     padding: 9px 23px;
     font-size: 12px;

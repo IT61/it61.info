@@ -1,4 +1,14 @@
 main.event-form-container
   .card.event-form-card
     h1.event-form-card-header = t("events.new.create_event")
-    = render "form"
+    form.event-form
+      section.info-container
+        image-component @add-image-src='addImageSrc'
+        details-component :event-settings.sync='eventSettings' :date-obj.sync='dateObj' 
+      section.description
+        description-component :event-settings.sync='eventSettings'
+      section.settings 
+        settings-component :event-settings.sync='eventSettings'
+      section.footer
+        footer-component @send-event='send'
+= javascript_pack_tag 'application'

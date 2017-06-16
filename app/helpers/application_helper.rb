@@ -35,7 +35,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    raw(MarkdownService.render_markdown(text))
+    raw(MarkdownService.render_plain(text))
   end
 
   def plain_text(text)

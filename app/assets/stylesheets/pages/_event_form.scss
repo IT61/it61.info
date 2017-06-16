@@ -78,7 +78,7 @@ $image-size-smaller: 200px;
     }
   }
 
-  #image {
+  #image, .image {
     width: $image-size;
 
     @include media($new-event-tablet) {

@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   respond_to :rss, only: :feed
 
   load_and_authorize_resource
-  skip_load_and_authorize_resource only: :feed
+  skip_load_and_authorize_resource only: [:create, :feed]
 
   def index
     if request.format.rss?
