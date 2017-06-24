@@ -19,6 +19,7 @@ ru:
       description: "Описание"
       participants: "Участники (%{count})"
       postrelease: "Пострелиз"
+      csv: "Список участников (.csv)"
     participations:
       participate: "Я пойду!"
       revoke_participation: "Я не участвовал"
