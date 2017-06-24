@@ -1,3 +1,5 @@
+require "csv"
+
 class User < ApplicationRecord
   include Gravtastic
   gravtastic
@@ -64,6 +66,18 @@ class User < ApplicationRecord
   def self.avatar_from_auth(auth)
     if auth.provider == "vkontakte"
       auth.extra.raw_info.photo_400_orig
+    end
+  end
+
+  def self.to_csv
+    attributes = %w{last_name first_name}
+
+    CSV.generate(headers: true) do |csv|
+      csv << ["Фамилия", "Имя", "Отметка"]
+
+      all.each do |user|
+        csv << attributes.map { |attr| user.send(attr) }
+      end
     end
   end
 

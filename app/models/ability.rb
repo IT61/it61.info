@@ -28,6 +28,7 @@ class Ability
       can [:profile, :edit, :settings, :settings_update], User, id: user.id
       can [:show, :edit, :update, :destroy], Event, organizer_id: user.id
       can [:create, :destroy], :attendee
+      can [:index], attendee: { event: { organizer_id: user.id } }
     end
 
     if user.moderator?
