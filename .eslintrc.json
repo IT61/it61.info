@@ -1,4 +1,8 @@
 {
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
   "env": {
     "browser": true,
     "jquery": true
@@ -7,7 +11,6 @@
     "Geocoder": true,
     "SimpleMDE": true
   },
-  "extends": "eslint:recommended",
   "rules": {
     "indent": [
       "error",
