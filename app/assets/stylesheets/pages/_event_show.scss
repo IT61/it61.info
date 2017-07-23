@@ -43,6 +43,23 @@
       padding-top: 30px;
       padding-right: 25px;
 
+      &-date {
+        vertical-align: middle;
+      }
+
+      &-address label,
+      &-link a {
+        width: 80%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      &-address {
+        label {
+          margin-bottom: 0;
+        }
+      }
+
       #map-trigger {
         cursor: pointer;
         text-align: left;
@@ -55,8 +72,8 @@
     }
 
     .avatar {
-      float: left;
       margin-right: 15px;
+      vertical-align: middle;
     }
   }
 
@@ -84,13 +101,6 @@
   }
 
   @include media(max-width 1000px) {
-    &-info {
-      span, a {
-        display: block;
-        padding-top: 5px;
-      }
-    }
-
     &-buttons {
       bottom: 17px;
       right: 17px;
@@ -120,6 +130,10 @@
     &-info {
       padding: 0 20px;
       font-size: 14px;
+
+      .block-info {
+        padding-right: 0;
+      }
     }
 
     &-buttons {
@@ -173,11 +187,6 @@
     &-info {
       padding-right: 30px;
       font-size: 14px;
-
-      span, a {
-        display: block;
-        padding-top: 5px;
-      }
 
       .block-info {
         padding-top: 20px;
