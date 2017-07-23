@@ -5,9 +5,9 @@ ruby "2.4.1"
 gem "active_link_to"
 gem "autoprefixer-rails"
 gem "bourbon", "5.0.0.beta.5"
+gem "cancancan"
 gem "carrierwave"
 gem "carrierwave-base64"
-gem "cancancan"
 gem "config"
 gem "devise"
 gem "flutie"
@@ -24,12 +24,14 @@ gem "neat", "~> 1.7.0"
 gem "nokogiri"
 gem "normalize-rails", "~> 3.0.0"
 gem "omniauth"
-gem "omniauth-github"
 gem "omniauth-facebook"
+gem "omniauth-github"
 gem "omniauth-google-oauth2"
 gem "omniauth-vkontakte"
 gem "pg"
 gem "phony_rails"
+gem "piet"
+gem "piet-binary"
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 5.1"
@@ -57,8 +59,8 @@ gem "stackprof", require: false, platform: :mri
 
 source "https://rails-assets.org" do
   gem "rails-assets-cropper"
-  gem "rails-assets-smartcrop"
   gem "rails-assets-listjs"
+  gem "rails-assets-smartcrop"
 end
 
 group :development do
@@ -69,12 +71,12 @@ end
 
 group :development, :test do
   gem "awesome_print"
+  gem "brakeman", require: false
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
-  gem "brakeman", require: false
   gem "dotenv-rails"
-  gem "faker"
   gem "factory_girl_rails"
+  gem "faker"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rails-controller-testing"
@@ -87,8 +89,8 @@ group :test do
   gem "formulaic"
   gem "fuubar"
   gem "launchy"
-  gem "shoulda-matchers"
   gem "shoulda-callback-matchers"
+  gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "timecop"
   gem "webmock"
