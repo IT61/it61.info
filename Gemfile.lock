@@ -301,7 +301,7 @@ GEM
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
     retriable (1.4.1)
-    rollbar (2.14.1)
+    rollbar (2.15.0)
       multi_json
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
