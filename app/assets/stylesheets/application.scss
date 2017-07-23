@@ -12,8 +12,6 @@
 @import "pages/index";
 
 // Rails Assets
-@import "cropper";
+@import "cropper/cropper";
 @import "simplemde/simplemde";
 @import "icheck/square/blue";
-
-@import '../../../vendor/assets/stylesheets/cropper/cropper';
