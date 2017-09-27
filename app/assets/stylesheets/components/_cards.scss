@@ -24,6 +24,10 @@
 
   &-body {
     padding: 30px;
+
+    @include media(max-width 1000px) {
+      padding: 15px;
+    }
   }
 
   &-fold {

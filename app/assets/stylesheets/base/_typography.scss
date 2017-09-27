@@ -23,13 +23,13 @@ h6 {
 
 p {
   margin: 0 0 $small-spacing;
-  .text-content & { text-align: justify; }
 }
 
 a {
   color: $action-color;
   text-decoration: none;
   transition: color $base-duration $base-timing;
+  word-wrap: break-word;
 
   &:active,
   &:focus,
