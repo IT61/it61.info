@@ -4,7 +4,7 @@
       <div class="input-float-label">
         <input type="text"
           v-model='eventSettings.title'>
-        <label>Название</label>
+        <label class="required">Название</label>
       </div>
     </div>
     <div class="time-container">
@@ -51,7 +51,7 @@
             v-for='place in model.ours'
             @click='setOursFromList(place)'>{{place.place_title + ', ' + place.addressLine}}</li>
         </ul>
-        <label>Место проведения</label>
+        <label class="required">Место проведения</label>
       </div>
     </div>
     <div class="event-association-field">
@@ -67,7 +67,7 @@
             v-for='place in model.yandex'
             @click='setYandexFromList(place)'>{{place.addressLine}}</li>
         </ul>
-        <label>Точный адрес</label>
+        <label class="required">Точный адрес</label>
       </div>
     </div>
     <div class="modal">

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <label class="required">Описание</label>
     <vue-editor
      v-model='eventSettings.description'></vue-editor>
   </div>
