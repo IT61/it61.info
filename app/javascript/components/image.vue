@@ -1,57 +1,42 @@
 <template>
   <div class="image-container">
-    <label class="required" for="event_cover">Изображение</label>
-    <img v-if="!!src" class="image" :src='src' alt="">
-    <div v-if='!src' class="no-image-selected" id="image">
-      <div class="message">Файл не выбран</div>
-    </div>
-    <div class="file_upload" id="image-input-container" style="max-width: 300px;">
-      <vue-core-image-upload
-        class='btn btn-blue btn-new-image'
-        :crop-ratio="'1:1'"
-        :crop="'local'"
-        :text="'Выберите файл'"
-        :cropBtn="cropBtn"
-        @imagechanged="imagechanged"
-        @imageuploading="imageuploading"
-        :max-file-size="5242880"
-        url="http://101.198.151.190/api/upload.php" >
-      </vue-core-image-upload>
-    </div>
+      <label class="required">Изображение</label>
+    <vue-image-cropper
+      :cropOptions="cropOptions"
+      :locales="locales"
+      @cropped="imageCropped">
+    </vue-image-cropper> 
   </div>
 </template>
-
+ 
 <script>
-import VueCoreImageUpload from 'vue-core-image-upload'
+import VueImageCropper from 'vue-image-cropper';
 
 export default {
+  components: {
+    VueImageCropper
+  },
   data() {
-    return {  
-      src: '',
-      cropBtn: {
-        ok: 'ok',
-        cancel:'Отмена'
+    return {
+      cropOptions: {
+        aspectRatio: '1:1',
+        height: 300,
+        width: 300
+      },
+      locales: {
+        title: 'Файл не выбран',
+        cancel: 'Отмена',
+        confirm: 'Сохранить'
       }
     }
   },
   methods: {
-    imagechanged(res) {
-      this.src = res;
-      this.$emit('add-image-src', res);
-    },
-    imageuploading(){
-      this.showPreload = true;
+    imageCropped(image) {
+      // TODO: Upload to server
     }
-  },
-  components: {
-    VueCoreImageUpload,
-  },
-  created: function() {
-
   }
 };
-</script>
+</script> 
 
 <style>
-
 </style>

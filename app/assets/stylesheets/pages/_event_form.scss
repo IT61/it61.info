@@ -1,5 +1,5 @@
-$image-size: 300px;
-$image-size-smaller: 200px;
+$image-size: 300px !important;
+$image-size-smaller: 200px !important;
 
 .event-form {
   &-container {
@@ -17,6 +17,7 @@ $image-size-smaller: 200px;
       width: 100%;
       padding: 30px;
     }
+
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 35px;
@@ -61,6 +62,20 @@ $image-size-smaller: 200px;
         @include span-columns(8);
         text-align: center;
       }
+
+      label {
+        margin-bottom: 3px;
+        min-height: 30px;
+        line-height: 30px;
+        text-align: left;
+
+        @include media($new-event-tablet) {
+          width: $image-size-smaller;
+        }
+        @include media($new-event-mobile) {
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -78,62 +93,27 @@ $image-size-smaller: 200px;
     }
   }
 
-  #image, .image {
+  .vue-image-uploader {
     width: $image-size;
+    margin-bottom: 6px;
+    line-height: $image-size;
+    text-align: center;
+    background: lighten($gray, 3%);
+    border: 1px solid darken($gray, 10%);
 
     @include media($new-event-tablet) {
       width: $image-size-smaller;
+      height: $image-size-smaller;
+      line-height: $image-size-smaller;
     }
-
-    canvas {
-      width: $image-size;
-      height: $image-size;
-      @include media($new-event-tablet) {
-        width: $image-size-smaller;
-        height: $image-size-smaller;
-      }
-    }
-
-    &.no-image-selected {
-      margin-bottom: 6px;
-      line-height: $image-size;
-      @include media($new-event-tablet) {
-        line-height: $image-size-smaller;
-      }
-      text-align: center;
-      background: lighten($gray, 3%);
-      border: 1px solid darken($gray, 10%);
-
-      .message {
-        line-height: 1.5;
-        display: inline-block;
-        vertical-align: middle;
-        color: darken($gray, 20%);
-      }
-    }
-
+    
     @include media($new-event-mobile) {
-      display: none;
+      margin-bottom: 20px;
     }
-  }
-
-  .file_upload {
-    label {
-      margin-right: 15px;
-      text-align: center;
-
-      width: $image-size;
-      @include media($new-event-tablet) {
-        width: $image-size-smaller;
-      }
-      @include media($new-event-mobile) {
-        width: 100%;
-        margin-bottom: 30px;
-      }
-    }
-    @include media($new-event-mobile) {
-      margin: 0;
-      text-align: center;
+    
+    @include media($mobile-xs) {
+      width: $image-size-smaller;
+      height: $image-size-smaller;
     }
   }
 
@@ -182,7 +162,3 @@ $image-size-smaller: 200px;
     display: none;
   }
 }
-
-
-
-
