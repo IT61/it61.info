@@ -1,3 +1,5 @@
+require "csv"
+
 class User < ApplicationRecord
   include Gravtastic
   gravtastic
@@ -45,25 +47,42 @@ class User < ApplicationRecord
   def self.from_omniauth!(auth)
     social = SocialAccount.includes(:user).find_or_initialize_by(uid: auth.uid, provider: auth.provider)
 
-    return social.user if social.user.present?
-
-    social.build_user do |user|
-      puts user.class
-      user.email = auth.info.email
-      user.name = auth.info.name
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.remote_avatar_url = avatar_from_auth(auth)
-
+    if social.new_record?
       social.link = SocialAccount.link_for(auth)
+      social.save
     end
-    social.save
-    social.user
+
+    auth_info = auth.info
+    user = User.find_by(email: auth_info.email)
+
+    unless user.present?
+      user = social.build_user do |user|
+        user.email = auth_info.email
+        user.name = auth_info.name
+        user.first_name = auth_info.first_name
+        user.last_name = auth_info.last_name
+        user.remote_avatar_url = avatar_from_auth(auth)
+      end
+      user.save
+    end
+    user
   end
 
   def self.avatar_from_auth(auth)
     if auth.provider == "vkontakte"
       auth.extra.raw_info.photo_400_orig
+    end
+  end
+
+  def self.to_csv
+    attributes = %w{last_name first_name}
+
+    CSV.generate(headers: true) do |csv|
+      csv << ["Фамилия", "Имя", "Отметка"]
+
+      all.each do |user|
+        csv << attributes.map { |attr| user.send(attr) }
+      end
     end
   end
 

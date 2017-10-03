@@ -79,6 +79,8 @@ var eventManager = {
       } else if (response.status == 302) {
         window.location.replace(response.responseJSON.eventPath);
       }
+    }).done(function() {
+      toastr.success('Мероприятие успешно обновлено!');
     });
   }
 };

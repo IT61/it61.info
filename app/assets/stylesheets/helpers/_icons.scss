@@ -1,6 +1,7 @@
 .icon {
   &-events {
-    float: left;
+    display: inline-block;
+    vertical-align: middle;
     background: image_url("event.svg") no-repeat;
     background-size: cover;
   }
@@ -19,7 +20,7 @@
 
   &-link {
     width: 24px;
-    height: 33px;
+    height: 27px;
     background-position: 0 -60px;
   }
 

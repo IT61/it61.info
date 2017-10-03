@@ -51,8 +51,11 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    @event.update(event_params)
-    respond_with(@event)
+    if @event.update(event_params)
+      render json: {}, status: :ok
+    else
+      render json: { errors: @event.errors.full_messages }, status: 422
+    end
   end
 
   def past
