@@ -72,6 +72,7 @@ $image-size-smaller: 200px !important;
         @include media($new-event-tablet) {
           width: $image-size-smaller;
         }
+
         @include media($new-event-mobile) {
           width: 100%;
         }
@@ -106,11 +107,11 @@ $image-size-smaller: 200px !important;
       height: $image-size-smaller;
       line-height: $image-size-smaller;
     }
-    
+
     @include media($new-event-mobile) {
       margin-bottom: 20px;
     }
-    
+
     @include media($mobile-xs) {
       width: $image-size-smaller;
       height: $image-size-smaller;

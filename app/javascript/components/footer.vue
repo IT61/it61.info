@@ -10,19 +10,10 @@
 
 <script>
 export default {
-  data: function () {
-    return {
-      
-    }
-  },
   methods: {
     sendEvent: function() {
       this.$emit('send-event');
     }
-  },
-  created: function() {
-    
   }
 }
 </script>
-

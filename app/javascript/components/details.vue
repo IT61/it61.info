@@ -40,12 +40,12 @@
     </div>
     <div class="event-association-field">
       <div class="input-float-label">
-        <input class="autocomplete-input" 
-          autocomplete="off" type="text" 
-          @input='getOurs' 
+        <input class="autocomplete-input"
+          autocomplete="off" type="text"
+          @input='getOurs'
           v-model='eventSettings.place_attributes.title'
           @blur='resetLists'>
-        <ul class="autocomplete-container" 
+        <ul class="autocomplete-container"
             v-if='model.ours.length && eventSettings.place_attributes.title.length'>
           <li class="autocomplete-container-item"
             v-for='place in model.ours'
@@ -56,14 +56,14 @@
     </div>
     <div class="event-association-field">
       <div class="input-float-label">
-        <input class="autocomplete-input"  id="yandex-input" 
-          autocomplete="off" type="text" 
-          @input='getYandex' 
+        <input class="autocomplete-input"  id="yandex-input"
+          autocomplete="off" type="text"
+          @input='getYandex'
           v-model='eventSettings.place_attributes.address'
-          @blur='resetLists'>  
-        <ul class="autocomplete-container" 
+          @blur='resetLists'>
+        <ul class="autocomplete-container"
           v-if='model.yandex.length'>
-          <li class="autocomplete-container-item" 
+          <li class="autocomplete-container-item"
             v-for='place in model.yandex'
             @click='setYandexFromList(place)'>{{place.addressLine}}</li>
         </ul>
@@ -98,7 +98,7 @@ export default {
     return {
       datetime:{
         days: [],
-        months: [ 'января', 'февраля', 'марта', 'апреля', 'мая', 
+        months: [ 'января', 'февраля', 'марта', 'апреля', 'мая',
                   'июня', 'июля', 'августа', 'сентября', 'октября',
                    'ноября', 'декабря' ],
         years: ['2017','2018','2019'],
@@ -116,7 +116,7 @@ export default {
     getYandex: function () {
         var text = event.target.value, self = this,
             bounds = [[46.061107, 37.603739], [49.073023, 42.767521]];
-             
+
         return ymaps.geocode(text, {
           boundedBy: bounds,
           strictBounds: true,
@@ -125,14 +125,14 @@ export default {
           self.model.yandex = parser.parse(response);
         });
     },
-    getOurs: function() { 
+    getOurs: function() {
       var self = this;
       $.ajax({
         url: 'http://localhost:3000/places/find?title=' + self.eventSettings.place_attributes.title,
         success: function(res){
           self.model.ours = res;
         }
-      });  
+      });
     },
     setOursFromList: function(place) {
       this.eventSettings.place_attributes.id = place.id;
@@ -150,7 +150,7 @@ export default {
       this.map = Geocoder.buildMap('map', this.eventSettings.place_attributes);
     },
     resetLists: function() {
-      return setTimeout(() => { 
+      return setTimeout(() => {
         this.model.ours = [];
         this.model.yandex = [];
       }, 100)
@@ -166,12 +166,12 @@ export default {
 
 
 function setDataParams(datetime) {
-  for (var iterator = 0; iterator != 60; iterator++){
-    if (iterator <= 23) 
+  for (let iterator = 0; iterator != 60; iterator++){
+    if (iterator <= 23)
       datetime.hours.push(
         iterator < 10 ? '0' + iterator : iterator.toString()
       );
-    if (iterator > 0 && iterator <= 31) 
+    if (iterator > 0 && iterator <= 31)
       datetime.days.push(iterator.toString());
 
     datetime.minutes.push(
@@ -180,14 +180,14 @@ function setDataParams(datetime) {
   }
 }
 
-var parser = {
+const parser = {
   parse: function (rawData) {
-    var objects = rawData.geoObjects,
+    const objects = rawData.geoObjects,
         count = rawData.metaData.geocoder.results;
     return parser.parseObjects(objects, count);
   },
   parseObject: function (object) {
-    var addressLine = [
+    const addressLine = [
       object.getLocalities()[0],
       object.getThoroughfare(),
       object.getPremiseNumber(),
@@ -196,25 +196,22 @@ var parser = {
       return n != undefined
     }).join(", ");
 
-    var coordinates = object.geometry._coordinates;
+    const coordinates = object.geometry._coordinates;
     return {
       addressLine: addressLine,
       coordinates: coordinates,
     }
   },
   parseObjects: function (objects, count) {
-    var res = [];
-    for (var i = 0; i < count; i++) {
-      var object = objects.get(i);
+    const res = [];
+    for (let i = 0; i < count; i++) {
+      const object = objects.get(i);
       if (object !== undefined) {
-        var geoObj = parser.parseObject(object);
+        const geoObj = parser.parseObject(object);
         res.push(geoObj);
       }
     }
     return res;
   }
 };
-
-
 </script>
-

@@ -13,6 +13,6 @@
     components: {
       VueEditor
     },
-    props: ['eventSettings'],
+    props: ['eventSettings']
   }
 </script>

@@ -13,18 +13,6 @@
 
 <script>
 export default {
-  props: ['eventSettings'],
-  data: function () {
-    return {
-      
-    }
-  },
-  methods: {
-  
-  },
-  created: function() {
-    
-  }
+  props: ['eventSettings']
 }
 </script>
-

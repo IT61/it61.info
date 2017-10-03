@@ -1,6 +1,5 @@
 .btn {
-  
-  &-new-image{
+  &-new-image {
     display: flex;
     justify-content: center;
   }
@@ -138,7 +137,7 @@
     &:hover {
       color: #eee;
     }
-    
+
     &:active,
     &:focus {
       color: #225b89;

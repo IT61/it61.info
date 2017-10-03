@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     methods: {
       send() {
-
         if (this.badValidation())
           return;
 

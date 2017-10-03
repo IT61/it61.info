@@ -5,10 +5,10 @@
       :cropOptions="cropOptions"
       :locales="locales"
       @cropped="imageCropped">
-    </vue-image-cropper> 
+    </vue-image-cropper>
   </div>
 </template>
- 
+
 <script>
 import VueImageCropper from 'vue-image-cropper';
 
@@ -36,7 +36,4 @@ export default {
     }
   }
 };
-</script> 
-
-<style>
-</style>
+</script>

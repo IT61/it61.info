@@ -2,7 +2,7 @@
 
 const { join, resolve } = require('path');
 const { env } = require('process');
-const { safeLoad } = require('js-yaml')
+const { safeLoad } = require('js-yaml');
 const { readFileSync } = require('fs');
 
 const configPath = resolve('config', 'webpacker.yml');
@@ -14,11 +14,11 @@ function removeOuterSlashes(string) {
 }
 
 function formatPublicPath(host = '', path = '') {
-  let formattedHost = removeOuterSlashes(host)
+  let formattedHost = removeOuterSlashes(host);
   if (formattedHost && !/^http/i.test(formattedHost)) {
     formattedHost = `//${formattedHost}`
   }
-  const formattedPath = removeOuterSlashes(path)
+  const formattedPath = removeOuterSlashes(path);
   return `${formattedHost}/${formattedPath}/`
 }
 
