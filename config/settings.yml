@@ -23,6 +23,7 @@ community:
     slack: "https://it61.slack.com"
     twitter: "https://twitter.com/it_rostov"
     instagram: "https://www.instagram.com/rostovcommunity"
+    telegram: "https://t.me/it61_events"
 
 per_page:
   events: 10
