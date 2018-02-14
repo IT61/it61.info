@@ -32,7 +32,7 @@ gem "pg"
 gem "phony_rails"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 5.0.0"
+gem "rails", "~> 5.1.4"
 gem "rails-i18n"
 gem "recipient_interceptor"
 gem "redcarpet"
@@ -76,8 +76,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rails-controller-testing"
-  gem "rspec-rails", "~> 3.5.0"
-  gem "scss_lint", require: false
+  gem "rspec-rails"
 end
 
 group :test do
