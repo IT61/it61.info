@@ -44,7 +44,6 @@ gem "sass-rails", "~> 5.0"
 gem "slack-notifier"
 gem "slim-rails"
 gem "sprockets", ">= 3.0.0"
-
 gem "toastr-rails"
 gem "uglifier"
 gem "will_paginate"
