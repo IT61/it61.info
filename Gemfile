@@ -32,15 +32,15 @@ gem "pg"
 gem "phony_rails"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 5.0.0"
+gem "rails", "~> 5.1.4"
 gem "rails-i18n"
 gem "recipient_interceptor"
 gem "redcarpet"
 gem "redis"
 gem "responders"
-gem "rollbar"
 gem "russian"
 gem "sass-rails", "~> 5.0"
+gem "skylight"
 gem "slack-notifier"
 gem "slim-rails"
 gem "sprockets", ">= 3.0.0"
@@ -77,8 +77,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rails-controller-testing"
-  gem "rspec-rails", "~> 3.5.0"
-  gem "scss_lint", require: false
+  gem "rspec-rails"
 end
 
 group :test do
