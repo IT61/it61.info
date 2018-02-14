@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :group do
     name { Forgery::LoremIpsum.title(random: true) }
   end

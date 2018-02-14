@@ -76,7 +76,7 @@ group :development, :test do
   gem "brakeman", require: false
   gem "dotenv-rails"
   gem "forgery"
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rails-controller-testing"
