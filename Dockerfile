@@ -26,7 +26,5 @@ ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE $SECRET_KEY_BASE
 
 COPY . ./
-RUN rails assets:precompile
-RUN rails db:migrate
 
 EXPOSE 3000
