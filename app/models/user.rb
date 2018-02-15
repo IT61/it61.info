@@ -15,10 +15,10 @@ class User < ApplicationRecord
   devise :rememberable, :trackable, :omniauthable,
          omniauth_providers: [:github, :facebook, :google_oauth2, :vkontakte]
 
+  has_many :events_attendees, dependent: :destroy
   has_many :social_accounts
   has_many :owner_of_events, -> { published.ordered_desc }, class_name: "Event", foreign_key: "organizer_id"
   has_many :member_in_events, -> { published.ordered_desc }, class_name: "Event", through: :events_attendees, source: :event
-  has_many :events_attendees, dependent: :destroy
   has_many :events, through: :events_attendees
   has_and_belongs_to_many :groups
 
