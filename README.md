@@ -71,3 +71,7 @@ programming in style.
 * [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
 * [Style](http://github.com/thoughtbot/guides/blob/master/style)
+
+## License
+
+[MIT](https://github.com/IT61/it61-rails/blob/master/LICENSE)
