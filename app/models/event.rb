@@ -73,6 +73,7 @@ class Event < ActiveRecord::Base
   def publish!
     self.published = true
     self.published_at = Time.current
+    add_to_calendar
     self.save!
   end
 
@@ -98,5 +99,9 @@ class Event < ActiveRecord::Base
 
   def send_notifications
     SlackService.notify(self) if Rails.env.production?
+  end
+
+  def add_to_calendar
+    GoogleCalendar.new.add_event_to_shared(self)
   end
 end

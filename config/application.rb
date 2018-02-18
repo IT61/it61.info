@@ -23,7 +23,8 @@ module It61
       generate.test_framework :rspec
       generate.view_specs false
     end
-    config.eager_load_paths += ["#{Rails.root}/lib"]
+    config.eager_load_paths += [Rails.root.join('lib')]
+
     config.exceptions_app = self.routes
 
     config.action_controller.action_on_unpermitted_parameters = :raise

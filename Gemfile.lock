@@ -419,6 +419,7 @@ DEPENDENCIES
   fuubar
   geocoder
   google-api-client (~> 0.8.2)
+  googleauth
   gravtastic
   high_voltage
   icalendar

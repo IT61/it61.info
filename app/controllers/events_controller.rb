@@ -67,7 +67,8 @@ class EventsController < ApplicationController
   end
 
   def add
-    success = GoogleService.add_event_to_calendar(current_user, @event)
+    # TODO: refactor and move it from here (vitaly)
+    success = GoogleCalendar.new(current_user.google_refresh_token).add_event(@event)
 
     if success
       redirect_to @event, notice: t("flashes.event_successfully_added_to_google_calendar")
@@ -100,7 +101,7 @@ class EventsController < ApplicationController
 
   def unpublish
     @event.unpublish!
-    render :show
+    redirect_to @event
   end
 
   def unpublished
