@@ -1,6 +1,7 @@
 .social-widget
-  
+  = link_to Settings.community.link_to.telegram_talks, target: "_blank" do
+    .telegram-logo
 .social-description
-  = link_to "Наш чат в Telegram", "https://t.me/it_61", class: "social-link", target: "_blank"
+  = link_to "Наш чат в Telegram", Settings.community.link_to.telegram_talks, class: "social-link", target: "_blank"
   p Для тех, кто не любит тяжелые и неповоротливые мессенджер-клиенты
 
