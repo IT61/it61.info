@@ -10,7 +10,8 @@ RUN apk update \
   && /bin/bash \
   && touch ~/.bashrc \
   && curl -o- -L https://yarnpkg.com/install.sh | bash \
-  && apk del curl tar binutils
+  && apk del curl tar binutils \
+  && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
@@ -27,5 +28,8 @@ ARG APPLICATION_HOST
 ENV APPLICATION_HOST $APPLICATION_HOST
 
 COPY . ./
+
+# Update crontab
+RUN bundle exec whenever --update-crontab
 
 EXPOSE 3000

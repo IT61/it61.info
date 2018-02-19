@@ -21,6 +21,7 @@ gem "jquery-rails"
 gem "meta-tags"
 gem "mini_magick"
 gem "neat", "~> 1.7.0"
+gem "nenv"
 gem "nokogiri"
 gem "normalize-rails", "~> 3.0.0"
 gem "omniauth"
@@ -46,6 +47,7 @@ gem "slim-rails"
 gem "sprockets", ">= 3.0.0"
 gem "toastr-rails"
 gem "uglifier"
+gem "whenever", require: false
 gem "will_paginate"
 
 # IMPORTANT: mini profiler monkey patches, so it better be required last

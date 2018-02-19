@@ -1,0 +1,16 @@
+p Приветствуем, #{@user.full_name}!
+
+p
+  | Предстоящие мероприятия этой недели:
+  ul
+    - @events.each do |event|
+      li = link_to event.title, event_url(event)
+
+small Вы можете отключить рассылку новых мероприятий в "#{link_to('настройках профиля', profile_settings_url)}".
+
+br
+| ---
+br
+| С уважением, команда IT61.
+br
+= link_to 'it61.info', root_url
