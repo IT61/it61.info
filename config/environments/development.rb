@@ -15,9 +15,15 @@ Rails.application.configure do
     config.action_controller.perform_caching = false
     config.cache_store = :null_store
   end
-  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_caching = false
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+
+  if Nenv.use_mailcatcher?
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = { host: "localhost:3000", port: 1025 }
+  end
+
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
   config.assets.debug = true
@@ -25,7 +31,7 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
   config.assets.quiet = true
   config.action_view.raise_on_missing_translations = true
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
+
   config.load_mini_profiler = ENV["ENABLE_MINI_PROFILER"]
   config.use_query_trace = ENV["ENABLE_QUERY_TRACE"]
 
@@ -35,7 +41,7 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-  if ENV["ENABLE_ROUTES_RELOADER"]
+  if Nenv.enable_routes_reloader?
     config.middleware.use RoutesReloader
   end
 end
