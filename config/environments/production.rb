@@ -1,3 +1,5 @@
+require Rails.root.join('config/smtp')
+
 Rails.application.configure do
   config.cache_classes = true
   config.eager_load = true
@@ -10,7 +12,7 @@ Rails.application.configure do
   config.log_level = :debug
   config.action_controller.asset_host = ENV.fetch("ASSET_HOST", ENV.fetch("APPLICATION_HOST"))
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = ENV["SMTP_SETTINGS"]
+  config.action_mailer.smtp_settings = SMTP_SETTINGS
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
