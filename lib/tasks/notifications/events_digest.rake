@@ -6,7 +6,11 @@ namespace :notifications do
       p "No events to notify about"
     else
       User.notify_by_email.find_each do |user|
-        EventsMailer.new_events_digest(user, upcoming_events).deliver
+        begin
+          EventsMailer.new_events_digest(user, upcoming_events).deliver
+        rescue => e
+          # warn e.message
+        end
       end
     end
   end
