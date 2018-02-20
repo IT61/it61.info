@@ -1,6 +1,7 @@
 # It61
 
-Build status:[![CircleCI](https://circleci.com/gh/IT61/it61-rails.svg?style=svg)](https://circleci.com/gh/IT61/it61-rails)
+[![CircleCI](https://circleci.com/gh/IT61/it61-rails.svg?style=svg)](https://circleci.com/gh/IT61/it61-rails)
+[![View performance data on Skylight](https://badges.skylight.io/status/9ACn286v2ne4.svg)](https://oss.skylight.io/app/applications/9ACn286v2ne4)
 
 ## Requirements
 
