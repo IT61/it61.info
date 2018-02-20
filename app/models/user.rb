@@ -45,10 +45,11 @@ class User < ApplicationRecord
 
   def self.from_omniauth!(auth)
     auth_info = auth.info
-    user = User.find_or_initialize_by(email: auth_info.email)
+    email = auth_info.email.downcase if auth_info.email.present?
+    user = User.find_or_initialize_by(email: email)
 
     if user.new_record?
-      user.email = auth_info.email
+      user.email = email
       user.name = auth_info.name
       user.first_name = auth_info.first_name
       user.last_name = auth_info.last_name
