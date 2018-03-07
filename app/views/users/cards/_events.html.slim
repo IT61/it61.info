@@ -7,11 +7,7 @@ section.card.organizator
         .message= no_events_message
     - else
       - events.each do |e|
-        = link_to event_path(e), class: "event-link"
-          .event
-            .image
-              = image_tag e.cover, class: 'small-picture'
-            .text= e.title
+        = render "events/event_row", event: e
   - if my_profile?(user)
     .card-footer
       = link_to footer_button_link, class: "button" do
