@@ -16,7 +16,9 @@ class UsersController < ApplicationController
     show_users(:active)
   end
 
-  def show; end
+  def show
+    @events = @user.owner_of_events
+  end
 
   def edit; end
 
