@@ -5,7 +5,6 @@ module Users
 
     authorize_resource class: User, except: [:sign_in, :sign_up_complete]
 
-
     def sign_in; end
 
     def sign_up_complete
@@ -13,6 +12,8 @@ module Users
     end
 
     def profile
+      # TODO: Too many queries to db (vitaly)
+      @events = @user.owner_of_events
       render "users/show"
     end
 

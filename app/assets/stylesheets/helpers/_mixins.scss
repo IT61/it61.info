@@ -87,3 +87,10 @@
     color: #100f0f;
   }
 }
+
+@mixin widget-logo($image, $size: 150px) {
+  @include size($size);
+  margin: auto;
+  background: image_url($image) no-repeat center;
+  background-size: contain;
+}

@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.4.2"
+ruby "2.4.3"
 
 gem "active_link_to"
 gem "autoprefixer-rails"
@@ -9,7 +9,6 @@ gem "carrierwave"
 gem "carrierwave-base64"
 gem "cancancan"
 gem "config"
-gem "delayed_job_active_record"
 gem "devise"
 gem "flutie"
 gem "geocoder"
@@ -22,6 +21,7 @@ gem "jquery-rails"
 gem "meta-tags"
 gem "mini_magick"
 gem "neat", "~> 1.7.0"
+gem "nenv"
 gem "nokogiri"
 gem "normalize-rails", "~> 3.0.0"
 gem "omniauth"
@@ -33,22 +33,21 @@ gem "pg"
 gem "phony_rails"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 5.0.0"
+gem "rails", "~> 5.1.4"
 gem "rails-i18n"
 gem "recipient_interceptor"
 gem "redcarpet"
 gem "redis"
 gem "responders"
-gem "rollbar"
 gem "russian"
 gem "sass-rails", "~> 5.0"
+gem "skylight"
 gem "slack-notifier"
 gem "slim-rails"
 gem "sprockets", ">= 3.0.0"
-gem "sprockets-es6"
-gem "suspenders"
 gem "toastr-rails"
 gem "uglifier"
+gem "whenever", require: false
 gem "will_paginate"
 
 # IMPORTANT: mini profiler monkey patches, so it better be required last
@@ -67,8 +66,6 @@ group :development do
   gem "active_record_query_trace", require: false
   gem "listen"
   gem "meta_request"
-  gem "spring"
-  gem "spring-commands-rspec"
 end
 
 group :development, :test do
@@ -77,13 +74,12 @@ group :development, :test do
   gem "bundler-audit", ">= 0.5.0", require: false
   gem "brakeman", require: false
   gem "dotenv-rails"
-  gem "forgery"
-  gem "factory_girl_rails"
+  gem "faker"
+  gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rails-controller-testing"
-  gem "rspec-rails", "~> 3.5.0"
-  gem "scss_lint", require: false
+  gem "rspec-rails"
 end
 
 group :test do

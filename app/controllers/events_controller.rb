@@ -124,7 +124,11 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    permitted_attrs = [
+    params.require(:event).permit(whitelisted)
+  end
+
+  def whitelisted
+    [
       :id,
       :title,
       :description,
@@ -144,6 +148,5 @@ class EventsController < ApplicationController
       has_attendees_limit: [],
       attendees_limit: [],
     ]
-    params.require(:event).permit(*permitted_attrs)
   end
 end

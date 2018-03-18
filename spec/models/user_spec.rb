@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
       it { should have_abilities([:edit, :update, :destroy], user) }
       it { should have_abilities([:attend, :leave], published_event) }
 
-      it { should_not have_abilities([:edit, :update, :destroy], event) }
+      it { should_not have_abilities([:read, :edit, :update, :destroy], event) }
       it { should_not have_abilities([:attend, :leave], event) }
     end
 
@@ -93,7 +93,7 @@ RSpec.describe User, type: :model do
       let! (:user) { create(:user, :moderator) }
       it { should have_abilities(:read, User.new) }
       it { should have_abilities(:read, event) }
-      it { should have_abilities([:edit, :update, :publish, :unpublish], event) }
+      it { should have_abilities(:manage, event) }
 
       it { should_not have_abilities(:destroy, User) }
       it { should_not have_abilities(:destroy, Place) }
@@ -104,6 +104,15 @@ RSpec.describe User, type: :model do
       it { should have_abilities(:manage, event) }
       it { should have_abilities(:manage, published_event) }
       it { should have_abilities(:manage, User) }
+    end
+
+    context "when is an organizer" do
+      let!(:user) { create(:user) }
+      let!(:event) { create(:event, organizer: user) }
+
+      it { should have_abilities([:read, :edit, :update, :destroy], event) }
+
+      it { should_not have_abilities(:publish, event) }
     end
   end
 end

@@ -118,6 +118,12 @@ ru:
         settings: "Настройки"
         notifications: "Уведомления"
 
+  event_mailer:
+    new_events_digest:
+      subject:
+        single: "[IT61] Предстоящее мероприятие недели!"
+        many: "[IT61] Предстоящие мероприятия недели!"
+
   photos:
     index:
       our_tag: "Наш официальный хэштег #%{tag} в Instagram"
