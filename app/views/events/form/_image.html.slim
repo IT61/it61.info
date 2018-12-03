@@ -1,7 +1,7 @@
 .image-container
   = f.label :cover, t(".cover"), class: "required"
   - if @event.cover?
-    = image_tag @event.cover, id: "image", "data-default-avatar-path" => asset_path("user_default.png")
+    = image_tag @event.cover.url, id: "image", "data-default-avatar-path" => asset_path("user_default.png")
   - else
     #image.no-image-selected
       .message = t(".no_file_label")

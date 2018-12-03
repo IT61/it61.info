@@ -17,7 +17,7 @@
               = t(:delete)
     = link_to event do
       .events-logo
-        = image_tag event.cover
+        = image_tag event.cover.url
 
       .events-info
         h2 = event.title
