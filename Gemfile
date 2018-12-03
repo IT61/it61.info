@@ -95,6 +95,8 @@ group :test do
 end
 
 group :staging, :production do
+  gem "bootsnap", require: false
+  gem "nakayoshi_fork"
   gem "rack-timeout"
   gem "rails_stdout_logging"
 end
