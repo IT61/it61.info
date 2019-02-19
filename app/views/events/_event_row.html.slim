@@ -1,6 +1,6 @@
  = link_to event, class: "event-link"
   .event
     .image
-      = image_tag event.cover, class: "small-picture"
+      = image_tag event.cover_url, class: "small-picture" unless event.cover_url.nil?
     .text
       = event.title
