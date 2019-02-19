@@ -16,7 +16,7 @@ xml.rss version: "2.0" do
         xml.pubDate event.published_at.to_s(:rfc822)
         xml.link event_url(event)
         xml.guid event_url(event)
-        xml.image url: event.cover.url
+        xml.image url: event.cover_url
 
         xml.description do
           text = markdown(event.description)
