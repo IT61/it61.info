@@ -3,8 +3,10 @@ FROM ruby:2.5.4-alpine3.8
 RUN apk update && apk upgrade && \
   apk add --no-cache bash git openssh \
   build-base nodejs tzdata postgresql \
-  postgresql-dev python imagemagick \
-  curl bash binutils tar gnupg \
+  postgresql-dev python imagemagick
+
+RUN apk update \
+  && apk add curl bash binutils tar gnupg \
   && rm -rf /var/cache/apk/* \
   && /bin/bash \
   && touch ~/.bashrc \
