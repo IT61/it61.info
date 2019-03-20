@@ -3,15 +3,7 @@ FROM ruby:2.5.4-alpine3.8
 RUN apk update && apk upgrade && \
   apk add --no-cache bash git openssh \
   build-base nodejs tzdata postgresql \
-  postgresql-dev python imagemagick
-
-RUN apk update \
-  && apk add curl bash binutils tar gnupg \
-  && rm -rf /var/cache/apk/* \
-  && /bin/bash \
-  && touch ~/.bashrc \
-  && curl -o- -L https://yarnpkg.com/install.sh | bash \
-  && apk del curl tar binutils \
+  postgresql-dev python imagemagick yarn \
   && gem update bundler
 
 WORKDIR /app
