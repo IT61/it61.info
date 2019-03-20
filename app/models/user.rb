@@ -1,3 +1,5 @@
+require "csv"
+
 class User < ApplicationRecord
   include Gravtastic
   gravtastic
@@ -13,19 +15,18 @@ class User < ApplicationRecord
   devise :rememberable, :trackable, :omniauthable,
          omniauth_providers: [:github, :facebook, :google_oauth2, :vkontakte]
 
-  has_many :social_accounts
-  has_many :owner_of_events, -> { published.ordered_desc }, class_name: "Event", foreign_key: "organizer_id"
-  has_many :member_in_events, -> { published.ordered_desc }, class_name: "Event", through: :events_attendees, source: :event
   has_many :events_attendees, dependent: :destroy
+  has_many :social_accounts, dependent: :destroy
+  has_many :owner_of_events, -> { ordered_desc }, class_name: "Event", foreign_key: "organizer_id"
+  has_many :member_in_events, -> { published.ordered_desc }, class_name: "Event", through: :events_attendees, source: :event
   has_many :events, through: :events_attendees
   has_and_belongs_to_many :groups
 
   phony_normalize :phone, as: :normalized_phone, default_country_code: "RU"
 
-  validates :phone, presence: true, if: :sms_reminders?
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :phone, presence: true, phony_plausible: { country_code: "RU" }, if: :sms_reminders?
+  validates :email, uniqueness: { allow_blank: true, case_sensitive: false }
   validates :role, presence: true
-  validates_plausible_phone :phone, country_code: "RU"
 
   before_save :nullify_empty_email
   before_save :downcase_email
@@ -41,29 +42,46 @@ class User < ApplicationRecord
   scope :presentable, -> { active.with_name.order("nullif(avatar, '') desc nulls last") }
   scope :team, -> { joins(:groups).where("groups.kind = 2") }
   scope :developers, -> { joins(:groups).where("groups.kind = 1") }
+  scope :organized_events, -> { joins(:events).where("organizer_id", self.id).ordered_desc }
 
   def self.from_omniauth!(auth)
-    social = SocialAccount.includes(:user).find_or_initialize_by(uid: auth.uid, provider: auth.provider)
+    auth_info = auth.info
+    email = auth_info.email.downcase if auth_info.email.present?
+    user = User.find_or_initialize_by(email: email)
 
-    return social.user if social.user.present?
-
-    social.build_user do |user|
-      puts user.class
-      user.email = auth.info.email
-      user.name = auth.info.name
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
+    if user.new_record?
+      user.email = email
+      user.name = auth_info.name
+      user.first_name = auth_info.first_name
+      user.last_name = auth_info.last_name
       user.remote_avatar_url = avatar_from_auth(auth)
-
-      social.link = SocialAccount.link_for(auth)
     end
-    social.save
-    social.user
+
+    social = SocialAccount.includes(:user).find_or_initialize_by(uid: auth.uid, provider: auth.provider)
+    if social.new_record?
+      social.link = SocialAccount.link_for(auth)
+      user.social_accounts << social
+    end
+
+    user.save
+    user
   end
 
   def self.avatar_from_auth(auth)
     if auth.provider == "vkontakte"
       auth.extra.raw_info.photo_400_orig
+    end
+  end
+
+  def self.to_csv
+    attributes = %w{last_name first_name}
+
+    CSV.generate(headers: true) do |csv|
+      csv << ["Фамилия", "Имя", "Отметка"]
+
+      all.each do |user|
+        csv << attributes.map { |attr| user.send(attr) }
+      end
     end
   end
 

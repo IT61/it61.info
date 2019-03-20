@@ -17,38 +17,30 @@
       this.config = $.extend({}, this.defaults, this.options);
       this.$content = $(this.config.content);
       this.$trigger = $(this.config.trigger) || this.$body.find(this.config.trigger);
-      this.distance = this.$sidebar.width();
 
       this.attach();
     },
     attach: function () {
-      this.$trigger.on('click', $.proxy(function (e) {
-        e.preventDefault();
-        this.slideIn();
-      }, this));
-
-      this.$content.on('click', $.proxy(function (e) {
-        if (this.$sidebar.hasClass('sidebar-opened')) {
-          e.preventDefault();
-          this.slideOut();
-        }
-      }, this));
+      this.$trigger.on('click', this.onShow.bind(this));
+      this.$content.on('click', this.onHide.bind(this));
+    },
+    onShow: function (e) {
+      e.stopPropagation();
+      this.slideIn();
+    },
+    onHide: function (e) {
+      if (this.$sidebar.hasClass('sidebar-opened')) {
+        e.stopPropagation();
+        this.slideOut();
+      }
     },
     slideIn: function () {
-      this.$sidebar
-        .animate({marginLeft: 0})
-        .promise()
-        .done($.proxy(function () {
-          this.$sidebar.addClass('sidebar-opened');
-        }, this));
+      this.$sidebar.addClass('sidebar-opened');
+      this.$sidebar.css({'animation': 'slidein .2s ease-in-out'});
     },
     slideOut: function () {
-      this.$sidebar
-        .animate({marginLeft: -this.distance})
-        .promise()
-        .done($.proxy(function () {
-          this.$sidebar.removeClass('sidebar-opened');
-        }, this));
+      this.$sidebar.css({'animation': 'slideout .2s ease-in-out'});
+      this.$sidebar.removeClass('sidebar-opened');
     }
   };
 

@@ -10,7 +10,7 @@
       - @events.each do |e|
         tr.item
           td = link_to e.title, edit_admin_event_path(e)
-          td = image_tag e.title_image, class: 'event-picture'
+          td = image_tag e.title_image.url, class: 'event-picture'
           td = l e.started_at, format: :date_time_full
 
   = will_paginate @users

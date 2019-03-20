@@ -7,12 +7,30 @@ main.profile-container
 
     = render partial: '/users/cards/user', locals: { user: @user }
 
-    - if @user.has_events? or my_profile?(@user)
-      = render partial: '/users/cards/events', locals: { user: @user,
-        header: t(".organizer"), events: @user.owner_of_events,
-        no_events_message: t(".no_organized_events"),
-        footer_button_text: t("events.new.create_event"),
-        footer_button_link: new_event_path }
+    - if @events.size.positive? || my_profile?(@user)
+      section.card.organizator
+        .sub-header: h3 = t(".organizer")
+        .events
+          - if @events.published.empty?
+            .no-events
+              i.fa.fa-smile-o
+              .message = t(".no_organized_events")
+          - else
+            - @events.published.each do |e|
+              = render "events/event_row", event: e
+            /! Unpublished events
+            - if my_profile?(@user) && @events.unpublished.size.positive?
+              .moderation-events
+                .message
+                  i.fa.fa-clock-o
+                  span
+                    | Неопубликованные мероприятия
+                    - @events.unpublished.each do |e|
+                      = render "events/event_row", event: e
+        - if my_profile?(@user)
+          .card-footer
+            = link_to new_event_path, class: "button" do
+              = t("events.new.create_event")
 
       = render partial: '/users/cards/events', locals: { user: @user,
         header: t(".participant"),
@@ -20,8 +38,3 @@ main.profile-container
         no_events_message: t(".no_participations"),
         footer_button_text: t("events.upcoming"),
         footer_button_link: upcoming_events_path  }
-    - else
-      section.card.mamont-card
-        .mamont
-          i.fa.fa-smile-o
-          span.message = t(".inactive_user")

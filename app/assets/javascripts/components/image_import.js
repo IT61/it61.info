@@ -8,7 +8,7 @@ var imageImport = (function () {
     }
     if (files && files.length) {
       file = files[0];
-      if (/^image\/\w+$/.test(file.type)) {
+      if (/^image\/[\w+]+$/.test(file.type)) {
         $modal.prop("checked", true);
         blobURL = URL.createObjectURL(file);
         $croppedModalImage.one('built.cropper', function () {

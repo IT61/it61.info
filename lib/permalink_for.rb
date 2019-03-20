@@ -6,7 +6,7 @@ module PermalinkFor
     pretty: PrettyImplementation,
   }.freeze
 
-  module ClassMethods
+  class_methods do
     def permalink_for(field, as: :pretty)
       as = as.to_sym
       unless PERMALINK_TYPES.key? as
@@ -14,12 +14,11 @@ module PermalinkFor
       end
       include PERMALINK_TYPES[as]
 
-      self::ActiveRecord_AssociationRelation.include PERMALINK_TYPES[as]::ClassMethods
-      self::ActiveRecord_Relation.include PERMALINK_TYPES[as]::ClassMethods
-
       config = { target_field: field }
       cattr_reader :permalink_configuration
       class_variable_set(:@@permalink_configuration, config)
     end
   end
 end
+
+ActiveRecord::Base.send(:include, PermalinkFor)

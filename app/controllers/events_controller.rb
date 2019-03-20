@@ -51,8 +51,11 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    @event.update(event_params)
-    respond_with(@event)
+    if @event.update(event_params)
+      render json: {}, status: :ok
+    else
+      render json: { errors: @event.errors.full_messages }, status: 422
+    end
   end
 
   def past
@@ -105,6 +108,11 @@ class EventsController < ApplicationController
     render :index
   end
 
+  def destroy
+    @event.destroy
+    respond_with(@event, location: unpublished_events_path)
+  end
+
   private
 
   def scoped(scope)
@@ -116,7 +124,11 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    permitted_attrs = [
+    params.require(:event).permit(whitelisted)
+  end
+
+  def whitelisted
+    [
       :id,
       :title,
       :description,
@@ -136,6 +148,5 @@ class EventsController < ApplicationController
       has_attendees_limit: [],
       attendees_limit: [],
     ]
-    params.require(:event).permit(*permitted_attrs)
   end
 end

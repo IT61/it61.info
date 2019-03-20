@@ -26,12 +26,13 @@ class Ability
       can [:attend, :leave], Event, published: true
       can :find, Place
       can [:profile, :edit, :settings, :settings_update], User, id: user.id
-      can [:show, :edit, :update, :destroy], Event, organizer_id: user.id
+      can [:read, :edit, :update, :destroy], Event, organizer_id: user.id
       can [:create, :destroy], :attendee
+      can [:index], attendee: { event: { organizer_id: user.id } }
     end
 
     if user.moderator?
-      can [:read, :update, :destroy, :publish, :unpublish], Event
+      can :manage, Event
     elsif user.admin?
       can :manage, :all
     end

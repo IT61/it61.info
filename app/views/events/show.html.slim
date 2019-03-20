@@ -6,17 +6,17 @@
       .event-share
         = render "share_buttons"
       .event-logo
-        = image_tag @event.cover
+        = image_tag @event.cover.url
       .event-info
-        .block-info
+        .block-info.block-info-date
           .icon-events.icon-calendar
           span = l(@event.started_at, format: :date_time_full)
-        .block-info
+        .block-info.block-info-address
           .icon-events.icon-marker
           label for="modal-1"
             a.modal-trigger#map-trigger data-location=to_yandex_location(@event.place) = @event.place.full_address
         - if @event.link?
-          .block-info
+          .block-info.block-info-link
             .icon-events.icon-link
             = link_to make_global(@event.link), @event.link, target: "_blank"
         .block-info
@@ -45,6 +45,7 @@
               - else
                 = link_to t("publish"), publish_event_path, method: :put, class: "btn btn-blue"
             = link_to t("edit"), edit_event_path(@event), class: "btn btn-blue"
+            = link_to t(".csv"), event_attendees_path(@event, format: :csv), class: "btn btn-blue"
 
     .card.card-fold
       .card-header

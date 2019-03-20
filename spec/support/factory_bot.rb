@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 end
 
 class AttributesForWithForeignKeys
@@ -12,11 +12,11 @@ class AttributesForWithForeignKeys
     attribute_names = attribute_assigner.send(:attribute_names_to_assign)
 
     attribute_names.each do |attr|
-      attribute_names += FactoryGirl.aliases_for(attr)
+      attribute_names += FactoryBot.aliases_for(attr)
     end
 
     evaluation.object.attributes.symbolize_keys.slice(*attribute_names)
   end
 end
 
-FactoryGirl.register_strategy(:attributes_for_with_foreign_keys, AttributesForWithForeignKeys)
+FactoryBot.register_strategy(:attributes_for_with_foreign_keys, AttributesForWithForeignKeys)
