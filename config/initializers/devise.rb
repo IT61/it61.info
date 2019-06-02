@@ -35,7 +35,7 @@ Devise.setup do |config|
   config.omniauth :google_oauth2,
                   Rails.application.secrets.google_key,
                   Rails.application.secrets.google_secret,
-                  scope: "email https://www.googleapis.com/auth/calendar",
+                  scope: "email",
                   access_type: "offline",
                   prompt: "consent"
 
