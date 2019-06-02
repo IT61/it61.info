@@ -17,7 +17,7 @@
               = t(:delete)
     = link_to event do
       .events-logo
-        = image_tag event.cover_url unless event.cover_url.nil?
+        = image_tag event.cover_url(:square_250) unless event.cover_url.nil?
 
       .events-info
         h2 = event.title

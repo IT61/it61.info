@@ -6,7 +6,7 @@
       .event-share
         = render "share_buttons"
       .event-logo
-        = image_tag @event.cover_url unless @event.cover_url.nil?
+        = image_tag @event.cover_url(:square_500) unless @event.cover_url.nil?
       .event-info
         .block-info.block-info-date
           .icon-events.icon-calendar

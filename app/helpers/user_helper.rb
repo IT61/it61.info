@@ -73,7 +73,7 @@ module UserHelper
   end
 
   def photo(user)
-    user.avatar.file.nil? ? image_url("user_default.png") : user.avatar.square_500.url
+    user.avatar.file.nil? ? image_url("user_default.png") : user.avatar_url(:square_250)
   end
 
   private
