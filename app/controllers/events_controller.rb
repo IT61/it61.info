@@ -7,18 +7,7 @@ class EventsController < ApplicationController
   skip_load_and_authorize_resource only: :feed
 
   def index
-    if request.format.rss?
-      feed
-    else
-      scoped(:ordered_desc)
-    end
-  end
-
-  def feed
-    @events = Event.includes(:organizer).published.ordered_desc
-    respond_to do |format|
-      format.rss { render "feed.rss.builder", layout: false }
-    end
+    scoped(:ordered_desc)
   end
 
   def show

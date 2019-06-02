@@ -41,8 +41,6 @@ Rails.application.routes.draw do
   draw :events
   draw :places
 
-  get :feed, to: "events#feed", defaults: { format: 'rss' }
-
   draw :admin
 
   root "pages#welcome"
