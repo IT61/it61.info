@@ -23,3 +23,4 @@ config/settings/*.local.yml
 config/environments/*.local.yml
 
 docker/.bundle
+.env.development.local
