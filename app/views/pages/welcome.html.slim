@@ -22,7 +22,6 @@
     - if current_user.nil?
       = link_to t(".sign_in"), new_session_path, class: "btn btn-blue welcome-btn"
   .card.welcome-card
-
     .topic Манифест
     p
       | Мы — сообщество профессионалов.
@@ -36,6 +35,7 @@
       - social_networks.each do |widget|
         li
           = render file: Rails.root.join(widget)
-    - if current_user.nil?
+  - if current_user.nil?
+    .bottom-join-container
       .text-center
         = link_to t(".sign_in"), new_session_path, class: "btn btn-blue welcome-btn"
