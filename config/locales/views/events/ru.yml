@@ -47,6 +47,7 @@ ru:
         address: "Точный адрес"
         show_map_btn: "Посмотреть на карте"
         map: "Карта"
+        broadcast_url: "Ссылка на трансляцию"
       footer:
         create: "Создать мероприятие"
     stubs:
