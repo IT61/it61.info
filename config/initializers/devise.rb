@@ -22,11 +22,6 @@ Devise.setup do |config|
                   Rails.application.secrets.github_secret,
                   scope: "user:email"
 
-  config.omniauth :facebook,
-                  Rails.application.secrets.facebook_key,
-                  Rails.application.secrets.facebook_secret,
-                  scope: "email"
-
   config.omniauth :vkontakte,
                   Rails.application.secrets.vkontakte_key,
                   Rails.application.secrets.vkontakte_secret,
