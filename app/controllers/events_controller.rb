@@ -138,6 +138,7 @@ class EventsController < ApplicationController
       :organizer_id,
       :has_attendees_limit,
       :place_id,
+      :broadcast_url,
       place_attributes: [
         :id,
         :title,

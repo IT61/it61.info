@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
 
   # Relations
   belongs_to :organizer, class_name: "User"
-  belongs_to :place
+  belongs_to :place, optional: true
 
   has_many :events_attendees
   has_many :attendees, through: :events_attendees
@@ -17,7 +17,6 @@ class Event < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :organizer, presence: true
-  validates :place, presence: true
   validates :published_at, presence: true, if: :published?
   validates :started_at, presence: true
   validates :has_attendees_limit, inclusion: { in: [true, false] }

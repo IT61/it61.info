@@ -18,6 +18,11 @@
       = f.text_field :link, id: "link", class: "autocomplete-input"
       label = t(".link")
 
+  .event-association-field
+    .input-float-label
+      = f.url_field :broadcast_url, id: "broadcast_url"
+      label = t(".broadcast_url")
+
   = f.fields_for :place do |ff|
     .event-association-field
       .input-float-label
@@ -25,7 +30,6 @@
         { id: "place_title", \
           class: "autocomplete-input", \
           autocomplete: "off", \
-          required: true, \
         }
         = ff.hidden_field :id
         label = t(".place")
@@ -36,7 +40,6 @@
         { id: "location", \
           class: "autocomplete-input", \
           autocomplete: "off", \
-          required: true, \
           value: (@event.place_address), \
         }
         label = t(".address")

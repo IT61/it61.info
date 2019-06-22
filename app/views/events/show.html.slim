@@ -13,10 +13,15 @@
         .block-info.block-info-date
           .icon-events.icon-calendar
           span = l(@event.started_at, format: :date_time_full)
-        .block-info.block-info-address
-          .icon-events.icon-marker
-          label for="modal-1"
-            a.modal-trigger#map-trigger data-location=to_yandex_location(@event.place) = @event.place.full_address
+        - if @event.place.present?
+          .block-info.block-info-address
+            .icon-events.icon-marker
+            label for="modal-1"
+              a.modal-trigger#map-trigger data-location=to_yandex_location(@event.place) = @event.place.full_address
+        - if @event.broadcast_url
+          .block-info.block-info-link
+            .icon-events.icon-link
+            = link_to make_global(@event.broadcast_url), @event.broadcast_url, target: "_blank"
         - if @event.link?
           .block-info.block-info-link
             .icon-events.icon-link
