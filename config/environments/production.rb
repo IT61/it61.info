@@ -24,4 +24,8 @@ Rails.application.configure do
   }
   config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
   config.load_mini_profiler = true
+
+  CarrierWave.configure do |config|
+    config.asset_host = "https://#{ENV.fetch('APPLICATION_HOST')}"
+  end
 end

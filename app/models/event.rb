@@ -89,6 +89,30 @@ class Event < ActiveRecord::Base
     IcsService.file_options_for(self)
   end
 
+  def to_meta_tags
+    {
+      title: title,
+      description: description,
+      image_src: cover.url,
+      og: {
+        site_name: :site,
+        title: :title,
+        description: :description,
+        url: Rails.application.routes.url_helpers.event_url(self, host: ENV["APPLICATION_HOST"]),
+        locale: "ru_RU",
+        type: "website",
+        image: cover.url,
+      },
+      twitter: {
+        image: cover.url,
+        card: "summary_large_image",
+        site: "it_rostov",
+        title: :title,
+        description: :description,
+      },
+    }
+  end
+
   private
 
   def permalink_title
