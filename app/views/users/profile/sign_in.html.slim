@@ -3,9 +3,9 @@
   h2 = t(".sign_in")
   p = t(".using_preferred_way")
   .login-buttons
-    = link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-small btn-gray" do
+    = link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-small btn-gray", method: :post do
       i.fa.fa-google
-    = link_to user_vkontakte_omniauth_authorize_path, class: "btn btn-small btn-gray" do
+    = link_to user_vkontakte_omniauth_authorize_path, class: "btn btn-small btn-gray", method: :post do
       i.fa.fa-vk
-    = link_to user_github_omniauth_authorize_path, class: "btn btn-small btn-gray" do
+    = link_to user_github_omniauth_authorize_path, class: "btn btn-small btn-gray", method: :post do
       i.fa.fa-github
