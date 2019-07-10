@@ -22,7 +22,8 @@
       .events-info
         h2 = event.title
         p = l event.started_at, format: :date_time_full
-        p.place = event.place.full_address
+        - if event.place.present?
+          p.place = event.place.full_address
         - if event.has_closed_registration?
           = button_to t("events.participations.participate"), register_to_event_path(event), class: "btn btn-blue button-participate"
         - else
