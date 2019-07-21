@@ -123,7 +123,7 @@ class SlackService
 
   def build_attachment(event)
     text = plain_text(event.description)
-    {
+    attachment = {
       title: event.title,
       title_link: event_url(event, host: ENV["APPLICATION_HOST"]),
       thumb_url: event.cover.url(:square_500),
@@ -132,16 +132,21 @@ class SlackService
       color: :good,
       fields: [
         {
-          title: Event.human_attribute_name(:place),
-          value: event.place.full_address,
-          short: true,
-        },
-        {
           title: Event.human_attribute_name(:started_at),
           value: I18n.l(event.started_at, format: :date_time_full),
           short: true,
         },
       ],
     }
+
+    if event.place.present?
+      attachment.fields << {
+        title: Event.human_attribute_name(:place),
+        value: event.place.full_address,
+        short: true,
+      }
+    end
+
+    attachment
   end
 end
