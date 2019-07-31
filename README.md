@@ -66,4 +66,4 @@ programming in style.
 
 ## License
 
-[MIT](https://github.com/IT61/it61-rails/blob/master/LICENSE)
+[MIT](https://github.com/IT61/it61.info/blob/master/LICENSE)
