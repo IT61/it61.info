@@ -30,7 +30,7 @@ COMPOSE_RUN="${COMPOSE_BIN} -f ${APP_PATH}/docker/docker-compose.yml"
 
 # General usage help
 help() {
-  info "${BF}${PACKAGE_NAME} ($PACKAGE_VERSION)${NF} - environment manager for ${BF}it61-rails${NF}."
+  info "${BF}${PACKAGE_NAME} ($PACKAGE_VERSION)${NF} - environment manager for ${BF}it61.info${NF}."
   info "Uses docker-compose to run application containers for local development."
   info " "
   info "Usage:"
