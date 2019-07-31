@@ -1,0 +1,8 @@
+language: ruby
+addons:
+  postgresql: latest
+env:
+  - RAILS_ENV=test
+script:
+  - bundle exec rails db:setup
+  - bundle exec rspec
