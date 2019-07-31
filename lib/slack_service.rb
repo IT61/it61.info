@@ -140,7 +140,7 @@ class SlackService
     }
 
     if event.place.present?
-      attachment.fields << {
+      attachment[:fields] << {
         title: Event.human_attribute_name(:place),
         value: event.place.full_address,
         short: true,
