@@ -2,7 +2,5 @@ if Rails.configuration.respond_to?(:use_query_trace) && Rails.configuration.use_
   require "active_record_query_trace"
 
   ActiveRecordQueryTrace.enabled = true
-  ActiveRecordQueryTrace.colorize = "light purple"
-  ActiveRecordQueryTrace.colorize = true # Colorize in default color
-  ActiveRecordQueryTrace.colorize = 35 # Magenta
+  ActiveRecordQueryTrace.colorize = :light_purple
 end
