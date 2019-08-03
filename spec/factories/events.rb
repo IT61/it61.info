@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :event do
-    title { Faker::Name.title }
+    title { Faker::Esport.event }
     description { Faker::Lorem.paragraph }
     started_at { Faker::Date.forward }
     cover { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec", "support", "files", "event_title_image.jpg")) }
