@@ -1,16 +1,17 @@
 .navbar {
   width: 100%;
   overflow: hidden;
+
   &-blue {
     background: $blue;
 
     .hamburger {
-      color: #fff;
+      color: $white;
     }
   }
 
   &-wrapper {
-    padding: 16px 30px;
+    padding: 16px 0;
     position: relative;
     @include clearfix;
 
@@ -60,7 +61,7 @@
     }
 
     .name {
-      color: #fff;
+      color: $white;
       font-size: 18px;
       margin-right: 11px;
       font-weight: 700;
@@ -92,7 +93,7 @@
     }
 
     a {
-      color: white;
+      color: $white;
 
       &.active, &:hover {
         opacity: 0.7;
@@ -112,13 +113,14 @@
 .header-title {
   background: $blue;
   padding: 45px 0 20px;
+
   @include media($tablet-screen-max) {
     padding-top: 20px;
   }
 
   h1 {
     font-size: 36px;
-    color: white;
+    color: $white;
     margin-bottom: 0;
   }
 }

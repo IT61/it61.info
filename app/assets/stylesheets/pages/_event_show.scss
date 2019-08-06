@@ -1,14 +1,12 @@
 .event {
   &-container {
     @extend .container;
-    max-width: 1023px;
   }
 
   &-title {
     color: #fff;
     margin: 60px 0 42px;
     font-size: 34px;
-    max-width: 560px;
   }
 
   &-card {
@@ -133,7 +131,7 @@
 
       .block-info {
         padding-right: 0;
-        
+
         &-link a {
           word-break: break-word;
         }
