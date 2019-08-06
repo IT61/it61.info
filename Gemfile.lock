@@ -426,7 +426,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.1.0)
-    uglifier (3.1.7)
+    uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
     uniform_notifier (1.11.0)
