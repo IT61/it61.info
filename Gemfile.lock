@@ -124,7 +124,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
     flamegraph (0.9.5)
-    flutie (2.0.0)
+    flutie (2.1.0)
     formulaic (0.4.1)
       activesupport
       capybara
