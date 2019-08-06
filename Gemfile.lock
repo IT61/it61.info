@@ -382,7 +382,7 @@ GEM
       skylight-core (= 4.1.2)
     skylight-core (4.1.2)
       activesupport (>= 4.2.0)
-    slack-notifier (2.1.0)
+    slack-notifier (2.3.2)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
