@@ -3,14 +3,14 @@ FactoryBot.define do
     email { Faker::Internet.email }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    fresh false
+    fresh { false }
 
     trait :admin do
-      role :admin
+      role { :admin }
     end
 
     trait :moderator do
-      role :moderator
+      role { :moderator }
     end
 
     trait :oauth_user do
