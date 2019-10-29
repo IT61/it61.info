@@ -158,7 +158,7 @@ GEM
       activesupport
       capybara
       i18n
-    fuubar (2.4.1)
+    fuubar (2.5.0)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
     geocoder (1.5.1)
@@ -369,7 +369,7 @@ GEM
       rspec-expectations (~> 3.8.0)
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
-    rspec-support (3.8.2)
+    rspec-support (3.8.3)
     rubocop (0.72.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
