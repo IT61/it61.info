@@ -152,7 +152,7 @@ GEM
       i18n (>= 1.6, < 1.8)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ffi (1.11.1)
+    ffi (1.12.1)
     flamegraph (0.9.5)
     formulaic (0.4.1)
       activesupport
@@ -203,7 +203,7 @@ GEM
     jwt (2.2.1)
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (3.2.0)
+    listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.4.0)
@@ -336,7 +336,7 @@ GEM
     rainbow (3.0.0)
     rake (13.0.1)
     rb-fsevent (0.10.3)
-    rb-inotify (0.10.0)
+    rb-inotify (0.10.1)
       ffi (~> 1.0)
     recipient_interceptor (0.2.0)
       mail
