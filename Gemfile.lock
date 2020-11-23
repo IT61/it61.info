@@ -341,7 +341,7 @@ GEM
     recipient_interceptor (0.2.0)
       mail
     redcarpet (3.5.0)
-    redis (3.3.3)
+    redis (4.2.5)
     regexp_parser (1.6.0)
     representable (3.0.4)
       declarative (< 0.1.0)
