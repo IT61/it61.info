@@ -340,7 +340,7 @@ GEM
       ffi (~> 1.0)
     recipient_interceptor (0.2.0)
       mail
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     redis (3.3.3)
     regexp_parser (1.6.0)
     representable (3.0.4)
