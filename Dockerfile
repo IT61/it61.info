@@ -8,7 +8,7 @@ RUN apk update && apk upgrade && \
 
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
-RUN bundle install -j "$(getconf _NPROCESSORS_ONLN)" --retry 5 --without development test
+RUN bundle install -j "$(nproc)" --retry 5 --without development test
 
 ENV RAILS_ENV production
 ENV RACK_ENV production

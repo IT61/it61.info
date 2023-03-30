@@ -24,9 +24,6 @@ class Event < ActiveRecord::Base
 
   delegate :title, :address, :latitude, :longitude, to: :place, prefix: true, allow_nil: true
 
-  # Callbacks
-  after_save :send_notifications, if: :notify?
-
   # Scopes
   scope :ordered_desc, -> { order(started_at: :desc) }
   scope :published, -> { where(published: true) }
@@ -45,10 +42,6 @@ class Event < ActiveRecord::Base
           to: to_day.end_of_day)
   }
   scope :not_notified_about, -> { where(subscribers_notification_send: false) }
-
-  def notify?
-    published? && !published_before_last_save
-  end
 
   def place_attributes=(attributes)
     if attributes["id"].present?
@@ -117,9 +110,5 @@ class Event < ActiveRecord::Base
   def permalink_title
     formatted_started_at = started_at.to_date.to_s if started_at.present?
     [formatted_started_at, title].compact.join(" ")
-  end
-
-  def send_notifications
-    SlackService.notify(self) if Rails.env.production?
   end
 end

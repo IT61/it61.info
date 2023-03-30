@@ -23,9 +23,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    commit = @user.update_with_fresh(user_params) do
-      SlackService.invite(@user)
-    end
+    commit = @user.update_with_fresh(user_params)
 
     if commit
       flash[:notice] = t("flashes.profile_saved")

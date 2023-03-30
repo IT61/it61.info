@@ -161,16 +161,6 @@
   }
 }
 
-.slack {
-  &-rules {
-    margin-top: 20px;
-  }
-
-  &-logo {
-    @include widget-logo("slack.png");
-  }
-}
-
 .telegram {
   &-logo {
     @include widget-logo("telegram.png");

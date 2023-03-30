@@ -32,7 +32,6 @@ ru:
     events: "Мероприятия"
     users: "Личности"
     photos: "Фотографии"
-    slack: "Slack"
     welcome:
       title: Ростовское<br>IT-сообщество
       user_count:
@@ -45,11 +44,6 @@ ru:
         few: Мероприятия
         many: Мероприятий
       event_count_html: <br>организовано
-      slack_channels_count:
-        one: Канал
-        few: Канала
-        many: Каналов
-      slack_channels_count_html: <br>в Slack
       sign_in: Присоединяйся!
     about:
       link: О нас
@@ -82,7 +76,7 @@ ru:
         complete_registration: "Завершение регистрации"
         few_details: "Есть несколько тонкостей, которые не должны от вас ускользнуть:"
         specify_real_name: "Указывайте настоящие имя и фамилию на русском языке для удобства общения в чате"
-        specify_email_for_invite: "Важно! На указанный адрес будет отправлен инвайт для доступа в Slack"
+        specify_email_for_invite: "Важно! На указанный адрес будет отправлен инвайт"
         specify_phone_for_sms_reminders: "Будет использоваться для отправки напоминаний о мероприятиях, на которые Вы хотите пойти"
         submit: "Всё верно"
         fill_later: "Заполнить позже"
@@ -108,7 +102,7 @@ ru:
         upload_photo: "Загрузить фото"
         delete_photo: "Удалить фото"
       details_section:
-        phone_for_sms_reminders: "Телефон не отображается на сайте и не передается в Slack"
+        phone_for_sms_reminders: "Телефон не отображается на сайте"
       social_accounts_section:
         social_accounts: "Социальные сети"
         connected: "Подключенные"

@@ -2,7 +2,3 @@
 = active_link_to t("pages.users"), users_path, wrap_tag: :li
 /= active_link_to t("pages.photos"), photos_path, wrap_tag: :li
 = active_link_to t("pages.about.link"), about_path, wrap_tag: :li
-li = link_to Settings.community.link_to.slack, target: "_blank"
-  i.fa.fa-external-link
-  | &nbsp;
-  = t("pages.slack")
