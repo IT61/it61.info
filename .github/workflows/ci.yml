@@ -1,0 +1,47 @@
+---
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+env:
+  RAILS_ENV: test
+jobs:
+  test:
+    name: "Test"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rails db:prepare
+      - run: bundle exec rspec
+  rubocop:
+    name: "Lint / rubocop"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bin/rubocop
+  brakeman:
+    name: "Security / brakeman"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec brakeman --exit-on-warn --no-progress --color --output /dev/stdout
+  bundle-audit:
+    name: "Security / bundle-audit"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec bundle-audit check --update -v
