@@ -13,13 +13,8 @@ FactoryBot.define do
       role { :moderator }
     end
 
-    trait :oauth_user do
-      name { Faker::Name.name }
-      authentications { build_list :authentication, 1 }
-    end
-
     trait :with_reset_password_token do
-      reset_password_token { Sorcery::Model::TemporaryToken.generate_random_token }
+      reset_password_token { Devise.friendly_token }
     end
   end
 end

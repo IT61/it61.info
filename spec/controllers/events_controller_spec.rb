@@ -44,7 +44,7 @@ describe EventsController do
 
     describe "creating a new event" do
       context "with valid attributes" do
-        let(:event_attributes) { attributes_for_with_foreign_keys(:event) }
+        let(:event_attributes) { attributes_for(:event) }
 
         it "creates the event" do
           expect {
@@ -70,7 +70,7 @@ describe EventsController do
       end
 
       context "with invalid attributes" do
-        let(:event_attributes) { attributes_for_with_foreign_keys(:event, title: nil) }
+        let(:event_attributes) { attributes_for(:event, title: nil) }
         let(:invalid_place_attributes) { attributes_for(:place, title: nil) }
 
         it "does not save the new event" do
