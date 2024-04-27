@@ -200,7 +200,6 @@ GEM
     gravtastic (3.2.6)
     hashdiff (1.0.0)
     hashie (3.6.0)
-    high_voltage (3.1.2)
     httpclient (2.8.3)
     i18n (1.7.1)
       concurrent-ruby (~> 1.0)
@@ -529,7 +528,6 @@ DEPENDENCIES
   geocoder
   google-api-client (~> 0.36.4)
   gravtastic
-  high_voltage
   icalendar
   icheck-rails
   jquery-rails
