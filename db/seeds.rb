@@ -1,28 +1,51 @@
-# Places
-PLACES_SQL = %"
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (1, 'Рабочее пространство \"MESTO\"', 'улица Максима Горького, 151', 47.226894, 39.714285, '2016-08-25 12:11:41.806837', '2016-08-25 12:11:41.806837');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (2, 'Креативное пространство CreativeSpace.pro', 'улица Суворова, 52А', 47.225193, 39.728838, '2016-08-26 09:04:34.626668', '2016-08-26 09:04:34.626668');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (3, 'Южный IT-парк', 'улица Суворова, 91', 47.226796, 39.732746, '2016-08-26 09:05:08.291215', '2016-08-26 09:05:08.291215');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (4, 'Учебный Центр «Эксперт»', 'улица Станиславского, 167/25', 47.222415, 39.735054, '2016-08-26 09:05:57.700912', '2016-08-26 09:05:57.700912');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (5, 'Отель «Атташе»', 'проспект Соколова, 19', 47.223883, 39.72069, '2016-08-26 09:06:23.073808', '2016-08-26 09:06:23.073808');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (6, 'Конгресс-отель «Амакс»', 'проспект Михаила Нагибина, 19', 47.248779, 39.711851, '2016-08-26 09:07:06.816933', '2016-08-26 09:07:06.816933');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (7, 'ИФЖиМКК ЮФУ', 'Университетский переулок, 93', 47.226766, 39.726808, '2016-08-26 09:07:56.474912', '2016-08-26 09:07:56.474912');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (8, 'База отдыха «Казачок»', 'Очаковская коса', 47.031146, 39.099065, '2016-08-26 09:09:26.087182', '2016-08-26 09:09:26.087182');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (9, 'Конгресс-отель «Дон-Плаза»', 'Большая Садовая улица, 115', 47.226117, 39.734327, '2016-08-26 09:09:40.030728', '2016-08-26 09:09:40.030728');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (10, 'Офис «Game Insight»', 'Таганрог, Петровская улица, 26', 47.207964, 38.941527, '2016-08-26 09:10:05.032555', '2016-08-26 09:10:05.032555');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (11, 'ДГТУ, 7 корпус', 'площадь Гагарина, 1', 47.237412, 39.712632, '2016-08-26 09:12:13.254869', '2016-08-26 09:12:13.254869');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (12, 'Бизнс-центр «Оптима Ленд»', 'Таганрог, улица Москатова, 31/2', 47.257317, 38.911308, '2016-08-26 09:13:02.004318', '2016-08-26 09:13:02.004318');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (13, 'Свободное пространство «Циферблат»', 'проспект Соколова, 46', 47.225872, 39.720466, '2016-08-26 09:13:41.476870', '2016-08-26 09:13:41.476870');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (14, 'DobroCowork University', 'улица 16-я Линия, 7В', 47.231355, 39.759354, '2016-08-26 09:14:22.045622', '2016-08-26 09:14:22.045622');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (15, 'AZIMUT Hotel Sochi 3*', 'Сочи, Континентальный проспект, 6', 43.402584, 39.973099, '2016-08-26 09:14:48.345412', '2016-08-26 09:14:48.345412');
-INSERT INTO public.places (id, title, address, latitude, longitude, created_at, updated_at) VALUES (16, 'ДГТУ, Академия строительства и архитектуры', 'Социалистическая улица, 162/32', 47.223736, 39.732278, '2016-08-26 09:16:23.618108', '2016-08-26 09:16:23.618108');
-SELECT setval('places_id_seq', COALESCE((SELECT MAX(id)+1 FROM places), 1), false);
-"
-
-ActiveRecord::Base.transaction do
-  ActiveRecord::Base.connection.execute(PLACES_SQL)
-end
+Place.create!([
+                { title: 'Рабочее пространство "MESTO"', address: 'улица Максима Горького, 151', latitude: 47.226894, longitude: 39.714285, created_at: '2016-08-25 12:11:41.806837', updated_at: '2016-08-25 12:11:41.806837' },
+                { title: 'Креативное пространство CreativeSpace.pro', address: 'улица Суворова, 52А', latitude: 47.225193, longitude: 39.728838, created_at: '2016-08-26 09:04:34.626668', updated_at: '2016-08-26 09:04:34.626668' },
+                { title: 'Южный IT-парк', address: 'улица Суворова, 91', latitude: 47.226796, longitude: 39.732746, created_at: '2016-08-26 09:05:08.291215', updated_at: '2016-08-26 09:05:08.291215' },
+                { title: 'Учебный Центр «Эксперт»', address: 'улица Станиславского, 167/25', latitude: 47.222415, longitude: 39.735054, created_at: '2016-08-26 09:05:57.700912', updated_at: '2016-08-26 09:05:57.700912' },
+                { title: 'Отель «Атташе»', address: 'проспект Соколова, 19', latitude: 47.223883, longitude: 39.72069, created_at: '2016-08-26 09:06:23.073808', updated_at: '2016-08-26 09:06:23.073808' },
+                { title: 'Конгресс-отель «Амакс»', address: 'проспект Михаила Нагибина, 19', latitude: 47.248779, longitude: 39.711851, created_at: '2016-08-26 09:07:06.816933', updated_at: '2016-08-26 09:07:06.816933' },
+                { title: 'ИФЖиМКК ЮФУ', address: 'Университетский переулок, 93', latitude: 47.226766, longitude: 39.726808, created_at: '2016-08-26 09:07:56.474912', updated_at: '2016-08-26 09:07:56.474912' },
+                { title: 'База отдыха «Казачок»', address: 'Очаковская коса', latitude: 47.031146, longitude: 39.099065, created_at: '2016-08-26 09:09:26.087182', updated_at: '2016-08-26 09:09:26.087182' },
+                { title: 'Конгресс-отель «Дон-Плаза»', address: 'Большая Садовая улица, 115', latitude: 47.226117, longitude: 39.734327, created_at: '2016-08-26 09:09:40.030728', updated_at: '2016-08-26 09:09:40.030728' },
+                { title: 'Офис «Game Insight»', address: 'Таганрог, Петровская улица, 26', latitude: 47.207964, longitude: 38.941527, created_at: '2016-08-26 09:10:05.032555', updated_at: '2016-08-26 09:10:05.032555' },
+                { title: 'ДГТУ, 7 корпус', address: 'площадь Гагарина, 1', latitude: 47.237412, longitude: 39.712632, created_at: '2016-08-26 09:12:13.254869', updated_at: '2016-08-26 09:12:13.254869' },
+                { title: 'Бизнс-центр «Оптима Ленд»', address: 'Таганрог, улица Москатова, 31/2', latitude: 47.257317, longitude: 38.911308, created_at: '2016-08-26 09:13:02.004318', updated_at: '2016-08-26 09:13:02.004318' },
+                { title: 'Свободное пространство «Циферблат»', address: 'проспект Соколова, 46', latitude: 47.225872, longitude: 39.720466, created_at: '2016-08-26 09:13:41.476870', updated_at: '2016-08-26 09:13:41.476870' },
+                { title: 'DobroCowork University', address: 'улица 16-я Линия, 7В', latitude: 47.231355, longitude: 39.759354, created_at: '2016-08-26 09:14:22.045622', updated_at: '2016-08-26 09:14:22.045622' },
+                { title: 'AZIMUT Hotel Sochi 3*', address: 'Сочи, Континентальный проспект, 6', latitude: 43.402584, longitude: 39.973099, created_at: '2016-08-26 09:14:48.345412', updated_at: '2016-08-26 09:14:48.345412' },
+                { title: 'ДГТУ, Академия строительства и архитектуры', address: 'Социалистическая улица, 162/32', latitude: 47.223736, longitude: 39.732278, created_at: '2016-08-26 09:16:23.618108', updated_at: '2016-08-26 09:16:23.618108' },
+              ])
 
 # Groups
-Group.create!(name: "Разработчик IT61", kind: 1)
-Group.create!(name: "Команда IT61", kind: 2)
+Group.create!([
+                { name: "Разработчик IT61", kind: 1 },
+                { name: "Команда IT61", kind: 2 }
+              ])
+
+User.create!(email: 'user@it61.info.local', first_name: 'Река', last_name: 'Дон', role: User.roles[:member])
+
+Event.create!([
+                {
+                  description: 'Описание тестового события в прошлом',
+                  place: Place.first,
+                  title: 'Прошедшее событие',
+                  organizer: User.first,
+                  started_at: 1.week.ago,
+                  published: true,
+                  published_at: 2.weeks.ago,
+                  # TODO(vitallium): Move to fixtures?
+                  cover: Rack::Test::UploadedFile.new(File.join(Rails.root, "spec", "support", "files", "event_title_image.jpg"))
+                },
+                {
+                  description: 'Описание тестового события в будущем',
+                  place: Place.last,
+                  title: 'Будущее событие',
+                  organizer: User.first,
+                  started_at: 1.week.from_now,
+                  published: true,
+                  published_at: 1.day.ago,
+                  # TODO(vitallium): Move to fixtures?
+                  cover: Rack::Test::UploadedFile.new(File.join(Rails.root, "spec", "support", "files", "event_title_image.jpg"))
+                },
+              ])
