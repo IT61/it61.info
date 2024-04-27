@@ -24,3 +24,4 @@ config/environments/*.local.yml
 
 docker/.bundle
 .env.development.local
+/db/postgresql
