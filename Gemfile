@@ -64,7 +64,6 @@ group :development do
   gem "active_record_query_trace", require: false
   gem "listen"
   gem "meta_request"
-  gem "solargraph", require: false
 end
 
 group :development, :test do
