@@ -1,4 +1,4 @@
-FROM ruby:2.6.5-alpine3.9
+FROM ruby:2.7.8-alpine
 
 RUN apk update && apk upgrade && \
   apk add --no-cache bash git openssh \
