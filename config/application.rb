@@ -13,6 +13,9 @@ Bundler.require(*Rails.groups)
 
 module It61
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.0
+
     config.app_generators.scaffold_controller :responders_controller
 
     config.eager_load_paths += ["#{Rails.root}/lib"]
@@ -22,7 +25,9 @@ module It61
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.action_view.raise_on_missing_translations = true
 
-    config.assets.paths << Rails.root.join("vendor", "assets", "components")
+    config.i18n.available_locales = [:en, :ru]
+    config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
+    config.i18n.default_locale = :ru
 
     config.time_zone = ENV.fetch("TIME_ZONE", "Europe/Moscow")
   end
