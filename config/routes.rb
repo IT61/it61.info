@@ -1,9 +1,3 @@
-class ActionDispatch::Routing::Mapper
-  def draw(routes_name)
-    instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
-  end
-end
-
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth",
@@ -38,12 +32,37 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:index]
 
-  draw :events
-  draw :places
+  resources :events do
+    scope module: :events do
+      resources :attendees, only: [:create, :destroy, :index]
+    end
+
+    collection do
+      get :past
+      get :unpublished
+      get :upcoming
+    end
+
+    member do
+      get :ics
+      put :publish
+      put :unpublish
+    end
+  end
+
+  resources :places, only: [:index] do
+    get :find, to: "places#find", on: :collection
+  end
 
   get :feed, to: "events#feed", defaults: { format: 'rss' }
 
-  draw :admin
+  namespace :admin do
+    root "users#index"
+
+    resources :users
+    resources :places
+    resources :events
+  end
 
   root "pages#welcome"
 
