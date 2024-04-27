@@ -11,9 +11,6 @@ community:
       - [46.061107, 37.603739]
       - [49.073023, 42.767521]
 
-  # For parsing instagram photos
-  instagram_hashtag: "it61"
-
   # Footer links
   link_to:
     vk: "https://vk.com/it_61"
@@ -21,7 +18,6 @@ community:
     github: "https://github.com/orgs/IT61"
     youtube: "https://www.youtube.com/channel/UC63xTveSry1vvpWbM877K9Q"
     twitter: "https://twitter.com/it_rostov"
-    instagram: "https://www.instagram.com/rostovcommunity"
     telegram: "https://t.me/it61_events"
     telegram_talks: "https://t.me/it_61"
 

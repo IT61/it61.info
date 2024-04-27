@@ -30,8 +30,6 @@ Rails.application.routes.draw do
     resource :avatars, only: [:create, :destroy], controller: "users/avatars"
   end
 
-  resources :photos, only: [:index]
-
   resources :events do
     scope module: :events do
       resources :attendees, only: [:create, :destroy, :index]
