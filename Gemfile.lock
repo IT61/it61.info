@@ -256,7 +256,6 @@ GEM
     multi_json (1.14.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
-    nakayoshi_fork (0.0.4)
     neat (1.7.4)
       bourbon (>= 4.0)
       sass (>= 3.3)
@@ -537,7 +536,6 @@ DEPENDENCIES
   meta-tags
   meta_request
   mini_magick
-  nakayoshi_fork
   neat (~> 1.7.0)
   nenv
   nokogiri
