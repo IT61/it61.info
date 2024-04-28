@@ -4,7 +4,7 @@ ruby "2.7.8"
 
 gem "active_link_to"
 gem "autoprefixer-rails"
-gem "bourbon", "6.0.0"
+gem "bourbon", "7.3.0"
 gem "carrierwave", "~> 2.2.6"
 gem "carrierwave-base64"
 gem "cancancan"
