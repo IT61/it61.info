@@ -53,9 +53,9 @@ gem "rack-mini-profiler", require: false
 gem "stackprof", require: false, platform: :mri
 
 source "https://rails-assets.org" do
-  gem "rails-assets-cropper"
-  gem "rails-assets-smartcrop"
-  gem "rails-assets-listjs"
+  gem "rails-assets-cropper", "~> 2.3"
+  gem "rails-assets-smartcrop", "~> 1.1"
+  gem "rails-assets-listjs", "~> 1.5"
 end
 
 group :development do
