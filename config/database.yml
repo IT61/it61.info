@@ -1,18 +1,18 @@
+---
 default: &default
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   min_messages: warning
   pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
-  reaping_frequency: <%= Integer(ENV.fetch("DB_REAPING_FREQUENCY", 10)) %>
   timeout: 5000
 
 development:
   <<: *default
-  url: it61_development
+  database: it61_development
 
 test:
   <<: *default
-  url: it61_test
+  database: it61_test
 
 production:
   encoding: utf8
