@@ -13,22 +13,22 @@ class Ability
 
   def give_fresh_privileges(user, persisted_in_db)
     if persisted_in_db
-      can [:edit, :update, :destroy], user
+      can [ :edit, :update, :destroy ], user
     end
 
-    can [:read, :active, :recent], User
-    can [:read, :upcoming, :past, :ics], Event, published: true
+    can [ :read, :active, :recent ], User
+    can [ :read, :upcoming, :past, :ics ], Event, published: true
   end
 
   def give_mature_privileges(user, persisted_in_db)
     if persisted_in_db
-      can [:create], Event
-      can [:attend, :leave], Event, published: true
+      can [ :create ], Event
+      can [ :attend, :leave ], Event, published: true
       can :find, Place
-      can [:profile, :edit, :settings, :settings_update], User, id: user.id
-      can [:read, :edit, :update, :destroy], Event, organizer_id: user.id
-      can [:create, :destroy], :attendee
-      can [:index], attendee: { event: { organizer_id: user.id } }
+      can [ :profile, :edit, :settings, :settings_update ], User, id: user.id
+      can [ :read, :edit, :update, :destroy ], Event, organizer_id: user.id
+      can [ :create, :destroy ], :attendee
+      can [ :index ], attendee: { event: { organizer_id: user.id } }
     end
 
     if user.moderator?

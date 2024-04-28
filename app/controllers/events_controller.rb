@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  respond_to :json, only: [:create]
+  respond_to :json, only: [ :create ]
   respond_to :ics, only: :ics
   respond_to :rss, only: :feed
 
@@ -144,10 +144,10 @@ class EventsController < ApplicationController
         :title,
         :address,
         :latitude,
-        :longitude,
+        :longitude
       ],
       has_attendees_limit: [],
-      attendees_limit: [],
+      attendees_limit: []
     ]
   end
 end

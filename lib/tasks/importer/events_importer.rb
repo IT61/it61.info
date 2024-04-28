@@ -3,13 +3,13 @@ module EventsImporter
 
   FIELDS_TO_SKIP = [
     "published_to_google_calendar",
-    "google_calendar_id",
+    "google_calendar_id"
   ].freeze
 
   PREDEFINED_PLACES = [
     { key: "Южный IT-парк", id: 3 },
     { key: "MESTO", id: 2 },
-    { key: "Место", id: 2 },
+    { key: "Место", id: 2 }
   ]
 
   def import_events

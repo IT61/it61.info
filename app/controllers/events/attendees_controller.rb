@@ -1,6 +1,6 @@
 class Events::AttendeesController < ApplicationController
   respond_to :html
-  respond_to :csv, only: [:index]
+  respond_to :csv, only: [ :index ]
   load_and_authorize_resource :event
   authorize_resource class: false
   skip_authorize_resource only: :index

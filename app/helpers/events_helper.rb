@@ -4,11 +4,11 @@ module EventsHelper
   end
 
   def quoted_title(event)
-    ["&laquo;", event.title, "&raquo;"].join
+    [ "&laquo;", event.title, "&raquo;" ].join
   end
 
   def summary_info(event)
-    [quoted_title(event), event.place.full_address, l(event.started_at, format: :date_time_full)].compact.join("<br>")
+    [ quoted_title(event), event.place.full_address, l(event.started_at, format: :date_time_full) ].compact.join("<br>")
   end
 
   def make_global(link)
@@ -37,7 +37,7 @@ module EventsHelper
   def to_yandex_location(place)
     {
       addressLine: place.full_address,
-      coordinates: [place.latitude, place.longitude],
+      coordinates: [ place.latitude, place.longitude ]
     }.to_json
   end
 end

@@ -14,7 +14,7 @@ Place.create!([
                 { title: 'Свободное пространство «Циферблат»', address: 'проспект Соколова, 46', latitude: 47.225872, longitude: 39.720466, created_at: '2016-08-26 09:13:41.476870', updated_at: '2016-08-26 09:13:41.476870' },
                 { title: 'DobroCowork University', address: 'улица 16-я Линия, 7В', latitude: 47.231355, longitude: 39.759354, created_at: '2016-08-26 09:14:22.045622', updated_at: '2016-08-26 09:14:22.045622' },
                 { title: 'AZIMUT Hotel Sochi 3*', address: 'Сочи, Континентальный проспект, 6', latitude: 43.402584, longitude: 39.973099, created_at: '2016-08-26 09:14:48.345412', updated_at: '2016-08-26 09:14:48.345412' },
-                { title: 'ДГТУ, Академия строительства и архитектуры', address: 'Социалистическая улица, 162/32', latitude: 47.223736, longitude: 39.732278, created_at: '2016-08-26 09:16:23.618108', updated_at: '2016-08-26 09:16:23.618108' },
+                { title: 'ДГТУ, Академия строительства и архитектуры', address: 'Социалистическая улица, 162/32', latitude: 47.223736, longitude: 39.732278, created_at: '2016-08-26 09:16:23.618108', updated_at: '2016-08-26 09:16:23.618108' }
               ])
 
 # Groups
@@ -47,5 +47,5 @@ Event.create!([
                   published_at: 1.day.ago,
                   # TODO(vitallium): Move to fixtures?
                   cover: Rack::Test::UploadedFile.new(File.join(Rails.root, "spec", "support", "files", "event_title_image.jpg"))
-                },
+                }
               ])

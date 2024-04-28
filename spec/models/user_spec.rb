@@ -72,21 +72,21 @@ RSpec.describe User, type: :model do
       it { should have_abilities(:upcoming, Event) }
       it { should have_abilities(:past, Event) }
 
-      it { should_not have_abilities([:edit, :update, :destroy], user) }
-      it { should_not have_abilities([:edit, :update, :destroy], event) }
-      it { should_not have_abilities([:edit, :update, :destroy], published_event) }
-      it { should_not have_abilities([:read], event) }
+      it { should_not have_abilities([ :edit, :update, :destroy ], user) }
+      it { should_not have_abilities([ :edit, :update, :destroy ], event) }
+      it { should_not have_abilities([ :edit, :update, :destroy ], published_event) }
+      it { should_not have_abilities([ :read ], event) }
     end
 
     context "when is an authorized user" do
       let! (:user) { create(:user) }
       it { should have_abilities(:read, User.new) }
       # manage himself
-      it { should have_abilities([:edit, :update, :destroy], user) }
-      it { should have_abilities([:attend, :leave], published_event) }
+      it { should have_abilities([ :edit, :update, :destroy ], user) }
+      it { should have_abilities([ :attend, :leave ], published_event) }
 
-      it { should_not have_abilities([:read, :edit, :update, :destroy], event) }
-      it { should_not have_abilities([:attend, :leave], event) }
+      it { should_not have_abilities([ :read, :edit, :update, :destroy ], event) }
+      it { should_not have_abilities([ :attend, :leave ], event) }
     end
 
     context "when is a moderator" do
@@ -110,7 +110,7 @@ RSpec.describe User, type: :model do
       let!(:user) { create(:user) }
       let!(:event) { create(:event, organizer: user) }
 
-      it { should have_abilities([:read, :edit, :update, :destroy], event) }
+      it { should have_abilities([ :read, :edit, :update, :destroy ], event) }
 
       it { should_not have_abilities(:publish, event) }
     end
@@ -124,20 +124,19 @@ RSpec.describe User, type: :model do
     context 'with the connected GitHub social account' do
       let!(:github_account) { create(:social_account, :github, user: user) }
 
-      it { is_expected.to eq([github_account]) }
+      it { is_expected.to eq([ github_account ]) }
     end
   end
 
   describe ".unlinked_social_providers" do
     subject(:unlinked_social_providers) { user.unlinked_social_providers }
 
-    it { is_expected.to eq(["github", "vkontakte", "google_oauth2"]) }
+    it { is_expected.to eq([ "github", "vkontakte", "google_oauth2" ]) }
 
     context 'with the connected GitHub social account' do
       let!(:github_account) { create(:social_account, user: user) }
 
-      it { is_expected.to eq(["github", "google_oauth2"]) }
+      it { is_expected.to eq([ "github", "google_oauth2" ]) }
     end
   end
-
 end

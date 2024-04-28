@@ -17,13 +17,13 @@ module It61
 
     config.app_generators.scaffold_controller :responders_controller
 
-    config.eager_load_paths += ["#{Rails.root}/lib"]
+    config.eager_load_paths += [ "#{Rails.root}/lib" ]
 
     config.exceptions_app = self.routes
 
     config.action_controller.action_on_unpermitted_parameters = :raise
 
-    config.i18n.available_locales = [:en, :ru]
+    config.i18n.available_locales = [ :en, :ru ]
     config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
     config.i18n.default_locale = :ru
 

@@ -8,6 +8,6 @@ class CreatePlaces < ActiveRecord::Migration[5.0]
       t.timestamps null: false
     end
 
-    add_index :places, [:title, :address, :latitude, :longitude], unique: true
+    add_index :places, [ :title, :address, :latitude, :longitude ], unique: true
   end
 end

@@ -10,7 +10,7 @@ class Importer
     { table: "users", reset: true },
     { table: "social_accounts", reset: true },
     { table: "events", reset: true },
-    { table: "events_attendees", reset: true },
+    { table: "events_attendees", reset: true }
   ].freeze
 
   def initialize(old_db, new_db)

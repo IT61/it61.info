@@ -1,10 +1,9 @@
 module ApplicationHelper
-
   def default_meta_image
     {
       _: asset_url("share.png"),
       width: 1200,
-      height: 630,
+      height: 630
     }
   end
 
@@ -22,15 +21,15 @@ module ApplicationHelper
         url: root_url,
         locale: "ru_RU",
         type: "website",
-        image: default_meta_image,
+        image: default_meta_image
       },
       twitter: {
         image: asset_url("share.png"),
         card: "summary_large_image",
         site: "it_rostov",
         title: :title,
-        description: :description,
-      },
+        description: :description
+      }
     }
   end
 

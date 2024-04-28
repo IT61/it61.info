@@ -7,6 +7,6 @@ class CreateEventsAttendees < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :events_attendees, [:user_id, :event_id], unique: true
+    add_index :events_attendees, [ :user_id, :event_id ], unique: true
   end
 end

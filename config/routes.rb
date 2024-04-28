@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniauth",
+    omniauth_callbacks: "users/omniauth"
   }
 
   devise_scope :user do
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   # Static pages
-  %w(welcome about).each do |page_name|
+  %w[welcome about].each do |page_name|
     get page_name, to: "pages##{page_name}"
   end
 
@@ -27,12 +27,12 @@ Rails.application.routes.draw do
       get :active
       get :recent
     end
-    resource :avatars, only: [:create, :destroy], controller: "users/avatars"
+    resource :avatars, only: [ :create, :destroy ], controller: "users/avatars"
   end
 
   resources :events do
     scope module: :events do
-      resources :attendees, only: [:create, :destroy, :index]
+      resources :attendees, only: [ :create, :destroy, :index ]
     end
 
     collection do
@@ -48,11 +48,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :places, only: [:index] do
+  resources :places, only: [ :index ] do
     get :find, to: "places#find", on: :collection
   end
 
-  get :feed, to: "events#feed", defaults: { format: 'rss' }
+  get :feed, to: "events#feed", defaults: { format: "rss" }
 
   namespace :admin do
     root "users#index"

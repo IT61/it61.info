@@ -2,7 +2,7 @@ namespace :db do
   require File.dirname(__FILE__) + "/importer/importer"
 
   desc "Assigns developers to Developer group, usage: rake db:seed:users['data_file']"
-  task :users, [:data_file] => :environment do |_t, args|
+  task :users, [ :data_file ] => :environment do |_t, args|
     if args.data_file.blank? || !File.exist?(args.data_file)
       raise "Data file can't be empty"
     end

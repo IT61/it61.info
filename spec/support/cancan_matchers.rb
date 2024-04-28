@@ -30,14 +30,14 @@ RSpec::Matchers.define :have_abilities do |actions, obj|
 
   description do
     obj_name = @obj.class.name
-    obj_name = @obj.to_s.capitalize if [Class, Module, Symbol].
+    obj_name = @obj.to_s.capitalize if [ Class, Module, Symbol ].
                                        include?(@obj.class)
     "have abilities #{@expected_hash.keys.join(', ')} on #{obj_name}"
   end
 
   failure_message do
     obj_name = @obj.class.name
-    obj_name = @obj.to_s.capitalize if [Class, Module, Symbol].
+    obj_name = @obj.to_s.capitalize if [ Class, Module, Symbol ].
                                        include?(@obj.class)
     "expected user to have abilities: #{@expected_hash} for " \
       "#{obj_name}, but got #{@actual_hash}"
@@ -64,7 +64,7 @@ RSpec::Matchers.define :not_have_abilities do |actions, obj|
 
   description do
     obj_name = @obj.class.name
-    obj_name = @obj.to_s.capitalize if [Class, Module, Symbol].
+    obj_name = @obj.to_s.capitalize if [ Class, Module, Symbol ].
                                        include?(@obj.class)
     "not have abilities #{@expected_hash.keys.join(', ')} " \
       "on #{obj_name}" if @expected_hash.present?
@@ -72,7 +72,7 @@ RSpec::Matchers.define :not_have_abilities do |actions, obj|
 
   failure_message do
     obj_name = @obj.class.name
-    obj_name = @obj.to_s.capitalize if [Class, Module, Symbol].
+    obj_name = @obj.to_s.capitalize if [ Class, Module, Symbol ].
                                        include?(@obj.class)
     "expected user NOT to have abilities #{@expected_hash.keys.join(', ')} " \
         "for #{obj_name}, but got #{@actual_hash}"

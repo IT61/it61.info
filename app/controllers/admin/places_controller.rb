@@ -21,7 +21,7 @@ module Admin
         :address,
         :title,
         :latitude,
-        :longitude,
+        :longitude
       ]
       params.require(:place).permit(*attributes)
     end

@@ -8,12 +8,12 @@ class User < ApplicationRecord
   enum role: {
     member: 0,
     admin: 1,
-    moderator: 2,
+    moderator: 2
   }
 
   # Devise modules
   devise :rememberable, :trackable, :omniauthable,
-         omniauth_providers: [:github, :facebook, :google_oauth2, :vkontakte]
+         omniauth_providers: [ :github, :facebook, :google_oauth2, :vkontakte ]
 
   has_many :events_attendees, dependent: :destroy
   has_many :social_accounts, dependent: :destroy
@@ -74,10 +74,10 @@ class User < ApplicationRecord
   end
 
   def self.to_csv
-    attributes = %w{last_name first_name}
+    attributes = %w[last_name first_name]
 
     CSV.generate(headers: true) do |csv|
-      csv << ["Фамилия", "Имя", "Отметка"]
+      csv << [ "Фамилия", "Имя", "Отметка" ]
 
       all.each do |user|
         csv << attributes.map { |attr| user.send(attr) }
@@ -98,7 +98,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    [first_name, last_name].compact.join(" ").presence || name
+    [ first_name, last_name ].compact.join(" ").presence || name
   end
 
   def remember_me

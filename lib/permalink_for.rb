@@ -3,7 +3,7 @@ module PermalinkFor
 
   PERMALINK_TYPES = {
     slug: SlugImplementation,
-    pretty: PrettyImplementation,
+    pretty: PrettyImplementation
   }.freeze
 
   class_methods do

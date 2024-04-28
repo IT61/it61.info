@@ -22,7 +22,7 @@ module Admin
         :first_name,
         :last_name,
         :phone,
-        :role,
+        :role
       ]
       params.require(:user).permit(*attributes)
     end

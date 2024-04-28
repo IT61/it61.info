@@ -6,6 +6,6 @@ class Group < ApplicationRecord
   enum kind: {
     general: 0,
     developers: 1,
-    organizers: 2,
+    organizers: 2
   }
 end

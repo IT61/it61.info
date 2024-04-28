@@ -1,7 +1,7 @@
 module Users
   class AvatarsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_user, only: [:create, :update, :destroy]
+    before_action :set_user, only: [ :create, :update, :destroy ]
     before_action :check_if_same_user_or_admin
 
     def create

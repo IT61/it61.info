@@ -25,7 +25,7 @@ if defined?(Rack::MiniProfiler)
     /^\/uploads/,
     /^\/javascripts\//,
     /^\/images\//,
-    /^\/stylesheets\//,
+    /^\/stylesheets\//
   ]
 
   # we DO NOT WANT mini-profiler loading on anything but real desktops and laptops

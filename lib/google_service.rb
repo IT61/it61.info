@@ -34,11 +34,11 @@ class GoogleService
       location: event.place.full_address,
       description: event.description? ? "" : event.description,
       start: {
-        dateTime: event.started_at.iso8601,
+        dateTime: event.started_at.iso8601
       },
       end: {
-        dateTime: event.started_at.iso8601,
-      },
+        dateTime: event.started_at.iso8601
+      }
     }
   end
 end

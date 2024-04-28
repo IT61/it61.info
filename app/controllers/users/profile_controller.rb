@@ -1,9 +1,9 @@
 module Users
   class ProfileController < ApplicationController
-    before_action :authenticate_user!, except: [:sign_in]
-    before_action :set_user, only: [:profile, :settings, :settings_update, :edit]
+    before_action :authenticate_user!, except: [ :sign_in ]
+    before_action :set_user, only: [ :profile, :settings, :settings_update, :edit ]
 
-    authorize_resource class: User, except: [:sign_in, :sign_up_complete]
+    authorize_resource class: User, except: [ :sign_in, :sign_up_complete ]
 
     def sign_in; end
 

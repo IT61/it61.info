@@ -8,7 +8,7 @@ module PermalinkFor
         {
           presence: true,
           uniqueness: true,
-          format: { with: /\A[a-z0-9_-]+\Z/ },
+          format: { with: /\A[a-z0-9_-]+\Z/ }
         }
       end
     end

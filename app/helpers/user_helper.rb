@@ -13,26 +13,26 @@ module UserHelper
         name: t("socials.facebook"),
         class: "fa fa-facebook",
         buttonclass: "btn btn-fb",
-        link: user_facebook_omniauth_authorize_path,
+        link: user_facebook_omniauth_authorize_path
       },
       google_oauth2: {
         name: t("socials.google_plus"),
         class: "fa fa-google-plus",
         buttonclass: "btn btn-google",
-        link: user_google_oauth2_omniauth_authorize_path,
+        link: user_google_oauth2_omniauth_authorize_path
       },
       vkontakte: {
         name: t("socials.vk"),
         class: "fa fa-vk",
         buttonclass: "btn btn-vk",
-        link: user_vkontakte_omniauth_authorize_path,
+        link: user_vkontakte_omniauth_authorize_path
       },
       github: {
         name: t("socials.github"),
         class: "fa fa-github",
         buttonclass: "btn btn-github",
-        link: user_github_omniauth_authorize_path,
-      },
+        link: user_github_omniauth_authorize_path
+      }
     }
   end
 
@@ -43,7 +43,7 @@ module UserHelper
       provider = a.provider.to_sym
       link = a.link
       button_class = all_providers[provider][:class]
-      res[provider] = [link, button_class] unless link.nil?
+      res[provider] = [ link, button_class ] unless link.nil?
     end
     res
   end

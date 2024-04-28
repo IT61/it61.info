@@ -5,6 +5,6 @@ class Place < ApplicationRecord
   validates :title, presence: true
 
   def full_address
-    [address, title].compact.reject(&:empty?).join(", ")
+    [ address, title ].compact.reject(&:empty?).join(", ")
   end
 end

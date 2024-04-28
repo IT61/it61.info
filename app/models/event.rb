@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
   validates :organizer, presence: true
   validates :published_at, presence: true, if: :published?
   validates :started_at, presence: true
-  validates :has_attendees_limit, inclusion: { in: [true, false] }
+  validates :has_attendees_limit, inclusion: { in: [ true, false ] }
   validates :attendees_limit, presence: true, numericality: { greater_than_or_equal_to: -1 }
 
   delegate :title, :address, :latitude, :longitude, to: :place, prefix: true, allow_nil: true
@@ -93,15 +93,15 @@ class Event < ActiveRecord::Base
         url: Rails.application.routes.url_helpers.event_url(self, host: ENV["APPLICATION_HOST"]),
         locale: "ru_RU",
         type: "website",
-        image: cover.url,
+        image: cover.url
       },
       twitter: {
         image: cover.url,
         card: "summary_large_image",
         site: "it_rostov",
         title: :title,
-        description: :description,
-      },
+        description: :description
+      }
     }
   end
 
@@ -109,6 +109,6 @@ class Event < ActiveRecord::Base
 
   def permalink_title
     formatted_started_at = started_at.to_date.to_s if started_at.present?
-    [formatted_started_at, title].compact.join(" ")
+    [ formatted_started_at, title ].compact.join(" ")
   end
 end

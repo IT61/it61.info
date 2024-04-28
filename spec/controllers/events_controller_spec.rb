@@ -107,7 +107,7 @@ describe EventsController do
 
         expect(response.status).to eq(200)
         expect(response).to render_template(:index)
-        expect(assigns(:events)).to eq([event])
+        expect(assigns(:events)).to eq([ event ])
       end
     end
 

@@ -12,7 +12,7 @@ class IcsService
         e.summary = event.title
         e.description = event.description
         e.location = place.full_address
-        e.geo = [place.latitude, place.longitude]
+        e.geo = [ place.latitude, place.longitude ]
       end
 
       calendar.publish
@@ -22,7 +22,7 @@ class IcsService
     def file_options_for(event)
       {
         filename: filename(event),
-        type: ics_type,
+        type: ics_type
       }
     end
 

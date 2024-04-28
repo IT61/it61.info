@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :destroy]
+  before_action :authenticate_user!, only: [ :edit, :destroy ]
 
   respond_to :html
   load_and_authorize_resource
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
       :email,
       :phone,
       :hash_tag,
-      :bio,
+      :bio
     ]
 
     params.require(:user).permit(*user_attributes)
