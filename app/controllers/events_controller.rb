@@ -66,16 +66,6 @@ class EventsController < ApplicationController
     scoped(:upcoming)
   end
 
-  def add
-    success = GoogleService.add_event_to_calendar(current_user, @event)
-
-    if success
-      redirect_to @event, notice: t("flashes.event_successfully_added_to_google_calendar")
-    else
-      redirect_to @event, error: t("flashes.event_failure_to_add_to_google_calendar")
-    end
-  end
-
   def ics
     send_data @event.to_ical, @event.ical_options
   end

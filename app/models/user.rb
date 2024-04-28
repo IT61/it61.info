@@ -114,10 +114,6 @@ class User < ApplicationRecord
     not (member_in_events.empty? && owner_of_events.empty?)
   end
 
-  def has_google_refresh_token?
-    !google_refresh_token.blank?
-  end
-
   def can_fill_entry_form?(event)
     event.has_closed_registration? || event.user_participated?(self)
   end

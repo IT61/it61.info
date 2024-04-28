@@ -16,12 +16,6 @@ module Users
 
     def google_oauth2
       oauth_for "Google"
-
-      if user_signed_in?
-        current_user.update_attributes(
-          google_refresh_token: request.env["omniauth.auth"]["credentials"]["refresh_token"]
-        )
-      end
     end
 
     def vkontakte

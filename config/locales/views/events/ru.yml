@@ -14,7 +14,6 @@ ru:
     show:
       event_still_not_published: "Мероприятие ещё не опубликовано."
       event_published: "Мероприятие опубликовано"
-      event_add_to_google_calendar: "+ Google calendar"
       download_ics_file: "Скачать ICS"
       description: "Описание"
       participants: "Участники (%{count})"
