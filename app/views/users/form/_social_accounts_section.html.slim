@@ -1,7 +1,7 @@
 h3 = t(".social_accounts")
 
 .outer
-  .social-container.full
+  .social-container
     .social-label = t(".connected")
     - user.linked_social_accounts.each do |social_account|
       - info = all_providers[social_account.provider.to_sym]
@@ -9,14 +9,14 @@ h3 = t(".social_accounts")
         i class=(info[:class])
         span = info[:name]
 
-  .social-container.full
+  .social-container
     .social-label
       = t("add")
 
     - user.unlinked_social_providers.each do |provider|
       - info = all_providers[provider.to_sym]
 
-      = form_with url: info[:link], method: :post do |f|
-        = f.button nil, type: :submit, class: info[:buttonclass], target: "_blank" do
+      = form_with url: info[:link], method: :post do
+        = button_tag nil, type: :submit, class: info[:buttonclass], target: "_blank" do
           i class="#{info[:class]}"
           span = info[:name]

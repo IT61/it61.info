@@ -1,6 +1,7 @@
-.half, .full {
+.half,
+.full {
   @include media($mobile-viewport) {
-    margin: .5em 0;
+    margin: 0.5em 0;
   }
 }
 
@@ -52,7 +53,6 @@
     }
 
     .edit-picture-buttons {
-
       input {
         display: none;
       }
@@ -63,11 +63,11 @@
 
       > .btn {
         @include media($mobile-viewport) {
-          margin: .3em 0;
+          margin: 0.3em 0;
         }
         padding: 1em 1em;
         width: 100%;
-        margin: .5em 0;
+        margin: 0.5em 0;
         text-align: center;
       }
 
@@ -113,8 +113,16 @@
     .social-container {
       width: 100%;
       margin: 1em 0;
+      display: flex;
+      align-content: center;
+      gap: 0.5rem;
+
+      @include media($mobile-viewport) {
+        flex-direction: column;
+      }
 
       .social-label {
+        align-content: center;
         @include media($mobile-viewport) {
           width: 100%;
           font-size: 1.2em;
@@ -123,15 +131,15 @@
         }
         width: 8em;
         font-size: 1em;
-        display: inline-block;
       }
 
-      > .btn {
+      .btn {
         @include media($mobile-viewport) {
-          margin: .2em 30% .2em 0;
+          margin: 0.2em 30% 0.2em 0;
+          width: 100%;
         }
-        margin: 0 .2em;
-        padding: .5em 1.2em;
+        margin: 0 0.2em;
+        padding: 0.5em 1.2em;
         width: 10em;
         outline: none;
         text-align: center;
@@ -143,7 +151,7 @@
         .fa {
           font-size: 1.5em;
           vertical-align: middle;
-          margin-right: .3em;
+          margin-right: 0.3em;
         }
       }
     }

@@ -21,8 +21,7 @@ module Users
 
     # rubocop:disable Metrics/AbcSize
     def settings_update
-      commit = current_user.update_attributes subscribe_params
-      if commit
+      if current_user.update(subscribe_params)
         flash[:success] = t("flashes.profile_settings_saved")
         redirect_to profile_settings_path
       else

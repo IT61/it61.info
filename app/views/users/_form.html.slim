@@ -3,10 +3,11 @@ h1.my-profile = form_header
   .image-container
     = render partial: "users/form/image_upload_section", locals: { user: user }
     = render partial: "application/cropper_modal", locals: { object: user, picture: user.avatar.url }
-  = form_for user do |f|
+  = form_for(user) do |f|
     = render partial: "users/form/details_section", locals: { f: f, user: user }
     .bottom-container
       = render partial: "users/form/biography_section", locals: { f: f, user: user }
-      = render partial: "users/form/social_accounts_section", locals: { f: f, user: user }
     .edit-profile-bottom-buttons
-      button.btn.btn-blue type="submit" = t("save")
+      = f.submit t("save"), class: "btn btn-blue"
+  .bottom-container
+    = render partial: "users/form/social_accounts_section", locals: { user: user }
