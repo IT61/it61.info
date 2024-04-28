@@ -1,4 +1,4 @@
-FROM ruby:2.7.8
+FROM ruby:3.3.1
 
 ENV APP_PATH=/app \
     BUNDLE_PATH=/gems
