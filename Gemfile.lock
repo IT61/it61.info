@@ -444,6 +444,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    seedbank (0.5.0)
+      rake (>= 10.0)
     shoulda-callback-matchers (1.1.4)
       activesupport (>= 3)
     shoulda-matchers (6.2.0)
@@ -568,6 +570,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   russian
   sass-rails (~> 6.0)
+  seedbank (~> 0.5)
   shoulda-callback-matchers
   shoulda-matchers
   simplecov

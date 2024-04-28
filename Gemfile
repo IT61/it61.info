@@ -59,6 +59,7 @@ end
 group :development do
   gem "active_record_query_trace", require: false
   gem "listen"
+  gem "seedbank", "~> 0.5"
 end
 
 group :development, :test do
