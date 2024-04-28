@@ -39,7 +39,7 @@ class User < ApplicationRecord
   scope :active, -> { order(last_sign_in_at: :desc) }
   scope :recent, -> { order(created_at: :desc) }
   scope :with_name, -> { where("(first_name is not null and last_name is not null) or name is not null") }
-  scope :presentable, -> { active.with_name.order("nullif(avatar, '') desc nulls last") }
+  scope :presentable, -> { active.with_name.order(created_at: :desc) }
   scope :team, -> { joins(:groups).where("groups.kind = 2") }
   scope :developers, -> { joins(:groups).where("groups.kind = 1") }
   scope :organized_events, -> { joins(:events).where("organizer_id", self.id).ordered_desc }

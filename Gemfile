@@ -31,7 +31,7 @@ gem "pg"
 gem "phony_rails"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 6"
+gem "rails", "~> 6.1"
 gem "rails-i18n"
 gem "recipient_interceptor"
 gem "redcarpet", "~> 3.5.1"
@@ -61,7 +61,6 @@ end
 group :development do
   gem "active_record_query_trace", require: false
   gem "listen"
-  gem "meta_request"
 end
 
 group :development, :test do

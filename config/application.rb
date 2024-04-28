@@ -13,7 +13,7 @@ Bundler.require(*Rails.groups)
 
 module It61
   class Application < Rails::Application
-    config.load_defaults 6.0
+    config.load_defaults 6.1
 
     config.app_generators.scaffold_controller :responders_controller
 
@@ -22,7 +22,6 @@ module It61
     config.exceptions_app = self.routes
 
     config.action_controller.action_on_unpermitted_parameters = :raise
-    config.action_view.raise_on_missing_translations = true
 
     config.i18n.available_locales = [:en, :ru]
     config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
