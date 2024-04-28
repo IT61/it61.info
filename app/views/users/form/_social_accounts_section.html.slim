@@ -1,14 +1,22 @@
 h3 = t(".social_accounts")
+
 .outer
   .social-container.full
     .social-label = t(".connected")
-    - linked_providers(user).each do |_provider, info|
+    - user.linked_social_accounts.each do |social_account|
+      - info = all_providers[social_account.provider.to_sym]
       = link_to "#", class: info[:buttonclass] do
         i class=(info[:class])
         span = info[:name]
+
   .social-container.full
-    .social-label = t("add")
-    - not_linked_providers(user).each do |_, info|
-      = link_to info[:link], class: info[:buttonclass].to_s, target: "_blank" do
-        i class="#{info[:class]}"
-        span = info[:name]
+    .social-label
+      = t("add")
+
+    - user.unlinked_social_providers.each do |provider|
+      - info = all_providers[provider.to_sym]
+
+      = form_with url: info[:link], method: :post do |f|
+        = f.button nil, type: :submit, class: info[:buttonclass], target: "_blank" do
+          i class="#{info[:class]}"
+          span = info[:name]

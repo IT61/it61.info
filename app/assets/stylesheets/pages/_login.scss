@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: image_url('it61_bg');
+  background: image_url("it61_bg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -34,19 +34,18 @@
   }
 
   .login-buttons {
-    margin: 54px 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 0.5rem;
 
-    @include clearfix;
+    @include media($mobile-xs) {
+      flex-direction: column;
 
-    a {
-      @include span-columns(3);
-      @include media($mobile-xs) {
-        @include span-columns(6);
-        @include omega(2n);
-        margin-bottom: 2.5%;
+      form {
+        button {
+          width: 100%;
+        }
       }
     }
   }

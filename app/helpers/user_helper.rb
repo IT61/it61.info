@@ -7,39 +7,31 @@ module UserHelper
     user == current_user
   end
 
-  def social_account_linked(user, provider)
-    if linked user, provider
-      "button-linked"
-    else
-      "button-not-linked"
-    end
-  end
-
   def all_providers
     {
       facebook: {
         name: t("socials.facebook"),
         class: "fa fa-facebook",
         buttonclass: "btn btn-fb",
-        link: "/users/auth/facebook",
+        link: user_facebook_omniauth_authorize_path,
       },
       google_oauth2: {
         name: t("socials.google_plus"),
         class: "fa fa-google-plus",
         buttonclass: "btn btn-google",
-        link: "/users/auth/google_oauth2",
+        link: user_google_oauth2_omniauth_authorize_path,
       },
       vkontakte: {
         name: t("socials.vk"),
         class: "fa fa-vk",
         buttonclass: "btn btn-vk",
-        link: "/users/auth/vkontakte",
+        link: user_vkontakte_omniauth_authorize_path,
       },
       github: {
         name: t("socials.github"),
         class: "fa fa-github",
         buttonclass: "btn btn-github",
-        link: "/users/auth/github",
+        link: user_github_omniauth_authorize_path,
       },
     }
   end
@@ -56,36 +48,11 @@ module UserHelper
     res
   end
 
-  def linked_providers(user)
-    select_providers user do |linked, p|
-      linked.include? p.to_s
-    end
-  end
-
-  def not_linked_providers(user)
-    select_providers user do |linked, p|
-      !(linked.include? p.to_s)
-    end
-  end
-
   def default_avatar_url
     CGI.escape(image_url("user_default.svg"))
   end
 
   def photo(user)
     user.avatar.file.nil? ? image_url("user_default.png") : user.avatar_url(:square_250)
-  end
-
-  private
-
-  def linked(user, provider)
-    user.social_accounts.exists?(provider: provider)
-  end
-
-  def select_providers(user)
-    linked = user.social_accounts.pluck :provider
-    all_providers.select do |p, _|
-      yield linked, p
-    end
   end
 end

@@ -126,16 +126,20 @@ class User < ApplicationRecord
     assign_attributes(params)
     if fresh_fields_present?
       self.fresh = false
-
-      if save
-        yield self
-        true
-      else
-        false
-      end
+      save
     else
       false
     end
+  end
+
+  def linked_social_accounts
+    social_accounts.filter do |social_account|
+      Devise.omniauth_providers.include?(social_account.provider.to_sym)
+    end
+  end
+
+  def unlinked_social_providers
+    Devise.omniauth_providers.map(&:to_s) - linked_social_accounts.map(&:provider)
   end
 
   private

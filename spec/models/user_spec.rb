@@ -3,7 +3,7 @@ RSpec.describe User, type: :model do
     expect(build(:user)).to be_valid
   end
 
-  let! (:user) { create(:user) }
+  let!(:user) { create(:user) }
   subject { user }
 
   describe "ActiveModel validations" do
@@ -115,4 +115,29 @@ RSpec.describe User, type: :model do
       it { should_not have_abilities(:publish, event) }
     end
   end
+
+  describe ".linked_social_accounts" do
+    subject(:linked_social_accounts) { user.linked_social_accounts }
+
+    it { is_expected.to eq([]) }
+
+    context 'with the connected GitHub social account' do
+      let!(:github_account) { create(:social_account, :github, user: user) }
+
+      it { is_expected.to eq([github_account]) }
+    end
+  end
+
+  describe ".unlinked_social_providers" do
+    subject(:unlinked_social_providers) { user.unlinked_social_providers }
+
+    it { is_expected.to eq(["github", "vkontakte", "google_oauth2"]) }
+
+    context 'with the connected GitHub social account' do
+      let!(:github_account) { create(:social_account, user: user) }
+
+      it { is_expected.to eq(["github", "google_oauth2"]) }
+    end
+  end
+
 end
