@@ -3,7 +3,7 @@ FROM ruby:2.7.8-alpine
 RUN apk update && apk upgrade && \
   apk add --no-cache bash git openssh \
   build-base nodejs tzdata postgresql \
-  postgresql-dev python imagemagick yarn \
+  postgresql-dev python imagemagick \
   && gem update bundler
 
 WORKDIR /app
