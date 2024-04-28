@@ -1,12 +1,9 @@
-# It61
-
-[![View performance data on Skylight](https://badges.skylight.io/status/9ACn286v2ne4.svg)](https://oss.skylight.io/app/applications/9ACn286v2ne4)
+# IT61
 
 ## Requirements
 
-- Ruby 2.4.3 (with bundler)
-- PostgreSQL >= 9.5
-- Redis
+- Ruby 3.1.1
+- PostgreSQL 16.2
 
 ## Development setup
 
@@ -14,15 +11,8 @@
 2. **optional:** Install `overcommit` for GIT commit hooks
 3. **optional:** Install GIT hooks with `overcommit`: `overcommit --install -f`
 4. **optional:** Run `overcommit --sign` to trust the hooks in this repository.
-5. Before creating the database you must setup connection strings for PostgreSQL and Redis. Put these default values to `.env` file:
-
-    ```
-    DATABASE_URL=postgres://postgres@localhost:5432/it61
-    REDIS_URL=redis://localhost:6379
-    ```
-
-6. Setup database and run migrations: `rails db:setup`
-7. Run server: `./bin/rails server`
+5. Setup database and run migrations: `rails db:setup`
+6. Run server: `./bin/rails server`
 
 ## Docker development setup
 

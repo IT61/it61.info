@@ -14,10 +14,6 @@ if Rails.configuration.respond_to?(:load_mini_profiler) && Rails.configuration.l
 end
 
 if defined?(Rack::MiniProfiler)
-  uri = URI.parse(ENV["REDIS_URL"])
-  Rack::MiniProfiler.config.storage_options = { host: uri.host, port: uri.port, password: uri.password }
-  Rack::MiniProfiler.config.storage = Rack::MiniProfiler::RedisStore
-
   skip = [
     /assets/,
     /\/avatar\//,
