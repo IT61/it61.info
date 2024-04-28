@@ -186,7 +186,7 @@ GEM
     fuubar (2.5.0)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
-    geocoder (1.6.0)
+    geocoder (1.6.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     google-api-client (0.36.4)
@@ -539,7 +539,7 @@ DEPENDENCIES
   flamegraph
   formulaic
   fuubar
-  geocoder
+  geocoder (= 1.6.1)
   google-api-client (~> 0.36.4)
   gravtastic
   icalendar
